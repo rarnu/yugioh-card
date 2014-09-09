@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9FFD88AE-0F7E-41DF-BF0A-3C744A8FD77D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YuGiOhCard</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3DDAC983-325C-48E8-B8B9-1010CC165A34</key>
+		<string>https://github.com/rarnu/yugioh-card.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>YuGiOhCard.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3DDAC983-325C-48E8-B8B9-1010CC165A34</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rarnu/yugioh-card.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3DDAC983-325C-48E8-B8B9-1010CC165A34</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3DDAC983-325C-48E8-B8B9-1010CC165A34</string>
+			<key>IDESourceControlWCCName</key>
+			<string>yugioh-card</string>
+		</dict>
+	</array>
+</dict>
+</plist>
