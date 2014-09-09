@@ -1,8 +1,3 @@
-//
-//  ViewController.m
-//  ViewDeckExample
-//
-
 #import "ViewController.h"
 #import "IIViewDeckController.h"
 

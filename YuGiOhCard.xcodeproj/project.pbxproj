@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920A591319BF2C5F00D1CDB7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 920A591219BF2C5F00D1CDB7 /* libsqlite3.dylib */; };
+		920A591719BF322200D1CDB7 /* DatabaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 920A591619BF322200D1CDB7 /* DatabaseUtils.m */; };
+		920A592C19BF380100D1CDB7 /* fav.db in Resources */ = {isa = PBXBuildFile; fileRef = 920A592A19BF380100D1CDB7 /* fav.db */; };
+		920A592D19BF380100D1CDB7 /* yugioh.db in Resources */ = {isa = PBXBuildFile; fileRef = 920A592B19BF380100D1CDB7 /* yugioh.db */; };
 		E240A9AC148AB3770077282A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E240A9AB148AB3770077282A /* UIKit.framework */; };
 		E240A9AE148AB3770077282A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E240A9AD148AB3770077282A /* Foundation.framework */; };
 		E240A9B0148AB3770077282A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E240A9AF148AB3770077282A /* CoreGraphics.framework */; };
@@ -27,6 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		920A591219BF2C5F00D1CDB7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		920A591519BF322200D1CDB7 /* DatabaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseUtils.h; path = DataUtil/DatabaseUtils.h; sourceTree = "<group>"; };
+		920A591619BF322200D1CDB7 /* DatabaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatabaseUtils.m; path = DataUtil/DatabaseUtils.m; sourceTree = "<group>"; };
+		920A592A19BF380100D1CDB7 /* fav.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = fav.db; path = Resources/fav.db; sourceTree = "<group>"; };
+		920A592B19BF380100D1CDB7 /* yugioh.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = yugioh.db; path = Resources/yugioh.db; sourceTree = "<group>"; };
 		E240A9A7148AB3770077282A /* YuGiOhCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuGiOhCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E240A9AB148AB3770077282A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E240A9AD148AB3770077282A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920A591319BF2C5F00D1CDB7 /* libsqlite3.dylib in Frameworks */,
 				EA82B9FE167CFB670028F389 /* QuartzCore.framework in Frameworks */,
 				E240A9AC148AB3770077282A /* UIKit.framework in Frameworks */,
 				E240A9AE148AB3770077282A /* Foundation.framework in Frameworks */,
@@ -71,9 +81,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		920A591419BF31D200D1CDB7 /* DataUtil */ = {
+			isa = PBXGroup;
+			children = (
+				920A591519BF322200D1CDB7 /* DatabaseUtils.h */,
+				920A591619BF322200D1CDB7 /* DatabaseUtils.m */,
+			);
+			name = DataUtil;
+			sourceTree = "<group>";
+		};
+		920A592119BF36D400D1CDB7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				920A592A19BF380100D1CDB7 /* fav.db */,
+				920A592B19BF380100D1CDB7 /* yugioh.db */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		E240A99C148AB3770077282A = {
 			isa = PBXGroup;
 			children = (
+				920A592119BF36D400D1CDB7 /* Resources */,
+				920A591419BF31D200D1CDB7 /* DataUtil */,
 				E2DAC32F16E7BFB8002BD487 /* Default-568h@2x.png */,
 				E240A9B1148AB3770077282A /* YuGiOhCard */,
 				E240A9AA148AB3770077282A /* Frameworks */,
@@ -92,6 +122,7 @@
 		E240A9AA148AB3770077282A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				920A591219BF2C5F00D1CDB7 /* libsqlite3.dylib */,
 				EA82B9FD167CFB670028F389 /* QuartzCore.framework */,
 				E240A9AB148AB3770077282A /* UIKit.framework */,
 				E240A9AD148AB3770077282A /* Foundation.framework */,
@@ -103,7 +134,6 @@
 		E240A9B1148AB3770077282A /* YuGiOhCard */ = {
 			isa = PBXGroup;
 			children = (
-				E240A9EA148C51E00077282A /* assets */,
 				E240A9B2148AB3770077282A /* Supporting Files */,
 				E240A9C8148AB3F70077282A /* vendor */,
 				E240A9BA148AB3770077282A /* AppDelegate.h */,
@@ -118,7 +148,6 @@
 				E240A9D5148ADC230077282A /* RightViewController.m */,
 				E240A9D6148ADC230077282A /* RightViewController.xib */,
 			);
-			name = YuGiOhCard;
 			path = YuGiOhCard;
 			sourceTree = "<group>";
 		};
@@ -141,13 +170,6 @@
 			name = vendor;
 			sourceTree = "<group>";
 		};
-		E240A9EA148C51E00077282A /* assets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = assets;
-			sourceTree = "<group>";
-		};
 		E25F8B3914B45F2B00C4182C /* Slider */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +180,6 @@
 				E25F8B3C14B45F2B00C4182C /* IIWrapController.h */,
 				E25F8B3D14B45F2B00C4182C /* IIWrapController.m */,
 			);
-			name = Slider;
 			path = Slider;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -213,7 +234,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920A592D19BF380100D1CDB7 /* yugioh.db in Resources */,
 				E240A9B6148AB3770077282A /* InfoPlist.strings in Resources */,
+				920A592C19BF380100D1CDB7 /* fav.db in Resources */,
 				E240A9D3148ADC020077282A /* LeftViewController.xib in Resources */,
 				E240A9D8148ADC230077282A /* RightViewController.xib in Resources */,
 				E240A9E8148C51AC0077282A /* ViewController.xib in Resources */,
@@ -232,6 +255,7 @@
 				E240A9BC148AB3770077282A /* AppDelegate.m in Sources */,
 				E240A9BF148AB3770077282A /* ViewController.m in Sources */,
 				E240A9D2148ADC020077282A /* LeftViewController.m in Sources */,
+				920A591719BF322200D1CDB7 /* DatabaseUtils.m in Sources */,
 				E240A9D7148ADC230077282A /* RightViewController.m in Sources */,
 				E25F8B3E14B45F2B00C4182C /* IIViewDeckController.m in Sources */,
 				E25F8B3F14B45F2B00C4182C /* IIWrapController.m in Sources */,

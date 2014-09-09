@@ -12,6 +12,8 @@
 	<dict>
 		<key>3DDAC983-325C-48E8-B8B9-1010CC165A34</key>
 		<string>https://github.com/rarnu/yugioh-card.git</string>
+		<key>4B3E7B67-2426-4EE5-96A8-24D822D57647</key>
+		<string>http://github.com/rarnu/root-tools.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>YuGiOhCard.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>3DDAC983-325C-48E8-B8B9-1010CC165A34</key>
 		<string>../..</string>
+		<key>4B3E7B67-2426-4EE5-96A8-24D822D57647</key>
+		<string>../../../root-tools</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/rarnu/yugioh-card.git</string>
@@ -28,6 +32,14 @@
 	<string>3DDAC983-325C-48E8-B8B9-1010CC165A34</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4B3E7B67-2426-4EE5-96A8-24D822D57647</string>
+			<key>IDESourceControlWCCName</key>
+			<string>root-tools</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

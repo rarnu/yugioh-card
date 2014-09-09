@@ -1,9 +1,3 @@
-//
-//  LeftViewController.m
-//  ViewDeckExample
-//
-
-
 #import "LeftViewController.h"
 #import "IIViewDeckController.h"
 

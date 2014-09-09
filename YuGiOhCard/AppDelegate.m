@@ -1,15 +1,10 @@
-//
-//  AppDelegate.m
-//  ViewDeckExample
-//
-
-
 #import "AppDelegate.h"
 
 #import "ViewController.h"
 #import "IIViewDeckController.h"
 #import "LeftViewController.h"
 #import "RightViewController.h"
+#import "DatabaseUtils.h"
 
 @implementation AppDelegate
 
@@ -31,6 +26,15 @@
     
     self.window.rootViewController = deckController;
     [self.window makeKeyAndVisible];
+    [DatabaseUtils copyDatabaseFile];
+    sqlite3 * database = [DatabaseUtils openDatabase:@"yugioh.db"];
+    sqlite3_stmt * stmt = [DatabaseUtils queryData:database sql:@"select * from YGODATA where id in (1,2,3,4,5)"];
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        char * name = (char *) sqlite3_column_text(stmt, 2);
+        NSString * nameStr = [[NSString alloc] initWithUTF8String:name];
+        NSLog(nameStr);
+
+    }
     return YES;
 }
 

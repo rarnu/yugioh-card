@@ -1,9 +1,5 @@
-//
-//  AppDelegate.h
-//  ViewDeckExample
-//
-
 #import <UIKit/UIKit.h>
+#import <sqlite3.h>
 
 @class ViewController;
 @class IIViewDeckController;
