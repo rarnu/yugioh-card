@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>YuGiOhCard.xcscheme</key>
+		<key>RESideMenuStoryboardsExample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E240A9A6148AB3770077282A</key>
+		<key>3076CDBD1809B47200527E6C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3076CDDE1809B47200527E6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
