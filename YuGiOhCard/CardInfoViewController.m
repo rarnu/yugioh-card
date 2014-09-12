@@ -42,8 +42,7 @@
     str = [str stringByAppendingFormat:@"卡片限制: %@\n所在卡包: %@\n卡片归属: %@\n卡片密码: %@\n罕贵程度: %@\n", self.card.ban, self.card.package, self.card.cardCamp, self.card.cheatcode, self.card.infrequence];
     
     str = [str stringByAppendingString:line];
-    str = [str stringByAppendingFormat:@"卡片效果: \n%@", self.card.effect];
-    str = [str stringByAppendingString:@"\n\n\n\n"];
+    str = [str stringByAppendingFormat:@"卡片效果: \n%@\n", self.card.effect];
     
     self.txtInfo.text = str;
 }

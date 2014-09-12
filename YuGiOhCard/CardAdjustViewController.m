@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     self.card = ((CardViewController *)self.tabBarController).card;
-    NSString * str = [NSString stringWithFormat:@"%@\n\n\n\n", self.card.adjust];
+    NSString * str = [NSString stringWithFormat:@"%@\n", self.card.adjust];
     self.txtAdjust.text = str;
 }
 

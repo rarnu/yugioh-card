@@ -7,4 +7,6 @@
 @property (nonatomic) NSString * cardName;
 @property (nonatomic) CardItem * card;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem * rightButton;
+
 @end
