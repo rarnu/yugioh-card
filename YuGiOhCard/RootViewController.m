@@ -19,6 +19,7 @@
     self.scaleContentView = FALSE;
     self.scaleMenuView = FALSE;
     self.scaleBackgroundImageView = FALSE;
+    self.
     
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];

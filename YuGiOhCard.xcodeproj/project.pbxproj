@@ -23,6 +23,16 @@
 		3076CE041809B59E00527E6C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CDFE1809B59E00527E6C /* RootViewController.m */; };
 		3076CE051809B59E00527E6C /* LimitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CE001809B59E00527E6C /* LimitViewController.m */; };
 		30DF13B218DE1B0C0018463C /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DF13B118DE1B0C0018463C /* RightMenuViewController.m */; };
+		920EC05F19C128FC007F9F39 /* CardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC05E19C128FC007F9F39 /* CardItem.m */; };
+		920EC06319C12FEF007F9F39 /* fav.db in Resources */ = {isa = PBXBuildFile; fileRef = 920EC06119C12FEF007F9F39 /* fav.db */; };
+		920EC06419C12FEF007F9F39 /* yugioh.db in Resources */ = {isa = PBXBuildFile; fileRef = 920EC06219C12FEF007F9F39 /* yugioh.db */; };
+		920EC06719C18DF5007F9F39 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC06619C18DF5007F9F39 /* CardViewController.m */; };
+		920EC06A19C18FEF007F9F39 /* CardInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC06919C18FEF007F9F39 /* CardInfoViewController.m */; };
+		920EC06D19C19A08007F9F39 /* CardAdjustViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC06C19C19A08007F9F39 /* CardAdjustViewController.m */; };
+		920EC07019C19A6B007F9F39 /* CardPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC06F19C19A6B007F9F39 /* CardPicViewController.m */; };
+		920EC07319C19ACE007F9F39 /* LimitBanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC07219C19ACE007F9F39 /* LimitBanViewController.m */; };
+		920EC07619C19AF7007F9F39 /* Limit1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC07519C19AF7007F9F39 /* Limit1ViewController.m */; };
+		920EC07919C19B1B007F9F39 /* Limit2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920EC07819C19B1B007F9F39 /* Limit2ViewController.m */; };
 		921873FB19BFD87F00EA94B0 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 921873F619BFD87F00EA94B0 /* RECommonFunctions.m */; };
 		921873FC19BFD87F00EA94B0 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 921873F819BFD87F00EA94B0 /* RESideMenu.m */; };
 		921873FD19BFD87F00EA94B0 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 921873FA19BFD87F00EA94B0 /* UIViewController+RESideMenu.m */; };
@@ -75,6 +85,24 @@
 		3076CE001809B59E00527E6C /* LimitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LimitViewController.m; sourceTree = "<group>"; };
 		30DF13B018DE1B0C0018463C /* RightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightMenuViewController.h; sourceTree = "<group>"; };
 		30DF13B118DE1B0C0018463C /* RightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightMenuViewController.m; sourceTree = "<group>"; };
+		920EC05D19C128FC007F9F39 /* CardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardItem.h; path = DataUtil/CardItem.h; sourceTree = "<group>"; };
+		920EC05E19C128FC007F9F39 /* CardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardItem.m; path = DataUtil/CardItem.m; sourceTree = "<group>"; };
+		920EC06119C12FEF007F9F39 /* fav.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = fav.db; path = Resource/fav.db; sourceTree = "<group>"; };
+		920EC06219C12FEF007F9F39 /* yugioh.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = yugioh.db; path = Resource/yugioh.db; sourceTree = "<group>"; };
+		920EC06519C18DF5007F9F39 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		920EC06619C18DF5007F9F39 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		920EC06819C18FEF007F9F39 /* CardInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfoViewController.h; sourceTree = "<group>"; };
+		920EC06919C18FEF007F9F39 /* CardInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfoViewController.m; sourceTree = "<group>"; };
+		920EC06B19C19A08007F9F39 /* CardAdjustViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardAdjustViewController.h; sourceTree = "<group>"; };
+		920EC06C19C19A08007F9F39 /* CardAdjustViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardAdjustViewController.m; sourceTree = "<group>"; };
+		920EC06E19C19A6B007F9F39 /* CardPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPicViewController.h; sourceTree = "<group>"; };
+		920EC06F19C19A6B007F9F39 /* CardPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardPicViewController.m; sourceTree = "<group>"; };
+		920EC07119C19ACE007F9F39 /* LimitBanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LimitBanViewController.h; sourceTree = "<group>"; };
+		920EC07219C19ACE007F9F39 /* LimitBanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LimitBanViewController.m; sourceTree = "<group>"; };
+		920EC07419C19AF7007F9F39 /* Limit1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Limit1ViewController.h; sourceTree = "<group>"; };
+		920EC07519C19AF7007F9F39 /* Limit1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Limit1ViewController.m; sourceTree = "<group>"; };
+		920EC07719C19B1B007F9F39 /* Limit2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Limit2ViewController.h; sourceTree = "<group>"; };
+		920EC07819C19B1B007F9F39 /* Limit2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Limit2ViewController.m; sourceTree = "<group>"; };
 		921873F519BFD87F00EA94B0 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = RESideMenu/RECommonFunctions.h; sourceTree = "<group>"; };
 		921873F619BFD87F00EA94B0 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = RESideMenu/RECommonFunctions.m; sourceTree = "<group>"; };
 		921873F719BFD87F00EA94B0 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RESideMenu.h; path = RESideMenu/RESideMenu.h; sourceTree = "<group>"; };
@@ -134,6 +162,7 @@
 		3076CDB51809B47200527E6C = {
 			isa = PBXGroup;
 			children = (
+				920EC06019C12FC9007F9F39 /* Resource */,
 				9218740219BFD8DF00EA94B0 /* DataUtil */,
 				921873F419BFD85A00EA94B0 /* RESideMenu */,
 				3076CDC71809B47200527E6C /* YuGiOhCard */,
@@ -208,9 +237,17 @@
 				30DF13B018DE1B0C0018463C /* RightMenuViewController.h */,
 				30DF13B118DE1B0C0018463C /* RightMenuViewController.m */,
 				9218740C19BFDDA900EA94B0 /* FavViewController.h */,
+				920EC06E19C19A6B007F9F39 /* CardPicViewController.h */,
+				920EC06F19C19A6B007F9F39 /* CardPicViewController.m */,
 				9218740D19BFDDA900EA94B0 /* FavViewController.m */,
 				9218740F19BFDDBF00EA94B0 /* ToolViewController.h */,
 				9218741019BFDDBF00EA94B0 /* ToolViewController.m */,
+				920EC07119C19ACE007F9F39 /* LimitBanViewController.h */,
+				920EC07419C19AF7007F9F39 /* Limit1ViewController.h */,
+				920EC07719C19B1B007F9F39 /* Limit2ViewController.h */,
+				920EC07819C19B1B007F9F39 /* Limit2ViewController.m */,
+				920EC07519C19AF7007F9F39 /* Limit1ViewController.m */,
+				920EC07219C19ACE007F9F39 /* LimitBanViewController.m */,
 				9218741219BFE71900EA94B0 /* SettingViewController.h */,
 				9218741E19C01A4300EA94B0 /* SearchResultViewController.h */,
 				9218741F19C01A4300EA94B0 /* SearchResultViewController.m */,
@@ -219,8 +256,23 @@
 				9218741919BFE7AA00EA94B0 /* FeedbackViewController.m */,
 				9218741B19BFE7E700EA94B0 /* AboutViewController.h */,
 				9218741C19BFE7E700EA94B0 /* AboutViewController.m */,
+				920EC06519C18DF5007F9F39 /* CardViewController.h */,
+				920EC06619C18DF5007F9F39 /* CardViewController.m */,
+				920EC06819C18FEF007F9F39 /* CardInfoViewController.h */,
+				920EC06919C18FEF007F9F39 /* CardInfoViewController.m */,
+				920EC06B19C19A08007F9F39 /* CardAdjustViewController.h */,
+				920EC06C19C19A08007F9F39 /* CardAdjustViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		920EC06019C12FC9007F9F39 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				920EC06119C12FEF007F9F39 /* fav.db */,
+				920EC06219C12FEF007F9F39 /* yugioh.db */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 		921873F419BFD85A00EA94B0 /* RESideMenu */ = {
@@ -241,6 +293,8 @@
 			children = (
 				9218740319BFD8EF00EA94B0 /* DatabaseUtils.h */,
 				9218740419BFD8EF00EA94B0 /* DatabaseUtils.m */,
+				920EC05D19C128FC007F9F39 /* CardItem.h */,
+				920EC05E19C128FC007F9F39 /* CardItem.m */,
 			);
 			name = DataUtil;
 			sourceTree = "<group>";
@@ -325,6 +379,8 @@
 				3076CDDA1809B47200527E6C /* Images.xcassets in Resources */,
 				3076CDCC1809B47200527E6C /* InfoPlist.strings in Resources */,
 				3076CDD51809B47200527E6C /* Main.storyboard in Resources */,
+				920EC06419C12FEF007F9F39 /* yugioh.db in Resources */,
+				920EC06319C12FEF007F9F39 /* fav.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,23 +399,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				3076CE021809B59E00527E6C /* LeftMenuViewController.m in Sources */,
+				920EC06D19C19A08007F9F39 /* CardAdjustViewController.m in Sources */,
 				3076CE011809B59E00527E6C /* SearchViewController.m in Sources */,
 				3076CDCE1809B47200527E6C /* main.m in Sources */,
 				3076CDD21809B47200527E6C /* AppDelegate.m in Sources */,
+				920EC06719C18DF5007F9F39 /* CardViewController.m in Sources */,
 				3076CE051809B59E00527E6C /* LimitViewController.m in Sources */,
+				920EC07619C19AF7007F9F39 /* Limit1ViewController.m in Sources */,
 				9218740819BFDBF100EA94B0 /* LatestViewController.m in Sources */,
 				9218740E19BFDDA900EA94B0 /* FavViewController.m in Sources */,
 				9218742019C01A4300EA94B0 /* SearchResultViewController.m in Sources */,
 				30DF13B218DE1B0C0018463C /* RightMenuViewController.m in Sources */,
 				3076CE041809B59E00527E6C /* RootViewController.m in Sources */,
+				920EC05F19C128FC007F9F39 /* CardItem.m in Sources */,
 				921873FD19BFD87F00EA94B0 /* UIViewController+RESideMenu.m in Sources */,
 				9218741119BFDDBF00EA94B0 /* ToolViewController.m in Sources */,
+				920EC06A19C18FEF007F9F39 /* CardInfoViewController.m in Sources */,
 				9218740B19BFDC3A00EA94B0 /* PackViewController.m in Sources */,
 				921873FC19BFD87F00EA94B0 /* RESideMenu.m in Sources */,
+				920EC07319C19ACE007F9F39 /* LimitBanViewController.m in Sources */,
+				920EC07019C19A6B007F9F39 /* CardPicViewController.m in Sources */,
 				9218741D19BFE7E700EA94B0 /* AboutViewController.m in Sources */,
 				9218741719BFE77300EA94B0 /* UpdateViewController.m in Sources */,
 				9218740519BFD8EF00EA94B0 /* DatabaseUtils.m in Sources */,
 				921873FB19BFD87F00EA94B0 /* RECommonFunctions.m in Sources */,
+				920EC07919C19B1B007F9F39 /* Limit2ViewController.m in Sources */,
 				9218741419BFE71900EA94B0 /* SettingViewController.m in Sources */,
 				9218741A19BFE7AA00EA94B0 /* FeedbackViewController.m in Sources */,
 			);

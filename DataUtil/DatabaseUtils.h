@@ -1,12 +1,24 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "CardItem.h"
 
 @interface DatabaseUtils : NSObject
 
 + (void) copyDatabaseFile;
-+ (sqlite3 *) openDatabase:(NSString *)fileName;
-+ (void) closeDatabase:(sqlite3 *)database;
-+ (sqlite3_stmt *) queryData:(sqlite3 *)database sql:(NSString *)sql;
-+ (void) queryEnd:(sqlite3_stmt *)stmt;
++ (void) openDatabase;
++ (void) closeDatabase;
++ (NSMutableArray *) queryData:(NSString *)sql;
++ (NSMutableArray *) queryFav: (NSString *)sql;
++ (CardItem *) queryOneCard: (NSInteger) cardId;
+
++ (NSMutableArray *) queryLast100;
++ (NSMutableArray *) queryBanCards;
++ (NSMutableArray *) queryLimit1Cards;
++ (NSMutableArray *) queryLimit2Cards;
++ (NSMutableArray *) queryCardsViaIds: (NSMutableArray *) cardIds;
+
+// get database instance
++ (sqlite3 *) mainDatabase;
++ (sqlite3 *) favDatabase;
 
 @end

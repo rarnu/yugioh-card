@@ -1,9 +1,12 @@
 #import "AppDelegate.h"
+#import "DatabaseUtils.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [DatabaseUtils copyDatabaseFile];
+    [DatabaseUtils openDatabase];
     return YES;
 }
 							
@@ -25,6 +28,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [DatabaseUtils closeDatabase];
 }
 
 @end
