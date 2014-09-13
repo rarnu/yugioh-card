@@ -48,6 +48,7 @@
 		9218741A19BFE7AA00EA94B0 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741919BFE7AA00EA94B0 /* FeedbackViewController.m */; };
 		9218741D19BFE7E700EA94B0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741C19BFE7E700EA94B0 /* AboutViewController.m */; };
 		9218742019C01A4300EA94B0 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741F19C01A4300EA94B0 /* SearchResultViewController.m */; };
+		92C4FFB119C3E83800022E88 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C4FFB019C3E83800022E88 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		9218741C19BFE7E700EA94B0 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		9218741E19C01A4300EA94B0 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		9218741F19C01A4300EA94B0 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		92C4FFB019C3E83800022E88 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		3076CDB51809B47200527E6C = {
 			isa = PBXGroup;
 			children = (
+				92C4FFB019C3E83800022E88 /* Default-568h@2x.png */,
 				920EC06019C12FC9007F9F39 /* Resource */,
 				9218740219BFD8DF00EA94B0 /* DataUtil */,
 				921873F419BFD85A00EA94B0 /* RESideMenu */,
@@ -381,6 +384,7 @@
 				3076CDD51809B47200527E6C /* Main.storyboard in Resources */,
 				920EC06419C12FEF007F9F39 /* yugioh.db in Resources */,
 				920EC06319C12FEF007F9F39 /* fav.db in Resources */,
+				92C4FFB119C3E83800022E88 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +549,7 @@
 				INFOPLIST_FILE = "YuGiOhCard/YuGiOhCard-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = YuGiOhCard;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -559,7 +563,7 @@
 				INFOPLIST_FILE = "YuGiOhCard/YuGiOhCard-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = YuGiOhCard;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -25,7 +25,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Result";
-    self._cards = [DatabaseUtils queryData:@"select _id, id, name, sCardType from YGODATA where id in (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,6483)"];
+    NSString * sql = @"select _id, id, name, sCardType where 1=1";
+    sql = [sql stringByAppendingFormat:@"name like '%%%@%%' or japName like '%%%@%%' or enName like '%%%@%%'", self.searchCardName, self.searchCardName,self.searchCardName];
+    self._cards = [DatabaseUtils queryData:sql];
 }
 
 - (void)didReceiveMemoryWarning
