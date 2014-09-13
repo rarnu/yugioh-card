@@ -28,11 +28,10 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void) likeClicked:(id)sender {
-    // NSLog([NSString stringWithFormat:@"Like Clicked: %@", self.card.name]);
+    
 }
 
 @end

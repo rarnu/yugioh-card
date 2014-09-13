@@ -1,4 +1,5 @@
 #import "SearchViewController.h"
+#import "SearchResultViewController.h"
 
 @interface SearchViewController ()
 
@@ -23,8 +24,14 @@
 }
 
 -(void) pushViewController {
-    UIViewController * resultViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchResultViewController"];
+    SearchResultViewController * resultViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"searchResultViewController"];
+    [resultViewController setSearchCardName:self.txtCardName.text];
     [self.navigationController pushViewController:resultViewController animated:YES];
+
+}
+
+-(void) textViewDidEndEditing:(UITextView *)textView {
+    NSLog(@"end editing");
 }
 
 @end

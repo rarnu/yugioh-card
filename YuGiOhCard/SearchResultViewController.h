@@ -2,4 +2,6 @@
 
 @interface SearchResultViewController : UITableViewController
 
+@property (nonatomic) NSString * searchCardName;
+
 @end
