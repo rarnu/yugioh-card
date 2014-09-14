@@ -49,6 +49,7 @@
 		9218741D19BFE7E700EA94B0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741C19BFE7E700EA94B0 /* AboutViewController.m */; };
 		9218742019C01A4300EA94B0 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741F19C01A4300EA94B0 /* SearchResultViewController.m */; };
 		92C4FFB119C3E83800022E88 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C4FFB019C3E83800022E88 /* Default-568h@2x.png */; };
+		92C4FFB419C3EFCC00022E88 /* MainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C4FFB319C3EFCC00022E88 /* MainNavViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,8 @@
 		9218741E19C01A4300EA94B0 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		9218741F19C01A4300EA94B0 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		92C4FFB019C3E83800022E88 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		92C4FFB219C3EFCC00022E88 /* MainNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavViewController.h; sourceTree = "<group>"; };
+		92C4FFB319C3EFCC00022E88 /* MainNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +268,8 @@
 				920EC06919C18FEF007F9F39 /* CardInfoViewController.m */,
 				920EC06B19C19A08007F9F39 /* CardAdjustViewController.h */,
 				920EC06C19C19A08007F9F39 /* CardAdjustViewController.m */,
+				92C4FFB219C3EFCC00022E88 /* MainNavViewController.h */,
+				92C4FFB319C3EFCC00022E88 /* MainNavViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				921873FD19BFD87F00EA94B0 /* UIViewController+RESideMenu.m in Sources */,
 				9218741119BFDDBF00EA94B0 /* ToolViewController.m in Sources */,
 				920EC06A19C18FEF007F9F39 /* CardInfoViewController.m in Sources */,
+				92C4FFB419C3EFCC00022E88 /* MainNavViewController.m in Sources */,
 				9218740B19BFDC3A00EA94B0 /* PackViewController.m in Sources */,
 				921873FC19BFD87F00EA94B0 /* RESideMenu.m in Sources */,
 				920EC07319C19ACE007F9F39 /* LimitBanViewController.m in Sources */,

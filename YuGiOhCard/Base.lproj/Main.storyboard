@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -9,6 +9,10 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="rootController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="RootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F8f-xO-6rc"/>
+                        <viewControllerLayoutGuide type="bottom" id="aHU-lk-B1R"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -19,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="-1041" y="106"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Nav View Controller-->
         <scene sceneID="jO9-85-nrD">
             <objects>
-                <navigationController storyboardIdentifier="contentViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EPR-YW-obD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="contentViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EPR-YW-obD" customClass="MainNavViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bHH-Lh-tAZ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,25 +55,73 @@
         <scene sceneID="4d1-Jz-tGk">
             <objects>
                 <viewController storyboardIdentifier="searchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jsP-Dz-DYG" customClass="SearchViewController" sceneMemberID="viewController">
-                    <scrollView key="view" clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" id="B0R-Ll-FWd">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2fZ-QI-qs2"/>
+                        <viewControllerLayoutGuide type="bottom" id="wye-ha-bay"/>
+                    </layoutGuides>
+                    <scrollView key="view" clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="B0R-Ll-FWd">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kUx-3O-sGl">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUx-3O-sGl">
                                 <rect key="frame" x="20" y="8" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="dF4-ax-3Rl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="tl7-xu-BHm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tl7-xu-BHm">
                                 <rect key="frame" x="103" y="8" width="197" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="197" id="Wkd-eg-eJA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jsP-Dz-DYG" id="5sf-lM-WKc"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片归属" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa6-S5-MnU">
+                                <rect key="frame" x="20" y="46" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="p1g-Nc-ESP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wYp-yV-rNU">
+                                <rect key="frame" x="103" y="454" width="197" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jsP-Dz-DYG" id="Wkm-YJ-dHl"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tl7-xu-BHm" secondAttribute="trailing" constant="20" symbolic="YES" id="7KW-MW-Aew"/>
+                            <constraint firstItem="wYp-yV-rNU" firstAttribute="leading" secondItem="tl7-xu-BHm" secondAttribute="leading" id="8Zc-hl-CuK"/>
+                            <constraint firstItem="kUx-3O-sGl" firstAttribute="leading" secondItem="B0R-Ll-FWd" secondAttribute="leading" constant="20" symbolic="YES" id="G83-0r-elV"/>
+                            <constraint firstItem="tl7-xu-BHm" firstAttribute="leading" secondItem="kUx-3O-sGl" secondAttribute="trailing" constant="8" symbolic="YES" id="GUk-cp-k2K"/>
+                            <constraint firstItem="Pa6-S5-MnU" firstAttribute="trailing" secondItem="kUx-3O-sGl" secondAttribute="trailing" id="OwZ-1b-FSG"/>
+                            <constraint firstItem="wYp-yV-rNU" firstAttribute="trailing" secondItem="tl7-xu-BHm" secondAttribute="trailing" id="Q57-Of-by4"/>
+                            <constraint firstItem="kUx-3O-sGl" firstAttribute="top" secondItem="tl7-xu-BHm" secondAttribute="top" id="Xn2-k9-pQA"/>
+                            <constraint firstItem="kUx-3O-sGl" firstAttribute="bottom" secondItem="tl7-xu-BHm" secondAttribute="bottom" id="cdh-B3-z9f"/>
+                            <constraint firstItem="Pa6-S5-MnU" firstAttribute="top" secondItem="kUx-3O-sGl" secondAttribute="bottom" constant="8" symbolic="YES" id="f4T-gR-hu1"/>
+                            <constraint firstItem="Pa6-S5-MnU" firstAttribute="leading" secondItem="kUx-3O-sGl" secondAttribute="leading" id="h1P-Dh-apr"/>
+                            <constraint firstAttribute="bottom" secondItem="wYp-yV-rNU" secondAttribute="bottom" constant="20" symbolic="YES" id="hsu-HF-29e"/>
+                            <constraint firstItem="kUx-3O-sGl" firstAttribute="top" secondItem="2fZ-QI-qs2" secondAttribute="bottom" constant="8" id="pFm-4f-VeA"/>
+                            <constraint firstItem="wye-ha-bay" firstAttribute="top" secondItem="Pa6-S5-MnU" secondAttribute="bottom" constant="428" id="zGd-sw-L8P"/>
+                        </constraints>
                     </scrollView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="HIf-bS-REK">
@@ -80,6 +132,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="sv" destination="B0R-Ll-FWd" id="tZp-IM-GiD"/>
                         <outlet property="txtCardName" destination="tl7-xu-BHm" id="3oY-Oa-oOf"/>
                     </connections>
                 </viewController>
@@ -91,6 +144,10 @@
         <scene sceneID="zM8-E4-2tq">
             <objects>
                 <viewController storyboardIdentifier="leftMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NMs-sm-msE" customClass="LeftMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m2Q-ug-8N6"/>
+                        <viewControllerLayoutGuide type="bottom" id="qSd-XL-Aon"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ovT-uA-eEb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -152,6 +209,10 @@
         <scene sceneID="wN7-Cy-r0G">
             <objects>
                 <viewController storyboardIdentifier="rightMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="atb-wu-hdZ" customClass="RightMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fby-Fn-zxw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xu7-HV-up5"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CcE-gV-MK1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -166,6 +227,10 @@
         <scene sceneID="44b-5B-7u8">
             <objects>
                 <viewController storyboardIdentifier="settingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5A3-XX-9Ph" customClass="SettingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dKs-EJ-IrF"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kji-Gc-737"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1ZB-If-kR0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -189,6 +254,10 @@
         <scene sceneID="8E1-BB-crv">
             <objects>
                 <viewController storyboardIdentifier="updateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="osn-i1-HAT" customClass="UpdateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SiU-wX-NLW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Oxw-hI-oOD"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tLF-RE-Ozi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -210,6 +279,10 @@
         <scene sceneID="2u1-ph-S2s">
             <objects>
                 <viewController storyboardIdentifier="feedbackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bXq-bj-MiY" customClass="FeedbackViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FP5-eZ-LsX"/>
+                        <viewControllerLayoutGuide type="bottom" id="B54-2g-F6R"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rad-a9-2VI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -231,6 +304,10 @@
         <scene sceneID="iya-iT-utg">
             <objects>
                 <viewController storyboardIdentifier="aboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Cc-Uy-f0E" customClass="AboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N2c-go-juI"/>
+                        <viewControllerLayoutGuide type="bottom" id="qm7-rb-yrs"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Z5U-EQ-7bA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -408,11 +485,15 @@
         <scene sceneID="uVj-t7-GFJ">
             <objects>
                 <viewController id="RSp-sI-yWT" customClass="CardInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gr1-3g-ZD3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sxf-Z8-vtl"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MBX-kq-E4v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" editable="NO" id="4pK-sX-g9L">
+                            <textView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pK-sX-g9L">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -422,6 +503,12 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="4pK-sX-g9L" secondAttribute="bottom" id="FP2-mM-KPR"/>
+                            <constraint firstItem="4pK-sX-g9L" firstAttribute="top" secondItem="MBX-kq-E4v" secondAttribute="top" id="OeS-QJ-A6W"/>
+                            <constraint firstAttribute="trailing" secondItem="4pK-sX-g9L" secondAttribute="trailing" id="fEk-6J-JPQ"/>
+                            <constraint firstItem="4pK-sX-g9L" firstAttribute="leading" secondItem="MBX-kq-E4v" secondAttribute="leading" id="k6K-xo-i6P"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="卡片信息" id="yXe-G2-qle"/>
                     <connections>
@@ -458,11 +545,15 @@
         <scene sceneID="z8Q-qE-Uqa">
             <objects>
                 <viewController id="hHJ-0J-nYu" customClass="CardAdjustViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qYE-Q5-FqW"/>
+                        <viewControllerLayoutGuide type="bottom" id="0fU-iA-zjV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jCc-Jc-LL6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" id="AOA-eq-vdU">
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOA-eq-vdU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -472,6 +563,12 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AOA-eq-vdU" firstAttribute="leading" secondItem="jCc-Jc-LL6" secondAttribute="leading" id="Lm3-pX-csA"/>
+                            <constraint firstAttribute="trailing" secondItem="AOA-eq-vdU" secondAttribute="trailing" id="YFP-jl-QBy"/>
+                            <constraint firstAttribute="bottom" secondItem="AOA-eq-vdU" secondAttribute="bottom" id="iD8-7w-MH9"/>
+                            <constraint firstItem="AOA-eq-vdU" firstAttribute="top" secondItem="jCc-Jc-LL6" secondAttribute="top" id="zcU-bC-GCI"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="效果调整" id="2dW-N7-MJi"/>
                     <connections>
@@ -611,6 +708,10 @@
         <scene sceneID="fBJ-ys-dwK">
             <objects>
                 <viewController id="PKj-d3-uGF" customClass="CardPicViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qP3-0o-t7e"/>
+                        <viewControllerLayoutGuide type="bottom" id="r1m-Pp-9hj"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zcf-b4-vfe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -626,6 +727,10 @@
         <scene sceneID="xf0-Nt-IC2">
             <objects>
                 <viewController storyboardIdentifier="toolViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hhB-4F-Bkh" customClass="ToolViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZjO-WP-0E6"/>
+                        <viewControllerLayoutGuide type="bottom" id="cNH-PF-NIg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BiJ-f5-yvA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
