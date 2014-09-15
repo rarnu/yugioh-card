@@ -3,6 +3,7 @@
 #import "CardItem.h"
 #import <sqlite3.h>
 #import "CardViewController.h"
+#import "CardConsts.h"
 
 @interface SearchResultViewController ()
 
@@ -25,8 +26,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Result";
-    NSString * sql = @"select _id, id, name, sCardType from YGODATA where 1=1";
-    sql = [sql stringByAppendingFormat:@" and (name like '%%%%%@%%%%' or japName like '%%%%%@%%%%' or enName like '%%%%%@%%%%' or shortName like '%%%%%@%%%%' or oldName like '%%%%%@%%%%')", self.searchCardName, self.searchCardName,self.searchCardName, self.searchCardName, self.searchCardName];
+    NSString * sql = [self buildSql];
     self._cards = [DatabaseUtils queryData:sql];
 }
 
@@ -34,6 +34,30 @@
 {
     [super didReceiveMemoryWarning];
 
+}
+
+#pragma mark - sql
+-(NSString *) buildSql {
+    NSString * sql = @"select _id, id, name, sCardType from YGODATA where 1=1";
+    // name
+    if (![self.searchCardName isEqualToString:@""]) {
+        sql = [sql stringByAppendingFormat:@" and (name like '%%%%%@%%%%' or japName like '%%%%%@%%%%' or enName like '%%%%%@%%%%' or shortName like '%%%%%@%%%%' or oldName like '%%%%%@%%%%')", self.searchCardName, self.searchCardName,self.searchCardName, self.searchCardName, self.searchCardName];
+    }
+    // camp
+    if (![self.searchCamp isEqualToString:@""] && ![self.searchCamp isEqualToString:[CardConsts campDefault]]) {
+        sql = [sql stringByAppendingFormat:@" and cardCamp='%@'", self.searchCamp];
+    }
+    // card type
+    if (![self.searchCardType isEqualToString:@""] && ![self.searchCardType isEqualToString:[CardConsts cardTypeDefault]]) {
+        sql = [sql stringByAppendingFormat:@" and sCardType like '%%%%%@%%%%'", self.searchCardType];
+        if ([self.searchCardType rangeOfString:[CardConsts cardMonsterDefault]].location != NSNotFound) {
+            // sub type
+            if (![self.searchSubType isEqualToString:@""] && ![self.searchSubType isEqualToString:[CardConsts cardSubTypeDefault]]) {
+                sql = [sql stringByAppendingFormat:@" and CardDType like '%%%%%@%%%%'", self.searchSubType];
+            }
+        }
+    }
+    return sql;
 }
 
 #pragma mark - Table view data source
@@ -69,7 +93,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"pushCard"]) {
-        
         CardItem * item = self._cards[[self.tableView indexPathForSelectedRow].row];
         [[segue destinationViewController] setCardId:item.card_id];
         [[segue destinationViewController] setCardName:item.name];

@@ -5,7 +5,7 @@
 static sqlite3 * _main_database;
 static sqlite3 * _fav_database;
 
-+ (void) copyDatabaseFile {
++ (BOOL) copyDatabaseFile {
     
     NSFileManager * fileMgr = [NSFileManager defaultManager];
     NSBundle * bundle = [NSBundle mainBundle];
@@ -18,11 +18,16 @@ static sqlite3 * _fav_database;
     NSString * favDbPath = [document stringByAppendingPathComponent:@"fav.db"];
     [[NSFileManager defaultManager] createDirectoryAtPath:document withIntermediateDirectories:YES attributes:nil error:nil];
     if (![fileMgr fileExistsAtPath:mainDbPath]) {
-        [fileMgr copyItemAtPath:oriMainDbPath toPath:mainDbPath error:nil];
+        NSError * err;
+        [fileMgr copyItemAtPath:oriMainDbPath toPath:mainDbPath error:&err];
+        NSLog([err description]);
+        
     }
     if (![fileMgr fileExistsAtPath:favDbPath]) {
         [fileMgr copyItemAtPath:oriFavDbPath toPath:favDbPath error:nil];
     }
+    
+    return [fileMgr fileExistsAtPath:mainDbPath] && [fileMgr fileExistsAtPath:favDbPath];
     
 }
 
@@ -40,9 +45,10 @@ static sqlite3 * _fav_database;
     }
 }
 
-+ (void) openDatabase {
++ (BOOL) openDatabase {
     _main_database = [self _openDatabase:@"yugioh.db"];
     _fav_database = [self _openDatabase:@"fav.db"];
+    return (_main_database != nil) && (_fav_database != nil);
 }
 
 + (void) closeDatabase {
@@ -155,6 +161,7 @@ static sqlite3 * _fav_database;
 + (sqlite3 *) favDatabase {
     return _fav_database;
 }
+
 
 @end
 

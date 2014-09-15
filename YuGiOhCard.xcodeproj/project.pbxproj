@@ -48,6 +48,9 @@
 		9218741A19BFE7AA00EA94B0 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741919BFE7AA00EA94B0 /* FeedbackViewController.m */; };
 		9218741D19BFE7E700EA94B0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741C19BFE7E700EA94B0 /* AboutViewController.m */; };
 		9218742019C01A4300EA94B0 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9218741F19C01A4300EA94B0 /* SearchResultViewController.m */; };
+		9232B5AB19C66BD200FB9D45 /* CardAttributePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9232B5AA19C66BD200FB9D45 /* CardAttributePicker.m */; };
+		9232B5AF19C6812B00FB9D45 /* CardConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 9232B5AE19C6812B00FB9D45 /* CardConsts.m */; };
+		92B3CF5319C6FED900446B2A /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B3CF5219C6FED900446B2A /* SplashViewController.m */; };
 		92C4FFB119C3E83800022E88 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C4FFB019C3E83800022E88 /* Default-568h@2x.png */; };
 		92C4FFB419C3EFCC00022E88 /* MainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C4FFB319C3EFCC00022E88 /* MainNavViewController.m */; };
 /* End PBXBuildFile section */
@@ -133,6 +136,12 @@
 		9218741C19BFE7E700EA94B0 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		9218741E19C01A4300EA94B0 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		9218741F19C01A4300EA94B0 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		9232B5A919C66BD200FB9D45 /* CardAttributePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardAttributePicker.h; sourceTree = "<group>"; };
+		9232B5AA19C66BD200FB9D45 /* CardAttributePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardAttributePicker.m; sourceTree = "<group>"; };
+		9232B5AD19C6812B00FB9D45 /* CardConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardConsts.h; sourceTree = "<group>"; };
+		9232B5AE19C6812B00FB9D45 /* CardConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardConsts.m; sourceTree = "<group>"; };
+		92B3CF5119C6FED900446B2A /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		92B3CF5219C6FED900446B2A /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		92C4FFB019C3E83800022E88 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		92C4FFB219C3EFCC00022E88 /* MainNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavViewController.h; sourceTree = "<group>"; };
 		92C4FFB319C3EFCC00022E88 /* MainNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavViewController.m; sourceTree = "<group>"; };
@@ -202,6 +211,8 @@
 		3076CDC71809B47200527E6C /* YuGiOhCard */ = {
 			isa = PBXGroup;
 			children = (
+				9232B5AC19C680AE00FB9D45 /* Module */,
+				9232B5A819C66B8400FB9D45 /* Views */,
 				3076CDF61809B50100527E6C /* Controllers */,
 				3076CDD01809B47200527E6C /* AppDelegate.h */,
 				3076CDD11809B47200527E6C /* AppDelegate.m */,
@@ -270,6 +281,8 @@
 				920EC06C19C19A08007F9F39 /* CardAdjustViewController.m */,
 				92C4FFB219C3EFCC00022E88 /* MainNavViewController.h */,
 				92C4FFB319C3EFCC00022E88 /* MainNavViewController.m */,
+				92B3CF5119C6FED900446B2A /* SplashViewController.h */,
+				92B3CF5219C6FED900446B2A /* SplashViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -305,6 +318,24 @@
 				920EC05E19C128FC007F9F39 /* CardItem.m */,
 			);
 			name = DataUtil;
+			sourceTree = "<group>";
+		};
+		9232B5A819C66B8400FB9D45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9232B5A919C66BD200FB9D45 /* CardAttributePicker.h */,
+				9232B5AA19C66BD200FB9D45 /* CardAttributePicker.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9232B5AC19C680AE00FB9D45 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				9232B5AD19C6812B00FB9D45 /* CardConsts.h */,
+				9232B5AE19C6812B00FB9D45 /* CardConsts.m */,
+			);
+			name = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +438,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9232B5AF19C6812B00FB9D45 /* CardConsts.m in Sources */,
+				9232B5AB19C66BD200FB9D45 /* CardAttributePicker.m in Sources */,
 				3076CE021809B59E00527E6C /* LeftMenuViewController.m in Sources */,
 				920EC06D19C19A08007F9F39 /* CardAdjustViewController.m in Sources */,
 				3076CE011809B59E00527E6C /* SearchViewController.m in Sources */,
@@ -432,6 +465,7 @@
 				9218741D19BFE7E700EA94B0 /* AboutViewController.m in Sources */,
 				9218741719BFE77300EA94B0 /* UpdateViewController.m in Sources */,
 				9218740519BFD8EF00EA94B0 /* DatabaseUtils.m in Sources */,
+				92B3CF5319C6FED900446B2A /* SplashViewController.m in Sources */,
 				921873FB19BFD87F00EA94B0 /* RECommonFunctions.m in Sources */,
 				920EC07919C19B1B007F9F39 /* Limit2ViewController.m in Sources */,
 				9218741419BFE71900EA94B0 /* SettingViewController.m in Sources */,
@@ -550,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YuGiOhCard/YuGiOhCard-Prefix.pch";
 				INFOPLIST_FILE = "YuGiOhCard/YuGiOhCard-Info.plist";
@@ -564,6 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YuGiOhCard/YuGiOhCard-Prefix.pch";
 				INFOPLIST_FILE = "YuGiOhCard/YuGiOhCard-Info.plist";

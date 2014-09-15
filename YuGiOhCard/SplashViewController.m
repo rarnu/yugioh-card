@@ -1,10 +1,11 @@
-#import "UpdateViewController.h"
+#import "SplashViewController.h"
+#import "DatabaseUtils.h"
 
-@interface UpdateViewController ()
+@interface SplashViewController ()
 
 @end
 
-@implementation UpdateViewController
+@implementation SplashViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -18,7 +19,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [DatabaseUtils copyDatabaseFile];
+    [DatabaseUtils openDatabase];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

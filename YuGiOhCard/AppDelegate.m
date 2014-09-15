@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "DatabaseUtils.h"
+#import "SplashViewController.h"
 
 @implementation AppDelegate
 
@@ -12,6 +13,7 @@
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

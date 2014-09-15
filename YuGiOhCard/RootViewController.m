@@ -19,7 +19,6 @@
     self.scaleContentView = FALSE;
     self.scaleMenuView = FALSE;
     self.scaleBackgroundImageView = FALSE;
-    self.
     
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
@@ -28,8 +27,7 @@
     self.delegate = self;
 }
 
-#pragma mark -
-#pragma mark RESideMenu Delegate
+#pragma mark - RESideMenu Delegate
 
 - (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController
 {

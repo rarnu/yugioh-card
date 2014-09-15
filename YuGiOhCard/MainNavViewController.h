@@ -2,6 +2,4 @@
 
 @interface MainNavViewController : UINavigationController
 
--(BOOL) disablesAutomaticKeyboardDismissal;
-
 @end

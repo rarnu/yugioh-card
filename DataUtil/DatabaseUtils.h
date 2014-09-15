@@ -4,8 +4,8 @@
 
 @interface DatabaseUtils : NSObject
 
-+ (void) copyDatabaseFile;
-+ (void) openDatabase;
++ (BOOL) copyDatabaseFile;
++ (BOOL) openDatabase;
 + (void) closeDatabase;
 + (NSMutableArray *) queryData:(NSString *)sql;
 + (NSMutableArray *) queryFav: (NSString *)sql;
