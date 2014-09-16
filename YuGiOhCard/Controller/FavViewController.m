@@ -3,7 +3,9 @@
 #import "CardItem.h"
 #import "CardViewController.h"
 
-@interface FavViewController ()
+@interface FavViewController () {
+    UILabel * lblNoCard;
+}
 
 @property (strong, nonatomic) NSMutableArray * _cards;
 
@@ -24,11 +26,26 @@
     NSMutableArray * ids = [DatabaseUtils favQuery];
     self._cards = [DatabaseUtils queryCardsViaIds:ids];
     [self.tableView reloadData];
+    if (self._cards.count == 0) {
+        [lblNoCard setHidden:NO];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    } else {
+        [lblNoCard setHidden:YES];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSInteger lblTop = (self.tableView.frame.size.height - 100)/2;
+    lblNoCard = [[UILabel alloc] initWithFrame:CGRectMake(0, lblTop, self.tableView.frame.size.width, 50)];
+    lblNoCard.text = @"No Card Collected";
+    lblNoCard.textColor = [UIColor whiteColor];
+    lblNoCard.backgroundColor = [UIColor clearColor];
+    lblNoCard.textAlignment = NSTextAlignmentCenter;
+    [lblNoCard setHidden:YES];
+    [self.tableView addSubview:lblNoCard];
 }
 
 - (void)didReceiveMemoryWarning

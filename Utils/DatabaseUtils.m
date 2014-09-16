@@ -174,12 +174,16 @@ static sqlite3 * _fav_database;
     for (NSInteger i=0; i<cardIds.count; i++) {
         con = [con stringByAppendingFormat:@"%d,",[(NSNumber *)cardIds[i] intValue]];
     }
-    con = [con substringToIndex:con.length-1];
-    
+    if (![con isEqualToString:@""]) {
+        con = [con substringToIndex:con.length-1];
+    }
     NSMutableArray * arr = nil;
     if (![con isEqualToString:@""]) {
         NSString * sql = [NSString stringWithFormat:@"select _id, id, name, sCardType from YGODATA where id in (%@)", con];
         arr = [self queryData:sql];
+    }
+    if (arr == nil) {
+        arr = [[NSMutableArray alloc] init];
     }
     return arr;
 }

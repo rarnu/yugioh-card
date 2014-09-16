@@ -5,7 +5,9 @@
 #import "CardViewController.h"
 #import "CardConsts.h"
 
-@interface SearchResultViewController ()
+@interface SearchResultViewController () {
+    UILabel * lblNoCard;
+}
 
 @property (strong, nonatomic) NSMutableArray * _cards;
 
@@ -26,8 +28,25 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Result";
+    
+    NSInteger lblTop = (self.tableView.frame.size.height - 100)/2;
+    lblNoCard = [[UILabel alloc] initWithFrame:CGRectMake(0, lblTop, self.tableView.frame.size.width, 50)];
+    lblNoCard.text = @"No Card Found";
+    lblNoCard.textAlignment = NSTextAlignmentCenter;
+    lblNoCard.textColor = [UIColor whiteColor];
+    lblNoCard.backgroundColor = [UIColor clearColor];
+    lblNoCard.hidden = YES;
+    [self.tableView addSubview:lblNoCard];
+    
     NSString * sql = [self buildSql];
     self._cards = [DatabaseUtils queryData:sql];
+    if (self._cards.count == 0) {
+        lblNoCard.hidden = NO;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    } else {
+        lblNoCard.hidden = YES;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    }
 }
 
 - (void)didReceiveMemoryWarning
