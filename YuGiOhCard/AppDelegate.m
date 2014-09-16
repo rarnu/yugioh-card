@@ -1,6 +1,5 @@
 #import "AppDelegate.h"
 #import "DatabaseUtils.h"
-#import "SplashViewController.h"
 
 @implementation AppDelegate
 
@@ -18,14 +17,17 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
