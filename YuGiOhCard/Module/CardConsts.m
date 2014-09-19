@@ -1,9 +1,10 @@
 #import "CardConsts.h"
+#import "StringConsts.h"
 
 @implementation CardConsts
 
 +(NSArray *) campList {
-    return @[_campDefault, @"OCG", @"TCG"];
+    return @[_campDefault, CAMP_OCG, CAMP_TCG];
 }
 
 +(NSString *) campDefault {
@@ -32,7 +33,7 @@
 }
 
 +(NSArray *) cardSubTypeList {
-    return @[_commonDefault, @"卡通", @"灵魂", @"同盟", @"调整", @"二重", @"反转", @"灵摆"];
+    return @[_commonDefault, MONSTER_TOON, MONSTER_SPIRIT, MONSTER_UNION, MONSTER_TUNNER, MONSTER_DOUBLE, MONSTER_REVERSE, MONSTER_PENDULUM];
 }
 
 +(NSString *) cardSubTypeDefault {

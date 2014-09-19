@@ -2,6 +2,8 @@
 #import "SearchResultViewController.h"
 #import "CardConsts.h"
 
+// TODO: search conditions
+
 @interface SearchViewController () {
     CardAttributePicker * picker;
     UIBarButtonItem * searchButton;

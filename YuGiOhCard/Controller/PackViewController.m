@@ -1,15 +1,21 @@
 #import "PackViewController.h"
 #import "FileUtils.h"
 #import "UrlConsts.h"
+#import "PackItem.h"
+#import "PackDetailViewController.h"
 
 @interface PackViewController () {
     NSString * _packages;
     NSString * _data_path;
+    NSInteger _section_count;
+    NSMutableArray * _pack_section;
 }
 
 @end
 
 @implementation PackViewController
+
+#pragma mark - view
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,6 +31,7 @@
     [super viewDidLoad];
     _packages = @"packages";
     _data_path = @"data";
+    _pack_section = [[NSMutableArray alloc] init];
     NSString * jsonData = [FileUtils readTextFile:_packages loadPath:_data_path];
     if ([jsonData isEqualToString:@""]) {
         HttpUtils * hu = [HttpUtils alloc];
@@ -33,7 +40,25 @@
     } else {
         [self loadData:jsonData];
     }
+    [self.refreshButton setTarget:self];
+    [self.refreshButton setAction:@selector(refreshClicked:)];
+    
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - action
+
+-(void) refreshClicked: (id) sender {
+    HttpUtils * hu = [HttpUtils alloc];
+    hu.delegate = self;
+    [hu get:URL_PACKAGES];
+}
+
+#pragma mark - http
 
 -(void) receivedData:(NSData *)data {
     if (data != nil) {
@@ -48,87 +73,78 @@
 }
 
 -(void) loadData: (NSString *) jsonData {
-    // TODO: load json data
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // load json data
+    NSData * data = [jsonData dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray * packs = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+    
+    id pack = nil;
+    NSArray * arrPack;
+    id packDetail = nil;
+    for (NSInteger i=0; i<packs.count; i++) {
+        pack = packs[i];
+        PackItem * item = [[PackItem alloc] init];
+        item.serial = pack[@"serial"];
+        arrPack = pack[@"packages"];
+        for (NSInteger j=0; j<arrPack.count; j++) {
+            packDetail = arrPack[j];
+            [item.packages addObject:[[PackageDetail alloc] initWithId:packDetail[@"id"] packName:packDetail[@"packname"]]];
+        }
+        [_pack_section addObject:item];
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 0;
+    return _pack_section.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 0;
+    return ((PackItem *)_pack_section[section]).packages.count;
 }
 
-/*
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel * lblSection = [[UILabel alloc] init];
+    lblSection.text = [@"  " stringByAppendingString: ((PackItem *)_pack_section[section]).serial];
+    lblSection.textColor = [UIColor whiteColor];
+    lblSection.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
+    return lblSection;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    PackageDetail * item = ((PackItem *)_pack_section[indexPath.section]).packages[indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.text = item.packName;
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"pushPack"]) {
+        NSIndexPath * index = [self.tableView indexPathForSelectedRow];
+        PackageDetail * item = ((PackItem *)_pack_section[index.section]).packages[index.row];
+        [[segue destinationViewController] setPackageId:item.packId];
+    }
 }
-*/
+
 
 @end

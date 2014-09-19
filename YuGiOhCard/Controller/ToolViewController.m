@@ -1,6 +1,14 @@
 #import "ToolViewController.h"
+#import "DiceView.h"
+#import "CoinView.h"
 
-@interface ToolViewController ()
+@interface ToolViewController () {
+    int player1Life;
+    int player2Life;
+    
+    DiceView * dice;
+    CoinView * coin;
+}
 
 @end
 
@@ -18,24 +26,179 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    player1Life = 8000;
+    player2Life = 8000;
+    [self showLife];
+}
+
+-(void) showLife {
+    self.lbl1Life.text = [NSString stringWithFormat:@"%d", player1Life];
+    self.lbl2Life.text = [NSString stringWithFormat:@"%d", player2Life];
+    self.txt1Life.text = @"";
+    self.txt2Life.text = @"";
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - delegate
+-(void) doneDice {
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect rectSelectDate=dice.frame;
+        rectSelectDate.origin.y=self.view.frame.size.height;
+        dice.frame=rectSelectDate;
+    } completion:^(BOOL finished) {
+        [dice removeFromSuperview];
+        [self.btnCoin setEnabled:YES];
+        [self.btnDice setEnabled:YES];
+        finished = YES;
+    }];
 }
-*/
+
+-(void) doneCoin {
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect rectSelectDate=coin.frame;
+        rectSelectDate.origin.y=self.view.frame.size.height;
+        coin.frame=rectSelectDate;
+    } completion:^(BOOL finished) {
+        [coin removeFromSuperview];
+        [self.btnCoin setEnabled:YES];
+        [self.btnDice setEnabled:YES];
+        finished = YES;
+    }];
+}
+
+#pragma mark -actions
+
+-(IBAction)btnDiceClick:(id)sender {
+
+    NSInteger rw = (self.view.frame.size.width * 0.8);
+    NSInteger left = (self.view.frame.size.width - rw)/2;
+    dice = [[DiceView alloc] initWithFrame:CGRectMake(left, self.view.frame.size.height, rw, 266)];
+    dice.delegate = self;
+    
+    [self.view addSubview:dice];
+    [self.btnDice setEnabled:NO];
+    [self.btnCoin setEnabled:NO];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect rectSelectDate=dice.frame;
+        rectSelectDate.origin.y=(self.view.frame.size.height-dice.frame.size.height)/2;
+        dice.frame=rectSelectDate;
+    } completion:^(BOOL finished) {
+        finished = YES;
+    }];
+}
+
+-(IBAction)btnCoinClick:(id)sender {
+    NSInteger rw = (self.view.frame.size.width * 0.8);
+    NSInteger left = (self.view.frame.size.width - rw)/2;
+    coin = [[CoinView alloc] initWithFrame:CGRectMake(left, self.view.frame.size.height, rw, 266)];
+    coin.delegate = self;
+    
+    [self.view addSubview:coin];
+    [self.btnDice setEnabled:NO];
+    [self.btnCoin setEnabled:NO];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect rectSelectDate=coin.frame;
+        rectSelectDate.origin.y=(self.view.frame.size.height-coin.frame.size.height)/2;
+        coin.frame=rectSelectDate;
+    } completion:^(BOOL finished) {
+        finished = YES;
+    }];
+}
+
+-(IBAction)resetClick:(id)sender {
+    player1Life = 8000;
+    player2Life = 8000;
+    [self showLife];
+}
+
+-(IBAction)btn1AddClick:(id)sender {
+    int lifeDelta = [self.txt1Life.text intValue];
+    player1Life += lifeDelta;
+    [self showLife];
+}
+
+-(IBAction)btn1MinusClick:(id)sender {
+    int lifeDelta = [self.txt1Life.text intValue];
+    player1Life -= lifeDelta;
+    if (player1Life < 0) {
+        player1Life = 0;
+    }
+    [self showLife];
+}
+
+-(IBAction)btn1SetClick:(id)sender {
+    int lifeDelta = [self.txt1Life.text intValue];
+    player1Life = lifeDelta;
+    [self showLife];
+    
+}
+-(IBAction)btn1HalfClick:(id)sender {
+    player1Life /= 2;
+    [self showLife];
+}
+
+-(IBAction)btn1DoubleClick:(id)sender {
+    player1Life *= 2;
+    [self showLife];
+}
+
+-(IBAction)btn1BalanceClick:(id)sender {
+    int life = (player1Life + player2Life) / 2;
+    player1Life = life;
+    player2Life = life;
+    [self showLife];
+}
+
+-(IBAction)btn1EqualClick:(id)sender {
+    player1Life = player2Life;
+    [self showLife];
+}
+
+-(IBAction)btn2AddClick:(id)sender {
+    int lifeDelta = [self.txt2Life.text intValue];
+    player2Life += lifeDelta;
+    [self showLife];
+}
+
+-(IBAction)btn2MinusClick:(id)sender {
+    int lifeDelta = [self.txt2Life.text intValue];
+    player2Life -= lifeDelta;
+    [self showLife];
+}
+
+-(IBAction)btn2SetClick:(id)sender {
+    int lifeDelta = [self.txt2Life.text intValue];
+    player2Life = lifeDelta;
+    [self showLife];
+    
+}
+-(IBAction)btn2HalfClick:(id)sender {
+    player2Life /= 2;
+    [self showLife];
+}
+
+-(IBAction)btn2DoubleClick:(id)sender {
+    player2Life *= 2;
+    [self showLife];
+}
+
+-(IBAction)btn2BalanceClick:(id)sender {
+    int life = (player1Life + player2Life) / 2;
+    player1Life = life;
+    player2Life = life;
+    [self showLife];
+}
+
+-(IBAction)btn2EqualClick:(id)sender {
+    player2Life = player1Life;
+    [self showLife];
+}
 
 @end

@@ -3,6 +3,7 @@
 #import "UpdateViewController.h"
 #import "FeedbackViewController.h"
 #import "AboutViewController.h"
+#import "StringConsts.h"
 
 @interface RightMenuViewController ()
 
@@ -64,7 +65,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: rebuild here
     
     static NSString *cellIdentifier = @"Cell";
     
@@ -79,7 +79,7 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"系统设置", @"检查新版本", @"信息反馈", @"关于本软件"];
+    NSArray *titles = @[RIGHT_MENU_SETTING, RIGHT_MENU_UPDATE, RIGHT_MENU_FEEDBACK, RIGHT_MENU_ABOUT];
     cell.textLabel.text = titles[indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentRight;
     

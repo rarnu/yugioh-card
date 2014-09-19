@@ -4,6 +4,7 @@
 #import <sqlite3.h>
 #import "CardViewController.h"
 #import "CardConsts.h"
+#import "StringConsts.h"
 
 @interface SearchResultViewController () {
     UILabel * lblNoCard;
@@ -27,11 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Result";
+    self.navigationItem.title = STR_RESULT;
     
     NSInteger lblTop = (self.tableView.frame.size.height - 100)/2;
     lblNoCard = [[UILabel alloc] initWithFrame:CGRectMake(0, lblTop, self.tableView.frame.size.width, 50)];
-    lblNoCard.text = @"No Card Found";
+    lblNoCard.text = STR_NO_CARD_FOUND;
     lblNoCard.textAlignment = NSTextAlignmentCenter;
     lblNoCard.textColor = [UIColor whiteColor];
     lblNoCard.backgroundColor = [UIColor clearColor];

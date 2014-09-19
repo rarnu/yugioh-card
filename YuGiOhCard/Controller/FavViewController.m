@@ -2,6 +2,7 @@
 #import "DatabaseUtils.h"
 #import "CardItem.h"
 #import "CardViewController.h"
+#import "StringConsts.h"
 
 @interface FavViewController () {
     UILabel * lblNoCard;
@@ -40,7 +41,7 @@
     [super viewDidLoad];
     NSInteger lblTop = (self.tableView.frame.size.height - 100)/2;
     lblNoCard = [[UILabel alloc] initWithFrame:CGRectMake(0, lblTop, self.tableView.frame.size.width, 50)];
-    lblNoCard.text = @"No Card Collected";
+    lblNoCard.text = STR_NO_CARD_COLLECTED;
     lblNoCard.textColor = [UIColor whiteColor];
     lblNoCard.backgroundColor = [UIColor clearColor];
     lblNoCard.textAlignment = NSTextAlignmentCenter;

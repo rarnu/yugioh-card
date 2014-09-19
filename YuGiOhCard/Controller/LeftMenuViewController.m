@@ -1,6 +1,7 @@
 #import "LeftMenuViewController.h"
 #import "SearchViewController.h"
 #import "UIViewController+RESideMenu.h"
+#import "StringConsts.h"
 
 @interface LeftMenuViewController ()
 
@@ -60,7 +61,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: rebuild here
     
     static NSString *cellIdentifier = @"Cell";
     
@@ -75,7 +75,7 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"卡片搜索", @"禁限卡表", @"最新卡片", @"卡包", @"我的最爱", @"决斗工具"];
+    NSArray *titles = @[LEFT_MENU_SEARCH, LEFT_MENU_LIMIT, LEFT_MENU_LATEST, LEFT_MENU_PACKAGE, LEFT_MENU_FAV, LEFT_MENU_TOOL];
     cell.textLabel.text = titles[indexPath.row];
     return cell;
 }

@@ -1,4 +1,5 @@
 #import "CardAttributePicker.h"
+#import "StringConsts.h"
 
 @interface CardAttributePicker() {
     UILabel * toolTitle;
@@ -32,7 +33,7 @@
     toolButton = [UIButton buttonWithType:UIButtonTypeSystem];
     toolButton.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [toolButton setFrame:CGRectMake(self.toolbar.frame.size.width-50, 0, 50, self.toolbar.frame.size.height)];
-    [toolButton setTitle:@"Done" forState:UIControlStateNormal];
+    [toolButton setTitle:COMMON_DONE forState:UIControlStateNormal];
     [toolButton addTarget:self action:@selector(doneClick:) forControlEvents:UIControlEventTouchDown];
     [self.toolbar addSubview:toolButton];
 

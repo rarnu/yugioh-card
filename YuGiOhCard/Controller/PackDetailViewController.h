@@ -1,8 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "HttpUtils.h"
 
-@interface PackViewController : UITableViewController<HttpUtilsDelegate>
+@interface PackDetailViewController : UITableViewController<HttpUtilsDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem * refreshButton;
+@property (nonatomic) NSString * packageId;
 
 @end
