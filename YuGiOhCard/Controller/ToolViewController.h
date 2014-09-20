@@ -2,8 +2,6 @@
 #import "CoinView.h"
 #import "DiceView.h"
 
-// TODO: tools
-
 @interface ToolViewController : UIViewController<CoinDelegate, DiceDelegate>
 
 // global

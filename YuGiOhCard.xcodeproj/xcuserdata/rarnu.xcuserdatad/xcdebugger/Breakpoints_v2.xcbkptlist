@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/View/DiceView.m"
-            timestampString = "432813473.187781"
+            timestampString = "432872179.752124"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "-makeUI"
             landmarkType = "5">
          </BreakpointContent>

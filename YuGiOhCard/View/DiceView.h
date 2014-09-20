@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+
 @protocol DiceDelegate <NSObject>
 
 @optional
@@ -9,8 +10,7 @@
 
 @interface DiceView : UIView
 
-@property (strong, nonatomic) UIToolbar * toolbar;
-@property (strong, nonatomic) UIButton * btnRefresh;
+@property (strong, nonatomic) UIImageView * imgDice;
 
 @property id<DiceDelegate> delegate;
 

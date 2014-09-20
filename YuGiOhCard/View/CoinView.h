@@ -9,8 +9,7 @@
 
 @interface CoinView : UIView
 
-@property (strong, nonatomic) UIToolbar * toolbar;
-@property (strong, nonatomic) UIButton * btnRefresh;
+@property (strong, nonatomic) UIImageView * imgCoin;
 
 @property id<CoinDelegate> delegate;
 
