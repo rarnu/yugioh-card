@@ -12,5 +12,15 @@
 @property (strong, nonatomic) IBOutlet UITextField * txtCamp;
 @property (strong, nonatomic) IBOutlet UITextField * txtCardType;
 @property (strong, nonatomic) IBOutlet UITextField * txtSubtype;
+@property (strong, nonatomic) IBOutlet UITextField * txtRace;
+@property (strong, nonatomic) IBOutlet UITextField * txtAttribute;
+@property (strong, nonatomic) IBOutlet UITextField * txtLevel;
+@property (strong, nonatomic) IBOutlet UITextField * txtRare;
+@property (strong, nonatomic) IBOutlet UITextField * txtLimit;
+@property (strong, nonatomic) IBOutlet UITextField * txtAtk;
+@property (strong, nonatomic) IBOutlet UITextField * txtDef;
+@property (strong, nonatomic) IBOutlet UITextField * txtEffect;
+
+@property (nonatomic) NSString * pushView;
 
 @end

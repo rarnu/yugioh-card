@@ -46,9 +46,10 @@
 
 #pragma mark - delegate
 -(void) doneDice {
+    CGRect rect = [UIScreen mainScreen].applicationFrame;
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rectSelectDate=dice.frame;
-        rectSelectDate.origin.y=self.view.frame.size.height;
+        rectSelectDate.origin.y=rect.size.height;
         dice.frame=rectSelectDate;
     } completion:^(BOOL finished) {
         [dice removeFromSuperview];
@@ -59,9 +60,10 @@
 }
 
 -(void) doneCoin {
+    CGRect rect = [UIScreen mainScreen].applicationFrame;
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rectSelectDate=coin.frame;
-        rectSelectDate.origin.y=self.view.frame.size.height;
+        rectSelectDate.origin.y=rect.size.height;
         coin.frame=rectSelectDate;
     } completion:^(BOOL finished) {
         [coin removeFromSuperview];
@@ -75,9 +77,10 @@
 
 -(IBAction)btnDiceClick:(id)sender {
 
-    NSInteger rw = (self.view.frame.size.width * 0.8);
-    NSInteger left = (self.view.frame.size.width - rw)/2;
-    dice = [[DiceView alloc] initWithFrame:CGRectMake(left, self.view.frame.size.height, rw, 266)];
+    CGRect rect = [UIScreen mainScreen].applicationFrame;
+    NSInteger rw = (rect.size.width * 0.8);
+    NSInteger left = (rect.size.width - rw)/2;
+    dice = [[DiceView alloc] initWithFrame:CGRectMake(left, rect.size.height, rw, 266)];
     dice.delegate = self;
     
     [self.view addSubview:dice];
@@ -86,7 +89,7 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rectSelectDate=dice.frame;
-        rectSelectDate.origin.y=(self.view.frame.size.height-dice.frame.size.height)/2;
+        rectSelectDate.origin.y=(rect.size.height-dice.frame.size.height)/2;
         dice.frame=rectSelectDate;
     } completion:^(BOOL finished) {
         finished = YES;
@@ -94,9 +97,10 @@
 }
 
 -(IBAction)btnCoinClick:(id)sender {
-    NSInteger rw = (self.view.frame.size.width * 0.8);
-    NSInteger left = (self.view.frame.size.width - rw)/2;
-    coin = [[CoinView alloc] initWithFrame:CGRectMake(left, self.view.frame.size.height, rw, 266)];
+    CGRect rect = [UIScreen mainScreen].applicationFrame;
+    NSInteger rw = (rect.size.width * 0.8);
+    NSInteger left = (rect.size.width - rw)/2;
+    coin = [[CoinView alloc] initWithFrame:CGRectMake(left, rect.size.height, rw, 266)];
     coin.delegate = self;
     
     [self.view addSubview:coin];
@@ -105,7 +109,7 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rectSelectDate=coin.frame;
-        rectSelectDate.origin.y=(self.view.frame.size.height-coin.frame.size.height)/2;
+        rectSelectDate.origin.y=(rect.size.height-coin.frame.size.height)/2;
         coin.frame=rectSelectDate;
     } completion:^(BOOL finished) {
         finished = YES;

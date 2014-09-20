@@ -78,6 +78,38 @@
             }
         }
     }
+    // attribute
+    if (![self.searchAttribute isEqual:@""] && ![self.searchAttribute isEqualToString:[CardConsts cardAttributeDefault]]) {
+        sql = [sql stringByAppendingFormat:@" and element='%@'", self.searchAttribute];
+    }
+    // race
+    if (![self.searchRace isEqualToString:@""] && ![self.searchRace isEqualToString:[CardConsts cardRaceDefault]]) {
+        sql = [sql stringByAppendingFormat:@" and tribe='%@'", self.searchRace];
+    }
+    // level
+    if (![self.searchLevel isEqualToString:@""] && ![self.searchLevel isEqualToString:[CardConsts cardLevelDefault]]) {
+        sql = [sql stringByAppendingFormat:@" and level=%@", self.searchLevel];
+    }
+    // rare
+    if (![self.searchRare isEqualToString:@""] && ![self.searchRare isEqualToString:[CardConsts cardRareDefault]]) {
+        sql = [sql stringByAppendingFormat:@" and infrequence like '%%%%%@%%%%'", self.searchRare];
+    }
+    // limit
+    if (![self.searchLimit isEqualToString:@""] && ![self.searchLimit isEqualToString:[CardConsts cardLimitDefault]]) {
+        sql = [sql stringByAppendingFormat:@" and ban='%@'", self.searchLimit];
+    }
+    // atk
+    if (![self.searchAtk isEqualToString:@""]) {
+        sql = [sql stringByAppendingFormat:@" and atk='%@'", self.searchAtk];
+    }
+    // def
+    if (![self.searchDef isEqualToString:@""]) {
+        sql = [sql stringByAppendingFormat:@" and def='%@'", self.searchDef];
+    }
+    // effect
+    if (![self.searchEffect isEqualToString:@""]) {
+        sql = [sql stringByAppendingFormat:@" and effect like '%%%%%@%%%%'", self.searchEffect];
+    }
     return sql;
 }
 

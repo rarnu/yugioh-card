@@ -24,7 +24,7 @@
     UITapGestureRecognizer * singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeClicked:)];
     [self.imgCoin addGestureRecognizer:singleTap];
     
-    int coinval = arc4random() % 2;
+    int coinval = arc4random() % 2 + 1;
     NSString * imgName = [NSString stringWithFormat:@"coin%d", coinval];
     [self.imgCoin setImage:[UIImage imageNamed:imgName]];
     
@@ -35,10 +35,6 @@
     if ([self.delegate respondsToSelector:@selector(doneCoin)]) {
         [self.delegate doneCoin];
     }
-}
-
--(void) refreshClicked: (id) sender {
-    
 }
 
 @end

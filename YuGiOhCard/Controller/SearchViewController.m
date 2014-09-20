@@ -2,8 +2,6 @@
 #import "SearchResultViewController.h"
 #import "CardConsts.h"
 
-// TODO: search conditions
-
 @interface SearchViewController () {
     CardAttributePicker * picker;
     UIBarButtonItem * searchButton;
@@ -23,17 +21,17 @@
     cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(cancelClick:)];
     self.navigationItem.rightBarButtonItems = @[cancelButton, searchButton];
     [self resetData];
-}
+    
+    if (self.pushView != nil && ![self.pushView isEqualToString:@""]) {
+        UIViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:self.pushView];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 
+}
 
 -(void) viewWillAppear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:self.view.window];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:self.view.window];
 }
 
 #pragma mark - data
@@ -42,6 +40,15 @@
     self.txtCamp.text = [CardConsts campDefault];
     self.txtCardType.text = [CardConsts cardTypeDefault];
     self.txtSubtype.text = [CardConsts cardSubTypeDefault];
+    self.txtRace.text = [CardConsts cardRaceDefault];
+    self.txtAttribute.text = [CardConsts cardAttributeDefault];
+    self.txtLevel.text = [CardConsts cardLevelDefault];
+    self.txtRare.text = [CardConsts cardRareDefault];
+    self.txtLimit.text = [CardConsts cardLimitDefault];
+    self.txtAtk.text = @"";
+    self.txtDef.text = @"";
+    self.txtEffect.text = @"";
+
     [self.view endEditing:YES];
 }
 
@@ -53,6 +60,14 @@
     [self.txtCamp setEnabled:!inEditing];
     [self.txtCardType setEnabled:!inEditing];
     [self.txtSubtype setEnabled:!inEditing];
+    [self.txtRace setEnabled:!inEditing];
+    [self.txtAttribute setEnabled:!inEditing];
+    [self.txtLevel setEnabled:!inEditing];
+    [self.txtRare setEnabled:!inEditing];
+    [self.txtLimit setEnabled:!inEditing];
+    [self.txtAtk setEnabled:!inEditing];
+    [self.txtDef setEnabled:!inEditing];
+    [self.txtEffect setEnabled:!inEditing];
     
 }
 
@@ -73,6 +88,15 @@
     [resultViewController setSearchCamp:self.txtCamp.text];
     [resultViewController setSearchCardType:self.txtCardType.text];
     [resultViewController setSearchSubType:self.txtSubtype.text];
+    [resultViewController setSearchRace:self.txtRace.text];
+    [resultViewController setSearchAttribute:self.txtAttribute.text];
+    [resultViewController setSearchLevel:self.txtLevel.text];
+    [resultViewController setSearchRare:self.txtRare.text];
+    [resultViewController setSearchLimit:self.txtLimit.text];
+    [resultViewController setSearchAtk:self.txtAtk.text];
+    [resultViewController setSearchDef:self.txtDef.text];
+    [resultViewController setSearchEffect:self.txtEffect.text];
+    
     [self.navigationController pushViewController:resultViewController animated:YES];
 }
 
@@ -88,8 +112,9 @@
     if (textField.tag == 0) {
         return YES;
     } else {
-        [self popupPicker:textField];
+        [self.view endEditing:YES];
         [self setEditMode: YES];
+        [self popupPicker:textField];
         return NO;
     }
     
@@ -102,10 +127,11 @@
 #pragma mark - picker
 
 -(void) pickDone:(NSString *)picked textField:(UITextField *)textField {
+    CGRect rect = [UIScreen mainScreen].applicationFrame;
     textField.text = picked;
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rectSelectDate=picker.frame;
-        rectSelectDate.origin.y=self.view.frame.size.height;
+        rectSelectDate.origin.y=rect.size.height;
         picker.frame=rectSelectDate;
     } completion:^(BOOL finished) {
         [picker removeFromSuperview];
@@ -116,9 +142,10 @@
 }
 
 -(void) popupPicker: (UITextField *) textField {
-    NSInteger rw = (self.view.frame.size.width * 0.8);
-    NSInteger left = (self.view.frame.size.width - rw)/2;
-    picker = [[CardAttributePicker alloc] initWithFrame:CGRectMake(left, self.view.frame.size.height, rw, 266)];
+    CGRect rect = [UIScreen mainScreen].applicationFrame;
+    NSInteger rw = (rect.size.width * 0.8);
+    NSInteger left = (rect.size.width - rw)/2;
+    picker = [[CardAttributePicker alloc] initWithFrame:CGRectMake(left, rect.size.height, rw, 266)];
     [picker setTitle:textField.placeholder];
     [picker setTxtResult:textField];
     switch (textField.tag) {
@@ -130,6 +157,21 @@
             break;
         case 3: // monster type
             [picker setPickObjects:[CardConsts cardSubTypeList]];
+            break;
+        case 4: // race
+            [picker setPickObjects:[CardConsts cardRaceList]];
+            break;
+        case 5: // attribute
+            [picker setPickObjects:[CardConsts cardAttributeList]];
+            break;
+        case 6: // level
+            [picker setPickObjects:[CardConsts cardLevelList]];
+            break;
+        case 7: // rare
+            [picker setPickObjects:[CardConsts cardRareList]];
+            break;
+        case 8: // limit
+            [picker setPickObjects:[CardConsts cardLimitList]];
             break;
         default:
             break;
@@ -146,7 +188,7 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rectSelectDate=picker.frame;
-        rectSelectDate.origin.y=(self.view.frame.size.height-picker.frame.size.height)/2;
+        rectSelectDate.origin.y=(rect.size.height-picker.frame.size.height)/2;
         picker.frame=rectSelectDate;
     } completion:^(BOOL finished) {
         [textField setEnabled:NO];

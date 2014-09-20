@@ -49,7 +49,6 @@
 		9286C59219C7E25B00BF9BC5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C57719C7E25B00BF9BC5 /* RootViewController.m */; };
 		9286C59319C7E25B00BF9BC5 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C57919C7E25B00BF9BC5 /* SearchResultViewController.m */; };
 		9286C59419C7E25B00BF9BC5 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C57B19C7E25B00BF9BC5 /* SearchViewController.m */; };
-		9286C59519C7E25B00BF9BC5 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C57D19C7E25B00BF9BC5 /* SettingViewController.m */; };
 		9286C59619C7E25B00BF9BC5 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C57F19C7E25B00BF9BC5 /* ToolViewController.m */; };
 		9286C59719C7E25B00BF9BC5 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C58119C7E25B00BF9BC5 /* UpdateViewController.m */; };
 		9286C59A19C7E28D00BF9BC5 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C59919C7E28D00BF9BC5 /* FileUtils.m */; };
@@ -140,8 +139,6 @@
 		9286C57919C7E25B00BF9BC5 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchResultViewController.m; path = Controller/SearchResultViewController.m; sourceTree = "<group>"; };
 		9286C57A19C7E25B00BF9BC5 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = Controller/SearchViewController.h; sourceTree = "<group>"; };
 		9286C57B19C7E25B00BF9BC5 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = Controller/SearchViewController.m; sourceTree = "<group>"; };
-		9286C57C19C7E25B00BF9BC5 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Controller/SettingViewController.h; sourceTree = "<group>"; };
-		9286C57D19C7E25B00BF9BC5 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Controller/SettingViewController.m; sourceTree = "<group>"; };
 		9286C57E19C7E25B00BF9BC5 /* ToolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolViewController.h; path = Controller/ToolViewController.h; sourceTree = "<group>"; };
 		9286C57F19C7E25B00BF9BC5 /* ToolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToolViewController.m; path = Controller/ToolViewController.m; sourceTree = "<group>"; };
 		9286C58019C7E25B00BF9BC5 /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateViewController.h; path = Controller/UpdateViewController.h; sourceTree = "<group>"; };
@@ -279,8 +276,6 @@
 				9286C57919C7E25B00BF9BC5 /* SearchResultViewController.m */,
 				9286C57A19C7E25B00BF9BC5 /* SearchViewController.h */,
 				9286C57B19C7E25B00BF9BC5 /* SearchViewController.m */,
-				9286C57C19C7E25B00BF9BC5 /* SettingViewController.h */,
-				9286C57D19C7E25B00BF9BC5 /* SettingViewController.m */,
 				9286C57E19C7E25B00BF9BC5 /* ToolViewController.h */,
 				9286C57F19C7E25B00BF9BC5 /* ToolViewController.m */,
 				9286C58019C7E25B00BF9BC5 /* UpdateViewController.h */,
@@ -487,7 +482,6 @@
 				9286C55519C7E24500BF9BC5 /* CardAttributePicker.m in Sources */,
 				9286C58819C7E25B00BF9BC5 /* FeedbackViewController.m in Sources */,
 				9286C58A19C7E25B00BF9BC5 /* LeftMenuViewController.m in Sources */,
-				9286C59519C7E25B00BF9BC5 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

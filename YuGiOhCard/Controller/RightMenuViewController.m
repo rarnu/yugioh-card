@@ -1,9 +1,9 @@
 #import "RightMenuViewController.h"
-#import "SettingViewController.h"
 #import "UpdateViewController.h"
 #import "FeedbackViewController.h"
 #import "AboutViewController.h"
 #import "StringConsts.h"
+#import "SearchViewController.h"
 
 @interface RightMenuViewController ()
 
@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.controllerNames = @[@"settingViewController",@"updateViewController", @"feedbackViewController", @"aboutViewController"];
+    self.controllerNames = @[@"updateViewController", @"feedbackViewController", @"aboutViewController"];
     self.tableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 4) / 2.0f, self.view.frame.size.width, 54 * 4) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
@@ -33,16 +33,17 @@
     [self.view addSubview:self.tableView];
 }
 
-#pragma mark -
-#pragma mark UITableView Delegate
+#pragma mark - UITableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:self.controllerNames[indexPath.row]]] animated:YES];
+    SearchViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
+    NSString * pushViewName = self.controllerNames[indexPath.row];
+    [controller setPushView:pushViewName];
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self.sideMenuViewController setContentViewController:nav animated:NO];
     [self.sideMenuViewController hideMenuViewController];
 }
 
@@ -60,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,7 +80,7 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[RIGHT_MENU_SETTING, RIGHT_MENU_UPDATE, RIGHT_MENU_FEEDBACK, RIGHT_MENU_ABOUT];
+    NSArray *titles = @[RIGHT_MENU_UPDATE, RIGHT_MENU_FEEDBACK, RIGHT_MENU_ABOUT];
     cell.textLabel.text = titles[indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentRight;
     

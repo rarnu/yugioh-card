@@ -10,10 +10,17 @@
 +(NSString *) cardMonsterDefault;
 +(NSString *) cardMagicDefault;
 +(NSString *) cardTrapDefault;
-
 +(NSArray *) cardSubTypeList;
 +(NSString *) cardSubTypeDefault;
-
-
++(NSArray *) cardRaceList;
++(NSString *) cardRaceDefault;
++(NSArray *) cardAttributeList;
++(NSString *) cardAttributeDefault;
++(NSArray *) cardLevelList;
++(NSString *) cardLevelDefault;
++(NSArray *) cardRareList;
++(NSString *) cardRareDefault;
++(NSArray *) cardLimitList;
++(NSString *) cardLimitDefault;
 
 @end

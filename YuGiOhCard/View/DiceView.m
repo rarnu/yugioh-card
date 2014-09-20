@@ -25,7 +25,7 @@
     UITapGestureRecognizer * singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeClicked:)];
     [self.imgDice addGestureRecognizer:singleTap];
     
-    int diceval = arc4random() % 7;
+    int diceval = arc4random() % 6 + 1;
     NSString * imgName = [NSString stringWithFormat:@"dice%d", diceval];
     [self.imgDice setImage:[UIImage imageNamed:imgName]];
     
@@ -36,10 +36,6 @@
     if ([self.delegate respondsToSelector:@selector(doneDice)]) {
         [self.delegate doneDice];
     }
-}
-
--(void) refreshClicked: (id) sender {
-    
 }
 
 @end
