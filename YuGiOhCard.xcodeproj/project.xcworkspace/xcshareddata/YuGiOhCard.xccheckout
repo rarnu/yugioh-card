@@ -10,29 +10,29 @@
 	<string>YuGiOhCard</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4BB488A4-BCC6-4183-9D9E-D359BDDA5018</key>
+		<key>4B74D130D89CD8B3F35A7FE5BDFC8A371E49D0BB</key>
 		<string>https://github.com/rarnu/yugioh-card.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>YuGiOhCard.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4BB488A4-BCC6-4183-9D9E-D359BDDA5018</key>
+		<key>4B74D130D89CD8B3F35A7FE5BDFC8A371E49D0BB</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/rarnu/yugioh-card.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4BB488A4-BCC6-4183-9D9E-D359BDDA5018</string>
+	<string>4B74D130D89CD8B3F35A7FE5BDFC8A371E49D0BB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4BB488A4-BCC6-4183-9D9E-D359BDDA5018</string>
+			<string>4B74D130D89CD8B3F35A7FE5BDFC8A371E49D0BB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>yugioh-card</string>
 		</dict>
