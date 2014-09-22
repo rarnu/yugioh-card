@@ -28,6 +28,10 @@
     [super viewDidLoad];
     player1Life = 8000;
     player2Life = 8000;
+    self.txt1Life.layer.borderWidth = 0.5;
+    self.txt1Life.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txt2Life.layer.borderWidth = 0.5;
+    self.txt2Life.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     [self showLife];
 }
 

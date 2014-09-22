@@ -27,11 +27,32 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
 
-}
-
--(void) viewWillAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:self.view.window];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:self.view.window];
+    self.txtCardName.layer.borderWidth = 0.5;
+    self.txtCardName.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtAtk.layer.borderWidth = 0.5;
+    self.txtAtk.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtDef.layer.borderWidth = 0.5;
+    self.txtDef.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtEffect.layer.borderWidth = 0.5;
+    self.txtEffect.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    self.txtCamp.layer.borderWidth = 0.5;
+    self.txtCamp.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtCardType.layer.borderWidth = 0.5;
+    self.txtCardType.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtSubtype.layer.borderWidth = 0.5;
+    self.txtSubtype.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtRace.layer.borderWidth = 0.5;
+    self.txtRace.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtAttribute.layer.borderWidth = 0.5;
+    self.txtAttribute.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtLevel.layer.borderWidth = 0.5;
+    self.txtLevel.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtRare.layer.borderWidth = 0.5;
+    self.txtRare.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.txtLimit.layer.borderWidth = 0.5;
+    self.txtLimit.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
 }
 
 #pragma mark - data
@@ -108,7 +129,6 @@
 }
 
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField {
-    self.currentTv = textField;
     if (textField.tag == 0) {
         return YES;
     } else {
@@ -121,7 +141,7 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textFieldView{
-    self.currentTv = nil;
+
 }
 
 #pragma mark - picker
@@ -194,33 +214,6 @@
         [textField setEnabled:NO];
         finished = YES;
     }];
-}
-
-#pragma mark - keyboard
-
--(void)keyboardDidShow:(NSNotification *)notification{
-    if (self.keyboardIsShown) {
-        return;
-    }
-    NSDictionary * info = [notification userInfo];
-    NSValue *avalue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardRect = [self.view convertRect:[avalue CGRectValue] fromView:nil];
-    CGRect viewFrame = [self.sv frame];
-    viewFrame.size.height -= (keyboardRect.size.height);
-    self.sv.frame = viewFrame;
-    CGRect textFieldRect = [self.currentTv frame];
-    [self.sv scrollRectToVisible:textFieldRect animated:NO];
-    self.keyboardIsShown = YES;
-}
-
--(void)keyboardDidHide:(NSNotification *)notification{
-    NSDictionary *info = [notification userInfo];
-    NSValue *avalue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardRect = [self.view convertRect:[avalue CGRectValue] fromView:nil];
-    CGRect viewFrame = [self.sv frame];
-    viewFrame.size.height += keyboardRect.size.height;
-    self.sv.frame = viewFrame;
-    self.keyboardIsShown = NO;
 }
 
 @end

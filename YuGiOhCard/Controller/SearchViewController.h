@@ -4,9 +4,6 @@
 
 @interface SearchViewController : UIViewController<UITextFieldDelegate, CardAttributePickerDelegate>
 
-
-@property UITextField * currentTv;
-@property BOOL keyboardIsShown;
 @property (strong, nonatomic) IBOutlet UIScrollView * sv;
 @property (strong, nonatomic) IBOutlet UITextField * txtCardName;
 @property (strong, nonatomic) IBOutlet UITextField * txtCamp;
