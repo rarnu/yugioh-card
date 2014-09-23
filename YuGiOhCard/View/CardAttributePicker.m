@@ -20,27 +20,26 @@
 }
 
 -(void) makeUI {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     self.layer.borderWidth = 1;
     self.layer.borderColor = [[UIColor groupTableViewBackgroundColor] CGColor];
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
-    self.toolbar.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.toolbar.backgroundColor = [UIColor clearColor]; //[UIColor groupTableViewBackgroundColor];
     toolTitle = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.toolbar.frame.size.width-50, self.toolbar.frame.size.height)];
-    toolTitle.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    toolTitle.backgroundColor = [UIColor clearColor]; //[UIColor groupTableViewBackgroundColor];
     [self.toolbar addSubview:toolTitle];
     
     toolButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    toolButton.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    toolButton.backgroundColor = [UIColor clearColor]; //[UIColor groupTableViewBackgroundColor];
     [toolButton setFrame:CGRectMake(self.toolbar.frame.size.width-50, 0, 50, self.toolbar.frame.size.height)];
     [toolButton setTitle:COMMON_DONE forState:UIControlStateNormal];
     [toolButton addTarget:self action:@selector(doneClick:) forControlEvents:UIControlEventTouchDown];
     [self.toolbar addSubview:toolButton];
 
     self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 50, self.frame.size.width, 0)];
-    self.picker.backgroundColor = [UIColor clearColor];
+    self.picker.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.7];
     self.picker.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.picker.backgroundColor = [UIColor whiteColor];
     self.picker.showsSelectionIndicator = YES;
     self.picker.dataSource = self;
     self.picker.delegate = self;
