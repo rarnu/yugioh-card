@@ -10,7 +10,7 @@
 + (void) closeDatabase;
 + (sqlite3 *) mainDatabase;
 + (sqlite3 *) favDatabase;
-+ (NSInteger) getDatabaseVersion;
++ (int) getDatabaseVersion;
 
 // card data
 + (NSMutableArray *) queryData:(NSString *)sql;
@@ -20,6 +20,7 @@
 + (NSMutableArray *) queryLimit1Cards;
 + (NSMutableArray *) queryLimit2Cards;
 + (NSMutableArray *) queryCardsViaIds: (NSMutableArray *) cardIds;
++ (int) queryLastCardId;
 
 // fav data
 + (void) favAdd: (NSInteger) cardId;

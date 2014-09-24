@@ -27,6 +27,7 @@
 		9218740119BFD8DB00EA94B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9218740019BFD8DB00EA94B0 /* libsqlite3.dylib */; };
 		9240086419C9193400D58BC6 /* PackItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9240086319C9193400D58BC6 /* PackItem.m */; };
 		9240086719C921E100D58BC6 /* PackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9240086619C921E100D58BC6 /* PackDetailViewController.m */; };
+		9247784719D29688001DC337 /* ApplicationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9247784619D29688001DC337 /* ApplicationUtils.m */; };
 		9286C54A19C7E20900BF9BC5 /* DatabaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C54719C7E20800BF9BC5 /* DatabaseUtils.m */; };
 		9286C54B19C7E20900BF9BC5 /* HttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C54919C7E20800BF9BC5 /* HttpUtils.m */; };
 		9286C55119C7E23300BF9BC5 /* CardConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C54E19C7E23300BF9BC5 /* CardConsts.m */; };
@@ -52,6 +53,8 @@
 		9286C59619C7E25B00BF9BC5 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C57F19C7E25B00BF9BC5 /* ToolViewController.m */; };
 		9286C59719C7E25B00BF9BC5 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C58119C7E25B00BF9BC5 /* UpdateViewController.m */; };
 		9286C59A19C7E28D00BF9BC5 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C59919C7E28D00BF9BC5 /* FileUtils.m */; };
+		92B5F55D19D13E6C0041413D /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5F55C19D13E6C0041413D /* SettingViewController.m */; };
+		92B5F59219D15ABD0041413D /* ConfigUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5F59119D15ABD0041413D /* ConfigUtils.m */; };
 		92FCE33B19CC08B300D761EF /* CoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FCE33A19CC08B300D761EF /* CoinView.m */; };
 		92FCE33E19CC08C400D761EF /* DiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FCE33D19CC08C400D761EF /* DiceView.m */; };
 /* End PBXBuildFile section */
@@ -95,6 +98,8 @@
 		9240086319C9193400D58BC6 /* PackItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackItem.m; path = Module/PackItem.m; sourceTree = "<group>"; };
 		9240086519C921E100D58BC6 /* PackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackDetailViewController.h; path = Controller/PackDetailViewController.h; sourceTree = "<group>"; };
 		9240086619C921E100D58BC6 /* PackDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackDetailViewController.m; path = Controller/PackDetailViewController.m; sourceTree = "<group>"; };
+		9247784519D29688001DC337 /* ApplicationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationUtils.h; path = Utils/ApplicationUtils.h; sourceTree = "<group>"; };
+		9247784619D29688001DC337 /* ApplicationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationUtils.m; path = Utils/ApplicationUtils.m; sourceTree = "<group>"; };
 		9286C54619C7E20800BF9BC5 /* DatabaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseUtils.h; path = Utils/DatabaseUtils.h; sourceTree = "<group>"; };
 		9286C54719C7E20800BF9BC5 /* DatabaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatabaseUtils.m; path = Utils/DatabaseUtils.m; sourceTree = "<group>"; };
 		9286C54819C7E20800BF9BC5 /* HttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpUtils.h; path = Utils/HttpUtils.h; sourceTree = "<group>"; };
@@ -147,6 +152,10 @@
 		9286C59919C7E28D00BF9BC5 /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileUtils.m; path = Utils/FileUtils.m; sourceTree = "<group>"; };
 		9286C59B19C7F0C100BF9BC5 /* UrlConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UrlConsts.h; path = Module/UrlConsts.h; sourceTree = "<group>"; };
 		92896A5F19C98E47009B6F72 /* StringConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringConsts.h; path = Module/StringConsts.h; sourceTree = "<group>"; };
+		92B5F55B19D13E6C0041413D /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Controller/SettingViewController.h; sourceTree = "<group>"; };
+		92B5F55C19D13E6C0041413D /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Controller/SettingViewController.m; sourceTree = "<group>"; };
+		92B5F59019D15ABD0041413D /* ConfigUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigUtils.h; path = Utils/ConfigUtils.h; sourceTree = "<group>"; };
+		92B5F59119D15ABD0041413D /* ConfigUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigUtils.m; path = Utils/ConfigUtils.m; sourceTree = "<group>"; };
 		92FCE33919CC08B300D761EF /* CoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoinView.h; path = View/CoinView.h; sourceTree = "<group>"; };
 		92FCE33A19CC08B300D761EF /* CoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoinView.m; path = View/CoinView.m; sourceTree = "<group>"; };
 		92FCE33C19CC08C400D761EF /* DiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiceView.h; path = View/DiceView.h; sourceTree = "<group>"; };
@@ -282,6 +291,8 @@
 				9286C58119C7E25B00BF9BC5 /* UpdateViewController.m */,
 				9240086519C921E100D58BC6 /* PackDetailViewController.h */,
 				9240086619C921E100D58BC6 /* PackDetailViewController.m */,
+				92B5F55B19D13E6C0041413D /* SettingViewController.h */,
+				92B5F55C19D13E6C0041413D /* SettingViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -330,6 +341,10 @@
 				9286C54919C7E20800BF9BC5 /* HttpUtils.m */,
 				9286C59819C7E28D00BF9BC5 /* FileUtils.h */,
 				9286C59919C7E28D00BF9BC5 /* FileUtils.m */,
+				92B5F59019D15ABD0041413D /* ConfigUtils.h */,
+				92B5F59119D15ABD0041413D /* ConfigUtils.m */,
+				9247784519D29688001DC337 /* ApplicationUtils.h */,
+				9247784619D29688001DC337 /* ApplicationUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -460,6 +475,7 @@
 				9286C54A19C7E20900BF9BC5 /* DatabaseUtils.m in Sources */,
 				9286C59019C7E25B00BF9BC5 /* PackViewController.m in Sources */,
 				9286C58C19C7E25B00BF9BC5 /* Limit2ViewController.m in Sources */,
+				9247784719D29688001DC337 /* ApplicationUtils.m in Sources */,
 				3076CDCE1809B47200527E6C /* main.m in Sources */,
 				9286C59319C7E25B00BF9BC5 /* SearchResultViewController.m in Sources */,
 				9286C59619C7E25B00BF9BC5 /* ToolViewController.m in Sources */,
@@ -475,6 +491,7 @@
 				9286C58519C7E25B00BF9BC5 /* CardPicViewController.m in Sources */,
 				9240086719C921E100D58BC6 /* PackDetailViewController.m in Sources */,
 				921873FD19BFD87F00EA94B0 /* UIViewController+RESideMenu.m in Sources */,
+				92B5F55D19D13E6C0041413D /* SettingViewController.m in Sources */,
 				9286C58719C7E25B00BF9BC5 /* FavViewController.m in Sources */,
 				921873FC19BFD87F00EA94B0 /* RESideMenu.m in Sources */,
 				92FCE33B19CC08B300D761EF /* CoinView.m in Sources */,
@@ -485,6 +502,7 @@
 				9286C55519C7E24500BF9BC5 /* CardAttributePicker.m in Sources */,
 				9286C58819C7E25B00BF9BC5 /* FeedbackViewController.m in Sources */,
 				9286C58A19C7E25B00BF9BC5 /* LeftMenuViewController.m in Sources */,
+				92B5F59219D15ABD0041413D /* ConfigUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

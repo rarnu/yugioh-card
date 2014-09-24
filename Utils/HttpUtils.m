@@ -22,21 +22,27 @@
 
 -(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     self.receivedData = [NSMutableData data];
+    if ([self.delegate respondsToSelector:@selector(httpUtils:receivedFileSize:)]) {
+        [self.delegate httpUtils:self receivedFileSize:response.expectedContentLength];
+    }
 }
 
 -(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [self.receivedData appendData:data];
+    if ([self.delegate respondsToSelector:@selector(httpUtils:receivedProgress:)]) {
+        [self.delegate httpUtils:self receivedProgress:self.receivedData.length];
+    }
 }
 
 -(void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    if ([self.delegate respondsToSelector:@selector(receivedData:)]) {
-        [self.delegate receivedData:self.receivedData];
+    if ([self.delegate respondsToSelector:@selector(httpUtils:receivedData:)]) {
+        [self.delegate httpUtils:self receivedData:self.receivedData];
     }
 }
 
 -(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    if ([self.delegate respondsToSelector:@selector(receivedError:)]) {
-        [self.delegate receivedError:[error localizedDescription]];
+    if ([self.delegate respondsToSelector:@selector(httpUtils:receivedError:)]) {
+        [self.delegate httpUtils:self receivedError:[error localizedDescription]];
     }
 }
 

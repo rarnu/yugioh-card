@@ -1,4 +1,5 @@
 #import "AboutViewController.h"
+#import "StringConsts.h"
 
 @interface AboutViewController ()
 
@@ -18,6 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = RIGHT_MENU_ABOUT;
 }
 
 - (void)didReceiveMemoryWarning

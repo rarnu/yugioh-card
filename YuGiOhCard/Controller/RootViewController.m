@@ -1,11 +1,14 @@
 #import "RootViewController.h"
 #import "LeftMenuViewController.h"
+#import "ConfigUtils.h"
 
 @interface RootViewController ()
 
 @end
 
 @implementation RootViewController
+
+static RootViewController * _instance = nil;
 
 - (void)awakeFromNib
 {
@@ -23,8 +26,17 @@
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
     self.rightMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"rightMenuViewController"];
-    self.backgroundImage = [UIImage imageNamed:@"bg4"];
+    NSString * background_name = [ConfigUtils loadBackgroundImage];
+    if (background_name == nil || [background_name isEqualToString:@""]) {
+        background_name = @"bg1";
+    }
+    self.backgroundImage = [UIImage imageNamed:background_name];
     self.delegate = self;
+    _instance = self;
+}
+
++(RootViewController *) getInstance {
+    return _instance;
 }
 
 #pragma mark - RESideMenu Delegate

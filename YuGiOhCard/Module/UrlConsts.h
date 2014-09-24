@@ -7,4 +7,6 @@
 #define BASE_YUGIOH_URL @"http://rarnu.7thgen.info/yugioh/"
 #define URL_FEEDBACK [BASE_YUGIOH_URL stringByAppendingString:@"feedback.php"]
 #define PARAM_FEEDBACK @"id=%@&email=%@&text=%@&appver=%@&osver=%@"
-
+#define URL_UPDATE [BASE_YUGIOH_URL stringByAppendingString:@"update.php"]
+#define PARAM_UPDATE @"ver=%d&cardid=%d&dbver=%d"
+#define URL_FILE_DATABASE [BASE_YUGIOH_URL stringByAppendingString:@"download/yugioh.zip"]

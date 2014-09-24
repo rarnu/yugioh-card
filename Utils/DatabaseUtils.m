@@ -68,10 +68,10 @@ static sqlite3 * _fav_database;
     return _fav_database;
 }
 
-+ (NSInteger) getDatabaseVersion {
++ (int) getDatabaseVersion {
     NSString * sql = @"select ver from version";
     sqlite3_stmt * stmt;
-    NSInteger ver = 0;
+    int ver = 0;
     if (sqlite3_prepare_v2(_main_database, [sql UTF8String], -1, &stmt, nil) == SQLITE_OK) {
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             ver = sqlite3_column_int(stmt, 0);
@@ -186,6 +186,20 @@ static sqlite3 * _fav_database;
         arr = [[NSMutableArray alloc] init];
     }
     return arr;
+}
+
++ (int) queryLastCardId {
+    int cardId = 0;
+    NSString * sql = @"select id from YGODATA order by id desc limit 0,1";
+    sqlite3_stmt * stmt;
+    if (sqlite3_prepare_v2(_main_database, [sql UTF8String], -1, &stmt, nil) == SQLITE_OK) {
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            cardId = sqlite3_column_int(stmt, 0);
+            break;
+        }
+        sqlite3_finalize(stmt);
+    }
+    return cardId;
 }
 
 #pragma mark - fav data

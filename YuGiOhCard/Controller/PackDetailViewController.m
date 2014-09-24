@@ -63,7 +63,7 @@
 
 #pragma mark -http
 
--(void) receivedData:(NSData *)data {
+-(void) httpUtils:(HttpUtils *)httpUtils receivedData:(NSData *)data {
     if (data != nil) {
         NSString * json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [FileUtils writeTextFile:_packages savePath:_data_path fileContent:json];
@@ -71,8 +71,8 @@
     }
 }
 
--(void) receivedError:(NSString *)err {
-
+-(void) httpUtils:(HttpUtils *)httpUtils receivedError:(NSString *)err {
+    
 }
 
 -(void) loadData: (NSString *) json {

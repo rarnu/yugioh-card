@@ -1,6 +1,7 @@
 #import "FeedbackViewController.h"
 #import "HttpUtils.h"
 #import "UrlConsts.h"
+#import "StringConsts.h"
 
 @interface FeedbackViewController ()
 
@@ -20,6 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = RIGHT_MENU_FEEDBACK;
     [self.txtFeedback becomeFirstResponder];
 }
 

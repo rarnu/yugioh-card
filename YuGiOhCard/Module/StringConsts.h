@@ -63,10 +63,17 @@
 #define COMMON_DONE @"完成"
 #define COMMON_CLOSE @"关闭"
 #define COMMON_REFRESH @"刷新"
+#define COMMON_CANCEL @"取消"
+#define COMMON_OK @"确定"
 
 #define STR_NO_CARD_COLLECTED @"还没有收藏的卡片"
 #define STR_RESULT @"卡片列表"
 #define STR_NO_CARD_FOUND @"没有找到任何卡片"
+#define STR_CONFIRM @"确认?"
+#define STR_CONFIRM_CLEAR_DOCUMENT @"确定要清空全部卡图吗，清空卡图后您将需要重新下载卡图。"
+#define STR_CARD_COUNT @"%d 张"
+#define STR_DOWNLOAD_UPDATE @"下载更新"
+#define STR_DOWNLOAD_NA @"无需更新"
 
 #define RACE_WARRIOR @"战士"
 #define RACE_UNDEAD @"不死"

@@ -54,7 +54,9 @@
     [hu get:url];
 }
 
--(void) receivedData:(NSData *)data {
+#pragma mark - http utils
+
+-(void) httpUtils:(HttpUtils *)httpUtils receivedData:(NSData *)data {
     if (data != nil) {
         NSString * fileName = [NSString stringWithFormat:@"%ld.jpg", (long)self.card.card_id];
         [FileUtils writeFile:fileName savePath:_img_path fileData:data];
@@ -62,7 +64,7 @@
     }
 }
 
--(void) receivedError:(NSString *)err {
+-(void) httpUtils:(HttpUtils *)httpUtils receivedError:(NSString *)err {
     [self.imgCard setHidden:YES];
     [self.btnDownload setHidden:NO];
     [self.aivDownload setHidden:YES];
