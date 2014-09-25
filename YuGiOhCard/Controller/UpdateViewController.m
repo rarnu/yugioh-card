@@ -117,9 +117,9 @@
 }
 
 -(void) uncompressData: (NSData *) data {
-    [FileUtils writeFile:@"yugioh.zip" savePath:@"" fileData:data];
+    [FileUtils writeFile:ZIP_NAME savePath:@"" fileData:data];
     ZipUtils * zu = [[ZipUtils alloc] init];
-    NSString * archivePath = [[FileUtils getDocumentPath] stringByAppendingPathComponent:@"yugioh.zip"];
+    NSString * archivePath = [[FileUtils getDocumentPath] stringByAppendingPathComponent:ZIP_NAME];
     zu.archiveFile = archivePath;
     zu.extractPath = [FileUtils getDocumentPath];
     zu.delegate = self;

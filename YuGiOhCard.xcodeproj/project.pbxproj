@@ -460,9 +460,9 @@
 		3076CDB61809B47200527E6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = DEMO;
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Roman Efimov";
+				ORGANIZATIONNAME = rarnu;
 				TargetAttributes = {
 					3076CDBD1809B47200527E6C = {
 						DevelopmentTeam = TF7AXM8WDK;
