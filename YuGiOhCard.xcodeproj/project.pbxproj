@@ -18,6 +18,9 @@
 		3076CDE11809B47200527E6C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDE01809B47200527E6C /* XCTest.framework */; };
 		3076CDE21809B47200527E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC11809B47200527E6C /* Foundation.framework */; };
 		3076CDE31809B47200527E6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC51809B47200527E6C /* UIKit.framework */; };
+		920E859419D44904008020C7 /* SingleStories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920E859219D44904008020C7 /* SingleStories.storyboard */; };
+		920E859819D45788008020C7 /* PushUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 920E859719D45788008020C7 /* PushUtils.m */; };
+		920E859B19D45940008020C7 /* CardStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920E859919D45940008020C7 /* CardStory.storyboard */; };
 		920EC06319C12FEF007F9F39 /* fav.db in Resources */ = {isa = PBXBuildFile; fileRef = 920EC06119C12FEF007F9F39 /* fav.db */; };
 		920EC06419C12FEF007F9F39 /* yugioh.db in Resources */ = {isa = PBXBuildFile; fileRef = 920EC06219C12FEF007F9F39 /* yugioh.db */; };
 		921873FB19BFD87F00EA94B0 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 921873F619BFD87F00EA94B0 /* RECommonFunctions.m */; };
@@ -91,6 +94,10 @@
 		3076CDD91809B47200527E6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3076CDDF1809B47200527E6C /* YuGiOhCardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YuGiOhCardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3076CDE01809B47200527E6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		920E859319D44904008020C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SingleStories.storyboard; sourceTree = "<group>"; };
+		920E859619D45788008020C7 /* PushUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PushUtils.h; path = Controller/ControllerUtils/PushUtils.h; sourceTree = "<group>"; };
+		920E859719D45788008020C7 /* PushUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushUtils.m; path = Controller/ControllerUtils/PushUtils.m; sourceTree = "<group>"; };
+		920E859A19D45940008020C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CardStory.storyboard; sourceTree = "<group>"; };
 		920EC06119C12FEF007F9F39 /* fav.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = fav.db; path = Resource/fav.db; sourceTree = "<group>"; };
 		920EC06219C12FEF007F9F39 /* yugioh.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = yugioh.db; path = Resource/yugioh.db; sourceTree = "<group>"; };
 		921873F519BFD87F00EA94B0 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = RESideMenu/RECommonFunctions.h; sourceTree = "<group>"; };
@@ -255,6 +262,8 @@
 				3076CDD01809B47200527E6C /* AppDelegate.h */,
 				3076CDD11809B47200527E6C /* AppDelegate.m */,
 				3076CDD31809B47200527E6C /* Main.storyboard */,
+				920E859919D45940008020C7 /* CardStory.storyboard */,
+				920E859219D44904008020C7 /* SingleStories.storyboard */,
 				3076CDC81809B47200527E6C /* Supporting Files */,
 			);
 			path = YuGiOhCard;
@@ -275,6 +284,7 @@
 		3076CDF61809B50100527E6C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				920E859519D4565E008020C7 /* ControllerUtils */,
 				9286C55619C7E25B00BF9BC5 /* AboutViewController.h */,
 				9286C55719C7E25B00BF9BC5 /* AboutViewController.m */,
 				9286C55819C7E25B00BF9BC5 /* CardAdjustViewController.h */,
@@ -319,6 +329,15 @@
 				92B5F55C19D13E6C0041413D /* SettingViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		920E859519D4565E008020C7 /* ControllerUtils */ = {
+			isa = PBXGroup;
+			children = (
+				920E859619D45788008020C7 /* PushUtils.h */,
+				920E859719D45788008020C7 /* PushUtils.m */,
+			);
+			name = ControllerUtils;
 			sourceTree = "<group>";
 		};
 		920EC06019C12FC9007F9F39 /* Resource */ = {
@@ -498,8 +517,10 @@
 			files = (
 				3076CDDA1809B47200527E6C /* Images.xcassets in Resources */,
 				3076CDCC1809B47200527E6C /* InfoPlist.strings in Resources */,
+				920E859419D44904008020C7 /* SingleStories.storyboard in Resources */,
 				3076CDD51809B47200527E6C /* Main.storyboard in Resources */,
 				920EC06419C12FEF007F9F39 /* yugioh.db in Resources */,
+				920E859B19D45940008020C7 /* CardStory.storyboard in Resources */,
 				920EC06319C12FEF007F9F39 /* fav.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +558,7 @@
 				92B377AA19D3A894005AD793 /* ZipArchive.mm in Sources */,
 				9286C58919C7E25B00BF9BC5 /* LatestViewController.m in Sources */,
 				9240086419C9193400D58BC6 /* PackItem.m in Sources */,
+				920E859819D45788008020C7 /* PushUtils.m in Sources */,
 				9286C59A19C7E28D00BF9BC5 /* FileUtils.m in Sources */,
 				9286C58619C7E25B00BF9BC5 /* CardViewController.m in Sources */,
 				3076CDD21809B47200527E6C /* AppDelegate.m in Sources */,
@@ -596,6 +618,22 @@
 				3076CDD41809B47200527E6C /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		920E859219D44904008020C7 /* SingleStories.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				920E859319D44904008020C7 /* Base */,
+			);
+			name = SingleStories.storyboard;
+			sourceTree = "<group>";
+		};
+		920E859919D45940008020C7 /* CardStory.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				920E859A19D45940008020C7 /* Base */,
+			);
+			name = CardStory.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -23,9 +23,10 @@ static RootViewController * _instance = nil;
     self.scaleMenuView = FALSE;
     self.scaleBackgroundImageView = FALSE;
     
+    UIStoryboard * singleStory = [UIStoryboard storyboardWithName:@"SingleStories" bundle:nil];
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
-    self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
-    self.rightMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"rightMenuViewController"];
+    self.leftMenuViewController = [singleStory instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
+    self.rightMenuViewController = [singleStory instantiateViewControllerWithIdentifier:@"rightMenuViewController"];
     NSString * background_name = [ConfigUtils loadBackgroundImage];
     if (background_name == nil || [background_name isEqualToString:@""]) {
         background_name = @"bg1";

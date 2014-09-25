@@ -5,6 +5,7 @@
 #import "CardViewController.h"
 #import "CardConsts.h"
 #import "StringConsts.h"
+#import "PushUtils.h"
 
 @interface SearchResultViewController () {
     UILabel * lblNoCard;
@@ -138,19 +139,8 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"pushCard"]) {
-        CardItem * item = self._cards[[self.tableView indexPathForSelectedRow].row];
-        [[segue destinationViewController] setCardId:item.card_id];
-        [[segue destinationViewController] setCardName:item.name];
-    }
-    
+    CardItem * item = self._cards[indexPath.row];
+    [PushUtils pushCard:item navController:self.navigationController];
 }
 
 

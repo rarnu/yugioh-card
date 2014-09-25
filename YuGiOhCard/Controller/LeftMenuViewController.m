@@ -37,8 +37,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:self.controllerNames[indexPath.row]]] animated:YES];
+    UIStoryboard * mainStory = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[mainStory instantiateViewControllerWithIdentifier:self.controllerNames[indexPath.row]]] animated:YES];
     [self.sideMenuViewController hideMenuViewController];
 }
 

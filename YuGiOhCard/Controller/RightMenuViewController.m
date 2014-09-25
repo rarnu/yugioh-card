@@ -39,7 +39,8 @@
 {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    SearchViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
+    UIStoryboard * mainStory = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SearchViewController * controller = [mainStory instantiateViewControllerWithIdentifier:@"searchViewController"];
     NSString * pushViewName = self.controllerNames[indexPath.row];
     [controller setPushView:pushViewName];
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:controller];

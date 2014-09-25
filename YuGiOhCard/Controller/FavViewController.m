@@ -3,6 +3,7 @@
 #import "CardItem.h"
 #import "CardViewController.h"
 #import "StringConsts.h"
+#import "PushUtils.h"
 
 @interface FavViewController () {
     UILabel * lblNoCard;
@@ -79,15 +80,10 @@
     return cell;
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"pushCard"]) {
-        CardItem * item = self._cards[[self.tableView indexPathForSelectedRow].row];
-        [[segue destinationViewController] setCardId:item.card_id];
-        [[segue destinationViewController] setCardName:item.name];
-    }
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    CardItem * item = self._cards[indexPath.row];
+    [PushUtils pushCard:item navController:self.navigationController];
 }
 
 @end

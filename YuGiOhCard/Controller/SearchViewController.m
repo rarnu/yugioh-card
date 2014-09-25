@@ -23,7 +23,8 @@
     [self resetData];
     
     if (self.pushView != nil && ![self.pushView isEqualToString:@""]) {
-        UIViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:self.pushView];
+        UIStoryboard * singleStory = [UIStoryboard storyboardWithName:@"SingleStories" bundle:nil];
+        UIViewController * controller = [singleStory instantiateViewControllerWithIdentifier:self.pushView];
         [self.navigationController pushViewController:controller animated:YES];
     }
 
