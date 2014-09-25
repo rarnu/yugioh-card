@@ -53,6 +53,13 @@
 		9286C59619C7E25B00BF9BC5 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C57F19C7E25B00BF9BC5 /* ToolViewController.m */; };
 		9286C59719C7E25B00BF9BC5 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C58119C7E25B00BF9BC5 /* UpdateViewController.m */; };
 		9286C59A19C7E28D00BF9BC5 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C59919C7E28D00BF9BC5 /* FileUtils.m */; };
+		92B3778E19D39952005AD793 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B3778D19D39952005AD793 /* libz.dylib */; };
+		92B377A619D3A894005AD793 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 92B3779C19D3A894005AD793 /* ioapi.c */; };
+		92B377A719D3A894005AD793 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 92B3779E19D3A894005AD793 /* mztools.c */; };
+		92B377A819D3A894005AD793 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 92B377A019D3A894005AD793 /* unzip.c */; };
+		92B377A919D3A894005AD793 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 92B377A219D3A894005AD793 /* zip.c */; };
+		92B377AA19D3A894005AD793 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92B377A519D3A894005AD793 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		92B377AD19D3AB7B005AD793 /* ZipUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B377AC19D3AB7B005AD793 /* ZipUtils.m */; };
 		92B5F55D19D13E6C0041413D /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5F55C19D13E6C0041413D /* SettingViewController.m */; };
 		92B5F59219D15ABD0041413D /* ConfigUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B5F59119D15ABD0041413D /* ConfigUtils.m */; };
 		92FCE33B19CC08B300D761EF /* CoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FCE33A19CC08B300D761EF /* CoinView.m */; };
@@ -152,6 +159,20 @@
 		9286C59919C7E28D00BF9BC5 /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileUtils.m; path = Utils/FileUtils.m; sourceTree = "<group>"; };
 		9286C59B19C7F0C100BF9BC5 /* UrlConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UrlConsts.h; path = Module/UrlConsts.h; sourceTree = "<group>"; };
 		92896A5F19C98E47009B6F72 /* StringConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringConsts.h; path = Module/StringConsts.h; sourceTree = "<group>"; };
+		92B3778D19D39952005AD793 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		92B3779B19D3A894005AD793 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		92B3779C19D3A894005AD793 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		92B3779D19D3A894005AD793 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		92B3779E19D3A894005AD793 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		92B3779F19D3A894005AD793 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		92B377A019D3A894005AD793 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		92B377A119D3A894005AD793 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		92B377A219D3A894005AD793 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		92B377A319D3A894005AD793 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		92B377A419D3A894005AD793 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		92B377A519D3A894005AD793 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		92B377AB19D3AB7B005AD793 /* ZipUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipUtils.h; path = Utils/ZipUtils.h; sourceTree = "<group>"; };
+		92B377AC19D3AB7B005AD793 /* ZipUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipUtils.m; path = Utils/ZipUtils.m; sourceTree = "<group>"; };
 		92B5F55B19D13E6C0041413D /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Controller/SettingViewController.h; sourceTree = "<group>"; };
 		92B5F55C19D13E6C0041413D /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Controller/SettingViewController.m; sourceTree = "<group>"; };
 		92B5F59019D15ABD0041413D /* ConfigUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigUtils.h; path = Utils/ConfigUtils.h; sourceTree = "<group>"; };
@@ -167,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92B3778E19D39952005AD793 /* libz.dylib in Frameworks */,
 				9218740119BFD8DB00EA94B0 /* libsqlite3.dylib in Frameworks */,
 				921873FF19BFD8D500EA94B0 /* QuartzCore.framework in Frameworks */,
 				3076CDC41809B47200527E6C /* CoreGraphics.framework in Frameworks */,
@@ -197,6 +219,7 @@
 				3076CDC71809B47200527E6C /* YuGiOhCard */,
 				3076CDC01809B47200527E6C /* Frameworks */,
 				3076CDBF1809B47200527E6C /* Products */,
+				92B3779919D3A894005AD793 /* ZipArchive */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +235,7 @@
 		3076CDC01809B47200527E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92B3778D19D39952005AD793 /* libz.dylib */,
 				9218740019BFD8DB00EA94B0 /* libsqlite3.dylib */,
 				921873FE19BFD8D500EA94B0 /* QuartzCore.framework */,
 				3076CDC11809B47200527E6C /* Foundation.framework */,
@@ -345,6 +369,8 @@
 				92B5F59119D15ABD0041413D /* ConfigUtils.m */,
 				9247784519D29688001DC337 /* ApplicationUtils.h */,
 				9247784619D29688001DC337 /* ApplicationUtils.m */,
+				92B377AB19D3AB7B005AD793 /* ZipUtils.h */,
+				92B377AC19D3AB7B005AD793 /* ZipUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -362,6 +388,32 @@
 				92896A5F19C98E47009B6F72 /* StringConsts.h */,
 			);
 			name = Module;
+			sourceTree = "<group>";
+		};
+		92B3779919D3A894005AD793 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				92B3779A19D3A894005AD793 /* minizip */,
+				92B377A419D3A894005AD793 /* ZipArchive.h */,
+				92B377A519D3A894005AD793 /* ZipArchive.mm */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		92B3779A19D3A894005AD793 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				92B3779B19D3A894005AD793 /* crypt.h */,
+				92B3779C19D3A894005AD793 /* ioapi.c */,
+				92B3779D19D3A894005AD793 /* ioapi.h */,
+				92B3779E19D3A894005AD793 /* mztools.c */,
+				92B3779F19D3A894005AD793 /* mztools.h */,
+				92B377A019D3A894005AD793 /* unzip.c */,
+				92B377A119D3A894005AD793 /* unzip.h */,
+				92B377A219D3A894005AD793 /* zip.c */,
+				92B377A319D3A894005AD793 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,25 +524,30 @@
 				9286C58319C7E25B00BF9BC5 /* CardAdjustViewController.m in Sources */,
 				9286C59419C7E25B00BF9BC5 /* SearchViewController.m in Sources */,
 				9286C59219C7E25B00BF9BC5 /* RootViewController.m in Sources */,
+				92B377A819D3A894005AD793 /* unzip.c in Sources */,
 				9286C54A19C7E20900BF9BC5 /* DatabaseUtils.m in Sources */,
 				9286C59019C7E25B00BF9BC5 /* PackViewController.m in Sources */,
 				9286C58C19C7E25B00BF9BC5 /* Limit2ViewController.m in Sources */,
 				9247784719D29688001DC337 /* ApplicationUtils.m in Sources */,
 				3076CDCE1809B47200527E6C /* main.m in Sources */,
 				9286C59319C7E25B00BF9BC5 /* SearchResultViewController.m in Sources */,
+				92B377A919D3A894005AD793 /* zip.c in Sources */,
 				9286C59619C7E25B00BF9BC5 /* ToolViewController.m in Sources */,
 				92FCE33E19CC08C400D761EF /* DiceView.m in Sources */,
+				92B377AA19D3A894005AD793 /* ZipArchive.mm in Sources */,
 				9286C58919C7E25B00BF9BC5 /* LatestViewController.m in Sources */,
 				9240086419C9193400D58BC6 /* PackItem.m in Sources */,
 				9286C59A19C7E28D00BF9BC5 /* FileUtils.m in Sources */,
 				9286C58619C7E25B00BF9BC5 /* CardViewController.m in Sources */,
 				3076CDD21809B47200527E6C /* AppDelegate.m in Sources */,
 				9286C58B19C7E25B00BF9BC5 /* Limit1ViewController.m in Sources */,
+				92B377A619D3A894005AD793 /* ioapi.c in Sources */,
 				9286C55219C7E23300BF9BC5 /* CardItem.m in Sources */,
 				9286C59719C7E25B00BF9BC5 /* UpdateViewController.m in Sources */,
 				9286C58519C7E25B00BF9BC5 /* CardPicViewController.m in Sources */,
 				9240086719C921E100D58BC6 /* PackDetailViewController.m in Sources */,
 				921873FD19BFD87F00EA94B0 /* UIViewController+RESideMenu.m in Sources */,
+				92B377AD19D3AB7B005AD793 /* ZipUtils.m in Sources */,
 				92B5F55D19D13E6C0041413D /* SettingViewController.m in Sources */,
 				9286C58719C7E25B00BF9BC5 /* FavViewController.m in Sources */,
 				921873FC19BFD87F00EA94B0 /* RESideMenu.m in Sources */,
@@ -503,6 +560,7 @@
 				9286C58819C7E25B00BF9BC5 /* FeedbackViewController.m in Sources */,
 				9286C58A19C7E25B00BF9BC5 /* LeftMenuViewController.m in Sources */,
 				92B5F59219D15ABD0041413D /* ConfigUtils.m in Sources */,
+				92B377A719D3A894005AD793 /* mztools.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

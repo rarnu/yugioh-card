@@ -488,7 +488,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZS-qH-Qk3">
                                 <rect key="frame" x="16" y="78" width="288" height="30"/>
                                 <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="下载更新">
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -500,8 +500,29 @@
                                 <rect key="frame" x="16" y="116" width="288" height="2"/>
                                 <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="更新历史" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEy-zg-asM">
+                                <rect key="frame" x="16" y="136" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmf-cy-EiP">
+                                <rect key="frame" x="16" y="190" width="288" height="345"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="PpP-h0-C9f"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mmf-cy-EiP" firstAttribute="top" secondItem="SiU-wX-NLW" secondAttribute="bottom" constant="170" id="6DU-Ks-FoK"/>
+                            <constraint firstAttribute="centerX" secondItem="Mmf-cy-EiP" secondAttribute="centerX" id="EEM-0Y-pAk"/>
+                            <constraint firstItem="Oxw-hI-oOD" firstAttribute="top" secondItem="Mmf-cy-EiP" secondAttribute="bottom" constant="33" id="M6o-d2-Rff"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="软件升级" id="mCg-ld-Hcf"/>
@@ -510,6 +531,7 @@
                         <outlet property="lblCurrentCount" destination="huk-d8-7xk" id="5Tu-nx-Cjs"/>
                         <outlet property="lblNewCount" destination="tsf-6I-oa7" id="k4a-nn-Y7L"/>
                         <outlet property="procDownload" destination="sPY-Km-iC2" id="FMG-rP-QYg"/>
+                        <outlet property="tvLog" destination="Mmf-cy-EiP" id="PMb-Qj-lGs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swh-t9-Hil" userLabel="First Responder" sceneMemberID="firstResponder"/>

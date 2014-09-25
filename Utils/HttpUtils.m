@@ -21,7 +21,7 @@
 }
 
 -(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    self.receivedData = [NSMutableData data];
+    self.receivedData = [[NSMutableData alloc] init];
     if ([self.delegate respondsToSelector:@selector(httpUtils:receivedFileSize:)]) {
         [self.delegate httpUtils:self receivedFileSize:response.expectedContentLength];
     }
