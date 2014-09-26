@@ -340,7 +340,7 @@
                     </scrollView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="HIf-bS-REK">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="SZg-Pf-I50">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="SZg-Pf-I50">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="jsP-Dz-DYG" id="hwP-5s-SlX"/>
                             </connections>
@@ -497,7 +497,7 @@
                 <tabBarController storyboardIdentifier="limitViewController" extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aTR-z2-r3f" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="禁限卡表" id="6W5-AO-jqa">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="sBt-oP-qMD">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="sBt-oP-qMD">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="aTR-z2-r3f" id="xfh-gv-RND"/>
                             </connections>
@@ -651,7 +651,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="最新卡片" id="EZR-jY-If5">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="M9m-h1-QMk">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="M9m-h1-QMk">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="G0j-IN-k4G" id="ftJ-N5-ZbZ"/>
                             </connections>
@@ -689,7 +689,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="卡包" id="s1s-vQ-yaC">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="pia-6r-lTb">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="pia-6r-lTb">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="iu9-A3-ujV" id="ZTl-wH-oi4"/>
                             </connections>
@@ -744,7 +744,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="我的最爱" id="EFx-BC-emT">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="VwQ-mR-8B8">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="VwQ-mR-8B8">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="hMt-KG-DQH" id="nxl-Bo-yys"/>
                             </connections>
@@ -1018,7 +1018,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="决斗工具" id="uxz-vK-ahA">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="QVK-z8-c60">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="QVK-z8-c60">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="hhB-4F-Bkh" id="173-ay-Vr6"/>
                             </connections>
@@ -1058,6 +1058,9 @@
             <point key="canvasLocation" x="-273" y="1113"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="17" height="13"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

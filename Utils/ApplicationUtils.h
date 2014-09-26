@@ -7,6 +7,7 @@
 +(NSString *) getAppBuild;
 +(CGSize) getScreenSize;
 +(CGSize) getApplicationSize;
++(NSString *) getPublicDate;
 
 @end
 

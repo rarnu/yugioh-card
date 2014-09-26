@@ -23,9 +23,13 @@
     [self resetData];
     
     if (self.pushView != nil && ![self.pushView isEqualToString:@""]) {
-        UIStoryboard * singleStory = [UIStoryboard storyboardWithName:@"SingleStories" bundle:nil];
-        UIViewController * controller = [singleStory instantiateViewControllerWithIdentifier:self.pushView];
-        [self.navigationController pushViewController:controller animated:YES];
+        if ([self.pushView isEqualToString:@"aboutViewController"]) {
+            [self showAboutView];
+        } else {
+            UIStoryboard * singleStory = [UIStoryboard storyboardWithName:@"SingleStories" bundle:nil];
+            UIViewController * controller = [singleStory instantiateViewControllerWithIdentifier:self.pushView];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
     }
 
     self.txtCardName.layer.borderWidth = 0.5;
@@ -56,6 +60,19 @@
     
 }
 
+#pragma mark - about view
+-(void) showAboutView {
+    [self setEditMode:YES];
+    AboutView * av = [[AboutView alloc] init];
+    av.delegate = self;
+    [self.view addSubview:av];
+}
+
+-(void) aboutview:(AboutView *)view tapped:(BOOL)dismiss {
+    [view removeFromSuperview];
+    [self setEditMode:NO];
+}
+
 #pragma mark - data
 -(void) resetData {
     self.txtCardName.text = @"";
@@ -77,6 +94,7 @@
 -(void) setEditMode: (BOOL) inEditing {
     [searchButton setEnabled:!inEditing];
     [cancelButton setEnabled:!inEditing];
+    [self.navigationItem.leftBarButtonItem setEnabled:!inEditing];
     
     [self.txtCardName setEnabled:!inEditing];
     [self.txtCamp setEnabled:!inEditing];

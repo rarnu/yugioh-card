@@ -34,6 +34,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>PublicDate</key>
+	<string>2014.09.26</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

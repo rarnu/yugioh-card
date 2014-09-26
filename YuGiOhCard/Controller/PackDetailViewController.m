@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = self.packageName;
     _packages = [NSString stringWithFormat:@"%@.pkg", self.packageId];
     _data_path = @"data";
     _pack_cards = [[PackageCards alloc] init];
@@ -47,11 +48,9 @@
     [self.refreshButton setAction:@selector(refreshClicked:)];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
 
 #pragma mark - action
 

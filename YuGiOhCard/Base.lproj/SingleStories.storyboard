@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -239,29 +238,10 @@
             </objects>
             <point key="canvasLocation" x="893" y="147"/>
         </scene>
-        <!--关于本软件-->
-        <scene sceneID="ra1-iX-emK">
-            <objects>
-                <viewController storyboardIdentifier="aboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YRE-G7-nUh" customClass="AboutViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tSH-9k-nqi"/>
-                        <viewControllerLayoutGuide type="bottom" id="UYs-RF-uEm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ExH-aA-1XR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="关于本软件" id="K2B-0V-1SR"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yYb-ey-Cy2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1231" y="147"/>
-        </scene>
-        <!--Left Menu View Controller-->
+        <!--左侧抽屉-->
         <scene sceneID="AJv-p0-AZM">
             <objects>
-                <viewController storyboardIdentifier="leftMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OyA-GL-B1y" customClass="LeftMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="leftMenuViewController" title="左侧抽屉" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OyA-GL-B1y" customClass="LeftMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bIA-7G-G67"/>
                         <viewControllerLayoutGuide type="bottom" id="sjN-Ol-ZS7"/>
@@ -271,15 +251,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djc-FP-x2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="223" y="781"/>
         </scene>
-        <!--Right Menu View Controller-->
+        <!--右侧抽屉-->
         <scene sceneID="mjo-CK-fTQ">
             <objects>
-                <viewController storyboardIdentifier="rightMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Vc-7F-cb7" customClass="RightMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rightMenuViewController" title="右侧抽屉" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Vc-7F-cb7" customClass="RightMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Or9-iD-7IN"/>
                         <viewControllerLayoutGuide type="bottom" id="33f-g3-SpP"/>
@@ -289,6 +270,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVO-um-5c1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

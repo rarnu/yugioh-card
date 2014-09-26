@@ -18,6 +18,8 @@
 		3076CDE11809B47200527E6C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDE01809B47200527E6C /* XCTest.framework */; };
 		3076CDE21809B47200527E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC11809B47200527E6C /* Foundation.framework */; };
 		3076CDE31809B47200527E6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC51809B47200527E6C /* UIKit.framework */; };
+		92019F4E19D5108200251F82 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92019F4D19D5108200251F82 /* AboutView.m */; };
+		92019F5019D5109200251F82 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92019F4F19D5109200251F82 /* AboutView.xib */; };
 		920E859419D44904008020C7 /* SingleStories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920E859219D44904008020C7 /* SingleStories.storyboard */; };
 		920E859819D45788008020C7 /* PushUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 920E859719D45788008020C7 /* PushUtils.m */; };
 		920E859B19D45940008020C7 /* CardStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920E859919D45940008020C7 /* CardStory.storyboard */; };
@@ -36,7 +38,6 @@
 		9286C55119C7E23300BF9BC5 /* CardConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C54E19C7E23300BF9BC5 /* CardConsts.m */; };
 		9286C55219C7E23300BF9BC5 /* CardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C55019C7E23300BF9BC5 /* CardItem.m */; };
 		9286C55519C7E24500BF9BC5 /* CardAttributePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C55419C7E24500BF9BC5 /* CardAttributePicker.m */; };
-		9286C58219C7E25B00BF9BC5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C55719C7E25B00BF9BC5 /* AboutViewController.m */; };
 		9286C58319C7E25B00BF9BC5 /* CardAdjustViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C55919C7E25B00BF9BC5 /* CardAdjustViewController.m */; };
 		9286C58419C7E25B00BF9BC5 /* CardInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C55B19C7E25B00BF9BC5 /* CardInfoViewController.m */; };
 		9286C58519C7E25B00BF9BC5 /* CardPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C55D19C7E25B00BF9BC5 /* CardPicViewController.m */; };
@@ -94,6 +95,9 @@
 		3076CDD91809B47200527E6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3076CDDF1809B47200527E6C /* YuGiOhCardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YuGiOhCardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3076CDE01809B47200527E6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		92019F4C19D5108200251F82 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutView.h; path = View/AboutView.h; sourceTree = "<group>"; };
+		92019F4D19D5108200251F82 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutView.m; path = View/AboutView.m; sourceTree = "<group>"; };
+		92019F4F19D5109200251F82 /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutView.xib; path = View/AboutView.xib; sourceTree = "<group>"; };
 		920E859319D44904008020C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SingleStories.storyboard; sourceTree = "<group>"; };
 		920E859619D45788008020C7 /* PushUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PushUtils.h; path = Controller/ControllerUtils/PushUtils.h; sourceTree = "<group>"; };
 		920E859719D45788008020C7 /* PushUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushUtils.m; path = Controller/ControllerUtils/PushUtils.m; sourceTree = "<group>"; };
@@ -124,8 +128,6 @@
 		9286C55019C7E23300BF9BC5 /* CardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardItem.m; path = Module/CardItem.m; sourceTree = "<group>"; };
 		9286C55319C7E24500BF9BC5 /* CardAttributePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardAttributePicker.h; path = View/CardAttributePicker.h; sourceTree = "<group>"; };
 		9286C55419C7E24500BF9BC5 /* CardAttributePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardAttributePicker.m; path = View/CardAttributePicker.m; sourceTree = "<group>"; };
-		9286C55619C7E25B00BF9BC5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Controller/AboutViewController.h; sourceTree = "<group>"; };
-		9286C55719C7E25B00BF9BC5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Controller/AboutViewController.m; sourceTree = "<group>"; };
 		9286C55819C7E25B00BF9BC5 /* CardAdjustViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardAdjustViewController.h; path = Controller/CardAdjustViewController.h; sourceTree = "<group>"; };
 		9286C55919C7E25B00BF9BC5 /* CardAdjustViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardAdjustViewController.m; path = Controller/CardAdjustViewController.m; sourceTree = "<group>"; };
 		9286C55A19C7E25B00BF9BC5 /* CardInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardInfoViewController.h; path = Controller/CardInfoViewController.h; sourceTree = "<group>"; };
@@ -285,8 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				920E859519D4565E008020C7 /* ControllerUtils */,
-				9286C55619C7E25B00BF9BC5 /* AboutViewController.h */,
-				9286C55719C7E25B00BF9BC5 /* AboutViewController.m */,
 				9286C55819C7E25B00BF9BC5 /* CardAdjustViewController.h */,
 				9286C55919C7E25B00BF9BC5 /* CardAdjustViewController.m */,
 				9286C55A19C7E25B00BF9BC5 /* CardInfoViewController.h */,
@@ -371,6 +371,9 @@
 				92FCE33A19CC08B300D761EF /* CoinView.m */,
 				92FCE33C19CC08C400D761EF /* DiceView.h */,
 				92FCE33D19CC08C400D761EF /* DiceView.m */,
+				92019F4C19D5108200251F82 /* AboutView.h */,
+				92019F4D19D5108200251F82 /* AboutView.m */,
+				92019F4F19D5109200251F82 /* AboutView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				3076CDCC1809B47200527E6C /* InfoPlist.strings in Resources */,
 				920E859419D44904008020C7 /* SingleStories.storyboard in Resources */,
 				3076CDD51809B47200527E6C /* Main.storyboard in Resources */,
+				92019F5019D5109200251F82 /* AboutView.xib in Resources */,
 				920EC06419C12FEF007F9F39 /* yugioh.db in Resources */,
 				920E859B19D45940008020C7 /* CardStory.storyboard in Resources */,
 				920EC06319C12FEF007F9F39 /* fav.db in Resources */,
@@ -559,6 +563,7 @@
 				9286C58919C7E25B00BF9BC5 /* LatestViewController.m in Sources */,
 				9240086419C9193400D58BC6 /* PackItem.m in Sources */,
 				920E859819D45788008020C7 /* PushUtils.m in Sources */,
+				92019F4E19D5108200251F82 /* AboutView.m in Sources */,
 				9286C59A19C7E28D00BF9BC5 /* FileUtils.m in Sources */,
 				9286C58619C7E25B00BF9BC5 /* CardViewController.m in Sources */,
 				3076CDD21809B47200527E6C /* AppDelegate.m in Sources */,
@@ -576,7 +581,6 @@
 				92FCE33B19CC08B300D761EF /* CoinView.m in Sources */,
 				9286C54B19C7E20900BF9BC5 /* HttpUtils.m in Sources */,
 				9286C58D19C7E25B00BF9BC5 /* LimitBanViewController.m in Sources */,
-				9286C58219C7E25B00BF9BC5 /* AboutViewController.m in Sources */,
 				921873FB19BFD87F00EA94B0 /* RECommonFunctions.m in Sources */,
 				9286C55519C7E24500BF9BC5 /* CardAttributePicker.m in Sources */,
 				9286C58819C7E25B00BF9BC5 /* FeedbackViewController.m in Sources */,

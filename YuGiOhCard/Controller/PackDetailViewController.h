@@ -5,5 +5,6 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem * refreshButton;
 @property (nonatomic) NSString * packageId;
+@property (nonatomic) NSString * packageName;
 
 @end

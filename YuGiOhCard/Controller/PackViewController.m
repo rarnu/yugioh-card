@@ -134,7 +134,6 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -143,6 +142,7 @@
         NSIndexPath * index = [self.tableView indexPathForSelectedRow];
         PackageDetail * item = ((PackItem *)_pack_section[index.section]).packages[index.row];
         [[segue destinationViewController] setPackageId:item.packId];
+        [[segue destinationViewController] setPackageName:item.packName];
     }
 }
 

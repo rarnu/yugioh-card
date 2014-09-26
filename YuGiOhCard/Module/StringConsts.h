@@ -74,6 +74,7 @@
 #define STR_CARD_COUNT @"%d 张"
 #define STR_DOWNLOAD_UPDATE @"下载更新"
 #define STR_DOWNLOAD_NA @"无需更新"
+#define STR_PUBLIC_DATE @"发布日期：%@"
 
 #define RACE_WARRIOR @"战士"
 #define RACE_UNDEAD @"不死"

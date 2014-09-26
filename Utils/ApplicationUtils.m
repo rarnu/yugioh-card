@@ -22,4 +22,8 @@
     return [UIScreen mainScreen].applicationFrame.size;
 }
 
++(NSString *) getPublicDate {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"PublicDate"];
+}
+
 @end

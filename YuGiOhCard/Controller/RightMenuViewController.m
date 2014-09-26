@@ -1,7 +1,4 @@
 #import "RightMenuViewController.h"
-#import "UpdateViewController.h"
-#import "FeedbackViewController.h"
-#import "AboutViewController.h"
 #import "StringConsts.h"
 #import "SearchViewController.h"
 

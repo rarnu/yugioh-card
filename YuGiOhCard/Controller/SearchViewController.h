@@ -1,8 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
 #import "CardAttributePicker.h"
+#import "AboutView.h"
 
-@interface SearchViewController : UIViewController<UITextFieldDelegate, CardAttributePickerDelegate>
+@interface SearchViewController : UIViewController<UITextFieldDelegate, CardAttributePickerDelegate, AboutViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView * sv;
 @property (strong, nonatomic) IBOutlet UITextField * txtCardName;

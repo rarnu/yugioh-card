@@ -38,7 +38,7 @@
     [self.toolbar addSubview:toolButton];
 
     self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 50, self.frame.size.width, 0)];
-    self.picker.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.7];
+    self.picker.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.85];
     self.picker.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.picker.showsSelectionIndicator = YES;
     self.picker.dataSource = self;
@@ -68,8 +68,18 @@
     return pickerView.frame.size.width;
 }
 
--(NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.pickObjects[row % self.pickObjects.count];
+-(UIView *) pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    NSString * title = self.pickObjects[row % self.pickObjects.count];
+    UILabel * lblView = (UILabel *)view;
+    if (!lblView) {
+        lblView = [[UILabel alloc] init];
+        [lblView setBackgroundColor:[UIColor clearColor]];
+        [lblView setTextColor:[UIColor whiteColor]];
+        [lblView setTextAlignment:NSTextAlignmentCenter];
+        [lblView setFont:[UIFont boldSystemFontOfSize:24]];
+    }
+    [lblView setText:title];
+    return lblView;
 }
 
 -(void) doneClick: (id) sender {
