@@ -7,7 +7,7 @@
         <!--卡片信息-->
         <scene sceneID="jh0-LB-RYs">
             <objects>
-                <viewController id="Q16-XZ-Bht" customClass="CardInfoViewController" sceneMemberID="viewController">
+                <viewController id="Q16-XZ-Bht" customClass="CardInfoViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EP-b6-Zom"/>
                         <viewControllerLayoutGuide type="bottom" id="d5n-ya-Gdx"/>
@@ -45,7 +45,7 @@
         <!--Card View Controller-->
         <scene sceneID="kKn-5l-oki">
             <objects>
-                <tabBarController storyboardIdentifier="cardViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9iT-5Z-tsD" customClass="CardViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="cardViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9iT-5Z-tsD" customClass="CardViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ztm-5r-7Rk"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -67,7 +67,7 @@
         <!--效果调整-->
         <scene sceneID="X7u-Fy-XqS">
             <objects>
-                <viewController id="XGM-Td-cma" customClass="CardAdjustViewController" sceneMemberID="viewController">
+                <viewController id="XGM-Td-cma" customClass="CardAdjustViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NH6-E5-4od"/>
                         <viewControllerLayoutGuide type="bottom" id="ciR-hP-AIp"/>
@@ -105,7 +105,7 @@
         <!--卡图-->
         <scene sceneID="kMv-72-wc0">
             <objects>
-                <viewController id="aBi-Jd-nW9" customClass="CardPicViewController" sceneMemberID="viewController">
+                <viewController id="aBi-Jd-nW9" customClass="CardPicViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y5e-JO-IR3"/>
                         <viewControllerLayoutGuide type="bottom" id="Vrs-dc-CNd"/>

@@ -312,7 +312,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         if (self.scaleBackgroundImageView!) {
             self.backgroundImageView!.transform = CGAffineTransformMakeScale(1.7, 1.7)
         }
-        self.delegate?.sideMenu!(self, willShowMenuViewController: menuViewController)
+        self.delegate?.sideMenu?(self, willShowMenuViewController: menuViewController)
     }
     
     
@@ -347,7 +347,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         func _anim_complete(var finish: Bool) {
             self.__addContentViewControllerMotionEffects()
             if (!self.visible!) {
-                self.delegate?.sideMenu!(self, didShowMenuViewController: self.leftMenuViewController!)
+                self.delegate?.sideMenu?(self, didShowMenuViewController: self.leftMenuViewController!)
             }
             self.visible = true
             self.leftMenuVisible = true
@@ -388,7 +388,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         
         func _anim_complete(var finish: Bool) {
             if (!self.rightMenuVisible!) {
-                self.delegate?.sideMenu!(self, didShowMenuViewController: self.rightMenuViewController!)
+                self.delegate?.sideMenu?(self, didShowMenuViewController: self.rightMenuViewController!)
             }
             self.visible = !(self.contentViewContainer!.frame.size.width == self.view.bounds.size.width && self.contentViewContainer!.frame.size.height == self.view.bounds.size.height && self.contentViewContainer!.frame.origin.x == 0 && self.contentViewContainer!.frame.origin.y == 0)
             self.rightMenuVisible = self.visible
@@ -408,7 +408,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     func __hideMenuViewControllerAnimated(animated: Bool) {
         var rightMenuVisible = self.rightMenuVisible
-        self.delegate?.sideMenu!(self, willHideMenuViewController: rightMenuVisible! ? self.rightMenuViewController : self.leftMenuViewController)
+        self.delegate?.sideMenu?(self, willHideMenuViewController: rightMenuVisible! ? self.rightMenuViewController : self.leftMenuViewController)
         self.visible = false
         self.leftMenuVisible = false
         self.rightMenuVisible = false
@@ -442,7 +442,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 return
             }
             if (!strongSelf!.visible!) {
-                strongSelf!.delegate?.sideMenu!(self, didHideMenuViewController: rightMenuVisible! ? strongSelf!.rightMenuViewController : strongSelf!.leftMenuViewController)
+                strongSelf!.delegate?.sideMenu?(self, didHideMenuViewController: rightMenuVisible! ? strongSelf!.rightMenuViewController : strongSelf!.leftMenuViewController)
             }
         }
     
@@ -551,6 +551,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // =================================
     // gesture delegate
     // =================================
+    
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if (self.interactivePopGestureRecognizerEnabled! && (self.contentViewController is UINavigationController)) {
             var navigationController = self.contentViewController as UINavigationController
@@ -577,7 +578,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // =================================
     
     func __panGestureRecognized(recognizer: UIPanGestureRecognizer) {
-        self.delegate?.sideMenu!(self, didRecognizePanGesture: recognizer)
+        self.delegate?.sideMenu?(self, didRecognizePanGesture: recognizer)
         if (!self.panGestureEnabled!) {
             return
         }
@@ -652,12 +653,12 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             if (!self.didNotifyDelegate!) {
                 if (point.x > 0) {
                     if (!self.visible!) {
-                        self.delegate?.sideMenu!(self, willShowMenuViewController: leftMenuViewController)
+                        self.delegate?.sideMenu?(self, willShowMenuViewController: leftMenuViewController)
                     }
                 }
                 if (point.x < 0) {
                     if (!self.visible!) {
-                        self.delegate?.sideMenu!(self, willShowMenuViewController: rightMenuViewController)
+                        self.delegate?.sideMenu?(self, willShowMenuViewController: rightMenuViewController)
                     }
                 }
                 self.didNotifyDelegate = true

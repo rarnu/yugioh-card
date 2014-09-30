@@ -27,12 +27,11 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         var crightmenu = singleStory.instantiateViewControllerWithIdentifier("rightMenuViewController") as UIViewController
         self.rightMenuViewController = crightmenu
 
-//        var background_name = ConfigUtils.loadBackgroundImage()
-//        if (background_name == nil || [background_name isEqualToString:@""]) {
-//            background_name = @"bg1";
-//        }
-        var background_name = "bg1"
-        self.backgroundImage = UIImage(named: background_name)
+        var background_name = ConfigUtils.loadBackgroundImage()
+        if (background_name == nil || background_name == "") {
+            background_name = "bg1"
+        }
+        self.backgroundImage = UIImage(named: background_name!)
         self.delegate = self;
         _instance = self;
 
