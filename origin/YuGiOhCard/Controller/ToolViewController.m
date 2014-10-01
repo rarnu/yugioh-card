@@ -3,9 +3,6 @@
 #import "CoinView.h"
 
 @interface ToolViewController () {
-    int player1Life;
-    int player2Life;
-    
     DiceView * dice;
     CoinView * coin;
 }
@@ -14,20 +11,12 @@
 
 @implementation ToolViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+static int player1Life = 8000;
+static int player2Life = 8000;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    player1Life = 8000;
-    player2Life = 8000;
     self.txt1Life.layer.borderWidth = 0.5;
     self.txt1Life.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.txt2Life.layer.borderWidth = 0.5;

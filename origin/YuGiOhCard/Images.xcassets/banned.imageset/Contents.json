@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "icn_events_maybe.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "menu_2x.png"
+      "filename" : "banned2x.png"
     },
     {
       "idiom" : "universal",

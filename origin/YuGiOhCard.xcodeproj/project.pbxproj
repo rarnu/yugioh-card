@@ -222,6 +222,7 @@
 		3076CDB51809B47200527E6C = {
 			isa = PBXGroup;
 			children = (
+				92DB756019DBA8C00082D06F /* Story */,
 				9286C54519C7E1D500BF9BC5 /* Utils */,
 				920EC06019C12FC9007F9F39 /* Resource */,
 				921873F419BFD85A00EA94B0 /* RESideMenu */,
@@ -263,9 +264,6 @@
 				3076CDF61809B50100527E6C /* Controllers */,
 				3076CDD01809B47200527E6C /* AppDelegate.h */,
 				3076CDD11809B47200527E6C /* AppDelegate.m */,
-				3076CDD31809B47200527E6C /* Main.storyboard */,
-				920E859919D45940008020C7 /* CardStory.storyboard */,
-				920E859219D44904008020C7 /* SingleStories.storyboard */,
 				3076CDC81809B47200527E6C /* Supporting Files */,
 			);
 			path = YuGiOhCard;
@@ -436,6 +434,16 @@
 				92B377A319D3A894005AD793 /* zip.h */,
 			);
 			path = minizip;
+			sourceTree = "<group>";
+		};
+		92DB756019DBA8C00082D06F /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				3076CDD31809B47200527E6C /* Main.storyboard */,
+				920E859919D45940008020C7 /* CardStory.storyboard */,
+				920E859219D44904008020C7 /* SingleStories.storyboard */,
+			);
+			name = Story;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -622,6 +630,7 @@
 				3076CDD41809B47200527E6C /* Base */,
 			);
 			name = Main.storyboard;
+			path = YuGiOhCard;
 			sourceTree = "<group>";
 		};
 		920E859219D44904008020C7 /* SingleStories.storyboard */ = {
@@ -630,6 +639,7 @@
 				920E859319D44904008020C7 /* Base */,
 			);
 			name = SingleStories.storyboard;
+			path = YuGiOhCard;
 			sourceTree = "<group>";
 		};
 		920E859919D45940008020C7 /* CardStory.storyboard */ = {
@@ -638,6 +648,7 @@
 				920E859A19D45940008020C7 /* Base */,
 			);
 			name = CardStory.storyboard;
+			path = YuGiOhCard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

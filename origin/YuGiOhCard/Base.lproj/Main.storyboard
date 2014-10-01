@@ -434,7 +434,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="禁止卡" id="kTg-fL-NC4"/>
+                    <tabBarItem key="tabBarItem" title="禁止卡" image="banned" id="kTg-fL-NC4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2Y-g3-y2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -559,7 +559,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="限制卡" id="vVA-l7-U7h"/>
+                    <tabBarItem key="tabBarItem" title="限制卡" image="limit1" id="vVA-l7-U7h"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHb-fR-DFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -605,7 +605,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="准限制卡" id="Swe-yC-uTa"/>
+                    <tabBarItem key="tabBarItem" title="准限制卡" image="limit2" id="Swe-yC-uTa"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3PC-5d-h53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1059,6 +1059,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="banned" width="30" height="30"/>
+        <image name="limit1" width="30" height="30"/>
+        <image name="limit2" width="30" height="30"/>
         <image name="menu" width="17" height="13"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

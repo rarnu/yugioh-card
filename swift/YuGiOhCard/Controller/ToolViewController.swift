@@ -1,7 +1,9 @@
 import UIKit
 
-class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
+var player1Life: Int = 8000
+var player2Life: Int = 8000
 
+class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     
     // global
     @IBOutlet var resetButton: UIBarButtonItem?
@@ -30,16 +32,11 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     @IBOutlet var btn2Balance: UIButton?
     @IBOutlet var btn2Equal: UIButton?
     
-    var player1Life: Int?
-    var player2Life: Int?
-    
     var dice: DiceView?
     var coin: CoinView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        player1Life = 8000
-        player2Life = 8000
         self.txt1Life!.layer.borderWidth = 0.5
         self.txt1Life!.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.txt2Life!.layer.borderWidth = 0.5
@@ -49,8 +46,8 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
     
     func showLife() {
-        self.lbl1Life!.text = "\(player1Life!)"
-        self.lbl2Life!.text = "\(player2Life!)"
+        self.lbl1Life!.text = "\(player1Life)"
+        self.lbl2Life!.text = "\(player2Life)"
         self.txt1Life!.text = ""
         self.txt2Life!.text = ""
         self.view.endEditing(true)
@@ -115,13 +112,13 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     
     @IBAction func btn1AddClick(sender: AnyObject) {
         var lifeDelta = (self.txt1Life!.text as NSString).intValue
-        player1Life! += Int(lifeDelta)
+        player1Life += Int(lifeDelta)
         self.showLife()
     }
     
     @IBAction func btn1MinusClick(sender: AnyObject) {
         var lifeDelta = (self.txt1Life!.text as NSString).intValue
-        player1Life! -= Int(lifeDelta)
+        player1Life -= Int(lifeDelta)
         if (player1Life < 0) {
             player1Life = 0
         }
@@ -130,69 +127,69 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     
     @IBAction func btn1SetClick(sender: AnyObject) {
         var lifeDelta = (self.txt1Life!.text as NSString).intValue
-        player1Life! = Int(lifeDelta)
+        player1Life = Int(lifeDelta)
         self.showLife()
     
     }
     @IBAction func btn1HalfClick(sender: AnyObject) {
-        player1Life! /= 2
+        player1Life /= 2
         self.showLife()
     }
     
     @IBAction func btn1DoubleClick(sender: AnyObject) {
-        player1Life! *= 2
+        player1Life *= 2
         self.showLife()
     }
     
     @IBAction func btn1BalanceClick(sender: AnyObject) {
-        var life = (player1Life! + player2Life!) / 2
+        var life = (player1Life + player2Life) / 2
         player1Life = Int(life)
         player2Life = Int(life)
         self.showLife()
     }
     
     @IBAction func btn1EqualClick(sender: AnyObject) {
-        player1Life = player2Life!
+        player1Life = player2Life
         self.showLife()
     }
     
     @IBAction func btn2AddClick(sender: AnyObject) {
         var lifeDelta = (self.txt2Life!.text as NSString).intValue
-        player2Life! += Int(lifeDelta)
+        player2Life += Int(lifeDelta)
         self.showLife()
     }
     
     @IBAction func btn2MinusClick(sender: AnyObject) {
         var lifeDelta = (self.txt2Life!.text as NSString).intValue
-        player2Life! -= Int(lifeDelta)
+        player2Life -= Int(lifeDelta)
         self.showLife()
     }
     
     @IBAction func btn2SetClick(sender: AnyObject) {
         var lifeDelta = (self.txt2Life!.text as NSString).intValue
-        player2Life! = Int(lifeDelta)
+        player2Life = Int(lifeDelta)
         self.showLife()
     }
     
     @IBAction func btn2HalfClick(sender: AnyObject) {
-        player2Life! /= 2
+        player2Life /= 2
         self.showLife()
     }
     
     @IBAction func btn2DoubleClick(sender: AnyObject) {
-        player2Life! *= 2
+        player2Life *= 2
         self.showLife()
     }
     
     @IBAction func btn2BalanceClick(sender: AnyObject) {
-        var life = (player1Life! + player2Life!) / 2
+        var life = (player1Life + player2Life) / 2
         player1Life = Int(life)
         player2Life = Int(life)
         self.showLife()
     }
     
     @IBAction func btn2EqualClick(sender: AnyObject) {
-        player2Life = player1Life!
+        player2Life = player1Life
         self.showLife()
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -33,7 +34,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="卡片信息" id="SrW-eC-SYc"/>
+                    <tabBarItem key="tabBarItem" title="卡片信息" image="cardinfo" id="SrW-eC-SYc"/>
                     <connections>
                         <outlet property="txtInfo" destination="WjJ-cJ-QJf" id="8fA-El-fMm"/>
                     </connections>
@@ -93,7 +94,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="效果调整" id="IJx-Rn-IXb"/>
+                    <tabBarItem key="tabBarItem" title="效果调整" image="cardadjust" id="IJx-Rn-IXb"/>
                     <connections>
                         <outlet property="txtAdjust" destination="AyD-L0-272" id="In5-Q4-Ha6"/>
                     </connections>
@@ -137,7 +138,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="卡图" id="AMU-Lx-TCy"/>
+                    <tabBarItem key="tabBarItem" title="卡图" image="cardpic" id="AMU-Lx-TCy"/>
                     <connections>
                         <outlet property="aivDownload" destination="k7x-ch-xVf" id="rzT-2Q-g1f"/>
                         <outlet property="btnDownload" destination="YHs-7y-nMc" id="GFh-FZ-zgX"/>
@@ -149,6 +150,11 @@
             <point key="canvasLocation" x="-709" y="2230"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cardadjust" width="30" height="30"/>
+        <image name="cardinfo" width="30" height="30"/>
+        <image name="cardpic" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
