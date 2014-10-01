@@ -20,6 +20,15 @@
 		9221D83319DA742200E1DE1B /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221D83219DA742200E1DE1B /* DiceView.swift */; };
 		9221D83B19DA75F800E1DE1B /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9221D83919DA75F800E1DE1B /* AboutView.xib */; };
 		9221D83D19DA760800E1DE1B /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221D83C19DA760800E1DE1B /* AboutView.swift */; };
+		922ABCFF19DBC5B00058FBAC /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 922ABCF519DBC5B00058FBAC /* ioapi.c */; };
+		922ABD0019DBC5B00058FBAC /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 922ABCF719DBC5B00058FBAC /* mztools.c */; };
+		922ABD0119DBC5B00058FBAC /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 922ABCF919DBC5B00058FBAC /* unzip.c */; };
+		922ABD0219DBC5B00058FBAC /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 922ABCFB19DBC5B00058FBAC /* zip.c */; };
+		922ABD0319DBC5B00058FBAC /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 922ABCFE19DBC5B00058FBAC /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		922ABD0819DBC7AE0058FBAC /* ZipUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922ABD0719DBC7AE0058FBAC /* ZipUtils.swift */; };
+		922ABD1319DBEB7A0058FBAC /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922ABD1219DBEB7A0058FBAC /* FeedbackViewController.swift */; };
+		922ABD1519DBEDE30058FBAC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922ABD1419DBEDE30058FBAC /* SettingViewController.swift */; };
+		922ABD1719DBF3360058FBAC /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922ABD1619DBF3360058FBAC /* UpdateViewController.swift */; };
 		922DFF8919D6594100364CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DFF8819D6594100364CF5 /* AppDelegate.swift */; };
 		922DFF9019D6594100364CF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922DFF8F19D6594100364CF5 /* Images.xcassets */; };
 		925E9DB619D814430004C479 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E9DB519D814430004C479 /* RootViewController.swift */; };
@@ -68,6 +77,21 @@
 		9221D83219DA742200E1DE1B /* DiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiceView.swift; path = View/DiceView.swift; sourceTree = "<group>"; };
 		9221D83919DA75F800E1DE1B /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutView.xib; path = View/AboutView.xib; sourceTree = "<group>"; };
 		9221D83C19DA760800E1DE1B /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = View/AboutView.swift; sourceTree = "<group>"; };
+		922ABCF419DBC5B00058FBAC /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		922ABCF519DBC5B00058FBAC /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		922ABCF619DBC5B00058FBAC /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		922ABCF719DBC5B00058FBAC /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		922ABCF819DBC5B00058FBAC /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		922ABCF919DBC5B00058FBAC /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		922ABCFA19DBC5B00058FBAC /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		922ABCFB19DBC5B00058FBAC /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		922ABCFC19DBC5B00058FBAC /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		922ABCFD19DBC5B00058FBAC /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		922ABCFE19DBC5B00058FBAC /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		922ABD0719DBC7AE0058FBAC /* ZipUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipUtils.swift; sourceTree = "<group>"; };
+		922ABD1219DBEB7A0058FBAC /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedbackViewController.swift; path = Controller/FeedbackViewController.swift; sourceTree = "<group>"; };
+		922ABD1419DBEDE30058FBAC /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = Controller/SettingViewController.swift; sourceTree = "<group>"; };
+		922ABD1619DBF3360058FBAC /* UpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateViewController.swift; path = Controller/UpdateViewController.swift; sourceTree = "<group>"; };
 		922DFF8319D6594100364CF5 /* YuGiOhCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuGiOhCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922DFF8719D6594100364CF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		922DFF8819D6594100364CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +167,8 @@
 		920AE72619D65A82004618ED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				922ABD1419DBEDE30058FBAC /* SettingViewController.swift */,
+				922ABD1619DBF3360058FBAC /* UpdateViewController.swift */,
 				92DB756619DBAEC60082D06F /* FavViewController.swift */,
 				928B1D6419DB08B8004EE0EE /* PackDetailViewController.swift */,
 				928B1D5D19DAFE5E004EE0EE /* PackViewController.swift */,
@@ -161,6 +187,7 @@
 				928B1D4B19DAF93F004EE0EE /* Limit1ViewController.swift */,
 				928B1D4D19DAFA67004EE0EE /* Limit2ViewController.swift */,
 				928B1D5B19DAFDD9004EE0EE /* LatestViewController.swift */,
+				922ABD1219DBEB7A0058FBAC /* FeedbackViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -183,13 +210,41 @@
 				9221D82319DA412300E1DE1B /* HttpUtils.swift */,
 				9221D81E19D9858200E1DE1B /* DatabaseUtils.swift */,
 				9221D82119DA30B900E1DE1B /* FileUtils.swift */,
+				922ABD0719DBC7AE0058FBAC /* ZipUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		922ABCF219DBC5B00058FBAC /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				922ABCF319DBC5B00058FBAC /* minizip */,
+				922ABCFD19DBC5B00058FBAC /* ZipArchive.h */,
+				922ABCFE19DBC5B00058FBAC /* ZipArchive.mm */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		922ABCF319DBC5B00058FBAC /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				922ABCF419DBC5B00058FBAC /* crypt.h */,
+				922ABCF519DBC5B00058FBAC /* ioapi.c */,
+				922ABCF619DBC5B00058FBAC /* ioapi.h */,
+				922ABCF719DBC5B00058FBAC /* mztools.c */,
+				922ABCF819DBC5B00058FBAC /* mztools.h */,
+				922ABCF919DBC5B00058FBAC /* unzip.c */,
+				922ABCFA19DBC5B00058FBAC /* unzip.h */,
+				922ABCFB19DBC5B00058FBAC /* zip.c */,
+				922ABCFC19DBC5B00058FBAC /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		922DFF7A19D6594100364CF5 = {
 			isa = PBXGroup;
 			children = (
+				922ABCF219DBC5B00058FBAC /* ZipArchive */,
 				928B1D1919DA976B004EE0EE /* Resource */,
 				9221D82019D9862E00E1DE1B /* SwiftBridge.h */,
 				9221D80219D9812200E1DE1B /* Utils */,
@@ -337,12 +392,15 @@
 				9221D83319DA742200E1DE1B /* DiceView.swift in Sources */,
 				928B1D6319DB0094004EE0EE /* PackItem.swift in Sources */,
 				928B1D2219DA9839004EE0EE /* SearchResultViewController.swift in Sources */,
+				922ABD1519DBEDE30058FBAC /* SettingViewController.swift in Sources */,
 				928B1D1819DA820A004EE0EE /* CardConsts.swift in Sources */,
+				922ABCFF19DBC5B00058FBAC /* ioapi.c in Sources */,
 				928B1D6519DB08B8004EE0EE /* PackDetailViewController.swift in Sources */,
 				92EEA74819D7A50700A04F78 /* RESideMenu.swift in Sources */,
 				928B1D3A19DADBBB004EE0EE /* CardAdjustViewController.swift in Sources */,
 				928B1D3619DA9C7E004EE0EE /* CardViewController.swift in Sources */,
 				922DFF8919D6594100364CF5 /* AppDelegate.swift in Sources */,
+				922ABD0119DBC5B00058FBAC /* unzip.c in Sources */,
 				9221D83119DA721D00E1DE1B /* CoinView.swift in Sources */,
 				9221D83D19DA760800E1DE1B /* AboutView.swift in Sources */,
 				928B1D3C19DADC8F004EE0EE /* CardPicViewController.swift in Sources */,
@@ -355,7 +413,10 @@
 				928B1D3F19DADE5E004EE0EE /* UrlConsts.swift in Sources */,
 				925E9DB619D814430004C479 /* RootViewController.swift in Sources */,
 				9221D82419DA412300E1DE1B /* HttpUtils.swift in Sources */,
+				922ABD0819DBC7AE0058FBAC /* ZipUtils.swift in Sources */,
 				92655E4B19D861D9005F2265 /* RightMenuViewController.swift in Sources */,
+				922ABD1719DBF3360058FBAC /* UpdateViewController.swift in Sources */,
+				922ABD0019DBC5B00058FBAC /* mztools.c in Sources */,
 				92EEA77819D801B700A04F78 /* UIViewController+RESideMenu.swift in Sources */,
 				9221D82219DA30B900E1DE1B /* FileUtils.swift in Sources */,
 				928B1D2819DA9BD6004EE0EE /* PushUtils.swift in Sources */,
@@ -363,9 +424,12 @@
 				9221D81F19D9858200E1DE1B /* DatabaseUtils.swift in Sources */,
 				92DB756719DBAEC60082D06F /* FavViewController.swift in Sources */,
 				928B1D5E19DAFE5E004EE0EE /* PackViewController.swift in Sources */,
+				922ABD0319DBC5B00058FBAC /* ZipArchive.mm in Sources */,
 				928B1D4C19DAF93F004EE0EE /* Limit1ViewController.swift in Sources */,
 				92EE647519D857AB008866C9 /* LeftMenuViewController.swift in Sources */,
+				922ABD0219DBC5B00058FBAC /* zip.c in Sources */,
 				928B1D4A19DAF7D8004EE0EE /* LimitBanViewController.swift in Sources */,
+				922ABD1319DBEB7A0058FBAC /* FeedbackViewController.swift in Sources */,
 				9221D81619D9813D00E1DE1B /* ApplicationUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -470,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -484,6 +548,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = SwiftBridge.h;
@@ -498,6 +563,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = SwiftBridge.h;

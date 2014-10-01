@@ -1,10 +1,11 @@
 import UIKit
 
+var _instance: RootViewController?
 
 class RootViewController: RESideMenu, RESideMenuDelegate {
 
-    class func getInstance() -> RootViewController {
-        return _instance!
+    class func getInstance() -> RootViewController? {
+        return _instance
     }
     
     override func awakeFromNib() {
@@ -68,4 +69,4 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
 
 }
 
-var _instance: RootViewController?
+

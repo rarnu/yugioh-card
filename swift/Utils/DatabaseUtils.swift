@@ -168,7 +168,7 @@ class DatabaseUtils: NSObject {
         var con = ""
         
         for (var i=0; i < cardIds.count; i++) {
-            con += "\((cardIds[i] as NSNumber).intValue),"
+            con += "\((cardIds[i] as NSNumber).integerValue),"
         }
         if (con != "") {
             var con_t = con as NSString

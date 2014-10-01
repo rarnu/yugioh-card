@@ -8,7 +8,7 @@
         <!--CardInfo-->
         <scene sceneID="jh0-LB-RYs">
             <objects>
-                <viewController title="CardInfo" id="Q16-XZ-Bht" customClass="CardInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cardInfoViewController" title="CardInfo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q16-XZ-Bht" customClass="CardInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EP-b6-Zom"/>
                         <viewControllerLayoutGuide type="bottom" id="d5n-ya-Gdx"/>
@@ -68,7 +68,7 @@
         <!--CardAdjust-->
         <scene sceneID="X7u-Fy-XqS">
             <objects>
-                <viewController title="CardAdjust" id="XGM-Td-cma" customClass="CardAdjustViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cardAdjustViewController" title="CardAdjust" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XGM-Td-cma" customClass="CardAdjustViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NH6-E5-4od"/>
                         <viewControllerLayoutGuide type="bottom" id="ciR-hP-AIp"/>
@@ -106,7 +106,7 @@
         <!--CardPic-->
         <scene sceneID="kMv-72-wc0">
             <objects>
-                <viewController title="CardPic" id="aBi-Jd-nW9" customClass="CardPicViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cardPicViewController" title="CardPic" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aBi-Jd-nW9" customClass="CardPicViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y5e-JO-IR3"/>
                         <viewControllerLayoutGuide type="bottom" id="Vrs-dc-CNd"/>

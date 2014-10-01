@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Root-->
@@ -55,20 +54,17 @@
                         <viewControllerLayoutGuide type="top" id="yAN-nR-hap"/>
                         <viewControllerLayoutGuide type="bottom" id="pht-7q-NsE"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="BZ0-uu-qQa">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" id="BZ0-uu-qQa">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goK-aK-nfi">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="卡片名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goK-aK-nfi">
                                 <rect key="frame" x="20" y="8" width="75" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="KtT-Nf-Ale"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nMp-AC-bzq">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nMp-AC-bzq">
                                 <rect key="frame" x="103" y="8" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,13 +74,13 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="LaR-ks-1XX"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片归属" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17R-ee-uug">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="卡片归属" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17R-ee-uug">
                                 <rect key="frame" x="20" y="160" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片归属" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aka-4d-0b8">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片归属" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aka-4d-0b8">
                                 <rect key="frame" x="103" y="160" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,18 +90,15 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="yte-RI-3Yq"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片种类" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d8-mV-ten">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="卡片种类" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d8-mV-ten">
                                 <rect key="frame" x="20" y="198" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片种类" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ixN-mo-GTi">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片种类" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ixN-mo-GTi">
                                 <rect key="frame" x="103" y="198" width="97" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="LPv-4B-q0i"/>
-                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -113,12 +106,9 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="7kj-nS-kz8"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="怪兽种类" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUd-sm-lLS">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="怪兽种类" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUd-sm-lLS">
                                 <rect key="frame" x="203" y="198" width="97" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="JvO-3o-wAj"/>
-                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -126,13 +116,13 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="6Gz-1W-a9t"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片种族" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-oz-oqB">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="卡片种族" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-oz-oqB">
                                 <rect key="frame" x="20" y="236" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片种族" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-iG-Qnu">
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片种族" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-iG-Qnu">
                                 <rect key="frame" x="103" y="236" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,13 +132,13 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="HNp-Qo-c8u"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片属性" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkG-NJ-Y1I">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="卡片属性" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkG-NJ-Y1I">
                                 <rect key="frame" x="20" y="274" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片属性" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vrv-Ww-QB8">
+                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="卡片属性" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vrv-Ww-QB8">
                                 <rect key="frame" x="103" y="274" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -158,13 +148,13 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="A8D-yV-hdE"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星数阶级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTn-sV-wzC">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="星数阶级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTn-sV-wzC">
                                 <rect key="frame" x="20" y="312" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="星数阶级" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="95g-C7-4pH">
+                            <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="星数阶级" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="95g-C7-4pH">
                                 <rect key="frame" x="103" y="312" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,13 +164,13 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="wDa-Fh-jU7"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="罕贵程度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWD-Yr-5NQ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="罕贵程度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWD-Yr-5NQ">
                                 <rect key="frame" x="20" y="350" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="罕贵程度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-SU-gGM">
+                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="罕贵程度" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-SU-gGM">
                                 <rect key="frame" x="103" y="350" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -190,7 +180,7 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="lWp-O1-sOZ"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="禁卡限制" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mbg-tD-oZV">
+                            <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="禁卡限制" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mbg-tD-oZV">
                                 <rect key="frame" x="103" y="388" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -200,13 +190,13 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="avY-vO-fDh"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="禁卡限制" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIG-W6-72G">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="禁卡限制" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIG-W6-72G">
                                 <rect key="frame" x="20" y="388" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UvW-VS-5v0">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UvW-VS-5v0">
                                 <rect key="frame" x="103" y="46" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -216,7 +206,7 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="IFT-ms-hDi"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVJ-ip-tIV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVJ-ip-tIV">
                                 <rect key="frame" x="103" y="84" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -226,7 +216,7 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="Dnf-JE-W2g"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OFQ-9c-40K">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OFQ-9c-40K">
                                 <rect key="frame" x="103" y="122" width="197" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -236,106 +226,25 @@
                                     <outlet property="delegate" destination="jsP-Dz-DYG" id="q8W-Lo-kHB"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="攻击力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD1-ot-AjX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="攻击力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD1-ot-AjX">
                                 <rect key="frame" x="20" y="46" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="守备力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2B-XE-BPA">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="守备力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2B-XE-BPA">
                                 <rect key="frame" x="20" y="84" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="效果" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m20-oq-vZB">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="效果" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m20-oq-vZB">
                                 <rect key="frame" x="20" y="122" width="75" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="nMp-AC-bzq" firstAttribute="trailing" secondItem="UvW-VS-5v0" secondAttribute="trailing" id="0ZR-ES-1w2"/>
-                            <constraint firstItem="ixN-mo-GTi" firstAttribute="top" secondItem="aka-4d-0b8" secondAttribute="bottom" constant="8" symbolic="YES" id="257-Sq-YXK"/>
-                            <constraint firstItem="OFQ-9c-40K" firstAttribute="top" secondItem="m20-oq-vZB" secondAttribute="top" id="2wE-da-yfd"/>
-                            <constraint firstItem="UVJ-ip-tIV" firstAttribute="top" secondItem="UvW-VS-5v0" secondAttribute="bottom" constant="8" symbolic="YES" id="3ja-vJ-uui"/>
-                            <constraint firstItem="UVJ-ip-tIV" firstAttribute="leading" secondItem="UvW-VS-5v0" secondAttribute="leading" id="5PJ-UD-OQF"/>
-                            <constraint firstItem="UVJ-ip-tIV" firstAttribute="leading" secondItem="OFQ-9c-40K" secondAttribute="leading" id="8x0-nA-j0M"/>
-                            <constraint firstItem="7d8-mV-ten" firstAttribute="top" secondItem="ixN-mo-GTi" secondAttribute="top" id="BSB-DR-WGC"/>
-                            <constraint firstItem="7d8-mV-ten" firstAttribute="top" secondItem="17R-ee-uug" secondAttribute="bottom" constant="8" symbolic="YES" id="Bt8-fb-mpE"/>
-                            <constraint firstItem="dIG-W6-72G" firstAttribute="leading" secondItem="IWD-Yr-5NQ" secondAttribute="leading" id="Cyj-JZ-Ir2"/>
-                            <constraint firstItem="xUd-sm-lLS" firstAttribute="baseline" secondItem="ixN-mo-GTi" secondAttribute="baseline" id="DXj-zH-U5U"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nMp-AC-bzq" secondAttribute="trailing" constant="4" id="En7-Uh-uxp"/>
-                            <constraint firstItem="vD1-ot-AjX" firstAttribute="top" secondItem="UvW-VS-5v0" secondAttribute="top" id="Ev8-N9-N6u"/>
-                            <constraint firstItem="D2B-XE-BPA" firstAttribute="leading" secondItem="vD1-ot-AjX" secondAttribute="leading" id="FeP-LR-loE"/>
-                            <constraint firstItem="BBv-iG-Qnu" firstAttribute="leading" secondItem="Vrv-Ww-QB8" secondAttribute="leading" id="GL5-YY-Mfq"/>
-                            <constraint firstItem="Vrv-Ww-QB8" firstAttribute="trailing" secondItem="95g-C7-4pH" secondAttribute="trailing" id="H3l-p6-6pS"/>
-                            <constraint firstItem="Vrv-Ww-QB8" firstAttribute="leading" secondItem="EkG-NJ-Y1I" secondAttribute="trailing" constant="8" symbolic="YES" id="HZ2-UQ-hsX"/>
-                            <constraint firstItem="UvW-VS-5v0" firstAttribute="leading" secondItem="vD1-ot-AjX" secondAttribute="trailing" constant="8" symbolic="YES" id="Ily-hh-LB5"/>
-                            <constraint firstItem="IWD-Yr-5NQ" firstAttribute="top" secondItem="IkC-SU-gGM" secondAttribute="top" id="J6g-O7-mQ7"/>
-                            <constraint firstItem="lTn-sV-wzC" firstAttribute="leading" secondItem="EkG-NJ-Y1I" secondAttribute="leading" id="JXP-qs-yWv"/>
-                            <constraint firstItem="EkG-NJ-Y1I" firstAttribute="top" secondItem="Vrv-Ww-QB8" secondAttribute="top" id="Jdk-W6-rn4"/>
-                            <constraint firstItem="ixN-mo-GTi" firstAttribute="leading" secondItem="7d8-mV-ten" secondAttribute="trailing" constant="8" symbolic="YES" id="KK3-H5-bMb"/>
-                            <constraint firstItem="goK-aK-nfi" firstAttribute="top" secondItem="nMp-AC-bzq" secondAttribute="top" id="Kav-8Y-prE"/>
-                            <constraint firstItem="aka-4d-0b8" firstAttribute="leading" secondItem="17R-ee-uug" secondAttribute="trailing" constant="8" symbolic="YES" id="M9u-DW-TRc"/>
-                            <constraint firstItem="IkC-SU-gGM" firstAttribute="leading" secondItem="IWD-Yr-5NQ" secondAttribute="trailing" constant="8" symbolic="YES" id="N0z-Tc-LFx"/>
-                            <constraint firstItem="IWD-Yr-5NQ" firstAttribute="leading" secondItem="lTn-sV-wzC" secondAttribute="leading" id="NRP-m1-B6J"/>
-                            <constraint firstItem="m20-oq-vZB" firstAttribute="top" secondItem="D2B-XE-BPA" secondAttribute="bottom" constant="8" symbolic="YES" id="OOm-YB-Kxa"/>
-                            <constraint firstItem="OFQ-9c-40K" firstAttribute="leading" secondItem="m20-oq-vZB" secondAttribute="trailing" constant="8" symbolic="YES" id="P03-87-uIh"/>
-                            <constraint firstItem="dIG-W6-72G" firstAttribute="top" secondItem="mbg-tD-oZV" secondAttribute="top" id="PDx-Ho-QP3"/>
-                            <constraint firstItem="BBv-iG-Qnu" firstAttribute="top" secondItem="ixN-mo-GTi" secondAttribute="bottom" constant="8" symbolic="YES" id="PGk-Vb-awH"/>
-                            <constraint firstItem="UvW-VS-5v0" firstAttribute="top" secondItem="nMp-AC-bzq" secondAttribute="bottom" constant="8" symbolic="YES" id="PJW-nP-dLW"/>
-                            <constraint firstItem="mbg-tD-oZV" firstAttribute="leading" secondItem="IkC-SU-gGM" secondAttribute="leading" id="Q5Y-Lm-jl6"/>
-                            <constraint firstItem="m20-oq-vZB" firstAttribute="leading" secondItem="17R-ee-uug" secondAttribute="leading" id="RKV-LU-b7v"/>
-                            <constraint firstItem="IWD-Yr-5NQ" firstAttribute="top" secondItem="lTn-sV-wzC" secondAttribute="bottom" constant="8" symbolic="YES" id="S5Z-Wc-Z8d"/>
-                            <constraint firstItem="EkG-NJ-Y1I" firstAttribute="top" secondItem="V7k-oz-oqB" secondAttribute="bottom" constant="8" symbolic="YES" id="S9k-Pu-DDg"/>
-                            <constraint firstItem="dIG-W6-72G" firstAttribute="top" secondItem="IWD-Yr-5NQ" secondAttribute="bottom" constant="8" symbolic="YES" id="UKE-wv-Juf"/>
-                            <constraint firstItem="mbg-tD-oZV" firstAttribute="trailing" secondItem="IkC-SU-gGM" secondAttribute="trailing" id="UUR-l8-MQv"/>
-                            <constraint firstItem="BBv-iG-Qnu" firstAttribute="trailing" secondItem="Vrv-Ww-QB8" secondAttribute="trailing" id="Uuf-b5-X4h"/>
-                            <constraint firstItem="mbg-tD-oZV" firstAttribute="top" secondItem="IkC-SU-gGM" secondAttribute="bottom" constant="8" symbolic="YES" id="VIt-gi-kWu"/>
-                            <constraint firstItem="goK-aK-nfi" firstAttribute="leading" secondItem="BZ0-uu-qQa" secondAttribute="leadingMargin" constant="4" id="VxK-o6-xJe"/>
-                            <constraint firstItem="D2B-XE-BPA" firstAttribute="top" secondItem="vD1-ot-AjX" secondAttribute="bottom" constant="8" symbolic="YES" id="Wa7-PD-QQU"/>
-                            <constraint firstItem="BBv-iG-Qnu" firstAttribute="trailing" secondItem="xUd-sm-lLS" secondAttribute="trailing" id="YXK-wV-7eI"/>
-                            <constraint firstItem="m20-oq-vZB" firstAttribute="leading" secondItem="D2B-XE-BPA" secondAttribute="leading" id="Yjx-QG-CyL"/>
-                            <constraint firstItem="goK-aK-nfi" firstAttribute="top" secondItem="yAN-nR-hap" secondAttribute="bottom" constant="8" symbolic="YES" id="ZH2-GA-4Hn"/>
-                            <constraint firstItem="pht-7q-NsE" firstAttribute="top" secondItem="dIG-W6-72G" secondAttribute="bottom" constant="86" id="Zsx-4K-6ii"/>
-                            <constraint firstItem="nMp-AC-bzq" firstAttribute="leading" secondItem="goK-aK-nfi" secondAttribute="trailing" constant="8" symbolic="YES" id="aAA-O0-bvm"/>
-                            <constraint firstItem="lTn-sV-wzC" firstAttribute="top" secondItem="EkG-NJ-Y1I" secondAttribute="bottom" constant="8" symbolic="YES" id="aIL-30-Jer"/>
-                            <constraint firstItem="UvW-VS-5v0" firstAttribute="leading" secondItem="nMp-AC-bzq" secondAttribute="leading" id="awF-7E-qJd"/>
-                            <constraint firstItem="UVJ-ip-tIV" firstAttribute="top" secondItem="D2B-XE-BPA" secondAttribute="top" id="bg4-TN-ubK"/>
-                            <constraint firstItem="aka-4d-0b8" firstAttribute="top" secondItem="OFQ-9c-40K" secondAttribute="bottom" constant="8" symbolic="YES" id="cK6-sk-OcG"/>
-                            <constraint firstItem="95g-C7-4pH" firstAttribute="top" secondItem="Vrv-Ww-QB8" secondAttribute="bottom" constant="8" symbolic="YES" id="d8d-Rh-2n8"/>
-                            <constraint firstItem="xUd-sm-lLS" firstAttribute="trailing" secondItem="aka-4d-0b8" secondAttribute="trailing" id="g1Q-EW-Ve9"/>
-                            <constraint firstItem="7d8-mV-ten" firstAttribute="leading" secondItem="V7k-oz-oqB" secondAttribute="leading" id="gIg-Ta-MRB"/>
-                            <constraint firstItem="aka-4d-0b8" firstAttribute="leading" secondItem="ixN-mo-GTi" secondAttribute="leading" id="gdc-Zv-k8M"/>
-                            <constraint firstItem="17R-ee-uug" firstAttribute="top" secondItem="aka-4d-0b8" secondAttribute="top" id="hdy-gQ-bg6"/>
-                            <constraint firstItem="mbg-tD-oZV" firstAttribute="leading" secondItem="dIG-W6-72G" secondAttribute="trailing" constant="8" symbolic="YES" id="isU-oC-D9z"/>
-                            <constraint firstItem="aka-4d-0b8" firstAttribute="trailing" secondItem="OFQ-9c-40K" secondAttribute="trailing" id="kg4-6u-Oh1"/>
-                            <constraint firstItem="17R-ee-uug" firstAttribute="leading" secondItem="7d8-mV-ten" secondAttribute="leading" id="lVF-6C-Zhz"/>
-                            <constraint firstItem="V7k-oz-oqB" firstAttribute="leading" secondItem="EkG-NJ-Y1I" secondAttribute="leading" id="mcM-QP-yxA"/>
-                            <constraint firstItem="95g-C7-4pH" firstAttribute="leading" secondItem="lTn-sV-wzC" secondAttribute="trailing" constant="8" symbolic="YES" id="pFt-Nt-E53"/>
-                            <constraint firstItem="V7k-oz-oqB" firstAttribute="top" secondItem="BBv-iG-Qnu" secondAttribute="top" id="pIu-XM-4EL"/>
-                            <constraint firstItem="Vrv-Ww-QB8" firstAttribute="top" secondItem="BBv-iG-Qnu" secondAttribute="bottom" constant="8" symbolic="YES" id="psQ-fL-WPs"/>
-                            <constraint firstItem="IkC-SU-gGM" firstAttribute="leading" secondItem="95g-C7-4pH" secondAttribute="leading" id="qB9-MJ-XYI"/>
-                            <constraint firstItem="OFQ-9c-40K" firstAttribute="top" secondItem="UVJ-ip-tIV" secondAttribute="bottom" constant="8" symbolic="YES" id="qRc-lG-k6a"/>
-                            <constraint firstItem="vD1-ot-AjX" firstAttribute="top" secondItem="goK-aK-nfi" secondAttribute="bottom" constant="8" symbolic="YES" id="qTw-qK-Vhc"/>
-                            <constraint firstItem="xUd-sm-lLS" firstAttribute="leading" secondItem="ixN-mo-GTi" secondAttribute="trailing" constant="3" id="qdx-FL-HPV"/>
-                            <constraint firstItem="BBv-iG-Qnu" firstAttribute="leading" secondItem="V7k-oz-oqB" secondAttribute="trailing" constant="8" symbolic="YES" id="r2V-3j-C8c"/>
-                            <constraint firstItem="95g-C7-4pH" firstAttribute="top" secondItem="lTn-sV-wzC" secondAttribute="top" id="r45-35-QCL"/>
-                            <constraint firstItem="goK-aK-nfi" firstAttribute="leading" secondItem="vD1-ot-AjX" secondAttribute="leading" id="sWM-GB-Sad"/>
-                            <constraint firstItem="UVJ-ip-tIV" firstAttribute="leading" secondItem="D2B-XE-BPA" secondAttribute="trailing" constant="8" symbolic="YES" id="tA4-15-cmt"/>
-                            <constraint firstItem="UVJ-ip-tIV" firstAttribute="trailing" secondItem="OFQ-9c-40K" secondAttribute="trailing" id="uGQ-PM-SDE"/>
-                            <constraint firstItem="aka-4d-0b8" firstAttribute="leading" secondItem="OFQ-9c-40K" secondAttribute="leading" id="ukG-tA-grh"/>
-                            <constraint firstItem="IkC-SU-gGM" firstAttribute="top" secondItem="95g-C7-4pH" secondAttribute="bottom" constant="8" symbolic="YES" id="vJX-vd-Swd"/>
-                            <constraint firstItem="dIG-W6-72G" firstAttribute="bottom" secondItem="mbg-tD-oZV" secondAttribute="bottom" id="xDE-qS-Ykm"/>
-                            <constraint firstItem="BBv-iG-Qnu" firstAttribute="leading" secondItem="ixN-mo-GTi" secondAttribute="leading" id="xPQ-Aw-Gb0"/>
-                            <constraint firstItem="95g-C7-4pH" firstAttribute="leading" secondItem="Vrv-Ww-QB8" secondAttribute="leading" id="xXP-F0-rzd"/>
-                            <constraint firstItem="IkC-SU-gGM" firstAttribute="trailing" secondItem="95g-C7-4pH" secondAttribute="trailing" id="zF9-gA-4Lt"/>
-                            <constraint firstItem="UVJ-ip-tIV" firstAttribute="trailing" secondItem="UvW-VS-5v0" secondAttribute="trailing" id="zPM-Hm-ZZ8"/>
-                            <constraint firstItem="V7k-oz-oqB" firstAttribute="top" secondItem="7d8-mV-ten" secondAttribute="bottom" constant="8" symbolic="YES" id="zZY-EL-YT2"/>
-                            <constraint firstItem="17R-ee-uug" firstAttribute="top" secondItem="m20-oq-vZB" secondAttribute="bottom" constant="8" symbolic="YES" id="znI-tb-4fA"/>
-                        </constraints>
                     </scrollView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="HIf-bS-REK">

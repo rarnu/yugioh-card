@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433591477.063454"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7"
-            endingLineNumber = "7"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
             landmarkName = "getInstance()"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433597636.804692"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "awakeFromNib()"
             landmarkType = "5">
          </BreakpointContent>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433610778.993585"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "awakeFromNib()"
             landmarkType = "5">
          </BreakpointContent>
@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433610816.316069"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "awakeFromNib()"
             landmarkType = "5">
          </BreakpointContent>
@@ -328,23 +328,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433672643.641504"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "awakeFromNib()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433672644.112783"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -360,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433672644.63162"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "awakeFromNib()"
             landmarkType = "5">
          </BreakpointContent>
@@ -376,11 +360,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433672646.078959"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/Controller/RootViewController.swift"
+            timestampString = "433847533.524215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "awakeFromNib()"
             landmarkType = "5">
          </BreakpointContent>
@@ -438,11 +438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/Controller/RootViewController.swift"
-            timestampString = "433672738.604404"
+            timestampString = "433847533.524215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "RootViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1179,7 +1179,7 @@
                   symbolName = "reabstraction thunk helper from @callee_owned (@unowned YuGiOhCard.HttpUtils, @unowned ObjectiveC.NSString) -&gt; (@unowned ()) to @callee_owned (@owned YuGiOhCard.HttpUtils, @owned ObjectiveC.NSString) -&gt; (@unowned ())"
                   moduleName = "YuGiOhCard"
                   urlString = "file:///Users/rarnu/Code/yugioh-card/swift/Utils/HttpUtils.swift"
-                  timestampString = "433828312.150044"
+                  timestampString = "433870196.561153"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
@@ -1193,7 +1193,7 @@
                   symbolName = "reabstraction thunk helper from @callee_owned (@owned YuGiOhCard.HttpUtils, @owned ObjectiveC.NSString) -&gt; (@unowned ()) to @callee_owned (@in (YuGiOhCard.HttpUtils, receivedError : ObjectiveC.NSString)) -&gt; (@out ())"
                   moduleName = "YuGiOhCard"
                   urlString = "file:///Users/rarnu/Code/yugioh-card/swift/Utils/HttpUtils.swift"
-                  timestampString = "433828312.150343"
+                  timestampString = "433870196.561384"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
@@ -1207,7 +1207,7 @@
                   symbolName = "reabstraction thunk helper from @callee_owned (@in (YuGiOhCard.HttpUtils, receivedError : ObjectiveC.NSString)) -&gt; (@out ()) to @callee_owned (@owned YuGiOhCard.HttpUtils, @owned ObjectiveC.NSString) -&gt; (@unowned ())"
                   moduleName = "YuGiOhCard"
                   urlString = "file:///Users/rarnu/Code/yugioh-card/swift/Utils/HttpUtils.swift"
-                  timestampString = "433828312.150606"
+                  timestampString = "433870196.561637"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
@@ -1262,6 +1262,38 @@
             startingLineNumber = "28"
             endingLineNumber = "28"
             landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/Controller/UpdateViewController.swift"
+            timestampString = "433845608.008466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "httpUtils(_:receivedProgress:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZipArchive/ZipArchive.swift"
+            timestampString = "433860429.930099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "addFileToZip(_:newname:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
