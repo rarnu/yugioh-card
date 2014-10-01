@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--信息反馈-->
+        <!--Feedback-->
         <scene sceneID="BzS-gb-yMo">
             <objects>
-                <viewController storyboardIdentifier="feedbackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z4Q-gy-Jgr" customClass="FeedbackViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feedbackViewController" title="Feedback" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z4Q-gy-Jgr" customClass="FeedbackViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1z8-2q-6Jq"/>
                         <viewControllerLayoutGuide type="bottom" id="6of-aL-p06"/>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="557" y="147"/>
         </scene>
-        <!--系统设置-->
+        <!--Settings-->
         <scene sceneID="V3p-oV-bmk">
             <objects>
-                <viewController storyboardIdentifier="settingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kBe-99-k1x" customClass="SettingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingViewController" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kBe-99-k1x" customClass="SettingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zny-Wq-0Hl"/>
                         <viewControllerLayoutGuide type="bottom" id="O58-N2-Kv4"/>
@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="223" y="147"/>
         </scene>
-        <!--软件升级-->
+        <!--Update-->
         <scene sceneID="hGg-2z-rhj">
             <objects>
-                <viewController storyboardIdentifier="updateViewController" title="软件升级" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WQn-g1-OHU" customClass="UpdateViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="updateViewController" title="Update" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WQn-g1-OHU" customClass="UpdateViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hew-pS-U95"/>
                         <viewControllerLayoutGuide type="bottom" id="18Z-Gm-DDg"/>
@@ -238,10 +238,10 @@
             </objects>
             <point key="canvasLocation" x="893" y="147"/>
         </scene>
-        <!--左侧抽屉-->
+        <!--LeftSlide-->
         <scene sceneID="AJv-p0-AZM">
             <objects>
-                <viewController storyboardIdentifier="leftMenuViewController" title="左侧抽屉" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OyA-GL-B1y" customClass="LeftMenuViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="leftMenuViewController" title="LeftSlide" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OyA-GL-B1y" customClass="LeftMenuViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bIA-7G-G67"/>
                         <viewControllerLayoutGuide type="bottom" id="sjN-Ol-ZS7"/>
@@ -257,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="223" y="781"/>
         </scene>
-        <!--右侧抽屉-->
+        <!--RightSlide-->
         <scene sceneID="mjo-CK-fTQ">
             <objects>
-                <viewController storyboardIdentifier="rightMenuViewController" title="右侧抽屉" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Vc-7F-cb7" customClass="RightMenuViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rightMenuViewController" title="RightSlide" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Vc-7F-cb7" customClass="RightMenuViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Or9-iD-7IN"/>
                         <viewControllerLayoutGuide type="bottom" id="33f-g3-SpP"/>

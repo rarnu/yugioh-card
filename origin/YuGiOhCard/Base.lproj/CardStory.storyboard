@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--卡片信息-->
+        <!--CardInfo-->
         <scene sceneID="jh0-LB-RYs">
             <objects>
-                <viewController id="Q16-XZ-Bht" customClass="CardInfoViewController" sceneMemberID="viewController">
+                <viewController title="CardInfo" id="Q16-XZ-Bht" customClass="CardInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EP-b6-Zom"/>
                         <viewControllerLayoutGuide type="bottom" id="d5n-ya-Gdx"/>
@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="-1599" y="2230"/>
         </scene>
-        <!--Card View Controller-->
+        <!--CardNavigation-->
         <scene sceneID="kKn-5l-oki">
             <objects>
-                <tabBarController storyboardIdentifier="cardViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9iT-5Z-tsD" customClass="CardViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="cardViewController" title="CardNavigation" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9iT-5Z-tsD" customClass="CardViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ztm-5r-7Rk"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="-1165" y="1400"/>
         </scene>
-        <!--效果调整-->
+        <!--CardAdjust-->
         <scene sceneID="X7u-Fy-XqS">
             <objects>
-                <viewController id="XGM-Td-cma" customClass="CardAdjustViewController" sceneMemberID="viewController">
+                <viewController title="CardAdjust" id="XGM-Td-cma" customClass="CardAdjustViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NH6-E5-4od"/>
                         <viewControllerLayoutGuide type="bottom" id="ciR-hP-AIp"/>
@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="-1165" y="2230"/>
         </scene>
-        <!--卡图-->
+        <!--CardPic-->
         <scene sceneID="kMv-72-wc0">
             <objects>
-                <viewController id="aBi-Jd-nW9" customClass="CardPicViewController" sceneMemberID="viewController">
+                <viewController title="CardPic" id="aBi-Jd-nW9" customClass="CardPicViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y5e-JO-IR3"/>
                         <viewControllerLayoutGuide type="bottom" id="Vrs-dc-CNd"/>
