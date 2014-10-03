@@ -3,6 +3,7 @@
 #import "ConfigUtils.h"
 #import "RootViewController.h"
 #import "FileUtils.h"
+#import "UrlConsts.h"
 
 @interface UIBackgroundImageCell()
 
@@ -119,6 +120,10 @@
 
 -(CGSize) generateImageSize {
     return CGSizeMake(89, 166);
+}
+
+-(IBAction)sourceClicked:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_GITHUB]];
 }
 
 @end

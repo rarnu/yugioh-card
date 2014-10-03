@@ -10,7 +10,9 @@
 
 @property (strong, nonatomic) IBOutlet UIButton * btnSpace;
 @property (strong, nonatomic) IBOutlet UICollectionView * colImg;
+@property (strong, nonatomic) IBOutlet UIButton * btnSource;
 
 -(IBAction)cleanClicked:(id)sender;
+-(IBAction)sourceClicked:(id)sender;
 
 @end

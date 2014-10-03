@@ -11,6 +11,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
 
     @IBOutlet var btnSpace: UIButton?
     @IBOutlet var colImg: UICollectionView?
+    @IBOutlet var btnSource: UIButton?
     
     var _backgrounds: NSMutableArray?
     var _grid_size: CGSize?
@@ -108,5 +109,8 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         return CGSizeMake(89, 166)
     }
 
+    @IBAction func sourceClicked(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: URL_GITHUB))
+    }
 
 }

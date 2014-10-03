@@ -8,7 +8,8 @@
 #define URL_FEEDBACK [BASE_YUGIOH_URL stringByAppendingString:@"feedback.php"]
 #define PARAM_FEEDBACK @"id=%@&email=%@&text=%@&appver=%@&osver=%@"
 #define URL_UPDATE [BASE_YUGIOH_URL stringByAppendingString:@"update.php"]
-#define PARAM_UPDATE @"ver=%d&cardid=%d&dbver=%d"
+#define PARAM_UPDATE @"ver=%d&cardid=%d&dbver=%d&os=i"
 #define URL_FILE_DATABASE [BASE_YUGIOH_URL stringByAppendingString:@"download/yugioh.zip"]
-#define URL_UPDATE_LOG [BASE_YUGIOH_URL stringByAppendingString:@"update.ios.txt"]
+#define URL_UPDATE_LOG [BASE_YUGIOH_URL stringByAppendingString:@"update.txt"]
 #define ZIP_NAME @"yugioh.zip"
+#define URL_GITHUB @"https://github.com/rarnu/yugioh-card/tree/master/origin"
