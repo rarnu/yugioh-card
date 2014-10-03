@@ -22,6 +22,7 @@ class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate 
     var tag: Int?
     
     func get(url: String) {
+        NSLog(url)
         var u = NSURL(string: url)
         
         var req = NSURLRequest(URL: u, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)
@@ -56,7 +57,19 @@ class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate 
     
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        NSLog(error.localizedDescription)
         self.delegate?.httpUtils?(self, receivedError: error.localizedDescription)
+    }
+    
+    func connection(connection: NSURLConnection, canAuthenticateAgainstProtectionSpace protectionSpace: NSURLProtectionSpace) -> Bool {
+        return protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust
+    }
+    
+    func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+        if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+            challenge.sender.useCredential(NSURLCredential(forTrust: challenge.protectionSpace.serverTrust), forAuthenticationChallenge: challenge)
+        }
+        challenge.sender.continueWithoutCredentialForAuthenticationChallenge(challenge)
     }
     
 }
