@@ -1176,15 +1176,29 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "reabstraction thunk helper from @callee_owned (@unowned YuGiOhCard.HttpUtils, @unowned ObjectiveC.NSString) -&gt; (@unowned ()) to @callee_owned (@owned YuGiOhCard.HttpUtils, @owned ObjectiveC.NSString) -&gt; (@unowned ())"
+                  symbolName = "YuGiOhCard.HttpUtils.connection (YuGiOhCard.HttpUtils)(ObjectiveC.NSURLConnection, didFailWithError : ObjectiveC.NSError) -&gt; ()"
                   moduleName = "YuGiOhCard"
                   urlString = "file:///Users/rarnu/Code/yugioh-card/swift/Utils/HttpUtils.swift"
-                  timestampString = "433998883.076135"
+                  timestampString = "434000980.522369"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
                   endingLineNumber = "59"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@unowned YuGiOhCard.HttpUtils, @unowned ObjectiveC.NSString) -&gt; (@unowned ()) to @callee_owned (@owned YuGiOhCard.HttpUtils, @owned ObjectiveC.NSString) -&gt; (@unowned ())"
+                  moduleName = "YuGiOhCard"
+                  urlString = "file:///Users/rarnu/Code/yugioh-card/swift/Utils/HttpUtils.swift"
+                  timestampString = "434000980.52257"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1193,12 +1207,12 @@
                   symbolName = "reabstraction thunk helper from @callee_owned (@owned YuGiOhCard.HttpUtils, @owned ObjectiveC.NSString) -&gt; (@unowned ()) to @callee_owned (@in (YuGiOhCard.HttpUtils, receivedError : ObjectiveC.NSString)) -&gt; (@out ())"
                   moduleName = "YuGiOhCard"
                   urlString = "file:///Users/rarnu/Code/yugioh-card/swift/Utils/HttpUtils.swift"
-                  timestampString = "433998883.076337"
+                  timestampString = "434000980.52269"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
                   endingLineNumber = "59"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "0">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1207,12 +1221,12 @@
                   symbolName = "reabstraction thunk helper from @callee_owned (@in (YuGiOhCard.HttpUtils, receivedError : ObjectiveC.NSString)) -&gt; (@out ()) to @callee_owned (@owned YuGiOhCard.HttpUtils, @owned ObjectiveC.NSString) -&gt; (@unowned ())"
                   moduleName = "YuGiOhCard"
                   urlString = "file:///Users/rarnu/Code/yugioh-card/swift/Utils/HttpUtils.swift"
-                  timestampString = "433998883.076539"
+                  timestampString = "434000980.522807"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
                   endingLineNumber = "59"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "0">
                </Location>
             </Locations>
          </BreakpointContent>
