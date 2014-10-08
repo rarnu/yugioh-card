@@ -41,6 +41,7 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
     }
 
     override func didReceiveMemoryWarning() {
