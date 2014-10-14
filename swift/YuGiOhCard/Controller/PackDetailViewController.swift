@@ -30,6 +30,7 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
         
         self.refreshButton!.target = self
         self.refreshButton!.action = "refreshClicked:"
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func didReceiveMemoryWarning() {

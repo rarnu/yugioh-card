@@ -29,6 +29,7 @@ class FavViewController: UITableViewController {
             lblNoCard!.hidden = true
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         }
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func didReceiveMemoryWarning() {

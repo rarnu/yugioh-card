@@ -7,6 +7,7 @@ class LatestViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self._cards = DatabaseUtils.queryLast100()
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     override func didReceiveMemoryWarning() {

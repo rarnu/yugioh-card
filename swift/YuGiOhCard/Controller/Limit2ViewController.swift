@@ -7,6 +7,7 @@ class Limit2ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self._cards = DatabaseUtils.queryLimit2Cards()
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func didReceiveMemoryWarning() {

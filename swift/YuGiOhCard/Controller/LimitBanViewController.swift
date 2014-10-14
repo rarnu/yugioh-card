@@ -7,6 +7,7 @@ class LimitBanViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self._cards = DatabaseUtils.queryBanCards()
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func didReceiveMemoryWarning() {
