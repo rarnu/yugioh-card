@@ -94,10 +94,12 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.deselectItemAtIndexPath(indexPath, animated:true)
         _current_background = _backgrounds![indexPath.row] as String
         ConfigUtils.saveBackgroundImage(_current_background!)
-        var root = RootViewController.getInstance()
-        if (root != nil) {
-            root!.backgroundImage = UIImage(named: _current_background!)
-        }
+        var nc = NSNotificationCenter.defaultCenter()
+        nc.postNotificationName("Notification_ChangeBackground", object: _current_background!)
+//        var root = RootViewController.getInstance()
+//        if (root != nil) {
+//            root!.backgroundImage = UIImage(named: _current_background!)
+//        }
         collectionView.reloadData()
     }
     

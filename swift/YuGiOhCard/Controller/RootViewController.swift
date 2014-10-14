@@ -1,12 +1,6 @@
 import UIKit
 
-var _instance: RootViewController?
-
 class RootViewController: RESideMenu, RESideMenuDelegate {
-
-    class func getInstance() -> RootViewController? {
-        return _instance
-    }
     
     override func awakeFromNib() {
         self.menuPreferredStatusBarStyle = UIStatusBarStyle.LightContent
@@ -33,15 +27,34 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
             background_name = "bg1"
         }
         self.backgroundImage = UIImage(named: background_name!)
-        self.delegate = self;
-        _instance = self;
-
+        self.delegate = self
+        
+        
+    }
+    
+    func receivedNotification(notification: NSNotification) {
+        var backImg = notification.object! as String
+        self.backgroundImage = UIImage(named: backImg)
+    }
+    
+    func receivedNotification(imgPath: String) {
+        self.backgroundImage = UIImage(named: imgPath)
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: "Notification_ChangeBackground", object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "Notification_ChangeBackground", object: nil)
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
