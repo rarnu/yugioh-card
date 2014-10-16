@@ -2,13 +2,7 @@
 #import "LeftMenuViewController.h"
 #import "ConfigUtils.h"
 
-@interface RootViewController ()
-
-@end
-
 @implementation RootViewController
-
-static RootViewController * _instance = nil;
 
 - (void)awakeFromNib
 {
@@ -33,32 +27,31 @@ static RootViewController * _instance = nil;
     }
     self.backgroundImage = [UIImage imageNamed:background_name];
     self.delegate = self;
-    _instance = self;
+
+    NSNotificationCenter * nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(receivedNotification:) name:@"Notification_BackgroundImage" object:nil];
 }
 
-+(RootViewController *) getInstance {
-    return _instance;
+- (void) receivedNotification: (NSNotification *) notification {
+    NSString * str = (NSString *)notification.object;
+    self.backgroundImage = [UIImage imageNamed:str];
 }
 
 #pragma mark - RESideMenu Delegate
 
-- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController
-{
+- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController {
     
 }
 
-- (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
-{
+- (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController {
     
 }
 
-- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
-{
+- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController {
     
 }
 
-- (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
-{
+- (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController {
     
 }
 

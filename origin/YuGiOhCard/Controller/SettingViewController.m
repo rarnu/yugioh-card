@@ -107,10 +107,8 @@
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     _current_background = _backgrounds[indexPath.row];
     [ConfigUtils saveBackgroundImage:_current_background];
-    RootViewController * root = [RootViewController getInstance];
-    if (root) {
-        root.backgroundImage = [UIImage imageNamed:_current_background];
-    }
+    NSNotificationCenter * nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"Notification_BackgroundImage" object:_current_background];
     [collectionView reloadData];
 }
 

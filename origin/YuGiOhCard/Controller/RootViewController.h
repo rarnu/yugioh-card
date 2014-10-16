@@ -3,6 +3,4 @@
 
 @interface RootViewController : RESideMenu <RESideMenuDelegate>
 
-+(RootViewController *) getInstance;
-
 @end
