@@ -14,11 +14,11 @@
 		<string>https://github.com/rarnu/yugioh-card.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>swift/YuGiOhCard/YuGiOhCard.xcodeproj</string>
+	<string>swift/YuGiOhCard.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>4B74D130D89CD8B3F35A7FE5BDFC8A371E49D0BB</key>
-		<string>../../../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/rarnu/yugioh-card.git</string>

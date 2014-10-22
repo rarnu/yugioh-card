@@ -112,7 +112,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     @IBAction func sourceClicked(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: URL_GITHUB))
+        UIApplication.sharedApplication().openURL(NSURL(string: URL_GITHUB)!)
     }
 
 }

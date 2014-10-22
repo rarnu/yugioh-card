@@ -47,8 +47,8 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
             var json = NSString(data: data!, encoding:NSUTF8StringEncoding)
-            FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json)
-            self.loadData(json)
+            FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json!)
+            self.loadData(json!)
         }
     }
     
@@ -80,8 +80,8 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
         var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         var item = _cards![indexPath.row] as CardItem
         cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel!.textColor = UIColor.whiteColor()
-        cell.textLabel!.text = item.name
+        cell.textLabel.textColor = UIColor.whiteColor()
+        cell.textLabel.text = item.name
         cell.detailTextLabel!.text = item.sCardType
         return cell
     }

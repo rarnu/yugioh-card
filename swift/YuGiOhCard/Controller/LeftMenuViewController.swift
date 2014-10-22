@@ -48,12 +48,12 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
             cell!.backgroundColor = UIColor.clearColor()
-            cell!.textLabel!.font = UIFont(name: "HelveticaNeue", size:21)
-            cell!.textLabel!.textColor = UIColor.whiteColor()
-            cell!.textLabel!.highlightedTextColor = UIColor.lightGrayColor()
+            cell!.textLabel.font = UIFont(name: "HelveticaNeue", size:21)
+            cell!.textLabel.textColor = UIColor.whiteColor()
+            cell!.textLabel.highlightedTextColor = UIColor.lightGrayColor()
             cell!.selectedBackgroundView = UIView()
         }
-        cell!.textLabel!.text = self.titles[indexPath.row] as? String
+        cell!.textLabel.text = self.titles[indexPath.row] as? String
         return cell!
     }
     

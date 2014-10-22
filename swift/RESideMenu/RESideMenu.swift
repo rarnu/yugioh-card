@@ -165,7 +165,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.bouncesHorizontally = true
         self.panGestureEnabled = true
         self.panFromEdge = true
-        self.panMinimumOpenThreshold = 60.0
+        self.panMinimumOpenThreshold = 60
         self.contentViewShadowEnabled = false
         self.contentViewShadowColor = UIColor.blackColor()
         self.contentViewShadowOffset = CGSizeZero

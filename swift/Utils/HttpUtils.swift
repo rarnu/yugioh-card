@@ -25,20 +25,20 @@ class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate 
         NSLog(url)
         var u = NSURL(string: url)
         
-        var req = NSURLRequest(URL: u, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)
+        var req = NSURLRequest(URL: u!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)
         var conn = NSURLConnection(request: req, delegate: self)
-        conn.start()
+        conn!.start()
     }
     
     func post(url: String, param: String) {
         var u = NSURL(string: url)
-        var req = NSMutableURLRequest(URL: u)
+        var req = NSMutableURLRequest(URL: u!)
         req.HTTPMethod = "POST"
         req.timeoutInterval = 60
         var data = (param as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPBody = data
         var conn = NSURLConnection(request: req, delegate: self)
-        conn.start()
+        conn!.start()
     }
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {

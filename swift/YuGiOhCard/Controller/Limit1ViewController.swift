@@ -35,8 +35,8 @@ class Limit1ViewController: UITableViewController {
         
         var item = self._cards![indexPath.row] as CardItem
         cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel!.textColor = UIColor.whiteColor()
-        cell.textLabel!.text = item.name
+        cell.textLabel.textColor = UIColor.whiteColor()
+        cell.textLabel.text = item.name
         cell.detailTextLabel!.text = item.sCardType
         return cell;
     }
