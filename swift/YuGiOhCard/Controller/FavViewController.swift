@@ -48,8 +48,8 @@ class FavViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         var item = self._cards![indexPath.row] as CardItem
         cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel.textColor = UIColor.whiteColor()
-        cell.textLabel.text = item.name
+        cell.textLabel!.textColor = UIColor.whiteColor()
+        cell.textLabel!.text = item.name
         cell.detailTextLabel!.text = item.sCardType
         return cell
     }

@@ -62,8 +62,8 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
         var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         var item = (_pack_section![indexPath.section] as PackItem).packages[indexPath.row] as PackageDetail
         cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel.textColor = UIColor.whiteColor()
-        cell.textLabel.text = item.packName
+        cell.textLabel!.textColor = UIColor.whiteColor()
+        cell.textLabel!.text = item.packName
         return cell
     }
     
