@@ -13,7 +13,7 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
         super.viewDidLoad()
         _img_path = "image"
         self.card = (self.tabBarController! as CardViewController).card
-        var cardImgName = "\(self.card!.card_id).jpg"
+        var cardImgName = "\(self.card!._id).jpg"
         var exists = FileUtils.fileExists(cardImgName, filePath:_img_path!)
         if (exists) {
             self.loadImage(FileUtils.readFile(cardImgName, loadPath:_img_path!)!)
@@ -34,13 +34,13 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
         self.btnDownload!.hidden = true
         var hu = HttpUtils()
         hu.delegate = self
-        var url = NSString(format: URL_CARD_IMAGE, self.card!.card_id) as String
+        var url = NSString(format: URL_CARD_IMAGE, self.card!._id) as String
         hu.get(url)
     }
     
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
-            var fileName = "\(self.card!.card_id).jpg"
+            var fileName = "\(self.card!._id).jpg"
             FileUtils.writeFile(fileName, savePath:_img_path!, fileData:data!)
             self.loadImage(data!)
         }

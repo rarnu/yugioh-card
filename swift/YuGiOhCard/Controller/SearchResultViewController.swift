@@ -73,7 +73,7 @@ class SearchResultViewController: UITableViewController {
     }
     
     func buildSql() -> String {
-        var sql = "select id, name, sCardType from YGODATA where 1=1"
+        var sql = "select _id, name, sCardType from YGODATA where 1=1"
         // name
         if (self.searchCardName != nil && self.searchCardName! != "") {
             sql += " and (name like '%\(self.searchCardName!)%' or japName like '%\(self.searchCardName!)%' or enName like '%\(self.searchCardName!)%' or shortName like '%\(self.searchCardName!)%' or oldName like '%\(self.searchCardName!)%')"

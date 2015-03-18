@@ -1,7 +1,7 @@
 import UIKit
 
 class CardItem: NSObject {
-    var card_id: Int = 0            // id
+    var _id: Int = 0                // id
     var japName: String = ""        // japName
     var name: String = ""           // name
     var enName: String = ""         // enName

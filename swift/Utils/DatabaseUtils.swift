@@ -116,7 +116,7 @@ class DatabaseUtils: NSObject {
 
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             var item = CardItem()
-            item.card_id = Int(sqlite3_column_int(stmt, 0))
+            item._id = Int(sqlite3_column_int(stmt, 0))
             item.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 1)))!
             item.sCardType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 2)))!
             array.addObject(item)
@@ -137,12 +137,12 @@ class DatabaseUtils: NSObject {
     class func queryOneCard(cardId: Int) -> CardItem? {
         var stmt: COpaquePointer = nil
         var item: CardItem? = nil
-        var sql = "select * from YGODATA where id=\(cardId)" as NSString
+        var sql = "select * from YGODATA where _id=\(cardId)" as NSString
     
         if (sqlite3_prepare_v2(_main_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             while (sqlite3_step(stmt) == SQLITE_ROW) {
                 item = CardItem()
-                item!.card_id = Int(sqlite3_column_int(stmt, 0))
+                item!._id = Int(sqlite3_column_int(stmt, 0))
                 item!.japName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 1)))!
                 item!.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 2)))!
                 item!.enName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 3)))!
@@ -175,22 +175,22 @@ class DatabaseUtils: NSObject {
     }
 
     class func queryLast100() -> NSMutableArray? {
-        var sql = "select id, name, sCardType from YGODATA order by id desc limit 0,100"
+        var sql = "select _id, name, sCardType from YGODATA order by _id desc limit 0,100"
         return self.queryData(sql)
     }
     
     class func queryBanCards() -> NSMutableArray? {
-        var sql = "select id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc"
+        var sql = "select _id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
     class func queryLimit1Cards() -> NSMutableArray? {
-        var sql = "select id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc"
+        var sql = "select _id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
     class func queryLimit2Cards() -> NSMutableArray? {
-        var sql = "select id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc"
+        var sql = "select _id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
@@ -207,7 +207,7 @@ class DatabaseUtils: NSObject {
         }
         var arr: NSMutableArray? = nil
         if (con != "") {
-            var sql = "select id, name, sCardType from YGODATA where id in (\(con))"
+            var sql = "select _id, name, sCardType from YGODATA where _id in (\(con))"
             arr = self.queryData(sql)
         }
         if (arr == nil) {
@@ -218,7 +218,7 @@ class DatabaseUtils: NSObject {
     
     class func queryLastCardId() -> Int {
         var cardId: Int = 0
-        var sql = "select id from YGODATA order by id desc limit 0,1" as NSString
+        var sql = "select _id from YGODATA order by _id desc limit 0,1" as NSString
         var stmt: COpaquePointer = nil
         if (sqlite3_prepare_v2(_main_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             while (sqlite3_step(stmt) == SQLITE_ROW) {

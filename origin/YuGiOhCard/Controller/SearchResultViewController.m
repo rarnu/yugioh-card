@@ -60,7 +60,7 @@
 #pragma mark - sql
 
 -(NSString *) buildSql {
-    NSString * sql = @"select id, name, sCardType from YGODATA where 1=1";
+    NSString * sql = @"select _id, name, sCardType from YGODATA where 1=1";
     // name
     if (![self.searchCardName isEqualToString:@""]) {
         sql = [sql stringByAppendingFormat:@" and (name like '%%%%%@%%%%' or japName like '%%%%%@%%%%' or enName like '%%%%%@%%%%' or shortName like '%%%%%@%%%%' or oldName like '%%%%%@%%%%')", self.searchCardName, self.searchCardName,self.searchCardName, self.searchCardName, self.searchCardName];

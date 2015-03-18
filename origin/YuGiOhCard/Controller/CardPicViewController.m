@@ -28,7 +28,7 @@
     [super viewDidLoad];
     _img_path = @"image";
     self.card = ((CardViewController *)self.tabBarController).card;
-    NSString * cardImgName = [NSString stringWithFormat:@"%ld.jpg", (long)self.card.card_id];
+    NSString * cardImgName = [NSString stringWithFormat:@"%ld.jpg", (long)self.card._id];
     BOOL exists = [FileUtils fileExists:cardImgName filePath:_img_path];
     if (exists) {
         [self loadImage:[FileUtils readFile:cardImgName loadPath:_img_path]];
@@ -50,7 +50,7 @@
     [self.btnDownload setHidden:YES];
     HttpUtils * hu = [HttpUtils alloc];
     hu.delegate = self;
-    NSString * url = [NSString stringWithFormat:URL_CARD_IMAGE, (long)self.card.card_id];
+    NSString * url = [NSString stringWithFormat:URL_CARD_IMAGE, (long)self.card._id];
     [hu get:url];
 }
 
@@ -58,7 +58,7 @@
 
 -(void) httpUtils:(HttpUtils *)httpUtils receivedData:(NSData *)data {
     if (data != nil) {
-        NSString * fileName = [NSString stringWithFormat:@"%ld.jpg", (long)self.card.card_id];
+        NSString * fileName = [NSString stringWithFormat:@"%ld.jpg", (long)self.card._id];
         [FileUtils writeFile:fileName savePath:_img_path fileData:data];
         [self loadImage: data];
     }

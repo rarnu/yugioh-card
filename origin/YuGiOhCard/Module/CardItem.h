@@ -2,7 +2,7 @@
 
 @interface CardItem : NSObject
 
-@property (nonatomic) NSInteger card_id;    // id
+@property (nonatomic) NSInteger _id;        // id
 @property (nonatomic) NSString * japName;   // japName
 @property (nonatomic) NSString * name;      // name
 @property (nonatomic) NSString * enName;    // enName
