@@ -10,9 +10,7 @@ class DatabaseUtils: NSObject {
         var bundle = NSBundle.mainBundle()
         var oriMainDbPath: String? = bundle.pathForResource("yugioh", ofType: "db")
         var oriFavDbPath: String? = bundle.pathForResource("fav", ofType: "db")
-        
-        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
-        var document = paths[0] as String
+        var document = FileUtils.getDocumentPath()
         var mainDbPath: String = "\(document)/yugioh.db"
         var favDbPath: String = "\(document)/fav.db"
         fileMgr.createDirectoryAtPath(document, withIntermediateDirectories: true, attributes: nil, error: nil)
@@ -26,10 +24,24 @@ class DatabaseUtils: NSObject {
     
     }
     
+    class func updateDatabase() {
+        var currVer = getDatabaseVersion();
+        var innerVer = getDatabaseVersionFromAssets();
+        if (innerVer > currVer) {
+            closeDatabase()
+            var document = FileUtils.getDocumentPath()
+            var mainDbPath: String = "\(document)/yugioh.db"
+            NSFileManager.defaultManager().removeItemAtPath(mainDbPath, error: nil)
+            var updated = copyDatabaseFile()
+            if (updated) {
+                updated = openDatabase()
+                NSLog("updated database: \(updated)")
+            }
+        }
+    }
+    
     class func _openDatabase(fileName: String) -> COpaquePointer {
-        
-        var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
-        var document = paths[0] as String
+        var document = FileUtils.getDocumentPath()
         var dbFilePath = "\(document)/\(fileName)" as NSString
         var database: COpaquePointer = nil
         if (sqlite3_open(dbFilePath.cStringUsingEncoding(NSUTF8StringEncoding), &database) == SQLITE_OK) {
@@ -79,15 +91,34 @@ class DatabaseUtils: NSObject {
         return ver
     }
     
+    class func getDatabaseVersionFromAssets() -> Int {
+        var assetsDbPath: NSString? = NSBundle.mainBundle().pathForResource("yugioh", ofType: "db")
+        var db: COpaquePointer = nil
+        var ret: Int = 0
+        if (sqlite3_open(assetsDbPath!.cStringUsingEncoding(NSUTF8StringEncoding), &db) == SQLITE_OK) {
+            var sql = "select ver from version" as NSString
+            var stmt: COpaquePointer = nil
+            
+            if (sqlite3_prepare_v2(db, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
+                while (sqlite3_step(stmt) == SQLITE_ROW) {
+                    ret = Int(sqlite3_column_int(stmt, 0))
+                    break
+                }
+                sqlite3_finalize(stmt)
+            }
+            sqlite3_close(db)
+        }
+        return ret
+    }
+    
     class func buildDataArray(stmt: COpaquePointer) -> NSMutableArray? {
         var array = NSMutableArray()
 
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             var item = CardItem()
-            item._id = Int(sqlite3_column_int(stmt, 0))
-            item.card_id = Int(sqlite3_column_int(stmt, 1))
-            item.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 2)))!
-            item.sCardType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 3)))!
+            item.card_id = Int(sqlite3_column_int(stmt, 0))
+            item.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 1)))!
+            item.sCardType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 2)))!
             array.addObject(item)
         }
         return array
@@ -106,36 +137,35 @@ class DatabaseUtils: NSObject {
     class func queryOneCard(cardId: Int) -> CardItem? {
         var stmt: COpaquePointer = nil
         var item: CardItem? = nil
-        var sql = "select * from YGODATA where _id=\(cardId)" as NSString
+        var sql = "select * from YGODATA where id=\(cardId)" as NSString
     
         if (sqlite3_prepare_v2(_main_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             while (sqlite3_step(stmt) == SQLITE_ROW) {
                 item = CardItem()
-                item!._id = Int(sqlite3_column_int(stmt, 0))
-                item!.card_id = Int(sqlite3_column_int(stmt, 1))
-                item!.japName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 2)))!
-                item!.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 3)))!
-                item!.enName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 4)))!
-                item!.sCardType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 5)))!
-                item!.cardDType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 6)))!
-                item!.tribe = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 7)))!
-                item!.package = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 8)))!
-                item!.element = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 9)))!
-                item!.level = Int(sqlite3_column_int(stmt, 10))
-                item!.infrequence = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 11)))!
-                item!.atkValue = Int(sqlite3_column_int(stmt, 12))
-                item!.atk = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 13)))!
-                item!.defValue = Int(sqlite3_column_int(stmt, 14))
-                item!.def = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 15)))!
-                item!.effect = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 16)))!
-                item!.ban = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 17)))!
-                item!.cheatcode = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 18)))!
-                item!.adjust = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 19)))!
-                item!.cardCamp = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 20)))!
-                item!.oldName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 21)))!
-                item!.shortName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 22)))!
-                item!.pendulumL = Int(sqlite3_column_int(stmt, 23))
-                item!.pendulumR = Int(sqlite3_column_int(stmt, 24))
+                item!.card_id = Int(sqlite3_column_int(stmt, 0))
+                item!.japName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 1)))!
+                item!.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 2)))!
+                item!.enName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 3)))!
+                item!.sCardType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 4)))!
+                item!.cardDType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 5)))!
+                item!.tribe = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 6)))!
+                item!.package = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 7)))!
+                item!.element = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 8)))!
+                item!.level = Int(sqlite3_column_int(stmt, 9))
+                item!.infrequence = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 10)))!
+                item!.atkValue = Int(sqlite3_column_int(stmt, 11))
+                item!.atk = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 12)))!
+                item!.defValue = Int(sqlite3_column_int(stmt, 13))
+                item!.def = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 14)))!
+                item!.effect = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 15)))!
+                item!.ban = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 16)))!
+                item!.cheatcode = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 17)))!
+                item!.adjust = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 18)))!
+                item!.cardCamp = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 19)))!
+                item!.oldName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 20)))!
+                item!.shortName = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 21)))!
+                item!.pendulumL = Int(sqlite3_column_int(stmt, 22))
+                item!.pendulumR = Int(sqlite3_column_int(stmt, 23))
                 break
             }
             sqlite3_finalize(stmt)
@@ -145,22 +175,22 @@ class DatabaseUtils: NSObject {
     }
 
     class func queryLast100() -> NSMutableArray? {
-        var sql = "select _id, id, name, sCardType from YGODATA order by _id desc limit 0,100"
+        var sql = "select id, name, sCardType from YGODATA order by id desc limit 0,100"
         return self.queryData(sql)
     }
     
     class func queryBanCards() -> NSMutableArray? {
-        var sql = "select _id, id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc"
+        var sql = "select id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
     class func queryLimit1Cards() -> NSMutableArray? {
-        var sql = "select _id, id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc"
+        var sql = "select id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
     class func queryLimit2Cards() -> NSMutableArray? {
-        var sql = "select _id, id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc"
+        var sql = "select id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
@@ -177,7 +207,7 @@ class DatabaseUtils: NSObject {
         }
         var arr: NSMutableArray? = nil
         if (con != "") {
-            var sql = "select _id, id, name, sCardType from YGODATA where id in (\(con))"
+            var sql = "select id, name, sCardType from YGODATA where id in (\(con))"
             arr = self.queryData(sql)
         }
         if (arr == nil) {

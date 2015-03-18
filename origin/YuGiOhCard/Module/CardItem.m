@@ -5,7 +5,6 @@
 -(CardItem *) init {
     self = [super init];
     if (self) {
-        self._id = 0;
         self.card_id = 0;
         self.japName = @"";
         self.name = @"";

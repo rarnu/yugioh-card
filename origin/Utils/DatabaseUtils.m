@@ -88,10 +88,9 @@ static sqlite3 * _fav_database;
     NSMutableArray * array = [[NSMutableArray alloc] init];
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         CardItem * item = [[CardItem alloc] init];
-        item._id = sqlite3_column_int(stmt, 0);
-        item.card_id = sqlite3_column_int(stmt, 1);
-        item.name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 2)];
-        item.sCardType = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 3)];
+        item.card_id = sqlite3_column_int(stmt, 0);
+        item.name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 1)];
+        item.sCardType = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 2)];
         [array addObject:item];
     }
     return array;
@@ -110,36 +109,35 @@ static sqlite3 * _fav_database;
 + (CardItem *) queryOneCard:(NSInteger)cardId {
     sqlite3_stmt * stmt;
     CardItem * item = nil;
-    NSString * sql = [NSString stringWithFormat:@"select * from YGODATA where _id=%ld", (long)cardId];
+    NSString * sql = [NSString stringWithFormat:@"select * from YGODATA where id=%ld", (long)cardId];
     
     if (sqlite3_prepare_v2(_main_database, [sql UTF8String], -1, &stmt, nil) == SQLITE_OK) {
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             item = [[CardItem alloc] init];
-            item._id = sqlite3_column_int(stmt, 0);
-            item.card_id = sqlite3_column_int(stmt, 1);
-            item.japName = [NSString stringWithUTF8String:(char*)sqlite3_column_text(stmt, 2)];
-            item.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 3)];
-            item.enName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 4)];
-            item.sCardType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 5)];
-            item.cardDType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 6)];
-            item.tribe = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 7)];
-            item.package = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 8)];
-            item.element = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 9)];
-            item.level = sqlite3_column_int(stmt, 10);
-            item.infrequence = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 11)];
-            item.atkValue = sqlite3_column_int(stmt, 12);
-            item.atk = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 13)];
-            item.defValue = sqlite3_column_int(stmt, 14);
-            item.def = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 15)];
-            item.effect = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 16)];
-            item.ban = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 17)];
-            item.cheatcode = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 18)];
-            item.adjust = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 19)];
-            item.cardCamp = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 20)];
-            item.oldName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 21)];
-            item.shortName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 22)];
-            item.pendulumL = sqlite3_column_int(stmt, 23);
-            item.pendulumR = sqlite3_column_int(stmt, 24);
+            item.card_id = sqlite3_column_int(stmt, 0);
+            item.japName = [NSString stringWithUTF8String:(char*)sqlite3_column_text(stmt, 1)];
+            item.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 2)];
+            item.enName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 3)];
+            item.sCardType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 4)];
+            item.cardDType = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 5)];
+            item.tribe = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 6)];
+            item.package = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 7)];
+            item.element = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 8)];
+            item.level = sqlite3_column_int(stmt, 9);
+            item.infrequence = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 10)];
+            item.atkValue = sqlite3_column_int(stmt, 11);
+            item.atk = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 12)];
+            item.defValue = sqlite3_column_int(stmt, 13);
+            item.def = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 14)];
+            item.effect = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 15)];
+            item.ban = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 16)];
+            item.cheatcode = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 17)];
+            item.adjust = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 18)];
+            item.cardCamp = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 19)];
+            item.oldName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 20)];
+            item.shortName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(stmt, 21)];
+            item.pendulumL = sqlite3_column_int(stmt, 22);
+            item.pendulumR = sqlite3_column_int(stmt, 23);
             break;
         }
         sqlite3_finalize(stmt);
@@ -150,22 +148,22 @@ static sqlite3 * _fav_database;
 
 
 + (NSMutableArray *) queryLast100 {
-    NSString * sql = @"select _id, id, name, sCardType from YGODATA order by _id desc limit 0,100";
+    NSString * sql = @"select id, name, sCardType from YGODATA order by id desc limit 0,100";
     return [self queryData:sql];
 }
 
 + (NSMutableArray *) queryBanCards {
-    NSString * sql = @"select _id, id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc";
+    NSString * sql = @"select id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc";
     return [self queryData:sql];
 }
 
 + (NSMutableArray *) queryLimit1Cards {
-    NSString * sql = @"select _id, id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc";
+    NSString * sql = @"select id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc";
     return [self queryData:sql];
 }
 
 + (NSMutableArray *) queryLimit2Cards {
-    NSString * sql = @"select _id, id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc";
+    NSString * sql = @"select id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc";
     return [self queryData:sql];
 }
 
@@ -179,7 +177,7 @@ static sqlite3 * _fav_database;
     }
     NSMutableArray * arr = nil;
     if (![con isEqualToString:@""]) {
-        NSString * sql = [NSString stringWithFormat:@"select _id, id, name, sCardType from YGODATA where id in (%@)", con];
+        NSString * sql = [NSString stringWithFormat:@"select id, name, sCardType from YGODATA where id in (%@)", con];
         arr = [self queryData:sql];
     }
     if (arr == nil) {
