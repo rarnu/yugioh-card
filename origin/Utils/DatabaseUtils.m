@@ -200,6 +200,19 @@ static sqlite3 * _fav_database;
     return cardId;
 }
 
++ (int) queryCardCount {
+    int cardCount = 0;
+    NSString * sql = @"select count(*) from YGODATA";
+    sqlite3_stmt * stmt;
+    if (sqlite3_prepare_v2(_main_database, [sql UTF8String], -1, &stmt, nil) == SQLITE_OK) {
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            cardCount = sqlite3_column_int(stmt, 0);
+        }
+        sqlite3_finalize(stmt);
+    }
+    return cardCount;
+}
+
 #pragma mark - fav data
 
 + (void) favAdd: (NSInteger) cardId {

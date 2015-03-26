@@ -32,7 +32,7 @@
     [self.btnUpdate setEnabled:NO];
     
     int build = [[ApplicationUtils getAppBuild] intValue];
-    int lastCard = [DatabaseUtils queryLastCardId];
+    int lastCard = [DatabaseUtils queryCardCount];
     int dbver = [DatabaseUtils getDatabaseVersion];
     NSString * param = [NSString stringWithFormat:PARAM_UPDATE, build, lastCard, dbver];
     HttpUtils * hu = [HttpUtils alloc];

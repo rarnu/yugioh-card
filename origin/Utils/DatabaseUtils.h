@@ -21,6 +21,7 @@
 + (NSMutableArray *) queryLimit2Cards;
 + (NSMutableArray *) queryCardsViaIds: (NSMutableArray *) cardIds;
 + (int) queryLastCardId;
++ (int) queryCardCount;
 
 // fav data
 + (void) favAdd: (NSInteger) cardId;

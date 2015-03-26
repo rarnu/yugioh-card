@@ -216,6 +216,19 @@ class DatabaseUtils: NSObject {
         return arr
     }
     
+    class func queryCardCount() -> Int {
+        var cardCount: Int = 0
+        var sql = "select count(*) from YGODATA" as NSString
+        var stmt: COpaquePointer = nil
+        if (sqlite3_prepare_v2(_main_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
+            if (sqlite3_step(stmt) == SQLITE_ROW) {
+                cardCount = Int(sqlite3_column_int(stmt, 0))
+            }
+            sqlite3_finalize(stmt)
+        }
+        return cardCount
+    }
+    
     class func queryLastCardId() -> Int {
         var cardId: Int = 0
         var sql = "select _id from YGODATA order by _id desc limit 0,1" as NSString

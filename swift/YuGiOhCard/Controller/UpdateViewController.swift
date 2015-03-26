@@ -18,7 +18,7 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
         self.btnUpdate!.hidden = false
         
         var build = (ApplicationUtils.getAppBuild() as NSString).integerValue
-        var lastCard = DatabaseUtils.queryLastCardId()
+        var lastCard = DatabaseUtils.queryCardCount()
         var dbver = DatabaseUtils.getDatabaseVersion()
         var param = NSString(format: PARAM_UPDATE, build, lastCard, dbver)
         var hu = HttpUtils()
