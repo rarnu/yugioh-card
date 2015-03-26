@@ -35,6 +35,11 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     var dice: DiceView?
     var coin: CoinView?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txt1Life!.layer.borderWidth = 0.5

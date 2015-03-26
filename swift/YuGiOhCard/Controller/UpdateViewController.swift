@@ -10,6 +10,11 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
 
     var _update_file_size: Int64?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = RIGHT_MENU_UPDATE

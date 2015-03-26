@@ -5,6 +5,11 @@ class FavViewController: UITableViewController {
     var lblNoCard: UILabel?
     var _cards: NSMutableArray?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         _cards = NSMutableArray()

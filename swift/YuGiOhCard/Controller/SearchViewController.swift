@@ -29,6 +29,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

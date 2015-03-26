@@ -19,6 +19,11 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     var _document: NSString?
     var fmgr: NSFileManager?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = RIGHT_MENU_SETTING

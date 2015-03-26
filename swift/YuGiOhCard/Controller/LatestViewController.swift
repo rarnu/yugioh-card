@@ -4,6 +4,11 @@ class LatestViewController: UITableViewController {
 
     var _cards: NSMutableArray?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self._cards = DatabaseUtils.queryLast100()

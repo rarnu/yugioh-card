@@ -6,6 +6,11 @@ class FeedbackViewController: UIViewController {
     @IBOutlet var txtFeedback: UITextView?
     @IBOutlet var btnSend: UIBarButtonItem?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = RIGHT_MENU_FEEDBACK

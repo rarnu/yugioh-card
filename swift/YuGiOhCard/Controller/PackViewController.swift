@@ -9,6 +9,11 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     var _section_count: Int?
     var _pack_section: NSMutableArray?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         _packages = "packages"

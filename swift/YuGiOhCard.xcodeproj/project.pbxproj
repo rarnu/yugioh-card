@@ -36,6 +36,9 @@
 		92655E4919D86177005F2265 /* SingleStories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92655E4719D86177005F2265 /* SingleStories.storyboard */; };
 		92655E4B19D861D9005F2265 /* RightMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92655E4A19D861D9005F2265 /* RightMenuViewController.swift */; };
 		92655E5019D8653D005F2265 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92655E4F19D8653D005F2265 /* SearchViewController.swift */; };
+		926FE0FD1AC413C70035FB9E /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926FE0FC1AC413C70035FB9E /* UIUtils.swift */; };
+		926FE1001AC418AC0035FB9E /* LimitTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926FE0FE1AC418AC0035FB9E /* LimitTabViewController.swift */; };
+		926FE1011AC418AC0035FB9E /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926FE0FF1AC418AC0035FB9E /* NavViewController.swift */; };
 		9287144C19D65B5A00A0FD1F /* CardStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9287144819D65B5A00A0FD1F /* CardStory.storyboard */; };
 		9287144E19D65BF100A0FD1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922DFF8C19D6594100364CF5 /* Main.storyboard */; };
 		928B1D1819DA820A004EE0EE /* CardConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B1D1719DA820A004EE0EE /* CardConsts.swift */; };
@@ -103,6 +106,9 @@
 		92655E4A19D861D9005F2265 /* RightMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightMenuViewController.swift; path = Controller/RightMenuViewController.swift; sourceTree = "<group>"; };
 		92655E4F19D8653D005F2265 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Controller/SearchViewController.swift; sourceTree = "<group>"; };
 		926C92EB19D66E010026C3B2 /* RESideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RESideMenu.swift; path = RESideMenu/RESideMenu.swift; sourceTree = "<group>"; };
+		926FE0FC1AC413C70035FB9E /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
+		926FE0FE1AC418AC0035FB9E /* LimitTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LimitTabViewController.swift; path = Controller/LimitTabViewController.swift; sourceTree = "<group>"; };
+		926FE0FF1AC418AC0035FB9E /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavViewController.swift; path = Controller/NavViewController.swift; sourceTree = "<group>"; };
 		9287144919D65B5A00A0FD1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CardStory.storyboard; sourceTree = "<group>"; };
 		928B1D1719DA820A004EE0EE /* CardConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardConsts.swift; path = Module/CardConsts.swift; sourceTree = "<group>"; };
 		928B1D1A19DA976B004EE0EE /* fav.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = fav.db; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 		920AE72619D65A82004618ED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				926FE0FE1AC418AC0035FB9E /* LimitTabViewController.swift */,
+				926FE0FF1AC418AC0035FB9E /* NavViewController.swift */,
 				922ABD1419DBEDE30058FBAC /* SettingViewController.swift */,
 				922ABD1619DBF3360058FBAC /* UpdateViewController.swift */,
 				92DB756619DBAEC60082D06F /* FavViewController.swift */,
@@ -205,6 +213,7 @@
 		9221D80219D9812200E1DE1B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				926FE0FC1AC413C70035FB9E /* UIUtils.swift */,
 				9221D81519D9813D00E1DE1B /* ApplicationUtils.swift */,
 				9221D81719D9829C00E1DE1B /* ConfigUtils.swift */,
 				9221D82319DA412300E1DE1B /* HttpUtils.swift */,
@@ -402,13 +411,16 @@
 				928B1D3619DA9C7E004EE0EE /* CardViewController.swift in Sources */,
 				922DFF8919D6594100364CF5 /* AppDelegate.swift in Sources */,
 				922ABD0119DBC5B00058FBAC /* unzip.c in Sources */,
+				926FE1011AC418AC0035FB9E /* NavViewController.swift in Sources */,
 				9221D83119DA721D00E1DE1B /* CoinView.swift in Sources */,
+				926FE0FD1AC413C70035FB9E /* UIUtils.swift in Sources */,
 				9221D83D19DA760800E1DE1B /* AboutView.swift in Sources */,
 				928B1D3C19DADC8F004EE0EE /* CardPicViewController.swift in Sources */,
 				9221D81D19D983FB00E1DE1B /* CardItem.swift in Sources */,
 				928B1D6719DB0D68004EE0EE /* ToolViewController.swift in Sources */,
 				92655E4619D85F2F005F2265 /* StringConsts.swift in Sources */,
 				9221D81819D9829C00E1DE1B /* ConfigUtils.swift in Sources */,
+				926FE1001AC418AC0035FB9E /* LimitTabViewController.swift in Sources */,
 				92655E5019D8653D005F2265 /* SearchViewController.swift in Sources */,
 				928B1D4E19DAFA67004EE0EE /* Limit2ViewController.swift in Sources */,
 				928B1D3F19DADE5E004EE0EE /* UrlConsts.swift in Sources */,

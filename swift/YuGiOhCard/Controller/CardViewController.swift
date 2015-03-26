@@ -9,6 +9,12 @@ class CardViewController: UITabBarController {
     var likeButton: UIBarButtonItem?
     var unlikeButton: UIBarButtonItem?
     
+    override func viewWillAppear(animated: Bool) {
+        UIUtils.setStatusBar(true)
+        UIUtils.setNavBar(self.navigationController!.navigationBar)
+        UIUtils.setTabBar(self.tabBar)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
