@@ -282,7 +282,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="VoX-P8-tHK" detailTextLabel="bNU-O5-QOB" style="IBUITableViewCellStyleValue1" id="elX-wb-iCU">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="VoX-P8-tHK" detailTextLabel="bNU-O5-QOB" style="IBUITableViewCellStyleValue1" id="elX-wb-iCU">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="elX-wb-iCU" id="zIb-x0-Xz0">
@@ -312,6 +312,7 @@
                             <outlet property="delegate" destination="Hwd-rS-HkP" id="DQL-9s-mUT"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXs-Tp-3bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,7 +538,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="latestViewController" title="Latest" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G0j-IN-k4G" customClass="LatestViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Sm3-cf-sOw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -571,6 +572,7 @@
                             <outlet property="delegate" destination="G0j-IN-k4G" id="dAF-tE-XU5"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="最新卡片" id="EZR-jY-If5">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="M9m-h1-QMk">
                             <connections>
@@ -588,7 +590,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="packViewController" title="Pack" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iu9-A3-ujV" customClass="PackViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7iE-46-CBK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -609,6 +611,7 @@
                             <outlet property="delegate" destination="iu9-A3-ujV" id="kXn-bF-hch"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="卡包" id="s1s-vQ-yaC">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="pia-6r-lTb">
                             <connections>
@@ -630,7 +633,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="favViewController" title="Favorite" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hMt-KG-DQH" customClass="FavViewController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nwe-8T-i0X">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -664,6 +667,7 @@
                             <outlet property="delegate" destination="hMt-KG-DQH" id="Wjb-CC-i83"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="我的最爱" id="EFx-BC-emT">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="VwQ-mR-8B8">
                             <connections>
