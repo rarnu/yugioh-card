@@ -10,6 +10,22 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
 
     var _update_file_size: Int64?
     
+    var inited = false
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (!inited) {
+            inited = true
+            var v: UIView?
+            for temp in self.view.subviews {
+                v = temp as? UIView
+                if (v is UILabel) || (v is UITextView) || (v is UIButton) || (v is UIProgressView) {
+                    UIUtils.scaleComponent(v!)
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         UIUtils.setStatusBar(true)
         UIUtils.setNavBar(self.navigationController!.navigationBar)
@@ -17,6 +33,7 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inited = false
         self.title = RIGHT_MENU_UPDATE
         self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, forState:UIControlState.Normal)
         self.procDownload!.hidden = true

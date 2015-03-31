@@ -21,6 +21,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     var picker: CardAttributePicker?
     var searchButton: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
+    var inited = false
 
     required override init() {
         super.init()
@@ -31,12 +32,28 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         UIUtils.setStatusBar(true)
         UIUtils.setNavBar(self.navigationController!.navigationBar)
     }
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (!inited) {
+            inited = true
+            var v: UIView?
+            for temp in self.view.subviews {
+                v = temp as? UIView
+                if (v is UILabel) || (v is UITextField) {
+                    UIUtils.scaleComponent(v!)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        inited = false
         self.navigationItem.title = "YuGiOh"
         
         searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "searchClick:")

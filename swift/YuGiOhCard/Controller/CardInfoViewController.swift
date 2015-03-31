@@ -5,8 +5,25 @@ class CardInfoViewController: UIViewController {
     @IBOutlet var txtInfo: UITextView?
     var card: CardItem?
     
+    var inited = false
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (!inited) {
+            inited = true
+            var v: UIView?
+            for temp in self.view.subviews {
+                v = temp as? UIView
+                if (v is UITextView) {
+                    UIUtils.scaleComponent(v!)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        inited = false
         self.card = (self.tabBarController! as CardViewController).card
         var str = NSString(format: CARD_BASE_INFO, self.card!.name, self.card!.japName, self.card!.enName, self.card!.sCardType)
         

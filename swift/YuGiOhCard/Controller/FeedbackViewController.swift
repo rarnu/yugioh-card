@@ -6,6 +6,22 @@ class FeedbackViewController: UIViewController {
     @IBOutlet var txtFeedback: UITextView?
     @IBOutlet var btnSend: UIBarButtonItem?
     
+    var inited = false
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (!inited) {
+            inited = true
+            var v: UIView?
+            for temp in self.view.subviews {
+                v = temp as? UIView
+                if (v is UITextView) {
+                    UIUtils.scaleComponent(v!)
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         UIUtils.setStatusBar(true)
         UIUtils.setNavBar(self.navigationController!.navigationBar)
@@ -13,6 +29,7 @@ class FeedbackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inited = false
         self.title = RIGHT_MENU_FEEDBACK
         self.txtFeedback!.becomeFirstResponder()
     }

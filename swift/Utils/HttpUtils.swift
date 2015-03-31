@@ -22,7 +22,6 @@ class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate 
     var tag: Int?
     
     func get(url: String) {
-        NSLog(url)
         var u = NSURL(string: url)
         
         var req = NSURLRequest(URL: u!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)

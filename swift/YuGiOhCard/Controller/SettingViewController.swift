@@ -19,6 +19,22 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     var _document: NSString?
     var fmgr: NSFileManager?
     
+    var inited = false
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (!inited) {
+            inited = true
+            var v: UIView?
+            for temp in self.view.subviews {
+                v = temp as? UIView
+                if (v is UILabel) || (v is UIButton) || (v is UICollectionView) {
+                    UIUtils.scaleComponent(v!)
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         UIUtils.setStatusBar(true)
         UIUtils.setNavBar(self.navigationController!.navigationBar)
@@ -26,6 +42,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inited = false
         self.title = RIGHT_MENU_SETTING
         _grid_size = self.generateImageSize()
         _current_background = ConfigUtils.loadBackgroundImage()
@@ -45,7 +62,6 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
     
     @IBAction func cleanClicked(sender: AnyObject) {
@@ -101,10 +117,6 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         ConfigUtils.saveBackgroundImage(_current_background!)
         var nc = NSNotificationCenter.defaultCenter()
         nc.postNotificationName("Notification_ChangeBackground", object: _current_background!)
-//        var root = RootViewController.getInstance()
-//        if (root != nil) {
-//            root!.backgroundImage = UIImage(named: _current_background!)
-//        }
         collectionView.reloadData()
     }
     
@@ -113,7 +125,14 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func generateImageSize() -> CGSize {
-        return CGSizeMake(89, 166)
+        var (screenWidth, screenHeight) = UIUtils.getScreenSize()
+        var scale: CGFloat = 1.0
+        if (screenWidth > 320) {
+            scale = screenWidth / 320
+        }
+        var w = (screenWidth - ((13 * 4) * scale)) / 3
+        var h = 166 * w / 89
+        return CGSizeMake(w, h)
     }
 
     @IBAction func sourceClicked(sender: AnyObject) {

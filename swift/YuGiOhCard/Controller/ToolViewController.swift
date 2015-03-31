@@ -35,6 +35,22 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     var dice: DiceView?
     var coin: CoinView?
     
+    var inited = false
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (!inited) {
+            inited = true
+            var v: UIView?
+            for temp in self.view.subviews {
+                v = temp as? UIView
+                if (v is UILabel) || (v is UITextField) || (v is UIButton) {
+                    UIUtils.scaleComponent(v!)
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         UIUtils.setStatusBar(true)
         UIUtils.setNavBar(self.navigationController!.navigationBar)
@@ -42,6 +58,26 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inited = false
+        var bkImg = UIImage(named: "navbg")
+        btnDice!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btnCoin!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn1Add!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn1Minus!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn1Set!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn1Half!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn1Double!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn1Balance!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn1Equal!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn2Add!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn2Minus!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn2Set!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn2Half!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn2Double!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn2Balance!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        btn2Equal!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
+        
+        
         self.txt1Life!.layer.borderWidth = 0.5
         self.txt1Life!.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.txt2Life!.layer.borderWidth = 0.5

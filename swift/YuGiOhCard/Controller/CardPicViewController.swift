@@ -9,8 +9,25 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
     var _img_path: NSString?
     var card: CardItem?
     
+    var inited = false
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if (!inited) {
+            inited = true
+            var v: UIView?
+            for temp in self.view.subviews {
+                v = temp as? UIView
+                if (v is UIImageView) || (v is UIButton) || (v is UIActivityIndicatorView) {
+                    UIUtils.scaleComponent(v!)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        inited = false
         _img_path = "image"
         self.card = (self.tabBarController! as CardViewController).card
         var cardImgName = "\(self.card!._id).jpg"

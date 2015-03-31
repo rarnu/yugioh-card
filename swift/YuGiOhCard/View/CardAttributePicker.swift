@@ -8,7 +8,7 @@ protocol CardAttributePickerDelegate: NSObjectProtocol {
 class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
 
     var picker: UIPickerView?
-    var toolbar: UIView?
+    var toolbar: UIToolbar?
     var txtResult: UITextField?
     var pickObjects: NSArray?
     var delegate: CardAttributePickerDelegate?
@@ -28,15 +28,21 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     }
     
     func makeUI() {
-        self.backgroundColor = UIColor.clearColor()
+        // self.backgroundColor = UIColor.clearColor()
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.groupTableViewBackgroundColor().CGColor
+        self.layer.borderColor = UIColor.grayColor().CGColor
     
         self.toolbar = UIToolbar(frame: CGRectMake(0, 0, self.frame.size.width, 50))
-        self.toolbar!.backgroundColor = UIColor.clearColor()
+        self.toolbar!.tintColor = UIColor.whiteColor()
+        self.toolbar!.setBackgroundImage(UIImage(named: "popbg"), forToolbarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
+
         toolTitle = UILabel(frame: CGRectMake(8, 0, self.toolbar!.frame.size.width-50, self.toolbar!.frame.size.height))
-        toolTitle!.backgroundColor = UIColor.clearColor()
+        toolTitle!.textColor = UIColor.whiteColor()
+        var splitLine = UIView(frame: CGRectMake(0, self.toolbar!.frame.size.height, self.toolbar!.frame.size.width, 1))
+        splitLine.backgroundColor = UIColor.grayColor()
+        
         self.toolbar!.addSubview(toolTitle!)
+        self.toolbar!.addSubview(splitLine)
     
         toolButton = UIButton.buttonWithType(UIButtonType.System) as? UIButton
         toolButton!.backgroundColor = UIColor.clearColor()
@@ -45,8 +51,8 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
         toolButton!.addTarget(self, action:"doneClick:", forControlEvents:UIControlEvents.TouchDown)
         self.toolbar!.addSubview(toolButton!)
     
-        self.picker = UIPickerView(frame: CGRectMake(0, 50, self.frame.size.width, 0))
-        self.picker!.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
+        self.picker = UIPickerView(frame: CGRectMake(0, 51, self.frame.size.width, 0))
+        self.picker!.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         self.picker!.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.picker!.showsSelectionIndicator = true
         self.picker!.dataSource = self
