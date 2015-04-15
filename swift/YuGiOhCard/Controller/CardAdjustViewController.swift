@@ -24,7 +24,7 @@ class CardAdjustViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         inited = false
-        self.card = (self.tabBarController! as CardViewController).card
+        self.card = (self.tabBarController! as! CardViewController).card
         var str = "\(self.card!.adjust)\n"
         self.txtAdjust!.text = str
     }

@@ -47,8 +47,8 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
         hu.tag = 1
         hu.delegate = self
         hu.get("\(URL_UPDATE)?\(param)")
-        self.lblCurrentCount!.text = NSString(format: STR_CARD_COUNT, lastCard)
-        self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, 0)
+        self.lblCurrentCount!.text = NSString(format: STR_CARD_COUNT, lastCard) as String
+        self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, 0) as String
         // load update log
         var huLog = HttpUtils()
         huLog.tag = 3
@@ -104,12 +104,12 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     }
     
     func extractUpdateInfo(json: NSData) {
-        var info = NSJSONSerialization.JSONObjectWithData(json, options:NSJSONReadingOptions.MutableLeaves, error:nil) as NSDictionary
-        var newcard = (info.objectForKey("newcard") as NSString).integerValue
+        var info = NSJSONSerialization.JSONObjectWithData(json, options:NSJSONReadingOptions.MutableLeaves, error:nil) as! NSDictionary
+        var newcard = (info.objectForKey("newcard") as! NSString).integerValue
         if (newcard != 0) {
             self.btnUpdate!.setTitle(STR_DOWNLOAD_UPDATE, forState:UIControlState.Normal)
             self.btnUpdate!.enabled = true
-            self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, newcard)
+            self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, newcard) as String
         } else {
             self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, forState:UIControlState.Normal)
             self.btnUpdate!.enabled = false
@@ -128,7 +128,7 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     
     func showUpdateLog(data: NSData) {
         var str = NSString(data: data, encoding:NSUTF8StringEncoding)
-        self.tvLog!.text = str
+        self.tvLog!.text = str as! String
     }
     
     func ziputils(ziputils: ZipUtils, unzipCompleted succ: Bool) {
@@ -137,8 +137,8 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
         self.procDownload!.hidden = true
         self.btnUpdate!.enabled = false
         var lastCard = DatabaseUtils.queryLastCardId()
-        self.lblCurrentCount!.text = NSString(format: STR_CARD_COUNT, lastCard)
-        self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, 0)
+        self.lblCurrentCount!.text = NSString(format: STR_CARD_COUNT, lastCard) as String
+        self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, 0) as String
     }
 
     func zipWillUnzip() -> Bool {

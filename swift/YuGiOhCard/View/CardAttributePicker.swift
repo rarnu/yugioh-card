@@ -83,7 +83,7 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
-        var title = self.pickObjects![row % self.pickObjects!.count] as String
+        var title = self.pickObjects![row % self.pickObjects!.count] as! String
         var lblView: UILabel?
         if (view == nil) {
             lblView = UILabel()
@@ -99,7 +99,7 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     }
     
     func doneClick(sender: AnyObject) {
-        var picked = self.pickObjects![self.picker!.selectedRowInComponent(0) % self.pickObjects!.count] as String
+        var picked = self.pickObjects![self.picker!.selectedRowInComponent(0) % self.pickObjects!.count] as! String
         self.delegate?.pickDone?(picked, textField: self.txtResult)
     }
     
@@ -111,7 +111,7 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     func selectCurrent(text: String) {
         var selected = (65536 / 2) - (65536 % self.pickObjects!.count) - 1
         for (var i = selected; i < selected + self.pickObjects!.count; i++) {
-            if ((self.pickObjects![i % self.pickObjects!.count] as String) == text) {
+            if ((self.pickObjects![i % self.pickObjects!.count] as! String) == text) {
                 self.picker!.selectRow(i, inComponent:0, animated:false)
                 break
             }

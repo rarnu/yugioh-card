@@ -22,10 +22,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     var searchButton: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     var inited = false
-
-    required override init() {
-        super.init()
-    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -66,7 +62,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
                 self.showAboutView()
             } else {
                 var singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
-                var controller = singleStory.instantiateViewControllerWithIdentifier(self.pushView!) as UIViewController
+                var controller = singleStory.instantiateViewControllerWithIdentifier(self.pushView!) as! UIViewController
                 self.navigationController!.pushViewController(controller, animated: true)
             }
         }
@@ -162,7 +158,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     func pushViewController() {
-        var resultViewController = self.storyboard!.instantiateViewControllerWithIdentifier("searchResultViewController") as SearchResultViewController
+        var resultViewController = self.storyboard!.instantiateViewControllerWithIdentifier("searchResultViewController") as! SearchResultViewController
         resultViewController.searchCardName = self.txtCardName!.text
         resultViewController.searchCamp = self.txtCamp!.text
         resultViewController.searchCardType = self.txtCardType!.text

@@ -52,8 +52,8 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
             var json = NSString(data: data!, encoding:NSUTF8StringEncoding)
-            FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json!)
-            self.loadData(json!)
+            FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json as! String)
+            self.loadData(json as! String)
         }
     }
     
@@ -65,9 +65,9 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
         var data = (json as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         var pack: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableLeaves, error:nil)
         if (pack != nil) {
-            _pack_cards!.name = (pack! as NSDictionary).objectForKey("name") as String
+            _pack_cards!.name = (pack! as! NSDictionary).objectForKey("name") as! String
             _pack_cards!.cards.removeAllObjects()
-            _pack_cards!.cards.addObjectsFromArray((pack! as NSDictionary).objectForKey("cards") as NSArray)
+            _pack_cards!.cards.addObjectsFromArray((pack! as! NSDictionary).objectForKey("cards") as! [AnyObject])
             _cards = DatabaseUtils.queryCardsViaIds(_pack_cards!.cards)
             self.tableView.reloadData()
         }
@@ -82,8 +82,8 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
-        var item = _cards![indexPath.row] as CardItem
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        var item = _cards![indexPath.row] as! CardItem
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel!.textColor = UIColor.whiteColor()
         cell.textLabel!.text = item.name
@@ -94,7 +94,7 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated:false)
-        var item = _cards![indexPath.row] as CardItem
+        var item = _cards![indexPath.row] as! CardItem
         PushUtils.pushCard(item, navController:self.navigationController!)
     }
     

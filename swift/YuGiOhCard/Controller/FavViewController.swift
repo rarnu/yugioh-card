@@ -50,8 +50,8 @@ class FavViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
-        var item = self._cards![indexPath.row] as CardItem
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        var item = self._cards![indexPath.row] as! CardItem
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel!.textColor = UIColor.whiteColor()
         cell.textLabel!.text = item.name
@@ -62,7 +62,7 @@ class FavViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated:false)
-        var item = self._cards![indexPath.row] as CardItem
+        var item = self._cards![indexPath.row] as! CardItem
         PushUtils.pushCard(item, navController:self.navigationController!)
     }
     

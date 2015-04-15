@@ -15,11 +15,11 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.scaleBackgroundImageView = false
         
         var singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
-        var ccontent = self.storyboard!.instantiateViewControllerWithIdentifier("contentViewController") as UIViewController
+        var ccontent = self.storyboard!.instantiateViewControllerWithIdentifier("contentViewController") as! UIViewController
         self.contentViewController = ccontent
-        var cleftmenu = singleStory.instantiateViewControllerWithIdentifier("leftMenuViewController") as UIViewController
+        var cleftmenu = singleStory.instantiateViewControllerWithIdentifier("leftMenuViewController") as! UIViewController
         self.leftMenuViewController = cleftmenu
-        var crightmenu = singleStory.instantiateViewControllerWithIdentifier("rightMenuViewController") as UIViewController
+        var crightmenu = singleStory.instantiateViewControllerWithIdentifier("rightMenuViewController") as! UIViewController
         self.rightMenuViewController = crightmenu
 
         var background_name = ConfigUtils.loadBackgroundImage()
@@ -33,13 +33,13 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
     }
     
     func receivedNotification(notification: NSNotification) {
-        var backImg = notification.object! as String
+        var backImg = notification.object! as! String
         self.backgroundImage = UIImage(named: backImg)
     }
     
-    func receivedNotification(imgPath: String) {
-        self.backgroundImage = UIImage(named: imgPath)
-    }
+//    func receivedNotification(imgPath: String) {
+//        self.backgroundImage = UIImage(named: imgPath)
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,18 +62,18 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
     }
     
     
-    func sideMenu(sideMenu: RESideMenu, didHideMenuViewController menuViewController: UIViewController) {
+    func sideMenu(sideMenu: RESideMenu, didHideMenuViewController menuViewController: UIViewController?) {
         
     }
     
-    func sideMenu(sideMenu: RESideMenu, didShowMenuViewController menuViewController: UIViewController) {
+    func sideMenu(sideMenu: RESideMenu, didShowMenuViewController menuViewController: UIViewController?) {
         
     }
     
-    func sideMenu(sideMenu: RESideMenu, willHideMenuViewController menuViewController: UIViewController) {
+    func sideMenu(sideMenu: RESideMenu, willHideMenuViewController menuViewController: UIViewController?) {
         
     }
-    func sideMenu(sideMenu: RESideMenu, willShowMenuViewController menuViewController: UIViewController) {
+    func sideMenu(sideMenu: RESideMenu, willShowMenuViewController menuViewController: UIViewController?) {
         
     }
     

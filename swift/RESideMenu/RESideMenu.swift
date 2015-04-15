@@ -138,10 +138,11 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     var contentViewContainer: UIView?
     var didNotifyDelegate: Bool?
     
-    required override init() {
-        super.init()
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.__commonInit()
     }
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.__commonInit()
@@ -180,8 +181,8 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // public methods
     // =================================
     
-    init(contentViewController:UIViewController, leftMenuViewController: UIViewController, rightMenuViewController: UIViewController) {
-        super.init()
+    convenience init(contentViewController:UIViewController, leftMenuViewController: UIViewController, rightMenuViewController: UIViewController) {
+        self.init()
         self.contentViewController = contentViewController
         self.leftMenuViewController = leftMenuViewController
         self.rightMenuViewController = rightMenuViewController
@@ -431,7 +432,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             }
             if (strongSelf!.parallaxEnabled!) {
                 for effect in strongSelf!.contentViewContainer!.motionEffects! {
-                    strongSelf!.contentViewContainer!.removeMotionEffect(effect as UIMotionEffect)
+                    strongSelf!.contentViewContainer!.removeMotionEffect(effect as! UIMotionEffect)
                 }
             }
         }
@@ -512,7 +513,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         if (self.parallaxEnabled!) {
             if (self.menuViewContainer!.motionEffects != nil) {
                 for effect in self.menuViewContainer!.motionEffects! {
-                    self.menuViewContainer!.removeMotionEffect(effect as UIMotionEffect)
+                    self.menuViewContainer!.removeMotionEffect(effect as! UIMotionEffect)
                 }
             }
             var interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
@@ -531,7 +532,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     func __addContentViewControllerMotionEffects() {
         if (self.parallaxEnabled!) {
             for effect in self.contentViewContainer!.motionEffects! {
-                self.contentViewContainer!.removeMotionEffect(effect as UIMotionEffect)
+                self.contentViewContainer!.removeMotionEffect(effect as! UIMotionEffect)
             }
             
             func _anim_doing() {
@@ -554,7 +555,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if (self.interactivePopGestureRecognizerEnabled! && (self.contentViewController is UINavigationController)) {
-            var navigationController = self.contentViewController as UINavigationController
+            var navigationController = self.contentViewController as! UINavigationController
             if (navigationController.viewControllers.count > 1 && navigationController.interactivePopGestureRecognizer.enabled) {
                 return false;
             }

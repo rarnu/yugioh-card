@@ -48,12 +48,12 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (_pack_section![section] as PackItem).packages.count
+        return (_pack_section![section] as! PackItem).packages.count
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var lblSection = UILabel()
-        lblSection.text = "  \((_pack_section![section] as PackItem).serial)"
+        lblSection.text = "  \((_pack_section![section] as! PackItem).serial)"
         lblSection.textColor = UIColor.whiteColor()
         lblSection.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
         return lblSection
@@ -64,8 +64,8 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
-        var item = (_pack_section![indexPath.section] as PackItem).packages[indexPath.row] as PackageDetail
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        var item = (_pack_section![indexPath.section] as! PackItem).packages[indexPath.row] as! PackageDetail
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel!.textColor = UIColor.whiteColor()
         cell.textLabel!.text = item.packName
@@ -79,16 +79,16 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "pushPack") {
             var index = self.tableView.indexPathForSelectedRow()
-            var item = (_pack_section![index!.section] as PackItem).packages[index!.row] as PackageDetail
-            (segue.destinationViewController as PackDetailViewController).packageId = item.packId
-            (segue.destinationViewController as PackDetailViewController).packageName = item.packName
+            var item = (_pack_section![index!.section] as! PackItem).packages[index!.row] as! PackageDetail
+            (segue.destinationViewController as! PackDetailViewController).packageId = item.packId
+            (segue.destinationViewController as! PackDetailViewController).packageName = item.packName
         }
     }
 
     
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
-            var json = NSString(data: data!, encoding:NSUTF8StringEncoding) as String
+            var json = NSString(data: data!, encoding:NSUTF8StringEncoding) as! String
             FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json)
             self.loadData(json)
         }
@@ -101,7 +101,7 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     func loadData(jsonData: String) {
     // load json data
         var data = (jsonData as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        var packs = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: nil) as NSArray
+        var packs = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: nil) as! NSArray
         var pack: AnyObject? = nil
         var arrPack: NSArray?
         var packDetail: AnyObject? = nil
@@ -109,13 +109,13 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
         for (var i = 0; i < packs.count; i++) {
             pack = packs[i]
             var item = PackItem()
-            item.serial = (pack! as NSDictionary).objectForKey("serial") as String
-            arrPack = (pack! as NSDictionary).objectForKey("packages") as? NSArray
+            item.serial = (pack! as! NSDictionary).objectForKey("serial") as! String
+            arrPack = (pack! as! NSDictionary).objectForKey("packages") as? NSArray
             for (var j = 0; j < arrPack!.count; j++) {
                 packDetail = arrPack![j]
                 item.packages.addObject(PackageDetail(
-                    packId: (packDetail as NSDictionary).objectForKey("id") as String,
-                    packageName: (packDetail as NSDictionary).objectForKey("packname") as String)
+                    packId: (packDetail as! NSDictionary).objectForKey("id") as! String,
+                    packageName: (packDetail as! NSDictionary).objectForKey("packname") as! String)
                 )
             }
             _pack_section!.addObject(item)

@@ -15,8 +15,8 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var _backgrounds: NSMutableArray?
     var _grid_size: CGSize?
-    var _current_background: NSString?
-    var _document: NSString?
+    var _current_background: String?
+    var _document: String?
     var fmgr: NSFileManager?
     
     var inited = false
@@ -57,7 +57,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         _document = FileUtils.getDocumentPath()
         fmgr = NSFileManager.defaultManager()
         var sizeStr = NSString(format: "%.2f M", FileUtils.folderSizeAtPath(_document!))
-        self.btnSpace!.setTitle(sizeStr, forState: UIControlState.Normal)
+        self.btnSpace!.setTitle(sizeStr as? String, forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +73,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         switch (buttonIndex) {
         case 1:
             self.removeDocumentFiles()
-            self.btnSpace!.setTitle(NSString(format: "%.2f M", FileUtils.folderSizeAtPath(_document!)),forState:UIControlState.Normal)
+            self.btnSpace!.setTitle(NSString(format: "%.2f M", FileUtils.folderSizeAtPath(_document!)) as String,forState:UIControlState.Normal)
         default:
             break
         }
@@ -100,9 +100,9 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as UIBackgroundImageCell
-        cell.imgName = _backgrounds![indexPath.row] as String
-        cell.img!.image = UIImage(named: cell.imgName!)
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as! UIBackgroundImageCell
+        cell.imgName = _backgrounds![indexPath.row] as! String
+        cell.img!.image = UIImage(named: cell.imgName as! String)
         cell.selectMark!.hidden = _current_background! != cell.imgName
         return cell
     }
@@ -113,7 +113,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated:true)
-        _current_background = _backgrounds![indexPath.row] as String
+        _current_background = _backgrounds![indexPath.row] as? String
         ConfigUtils.saveBackgroundImage(_current_background!)
         var nc = NSNotificationCenter.defaultCenter()
         nc.postNotificationName("Notification_ChangeBackground", object: _current_background!)

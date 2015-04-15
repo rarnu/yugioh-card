@@ -60,7 +60,7 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated:true)
         var mainStory = UIStoryboard(name: "Main", bundle: nil)
-        var navController = UINavigationController(rootViewController: mainStory.instantiateViewControllerWithIdentifier(self.controllerNames[indexPath.row] as String) as UIViewController)
+        var navController = UINavigationController(rootViewController: mainStory.instantiateViewControllerWithIdentifier(self.controllerNames[indexPath.row] as! String) as! UIViewController)
         self.sideMenuViewController!.setContentViewController(navController, animated: true)
         self.sideMenuViewController!.hideMenuViewController()
     }

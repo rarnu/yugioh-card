@@ -4,7 +4,7 @@ class FileUtils: NSObject {
     
     class func getDocumentPath() -> String {
         var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true);
-        return paths[0] as String
+        return paths[0] as! String
     }
     
     class func makeDir(dir: String, basePath path: String) -> String {
@@ -33,7 +33,7 @@ class FileUtils: NSObject {
         var text: String = ""
         if (self.fileExists(fileName, filePath:path)) {
             var readData = NSData(contentsOfFile: fileOper)
-            text = NSString(data: readData!, encoding: NSUTF8StringEncoding) as String
+            text = NSString(data: readData!, encoding: NSUTF8StringEncoding) as! String
         }
         return text
     }

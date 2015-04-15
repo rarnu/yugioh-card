@@ -24,7 +24,7 @@ class CardInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         inited = false
-        self.card = (self.tabBarController! as CardViewController).card
+        self.card = (self.tabBarController! as! CardViewController).card
         var str = NSString(format: CARD_BASE_INFO, self.card!.name, self.card!.japName, self.card!.enName, self.card!.sCardType)
         
         if ((self.card!.sCardType as NSString).rangeOfString(_monster).location != NSNotFound) {

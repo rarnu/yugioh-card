@@ -62,7 +62,7 @@ class RightMenuViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.deselectRowAtIndexPath(indexPath, animated:true)
         var mainStory = UIStoryboard(name: "Main", bundle: nil)
         var controller: SearchViewController? = mainStory.instantiateViewControllerWithIdentifier("searchViewController") as? SearchViewController
-        var pushViewName = self.controllerNames[indexPath.row] as String;
+        var pushViewName = self.controllerNames[indexPath.row] as! String;
         controller!.pushView = pushViewName
         var nav = UINavigationController(rootViewController: controller!)
         self.sideMenuViewController!.setContentViewController(nav, animated:false)

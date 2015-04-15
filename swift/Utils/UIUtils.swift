@@ -22,7 +22,7 @@ class UIUtils: NSObject {
     class func setNavBar(nav: UINavigationBar) {
         nav.barTintColor = UIColor.clearColor()
         nav.tintColor = UIColor.whiteColor()
-        nav.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName)
+        nav.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName) as? [NSObject : AnyObject]
         nav.setBackgroundImage(UIImage(named: "navbg"), forBarMetrics: UIBarMetrics.Default)
     }
     

@@ -6,7 +6,7 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
     @IBOutlet var btnDownload: UIButton?
     @IBOutlet var aivDownload: UIActivityIndicatorView?
     
-    var _img_path: NSString?
+    var _img_path: String?
     var card: CardItem?
     
     var inited = false
@@ -29,7 +29,7 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
         super.viewDidLoad()
         inited = false
         _img_path = "image"
-        self.card = (self.tabBarController! as CardViewController).card
+        self.card = (self.tabBarController! as! CardViewController).card
         var cardImgName = "\(self.card!._id).jpg"
         var exists = FileUtils.fileExists(cardImgName, filePath:_img_path!)
         if (exists) {
