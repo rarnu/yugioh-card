@@ -138,6 +138,11 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     var contentViewContainer: UIView?
     var didNotifyDelegate: Bool?
     
+    convenience init() {
+        self.init()
+        self.__commonInit()
+    }
+    
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.__commonInit()
