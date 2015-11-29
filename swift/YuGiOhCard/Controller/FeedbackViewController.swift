@@ -12,11 +12,9 @@ class FeedbackViewController: UIViewController {
         super.viewWillLayoutSubviews()
         if (!inited) {
             inited = true
-            var v: UIView?
             for temp in self.view.subviews {
-                v = temp as? UIView
-                if (v is UITextView) {
-                    UIUtils.scaleComponent(v!)
+                if (temp is UITextView) {
+                    UIUtils.scaleComponent(temp)
                 }
             }
         }
@@ -41,20 +39,20 @@ class FeedbackViewController: UIViewController {
 
     @IBAction func sendClicked(sender: AnyObject) {
         self.view.endEditing(true)
-        var _appver = ApplicationUtils.getAppVersion() as NSString
-        var appver = _appver.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        var _txt = self.txtFeedback!.text as NSString
-        var txt = _txt.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        var dev = UIDevice.currentDevice()
-        var osver = dev.systemVersion
-        var osname = dev.systemName
-        var _osstr = "\(osname) (\(osver))" as NSString
-        var osstr = _osstr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        var _uuid = dev.identifierForVendor.UUIDString;
-        var uuid = _uuid.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let _appver = ApplicationUtils.getAppVersion() as NSString
+        let appver = _appver.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let _txt = self.txtFeedback!.text as NSString
+        let txt = _txt.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let dev = UIDevice.currentDevice()
+        let osver = dev.systemVersion
+        let osname = dev.systemName
+        let _osstr = "\(osname) (\(osver))" as NSString
+        let osstr = _osstr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let _uuid = dev.identifierForVendor!.UUIDString;
+        let uuid = (_uuid as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
     
-        var param = NSString(format: PARAM_FEEDBACK, uuid!, "", txt!, appver!, osstr!)
-        var hu = HttpUtils()
+        let param = NSString(format: PARAM_FEEDBACK, uuid!, "", txt!, appver!, osstr!)
+        let hu = HttpUtils()
         hu.get("\(URL_FEEDBACK)?\(param)")
         self.navigationController!.popViewControllerAnimated(true)
     }

@@ -26,7 +26,7 @@ class SearchResultViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = STR_RESULT
-        var lblTop = (self.tableView.frame.size.height - 100) / 2
+        let lblTop = (self.tableView.frame.size.height - 100) / 2
         lblNoCard = UILabel(frame: CGRectMake(0, lblTop, self.tableView.frame.size.width, 50))
         lblNoCard!.text = STR_NO_CARD_FOUND
         lblNoCard!.textAlignment = NSTextAlignment.Center
@@ -35,7 +35,7 @@ class SearchResultViewController: UITableViewController {
         lblNoCard!.hidden = true
         self.tableView.addSubview(lblNoCard!)
         
-        var sql = self.buildSql()
+        let sql = self.buildSql()
         self._cards = DatabaseUtils.queryData(sql)
         if (self._cards!.count == 0) {
             lblNoCard!.hidden = false
@@ -62,8 +62,8 @@ class SearchResultViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-        var item = self._cards![indexPath.row] as! CardItem
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+        let item = self._cards![indexPath.row] as! CardItem
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel!.textColor = UIColor.whiteColor()
         cell.textLabel!.text = item.name
@@ -73,7 +73,7 @@ class SearchResultViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        var item = self._cards![indexPath.row] as! CardItem
+        let item = self._cards![indexPath.row] as! CardItem
         PushUtils.pushCard(item, navController: self.navigationController!)
     }
     

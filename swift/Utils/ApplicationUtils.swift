@@ -24,7 +24,7 @@ class ApplicationUtils: NSObject {
     }
     
     class func getPublicDate() -> String {
-        var obj: AnyObject? = NSBundle.mainBundle().objectForInfoDictionaryKey("PublicDate")
+        let obj: AnyObject? = NSBundle.mainBundle().objectForInfoDictionaryKey("PublicDate")
         var str = ""
         if (obj != nil) {
             str = obj! as! String

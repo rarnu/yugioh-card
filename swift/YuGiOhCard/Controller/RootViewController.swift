@@ -14,12 +14,12 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.scaleMenuView = false
         self.scaleBackgroundImageView = false
         
-        var singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
-        var ccontent = self.storyboard!.instantiateViewControllerWithIdentifier("contentViewController") as! UIViewController
+        let singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
+        let ccontent = self.storyboard!.instantiateViewControllerWithIdentifier("contentViewController") 
         self.contentViewController = ccontent
-        var cleftmenu = singleStory.instantiateViewControllerWithIdentifier("leftMenuViewController") as! UIViewController
+        let cleftmenu = singleStory.instantiateViewControllerWithIdentifier("leftMenuViewController") 
         self.leftMenuViewController = cleftmenu
-        var crightmenu = singleStory.instantiateViewControllerWithIdentifier("rightMenuViewController") as! UIViewController
+        let crightmenu = singleStory.instantiateViewControllerWithIdentifier("rightMenuViewController") 
         self.rightMenuViewController = crightmenu
 
         var background_name = ConfigUtils.loadBackgroundImage()
@@ -33,7 +33,7 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
     }
     
     func receivedNotification(notification: NSNotification) {
-        var backImg = notification.object! as! String
+        let backImg = notification.object! as! String
         self.backgroundImage = UIImage(named: backImg)
     }
     

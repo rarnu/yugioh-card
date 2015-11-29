@@ -6,6 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        UIUtils.setStatusBar(true)
         UIUtils.getWidthDelta()
         UIUtils.setTextFieldCursorColor(UIColor.whiteColor())
         DatabaseUtils.copyDatabaseFile()

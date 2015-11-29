@@ -11,11 +11,9 @@ class CardInfoViewController: UIViewController {
         super.viewWillLayoutSubviews()
         if (!inited) {
             inited = true
-            var v: UIView?
             for temp in self.view.subviews {
-                v = temp as? UIView
-                if (v is UITextView) {
-                    UIUtils.scaleComponent(v!)
+                if (temp is UITextView) {
+                    UIUtils.scaleComponent(temp)
                 }
             }
         }

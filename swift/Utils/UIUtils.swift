@@ -22,7 +22,7 @@ class UIUtils: NSObject {
     class func setNavBar(nav: UINavigationBar) {
         nav.barTintColor = UIColor.clearColor()
         nav.tintColor = UIColor.whiteColor()
-        nav.titleTextAttributes = NSDictionary(objectsAndKeys: UIColor.whiteColor(), NSForegroundColorAttributeName) as? [NSObject : AnyObject]
+        nav.titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName) as? [String : AnyObject]
         nav.setBackgroundImage(UIImage(named: "navbg"), forBarMetrics: UIBarMetrics.Default)
     }
     
@@ -33,12 +33,12 @@ class UIUtils: NSObject {
     }
     
     class func getScreenSize() -> (CGFloat, CGFloat) {
-        var size = UIScreen.mainScreen().bounds.size
+        let size = UIScreen.mainScreen().bounds.size
         return (size.width, size.height)
     }
     
     class func getWidthDelta() {
-        var (screenWidth, screenHeight) = UIUtils.getScreenSize()
+        let (screenWidth, screenHeight) = UIUtils.getScreenSize()
         widthDelta = screenWidth - 320;
         
         if (screenHeight > 480) {

@@ -54,7 +54,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             
             self.addChildViewController(self._leftMenuViewController!)
             self._leftMenuViewController!.view.frame = self.view.bounds
-            self._leftMenuViewController!.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+            self._leftMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight];
             self.menuViewContainer!.addSubview(self._leftMenuViewController!.view)
             self._leftMenuViewController!.didMoveToParentViewController(self)
             
@@ -78,7 +78,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             
             self.addChildViewController(self._rightMenuViewController!)
             self._rightMenuViewController!.view.frame = self.view.bounds
-            self._rightMenuViewController!.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+            self._rightMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight];
             self.menuViewContainer!.addSubview(self._rightMenuViewController!.view)
             self._rightMenuViewController!.didMoveToParentViewController(self)
             
@@ -148,7 +148,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.__commonInit()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.__commonInit()
     }
@@ -222,7 +222,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             func _anim_doing() {
                 contentViewController.view.alpha = 1
             }
-            func _anim_complete(var finish: Bool) {
+            func _anim_complete(finish: Bool) {
                 self.__hideViewController(self.contentViewController)
                 contentViewController.didMoveToParentViewController(self)
                 self.contentViewController = contentViewController
@@ -244,13 +244,13 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
-        var imageView = UIImageView(frame: self.view.bounds)
+        self.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = self.backgroundImage
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        imageView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        imageView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.backgroundImageView = imageView
-        var button = UIButton(frame: CGRectNull)
+        let button = UIButton(frame: CGRectNull)
         button.addTarget(self, action:"hideMenuViewController", forControlEvents:UIControlEvents.TouchUpInside)
         self.contentButton = button
         
@@ -259,11 +259,11 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.view.addSubview(self.contentViewContainer!)
         
         self.menuViewContainer!.frame = self.view.bounds
-        self.menuViewContainer!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        self.menuViewContainer!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         if (self.leftMenuViewController != nil) {
             self.addChildViewController(self.leftMenuViewController!)
             self.leftMenuViewController!.view.frame = self.view.bounds
-            self.leftMenuViewController!.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+            self.leftMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
             self.menuViewContainer!.addSubview(self.leftMenuViewController!.view)
             self.leftMenuViewController!.didMoveToParentViewController(self)
         }
@@ -271,13 +271,13 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         if (self.rightMenuViewController != nil) {
             self.addChildViewController(self.rightMenuViewController!)
             self.rightMenuViewController!.view.frame = self.view.bounds
-            self.rightMenuViewController!.view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+            self.rightMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
             self.menuViewContainer!.addSubview(self.rightMenuViewController!.view)
             self.rightMenuViewController!.didMoveToParentViewController(self)
         }
         
         self.contentViewContainer!.frame = self.view.bounds
-        self.contentViewContainer!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        self.contentViewContainer!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         
         self.addChildViewController(self.contentViewController!)
         self.contentViewController!.view.frame = self.view.bounds
@@ -292,7 +292,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         
         if (self.panGestureEnabled!) {
             self.view.multipleTouchEnabled = false
-            var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "__panGestureRecognized:")
+            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "__panGestureRecognized:")
             panGestureRecognizer.delegate = self
             self.view.addGestureRecognizer(panGestureRecognizer)
         }
@@ -350,7 +350,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-        func _anim_complete(var finish: Bool) {
+        func _anim_complete(finish: Bool) {
             self.__addContentViewControllerMotionEffects()
             if (!self.visible!) {
                 self.delegate?.sideMenu?(self, didShowMenuViewController: self.leftMenuViewController!)
@@ -392,7 +392,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-        func _anim_complete(var finish: Bool) {
+        func _anim_complete(finish: Bool) {
             if (!self.rightMenuVisible!) {
                 self.delegate?.sideMenu?(self, didShowMenuViewController: self.rightMenuViewController!)
             }
@@ -436,8 +436,8 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 strongSelf!.backgroundImageView!.transform = CGAffineTransformMakeScale(1.7, 1.7)
             }
             if (strongSelf!.parallaxEnabled!) {
-                for effect in strongSelf!.contentViewContainer!.motionEffects! {
-                    strongSelf!.contentViewContainer!.removeMotionEffect(effect as! UIMotionEffect)
+                for effect in strongSelf!.contentViewContainer!.motionEffects {
+                    strongSelf!.contentViewContainer!.removeMotionEffect(effect)
                 }
             }
         }
@@ -458,7 +458,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 animationBlock()
             }
             
-            func _anim_complete (var finish: Bool) {
+            func _anim_complete (finish: Bool) {
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 completionBlock()
             }
@@ -478,7 +478,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
         self.contentButton!.autoresizingMask = UIViewAutoresizing.None
         self.contentButton!.frame = self.contentViewContainer!.bounds
-        self.contentButton!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        self.contentButton!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.contentViewContainer!.addSubview(self.contentButton!)
     }
     
@@ -491,8 +491,8 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     func __updateContentViewShadow() {
         if (self.contentViewShadowEnabled!) {
-            var layer = self.contentViewContainer!.layer
-            var path = UIBezierPath(rect: layer.bounds)
+            let layer = self.contentViewContainer!.layer
+            let path = UIBezierPath(rect: layer.bounds)
             layer.shadowPath = path.CGPath
             layer.shadowColor = self.contentViewShadowColor!.CGColor
             layer.shadowOffset = self.contentViewShadowOffset!
@@ -502,9 +502,9 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func __resetContentViewScale() {
-        var t = self.contentViewContainer!.transform
-        var scale = sqrt(t.a * t.a + t.c * t.c)
-        var frame = self.contentViewContainer!.frame
+        let t = self.contentViewContainer!.transform
+        let scale = sqrt(t.a * t.a + t.c * t.c)
+        let frame = self.contentViewContainer!.frame
         self.contentViewContainer!.transform = CGAffineTransformIdentity
         self.contentViewContainer!.transform = CGAffineTransformMakeScale(scale, scale)
         self.contentViewContainer!.frame = frame
@@ -516,16 +516,16 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
 
     func __addMenuViewControllerMotionEffects() {
         if (self.parallaxEnabled!) {
-            if (self.menuViewContainer!.motionEffects != nil) {
-                for effect in self.menuViewContainer!.motionEffects! {
-                    self.menuViewContainer!.removeMotionEffect(effect as! UIMotionEffect)
+            if (self.menuViewContainer!.motionEffects.count != 0) {
+                for effect in self.menuViewContainer!.motionEffects {
+                    self.menuViewContainer!.removeMotionEffect(effect)
                 }
             }
-            var interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
+            let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
             interpolationHorizontal.minimumRelativeValue = self.parallaxMenuMinimumRelativeValue
             interpolationHorizontal.maximumRelativeValue = self.parallaxMenuMaximumRelativeValue
     
-            var interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+            let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
             interpolationVertical.minimumRelativeValue = self.parallaxMenuMinimumRelativeValue
             interpolationVertical.maximumRelativeValue = self.parallaxMenuMaximumRelativeValue
     
@@ -536,15 +536,15 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     func __addContentViewControllerMotionEffects() {
         if (self.parallaxEnabled!) {
-            for effect in self.contentViewContainer!.motionEffects! {
-                self.contentViewContainer!.removeMotionEffect(effect as! UIMotionEffect)
+            for effect in self.contentViewContainer!.motionEffects {
+                self.contentViewContainer!.removeMotionEffect(effect)
             }
             
             func _anim_doing() {
-                var interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
+                let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
                 interpolationHorizontal.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationHorizontal.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
-                var interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+                let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
                 interpolationVertical.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationVertical.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
                 self.contentViewContainer!.addMotionEffect(interpolationHorizontal)
@@ -560,14 +560,14 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if (self.interactivePopGestureRecognizerEnabled! && (self.contentViewController is UINavigationController)) {
-            var navigationController = self.contentViewController as! UINavigationController
-            if (navigationController.viewControllers.count > 1 && navigationController.interactivePopGestureRecognizer.enabled) {
+            let navigationController = self.contentViewController as! UINavigationController
+            if (navigationController.viewControllers.count > 1 && navigationController.interactivePopGestureRecognizer!.enabled) {
                 return false;
             }
         }
         
         if (self.panFromEdge! && (gestureRecognizer is UIPanGestureRecognizer) && !self.visible!) {
-            var point = touch.locationInView(gestureRecognizer.view)
+            let point = touch.locationInView(gestureRecognizer.view)
             if (point.x < 20.0 || point.x > self.view.frame.size.width - 20.0) {
                 return true
             } else {
@@ -671,7 +671,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             }
     
             if (contentViewScale > 1) {
-                var oppositeScale: CGFloat = (1 - (contentViewScale - 1))
+                let oppositeScale: CGFloat = (1 - (contentViewScale - 1))
                 self.contentViewContainer!.transform = CGAffineTransformMakeScale(oppositeScale, oppositeScale)
                 self.contentViewContainer!.transform = CGAffineTransformTranslate(self.contentViewContainer!.transform, point.x, 0)
             } else {

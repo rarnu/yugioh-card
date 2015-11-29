@@ -14,7 +14,7 @@ class DiceView: UIView {
         self.makeUI()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.makeUI()
     }
@@ -24,11 +24,11 @@ class DiceView: UIView {
         self.imgDice = UIImageView(frame: CGRectMake(50, 0, self.frame.size.width-100, self.frame.size.height))
         self.imgDice!.contentMode = UIViewContentMode.ScaleAspectFit
         self.imgDice!.userInteractionEnabled = true
-        var singleTap = UITapGestureRecognizer(target: self, action: "closeClicked:")
+        let singleTap = UITapGestureRecognizer(target: self, action: "closeClicked:")
         self.imgDice!.addGestureRecognizer(singleTap)
     
-        var diceval = arc4random() % 6 + 1
-        var imgName = "dice\(diceval)"
+        let diceval = arc4random() % 6 + 1
+        let imgName = "dice\(diceval)"
         self.imgDice!.image = UIImage(named: imgName)
     
         self.addSubview(self.imgDice!)

@@ -15,11 +15,9 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
         super.viewWillLayoutSubviews()
         if (!inited) {
             inited = true
-            var v: UIView?
             for temp in self.view.subviews {
-                v = temp as? UIView
-                if (v is UIImageView) || (v is UIButton) || (v is UIActivityIndicatorView) {
-                    UIUtils.scaleComponent(v!)
+                if (temp is UIImageView) || (temp is UIButton) || (temp is UIActivityIndicatorView) {
+                    UIUtils.scaleComponent(temp)
                 }
             }
         }
@@ -30,8 +28,8 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
         inited = false
         _img_path = "image"
         self.card = (self.tabBarController! as! CardViewController).card
-        var cardImgName = "\(self.card!._id).jpg"
-        var exists = FileUtils.fileExists(cardImgName, filePath:_img_path!)
+        let cardImgName = "\(self.card!._id).jpg"
+        let exists = FileUtils.fileExists(cardImgName, filePath:_img_path!)
         if (exists) {
             self.loadImage(FileUtils.readFile(cardImgName, loadPath:_img_path!)!)
         } else {
@@ -49,15 +47,15 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
     func downloadClick(sender: AnyObject) {
         self.aivDownload!.hidden = false
         self.btnDownload!.hidden = true
-        var hu = HttpUtils()
+        let hu = HttpUtils()
         hu.delegate = self
-        var url = NSString(format: URL_CARD_IMAGE, self.card!._id) as String
+        let url = NSString(format: URL_CARD_IMAGE, self.card!._id) as String
         hu.get(url)
     }
     
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
-            var fileName = "\(self.card!._id).jpg"
+            let fileName = "\(self.card!._id).jpg"
             FileUtils.writeFile(fileName, savePath:_img_path!, fileData:data!)
             self.loadImage(data!)
         }

@@ -99,6 +99,7 @@ let RACE_DRAGON = "龙"
 let RACE_MENTAL = "念动力"
 let RACE_DREAM_DRAGON = "幻龙"
 let RACE_GOD = "幻神兽"
+let RACE_CREATION = "创造神"
 
 let ATTR_EARTH = "地"
 let ATTR_WATER = "水"

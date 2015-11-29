@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		920AE72119D659A3004618ED /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 920AE72019D659A3004618ED /* libz.dylib */; };
-		920AE72319D659AB004618ED /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 920AE72219D659AB004618ED /* libsqlite3.dylib */; };
 		9221D81619D9813D00E1DE1B /* ApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221D81519D9813D00E1DE1B /* ApplicationUtils.swift */; };
 		9221D81819D9829C00E1DE1B /* ConfigUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221D81719D9829C00E1DE1B /* ConfigUtils.swift */; };
 		9221D81D19D983FB00E1DE1B /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221D81C19D983FB00E1DE1B /* CardItem.swift */; };
@@ -59,16 +57,16 @@
 		928B1D6319DB0094004EE0EE /* PackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B1D6219DB0094004EE0EE /* PackItem.swift */; };
 		928B1D6519DB08B8004EE0EE /* PackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B1D6419DB08B8004EE0EE /* PackDetailViewController.swift */; };
 		928B1D6719DB0D68004EE0EE /* ToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B1D6619DB0D68004EE0EE /* ToolViewController.swift */; };
+		929B9D881BABD5D20008946B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 929B9D871BABD5D20008946B /* libsqlite3.tbd */; };
+		929B9D8A1BABD5DA0008946B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 929B9D891BABD5DA0008946B /* libz.tbd */; };
+		929B9D8C1BABD6BD0008946B /* LaunchImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929B9D8B1BABD6BD0008946B /* LaunchImage.xib */; };
 		92DB756719DBAEC60082D06F /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB756619DBAEC60082D06F /* FavViewController.swift */; };
 		92EE647519D857AB008866C9 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE647419D857AB008866C9 /* LeftMenuViewController.swift */; };
 		92EEA74819D7A50700A04F78 /* RESideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C92EB19D66E010026C3B2 /* RESideMenu.swift */; };
 		92EEA77819D801B700A04F78 /* UIViewController+RESideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EEA77719D801B700A04F78 /* UIViewController+RESideMenu.swift */; };
-		92F4722F1AC943E800F158D6 /* LaunchImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92F4722E1AC943E800F158D6 /* LaunchImage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		920AE72019D659A3004618ED /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		920AE72219D659AB004618ED /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		9221D81519D9813D00E1DE1B /* ApplicationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationUtils.swift; sourceTree = "<group>"; };
 		9221D81719D9829C00E1DE1B /* ConfigUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigUtils.swift; sourceTree = "<group>"; };
 		9221D81C19D983FB00E1DE1B /* CardItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardItem.swift; path = Module/CardItem.swift; sourceTree = "<group>"; };
@@ -129,10 +127,12 @@
 		928B1D6219DB0094004EE0EE /* PackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PackItem.swift; path = Module/PackItem.swift; sourceTree = "<group>"; };
 		928B1D6419DB08B8004EE0EE /* PackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PackDetailViewController.swift; path = Controller/PackDetailViewController.swift; sourceTree = "<group>"; };
 		928B1D6619DB0D68004EE0EE /* ToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToolViewController.swift; path = Controller/ToolViewController.swift; sourceTree = "<group>"; };
+		929B9D871BABD5D20008946B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		929B9D891BABD5DA0008946B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		929B9D8B1BABD6BD0008946B /* LaunchImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchImage.xib; sourceTree = "<group>"; };
 		92DB756619DBAEC60082D06F /* FavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavViewController.swift; path = Controller/FavViewController.swift; sourceTree = "<group>"; };
 		92EE647419D857AB008866C9 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenuViewController.swift; path = Controller/LeftMenuViewController.swift; sourceTree = "<group>"; };
 		92EEA77719D801B700A04F78 /* UIViewController+RESideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+RESideMenu.swift"; path = "RESideMenu/UIViewController+RESideMenu.swift"; sourceTree = "<group>"; };
-		92F4722E1AC943E800F158D6 /* LaunchImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchImage.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +140,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				920AE72319D659AB004618ED /* libsqlite3.dylib in Frameworks */,
-				920AE72119D659A3004618ED /* libz.dylib in Frameworks */,
+				929B9D8A1BABD5DA0008946B /* libz.tbd in Frameworks */,
+				929B9D881BABD5D20008946B /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,13 +255,13 @@
 		922DFF7A19D6594100364CF5 = {
 			isa = PBXGroup;
 			children = (
+				929B9D891BABD5DA0008946B /* libz.tbd */,
+				929B9D871BABD5D20008946B /* libsqlite3.tbd */,
 				922ABCF219DBC5B00058FBAC /* ZipArchive */,
 				928B1D1919DA976B004EE0EE /* Resource */,
 				9221D82019D9862E00E1DE1B /* SwiftBridge.h */,
 				9221D80219D9812200E1DE1B /* Utils */,
 				926C92D919D65D880026C3B2 /* RESideMenu */,
-				920AE72219D659AB004618ED /* libsqlite3.dylib */,
-				920AE72019D659A3004618ED /* libz.dylib */,
 				922DFF8519D6594100364CF5 /* YuGiOhCard */,
 				922DFF8419D6594100364CF5 /* Products */,
 			);
@@ -293,7 +293,7 @@
 			children = (
 				922DFF8F19D6594100364CF5 /* Images.xcassets */,
 				922DFF8719D6594100364CF5 /* Info.plist */,
-				92F4722E1AC943E800F158D6 /* LaunchImage.xib */,
+				929B9D8B1BABD6BD0008946B /* LaunchImage.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -351,7 +351,9 @@
 		922DFF7B19D6594100364CF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = rarnu;
 				TargetAttributes = {
 					922DFF8219D6594100364CF5 = {
@@ -389,7 +391,7 @@
 				9221D83B19DA75F800E1DE1B /* AboutView.xib in Resources */,
 				9287144C19D65B5A00A0FD1F /* CardStory.storyboard in Resources */,
 				922DFF9019D6594100364CF5 /* Images.xcassets in Resources */,
-				92F4722F1AC943E800F158D6 /* LaunchImage.xib in Resources */,
+				929B9D8C1BABD6BD0008946B /* LaunchImage.xib in Resources */,
 				92655E4919D86177005F2265 /* SingleStories.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +503,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -568,6 +571,7 @@
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rarnu.yugioh.swift.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = SwiftBridge.h;
@@ -585,6 +589,7 @@
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rarnu.yugioh.swift.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = SwiftBridge.h;

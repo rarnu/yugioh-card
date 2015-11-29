@@ -10,8 +10,8 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.controllerNames = ["searchViewController", "limitViewController", "latestViewController","packViewController", "favViewController", "toolViewController"]
         
-        var tableView = UITableView(frame: CGRectMake(0, (self.view.frame.size.height - 54 * 6) / 2.0, self.view.frame.size.width, 54 * 6), style: UITableViewStyle.Plain)
-        tableView.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleWidth
+        let tableView = UITableView(frame: CGRectMake(0, (self.view.frame.size.height - 54 * 6) / 2.0, self.view.frame.size.width, 54 * 6), style: UITableViewStyle.Plain)
+        tableView.autoresizingMask = [UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleWidth]
         tableView.delegate = self
         tableView.dataSource = self
         tableView.opaque = false
@@ -43,7 +43,7 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? UITableViewCell
+        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell")
         
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
@@ -59,8 +59,8 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated:true)
-        var mainStory = UIStoryboard(name: "Main", bundle: nil)
-        var navController = UINavigationController(rootViewController: mainStory.instantiateViewControllerWithIdentifier(self.controllerNames[indexPath.row] as! String) as! UIViewController)
+        let mainStory = UIStoryboard(name: "Main", bundle: nil)
+        let navController = UINavigationController(rootViewController: mainStory.instantiateViewControllerWithIdentifier(self.controllerNames[indexPath.row] as! String) )
         self.sideMenuViewController!.setContentViewController(navController, animated: true)
         self.sideMenuViewController!.hideMenuViewController()
     }

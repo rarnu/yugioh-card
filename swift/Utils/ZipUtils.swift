@@ -22,10 +22,10 @@ class ZipUtils: NSObject {
             b = self.delegate!.zipWillUnzip!()
         }
         if (b) {
-            var za = ZipArchive()
+            let za = ZipArchive()
             var ret = NSNumber(bool: false)
             if (za.UnzipOpenFile(self.archiveFile!)) {
-                var succ = za.UnzipFileTo(self.extractPath, overWrite:true)
+                let succ = za.UnzipFileTo(self.extractPath, overWrite:true)
                 za.UnzipCloseFile()
                 ret = NSNumber(bool: succ)
             }

@@ -11,11 +11,9 @@ class CardAdjustViewController: UIViewController {
         super.viewWillLayoutSubviews()
         if (!inited) {
             inited = true
-            var v: UIView?
             for temp in self.view.subviews {
-                v = temp as? UIView
-                if (v is UITextView) {
-                    UIUtils.scaleComponent(v!)
+                if (temp is UITextView) {
+                    UIUtils.scaleComponent(temp)
                 }
             }
         }
@@ -25,7 +23,7 @@ class CardAdjustViewController: UIViewController {
         super.viewDidLoad()
         inited = false
         self.card = (self.tabBarController! as! CardViewController).card
-        var str = "\(self.card!.adjust)\n"
+        let str = "\(self.card!.adjust)\n"
         self.txtAdjust!.text = str
     }
 

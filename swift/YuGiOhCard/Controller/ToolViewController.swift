@@ -41,11 +41,9 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
         super.viewWillLayoutSubviews()
         if (!inited) {
             inited = true
-            var v: UIView?
             for temp in self.view.subviews {
-                v = temp as? UIView
-                if (v is UILabel) || (v is UITextField) || (v is UIButton) {
-                    UIUtils.scaleComponent(v!)
+                if (temp is UILabel) || (temp is UITextField) || (temp is UIButton) {
+                    UIUtils.scaleComponent(temp)
                 }
             }
         }
@@ -59,7 +57,7 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         inited = false
-        var bkImg = UIImage(named: "navbg")
+        let bkImg = UIImage(named: "navbg")
         btnDice!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
         btnCoin!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
         btn1Add!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
@@ -152,13 +150,13 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
     
     @IBAction func btn1AddClick(sender: AnyObject) {
-        var lifeDelta = (self.txt1Life!.text as NSString).integerValue
+        let lifeDelta = (self.txt1Life!.text! as NSString).integerValue
         player1Life += Int(lifeDelta)
         self.showLife()
     }
     
     @IBAction func btn1MinusClick(sender: AnyObject) {
-        var lifeDelta = (self.txt1Life!.text as NSString).integerValue
+        let lifeDelta = (self.txt1Life!.text! as NSString).integerValue
         player1Life -= Int(lifeDelta)
         if (player1Life < 0) {
             player1Life = 0
@@ -167,7 +165,7 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
     
     @IBAction func btn1SetClick(sender: AnyObject) {
-        var lifeDelta = (self.txt1Life!.text as NSString).integerValue
+        let lifeDelta = (self.txt1Life!.text! as NSString).integerValue
         player1Life = Int(lifeDelta)
         self.showLife()
     
@@ -183,7 +181,7 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
     
     @IBAction func btn1BalanceClick(sender: AnyObject) {
-        var life = (player1Life + player2Life) / 2
+        let life = (player1Life + player2Life) / 2
         player1Life = Int(life)
         player2Life = Int(life)
         self.showLife()
@@ -195,19 +193,19 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
     
     @IBAction func btn2AddClick(sender: AnyObject) {
-        var lifeDelta = (self.txt2Life!.text as NSString).integerValue
+        let lifeDelta = (self.txt2Life!.text! as NSString).integerValue
         player2Life += Int(lifeDelta)
         self.showLife()
     }
     
     @IBAction func btn2MinusClick(sender: AnyObject) {
-        var lifeDelta = (self.txt2Life!.text as NSString).integerValue
+        let lifeDelta = (self.txt2Life!.text! as NSString).integerValue
         player2Life -= Int(lifeDelta)
         self.showLife()
     }
     
     @IBAction func btn2SetClick(sender: AnyObject) {
-        var lifeDelta = (self.txt2Life!.text as NSString).integerValue
+        let lifeDelta = (self.txt2Life!.text! as NSString).integerValue
         player2Life = Int(lifeDelta)
         self.showLife()
     }
@@ -223,7 +221,7 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
     
     @IBAction func btn2BalanceClick(sender: AnyObject) {
-        var life = (player1Life + player2Life) / 2
+        let life = (player1Life + player2Life) / 2
         player1Life = Int(life)
         player2Life = Int(life)
         self.showLife()

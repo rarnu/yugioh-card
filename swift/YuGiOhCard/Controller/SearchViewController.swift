@@ -23,7 +23,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     var cancelButton: UIBarButtonItem?
     var inited = false
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -37,11 +37,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         super.viewWillLayoutSubviews()
         if (!inited) {
             inited = true
-            var v: UIView?
             for temp in self.view.subviews {
-                v = temp as? UIView
-                if (v is UILabel) || (v is UITextField) {
-                    UIUtils.scaleComponent(v!)
+                if (temp is UILabel) || (temp is UITextField) {
+                    UIUtils.scaleComponent(temp)
                 }
             }
         }
@@ -61,8 +59,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
             if (self.pushView == "aboutViewController") {
                 self.showAboutView()
             } else {
-                var singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
-                var controller = singleStory.instantiateViewControllerWithIdentifier(self.pushView!) as! UIViewController
+                let singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
+                let controller = singleStory.instantiateViewControllerWithIdentifier(self.pushView!) 
                 self.navigationController!.pushViewController(controller, animated: true)
             }
         }
@@ -100,7 +98,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     
     func showAboutView() {
         self.setEditMode(true)
-        var av = AboutView.initWithNib()
+        let av = AboutView.initWithNib()
         av!.delegate = self;
         self.view.addSubview(av!)
     }
@@ -158,7 +156,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     func pushViewController() {
-        var resultViewController = self.storyboard!.instantiateViewControllerWithIdentifier("searchResultViewController") as! SearchResultViewController
+        let resultViewController = self.storyboard!.instantiateViewControllerWithIdentifier("searchResultViewController") as! SearchResultViewController
         resultViewController.searchCardName = self.txtCardName!.text
         resultViewController.searchCamp = self.txtCamp!.text
         resultViewController.searchCardType = self.txtCardType!.text
@@ -242,7 +240,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         if (current == "") {
             picker!.selectFirst()
         } else {
-            picker!.selectCurrent(current)
+            picker!.selectCurrent(current!)
         }
         picker!.delegate = self
         self.view.addSubview(picker!)

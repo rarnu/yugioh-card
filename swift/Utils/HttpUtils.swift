@@ -22,21 +22,21 @@ class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate 
     var tag: Int?
     
     func get(url: String) {
-        var u = NSURL(string: url)
+        let u = NSURL(string: url)
         
-        var req = NSURLRequest(URL: u!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)
-        var conn = NSURLConnection(request: req, delegate: self)
+        let req = NSURLRequest(URL: u!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)
+        let conn = NSURLConnection(request: req, delegate: self)
         conn!.start()
     }
     
     func post(url: String, param: String) {
-        var u = NSURL(string: url)
-        var req = NSMutableURLRequest(URL: u!)
+        let u = NSURL(string: url)
+        let req = NSMutableURLRequest(URL: u!)
         req.HTTPMethod = "POST"
         req.timeoutInterval = 60
-        var data = (param as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        let data = (param as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPBody = data
-        var conn = NSURLConnection(request: req, delegate: self)
+        let conn = NSURLConnection(request: req, delegate: self)
         conn!.start()
     }
     
@@ -66,9 +66,9 @@ class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate 
     
     func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
         if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
-            challenge.sender.useCredential(NSURLCredential(forTrust: challenge.protectionSpace.serverTrust), forAuthenticationChallenge: challenge)
+            challenge.sender!.useCredential(NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!), forAuthenticationChallenge: challenge)
         }
-        challenge.sender.continueWithoutCredentialForAuthenticationChallenge(challenge)
+        challenge.sender!.continueWithoutCredentialForAuthenticationChallenge(challenge)
     }
     
 }

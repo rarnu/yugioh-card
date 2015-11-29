@@ -23,11 +23,11 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
         _data_path = "data"
         _pack_cards = PackageCards()
         _cards = NSMutableArray()
-        var jsonData = FileUtils.readTextFile(_packages!, loadPath:_data_path!)
+        let jsonData = FileUtils.readTextFile(_packages!, loadPath:_data_path!)
         if (jsonData == "") {
-            var hu = HttpUtils()
+            let hu = HttpUtils()
             hu.delegate = self
-            var packageCardUrl = NSString(format: URL_PACAKGE_CARD, self.packageId!) as String
+            let packageCardUrl = NSString(format: URL_PACAKGE_CARD, self.packageId!) as String
             hu.get(packageCardUrl)
         } else {
             self.loadData(jsonData)
@@ -43,15 +43,15 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     }
     
     func refreshClicked(sender: AnyObject) {
-        var hu = HttpUtils()
+        let hu = HttpUtils()
         hu.delegate = self
-        var packageCardUrl = NSString(format: URL_PACAKGE_CARD, self.packageId!) as String
+        let packageCardUrl = NSString(format: URL_PACAKGE_CARD, self.packageId!) as String
         hu.get(packageCardUrl)
     }
     
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
-            var json = NSString(data: data!, encoding:NSUTF8StringEncoding)
+            let json = NSString(data: data!, encoding:NSUTF8StringEncoding)
             FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json as! String)
             self.loadData(json as! String)
         }
@@ -62,8 +62,8 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     }
     
     func loadData(json: String) {
-        var data = (json as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        var pack: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableLeaves, error:nil)
+        let data = (json as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        let pack: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableLeaves)
         if (pack != nil) {
             _pack_cards!.name = (pack! as! NSDictionary).objectForKey("name") as! String
             _pack_cards!.cards.removeAllObjects()
@@ -82,8 +82,8 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
-        var item = _cards![indexPath.row] as! CardItem
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) 
+        let item = _cards![indexPath.row] as! CardItem
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel!.textColor = UIColor.whiteColor()
         cell.textLabel!.text = item.name
@@ -94,7 +94,7 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated:false)
-        var item = _cards![indexPath.row] as! CardItem
+        let item = _cards![indexPath.row] as! CardItem
         PushUtils.pushCard(item, navController:self.navigationController!)
     }
     

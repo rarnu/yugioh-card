@@ -15,7 +15,7 @@ class CoinView: UIView {
         self.makeUI()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.makeUI()
     }
@@ -26,11 +26,11 @@ class CoinView: UIView {
         self.imgCoin = UIImageView(frame: CGRectMake(50, 0, self.frame.size.width-100, self.frame.size.height))
         self.imgCoin!.contentMode = UIViewContentMode.ScaleAspectFit
         self.imgCoin!.userInteractionEnabled = true
-        var singleTap = UITapGestureRecognizer(target: self, action: "closeClicked:")
+        let singleTap = UITapGestureRecognizer(target: self, action: "closeClicked:")
         self.imgCoin!.addGestureRecognizer(singleTap)
 
-        var coinval = arc4random() % 2 + 1
-        var imgName = "coin\(coinval)"
+        let coinval = arc4random() % 2 + 1
+        let imgName = "coin\(coinval)"
         self.imgCoin!.image = UIImage(named: imgName)
         self.addSubview(self.imgCoin!)
     }

@@ -22,7 +22,7 @@ class CardViewController: UITabBarController {
         self.card = DatabaseUtils.queryOneCard(self.cardId!)
         likeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "likeClicked:")
         unlikeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "unlikeClicked:")
-        var isFav = DatabaseUtils.favExists(self.cardId!)
+        let isFav = DatabaseUtils.favExists(self.cardId!)
         self.navigationItem.rightBarButtonItem = isFav ? unlikeButton : likeButton
     }
 

@@ -10,8 +10,8 @@ class RightMenuViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         self.controllerNames = ["settingViewController", "updateViewController", "feedbackViewController", "aboutViewController"]
         
-        var tableView = UITableView(frame: CGRectMake(0, (self.view.frame.size.height - 54 * 4) / 2.0, self.view.frame.size.width, 54 * 4), style: UITableViewStyle.Plain)
-        tableView.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleWidth
+        let tableView = UITableView(frame: CGRectMake(0, (self.view.frame.size.height - 54 * 4) / 2.0, self.view.frame.size.width, 54 * 4), style: UITableViewStyle.Plain)
+        tableView.autoresizingMask = [UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleWidth]
         tableView.delegate = self
         tableView.dataSource = self
         tableView.opaque = false
@@ -42,7 +42,7 @@ class RightMenuViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? UITableViewCell
+        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell")
         
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
@@ -60,11 +60,11 @@ class RightMenuViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated:true)
-        var mainStory = UIStoryboard(name: "Main", bundle: nil)
-        var controller: SearchViewController? = mainStory.instantiateViewControllerWithIdentifier("searchViewController") as? SearchViewController
-        var pushViewName = self.controllerNames[indexPath.row] as! String;
+        let mainStory = UIStoryboard(name: "Main", bundle: nil)
+        let controller: SearchViewController? = mainStory.instantiateViewControllerWithIdentifier("searchViewController") as? SearchViewController
+        let pushViewName = self.controllerNames[indexPath.row] as! String;
         controller!.pushView = pushViewName
-        var nav = UINavigationController(rootViewController: controller!)
+        let nav = UINavigationController(rootViewController: controller!)
         self.sideMenuViewController!.setContentViewController(nav, animated:false)
         self.sideMenuViewController!.hideMenuViewController()
 

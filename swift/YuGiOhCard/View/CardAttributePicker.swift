@@ -22,13 +22,13 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
   
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.makeUI()
     }
     
     func makeUI() {
-        // self.backgroundColor = UIColor.clearColor()
+        // self.backgroundColor = UIColor.blackColor()
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.grayColor().CGColor
     
@@ -38,20 +38,20 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
 
         toolTitle = UILabel(frame: CGRectMake(8, 0, self.toolbar!.frame.size.width-50, self.toolbar!.frame.size.height))
         toolTitle!.textColor = UIColor.whiteColor()
-        var splitLine = UIView(frame: CGRectMake(0, self.toolbar!.frame.size.height, self.toolbar!.frame.size.width, 1))
+        let splitLine = UIView(frame: CGRectMake(0, self.toolbar!.frame.size.height, self.toolbar!.frame.size.width, 1))
         splitLine.backgroundColor = UIColor.grayColor()
         
         self.toolbar!.addSubview(toolTitle!)
         self.toolbar!.addSubview(splitLine)
     
-        toolButton = UIButton.buttonWithType(UIButtonType.System) as? UIButton
+        toolButton = UIButton(type: UIButtonType.System)
         toolButton!.backgroundColor = UIColor.clearColor()
         toolButton!.frame = (CGRectMake(self.toolbar!.frame.size.width-50, 0, 50, self.toolbar!.frame.size.height))
         toolButton!.setTitle(COMMON_DONE, forState:UIControlState.Normal)
         toolButton!.addTarget(self, action:"doneClick:", forControlEvents:UIControlEvents.TouchDown)
         self.toolbar!.addSubview(toolButton!)
     
-        self.picker = UIPickerView(frame: CGRectMake(0, 51, self.frame.size.width, 0))
+        self.picker = UIPickerView(frame: CGRectMake(0, 51, self.frame.size.width, self.frame.size.height - 50))
         self.picker!.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         self.picker!.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.picker!.showsSelectionIndicator = true
@@ -82,8 +82,8 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
         return pickerView.frame.size.width
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
-        var title = self.pickObjects![row % self.pickObjects!.count] as! String
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        let title = self.pickObjects![row % self.pickObjects!.count] as! String
         var lblView: UILabel?
         if (view == nil) {
             lblView = UILabel()
@@ -99,17 +99,17 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     }
     
     func doneClick(sender: AnyObject) {
-        var picked = self.pickObjects![self.picker!.selectedRowInComponent(0) % self.pickObjects!.count] as! String
+        let picked = self.pickObjects![self.picker!.selectedRowInComponent(0) % self.pickObjects!.count] as! String
         self.delegate?.pickDone?(picked, textField: self.txtResult)
     }
     
     func selectFirst() {
-        var selected = (65536 / 2) - (65536 % self.pickObjects!.count) - 1
+        let selected = (65536 / 2) - (65536 % self.pickObjects!.count) - 1
         self.picker!.selectRow(selected, inComponent: 0, animated: false)
     }
     
     func selectCurrent(text: String) {
-        var selected = (65536 / 2) - (65536 % self.pickObjects!.count) - 1
+        let selected = (65536 / 2) - (65536 % self.pickObjects!.count) - 1
         for (var i = selected; i < selected + self.pickObjects!.count; i++) {
             if ((self.pickObjects![i % self.pickObjects!.count] as! String) == text) {
                 self.picker!.selectRow(i, inComponent:0, animated:false)

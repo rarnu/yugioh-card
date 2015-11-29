@@ -6,32 +6,44 @@ var _fav_database: COpaquePointer = nil
 class DatabaseUtils: NSObject {
    
     class func copyDatabaseFile() -> Bool {
-        var fileMgr = NSFileManager.defaultManager()
-        var bundle = NSBundle.mainBundle()
-        var oriMainDbPath: String? = bundle.pathForResource("yugioh", ofType: "db")
-        var oriFavDbPath: String? = bundle.pathForResource("fav", ofType: "db")
-        var document = FileUtils.getDocumentPath()
-        var mainDbPath: String = "\(document)/yugioh.db"
-        var favDbPath: String = "\(document)/fav.db"
-        fileMgr.createDirectoryAtPath(document, withIntermediateDirectories: true, attributes: nil, error: nil)
+        let fileMgr = NSFileManager.defaultManager()
+        let bundle = NSBundle.mainBundle()
+        let oriMainDbPath: String? = bundle.pathForResource("yugioh", ofType: "db")
+        let oriFavDbPath: String? = bundle.pathForResource("fav", ofType: "db")
+        let document = FileUtils.getDocumentPath()
+        let mainDbPath: String = "\(document)/yugioh.db"
+        let favDbPath: String = "\(document)/fav.db"
+        do {
+            try fileMgr.createDirectoryAtPath(document, withIntermediateDirectories: true, attributes: nil)
+        } catch _ {
+        }
         if (!fileMgr.fileExistsAtPath(mainDbPath)) {
-            fileMgr.copyItemAtPath(oriMainDbPath!, toPath: mainDbPath, error: nil)
+            do {
+                try fileMgr.copyItemAtPath(oriMainDbPath!, toPath: mainDbPath)
+            } catch _ {
+            }
         }
         if (!fileMgr.fileExistsAtPath(favDbPath)) {
-            fileMgr.copyItemAtPath(oriFavDbPath!, toPath: favDbPath, error: nil)
+            do {
+                try fileMgr.copyItemAtPath(oriFavDbPath!, toPath: favDbPath)
+            } catch _ {
+            }
         }
         return fileMgr.fileExistsAtPath(mainDbPath) && fileMgr.fileExistsAtPath(favDbPath)
     
     }
     
     class func updateDatabase() {
-        var currVer = getDatabaseVersion();
-        var innerVer = getDatabaseVersionFromAssets();
+        let currVer = getDatabaseVersion();
+        let innerVer = getDatabaseVersionFromAssets();
         if (innerVer > currVer) {
             closeDatabase()
-            var document = FileUtils.getDocumentPath()
-            var mainDbPath: String = "\(document)/yugioh.db"
-            NSFileManager.defaultManager().removeItemAtPath(mainDbPath, error: nil)
+            let document = FileUtils.getDocumentPath()
+            let mainDbPath: String = "\(document)/yugioh.db"
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(mainDbPath)
+            } catch _ {
+            }
             var updated = copyDatabaseFile()
             if (updated) {
                 updated = openDatabase()
@@ -41,8 +53,8 @@ class DatabaseUtils: NSObject {
     }
     
     class func _openDatabase(fileName: String) -> COpaquePointer {
-        var document = FileUtils.getDocumentPath()
-        var dbFilePath = "\(document)/\(fileName)" as NSString
+        let document = FileUtils.getDocumentPath()
+        let dbFilePath = "\(document)/\(fileName)" as NSString
         var database: COpaquePointer = nil
         if (sqlite3_open(dbFilePath.cStringUsingEncoding(NSUTF8StringEncoding), &database) == SQLITE_OK) {
             return database
@@ -77,7 +89,7 @@ class DatabaseUtils: NSObject {
     }
     
     class func getDatabaseVersion() -> Int {
-        var sql = "select ver from version" as NSString
+        let sql = "select ver from version" as NSString
         var stmt: COpaquePointer = nil
         var ver: Int = 0
 
@@ -92,11 +104,11 @@ class DatabaseUtils: NSObject {
     }
     
     class func getDatabaseVersionFromAssets() -> Int {
-        var assetsDbPath: NSString? = NSBundle.mainBundle().pathForResource("yugioh", ofType: "db")
+        let assetsDbPath: NSString? = NSBundle.mainBundle().pathForResource("yugioh", ofType: "db")
         var db: COpaquePointer = nil
         var ret: Int = 0
         if (sqlite3_open(assetsDbPath!.cStringUsingEncoding(NSUTF8StringEncoding), &db) == SQLITE_OK) {
-            var sql = "select ver from version" as NSString
+            let sql = "select ver from version" as NSString
             var stmt: COpaquePointer = nil
             
             if (sqlite3_prepare_v2(db, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
@@ -112,10 +124,10 @@ class DatabaseUtils: NSObject {
     }
     
     class func buildDataArray(stmt: COpaquePointer) -> NSMutableArray? {
-        var array = NSMutableArray()
+        let array = NSMutableArray()
 
         while (sqlite3_step(stmt) == SQLITE_ROW) {
-            var item = CardItem()
+            let item = CardItem()
             item._id = Int(sqlite3_column_int(stmt, 0))
             item.name = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 1)))!
             item.sCardType = String.fromCString(UnsafePointer<CChar>(sqlite3_column_text(stmt, 2)))!
@@ -137,7 +149,7 @@ class DatabaseUtils: NSObject {
     class func queryOneCard(cardId: Int) -> CardItem? {
         var stmt: COpaquePointer = nil
         var item: CardItem? = nil
-        var sql = "select * from YGODATA where _id=\(cardId)" as NSString
+        let sql = "select * from YGODATA where _id=\(cardId)" as NSString
     
         if (sqlite3_prepare_v2(_main_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             while (sqlite3_step(stmt) == SQLITE_ROW) {
@@ -175,22 +187,22 @@ class DatabaseUtils: NSObject {
     }
 
     class func queryLast100() -> NSMutableArray? {
-        var sql = "select _id, name, sCardType from YGODATA order by _id desc limit 0,100"
+        let sql = "select _id, name, sCardType from YGODATA order by _id desc limit 0,100"
         return self.queryData(sql)
     }
     
     class func queryBanCards() -> NSMutableArray? {
-        var sql = "select _id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc"
+        let sql = "select _id, name, sCardType from YGODATA where ban='禁止卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
     class func queryLimit1Cards() -> NSMutableArray? {
-        var sql = "select _id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc"
+        let sql = "select _id, name, sCardType from YGODATA where ban='限制卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
     class func queryLimit2Cards() -> NSMutableArray? {
-        var sql = "select _id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc"
+        let sql = "select _id, name, sCardType from YGODATA where ban='准限制卡' order by sCardType asc"
         return self.queryData(sql)
     }
     
@@ -207,7 +219,7 @@ class DatabaseUtils: NSObject {
         }
         var arr: NSMutableArray? = nil
         if (con != "") {
-            var sql = "select _id, name, sCardType from YGODATA where _id in (\(con))"
+            let sql = "select _id, name, sCardType from YGODATA where _id in (\(con))"
             arr = self.queryData(sql)
         }
         if (arr == nil) {
@@ -218,7 +230,7 @@ class DatabaseUtils: NSObject {
     
     class func queryCardCount() -> Int {
         var cardCount: Int = 0
-        var sql = "select count(*) from YGODATA" as NSString
+        let sql = "select count(*) from YGODATA" as NSString
         var stmt: COpaquePointer = nil
         if (sqlite3_prepare_v2(_main_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             if (sqlite3_step(stmt) == SQLITE_ROW) {
@@ -231,7 +243,7 @@ class DatabaseUtils: NSObject {
     
     class func queryLastCardId() -> Int {
         var cardId: Int = 0
-        var sql = "select _id from YGODATA order by _id desc limit 0,1" as NSString
+        let sql = "select _id from YGODATA order by _id desc limit 0,1" as NSString
         var stmt: COpaquePointer = nil
         if (sqlite3_prepare_v2(_main_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             while (sqlite3_step(stmt) == SQLITE_ROW) {
@@ -245,18 +257,18 @@ class DatabaseUtils: NSObject {
 
     
     class func favAdd(cardId: Int) {
-        var sql = "insert into fav (cardId) values (\(cardId))" as NSString
+        let sql = "insert into fav (cardId) values (\(cardId))" as NSString
         sqlite3_exec(_fav_database, sql.UTF8String, nil, nil, nil)
     }
     
     class func favRemove(cardId: Int) {
-        var sql = "delete from fav where cardId=\(cardId)" as NSString
+        let sql = "delete from fav where cardId=\(cardId)" as NSString
         sqlite3_exec(_fav_database, sql.UTF8String, nil, nil, nil)
     }
     
     class func favExists(cardId: Int) -> Bool {
         var ret = false
-        var sql = "select cardId from fav where cardId=\(cardId)" as NSString
+        let sql = "select cardId from fav where cardId=\(cardId)" as NSString
         var stmt: COpaquePointer = nil
         if (sqlite3_prepare_v2(_fav_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             while (sqlite3_step(stmt) == SQLITE_ROW) {
@@ -269,8 +281,8 @@ class DatabaseUtils: NSObject {
     }
     
     class func favQuery() -> NSMutableArray? {
-        var arr = NSMutableArray()
-        var sql = "select * from fav" as NSString
+        let arr = NSMutableArray()
+        let sql = "select * from fav" as NSString
         var stmt: COpaquePointer = nil
         if (sqlite3_prepare_v2(_fav_database, sql.UTF8String, -1, &stmt, nil) == SQLITE_OK) {
             while (sqlite3_step(stmt) == SQLITE_ROW) {

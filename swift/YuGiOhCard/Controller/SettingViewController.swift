@@ -25,11 +25,9 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewWillLayoutSubviews()
         if (!inited) {
             inited = true
-            var v: UIView?
             for temp in self.view.subviews {
-                v = temp as? UIView
-                if (v is UILabel) || (v is UIButton) || (v is UICollectionView) {
-                    UIUtils.scaleComponent(v!)
+                if (temp is UILabel) || (temp is UIButton) || (temp is UICollectionView) {
+                    UIUtils.scaleComponent(temp)
                 }
             }
         }
@@ -56,8 +54,8 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         _document = FileUtils.getDocumentPath()
         fmgr = NSFileManager.defaultManager()
-        var sizeStr = NSString(format: "%.2f M", FileUtils.folderSizeAtPath(_document!))
-        self.btnSpace!.setTitle(sizeStr as? String, forState: UIControlState.Normal)
+        let sizeStr = NSString(format: "%.2f M", FileUtils.folderSizeAtPath(_document!))
+        self.btnSpace!.setTitle(sizeStr as String, forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +63,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @IBAction func cleanClicked(sender: AnyObject) {
-        var alert = UIAlertView(title: STR_CONFIRM, message: STR_CONFIRM_CLEAR_DOCUMENT, delegate: self, cancelButtonTitle: COMMON_CANCEL, otherButtonTitles: COMMON_OK)
+        let alert = UIAlertView(title: STR_CONFIRM, message: STR_CONFIRM_CLEAR_DOCUMENT, delegate: self, cancelButtonTitle: COMMON_CANCEL, otherButtonTitles: COMMON_OK)
         alert.show()
     }
     
@@ -80,10 +78,16 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func removeDocumentFiles() {
-        var imgPath = "\(_document!)/image"
-        fmgr!.removeItemAtPath(imgPath, error:nil)
+        let imgPath = "\(_document!)/image"
+        do {
+            try fmgr!.removeItemAtPath(imgPath)
+        } catch _ {
+        }
         if (!fmgr!.fileExistsAtPath(imgPath)) {
-            fmgr!.createDirectoryAtPath(imgPath, withIntermediateDirectories:true, attributes:nil, error:nil)
+            do {
+                try fmgr!.createDirectoryAtPath(imgPath, withIntermediateDirectories:true, attributes:nil)
+            } catch _ {
+            }
         }
     }
     
@@ -100,7 +104,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as! UIBackgroundImageCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as! UIBackgroundImageCell
         cell.imgName = _backgrounds![indexPath.row] as! String
         cell.img!.image = UIImage(named: cell.imgName as! String)
         cell.selectMark!.hidden = _current_background! != cell.imgName
@@ -115,7 +119,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.deselectItemAtIndexPath(indexPath, animated:true)
         _current_background = _backgrounds![indexPath.row] as? String
         ConfigUtils.saveBackgroundImage(_current_background!)
-        var nc = NSNotificationCenter.defaultCenter()
+        let nc = NSNotificationCenter.defaultCenter()
         nc.postNotificationName("Notification_ChangeBackground", object: _current_background!)
         collectionView.reloadData()
     }
@@ -125,13 +129,13 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func generateImageSize() -> CGSize {
-        var (screenWidth, screenHeight) = UIUtils.getScreenSize()
+        let (screenWidth, _) = UIUtils.getScreenSize()
         var scale: CGFloat = 1.0
         if (screenWidth > 320) {
             scale = screenWidth / 320
         }
-        var w = (screenWidth - ((13 * 4) * scale)) / 3
-        var h = 166 * w / 89
+        let w = (screenWidth - ((13 * 4) * scale)) / 3
+        let h = 166 * w / 89
         return CGSizeMake(w, h)
     }
 
