@@ -24,7 +24,7 @@ class DiceView: UIView {
         self.imgDice = UIImageView(frame: CGRectMake(50, 0, self.frame.size.width-100, self.frame.size.height))
         self.imgDice!.contentMode = UIViewContentMode.ScaleAspectFit
         self.imgDice!.userInteractionEnabled = true
-        let singleTap = UITapGestureRecognizer(target: self, action: "closeClicked:")
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(DiceView.closeClicked(_:)))
         self.imgDice!.addGestureRecognizer(singleTap)
     
         let diceval = arc4random() % 6 + 1

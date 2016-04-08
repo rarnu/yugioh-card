@@ -29,7 +29,7 @@ class AboutView: UIView {
         self.center = CGPointMake(cx, cy)
         self.userInteractionEnabled = true
             
-        let tap =  UITapGestureRecognizer(target: self, action: "tapped:")
+        let tap =  UITapGestureRecognizer(target: self, action: #selector(AboutView.tapped(_:)))
         self.addGestureRecognizer(tap)
         self.fillData()
     }

@@ -251,7 +251,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         imageView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.backgroundImageView = imageView
         let button = UIButton(frame: CGRectNull)
-        button.addTarget(self, action:"hideMenuViewController", forControlEvents:UIControlEvents.TouchUpInside)
+        button.addTarget(self, action:#selector(RESideMenu.hideMenuViewController), forControlEvents:UIControlEvents.TouchUpInside)
         self.contentButton = button
         
         self.view.addSubview(self.backgroundImageView!)
@@ -292,7 +292,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         
         if (self.panGestureEnabled!) {
             self.view.multipleTouchEnabled = false
-            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "__panGestureRecognized:")
+            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(RESideMenu.__panGestureRecognized(_:)))
             panGestureRecognizer.delegate = self
             self.view.addGestureRecognizer(panGestureRecognizer)
         }

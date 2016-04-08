@@ -50,8 +50,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         inited = false
         self.navigationItem.title = "YuGiOh"
         
-        searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "searchClick:")
-        cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "cancelClick:")
+        searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: #selector(SearchViewController.searchClick(_:)))
+        cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: #selector(SearchViewController.cancelClick(_:)))
         self.navigationItem.rightBarButtonItems = [cancelButton!, searchButton!]
         self.resetData()
         
@@ -193,25 +193,22 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     func pickDone(picked: String, textField: UITextField?) {
-        var rect = UIScreen.mainScreen().applicationFrame
+        let rect = UIScreen.mainScreen().applicationFrame
         textField!.text = picked
-        func _anim_doing() {
-            var rectSelectDate = picker!.frame
+        UIView.animateWithDuration(0.5, animations: { () in
+            var rectSelectDate = self.picker!.frame
             rectSelectDate.origin.y = rect.size.height
-            picker!.frame = rectSelectDate
-        }
-        func _anim_complete(var finished: Bool) {
-            picker!.removeFromSuperview()
-            self.setEditMode(false)
-            finished = true
-        }
-        UIView.animateWithDuration(0.5, animations: _anim_doing, completion: _anim_complete)
+            self.picker!.frame = rectSelectDate
+            }, completion: { (_) in
+                self.picker!.removeFromSuperview()
+                self.setEditMode(false)
+        })
     }
     
     func popupPicker(textField: UITextField) {
-        var rect = UIScreen.mainScreen().applicationFrame
-        var rw = rect.size.width * 0.8
-        var left = (rect.size.width - rw) / 2
+        let rect = UIScreen.mainScreen().applicationFrame
+        let rw = rect.size.width * 0.8
+        let left = (rect.size.width - rw) / 2
         picker = CardAttributePicker(frame: CGRectMake(left, rect.size.height, rw, 266))
         picker!.setTitle(textField.placeholder!)
         picker!.txtResult = textField
@@ -236,7 +233,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
             break
         }
     
-        var current = textField.text
+        let current = textField.text
         if (current == "") {
             picker!.selectFirst()
         } else {
@@ -244,18 +241,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         }
         picker!.delegate = self
         self.view.addSubview(picker!)
-    
-        func _anim_doing() {
-            var rectSelectDate = picker!.frame
-            rectSelectDate.origin.y = (rect.size.height-picker!.frame.size.height)/2;
-            picker!.frame = rectSelectDate
-        }
-        
-        func _anim_complete(var finished: Bool) {
-            textField.enabled = false
-            finished = true
-        }
-        UIView.animateWithDuration(0.5, animations: _anim_doing, completion: _anim_complete)
+        UIView.animateWithDuration(0.5, animations: { () in
+            var rectSelectDate = self.picker!.frame
+            rectSelectDate.origin.y = (rect.size.height - self.picker!.frame.size.height)/2;
+            self.picker!.frame = rectSelectDate
+            }, completion: { (_) in
+                textField.enabled = false
+        })
     }
 
 

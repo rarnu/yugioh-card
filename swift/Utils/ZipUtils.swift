@@ -13,7 +13,7 @@ class ZipUtils: NSObject {
     var extractPath: String?
     
     func unzip() {
-        NSThread.detachNewThreadSelector("doUncompress", toTarget: self, withObject: nil)
+        NSThread.detachNewThreadSelector(#selector(ZipUtils.doUncompress), toTarget: self, withObject: nil)
     }
     
     func doUncompress() {

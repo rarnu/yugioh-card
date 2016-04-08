@@ -49,7 +49,7 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: "Notification_ChangeBackground", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RootViewController.receivedNotification(_:)), name: "Notification_ChangeBackground", object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {

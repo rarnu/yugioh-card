@@ -208,8 +208,7 @@ class DatabaseUtils: NSObject {
     
     class func queryCardsViaIds(cardIds:NSMutableArray) -> NSMutableArray? {
         var con = ""
-        
-        for (var i=0; i < cardIds.count; i++) {
+        for i in 0 ..< cardIds.count {
             con += "\((cardIds[i] as! NSNumber).integerValue),"
         }
         if (con != "") {

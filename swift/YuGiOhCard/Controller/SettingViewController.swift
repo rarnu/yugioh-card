@@ -49,7 +49,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         _backgrounds = NSMutableArray()
-        for (var i=1; i <= 9; i++) {
+        for i in 1 ... 9 {
             _backgrounds!.addObject("bg\(i)")
         }
         _document = FileUtils.getDocumentPath()

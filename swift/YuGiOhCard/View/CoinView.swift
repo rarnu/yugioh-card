@@ -26,7 +26,7 @@ class CoinView: UIView {
         self.imgCoin = UIImageView(frame: CGRectMake(50, 0, self.frame.size.width-100, self.frame.size.height))
         self.imgCoin!.contentMode = UIViewContentMode.ScaleAspectFit
         self.imgCoin!.userInteractionEnabled = true
-        let singleTap = UITapGestureRecognizer(target: self, action: "closeClicked:")
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(CoinView.closeClicked(_:)))
         self.imgCoin!.addGestureRecognizer(singleTap)
 
         let coinval = arc4random() % 2 + 1

@@ -48,7 +48,7 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
         toolButton!.backgroundColor = UIColor.clearColor()
         toolButton!.frame = (CGRectMake(self.toolbar!.frame.size.width-50, 0, 50, self.toolbar!.frame.size.height))
         toolButton!.setTitle(COMMON_DONE, forState:UIControlState.Normal)
-        toolButton!.addTarget(self, action:"doneClick:", forControlEvents:UIControlEvents.TouchDown)
+        toolButton!.addTarget(self, action:#selector(CardAttributePicker.doneClick(_:)), forControlEvents:UIControlEvents.TouchDown)
         self.toolbar!.addSubview(toolButton!)
     
         self.picker = UIPickerView(frame: CGRectMake(0, 51, self.frame.size.width, self.frame.size.height - 50))
@@ -110,7 +110,7 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     
     func selectCurrent(text: String) {
         let selected = (65536 / 2) - (65536 % self.pickObjects!.count) - 1
-        for (var i = selected; i < selected + self.pickObjects!.count; i++) {
+        for i in selected ..< selected + self.pickObjects!.count {
             if ((self.pickObjects![i % self.pickObjects!.count] as! String) == text) {
                 self.picker!.selectRow(i, inComponent:0, animated:false)
                 break

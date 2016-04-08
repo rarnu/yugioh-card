@@ -29,7 +29,7 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
             self.loadData(jsonData)
         }
         self.refreshButton!.target = self
-        self.refreshButton!.action = "refreshClicked:"
+        self.refreshButton!.action = #selector(PackViewController.refreshClicked(_:))
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 
@@ -105,13 +105,12 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
         var pack: AnyObject? = nil
         var arrPack: NSArray?
         var packDetail: AnyObject? = nil
-
-        for (var i = 0; i < packs.count; i++) {
+        for i in 0 ..< packs.count {
             pack = packs[i]
             let item = PackItem()
             item.serial = (pack! as! NSDictionary).objectForKey("serial") as! String
             arrPack = (pack! as! NSDictionary).objectForKey("packages") as? NSArray
-            for (var j = 0; j < arrPack!.count; j++) {
+            for j in 0 ..< arrPack!.count {
                 packDetail = arrPack![j]
                 item.packages.addObject(PackageDetail(
                     packId: (packDetail as! NSDictionary).objectForKey("id") as! String,

@@ -98,9 +98,9 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     
     
     @IBAction func btnDiceClick(sender: AnyObject) {
-        var rect = UIScreen.mainScreen().applicationFrame
-        var rw = rect.size.width * 0.8
-        var left = (rect.size.width - rw) / 2
+        let rect = UIScreen.mainScreen().applicationFrame
+        let rw = rect.size.width * 0.8
+        let left = (rect.size.width - rw) / 2
         dice = DiceView(frame: CGRectMake(left, rect.size.height, rw, 266))
         dice!.delegate = self
     
@@ -108,23 +108,18 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
         self.btnDice!.enabled = false
         self.btnCoin!.enabled = false
         
-        func _anim_doing() {
-            var rectSelectDate = dice!.frame
-            rectSelectDate.origin.y = (rect.size.height - dice!.frame.size.height) / 2
-            dice!.frame = rectSelectDate
-        }
-        
-        func _anim_complete(var finished: Bool) {
-            finished = true
-        }
-        
-        UIView.animateWithDuration(0.5, animations: _anim_doing, completion: _anim_complete)
+        UIView.animateWithDuration(0.5, animations: { () in
+            var rectSelectDate = self.dice!.frame
+            rectSelectDate.origin.y = (rect.size.height - self.dice!.frame.size.height) / 2
+            self.dice!.frame = rectSelectDate
+            }, completion: { (_) in
+        })
     }
     
     @IBAction func btnCoinClick(sender: AnyObject) {
-        var rect = UIScreen.mainScreen().applicationFrame
-        var rw = rect.size.width * 0.8
-        var left = (rect.size.width - rw) / 2
+        let rect = UIScreen.mainScreen().applicationFrame
+        let rw = rect.size.width * 0.8
+        let left = (rect.size.width - rw) / 2
         coin = CoinView(frame: CGRectMake(left, rect.size.height, rw, 266))
         coin!.delegate = self
     
@@ -132,15 +127,12 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
         self.btnDice!.enabled = false
         self.btnCoin!.enabled = false
 
-        func _anim_doing() {
-            var rectSelectDate = coin!.frame
-            rectSelectDate.origin.y = (rect.size.height - coin!.frame.size.height) / 2
-            coin!.frame = rectSelectDate
-        }
-        func _anim_complete(var finished: Bool) {
-            finished = true
-        }
-        UIView.animateWithDuration(0.5, animations: _anim_doing, completion: _anim_complete)
+        UIView.animateWithDuration(0.5, animations: { () in
+            var rectSelectDate = self.coin!.frame
+            rectSelectDate.origin.y = (rect.size.height - self.coin!.frame.size.height) / 2
+            self.coin!.frame = rectSelectDate
+            }, completion: { (_) in
+        })
     }
     
     @IBAction func resetClick(sender: AnyObject) {
@@ -233,37 +225,29 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
 
     func doneDice() {
-        
-        var rect = UIScreen.mainScreen().applicationFrame
-        func _anim_doing() {
-            var rectSelectDate = dice!.frame
+        let rect = UIScreen.mainScreen().applicationFrame
+        UIView.animateWithDuration(0.5, animations: { () in
+            var rectSelectDate = self.dice!.frame
             rectSelectDate.origin.y = rect.size.height
-            dice!.frame = rectSelectDate
-        }
-        func _anim_complete(var finished: Bool) {
-            dice!.removeFromSuperview()
-            self.btnCoin!.enabled = true
-            self.btnDice!.enabled = true
-            finished = true
-        }
-        
-        UIView.animateWithDuration(0.5, animations: _anim_doing, completion: _anim_complete)
+            self.dice!.frame = rectSelectDate
+            }, completion: { (_) in
+                self.dice!.removeFromSuperview()
+                self.btnCoin!.enabled = true
+                self.btnDice!.enabled = true
+        })
     }
     
     func doneCoin() {
-        var rect = UIScreen.mainScreen().applicationFrame
-        func _anim_doing() {
-            var rectSelectDate = coin!.frame
+        let rect = UIScreen.mainScreen().applicationFrame
+        UIView.animateWithDuration(0.5, animations: { () in
+            var rectSelectDate = self.coin!.frame
             rectSelectDate.origin.y = rect.size.height
-            coin!.frame = rectSelectDate
-        }
-        func _anim_complete(var finished: Bool) {
-            coin!.removeFromSuperview()
-            self.btnCoin!.enabled = true
-            self.btnDice!.enabled = true
-            finished = true
-        }
-        UIView.animateWithDuration(0.5, animations: _anim_doing, completion: _anim_complete)
+            self.coin!.frame = rectSelectDate
+            }, completion: { (_) in
+                self.coin!.removeFromSuperview()
+                self.btnCoin!.enabled = true
+                self.btnDice!.enabled = true
+        })
     }
 
 }

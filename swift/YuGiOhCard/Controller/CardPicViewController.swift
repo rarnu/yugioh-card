@@ -36,7 +36,7 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
             self.imgCard!.hidden = true
             self.btnDownload!.hidden = false
             self.aivDownload!.hidden = true
-            self.btnDownload!.addTarget(self, action:"downloadClick:", forControlEvents:UIControlEvents.TouchDown)
+            self.btnDownload!.addTarget(self, action:#selector(CardPicViewController.downloadClick(_:)), forControlEvents:UIControlEvents.TouchDown)
         }
     }
 
