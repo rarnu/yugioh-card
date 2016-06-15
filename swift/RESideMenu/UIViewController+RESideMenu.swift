@@ -4,12 +4,12 @@ extension UIViewController {
     
     var sideMenuViewController: RESideMenu? {
         get {
-            var iter: UIViewController? = self.parentViewController
+            var iter: UIViewController? = self.parent
             while (iter != nil) {
                 if (iter is RESideMenu) {
                     return iter as? RESideMenu
-                } else if (iter!.parentViewController != nil && iter!.parentViewController != iter) {
-                    iter = iter!.parentViewController
+                } else if (iter!.parent != nil && iter!.parent != iter) {
+                    iter = iter!.parent
                 } else {
                     iter = nil;
                 }

@@ -10,14 +10,14 @@ class RightMenuViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         self.controllerNames = ["settingViewController", "updateViewController", "feedbackViewController", "aboutViewController"]
         
-        let tableView = UITableView(frame: CGRectMake(0, (self.view.frame.size.height - 54 * 4) / 2.0, self.view.frame.size.width, 54 * 4), style: UITableViewStyle.Plain)
-        tableView.autoresizingMask = [UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleWidth]
+        let tableView = UITableView(frame: CGRect(x: 0, y: (self.view.frame.size.height - 54 * 4) / 2.0, width: self.view.frame.size.width, height: 54 * 4), style: UITableViewStyle.plain)
+        tableView.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin, UIViewAutoresizing.flexibleWidth]
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.opaque = false
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.isOpaque = false
+        tableView.backgroundColor = UIColor.clear()
         tableView.backgroundView = nil
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.bounces = false
         self.tableView = tableView
         self.view.addSubview(self.tableView)
@@ -28,46 +28,42 @@ class RightMenuViewController: UIViewController, UITableViewDataSource, UITableV
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell")
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-            cell!.backgroundColor = UIColor.clearColor()
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+            cell!.backgroundColor = UIColor.clear()
             cell!.textLabel!.font = UIFont(name: "HelveticaNeue", size:21)
-            cell!.textLabel!.textColor = UIColor.whiteColor()
-            cell!.textLabel!.highlightedTextColor = UIColor.lightGrayColor()
+            cell!.textLabel!.textColor = UIColor.white()
+            cell!.textLabel!.highlightedTextColor = UIColor.lightGray()
             cell!.selectedBackgroundView = UIView()
         }
         cell!.textLabel!.text = self.titles[indexPath.row] as? String
-        cell!.textLabel!.textAlignment = NSTextAlignment.Right
+        cell!.textLabel!.textAlignment = NSTextAlignment.right
         return cell!
-
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated:true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated:true)
         let mainStory = UIStoryboard(name: "Main", bundle: nil)
-        let controller: SearchViewController? = mainStory.instantiateViewControllerWithIdentifier("searchViewController") as? SearchViewController
+        let controller: SearchViewController? = mainStory.instantiateViewController(withIdentifier: "searchViewController") as? SearchViewController
         let pushViewName = self.controllerNames[indexPath.row] as! String;
         controller!.pushView = pushViewName
         let nav = UINavigationController(rootViewController: controller!)
-        self.sideMenuViewController!.setContentViewController(nav, animated:false)
+        self.sideMenuViewController!.setContentViewController(contentViewController: nav, animated:false)
         self.sideMenuViewController!.hideMenuViewController()
-
     }
 
 }

@@ -18,33 +18,33 @@ class SearchResultViewController: UITableViewController {
     var lblNoCard: UILabel?
     var _cards: NSMutableArray?
     
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = STR_RESULT
         let lblTop = (self.tableView.frame.size.height - 100) / 2
-        lblNoCard = UILabel(frame: CGRectMake(0, lblTop, self.tableView.frame.size.width, 50))
+        lblNoCard = UILabel(frame: CGRect(x: 0, y: lblTop, width: self.tableView.frame.size.width, height: 50))
         lblNoCard!.text = STR_NO_CARD_FOUND
-        lblNoCard!.textAlignment = NSTextAlignment.Center
-        lblNoCard!.textColor = UIColor.whiteColor()
-        lblNoCard!.backgroundColor = UIColor.clearColor()
-        lblNoCard!.hidden = true
+        lblNoCard!.textAlignment = NSTextAlignment.center
+        lblNoCard!.textColor = UIColor.white()
+        lblNoCard!.backgroundColor = UIColor.clear()
+        lblNoCard!.isHidden = true
         self.tableView.addSubview(lblNoCard!)
         
         let sql = self.buildSql()
-        self._cards = DatabaseUtils.queryData(sql)
+        self._cards = DatabaseUtils.queryData(sql: sql)
         if (self._cards!.count == 0) {
-            lblNoCard!.hidden = false
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            lblNoCard!.isHidden = false
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         } else {
-            lblNoCard!.hidden = true
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            lblNoCard!.isHidden = true
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         }
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,29 +52,28 @@ class SearchResultViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self._cards!.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let item = self._cards![indexPath.row] as! CardItem
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel!.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.clear()
+        cell.textLabel!.textColor = UIColor.white()
         cell.textLabel!.text = item.name
         cell.detailTextLabel!.text = item.sCardType
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: false)
         let item = self._cards![indexPath.row] as! CardItem
-        PushUtils.pushCard(item, navController: self.navigationController!)
+        PushUtils.pushCard(item: item, navController: self.navigationController!)
     }
     
     func buildSql() -> String {
@@ -91,7 +90,7 @@ class SearchResultViewController: UITableViewController {
         if (self.searchCardType != nil && self.searchCardType! != "" && self.searchCardType! != CardConsts.cardTypeDefault()) {
             sql += " and sCardType like '%\(self.searchCardType!)%'"
             
-            if ((self.searchCardType! as NSString).rangeOfString(CardConsts.cardMonsterDefault()).location != NSNotFound) {
+            if ((self.searchCardType! as NSString).range(of: CardConsts.cardMonsterDefault()).location != NSNotFound) {
                 // sub type
                 if (self.searchSubType != nil && self.searchSubType! != "" && self.searchSubType! != CardConsts.cardSubTypeDefault()) {
                     sql += " and CardDType like '%\(self.searchSubType!)%'"

@@ -27,10 +27,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         super.init(coder: aDecoder)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
     }
     
     override func viewWillLayoutSubviews() {
@@ -39,7 +39,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
             inited = true
             for temp in self.view.subviews {
                 if (temp is UILabel) || (temp is UITextField) {
-                    UIUtils.scaleComponent(temp)
+                    UIUtils.scaleComponent(view: temp)
                 }
             }
         }
@@ -50,8 +50,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         inited = false
         self.navigationItem.title = "YuGiOh"
         
-        searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: #selector(SearchViewController.searchClick(_:)))
-        cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: #selector(SearchViewController.cancelClick(_:)))
+        searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(searchClick(sender:)))
+        cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.stop, target: self, action: #selector(cancelClick(sender:)))
         self.navigationItem.rightBarButtonItems = [cancelButton!, searchButton!]
         self.resetData()
         
@@ -60,35 +60,35 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
                 self.showAboutView()
             } else {
                 let singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
-                let controller = singleStory.instantiateViewControllerWithIdentifier(self.pushView!) 
+                let controller = singleStory.instantiateViewController(withIdentifier: self.pushView!) 
                 self.navigationController!.pushViewController(controller, animated: true)
             }
         }
     
         self.txtCardName!.layer.borderWidth = 0.5
-        self.txtCardName!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtCardName!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtAtk!.layer.borderWidth = 0.5
-        self.txtAtk!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtAtk!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtDef!.layer.borderWidth = 0.5
-        self.txtDef!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtDef!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtEffect!.layer.borderWidth = 0.5
-        self.txtEffect!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtEffect!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtCamp!.layer.borderWidth = 0.5
-        self.txtCamp!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtCamp!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtCardType!.layer.borderWidth = 0.5
-        self.txtCardType!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtCardType!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtSubtype!.layer.borderWidth = 0.5
-        self.txtSubtype!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtSubtype!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtRace!.layer.borderWidth = 0.5
-        self.txtRace!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtRace!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtAttribute!.layer.borderWidth = 0.5
-        self.txtAttribute!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtAttribute!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtLevel!.layer.borderWidth = 0.5
-        self.txtLevel!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtLevel!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtRare!.layer.borderWidth = 0.5
-        self.txtRare!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtRare!.layer.borderColor = UIColor.lightGray().cgColor
         self.txtLimit!.layer.borderWidth = 0.5
-        self.txtLimit!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txtLimit!.layer.borderColor = UIColor.lightGray().cgColor
 
     }
 
@@ -97,7 +97,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     func showAboutView() {
-        self.setEditMode(true)
+        self.setEditMode(inEditing: true)
         let av = AboutView.initWithNib()
         av!.delegate = self;
         self.view.addSubview(av!)
@@ -105,7 +105,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     
     func aboutview(view: AboutView, tapped dismiss: Bool) {
         view.removeFromSuperview()
-        self.setEditMode(false)
+        self.setEditMode(inEditing: false)
     }
     
     func resetData() {
@@ -126,22 +126,22 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     func setEditMode(inEditing: Bool) {
-        searchButton!.enabled = !inEditing
-        cancelButton!.enabled = !inEditing
-        self.navigationItem.leftBarButtonItem!.enabled = !inEditing
+        searchButton!.isEnabled = !inEditing
+        cancelButton!.isEnabled = !inEditing
+        self.navigationItem.leftBarButtonItem!.isEnabled = !inEditing
     
-        self.txtCardName!.enabled = !inEditing
-        self.txtCamp!.enabled = !inEditing
-        self.txtCardType!.enabled = !inEditing
-        self.txtSubtype!.enabled = !inEditing
-        self.txtRace!.enabled = !inEditing
-        self.txtAttribute!.enabled = !inEditing
-        self.txtLevel!.enabled = !inEditing
-        self.txtRare!.enabled = !inEditing
-        self.txtLimit!.enabled = !inEditing
-        self.txtAtk!.enabled = !inEditing
-        self.txtDef!.enabled = !inEditing
-        self.txtEffect!.enabled = !inEditing
+        self.txtCardName!.isEnabled = !inEditing
+        self.txtCamp!.isEnabled = !inEditing
+        self.txtCardType!.isEnabled = !inEditing
+        self.txtSubtype!.isEnabled = !inEditing
+        self.txtRace!.isEnabled = !inEditing
+        self.txtAttribute!.isEnabled = !inEditing
+        self.txtLevel!.isEnabled = !inEditing
+        self.txtRare!.isEnabled = !inEditing
+        self.txtLimit!.isEnabled = !inEditing
+        self.txtAtk!.isEnabled = !inEditing
+        self.txtDef!.isEnabled = !inEditing
+        self.txtEffect!.isEnabled = !inEditing
     
     }
     
@@ -156,7 +156,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     func pushViewController() {
-        let resultViewController = self.storyboard!.instantiateViewControllerWithIdentifier("searchResultViewController") as! SearchResultViewController
+        let resultViewController = self.storyboard!.instantiateViewController(withIdentifier: "searchResultViewController") as! SearchResultViewController
         resultViewController.searchCardName = self.txtCardName!.text
         resultViewController.searchCamp = self.txtCamp!.text
         resultViewController.searchCardType = self.txtCardType!.text
@@ -172,45 +172,45 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         self.navigationController!.pushViewController(resultViewController, animated:true)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if (textField.tag == 0) {
             return true
         } else {
             self.view.endEditing(true)
-            self.setEditMode(true)
-            self.popupPicker(textField)
+            self.setEditMode(inEditing: true)
+            self.popupPicker(textField: textField)
             return false
         }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
     
     func pickDone(picked: String, textField: UITextField?) {
-        let rect = UIScreen.mainScreen().applicationFrame
+        let rect = UIScreen.main().applicationFrame
         textField!.text = picked
-        UIView.animateWithDuration(0.5, animations: { () in
+        UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.picker!.frame
             rectSelectDate.origin.y = rect.size.height
             self.picker!.frame = rectSelectDate
             }, completion: { (_) in
                 self.picker!.removeFromSuperview()
-                self.setEditMode(false)
+                self.setEditMode(inEditing: false)
         })
     }
     
     func popupPicker(textField: UITextField) {
-        let rect = UIScreen.mainScreen().applicationFrame
+        let rect = UIScreen.main().applicationFrame
         let rw = rect.size.width * 0.8
         let left = (rect.size.width - rw) / 2
-        picker = CardAttributePicker(frame: CGRectMake(left, rect.size.height, rw, 266))
-        picker!.setTitle(textField.placeholder!)
+        picker = CardAttributePicker(frame: CGRect(x: left, y: rect.size.height, width: rw, height: 266))
+        picker!.setTitle(title: textField.placeholder!)
         picker!.txtResult = textField
         switch (textField.tag) {
         case 1: // camp
@@ -237,16 +237,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         if (current == "") {
             picker!.selectFirst()
         } else {
-            picker!.selectCurrent(current!)
+            picker!.selectCurrent(text: current!)
         }
         picker!.delegate = self
         self.view.addSubview(picker!)
-        UIView.animateWithDuration(0.5, animations: { () in
+        UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.picker!.frame
             rectSelectDate.origin.y = (rect.size.height - self.picker!.frame.size.height)/2;
             self.picker!.frame = rectSelectDate
             }, completion: { (_) in
-                textField.enabled = false
+                textField.isEnabled = false
         })
     }
 

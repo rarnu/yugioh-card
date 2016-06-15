@@ -16,24 +16,24 @@ var autoSizeScaleY: CGFloat?
 class UIUtils: NSObject {
     
     class func setStatusBar(light: Bool) {
-        UIApplication.sharedApplication().setStatusBarStyle(light ? UIStatusBarStyle.LightContent : UIStatusBarStyle.Default, animated: false)
+        UIApplication.shared().setStatusBarStyle(light ? UIStatusBarStyle.lightContent : UIStatusBarStyle.default, animated: false)
     }
     
     class func setNavBar(nav: UINavigationBar) {
-        nav.barTintColor = UIColor.clearColor()
-        nav.tintColor = UIColor.whiteColor()
-        nav.titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName) as? [String : AnyObject]
-        nav.setBackgroundImage(UIImage(named: "navbg"), forBarMetrics: UIBarMetrics.Default)
+        nav.barTintColor = UIColor.clear()
+        nav.tintColor = UIColor.white()
+        nav.titleTextAttributes = NSDictionary(object: UIColor.white(), forKey: NSForegroundColorAttributeName) as? [String : AnyObject]
+        nav.setBackgroundImage(UIImage(named: "navbg"), for: UIBarMetrics.default)
     }
     
     class func setTabBar(tab: UITabBar) {
-        tab.translucent = true
+        tab.isTranslucent = true
         tab.backgroundImage = UIImage(named: "navbg")
-        tab.tintColor = UIColor.whiteColor()
+        tab.tintColor = UIColor.white()
     }
     
     class func getScreenSize() -> (CGFloat, CGFloat) {
-        let size = UIScreen.mainScreen().bounds.size
+        let size = UIScreen.main().bounds.size
         return (size.width, size.height)
     }
     

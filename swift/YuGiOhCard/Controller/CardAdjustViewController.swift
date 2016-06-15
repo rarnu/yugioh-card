@@ -13,7 +13,7 @@ class CardAdjustViewController: UIViewController {
             inited = true
             for temp in self.view.subviews {
                 if (temp is UITextView) {
-                    UIUtils.scaleComponent(temp)
+                    UIUtils.scaleComponent(view: temp)
                 }
             }
         }

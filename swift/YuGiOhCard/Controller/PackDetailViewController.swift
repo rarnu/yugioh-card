@@ -11,9 +11,9 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     var _pack_cards: PackageCards?
     var _cards: NSMutableArray?
     
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
     }
     
     override func viewDidLoad() {
@@ -23,19 +23,19 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
         _data_path = "data"
         _pack_cards = PackageCards()
         _cards = NSMutableArray()
-        let jsonData = FileUtils.readTextFile(_packages!, loadPath:_data_path!)
+        let jsonData = FileUtils.readTextFile(fileName: _packages!, loadPath:_data_path!)
         if (jsonData == "") {
             let hu = HttpUtils()
             hu.delegate = self
             let packageCardUrl = NSString(format: URL_PACAKGE_CARD, self.packageId!) as String
-            hu.get(packageCardUrl)
+            hu.get(url: packageCardUrl)
         } else {
-            self.loadData(jsonData)
+            self.loadData(json: jsonData)
         }
         
         self.refreshButton!.target = self
-        self.refreshButton!.action = #selector(PackDetailViewController.refreshClicked(_:))
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.refreshButton!.action = #selector(refreshClicked(sender:))
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,14 +46,14 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
         let hu = HttpUtils()
         hu.delegate = self
         let packageCardUrl = NSString(format: URL_PACAKGE_CARD, self.packageId!) as String
-        hu.get(packageCardUrl)
+        hu.get(url: packageCardUrl)
     }
     
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
-            let json = NSString(data: data!, encoding:NSUTF8StringEncoding)
-            FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json as! String)
-            self.loadData(json as! String)
+            let json = NSString(data: data! as Data, encoding:String.Encoding.utf8.rawValue)
+            FileUtils.writeTextFile(fileName: _packages!, savePath:_data_path!, fileContent:json as! String)
+            self.loadData(json: json as! String)
         }
     }
     
@@ -62,40 +62,39 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     }
     
     func loadData(json: String) {
-        let data = (json as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        let pack: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableLeaves)
+        let data = (json as NSString).data(using: String.Encoding.utf8.rawValue)
+        let pack: AnyObject? = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
         if (pack != nil) {
-            _pack_cards!.name = (pack! as! NSDictionary).objectForKey("name") as! String
+            _pack_cards!.name = (pack! as! NSDictionary).object(forKey: "name") as! String
             _pack_cards!.cards.removeAllObjects()
-            _pack_cards!.cards.addObjectsFromArray((pack! as! NSDictionary).objectForKey("cards") as! [AnyObject])
-            _cards = DatabaseUtils.queryCardsViaIds(_pack_cards!.cards)
+            _pack_cards!.cards.addObjects(from: (pack! as! NSDictionary).object(forKey: "cards") as! [AnyObject])
+            _cards = DatabaseUtils.queryCardsViaIds(cardIds: _pack_cards!.cards)
             self.tableView.reloadData()
         }
     }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _cards!.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for:indexPath)
         let item = _cards![indexPath.row] as! CardItem
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel!.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.clear()
+        cell.textLabel!.textColor = UIColor.white()
         cell.textLabel!.text = item.name
         cell.detailTextLabel!.text = item.sCardType
         return cell
     }
     
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated:false)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated:false)
         let item = _cards![indexPath.row] as! CardItem
-        PushUtils.pushCard(item, navController:self.navigationController!)
+        PushUtils.pushCard(item: item, navController:self.navigationController!)
     }
     
 }

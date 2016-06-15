@@ -304,7 +304,7 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -320,7 +320,7 @@
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "-extractUpdateInfo:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -336,7 +336,7 @@
             startingLineNumber = "82"
             endingLineNumber = "82"
             landmarkName = "-httpUtils:receivedProgress:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -352,7 +352,7 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "-httpUtils:receivedProgress:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

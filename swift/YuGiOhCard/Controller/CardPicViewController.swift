@@ -17,7 +17,7 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
             inited = true
             for temp in self.view.subviews {
                 if (temp is UIImageView) || (temp is UIButton) || (temp is UIActivityIndicatorView) {
-                    UIUtils.scaleComponent(temp)
+                    UIUtils.scaleComponent(view: temp)
                 }
             }
         }
@@ -29,14 +29,14 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
         _img_path = "image"
         self.card = (self.tabBarController! as! CardViewController).card
         let cardImgName = "\(self.card!._id).jpg"
-        let exists = FileUtils.fileExists(cardImgName, filePath:_img_path!)
+        let exists = FileUtils.fileExists(fileName: cardImgName, filePath:_img_path!)
         if (exists) {
-            self.loadImage(FileUtils.readFile(cardImgName, loadPath:_img_path!)!)
+            self.loadImage(data: FileUtils.readFile(fileName: cardImgName, loadPath:_img_path!)!)
         } else {
-            self.imgCard!.hidden = true
-            self.btnDownload!.hidden = false
-            self.aivDownload!.hidden = true
-            self.btnDownload!.addTarget(self, action:#selector(CardPicViewController.downloadClick(_:)), forControlEvents:UIControlEvents.TouchDown)
+            self.imgCard!.isHidden = true
+            self.btnDownload!.isHidden = false
+            self.aivDownload!.isHidden = true
+            self.btnDownload!.addTarget(self, action:#selector(downloadClick(sender:)), for:UIControlEvents.touchDown)
         }
     }
 
@@ -45,32 +45,32 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
     }
     
     func downloadClick(sender: AnyObject) {
-        self.aivDownload!.hidden = false
-        self.btnDownload!.hidden = true
+        self.aivDownload!.isHidden = false
+        self.btnDownload!.isHidden = true
         let hu = HttpUtils()
         hu.delegate = self
         let url = NSString(format: URL_CARD_IMAGE, self.card!._id) as String
-        hu.get(url)
+        hu.get(url: url)
     }
     
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
             let fileName = "\(self.card!._id).jpg"
-            FileUtils.writeFile(fileName, savePath:_img_path!, fileData:data!)
-            self.loadImage(data!)
+            FileUtils.writeFile(fileName: fileName, savePath:_img_path!, fileData:data!)
+            self.loadImage(data: data!)
         }
     }
 
     func httpUtils(httpUtils: HttpUtils, receivedError err: NSString) {
-        self.imgCard!.hidden = true
-        self.btnDownload!.hidden = false
-        self.aivDownload!.hidden = true
+        self.imgCard!.isHidden = true
+        self.btnDownload!.isHidden = false
+        self.aivDownload!.isHidden = true
     }
     
     func loadImage(data: NSData) {
-        self.imgCard!.hidden = false
-        self.btnDownload!.hidden = true
-        self.aivDownload!.hidden = true
-        self.imgCard!.image = UIImage(data: data)
+        self.imgCard!.isHidden = false
+        self.btnDownload!.isHidden = true
+        self.aivDownload!.isHidden = true
+        self.imgCard!.image = UIImage(data: data as Data)
     }
 }

@@ -10,10 +10,10 @@ import UIKit
 
 class LimitTabViewController: UITabBarController {
 
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
-        UIUtils.setTabBar(self.tabBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
+        UIUtils.setTabBar(tab: self.tabBar)
     }
     
     override func viewDidLoad() {

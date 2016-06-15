@@ -1,9 +1,8 @@
 import UIKit
 
-@objc
-protocol ZipUtilsDelegate: NSObjectProtocol {
-    optional func zipWillUnzip() -> Bool
-    optional func ziputils(ziputils: ZipUtils, unzipCompleted succ: Bool)
+@objc protocol ZipUtilsDelegate: NSObjectProtocol {
+    @objc optional func zipWillUnzip() -> Bool
+    @objc optional func ziputils(ziputils: ZipUtils, unzipCompleted succ: Bool)
 
 }
 
@@ -13,7 +12,7 @@ class ZipUtils: NSObject {
     var extractPath: String?
     
     func unzip() {
-        NSThread.detachNewThreadSelector(#selector(ZipUtils.doUncompress), toTarget: self, withObject: nil)
+        Thread.detachNewThreadSelector(#selector(doUncompress), toTarget: self, with: nil)
     }
     
     func doUncompress() {
@@ -23,20 +22,20 @@ class ZipUtils: NSObject {
         }
         if (b) {
             let za = ZipArchive()
-            var ret = NSNumber(bool: false)
-            if (za.UnzipOpenFile(self.archiveFile!)) {
-                let succ = za.UnzipFileTo(self.extractPath, overWrite:true)
-                za.UnzipCloseFile()
-                ret = NSNumber(bool: succ)
+            var ret = NSNumber(value: false)
+            if (za.unzipOpenFile(self.archiveFile!)) {
+                let succ = za.unzipFile(to: self.extractPath, overWrite:true)
+                za.unzipCloseFile()
+                ret = NSNumber(value: succ)
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.callback(ret)
+            DispatchQueue.main.async(execute: {
+                self.callback(ret: ret)
             })
         }
     }
     
     func callback(ret: NSNumber) {
-        self.delegate?.ziputils?(self, unzipCompleted: ret.boolValue)
+        self.delegate?.ziputils?(ziputils: self, unzipCompleted: ret.boolValue)
     }
 
 }

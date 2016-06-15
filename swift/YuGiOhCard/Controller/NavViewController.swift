@@ -10,9 +10,9 @@ import UIKit
 
 class NavViewController: UINavigationController {
 
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationBar)
     }
     
     override func viewDidLoad() {

@@ -43,43 +43,42 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
             inited = true
             for temp in self.view.subviews {
                 if (temp is UILabel) || (temp is UITextField) || (temp is UIButton) {
-                    UIUtils.scaleComponent(temp)
+                    UIUtils.scaleComponent(view: temp)
                 }
             }
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inited = false
         let bkImg = UIImage(named: "navbg")
-        btnDice!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btnCoin!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn1Add!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn1Minus!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn1Set!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn1Half!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn1Double!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn1Balance!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn1Equal!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn2Add!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn2Minus!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn2Set!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn2Half!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn2Double!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn2Balance!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        btn2Equal!.setBackgroundImage(bkImg!, forState: UIControlState.Highlighted)
-        
+        btnDice!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btnCoin!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn1Add!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn1Minus!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn1Set!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn1Half!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn1Double!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn1Balance!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn1Equal!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn2Add!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn2Minus!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn2Set!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn2Half!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn2Double!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn2Balance!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
+        btn2Equal!.setBackgroundImage(bkImg!, for: UIControlState.highlighted)
         
         self.txt1Life!.layer.borderWidth = 0.5
-        self.txt1Life!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txt1Life!.layer.borderColor = UIColor.lightGray().cgColor
         self.txt2Life!.layer.borderWidth = 0.5
-        self.txt2Life!.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.txt2Life!.layer.borderColor = UIColor.lightGray().cgColor
         self.showLife()
 
     }
@@ -98,17 +97,17 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     
     
     @IBAction func btnDiceClick(sender: AnyObject) {
-        let rect = UIScreen.mainScreen().applicationFrame
+        let rect = UIScreen.main().applicationFrame
         let rw = rect.size.width * 0.8
         let left = (rect.size.width - rw) / 2
-        dice = DiceView(frame: CGRectMake(left, rect.size.height, rw, 266))
+        dice = DiceView(frame: CGRect(x: left, y: rect.size.height, width: rw, height: 266))
         dice!.delegate = self
     
         self.view.addSubview(dice!)
-        self.btnDice!.enabled = false
-        self.btnCoin!.enabled = false
+        self.btnDice!.isEnabled = false
+        self.btnCoin!.isEnabled = false
         
-        UIView.animateWithDuration(0.5, animations: { () in
+        UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.dice!.frame
             rectSelectDate.origin.y = (rect.size.height - self.dice!.frame.size.height) / 2
             self.dice!.frame = rectSelectDate
@@ -117,17 +116,17 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
     
     @IBAction func btnCoinClick(sender: AnyObject) {
-        let rect = UIScreen.mainScreen().applicationFrame
+        let rect = UIScreen.main().applicationFrame
         let rw = rect.size.width * 0.8
         let left = (rect.size.width - rw) / 2
-        coin = CoinView(frame: CGRectMake(left, rect.size.height, rw, 266))
+        coin = CoinView(frame: CGRect(x: left, y: rect.size.height, width: rw, height: 266))
         coin!.delegate = self
     
         self.view.addSubview(coin!)
-        self.btnDice!.enabled = false
-        self.btnCoin!.enabled = false
+        self.btnDice!.isEnabled = false
+        self.btnCoin!.isEnabled = false
 
-        UIView.animateWithDuration(0.5, animations: { () in
+        UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.coin!.frame
             rectSelectDate.origin.y = (rect.size.height - self.coin!.frame.size.height) / 2
             self.coin!.frame = rectSelectDate
@@ -225,28 +224,28 @@ class ToolViewController: UIViewController, CoinDelegate, DiceDelegate {
     }
 
     func doneDice() {
-        let rect = UIScreen.mainScreen().applicationFrame
-        UIView.animateWithDuration(0.5, animations: { () in
+        let rect = UIScreen.main().applicationFrame
+        UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.dice!.frame
             rectSelectDate.origin.y = rect.size.height
             self.dice!.frame = rectSelectDate
             }, completion: { (_) in
                 self.dice!.removeFromSuperview()
-                self.btnCoin!.enabled = true
-                self.btnDice!.enabled = true
+                self.btnCoin!.isEnabled = true
+                self.btnDice!.isEnabled = true
         })
     }
     
     func doneCoin() {
-        let rect = UIScreen.mainScreen().applicationFrame
-        UIView.animateWithDuration(0.5, animations: { () in
+        let rect = UIScreen.main().applicationFrame
+        UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.coin!.frame
             rectSelectDate.origin.y = rect.size.height
             self.coin!.frame = rectSelectDate
             }, completion: { (_) in
                 self.coin!.removeFromSuperview()
-                self.btnCoin!.enabled = true
-                self.btnDice!.enabled = true
+                self.btnCoin!.isEnabled = true
+                self.btnDice!.isEnabled = true
         })
     }
 

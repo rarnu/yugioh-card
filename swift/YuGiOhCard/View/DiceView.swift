@@ -1,8 +1,7 @@
 import UIKit
 
-@objc
-protocol DiceDelegate: NSObjectProtocol {
-    optional func doneDice()
+@objc protocol DiceDelegate: NSObjectProtocol {
+    @objc optional func doneDice()
 }
 
 class DiceView: UIView {
@@ -20,13 +19,12 @@ class DiceView: UIView {
     }
     
     func makeUI() {
-        self.backgroundColor = UIColor.clearColor()
-        self.imgDice = UIImageView(frame: CGRectMake(50, 0, self.frame.size.width-100, self.frame.size.height))
-        self.imgDice!.contentMode = UIViewContentMode.ScaleAspectFit
-        self.imgDice!.userInteractionEnabled = true
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(DiceView.closeClicked(_:)))
+        self.backgroundColor = UIColor.clear()
+        self.imgDice = UIImageView(frame: CGRect(x: 50, y: 0, width: self.frame.size.width - 100, height: self.frame.size.height))
+        self.imgDice!.contentMode = UIViewContentMode.scaleAspectFit
+        self.imgDice!.isUserInteractionEnabled = true
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(closeClicked(sender:)))
         self.imgDice!.addGestureRecognizer(singleTap)
-    
         let diceval = arc4random() % 6 + 1
         let imgName = "dice\(diceval)"
         self.imgDice!.image = UIImage(named: imgName)

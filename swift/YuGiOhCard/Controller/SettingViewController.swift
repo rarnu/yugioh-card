@@ -17,7 +17,7 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     var _grid_size: CGSize?
     var _current_background: String?
     var _document: String?
-    var fmgr: NSFileManager?
+    var fmgr: FileManager?
     
     var inited = false
     
@@ -27,15 +27,15 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
             inited = true
             for temp in self.view.subviews {
                 if (temp is UILabel) || (temp is UIButton) || (temp is UICollectionView) {
-                    UIUtils.scaleComponent(temp)
+                    UIUtils.scaleComponent(view: temp)
                 }
             }
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
     }
     
     override func viewDidLoad() {
@@ -50,12 +50,12 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         
         _backgrounds = NSMutableArray()
         for i in 1 ... 9 {
-            _backgrounds!.addObject("bg\(i)")
+            _backgrounds!.add("bg\(i)")
         }
         _document = FileUtils.getDocumentPath()
-        fmgr = NSFileManager.defaultManager()
-        let sizeStr = NSString(format: "%.2f M", FileUtils.folderSizeAtPath(_document!))
-        self.btnSpace!.setTitle(sizeStr as String, forState: UIControlState.Normal)
+        fmgr = FileManager.default()
+        let sizeStr = NSString(format: "%.2f M", FileUtils.folderSizeAtPath(folderPath: _document!))
+        self.btnSpace!.setTitle(sizeStr as String, for: [])
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,11 +67,11 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         alert.show()
     }
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         switch (buttonIndex) {
         case 1:
             self.removeDocumentFiles()
-            self.btnSpace!.setTitle(NSString(format: "%.2f M", FileUtils.folderSizeAtPath(_document!)) as String,forState:UIControlState.Normal)
+            self.btnSpace!.setTitle(NSString(format: "%.2f M", FileUtils.folderSizeAtPath(folderPath: _document!)) as String,for:[])
         default:
             break
         }
@@ -80,51 +80,51 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
     func removeDocumentFiles() {
         let imgPath = "\(_document!)/image"
         do {
-            try fmgr!.removeItemAtPath(imgPath)
+            try fmgr!.removeItem(atPath: imgPath)
         } catch _ {
         }
-        if (!fmgr!.fileExistsAtPath(imgPath)) {
+        if (!fmgr!.fileExists(atPath: imgPath)) {
             do {
-                try fmgr!.createDirectoryAtPath(imgPath, withIntermediateDirectories:true, attributes:nil)
+                try fmgr!.createDirectory(atPath: imgPath, withIntermediateDirectories: true, attributes: nil)
             } catch _ {
             }
         }
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _backgrounds!.count
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as! UIBackgroundImageCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for:indexPath as IndexPath) as! UIBackgroundImageCell
         cell.imgName = _backgrounds![indexPath.row] as! String
         cell.img!.image = UIImage(named: cell.imgName as! String)
-        cell.selectMark!.hidden = _current_background! != cell.imgName
+        cell.selectMark!.isHidden = _current_background! != cell.imgName
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated:true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath as IndexPath, animated:true)
         _current_background = _backgrounds![indexPath.row] as? String
-        ConfigUtils.saveBackgroundImage(_current_background!)
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.postNotificationName("Notification_ChangeBackground", object: _current_background!)
+        ConfigUtils.saveBackgroundImage(imgName: _current_background!)
+        let nc = NotificationCenter.default()
+        nc.post(name: "Notification_ChangeBackground" as NSNotification.Name, object: _current_background!)
         collectionView.reloadData()
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return _grid_size!
     }
     
@@ -136,11 +136,11 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         let w = (screenWidth - ((13 * 4) * scale)) / 3
         let h = 166 * w / 89
-        return CGSizeMake(w, h)
+        return CGSize(width: w, height: h)
     }
 
     @IBAction func sourceClicked(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: URL_GITHUB)!)
+        UIApplication.shared().openURL(NSURL(string: URL_GITHUB)! as URL)
     }
 
 }

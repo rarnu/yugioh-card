@@ -3,9 +3,9 @@ import UIKit
 class RootViewController: RESideMenu, RESideMenuDelegate {
     
     override func awakeFromNib() {
-        self.menuPreferredStatusBarStyle = UIStatusBarStyle.LightContent
-        self.contentViewShadowColor = UIColor.blackColor()
-        self.contentViewShadowOffset = CGSizeMake(0, 0)
+        self.menuPreferredStatusBarStyle = UIStatusBarStyle.lightContent
+        self.contentViewShadowColor = UIColor.black()
+        self.contentViewShadowOffset = CGSize(width: 0, height: 0)
         self.contentViewShadowOpacity = 0.6
         self.contentViewShadowRadius = 12
         self.contentViewShadowEnabled = true
@@ -15,11 +15,11 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.scaleBackgroundImageView = false
         
         let singleStory = UIStoryboard(name: "SingleStories", bundle: nil)
-        let ccontent = self.storyboard!.instantiateViewControllerWithIdentifier("contentViewController") 
+        let ccontent = self.storyboard!.instantiateViewController(withIdentifier: "contentViewController") 
         self.contentViewController = ccontent
-        let cleftmenu = singleStory.instantiateViewControllerWithIdentifier("leftMenuViewController") 
+        let cleftmenu = singleStory.instantiateViewController(withIdentifier: "leftMenuViewController") 
         self.leftMenuViewController = cleftmenu
-        let crightmenu = singleStory.instantiateViewControllerWithIdentifier("rightMenuViewController") 
+        let crightmenu = singleStory.instantiateViewController(withIdentifier: "rightMenuViewController") 
         self.rightMenuViewController = crightmenu
 
         var background_name = ConfigUtils.loadBackgroundImage()
@@ -43,17 +43,17 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
+        UIApplication.shared().setStatusBarHidden(false, with: UIStatusBarAnimation.none)
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RootViewController.receivedNotification(_:)), name: "Notification_ChangeBackground", object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(receivedNotification(notification:)), name: "Notification_ChangeBackground", object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "Notification_ChangeBackground", object: nil)
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default().removeObserver(self, name: "Notification_ChangeBackground" as NSNotification.Name, object: nil)
         super.viewWillDisappear(animated)
     }
 

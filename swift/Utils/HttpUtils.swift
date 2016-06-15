@@ -8,12 +8,11 @@
 
 import UIKit
 
-@objc
-protocol HttpUtilsDelegate: NSObjectProtocol {
-    optional func httpUtils(httpUtils:HttpUtils, receivedData data: NSData?)
-    optional func httpUtils(httpUtils:HttpUtils, receivedError err: NSString)
-    optional func httpUtils(httpUtils:HttpUtils, receivedFileSize fileSize: Int64)
-    optional func httpUtils(httpUtils:HttpUtils, receivedProgress progress: Int)
+@objc protocol HttpUtilsDelegate: NSObjectProtocol {
+    @objc optional func httpUtils(httpUtils:HttpUtils, receivedData data: NSData?)
+    @objc optional func httpUtils(httpUtils:HttpUtils, receivedError err: NSString)
+    @objc optional func httpUtils(httpUtils:HttpUtils, receivedFileSize fileSize: Int64)
+    @objc optional func httpUtils(httpUtils:HttpUtils, receivedProgress progress: Int)
 }
 
 class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
@@ -23,52 +22,53 @@ class HttpUtils: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate 
     
     func get(url: String) {
         let u = NSURL(string: url)
-        
-        let req = NSURLRequest(URL: u!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)
-        let conn = NSURLConnection(request: req, delegate: self)
+        let req = URLRequest(url: u! as URL, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 60)
+        let conn = NSURLConnection(request: req as URLRequest, delegate: self)
         conn!.start()
     }
     
     func post(url: String, param: String) {
         let u = NSURL(string: url)
-        let req = NSMutableURLRequest(URL: u!)
-        req.HTTPMethod = "POST"
+        let req = NSMutableURLRequest(url: u! as URL)
+        req.httpMethod = "POST"
         req.timeoutInterval = 60
-        let data = (param as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        req.HTTPBody = data
-        let conn = NSURLConnection(request: req, delegate: self)
+        let data = (param as NSString).data(using: String.Encoding.utf8.rawValue)
+        req.httpBody = data
+        let conn = NSURLConnection(request: req as URLRequest, delegate: self)
         conn!.start()
     }
     
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        self.receivedData!.appendData(data)
-        self.delegate?.httpUtils?(self, receivedProgress: self.receivedData!.length)
+    func connection(_ connection: NSURLConnection, didReceive data: Data) {
+        self.receivedData!.append(data)
+        self.delegate?.httpUtils?(httpUtils: self, receivedProgress: self.receivedData!.length)
     }
     
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
         self.receivedData = NSMutableData()
-        self.delegate?.httpUtils?(self, receivedFileSize: response.expectedContentLength)
+        self.delegate?.httpUtils?(httpUtils: self, receivedFileSize: response.expectedContentLength)
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
-        self.delegate?.httpUtils?(self, receivedData: self.receivedData)
+    func connectionDidFinishLoading(_ connection: NSURLConnection) {
+        self.delegate?.httpUtils?(httpUtils: self, receivedData: self.receivedData)
     }
     
     
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+    func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
         NSLog(error.localizedDescription)
-        self.delegate?.httpUtils?(self, receivedError: error.localizedDescription)
+        self.delegate?.httpUtils?(httpUtils: self, receivedError: error.localizedDescription)
     }
     
-    func connection(connection: NSURLConnection, canAuthenticateAgainstProtectionSpace protectionSpace: NSURLProtectionSpace) -> Bool {
+    
+    
+    func connection(_ connection: NSURLConnection, canAuthenticateAgainstProtectionSpace protectionSpace: URLProtectionSpace) -> Bool {
         return protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust
     }
     
-    func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+    func connection(_ connection: NSURLConnection, didReceive challenge: URLAuthenticationChallenge) {
         if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
-            challenge.sender!.useCredential(NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!), forAuthenticationChallenge: challenge)
+            challenge.sender!.use(URLCredential(trust: challenge.protectionSpace.serverTrust!), for: challenge)
         }
-        challenge.sender!.continueWithoutCredentialForAuthenticationChallenge(challenge)
+        challenge.sender!.continueWithoutCredential(for: challenge)
     }
     
 }

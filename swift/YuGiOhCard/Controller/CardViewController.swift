@@ -9,20 +9,20 @@ class CardViewController: UITabBarController {
     var likeButton: UIBarButtonItem?
     var unlikeButton: UIBarButtonItem?
     
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
-        UIUtils.setTabBar(self.tabBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
+        UIUtils.setTabBar(tab: self.tabBar)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = self.cardName!
-        self.card = DatabaseUtils.queryOneCard(self.cardId!)
-        likeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(CardViewController.likeClicked(_:)))
-        unlikeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: #selector(CardViewController.unlikeClicked(_:)))
-        let isFav = DatabaseUtils.favExists(self.cardId!)
+        self.card = DatabaseUtils.queryOneCard(cardId: self.cardId!)
+        likeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(likeClicked(sender:)))
+        unlikeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.stop, target: self, action: #selector(unlikeClicked(sender:)))
+        let isFav = DatabaseUtils.favExists(cardId: self.cardId!)
         self.navigationItem.rightBarButtonItem = isFav ? unlikeButton : likeButton
     }
 
@@ -31,12 +31,12 @@ class CardViewController: UITabBarController {
     }
     
     func likeClicked(sender: AnyObject) {
-        DatabaseUtils.favAdd(self.cardId!)
+        DatabaseUtils.favAdd(cardId: self.cardId!)
         self.navigationItem.rightBarButtonItem = unlikeButton!
     }
     
     func unlikeClicked(sender: AnyObject) {
-        DatabaseUtils.favRemove(self.cardId!)
+        DatabaseUtils.favRemove(cardId: self.cardId!)
         self.navigationItem.rightBarButtonItem = likeButton!
     }
     

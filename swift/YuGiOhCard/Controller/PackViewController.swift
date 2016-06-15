@@ -9,9 +9,9 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     var _section_count: Int?
     var _pack_section: NSMutableArray?
     
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
     }
     
     override func viewDidLoad() {
@@ -20,17 +20,17 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
         _data_path = "data"
         _pack_section = NSMutableArray()
 
-        let jsonData = FileUtils.readTextFile(_packages!, loadPath:_data_path!)
+        let jsonData = FileUtils.readTextFile(fileName: _packages!, loadPath:_data_path!)
         if (jsonData == "") {
             let hu = HttpUtils()
             hu.delegate = self
-            hu.get(URL_PACKAGES)
+            hu.get(url: URL_PACKAGES)
         } else {
-            self.loadData(jsonData)
+            self.loadData(jsonData: jsonData)
         }
         self.refreshButton!.target = self
-        self.refreshButton!.action = #selector(PackViewController.refreshClicked(_:))
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.refreshButton!.action = #selector(refreshClicked(sender:))
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,43 +40,43 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     func refreshClicked(sender: AnyObject) {
         let hu = HttpUtils()
         hu.delegate = self
-        hu.get(URL_PACKAGES)
+        hu.get(url: URL_PACKAGES)
     }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return _pack_section!.count
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (_pack_section![section] as! PackItem).packages.count
     }
-
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let lblSection = UILabel()
         lblSection.text = "  \((_pack_section![section] as! PackItem).serial)"
-        lblSection.textColor = UIColor.whiteColor()
+        lblSection.textColor = UIColor.white()
         lblSection.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
         return lblSection
     }
-
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for:indexPath)
         let item = (_pack_section![indexPath.section] as! PackItem).packages[indexPath.row] as! PackageDetail
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel!.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.clear()
+        cell.textLabel!.textColor = UIColor.white()
         cell.textLabel!.text = item.packName
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated:false)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated:false)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "pushPack") {
             let index = self.tableView.indexPathForSelectedRow
             let item = (_pack_section![index!.section] as! PackItem).packages[index!.row] as! PackageDetail
@@ -85,12 +85,11 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
         }
     }
 
-    
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
-            let json = NSString(data: data!, encoding:NSUTF8StringEncoding) as! String
-            FileUtils.writeTextFile(_packages!, savePath:_data_path!, fileContent:json)
-            self.loadData(json)
+            let json = NSString(data: data! as Data, encoding:String.Encoding.utf8.rawValue) as! String
+            FileUtils.writeTextFile(fileName: _packages!, savePath:_data_path!, fileContent:json)
+            self.loadData(jsonData: json)
         }
     }
 
@@ -100,24 +99,24 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
     
     func loadData(jsonData: String) {
     // load json data
-        let data = (jsonData as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        let packs = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves)) as! NSArray
+        let data = jsonData.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
+        let packs = (try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)) as! NSArray
         var pack: AnyObject? = nil
         var arrPack: NSArray?
         var packDetail: AnyObject? = nil
         for i in 0 ..< packs.count {
             pack = packs[i]
             let item = PackItem()
-            item.serial = (pack! as! NSDictionary).objectForKey("serial") as! String
-            arrPack = (pack! as! NSDictionary).objectForKey("packages") as? NSArray
+            item.serial = (pack! as! NSDictionary).object(forKey: "serial") as! String
+            arrPack = (pack! as! NSDictionary).object(forKey: "packages") as? NSArray
             for j in 0 ..< arrPack!.count {
                 packDetail = arrPack![j]
-                item.packages.addObject(PackageDetail(
-                    packId: (packDetail as! NSDictionary).objectForKey("id") as! String,
-                    packageName: (packDetail as! NSDictionary).objectForKey("packname") as! String)
+                item.packages.add(PackageDetail(
+                    packId: (packDetail as! NSDictionary).object(forKey: "id") as! String,
+                    packageName: (packDetail as! NSDictionary).object(forKey: "packname") as! String)
                 )
             }
-            _pack_section!.addObject(item)
+            _pack_section!.add(item)
         }
         self.tableView.reloadData()
     }

@@ -1,12 +1,11 @@
 import UIKit
 
-@objc
-protocol RESideMenuDelegate: NSObjectProtocol {
-    optional func sideMenu(sideMenu:RESideMenu, didRecognizePanGesture recognizer: UIPanGestureRecognizer?)
-    optional func sideMenu(sideMenu:RESideMenu, willShowMenuViewController menuViewController: UIViewController?)
-    optional func sideMenu(sideMenu:RESideMenu, didShowMenuViewController menuViewController: UIViewController?)
-    optional func sideMenu(sideMenu:RESideMenu, willHideMenuViewController menuViewController: UIViewController?)
-    optional func sideMenu(sideMenu:RESideMenu, didHideMenuViewController menuViewController: UIViewController?)
+@objc protocol RESideMenuDelegate: NSObjectProtocol {
+    @objc optional func sideMenu(sideMenu:RESideMenu, didRecognizePanGesture recognizer: UIPanGestureRecognizer?)
+    @objc optional func sideMenu(sideMenu:RESideMenu, willShowMenuViewController menuViewController: UIViewController?)
+    @objc optional func sideMenu(sideMenu:RESideMenu, didShowMenuViewController menuViewController: UIViewController?)
+    @objc optional func sideMenu(sideMenu:RESideMenu, willHideMenuViewController menuViewController: UIViewController?)
+    @objc optional func sideMenu(sideMenu:RESideMenu, didHideMenuViewController menuViewController: UIViewController?)
     
 }
 
@@ -23,12 +22,12 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 self._contentViewController = controller
                 return
             }
-            self.__hideViewController(self._contentViewController)
+            self.__hideViewController(viewController: self._contentViewController)
             self._contentViewController = controller
             self.addChildViewController(self._contentViewController!)
             self._contentViewController!.view.frame = self.view.bounds
             self.contentViewContainer!.addSubview(self._contentViewController!.view)
-            self._contentViewController!.didMoveToParentViewController(self)
+            self._contentViewController!.didMove(toParentViewController: self)
             
             self.__updateContentViewShadow()
             
@@ -49,17 +48,17 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 self._leftMenuViewController = controller
                 return
             }
-            self.__hideViewController(self._leftMenuViewController)
+            self.__hideViewController(viewController: self._leftMenuViewController)
             self._leftMenuViewController = controller
             
             self.addChildViewController(self._leftMenuViewController!)
             self._leftMenuViewController!.view.frame = self.view.bounds
-            self._leftMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight];
+            self._leftMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight];
             self.menuViewContainer!.addSubview(self._leftMenuViewController!.view)
-            self._leftMenuViewController!.didMoveToParentViewController(self)
+            self._leftMenuViewController!.didMove(toParentViewController: self)
             
             self.__addMenuViewControllerMotionEffects()
-            self.view.bringSubviewToFront(self.contentViewContainer!)
+            self.view.bringSubview(toFront: self.contentViewContainer!)
         }
     }
     
@@ -73,22 +72,22 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 self._rightMenuViewController = controller
                 return
             }
-            self.__hideViewController(self._rightMenuViewController)
+            self.__hideViewController(viewController: self._rightMenuViewController)
             self._rightMenuViewController = controller
             
             self.addChildViewController(self._rightMenuViewController!)
             self._rightMenuViewController!.view.frame = self.view.bounds
-            self._rightMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight];
+            self._rightMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight];
             self.menuViewContainer!.addSubview(self._rightMenuViewController!.view)
-            self._rightMenuViewController!.didMoveToParentViewController(self)
+            self._rightMenuViewController!.didMove(toParentViewController: self)
             
             self.__addMenuViewControllerMotionEffects()
-            self.view.bringSubviewToFront(self.contentViewContainer!)
+            self.view.bringSubview(toFront: self.contentViewContainer!)
 
         }
     }
     var delegate: RESideMenuDelegate?
-    var animationDuration: NSTimeInterval?
+    var animationDuration: TimeInterval?
     
     var _backgroundImage: UIImage?
     var backgroundImage: UIImage? {
@@ -143,7 +142,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.__commonInit()
     }
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.__commonInit()
     }
@@ -158,7 +157,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.contentViewContainer = UIView()
         self.animationDuration = 0.35
         self.interactivePopGestureRecognizerEnabled = true
-        self.menuViewControllerTransformation = CGAffineTransformMakeScale(1.5, 1.5)
+        self.menuViewControllerTransformation = CGAffineTransform(scaleX: 1.5, y: 1.5)
         self.scaleContentView = true
         self.scaleBackgroundImageView = true
         self.scaleMenuView = true
@@ -173,8 +172,8 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.panFromEdge = true
         self.panMinimumOpenThreshold = 60
         self.contentViewShadowEnabled = false
-        self.contentViewShadowColor = UIColor.blackColor()
-        self.contentViewShadowOffset = CGSizeZero
+        self.contentViewShadowColor = UIColor.black()
+        self.contentViewShadowOffset = CGSize.zero
         self.contentViewShadowOpacity = 0.4
         self.contentViewShadowRadius = 8.0
         self.contentViewInLandscapeOffsetCenterX = 30.0
@@ -194,17 +193,17 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func presentLeftMenuViewController() {
-        self.__presentMenuViewContainerWithMenuViewController(self.leftMenuViewController)
+        self.__presentMenuViewContainerWithMenuViewController(menuViewController: self.leftMenuViewController)
         self.__showLeftMenuViewController()
     }
     
     func presentRightMenuViewController() {
-        self.__presentMenuViewContainerWithMenuViewController(self.rightMenuViewController)
+        self.__presentMenuViewContainerWithMenuViewController(menuViewController: self.rightMenuViewController)
         self.__showRightMenuViewController()
     }
     
     func hideMenuViewController() {
-        self.__hideMenuViewControllerAnimated(true)
+        self.__hideMenuViewControllerAnimated(animated: true)
     }
     
     func setContentViewController(contentViewController:UIViewController, animated:Bool) {
@@ -223,8 +222,8 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 contentViewController.view.alpha = 1
             }
             func _anim_complete(finish: Bool) {
-                self.__hideViewController(self.contentViewController)
-                contentViewController.didMoveToParentViewController(self)
+                self.__hideViewController(viewController: self.contentViewController)
+                contentViewController.didMove(toParentViewController: self)
                 self.contentViewController = contentViewController
                 self.__statusBarNeedsAppearanceUpdate()
                 self.__updateContentViewShadow()
@@ -233,7 +232,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 }
 
             }
-            UIView.animateWithDuration(self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
+            UIView.animate(withDuration: self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
         }
     }
     
@@ -244,14 +243,14 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        self.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = self.backgroundImage
-        imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        imageView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        imageView.contentMode = UIViewContentMode.scaleAspectFill
+        imageView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.backgroundImageView = imageView
-        let button = UIButton(frame: CGRectNull)
-        button.addTarget(self, action:#selector(RESideMenu.hideMenuViewController), forControlEvents:UIControlEvents.TouchUpInside)
+        let button = UIButton(frame: CGRect.null)
+        button.addTarget(self, action:#selector(hideMenuViewController), for:UIControlEvents.touchUpInside)
         self.contentButton = button
         
         self.view.addSubview(self.backgroundImageView!)
@@ -259,40 +258,40 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.view.addSubview(self.contentViewContainer!)
         
         self.menuViewContainer!.frame = self.view.bounds
-        self.menuViewContainer!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        self.menuViewContainer!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         if (self.leftMenuViewController != nil) {
             self.addChildViewController(self.leftMenuViewController!)
             self.leftMenuViewController!.view.frame = self.view.bounds
-            self.leftMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+            self.leftMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
             self.menuViewContainer!.addSubview(self.leftMenuViewController!.view)
-            self.leftMenuViewController!.didMoveToParentViewController(self)
+            self.leftMenuViewController!.didMove(toParentViewController: self)
         }
         
         if (self.rightMenuViewController != nil) {
             self.addChildViewController(self.rightMenuViewController!)
             self.rightMenuViewController!.view.frame = self.view.bounds
-            self.rightMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+            self.rightMenuViewController!.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
             self.menuViewContainer!.addSubview(self.rightMenuViewController!.view)
-            self.rightMenuViewController!.didMoveToParentViewController(self)
+            self.rightMenuViewController!.didMove(toParentViewController: self)
         }
         
         self.contentViewContainer!.frame = self.view.bounds
-        self.contentViewContainer!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        self.contentViewContainer!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         
         self.addChildViewController(self.contentViewController!)
         self.contentViewController!.view.frame = self.view.bounds
         self.contentViewContainer!.addSubview(self.contentViewController!.view)
-        self.contentViewController!.didMoveToParentViewController(self)
+        self.contentViewController!.didMove(toParentViewController: self)
         
         self.menuViewContainer!.alpha = !self.fadeMenuView! ? 1 : 0
         if (self.scaleBackgroundImageView != nil) {
-            self.backgroundImageView!.transform = CGAffineTransformMakeScale(1.7, 1.7)
+            self.backgroundImageView!.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
         }
         self.__addMenuViewControllerMotionEffects()
         
         if (self.panGestureEnabled!) {
-            self.view.multipleTouchEnabled = false
-            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(RESideMenu.__panGestureRecognized(_:)))
+            self.view.isMultipleTouchEnabled = false
+            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(__panGestureRecognized(recognizer:)))
             panGestureRecognizer.delegate = self
             self.view.addGestureRecognizer(panGestureRecognizer)
         }
@@ -305,9 +304,9 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // =================================
     
     func __presentMenuViewContainerWithMenuViewController(menuViewController: UIViewController?) {
-        self.menuViewContainer!.transform = CGAffineTransformIdentity
+        self.menuViewContainer!.transform = CGAffineTransform.identity
         if (self.scaleBackgroundImageView!) {
-            self.backgroundImageView!.transform = CGAffineTransformIdentity
+            self.backgroundImageView!.transform = CGAffineTransform.identity
             self.backgroundImageView!.frame = self.view.bounds
         }
         self.menuViewContainer!.frame = self.view.bounds
@@ -316,9 +315,9 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         }
         self.menuViewContainer!.alpha = !self.fadeMenuView! ? 1 : 0
         if (self.scaleBackgroundImageView!) {
-            self.backgroundImageView!.transform = CGAffineTransformMakeScale(1.7, 1.7)
+            self.backgroundImageView!.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
         }
-        self.delegate?.sideMenu?(self, willShowMenuViewController: menuViewController)
+        self.delegate?.sideMenu?(sideMenu: self, willShowMenuViewController: menuViewController)
     }
     
     
@@ -326,9 +325,9 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         if (self.leftMenuViewController == nil) {
             return
         }
-        self.leftMenuViewController!.view.hidden = false
+        self.leftMenuViewController!.view.isHidden = false
         if (self.rightMenuViewController != nil) {
-            self.rightMenuViewController!.view.hidden = true
+            self.rightMenuViewController!.view.isHidden = true
         }
         self.view.window!.endEditing(true)
         self.__addContentButton()
@@ -337,30 +336,30 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         
         func _anim_doing() {
             if (self.scaleContentView!) {
-                self.contentViewContainer!.transform = CGAffineTransformMakeScale(CGFloat(self.contentViewScaleValue!), CGFloat(self.contentViewScaleValue!))
+                self.contentViewContainer!.transform = CGAffineTransform(scaleX: CGFloat(self.contentViewScaleValue!), y: CGFloat(self.contentViewScaleValue!))
             } else {
-                self.contentViewContainer!.transform = CGAffineTransformIdentity;
+                
+                self.contentViewContainer!.transform = CGAffineTransform.identity
             }
-            self.contentViewContainer!.center = CGPointMake((UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) ? self.contentViewInLandscapeOffsetCenterX! + CGRectGetHeight(self.view.frame) : self.contentViewInPortraitOffsetCenterX! + CGRectGetWidth(self.view.frame)), self.contentViewContainer!.center.y);
+            self.contentViewContainer!.center = CGPoint(x: (UIInterfaceOrientationIsLandscape(UIApplication.shared().statusBarOrientation) ? self.contentViewInLandscapeOffsetCenterX! + self.view.frame.height : self.contentViewInPortraitOffsetCenterX! + self.view.frame.width), y: self.contentViewContainer!.center.y);
             
             self.menuViewContainer!.alpha = !self.fadeMenuView! ? 0 : 1.0
-            self.menuViewContainer!.transform = CGAffineTransformIdentity
+            self.menuViewContainer!.transform = CGAffineTransform.identity
             if (self.scaleBackgroundImageView!) {
-                self.backgroundImageView!.transform = CGAffineTransformIdentity
+                self.backgroundImageView!.transform = CGAffineTransform.identity
             }
         }
         
         func _anim_complete(finish: Bool) {
             self.__addContentViewControllerMotionEffects()
             if (!self.visible!) {
-                self.delegate?.sideMenu?(self, didShowMenuViewController: self.leftMenuViewController!)
+                self.delegate?.sideMenu?(sideMenu: self, didShowMenuViewController: self.leftMenuViewController!)
             }
             self.visible = true
             self.leftMenuVisible = true
         }
     
-        UIView.animateWithDuration(self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
-    
+        UIView.animate(withDuration: self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
         self.__statusBarNeedsAppearanceUpdate()
     }
     
@@ -369,52 +368,52 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         if (self.leftMenuViewController != nil) {
-            self.leftMenuViewController!.view.hidden = true
+            self.leftMenuViewController!.view.isHidden = true
         }
-        self.rightMenuViewController!.view.hidden = false
+        self.rightMenuViewController!.view.isHidden = false
         self.view.window!.endEditing(true)
         self.__addContentButton()
         self.__updateContentViewShadow()
         self.__resetContentViewScale()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared().beginIgnoringInteractionEvents()
         func _anim_doing() {
             if (self.scaleContentView!) {
-                self.contentViewContainer!.transform = CGAffineTransformMakeScale(self.contentViewScaleValue!, self.contentViewScaleValue!)
+                self.contentViewContainer!.transform = CGAffineTransform(scaleX: self.contentViewScaleValue!, y: self.contentViewScaleValue!)
             } else {
-                self.contentViewContainer!.transform = CGAffineTransformIdentity
+                self.contentViewContainer!.transform = CGAffineTransform.identity
             }
-            self.contentViewContainer!.center = CGPointMake((UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) ? -self.contentViewInLandscapeOffsetCenterX! : -self.contentViewInPortraitOffsetCenterX!), self.contentViewContainer!.center.y)
+            self.contentViewContainer!.center = CGPoint(x: (UIInterfaceOrientationIsLandscape(UIApplication.shared().statusBarOrientation) ? -self.contentViewInLandscapeOffsetCenterX! : -self.contentViewInPortraitOffsetCenterX!), y: self.contentViewContainer!.center.y)
             
             self.menuViewContainer!.alpha = !self.fadeMenuView! ? 0 : 1.0
-            self.menuViewContainer!.transform = CGAffineTransformIdentity
+            self.menuViewContainer!.transform = CGAffineTransform.identity
             if (self.scaleBackgroundImageView!) {
-                self.backgroundImageView!.transform = CGAffineTransformIdentity
+                self.backgroundImageView!.transform = CGAffineTransform.identity
             }
         }
         
         func _anim_complete(finish: Bool) {
             if (!self.rightMenuVisible!) {
-                self.delegate?.sideMenu?(self, didShowMenuViewController: self.rightMenuViewController!)
+                self.delegate?.sideMenu?(sideMenu: self, didShowMenuViewController: self.rightMenuViewController!)
             }
             self.visible = !(self.contentViewContainer!.frame.size.width == self.view.bounds.size.width && self.contentViewContainer!.frame.size.height == self.view.bounds.size.height && self.contentViewContainer!.frame.origin.x == 0 && self.contentViewContainer!.frame.origin.y == 0)
             self.rightMenuVisible = self.visible
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            UIApplication.shared().endIgnoringInteractionEvents()
             self.__addContentViewControllerMotionEffects()
         }
         
-        UIView.animateWithDuration(self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
+        UIView.animate(withDuration: self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
         self.__statusBarNeedsAppearanceUpdate()
     }
     
     func __hideViewController(viewController: UIViewController?) {
-        viewController!.willMoveToParentViewController(nil)
+        viewController!.willMove(toParentViewController: nil)
         viewController!.view.removeFromSuperview()
         viewController!.removeFromParentViewController()
     }
     
     func __hideMenuViewControllerAnimated(animated: Bool) {
         var rightMenuVisible = self.rightMenuVisible
-        self.delegate?.sideMenu?(self, willHideMenuViewController: rightMenuVisible! ? self.rightMenuViewController : self.leftMenuViewController)
+        self.delegate?.sideMenu?(sideMenu: self, willHideMenuViewController: rightMenuVisible! ? self.rightMenuViewController : self.leftMenuViewController)
         self.visible = false
         self.leftMenuVisible = false
         self.rightMenuVisible = false
@@ -426,14 +425,14 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             if (strongSelf == nil) {
                 return
             }
-            strongSelf!.contentViewContainer!.transform = CGAffineTransformIdentity
+            strongSelf!.contentViewContainer!.transform = CGAffineTransform.identity
             strongSelf!.contentViewContainer!.frame = strongSelf!.view.bounds
             if (strongSelf!.scaleMenuView!) {
                 strongSelf!.menuViewContainer!.transform = strongSelf!.menuViewControllerTransformation!
             }
             strongSelf!.menuViewContainer!.alpha = !self.fadeMenuView! ? 1 : 0
             if (strongSelf!.scaleBackgroundImageView!) {
-                strongSelf!.backgroundImageView!.transform = CGAffineTransformMakeScale(1.7, 1.7)
+                strongSelf!.backgroundImageView!.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
             }
             if (strongSelf!.parallaxEnabled!) {
                 for effect in strongSelf!.contentViewContainer!.motionEffects {
@@ -448,21 +447,21 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                 return
             }
             if (!strongSelf!.visible!) {
-                strongSelf!.delegate?.sideMenu?(self, didHideMenuViewController: rightMenuVisible! ? strongSelf!.rightMenuViewController : strongSelf!.leftMenuViewController)
+                strongSelf!.delegate?.sideMenu?(sideMenu: self, didHideMenuViewController: rightMenuVisible! ? strongSelf!.rightMenuViewController : strongSelf!.leftMenuViewController)
             }
         }
     
         if (animated) {
-            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            UIApplication.shared().beginIgnoringInteractionEvents()
             func _anim_doing() {
                 animationBlock()
             }
             
             func _anim_complete (finish: Bool) {
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                UIApplication.shared().endIgnoringInteractionEvents()
                 completionBlock()
             }
-            UIView.animateWithDuration(self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
+            UIView.animate(withDuration: self.animationDuration!, animations: _anim_doing, completion: _anim_complete)
             
         } else {
             animationBlock()
@@ -476,9 +475,9 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             return
         }
     
-        self.contentButton!.autoresizingMask = UIViewAutoresizing.None
+        self.contentButton!.autoresizingMask = []
         self.contentButton!.frame = self.contentViewContainer!.bounds
-        self.contentButton!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        self.contentButton!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.contentViewContainer!.addSubview(self.contentButton!)
     }
     
@@ -486,15 +485,15 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         func _anim_doing() {
             setNeedsStatusBarAppearanceUpdate()
         }
-        UIView.animateWithDuration(0.3, animations: _anim_doing)
+        UIView.animate(withDuration: 0.3, animations: _anim_doing)
     }
     
     func __updateContentViewShadow() {
         if (self.contentViewShadowEnabled!) {
             let layer = self.contentViewContainer!.layer
             let path = UIBezierPath(rect: layer.bounds)
-            layer.shadowPath = path.CGPath
-            layer.shadowColor = self.contentViewShadowColor!.CGColor
+            layer.shadowPath = path.cgPath
+            layer.shadowColor = self.contentViewShadowColor!.cgColor
             layer.shadowOffset = self.contentViewShadowOffset!
             layer.shadowOpacity = Float(self.contentViewShadowOpacity!)
             layer.shadowRadius = self.contentViewShadowRadius!
@@ -505,8 +504,8 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         let t = self.contentViewContainer!.transform
         let scale = sqrt(t.a * t.a + t.c * t.c)
         let frame = self.contentViewContainer!.frame
-        self.contentViewContainer!.transform = CGAffineTransformIdentity
-        self.contentViewContainer!.transform = CGAffineTransformMakeScale(scale, scale)
+        self.contentViewContainer!.transform = CGAffineTransform.identity
+        self.contentViewContainer!.transform = CGAffineTransform(scaleX: scale, y: scale)
         self.contentViewContainer!.frame = frame
     }
 
@@ -521,11 +520,11 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
                     self.menuViewContainer!.removeMotionEffect(effect)
                 }
             }
-            let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
+            let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.tiltAlongHorizontalAxis)
             interpolationHorizontal.minimumRelativeValue = self.parallaxMenuMinimumRelativeValue
             interpolationHorizontal.maximumRelativeValue = self.parallaxMenuMaximumRelativeValue
     
-            let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+            let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.tiltAlongVerticalAxis)
             interpolationVertical.minimumRelativeValue = self.parallaxMenuMinimumRelativeValue
             interpolationVertical.maximumRelativeValue = self.parallaxMenuMaximumRelativeValue
     
@@ -541,16 +540,16 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             }
             
             func _anim_doing() {
-                let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
+                let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.tiltAlongHorizontalAxis)
                 interpolationHorizontal.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationHorizontal.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
-                let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+                let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.tiltAlongVerticalAxis)
                 interpolationVertical.minimumRelativeValue = self.parallaxContentMinimumRelativeValue
                 interpolationVertical.maximumRelativeValue = self.parallaxContentMaximumRelativeValue
                 self.contentViewContainer!.addMotionEffect(interpolationHorizontal)
                 self.contentViewContainer!.addMotionEffect(interpolationVertical)
             }
-            UIView.animateWithDuration(0.2, animations: _anim_doing)
+            UIView.animate(withDuration: 0.2, animations: _anim_doing)
         }
     }
     
@@ -558,16 +557,16 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // gesture delegate
     // =================================
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (self.interactivePopGestureRecognizerEnabled! && (self.contentViewController is UINavigationController)) {
             let navigationController = self.contentViewController as! UINavigationController
-            if (navigationController.viewControllers.count > 1 && navigationController.interactivePopGestureRecognizer!.enabled) {
+            if (navigationController.viewControllers.count > 1 && navigationController.interactivePopGestureRecognizer!.isEnabled) {
                 return false;
             }
         }
         
         if (self.panFromEdge! && (gestureRecognizer is UIPanGestureRecognizer) && !self.visible!) {
-            let point = touch.locationInView(gestureRecognizer.view)
+            let point = touch.location(in: gestureRecognizer.view)
             if (point.x < 20.0 || point.x > self.view.frame.size.width - 20.0) {
                 return true
             } else {
@@ -584,18 +583,18 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // =================================
     
     func __panGestureRecognized(recognizer: UIPanGestureRecognizer) {
-        self.delegate?.sideMenu?(self, didRecognizePanGesture: recognizer)
+        self.delegate?.sideMenu?(sideMenu: self, didRecognizePanGesture: recognizer)
         if (!self.panGestureEnabled!) {
             return
         }
-        var point = recognizer.translationInView(self.view)
-        if (recognizer.state == UIGestureRecognizerState.Began) {
+        var point = recognizer.translation(in: self.view)
+        if (recognizer.state == UIGestureRecognizerState.began) {
             self.__updateContentViewShadow()
-            self.originalPoint = CGPointMake(self.contentViewContainer!.center.x - CGRectGetWidth(self.contentViewContainer!.bounds) / 2.0,
-                self.contentViewContainer!.center.y - CGRectGetHeight(self.contentViewContainer!.bounds) / 2.0)
-            self.menuViewContainer!.transform = CGAffineTransformIdentity
+            self.originalPoint = CGPoint(x: self.contentViewContainer!.center.x - self.contentViewContainer!.bounds.width / 2.0,
+                                         y: self.contentViewContainer!.center.y - self.contentViewContainer!.bounds.height / 2.0)
+            self.menuViewContainer!.transform = CGAffineTransform.identity
             if (self.scaleBackgroundImageView!) {
-                self.backgroundImageView!.transform = CGAffineTransformIdentity
+                self.backgroundImageView!.transform = CGAffineTransform.identity
                 self.backgroundImageView!.frame = self.view.bounds
             }
             self.menuViewContainer!.frame = self.view.bounds
@@ -604,7 +603,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             self.didNotifyDelegate = false
         }
     
-        if (recognizer.state == UIGestureRecognizerState.Changed) {
+        if (recognizer.state == UIGestureRecognizerState.changed) {
             var delta: CGFloat = 0.0
             if (self.visible!) {
                 delta = self.originalPoint!.x != 0 ? (point.x + self.originalPoint!.x) / self.originalPoint!.x : 0
@@ -627,16 +626,16 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             self.menuViewContainer!.alpha = !self.fadeMenuView! ? 0 : delta;
     
             if (self.scaleBackgroundImageView!) {
-                self.backgroundImageView!.transform = CGAffineTransformMakeScale(backgroundViewScale, backgroundViewScale)
+                self.backgroundImageView!.transform = CGAffineTransform(scaleX: backgroundViewScale, y: backgroundViewScale)
             }
     
             if (self.scaleMenuView!) {
-                self.menuViewContainer!.transform = CGAffineTransformMakeScale(menuViewScale, menuViewScale)
+                self.menuViewContainer!.transform = CGAffineTransform(scaleX: menuViewScale, y: menuViewScale)
             }
     
             if (self.scaleBackgroundImageView!) {
                 if (backgroundViewScale < 1) {
-                    self.backgroundImageView!.transform = CGAffineTransformIdentity
+                    self.backgroundImageView!.transform = CGAffineTransform.identity
                 }
             }
     
@@ -650,21 +649,21 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             }
 
             if (point.x < 0) {
-                point.x = max(point.x, -UIScreen.mainScreen().bounds.size.height)
+                point.x = max(point.x, -UIScreen.main().bounds.size.height)
             } else {
-                point.x = min(point.x, UIScreen.mainScreen().bounds.size.height)
+                point.x = min(point.x, UIScreen.main().bounds.size.height)
             }
-            recognizer.setTranslation(point, inView:self.view)
+            recognizer.setTranslation(point, in:self.view)
     
             if (!self.didNotifyDelegate!) {
                 if (point.x > 0) {
                     if (!self.visible!) {
-                        self.delegate?.sideMenu?(self, willShowMenuViewController: leftMenuViewController)
+                        self.delegate?.sideMenu?(sideMenu: self, willShowMenuViewController: leftMenuViewController)
                     }
                 }
                 if (point.x < 0) {
                     if (!self.visible!) {
-                        self.delegate?.sideMenu?(self, willShowMenuViewController: rightMenuViewController)
+                        self.delegate?.sideMenu?(sideMenu: self, willShowMenuViewController: rightMenuViewController)
                     }
                 }
                 self.didNotifyDelegate = true
@@ -672,26 +671,26 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     
             if (contentViewScale > 1) {
                 let oppositeScale: CGFloat = (1 - (contentViewScale - 1))
-                self.contentViewContainer!.transform = CGAffineTransformMakeScale(oppositeScale, oppositeScale)
-                self.contentViewContainer!.transform = CGAffineTransformTranslate(self.contentViewContainer!.transform, point.x, 0)
+                self.contentViewContainer!.transform = CGAffineTransform(scaleX: oppositeScale, y: oppositeScale)
+                self.contentViewContainer!.transform = self.contentViewContainer!.transform.translateBy(x: point.x, y: 0)
             } else {
-                self.contentViewContainer!.transform = CGAffineTransformMakeScale(contentViewScale, contentViewScale)
-                self.contentViewContainer!.transform = CGAffineTransformTranslate(self.contentViewContainer!.transform, point.x, 0)
+                self.contentViewContainer!.transform = CGAffineTransform(scaleX: contentViewScale, y: contentViewScale)
+                self.contentViewContainer!.transform = self.contentViewContainer!.transform.translateBy(x: point.x, y: 0)
             }
             if (self.leftMenuViewController != nil) {
-                self.leftMenuViewController!.view.hidden = self.contentViewContainer!.frame.origin.x < 0
+                self.leftMenuViewController!.view.isHidden = self.contentViewContainer!.frame.origin.x < 0
             }
             if (self.rightMenuViewController != nil) {
-                self.rightMenuViewController!.view.hidden = self.contentViewContainer!.frame.origin.x > 0
+                self.rightMenuViewController!.view.isHidden = self.contentViewContainer!.frame.origin.x > 0
             }
     
             if (self.leftMenuViewController == nil && self.contentViewContainer!.frame.origin.x > 0) {
-                self.contentViewContainer!.transform = CGAffineTransformIdentity
+                self.contentViewContainer!.transform = CGAffineTransform.identity
                 self.contentViewContainer!.frame = self.view.bounds
                 self.visible = false
                 self.leftMenuVisible = false
             } else if (self.rightMenuViewController == nil && self.contentViewContainer!.frame.origin.x < 0) {
-                self.contentViewContainer!.transform = CGAffineTransformIdentity
+                self.contentViewContainer!.transform = CGAffineTransform.identity
                 self.contentViewContainer!.frame = self.view.bounds
                 self.visible = false
                 self.rightMenuVisible = false
@@ -700,15 +699,15 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
             self.__statusBarNeedsAppearanceUpdate()
         }
     
-        if (recognizer.state == UIGestureRecognizerState.Ended) {
+        if (recognizer.state == UIGestureRecognizerState.ended) {
             self.didNotifyDelegate = false
             
             if (self.panMinimumOpenThreshold! > 0 && ((self.contentViewContainer!.frame.origin.x < 0 && self.contentViewContainer!.frame.origin.x > CGFloat(-self.panMinimumOpenThreshold!)) || (self.contentViewContainer!.frame.origin.x > 0 && self.contentViewContainer!.frame.origin.x < CGFloat(self.panMinimumOpenThreshold!)))) {
                 self.hideMenuViewController()
             } else if (self.contentViewContainer!.frame.origin.x == 0) {
-                self.__hideMenuViewControllerAnimated(false)
+                self.__hideMenuViewControllerAnimated(animated: false)
             } else {
-                if (recognizer.velocityInView(self.view).x > 0) {
+                if (recognizer.velocity(in: self.view).x > 0) {
                     if (self.contentViewContainer!.frame.origin.x < 0) {
                         self.hideMenuViewController()
                     } else {
@@ -736,23 +735,23 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         return self.contentViewController!.shouldAutorotate()
     }
     
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         if (self.visible!) {
             self.menuViewContainer!.bounds = self.view.bounds
-            self.contentViewContainer!.transform = CGAffineTransformIdentity
+            self.contentViewContainer!.transform = CGAffineTransform.identity
             self.contentViewContainer!.frame = self.view.bounds
             
             if (self.scaleContentView!) {
-                self.contentViewContainer!.transform = CGAffineTransformMakeScale(self.contentViewScaleValue!, self.contentViewScaleValue!)
+                self.contentViewContainer!.transform = CGAffineTransform(scaleX: self.contentViewScaleValue!, y: self.contentViewScaleValue!)
             } else {
-                self.contentViewContainer!.transform = CGAffineTransformIdentity
+                self.contentViewContainer!.transform = CGAffineTransform.identity
             }
             
             var center: CGPoint?
             if (self.leftMenuVisible!) {
-                center = CGPointMake((UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) ? self.contentViewInLandscapeOffsetCenterX! + CGRectGetHeight(self.view.frame) : self.contentViewInPortraitOffsetCenterX! + CGRectGetWidth(self.view.frame)), self.contentViewContainer!.center.y)
+                center = CGPoint(x: (UIDeviceOrientationIsLandscape(UIDevice.current().orientation) ? self.contentViewInLandscapeOffsetCenterX! + self.view.frame.height : self.contentViewInPortraitOffsetCenterX! + self.view.frame.width), y: self.contentViewContainer!.center.y)
             } else {
-                center = CGPointMake((UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) ? -self.contentViewInLandscapeOffsetCenterX! : -self.contentViewInPortraitOffsetCenterX!), self.contentViewContainer!.center.y)
+                center = CGPoint(x: (UIDeviceOrientationIsLandscape(UIDevice.current().orientation) ? -self.contentViewInLandscapeOffsetCenterX! : -self.contentViewInPortraitOffsetCenterX!), y: self.contentViewContainer!.center.y)
             }
             
             self.contentViewContainer!.center = center!
@@ -766,7 +765,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // =================================
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        var statusBarStyle = UIStatusBarStyle.Default
+        var statusBarStyle = UIStatusBarStyle.default
         statusBarStyle = self.visible! ? self.menuPreferredStatusBarStyle! : self.contentViewController!.preferredStatusBarStyle()
         if (self.contentViewContainer!.frame.origin.y > 10) {
             statusBarStyle = self.menuPreferredStatusBarStyle!
@@ -788,7 +787,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-        var statusBarAnimation = UIStatusBarAnimation.None
+        var statusBarAnimation = UIStatusBarAnimation.none
         statusBarAnimation = self.visible! ? self.leftMenuViewController!.preferredStatusBarUpdateAnimation() : self.contentViewController!.preferredStatusBarUpdateAnimation()
         if (self.contentViewContainer!.frame.origin.y > 10) {
             statusBarAnimation = self.leftMenuViewController!.preferredStatusBarUpdateAnimation()

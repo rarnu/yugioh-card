@@ -1,8 +1,7 @@
 import UIKit
 
-@objc
-protocol CoinDelegate: NSObjectProtocol {
-    optional func doneCoin()
+@objc protocol CoinDelegate: NSObjectProtocol {
+    @objc optional func doneCoin()
 }
 
 class CoinView: UIView {
@@ -22,11 +21,11 @@ class CoinView: UIView {
     
     
     func makeUI() {
-        self.backgroundColor = UIColor.clearColor()
-        self.imgCoin = UIImageView(frame: CGRectMake(50, 0, self.frame.size.width-100, self.frame.size.height))
-        self.imgCoin!.contentMode = UIViewContentMode.ScaleAspectFit
-        self.imgCoin!.userInteractionEnabled = true
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(CoinView.closeClicked(_:)))
+        self.backgroundColor = UIColor.clear()
+        self.imgCoin = UIImageView(frame: CGRect(x: 50, y: 0, width: self.frame.size.width-100, height: self.frame.size.height))
+        self.imgCoin!.contentMode = UIViewContentMode.scaleAspectFit
+        self.imgCoin!.isUserInteractionEnabled = true
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(closeClicked(sender:)))
         self.imgCoin!.addGestureRecognizer(singleTap)
 
         let coinval = arc4random() % 2 + 1

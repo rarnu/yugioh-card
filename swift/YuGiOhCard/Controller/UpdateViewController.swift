@@ -18,24 +18,24 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
             inited = true
             for temp in self.view.subviews {
                 if (temp is UILabel) || (temp is UITextView) || (temp is UIButton) || (temp is UIProgressView) {
-                    UIUtils.scaleComponent(temp)
+                    UIUtils.scaleComponent(view: temp)
                 }
             }
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        UIUtils.setStatusBar(true)
-        UIUtils.setNavBar(self.navigationController!.navigationBar)
+    override func viewWillAppear(_ animated: Bool) {
+        UIUtils.setStatusBar(light: true)
+        UIUtils.setNavBar(nav: self.navigationController!.navigationBar)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inited = false
         self.title = RIGHT_MENU_UPDATE
-        self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, forState:UIControlState.Normal)
-        self.procDownload!.hidden = true
-        self.btnUpdate!.hidden = false
+        self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, for: [])
+        self.procDownload!.isHidden = true
+        self.btnUpdate!.isHidden = false
         
         let build = (ApplicationUtils.getAppBuild() as NSString).integerValue
         let lastCard = DatabaseUtils.queryCardCount()
@@ -44,14 +44,14 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
         let hu = HttpUtils()
         hu.tag = 1
         hu.delegate = self
-        hu.get("\(URL_UPDATE)?\(param)")
+        hu.get(url: "\(URL_UPDATE)?\(param)")
         self.lblCurrentCount!.text = NSString(format: STR_CARD_COUNT, lastCard) as String
         self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, 0) as String
         // load update log
         let huLog = HttpUtils()
         huLog.tag = 3
         huLog.delegate = self
-        huLog.get(URL_UPDATE_LOG)
+        huLog.get(url: URL_UPDATE_LOG)
 
     }
 
@@ -63,11 +63,11 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         switch (httpUtils.tag!) {
         case 1:
-            self.extractUpdateInfo(data!)
+            self.extractUpdateInfo(json: data!)
         case 2:
-            self.uncompressData(data!)
+            self.uncompressData(data: data!)
         case 3:
-            self.showUpdateLog(data!)
+            self.showUpdateLog(data: data!)
         default:
             break
         }
@@ -76,7 +76,7 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     func httpUtils(httpUtils: HttpUtils, receivedFileSize fileSize: Int64) {
         if (httpUtils.tag == 2) {
             _update_file_size = fileSize
-            self.procDownload!.hidden = false
+            self.procDownload!.isHidden = false
         }
     }
     
@@ -92,30 +92,30 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     }
     
     @IBAction func updateClicked(sender: AnyObject) {
-        self.btnUpdate!.enabled = false
+        self.btnUpdate!.isEnabled = false
         self.procDownload!.progress = 0
-        self.procDownload!.hidden = false
+        self.procDownload!.isHidden = false
         let hu = HttpUtils()
         hu.tag = 2
         hu.delegate = self
-        hu.get(URL_FILE_DATABASE)
+        hu.get(url: URL_FILE_DATABASE)
     }
     
     func extractUpdateInfo(json: NSData) {
-        let info = (try! NSJSONSerialization.JSONObjectWithData(json, options:NSJSONReadingOptions.MutableLeaves)) as! NSDictionary
-        let newcard = (info.objectForKey("newcard") as! NSString).integerValue
+        let info = (try! JSONSerialization.jsonObject(with: json as Data, options:JSONSerialization.ReadingOptions.mutableLeaves)) as! NSDictionary
+        let newcard = (info.object(forKey: "newcard") as! NSString).integerValue
         if (newcard != 0) {
-            self.btnUpdate!.setTitle(STR_DOWNLOAD_UPDATE, forState:UIControlState.Normal)
-            self.btnUpdate!.enabled = true
+            self.btnUpdate!.setTitle(STR_DOWNLOAD_UPDATE, for:[])
+            self.btnUpdate!.isEnabled = true
             self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, newcard) as String
         } else {
-            self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, forState:UIControlState.Normal)
-            self.btnUpdate!.enabled = false
+            self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, for:[])
+            self.btnUpdate!.isEnabled = false
         }
     }
     
     func uncompressData(data: NSData) {
-        FileUtils.writeFile(ZIP_NAME, savePath:"", fileData:data)
+        FileUtils.writeFile(fileName: ZIP_NAME, savePath:"", fileData:data)
         let zu = ZipUtils()
         let archivePath = "\(FileUtils.getDocumentPath())/\(ZIP_NAME)"
         zu.archiveFile = archivePath
@@ -125,15 +125,15 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     }
     
     func showUpdateLog(data: NSData) {
-        let str = NSString(data: data, encoding:NSUTF8StringEncoding)
+        let str = NSString(data: data as Data, encoding:String.Encoding.utf8.rawValue)
         self.tvLog!.text = str as! String
     }
     
     func ziputils(ziputils: ZipUtils, unzipCompleted succ: Bool) {
-        DatabaseUtils.openDatabase()
-        self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, forState:UIControlState.Normal)
-        self.procDownload!.hidden = true
-        self.btnUpdate!.enabled = false
+        let _ = DatabaseUtils.openDatabase()
+        self.btnUpdate!.setTitle(STR_DOWNLOAD_NA, for:[])
+        self.procDownload!.isHidden = true
+        self.btnUpdate!.isEnabled = false
         let lastCard = DatabaseUtils.queryLastCardId()
         self.lblCurrentCount!.text = NSString(format: STR_CARD_COUNT, lastCard) as String
         self.lblNewCount!.text = NSString(format: STR_CARD_COUNT, 0) as String

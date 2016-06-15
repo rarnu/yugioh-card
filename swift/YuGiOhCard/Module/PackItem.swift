@@ -24,6 +24,6 @@ class PackItem: NSObject {
     var packages = NSMutableArray()
 
     func addPackage(item: PackageDetail) {
-        self.packages.addObject(item)
+        self.packages.add(item)
     }
 }

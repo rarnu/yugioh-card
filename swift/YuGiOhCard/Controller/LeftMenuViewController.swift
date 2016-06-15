@@ -10,14 +10,14 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.controllerNames = ["searchViewController", "limitViewController", "latestViewController","packViewController", "favViewController", "toolViewController"]
         
-        let tableView = UITableView(frame: CGRectMake(0, (self.view.frame.size.height - 54 * 6) / 2.0, self.view.frame.size.width, 54 * 6), style: UITableViewStyle.Plain)
-        tableView.autoresizingMask = [UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleWidth]
+        let tableView = UITableView(frame: CGRect(x: 0, y: (self.view.frame.size.height - 54 * 6) / 2.0, width: self.view.frame.size.width, height: 54 * 6), style: UITableViewStyle.plain)
+        tableView.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin, UIViewAutoresizing.flexibleWidth]
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.opaque = false
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.isOpaque = false
+        tableView.backgroundColor = UIColor.clear()
         tableView.backgroundView = nil
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.bounces = false
         tableView.scrollsToTop = false
         
@@ -29,39 +29,37 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54.0
     }
     
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell")
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-            cell!.backgroundColor = UIColor.clearColor()
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+            cell!.backgroundColor = UIColor.clear()
             cell!.textLabel!.font = UIFont(name: "HelveticaNeue", size:21)
-            cell!.textLabel!.textColor = UIColor.whiteColor()
-            cell!.textLabel!.highlightedTextColor = UIColor.lightGrayColor()
+            cell!.textLabel!.textColor = UIColor.white()
+            cell!.textLabel!.highlightedTextColor = UIColor.lightGray()
             cell!.selectedBackgroundView = UIView()
         }
         cell!.textLabel!.text = self.titles[indexPath.row] as? String
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated:true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated:true)
         let mainStory = UIStoryboard(name: "Main", bundle: nil)
-        let navController = UINavigationController(rootViewController: mainStory.instantiateViewControllerWithIdentifier(self.controllerNames[indexPath.row] as! String) )
-        self.sideMenuViewController!.setContentViewController(navController, animated: true)
+        let navController = UINavigationController(rootViewController: mainStory.instantiateViewController(withIdentifier: self.controllerNames[indexPath.row] as! String) )
+        self.sideMenuViewController!.setContentViewController(contentViewController: navController, animated: true)
         self.sideMenuViewController!.hideMenuViewController()
     }
 }
