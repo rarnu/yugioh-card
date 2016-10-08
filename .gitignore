@@ -6,3 +6,6 @@
 #
 # Pods/
 .DS_*
+ios/Build
+android/build
+*.pyc
