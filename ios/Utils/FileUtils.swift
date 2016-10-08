@@ -71,8 +71,10 @@ class FileUtils: NSObject {
         let manager = FileManager.default
         if (manager.fileExists(atPath: filePath)) {
             let attrs = try? manager.attributesOfItem(atPath: filePath)
-            let dic = NSDictionary(dictionary: attrs!)
-            return dic.fileSize()
+            if (attrs != nil) {
+                return UInt64((attrs![FileAttributeKey.size]! as! NSNumber).int64Value)
+            }
+            
         }
         return 0
     }

@@ -54,8 +54,8 @@ class SettingViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         _document = FileUtils.getDocumentPath()
         fmgr = FileManager.default
-        let sizeStr = NSString(format: "%.2f M", FileUtils.folderSizeAtPath(folderPath: _document!))
-        self.btnSpace!.setTitle(sizeStr as String, for: [])
+        let sizeStr = String(format: "%.2f M", FileUtils.folderSizeAtPath(folderPath: _document!))
+        self.btnSpace!.setTitle(sizeStr, for: [])
     }
 
     override func didReceiveMemoryWarning() {

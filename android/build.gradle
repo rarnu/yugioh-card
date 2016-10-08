@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '23.0.3'
+
+    signingConfigs {
+        signConfig {
+            storeFile file ('roottools2.keystore')
+            storePassword '123456'
+            keyAlias 'roottools2'
+            keyPassword '123456'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.signConfig
+        }
+        debug {
+            signingConfig signingConfigs.signConfig
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+project.gradle.startParameter.excludedTaskNames.add('lint')
+project.gradle.startParameter.excludedTaskNames.add('lintVitalRelease')
