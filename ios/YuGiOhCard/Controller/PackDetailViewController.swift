@@ -19,7 +19,7 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.packageName!
-        _packages = "\(self.packageId).pkg"
+        _packages = "\(String(describing: self.packageId)).pkg"
         _data_path = "data"
         _pack_cards = PackageCards()
         _cards = NSMutableArray()
@@ -52,8 +52,8 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
             let json = NSString(data: data! as Data, encoding:String.Encoding.utf8.rawValue)
-            FileUtils.writeTextFile(fileName: _packages!, savePath:_data_path!, fileContent:json as! String)
-            self.loadData(json: json as! String)
+            FileUtils.writeTextFile(fileName: _packages!, savePath:_data_path!, fileContent:json! as String)
+            self.loadData(json: json! as String)
         }
     }
     

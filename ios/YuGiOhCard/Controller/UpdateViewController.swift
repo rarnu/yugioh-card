@@ -126,7 +126,7 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
     
     func showUpdateLog(data: NSData) {
         let str = NSString(data: data as Data, encoding:String.Encoding.utf8.rawValue)
-        self.tvLog!.text = str as! String
+        self.tvLog!.text = str! as String
     }
     
     func ziputils(ziputils: ZipUtils, unzipCompleted succ: Bool) {

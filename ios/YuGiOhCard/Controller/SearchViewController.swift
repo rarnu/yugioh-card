@@ -183,7 +183,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         } else {
             self.view.endEditing(true)
             self.setEditMode(inEditing: true)
-            self.popupPicker(textField: textField)
+            if (textField == txtSubtype) {
+                if (txtCardType!.text!.contains(MONSTER_LINK)) {
+                    // TODO: link
+                    self.setEditMode(inEditing: false)
+                } else {
+                    self.popupPicker(textField: textField)
+                }
+            } else {
+                self.popupPicker(textField: textField)
+            }
             return false
         }
     }
@@ -195,6 +204,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     func pickDone(picked: String, textField: UITextField?) {
         let rect = UIScreen.main.applicationFrame
         textField!.text = picked
+        if (textField == txtCardType) {
+            if (txtCardType!.text!.contains(MONSTER_LINK)) {
+                txtSubtype?.text = "连接属性"
+            } else {
+                txtSubtype?.text = "不限"
+            }
+        }
         UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.picker!.frame
             rectSelectDate.origin.y = rect.size.height

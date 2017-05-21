@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.4.0 swift</string>
+	<string>4.0.0 swift</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>122</string>
+	<string>300</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -28,7 +28,7 @@
 		<true/>
 	</dict>
 	<key>PublicDate</key>
-	<string>2016.10.08</string>
+	<string>2017.05.20</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchImage</string>
 	<key>UIMainStoryboardFile</key>

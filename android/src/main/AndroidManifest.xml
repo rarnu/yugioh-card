@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.yugioh.android"
-        android:versionCode="222"
-        android:versionName="ver 3.7.0">
+        android:versionCode="300"
+        android:versionName="ver 4.0.0 &lt;kotlin&gt;">
 
     <uses-sdk
-            android:minSdkVersion="14"
-            android:targetSdkVersion="19" />
+            android:minSdkVersion="23"
+            android:targetSdkVersion="25" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -21,10 +21,10 @@
             android:name=".YuGiOhApplication">
         <meta-data
                 android:name="release-date"
-                android:value="2016.10.08" />
+                android:value="2017.05.20" />
         <meta-data
                 android:name="database-version"
-                android:value="200" />
+                android:value="300" />
 
         <activity
                 android:name=".SplashActivity"

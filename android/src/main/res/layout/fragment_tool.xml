@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dip"
-        android:background="@color/white">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dip"
+                android:background="@color/white">
 
     <TextView
             android:id="@+id/tvPlay1"
@@ -13,7 +13,7 @@
             android:paddingLeft="4dip"
             android:text="@string/tool_player1"
             android:textStyle="bold"
-            android:textColor="?android:attr/textColorPrimary" />
+            android:textColor="?android:attr/textColorPrimary"/>
 
     <TextView
             android:id="@+id/tvPlayer1Life"
@@ -43,7 +43,7 @@
             android:layout_toRightOf="@+id/tvPlay2"
             android:gravity="left|center_vertical"
             android:text="8000"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
     <TextView
             android:id="@+id/tvSplit1"
@@ -51,7 +51,7 @@
             android:layout_height="2dip"
             android:layout_below="@+id/tvPlay2"
             android:layout_marginTop="4dip"
-            android:background="?android:attr/actionModeSplitBackground" />
+            android:background="?android:attr/actionModeSplitBackground"/>
 
     <TextView
             android:id="@+id/tvP1Oper"
@@ -66,7 +66,7 @@
             android:paddingTop="2dip"
             android:text="@string/tool_p1Oper"
             android:textColor="?android:attr/textColorPrimary"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
     <EditText
             android:id="@+id/etP1Life"
@@ -80,7 +80,7 @@
             android:numeric="integer"
             android:singleLine="true"
             android:background="@drawable/bg_edittext"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
     <Button
             android:id="@+id/btnP1Add"
@@ -89,7 +89,7 @@
             android:layout_below="@+id/tvP1Oper"
             android:layout_toLeftOf="@+id/btnP1Minus"
             android:background="@drawable/button_style"
-            android:text="@string/tool_plus" />
+            android:text="@string/tool_plus"/>
 
     <Button
             android:id="@+id/btnP1Minus"
@@ -98,7 +98,7 @@
             android:layout_below="@+id/tvP1Oper"
             android:layout_toLeftOf="@+id/btnP1Set"
             android:background="@drawable/button_style"
-            android:text="@string/tool_minus" />
+            android:text="@string/tool_minus"/>
 
     <Button
             android:id="@+id/btnP1Set"
@@ -107,7 +107,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tvP1Oper"
             android:background="@drawable/button_style"
-            android:text="@string/tool_set" />
+            android:text="@string/tool_set"/>
 
     <Button
             android:id="@+id/btnP1Half"
@@ -115,7 +115,7 @@
             android:layout_height="48dip"
             android:layout_below="@+id/etP1Life"
             android:background="@drawable/button_style"
-            android:text="@string/tool_half" />
+            android:text="@string/tool_half"/>
 
     <Button
             android:id="@+id/btnP1Double"
@@ -124,7 +124,7 @@
             android:layout_below="@+id/etP1Life"
             android:layout_toRightOf="@+id/btnP1Half"
             android:background="@drawable/button_style"
-            android:text="@string/tool_double" />
+            android:text="@string/tool_double"/>
 
     <Button
             android:id="@+id/btnP1Divide"
@@ -133,7 +133,7 @@
             android:layout_below="@+id/etP1Life"
             android:layout_toRightOf="@+id/btnP1Double"
             android:background="@drawable/button_style"
-            android:text="@string/tool_divide" />
+            android:text="@string/tool_divide"/>
 
     <Button
             android:id="@+id/btnP1Opt"
@@ -142,7 +142,7 @@
             android:layout_below="@+id/etP1Life"
             android:layout_toRightOf="@+id/btnP1Divide"
             android:background="@drawable/button_style"
-            android:text="@string/tool_opt" />
+            android:text="@string/tool_opt"/>
 
     <TextView
             android:id="@+id/tvSplit2"
@@ -150,7 +150,7 @@
             android:layout_height="2dip"
             android:layout_below="@+id/btnP1Half"
             android:layout_marginTop="4dip"
-            android:background="?android:attr/actionModeSplitBackground" />
+            android:background="?android:attr/actionModeSplitBackground"/>
 
     <TextView
             android:id="@+id/tvP2Oper"
@@ -165,7 +165,7 @@
             android:paddingTop="2dip"
             android:text="@string/tool_p2Oper"
             android:textColor="?android:attr/textColorPrimary"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
     <EditText
             android:id="@+id/etP2Life"
@@ -179,7 +179,7 @@
             android:numeric="integer"
             android:singleLine="true"
             android:background="@drawable/bg_edittext"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
     <Button
             android:id="@+id/btnP2Add"
@@ -188,7 +188,7 @@
             android:layout_below="@+id/tvP2Oper"
             android:layout_toLeftOf="@+id/btnP2Minus"
             android:background="@drawable/button_style"
-            android:text="@string/tool_plus" />
+            android:text="@string/tool_plus"/>
 
     <Button
             android:id="@+id/btnP2Minus"
@@ -197,7 +197,7 @@
             android:layout_below="@+id/tvP2Oper"
             android:layout_toLeftOf="@+id/btnP2Set"
             android:background="@drawable/button_style"
-            android:text="@string/tool_minus" />
+            android:text="@string/tool_minus"/>
 
     <Button
             android:id="@+id/btnP2Set"
@@ -206,7 +206,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tvP2Oper"
             android:background="@drawable/button_style"
-            android:text="@string/tool_set" />
+            android:text="@string/tool_set"/>
 
     <Button
             android:id="@+id/btnP2Half"
@@ -214,7 +214,7 @@
             android:layout_height="48dip"
             android:layout_below="@+id/etP2Life"
             android:background="@drawable/button_style"
-            android:text="@string/tool_half" />
+            android:text="@string/tool_half"/>
 
     <Button
             android:id="@+id/btnP2Double"
@@ -223,7 +223,7 @@
             android:layout_below="@+id/etP2Life"
             android:layout_toRightOf="@+id/btnP2Half"
             android:background="@drawable/button_style"
-            android:text="@string/tool_double" />
+            android:text="@string/tool_double"/>
 
     <Button
             android:id="@+id/btnP2Divide"
@@ -232,7 +232,7 @@
             android:layout_below="@+id/etP2Life"
             android:layout_toRightOf="@+id/btnP2Double"
             android:background="@drawable/button_style"
-            android:text="@string/tool_divide" />
+            android:text="@string/tool_divide"/>
 
     <Button
             android:id="@+id/btnP2Opt"
@@ -241,7 +241,7 @@
             android:layout_below="@+id/etP2Life"
             android:layout_toRightOf="@+id/btnP2Divide"
             android:background="@drawable/button_style"
-            android:text="@string/tool_opt" />
+            android:text="@string/tool_opt"/>
 
     <TextView
             android:id="@+id/tvSplit3"
@@ -249,7 +249,13 @@
             android:layout_height="2dip"
             android:layout_below="@+id/btnP2Half"
             android:layout_marginTop="4dip"
-            android:background="?android:attr/actionModeSplitBackground" />
+            android:background="?android:attr/actionModeSplitBackground"/>
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:layout_below="@+id/tvSplit3"
+                    android:layout_above="@+id/layDiceCoin">
+
+    </RelativeLayout>
 
     <RelativeLayout
             android:id="@+id/layDiceCoin"
@@ -263,7 +269,7 @@
                 android:layout_height="48dip"
                 android:background="@drawable/button_style"
                 android:text="@string/tool_coin"
-                android:textColor="@color/orange" />
+                android:textColor="@color/orange"/>
 
         <Button
                 android:id="@+id/btnDice"
@@ -272,7 +278,7 @@
                 android:layout_toRightOf="@+id/btnCoin"
                 android:background="@drawable/button_style"
                 android:text="@string/tool_dice"
-                android:textColor="@color/orange" />
+                android:textColor="@color/orange"/>
     </RelativeLayout>
 
 </RelativeLayout>

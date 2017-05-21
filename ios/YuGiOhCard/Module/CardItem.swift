@@ -25,5 +25,7 @@ class CardItem: NSObject {
     var shortName: String = ""      // shortName
     var pendulumL: Int = 0          // pendulumL
     var pendulumR: Int = 0          // pendulumR
+    var link: Int = 0               // link
+    var linkArrow: String = ""      // linkArrow
 
 }

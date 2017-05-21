@@ -178,6 +178,8 @@ class DatabaseUtils: NSObject {
                 item!.shortName = String(cString: UnsafePointer(sqlite3_column_text(stmt, 21)))
                 item!.pendulumL = Int(sqlite3_column_int(stmt, 22))
                 item!.pendulumR = Int(sqlite3_column_int(stmt, 23))
+                item!.link = Int(sqlite3_column_int(stmt, 24))
+                item!.linkArrow = String(cString: UnsafePointer(sqlite3_column_text(stmt, 25)))
                 break
             }
             sqlite3_finalize(stmt)

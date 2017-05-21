@@ -75,29 +75,31 @@ class yugioh:
         c.execute(
             '''CREATE TABLE YGODATA (
                 _id int PRIMARY KEY,
-                japName text DEFAULT 'NULL',
-                name text DEFAULT 'NULL',
-                enName text DEFAULT 'NULL',
-                sCardType text DEFAULT 'NULL',
-                CardDType text DEFAULT 'NULL',
-                tribe text DEFAULT 'NULL',
-                package text DEFAULT 'NULL',
-                element text DEFAULT 'NULL',
-                level int DEFAULT 'NULL',
-                infrequence text DEFAULT 'NULL',
-                atkValue int DEFAULT 'NULL',
-                atk text DEFAULT 'NULL',
-                defValue int DEFAULT 'NULL',
-                def text DEFAULT 'NULL',
-                effect text,
-                ban text DEFAULT 'NULL',
-                cheatcode text DEFAULT 'NULL',
-                adjust text,
-                cardCamp text,
-                oldName text,
-                shortName text,
-                pendulumL int,
-                pendulumR int
+                japName text DEFAULT '',
+                name text DEFAULT '',
+                enName text DEFAULT '',
+                sCardType text DEFAULT '',
+                cardDType text DEFAULT '',
+                tribe text DEFAULT '',
+                package text DEFAULT '',
+                element text DEFAULT '',
+                level int DEFAULT 0,
+                infrequence text DEFAULT '',
+                atkValue int DEFAULT 0,
+                atk text DEFAULT '',
+                defValue int DEFAULT 0,
+                def text DEFAULT '',
+                effect text DEFAULT '',
+                ban text DEFAULT '',
+                cheatcode text DEFAULT '',
+                adjust text DEFAULT '',
+                cardCamp text DEFAULT '',
+                oldName text DEFAULT '',
+                shortName text DEFAULT '',
+                pendulumL int DEFAULT 0,
+                pendulumR int DEFAULT 0,
+                link int DEFAULT 0,
+                linkArrow text DEFAULT ''
                 )''')
         conn.commit()
 
@@ -126,6 +128,7 @@ class yugioh:
         c.execute("alter table YGODATA RENAME TO YGODATA_OLD")
         self.__generate_tables(conn, c)
         c.execute("INSERT INTO YGODATA SELECT * FROM YGODATA_OLD")
+        c.execute("UPDATE YGODATA SET link = 0 WHERE link = ''")
         c.execute("DROP TABLE YGODATA_OLD")
         conn.commit()
         pass

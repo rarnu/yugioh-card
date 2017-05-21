@@ -1,9 +1,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dip"
-        android:background="@color/white"
-        android:scrollbars="none">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dip"
+            android:background="@color/white"
+            android:scrollbars="none">
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -15,7 +15,7 @@
                 android:layout_height="48dip"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_name"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <EditText
                 android:id="@+id/etCardName"
@@ -25,7 +25,7 @@
                 android:layout_marginBottom="4dip"
                 android:layout_toRightOf="@+id/tvCardName"
                 android:background="@drawable/bg_edittext"
-                />
+        />
 
         <TextView
                 android:id="@+id/tvCardAttack"
@@ -34,7 +34,7 @@
                 android:layout_below="@+id/tvCardName"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_attack"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <EditText
                 android:id="@+id/etCardAttack"
@@ -44,7 +44,7 @@
                 android:layout_marginBottom="4dip"
                 android:layout_below="@+id/etCardName"
                 android:layout_toRightOf="@+id/tvCardAttack"
-                android:background="@drawable/bg_edittext" />
+                android:background="@drawable/bg_edittext"/>
 
         <TextView
                 android:id="@+id/tvCardDefense"
@@ -53,7 +53,7 @@
                 android:layout_below="@+id/tvCardAttack"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_defense"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <EditText
                 android:id="@+id/etCardDefense"
@@ -63,7 +63,7 @@
                 android:layout_marginBottom="4dip"
                 android:layout_below="@+id/etCardAttack"
                 android:layout_toRightOf="@+id/tvCardDefense"
-                android:background="@drawable/bg_edittext" />
+                android:background="@drawable/bg_edittext"/>
 
         <TextView
                 android:id="@+id/tvEffectText"
@@ -72,7 +72,7 @@
                 android:layout_below="@+id/tvCardDefense"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_effect_text"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <EditText
                 android:id="@+id/etEffectText"
@@ -82,7 +82,7 @@
                 android:layout_marginBottom="4dip"
                 android:layout_below="@+id/etCardDefense"
                 android:layout_toRightOf="@+id/tvEffectText"
-                android:background="@drawable/bg_edittext" />
+                android:background="@drawable/bg_edittext"/>
 
         <TextView
                 android:id="@+id/tvCardBelongs"
@@ -91,7 +91,7 @@
                 android:layout_below="@+id/tvEffectText"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_belongs"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <Spinner
                 android:id="@+id/spCardBelongs"
@@ -104,7 +104,7 @@
                 android:background="@drawable/bg_edittext"
                 android:dropDownSelector="@drawable/menu_list_selector"
                 android:popupBackground="@drawable/bg_dropdown"
-                />
+        />
 
         <TextView
                 android:id="@+id/tvCardType"
@@ -113,7 +113,7 @@
                 android:layout_below="@+id/tvCardBelongs"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_type"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <Spinner
                 android:id="@+id/spCardType"
@@ -123,24 +123,40 @@
                 android:layout_marginBottom="4dip"
                 android:layout_marginRight="4dip"
                 android:layout_below="@+id/spCardBelongs"
-                android:layout_toLeftOf="@+id/spCardTunner"
+                android:layout_toLeftOf="@+id/layTunner"
                 android:layout_toRightOf="@+id/tvCardType"
                 android:background="@drawable/bg_edittext"
                 android:dropDownSelector="@drawable/menu_list_selector"
-                android:popupBackground="@drawable/bg_dropdown" />
+                android:popupBackground="@drawable/bg_dropdown"/>
 
-        <Spinner
-                android:id="@+id/spCardTunner"
-                android:layout_width="110dip"
-                android:layout_height="40dip"
+        <RelativeLayout
+                android:id="@+id/layTunner"
+                android:layout_width="110dip" android:layout_height="40dip"
                 android:layout_marginTop="4dip"
                 android:layout_marginBottom="4dip"
                 android:layout_marginLeft="4dip"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/spCardBelongs"
-                android:background="@drawable/bg_edittext"
-                android:dropDownSelector="@drawable/menu_list_selector"
-                android:popupBackground="@drawable/bg_dropdown" />
+        >
+            <Spinner
+                    android:id="@+id/spCardTunner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_edittext"
+                    android:dropDownSelector="@drawable/menu_list_selector"
+                    android:popupBackground="@drawable/bg_dropdown"/>
+
+            <Button
+                    android:id="@+id/btnLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_edittext"
+                    android:text="@string/search_link"
+                    android:textColor="?android:attr/textColorPrimary"
+            />
+
+        </RelativeLayout>
+
 
         <TextView
                 android:id="@+id/tvCardRace"
@@ -149,7 +165,7 @@
                 android:layout_below="@+id/tvCardType"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_race"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <Spinner
                 android:id="@+id/spCardRace"
@@ -161,7 +177,7 @@
                 android:layout_toRightOf="@+id/tvCardRace"
                 android:background="@drawable/bg_edittext"
                 android:dropDownSelector="@drawable/menu_list_selector"
-                android:popupBackground="@drawable/bg_dropdown" />
+                android:popupBackground="@drawable/bg_dropdown"/>
 
         <TextView
                 android:id="@+id/tvCardAttribute"
@@ -170,7 +186,7 @@
                 android:layout_below="@+id/tvCardRace"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_attribute"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <Spinner
                 android:id="@+id/spCardAttribute"
@@ -182,7 +198,7 @@
                 android:layout_toRightOf="@+id/tvCardAttribute"
                 android:background="@drawable/bg_edittext"
                 android:dropDownSelector="@drawable/menu_list_selector"
-                android:popupBackground="@drawable/bg_dropdown" />
+                android:popupBackground="@drawable/bg_dropdown"/>
 
         <TextView
                 android:id="@+id/tvCardLevel"
@@ -191,7 +207,7 @@
                 android:layout_below="@+id/tvCardAttribute"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_level"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <Spinner
                 android:id="@+id/spCardLevel"
@@ -203,7 +219,7 @@
                 android:layout_toRightOf="@+id/tvCardLevel"
                 android:background="@drawable/bg_edittext"
                 android:dropDownSelector="@drawable/menu_list_selector"
-                android:popupBackground="@drawable/bg_dropdown" />
+                android:popupBackground="@drawable/bg_dropdown"/>
 
         <TextView
                 android:id="@+id/tvCardRare"
@@ -212,7 +228,7 @@
                 android:layout_below="@+id/tvCardLevel"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_rare"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <Spinner
                 android:id="@+id/spCardRare"
@@ -224,7 +240,7 @@
                 android:layout_toRightOf="@+id/tvCardRare"
                 android:background="@drawable/bg_edittext"
                 android:dropDownSelector="@drawable/menu_list_selector"
-                android:popupBackground="@drawable/bg_dropdown" />
+                android:popupBackground="@drawable/bg_dropdown"/>
 
         <TextView
                 android:id="@+id/tvCardLimit"
@@ -233,7 +249,7 @@
                 android:layout_below="@+id/tvCardRare"
                 android:gravity="left|center_vertical"
                 android:text="@string/search_limit"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textColor="?android:attr/textColorPrimary"/>
 
         <Spinner
                 android:id="@+id/spCardLimit"
@@ -246,7 +262,7 @@
                 android:background="@drawable/bg_edittext"
                 android:dropDownSelector="@drawable/menu_list_selector"
                 android:popupBackground="@drawable/bg_dropdown"
-                />
+        />
 
     </RelativeLayout>
 

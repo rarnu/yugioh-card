@@ -36,6 +36,19 @@ class CardInfoViewController: UIViewController {
             if ((self.card!.cardDType as NSString).range(of: MONSTER_PENDULUM).location != NSNotFound) {
                 str = str.appendingFormat(MONSTER_PENDULUM_SCALE, self.card!.pendulumL, self.card!.pendulumR)
             }
+            if ((self.card!.sCardType as NSString).range(of: MONSTER_LINK).location != NSNotFound) {
+                str = str.appendingFormat(MONSTER_LINK_COUNT, self.card!.link)
+                str = str.appendingFormat(MONSTER_LINK_ARROW,self.card!.linkArrow
+                    .replacingOccurrences(of: "1", with: ARR1)
+                    .replacingOccurrences(of: "2", with: ARR2)
+                    .replacingOccurrences(of: "3", with: ARR3)
+                    .replacingOccurrences(of: "4", with: ARR4)
+                    .replacingOccurrences(of: "6", with: ARR6)
+                    .replacingOccurrences(of: "7", with: ARR7)
+                    .replacingOccurrences(of: "8", with: ARR8)
+                    .replacingOccurrences(of: "9", with: ARR9)
+                )
+            }
         }
         str = str.appending(LINE)
         str = str.appendingFormat(CARD_EXTRA_INFO, self.card!.ban, self.card!.package, self.card!.cardCamp, self.card!.cheatcode, self.card!.infrequence)

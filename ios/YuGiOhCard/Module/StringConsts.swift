@@ -1,5 +1,14 @@
 import UIKit
 
+let ARR1 = "↙"
+let ARR2 = "↓"
+let ARR3 = "↘"
+let ARR4 = "←"
+let ARR6 = "→"
+let ARR7 = "↖"
+let ARR8 = "↑"
+let ARR9 = "↗"
+
 let _campDefault = "OCG、TCG"
 let _commonDefault = "不限"
 let _monster = "怪兽"
@@ -15,6 +24,7 @@ let CT_MONSTER_SYNCHRO = "同调怪兽"
 let CT_MONSTER_FUSION = "融合怪兽"
 let CT_MONSTER_RITUAL = "仪式怪兽"
 let CT_MONSTER_XYZ = "XYZ怪兽"
+let CT_MONSTER_LINK = "连接怪兽"
 
 let CT_MAGIC_NORMAL = "通常魔法"
 let CT_MAGIC_FIELD = "场地魔法"
@@ -42,8 +52,11 @@ let MONSTER_TUNNER = "调整"
 let MONSTER_DOUBLE = "二重"
 let MONSTER_REVERSE = "反转"
 let MONSTER_PENDULUM = "灵摆"
+let MONSTER_LINK = "连接"
 
 let MONSTER_PENDULUM_SCALE = "灵摆刻度: 左(%ld)右(%ld)\n"
+let MONSTER_LINK_COUNT = "连接数: %d\n"
+let MONSTER_LINK_ARROW = "连接箭头: %@\n"
 
 let LEFT_MENU_SEARCH = "卡片搜索"
 let LEFT_MENU_LIMIT = "禁限卡表"
@@ -98,6 +111,7 @@ let RACE_BIRD = "鸟兽"
 let RACE_DRAGON = "龙"
 let RACE_MENTAL = "念动力"
 let RACE_DREAM_DRAGON = "幻龙"
+let RACE_CYBERSE = "电子界"
 let RACE_GOD = "幻神兽"
 let RACE_CREATION = "创造神"
 

@@ -60,6 +60,7 @@
     <string name="search_name">卡片名称</string>
     <string name="search_belongs">卡片归属</string>
     <string name="search_type">卡片种类</string>
+    <string name="search_link">连接属性</string>
     <string name="search_race">卡片种族</string>
     <string name="search_attribute">卡片属性</string>
     <string name="search_level">星数阶级</string>
@@ -152,9 +153,12 @@
     <string name="defense">守备力</string>
     <string name="pendulum_level">灵摆刻度</string>
     <string name="pendulum_LR" formatted="false">左(%d)右(%d)</string>
+    <string name="link_count">连接数</string>
+    <string name="link_arrow">连接箭头</string>
     <string name="type">卡片种类</string>
     <string name="effect">卡片效果</string>
     <string name="monster">怪兽</string>
+    <string name="link">连接</string>
     <string name="tunner">调整</string>
     <string name="pendulum">灵摆</string>
     <string name="magic">魔法</string>
