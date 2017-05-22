@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dip"
+                android:padding="8dip"
+                android:layout_centerInParent="true">
+
+    <RelativeLayout
+            android:id="@+id/layTitle"
+            android:layout_width="match_parent" android:layout_height="40dip">
+
+        <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/gray"
+                android:gravity="center"
+                android:text="@string/search_link"
+        />
+
+        <Button
+                android:id="@+id/btnOk"
+                android:layout_width="50dip" android:layout_height="40dip"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_edittext"
+                android:text="@string/ok"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+        />
+        <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="50dip" android:layout_height="40dip"
+                android:layout_toLeftOf="@+id/btnOk"
+                android:background="@drawable/bg_edittext"
+                android:text="@string/cancel"
+                android:textSize="12sp"
+                android:layout_marginRight="4dip"
+                android:textColor="@color/black"
+        />
+
+    </RelativeLayout>
+
+
+    <TextView
+            android:id="@+id/tvLinkCount"
+            android:layout_width="70dip" android:layout_height="48dip"
+            android:layout_below="@+id/layTitle"
+            android:gravity="left|center_vertical"
+            android:text="@string/link_count"
+            android:textColor="@color/black"/>
+    <Spinner
+            android:id="@+id/spLinkCount"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginBottom="4dip"
+            android:background="@drawable/bg_edittext"
+            android:dropDownSelector="@drawable/menu_list_selector"
+            android:popupBackground="@drawable/bg_dropdown"
+            android:layout_below="@+id/layTitle"
+            android:layout_toRightOf="@+id/tvLinkCount"
+    />
+
+    <TextView
+            android:id="@+id/tvLinkArrow"
+            android:layout_width="70dip" android:layout_height="48dip"
+            android:layout_below="@+id/tvLinkCount"
+            android:gravity="left|center_vertical"
+            android:text="@string/link_arrow"
+            android:textColor="@color/black"/>
+
+    <GridView
+            android:id="@+id/gvLinkArrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            android:layout_below="@+id/spLinkCount"
+            android:layout_toRightOf="@+id/tvLinkArrow"
+            android:layout_marginTop="4dip"
+            android:layout_marginBottom="4dip"
+            android:scrollbars="none"
+    />
+
+</RelativeLayout>

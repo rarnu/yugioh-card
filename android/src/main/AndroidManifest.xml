@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.yugioh.android"
-        android:versionCode="300"
-        android:versionName="ver 4.0.0 &lt;kotlin&gt;">
+          package="com.yugioh.android"
+          android:versionCode="300"
+          android:versionName="ver 4.0.0 &lt;kotlin&gt;">
 
     <uses-sdk
             android:minSdkVersion="23"
-            android:targetSdkVersion="25" />
+            android:targetSdkVersion="25"/>
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
             android:allowBackup="true"
@@ -21,10 +21,10 @@
             android:name=".YuGiOhApplication">
         <meta-data
                 android:name="release-date"
-                android:value="2017.05.20" />
+                android:value="2017.05.20"/>
         <meta-data
                 android:name="database-version"
-                android:value="300" />
+                android:value="300"/>
 
         <activity
                 android:name=".SplashActivity"
@@ -33,9 +33,9 @@
                 android:windowSoftInputMode="stateAlwaysHidden"
                 android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
@@ -73,31 +73,38 @@
                 android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
+                android:name=".LinkOptionActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/StyleLinkOption"
+                android:windowSoftInputMode="stateHidden">
+
+        </activity>
+        <activity
                 android:name=".PackageCardsActivity"
                 android:screenOrientation="portrait"
-                android:windowSoftInputMode="stateHidden" />
+                android:windowSoftInputMode="stateHidden"/>
         <activity
                 android:name=".DeckCardActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateHidden"
-                />
+        />
         <activity
                 android:name=".FeedbackActivity"
                 android:screenOrientation="portrait"
-                android:windowSoftInputMode="stateHidden" />
+                android:windowSoftInputMode="stateHidden"/>
         <activity
                 android:name=".SearchResultActivity"
                 android:screenOrientation="portrait"
-                android:windowSoftInputMode="stateHidden" />
+                android:windowSoftInputMode="stateHidden"/>
 
         <provider
                 android:name="com.yugioh.android.database.YugiohProvider"
                 android:authorities="com.yugioh.card"
-                android:exported="true" />
+                android:exported="true"/>
         <provider
                 android:name="com.yugioh.android.database.FavProvider"
                 android:authorities="com.yugioh.fav"
-                android:exported="true" />
+                android:exported="true"/>
     </application>
 
 </manifest>

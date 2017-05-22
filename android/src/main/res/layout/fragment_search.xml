@@ -153,6 +153,7 @@
                     android:background="@drawable/bg_edittext"
                     android:text="@string/search_link"
                     android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="12sp"
             />
 
         </RelativeLayout>

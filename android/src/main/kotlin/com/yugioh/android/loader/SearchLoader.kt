@@ -30,7 +30,10 @@ class SearchLoader(context: Context, private var bn: Bundle?) : BaseCursorLoader
             val cardBelongs = bn!!.getString("cardBelongs")
             val cardLimit = bn!!.getString("cardLimit")
             val cardTunner = bn!!.getString("cardTunner")
-            cSearchResult = YugiohUtils.getCards(context, cardType, cardAttribute, cardLevel, cardRace, cardName, cardEffect, cardAtk, cardDef, cardRare, cardBelongs, cardLimit, cardTunner)
+            val cardLink = bn!!.getInt("cardLink", 0)
+            val cardLinkArrow = bn!!.getString("cardLinkArrow")
+            val arrowArr = cardLinkArrow.split(",")
+            cSearchResult = YugiohUtils.getCards(context, cardType, cardAttribute, cardLevel, cardRace, cardName, cardEffect, cardAtk, cardDef, cardRare, cardBelongs, cardLimit, cardTunner, cardLink, arrowArr)
         }
         return cSearchResult
     }

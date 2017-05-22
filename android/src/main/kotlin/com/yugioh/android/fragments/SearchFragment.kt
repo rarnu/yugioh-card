@@ -5,11 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
+import com.yugioh.android.LinkOptionActivity
 import com.yugioh.android.R
 import com.yugioh.android.SearchResultActivity
 import com.yugioh.android.base.BaseFragment
@@ -36,6 +38,9 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
     internal var etEffectText: EditText? = null
     internal var itemSearch: MenuItem? = null
     internal var itemReset: MenuItem? = null
+
+    internal var linkCount = 1
+    internal var linkArrow = ""
 
     private var searchResultFragment: BaseFragment? = null
 
@@ -151,7 +156,6 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
 
     override fun getMainActivityName(): String? = ""
 
-
     override fun initMenu(menu: Menu?) {
         itemSearch = menu?.add(0, MenuIds.MENUID_SEARCH, 98, R.string.search_search)
         itemSearch?.setIcon(android.R.drawable.ic_menu_search)
@@ -223,7 +227,8 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
         bn.putString("cardBelongs", cardBelongs)
         bn.putString("cardLimit", cardLimit)
         bn.putString("cardTunner", cardTunner)
-
+        bn.putInt("cardLink", linkCount)
+        bn.putString("cardLinkArrow", linkArrow)
         val inResult = Intent(activity, SearchResultActivity::class.java)
         inResult.putExtras(bn)
         startActivity(inResult)
@@ -255,6 +260,9 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
     override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
         when (parent.id) {
             R.id.spCardType -> {
+                linkCount = 0
+                linkArrow = ""
+                btnLink?.text = getString(R.string.search_link)
                 spCardTunner?.setSelection(0)
                 spCardTunner?.isEnabled = position in 1..7
                 btnLink?.visibility = if (position == 8) View.VISIBLE else View.GONE
@@ -264,27 +272,43 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
     }
 
     override fun onNothingSelected(parent: AdapterView<*>) {
-
     }
 
     override fun getCustomTitle(): String? = null
 
     override fun getFragmentState(): Bundle? = null
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode != Activity.RESULT_OK) {
             return
         }
         when (requestCode) {
-            0 -> etCardName?.setText(data.getStringExtra("name"))
+            0 -> etCardName?.setText(data?.getStringExtra("name"))
+            1 -> {
+                linkCount = data!!.getIntExtra("count", 0)
+                linkArrow = data.getStringExtra("arrow")
+                btnLink?.text = "$linkCount(${linkArrow
+                        .replace("1", CardConstDefine.linkArrow[0])
+                        .replace("2", CardConstDefine.linkArrow[1])
+                        .replace("3", CardConstDefine.linkArrow[2])
+                        .replace("4", CardConstDefine.linkArrow[3])
+                        .replace("6", CardConstDefine.linkArrow[5])
+                        .replace("7", CardConstDefine.linkArrow[6])
+                        .replace("8", CardConstDefine.linkArrow[7])
+                        .replace("9", CardConstDefine.linkArrow[8])})"
+            }
         }
     }
 
     override fun onClick(v: View) {
-        when(v.id) {
+        when (v.id) {
             R.id.btnLink -> {
-                // TODO: search link
+                val inLink = Intent(activity, LinkOptionActivity::class.java)
+                inLink.putExtra("count", linkCount)
+                inLink.putExtra("arrow", linkArrow)
+                startActivityForResult(inLink, 1)
             }
         }
     }
+
 }

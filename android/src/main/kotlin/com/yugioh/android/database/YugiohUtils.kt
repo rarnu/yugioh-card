@@ -77,13 +77,28 @@ object YugiohUtils {
         return context.contentResolver.query(ContentUris.withAppendedId(YugiohProvider.CONTENT_URI, YugiohProvider.ACTIONID_SEARCH.toLong()), arrayOf("_id", "name"), where, args, null)
     }
 
-    fun getCards(context: Context, cardType: String, cardAttribute: String, cardLevel: Int, cardRace: String, cardName: String, cardEffect: String, cardAtk: String, cardDef: String, cardRare: String, cardBelongs: String, cardLimit: String, cardTunner: String): Cursor {
+    fun getCards(context: Context, cardType: String, cardAttribute: String, cardLevel: Int, cardRace: String, cardName: String, cardEffect: String, cardAtk: String, cardDef: String, cardRare: String, cardBelongs: String, cardLimit: String, cardTunner: String, cardLink: Int, cardLinkArrow: List<String>?): Cursor {
 
         var argCnt = 0
         var where = "1=1"
         if (cardType != "") {
             where += " and sCardType like ?"
             argCnt++
+        }
+        if (cardType.contains(context.getString(R.string.link))) {
+            if (cardLink != 0) {
+                where += " and link = ?"
+                argCnt++
+            }
+            if (cardLinkArrow != null) {
+                where += " and ("
+                for (s in cardLinkArrow) {
+                    where += "linkArrow like ? or "
+                    argCnt++
+                }
+                where = where.substring(0, where.length - 3)
+                where += ")"
+            }
         }
         if (cardTunner != "") {
             if (cardType.contains(context.getString(R.string.monster))) {
@@ -146,6 +161,18 @@ object YugiohUtils {
         if (cardType != "") {
             args[argId] = "%$cardType%"
             argId++
+        }
+        if (cardType.contains(context.getString(R.string.link))) {
+            if (cardLink != 0) {
+                args[argId] = "$cardLink"
+                argId++
+            }
+            if (cardLinkArrow != null) {
+                for (s in cardLinkArrow) {
+                    args[argId] = "%$s%"
+                    argId++
+                }
+            }
         }
         if (cardTunner != "") {
             if (cardType.contains(context.getString(R.string.monster))) {
