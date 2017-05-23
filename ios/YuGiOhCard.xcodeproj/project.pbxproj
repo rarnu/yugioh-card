@@ -29,6 +29,8 @@
 		922ABD1719DBF3360058FBAC /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922ABD1619DBF3360058FBAC /* UpdateViewController.swift */; };
 		922DFF8919D6594100364CF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DFF8819D6594100364CF5 /* AppDelegate.swift */; };
 		922DFF9019D6594100364CF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922DFF8F19D6594100364CF5 /* Images.xcassets */; };
+		925197E91ED3295E006A8ED5 /* LinkOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925197E81ED3295E006A8ED5 /* LinkOptionView.swift */; };
+		925197EB1ED32971006A8ED5 /* LinkOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 925197EA1ED32971006A8ED5 /* LinkOptionView.xib */; };
 		925E9DB619D814430004C479 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E9DB519D814430004C479 /* RootViewController.swift */; };
 		92655E4619D85F2F005F2265 /* StringConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92655E4519D85F2F005F2265 /* StringConsts.swift */; };
 		92655E4919D86177005F2265 /* SingleStories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92655E4719D86177005F2265 /* SingleStories.storyboard */; };
@@ -99,6 +101,8 @@
 		922DFF8819D6594100364CF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		922DFF8D19D6594100364CF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		922DFF8F19D6594100364CF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		925197E81ED3295E006A8ED5 /* LinkOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkOptionView.swift; path = View/LinkOptionView.swift; sourceTree = "<group>"; };
+		925197EA1ED32971006A8ED5 /* LinkOptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkOptionView.xib; path = View/LinkOptionView.xib; sourceTree = "<group>"; };
 		925E9DB519D814430004C479 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = Controller/RootViewController.swift; sourceTree = "<group>"; };
 		92655E4519D85F2F005F2265 /* StringConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringConsts.swift; path = Module/StringConsts.swift; sourceTree = "<group>"; };
 		92655E4819D86177005F2265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SingleStories.storyboard; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				9221D83019DA721D00E1DE1B /* CoinView.swift */,
 				9221D83219DA742200E1DE1B /* DiceView.swift */,
 				9221D83C19DA760800E1DE1B /* AboutView.swift */,
+				925197E81ED3295E006A8ED5 /* LinkOptionView.swift */,
+				925197EA1ED32971006A8ED5 /* LinkOptionView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				9221D83B19DA75F800E1DE1B /* AboutView.xib in Resources */,
 				9287144C19D65B5A00A0FD1F /* CardStory.storyboard in Resources */,
 				922DFF9019D6594100364CF5 /* Images.xcassets in Resources */,
+				925197EB1ED32971006A8ED5 /* LinkOptionView.xib in Resources */,
 				929B9D8C1BABD6BD0008946B /* LaunchImage.xib in Resources */,
 				92655E4919D86177005F2265 /* SingleStories.storyboard in Resources */,
 			);
@@ -404,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				928B1D3819DA9DE1004EE0EE /* CardInfoViewController.swift in Sources */,
+				925197E91ED3295E006A8ED5 /* LinkOptionView.swift in Sources */,
 				928B1D5C19DAFDD9004EE0EE /* LatestViewController.swift in Sources */,
 				9221D83319DA742200E1DE1B /* DiceView.swift in Sources */,
 				928B1D6319DB0094004EE0EE /* PackItem.swift in Sources */,

@@ -14,6 +14,8 @@ class SearchResultViewController: UITableViewController {
     var searchAtk: String?
     var searchDef: String?
     var searchEffect: String?
+    var searchLink: String?
+    var searchLinkArrow: String?
     
     var lblNoCard: UILabel?
     var _cards: NSMutableArray?
@@ -36,6 +38,7 @@ class SearchResultViewController: UITableViewController {
         self.tableView.addSubview(lblNoCard!)
         
         let sql = self.buildSql()
+        print(sql)
         self._cards = DatabaseUtils.queryData(sql: sql)
         if (self._cards!.count == 0) {
             lblNoCard!.isHidden = false
@@ -90,7 +93,24 @@ class SearchResultViewController: UITableViewController {
         if (self.searchCardType != nil && self.searchCardType! != "" && self.searchCardType! != CardConsts.cardTypeDefault()) {
             sql += " and sCardType like '%\(self.searchCardType!)%'"
             
-            if ((self.searchCardType! as NSString).range(of: CardConsts.cardMonsterDefault()).location != NSNotFound) {
+            if (self.searchCardType!.contains(MONSTER_LINK)) {
+                if (self.searchLink != "" && self.searchLink != "0") {
+                    sql += " and link = \(self.searchLink!)"
+                }
+                if (self.searchLinkArrow != "") {
+                    // link arrow
+                    let strs = self.searchLinkArrow?.characters.split(separator: ",").map(String.init)
+                    if (strs != nil) {
+                        sql += " and ("
+                        for s in strs! {
+                            sql += "linkArrow like '%\(s)%' or "
+                        }
+                        let idx = sql.index(sql.startIndex, offsetBy: sql.characters.count - 3)
+                        sql = sql.substring(to: idx)
+                        sql += " ) "
+                    }
+                }
+            } else if ((self.searchCardType! as NSString).range(of: CardConsts.cardMonsterDefault()).location != NSNotFound) {
                 // sub type
                 if (self.searchSubType != nil && self.searchSubType! != "" && self.searchSubType! != CardConsts.cardSubTypeDefault()) {
                     sql += " and CardDType like '%\(self.searchSubType!)%'"

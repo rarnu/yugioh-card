@@ -1,6 +1,6 @@
 import UIKit
 
-class SearchViewController: UIViewController, UITextFieldDelegate, CardAttributePickerDelegate, AboutViewDelegate {
+class SearchViewController: UIViewController, UITextFieldDelegate, CardAttributePickerDelegate, AboutViewDelegate, LinkOptionViewDelegate {
 
     @IBOutlet var sv: UIScrollView?
     @IBOutlet var txtCardName: UITextField?
@@ -22,6 +22,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     var searchButton: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     var inited = false
+    
+    var linkCount = "0"
+    var linkArrow = ""
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -103,7 +106,26 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         self.view.addSubview(av!)
     }
     
+    func showLinkOptionView() {
+        self.setEditMode(inEditing: true)
+        let lov = LinkOptionView.initWithNib()
+        lov!.delegate = self
+        lov!.initData(count: linkCount, arrow: linkArrow)
+        self.view.addSubview(lov!)
+    }
+    
     func aboutview(view: AboutView, tapped dismiss: Bool) {
+        view.removeFromSuperview()
+        self.setEditMode(inEditing: false)
+    }
+    
+    func onLinkOption(view: LinkOptionView, isOK: Bool, linkCount: String, linkArrow: String) {
+        
+        self.linkCount = linkCount
+        self.linkArrow = linkArrow
+        if (self.linkCount == "") { self.linkCount = "0" }
+        // build button title
+        txtSubtype?.text = "\(self.linkCount)(\(self.linkArrow.replacingOccurrences(of: "1", with: ARR1).replacingOccurrences(of: "2", with: ARR2).replacingOccurrences(of: "3", with: ARR3).replacingOccurrences(of: "4", with: ARR4).replacingOccurrences(of: "6", with: ARR6).replacingOccurrences(of: "7", with: ARR7).replacingOccurrences(of: "8", with: ARR8).replacingOccurrences(of: "9", with: ARR9)))"
         view.removeFromSuperview()
         self.setEditMode(inEditing: false)
     }
@@ -121,7 +143,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         self.txtAtk!.text = ""
         self.txtDef!.text = ""
         self.txtEffect!.text = ""
-    
         self.view.endEditing(true)
     }
     
@@ -169,6 +190,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         resultViewController.searchAtk = self.txtAtk!.text
         resultViewController.searchDef = self.txtDef!.text
         resultViewController.searchEffect = self.txtEffect!.text
+        resultViewController.searchLink = self.linkCount
+        resultViewController.searchLinkArrow = self.linkArrow
         self.navigationController!.pushViewController(resultViewController, animated:true)
     }
     
@@ -185,8 +208,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
             self.setEditMode(inEditing: true)
             if (textField == txtSubtype) {
                 if (txtCardType!.text!.contains(MONSTER_LINK)) {
-                    // TODO: link
                     self.setEditMode(inEditing: false)
+                    showLinkOptionView()
                 } else {
                     self.popupPicker(textField: textField)
                 }
@@ -259,13 +282,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
         self.view.addSubview(picker!)
         UIView.animate(withDuration: 0.5, animations: { () in
             var rectSelectDate = self.picker!.frame
-            rectSelectDate.origin.y = (rect.size.height - self.picker!.frame.size.height)/2;
+            rectSelectDate.origin.y = (rect.size.height - self.picker!.frame.size.height) / 2;
             self.picker!.frame = rectSelectDate
             }, completion: { (_) in
                 textField.isEnabled = false
         })
     }
-
-
 
 }

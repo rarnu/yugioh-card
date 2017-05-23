@@ -62,6 +62,14 @@ class CardConsts: NSObject {
         return _commonDefault
     }
     
+    class func cardLinkList() -> NSArray {
+        return [_commonDefault, "1", "2", "3", "4", "5", "6", "7", "8"]
+    }
+    
+    class func cardLinkDefault() -> String {
+        return _commonDefault
+    }
+    
     class func cardRareList() -> NSArray {
     return [_commonDefault, RARE_N, RARE_R, RARE_GR, RARE_NR, RARE_SR, RARE_UR, RARE_PR, RARE_HR, RARE_GHR, RARE_NPR, RARE_RUR, RARE_SCR, RARE_SER, RARE_USR, RARE_UTR]
     }
