@@ -1,7 +1,6 @@
 package com.yugioh.android.fragments
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,14 +9,16 @@ import android.os.Message
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.common.Config
 import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.define.PathDefine
-import com.yugioh.android.utils.FileUtils
-
 import java.io.File
 import kotlin.concurrent.thread
 

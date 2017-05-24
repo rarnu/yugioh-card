@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.TextView
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseAdapter
+import com.rarnu.base.app.BaseAdapter
+import com.rarnu.base.utils.DrawableUtils
+import com.rarnu.base.utils.UIUtils
 import com.yugioh.android.classes.PackageItem
-import com.yugioh.android.utils.DrawableUtils
-import com.yugioh.android.utils.UIUtils
 
 class PackageAdapter : BaseAdapter<PackageItem> {
 

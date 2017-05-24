@@ -2,7 +2,7 @@ package com.yugioh.android
 
 import android.app.Fragment
 
-import com.yugioh.android.base.BaseActivity
+import com.rarnu.base.app.BaseActivity
 import com.yugioh.android.fragments.SettingsFragment
 
 class SettingsActivity : BaseActivity() {

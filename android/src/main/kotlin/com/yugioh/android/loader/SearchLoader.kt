@@ -3,7 +3,7 @@ package com.yugioh.android.loader
 import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
-import com.yugioh.android.base.BaseCursorLoader
+import com.rarnu.base.app.BaseCursorLoader
 import com.yugioh.android.database.YugiohUtils
 
 class SearchLoader(context: Context, private var bn: Bundle?) : BaseCursorLoader(context) {

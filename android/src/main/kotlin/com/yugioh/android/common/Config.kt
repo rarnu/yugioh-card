@@ -1,7 +1,7 @@
 package com.yugioh.android.common
 
 import android.content.Context
-import com.yugioh.android.utils.ConfigUtils
+import com.rarnu.base.utils.ConfigUtils
 
 object Config {
 

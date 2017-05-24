@@ -1,6 +1,5 @@
 package com.yugioh.android.fragments
 
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
@@ -11,15 +10,14 @@ import android.view.View.OnClickListener
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.app.common.Actions
+import com.rarnu.base.utils.DownloadUtils
+import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.classes.CardInfo
-import com.yugioh.android.common.Actions
 import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.define.PathDefine
-import com.yugioh.android.utils.DownloadUtils
-import com.yugioh.android.utils.ResourceUtils
-
 import java.io.File
 
 class CardInfoPictureFragment : BaseFragment(), OnClickListener {

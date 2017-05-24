@@ -8,14 +8,12 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
 import android.widget.RelativeLayout
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.utils.UIUtils
 import com.yugioh.android.*
 import com.yugioh.android.adapter.RightMenuAdapter
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.classes.RightMenuItem
 import com.yugioh.android.classes.UpdateInfo
-import com.yugioh.android.utils.UIUtils
-
-import java.util.ArrayList
 
 class RightMenuFragment : BaseFragment(), OnItemClickListener {
 

@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseTabFragment
+import com.rarnu.base.app.BaseTabFragment
 import com.yugioh.android.classes.CardInfo
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.database.FavUtils

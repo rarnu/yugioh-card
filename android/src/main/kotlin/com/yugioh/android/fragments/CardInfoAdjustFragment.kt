@@ -5,10 +5,10 @@ import android.view.Menu
 import android.view.View
 import android.widget.TextView
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.classes.CardInfo
 import com.yugioh.android.common.Config
-import com.yugioh.android.utils.ResourceUtils
 
 class CardInfoAdjustFragment : BaseFragment() {
 

@@ -5,19 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.LinkOptionActivity
 import com.yugioh.android.R
 import com.yugioh.android.SearchResultActivity
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.define.CardConstDefine
-import com.yugioh.android.utils.ResourceUtils
 import kotlin.concurrent.thread
 
 class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListener {

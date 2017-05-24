@@ -9,7 +9,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="4dip"
             android:gravity="left|center_vertical"
-            android:layout_toLeftOf="@+id/tvDeckTitle"
+            android:layout_toLeftOf="@+id/tvDeckType"
             android:textColor="?android:attr/textColorPrimary"/>
 
     <TextView android:id="@+id/tvDeckType"

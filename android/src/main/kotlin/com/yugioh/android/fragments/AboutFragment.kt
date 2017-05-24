@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.widget.TextView
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseDialogFragment
-import com.yugioh.android.utils.DeviceUtils
+import com.rarnu.base.app.BaseDialogFragment
+import com.rarnu.base.utils.DeviceUtils
 
 class AboutFragment : BaseDialogFragment() {
 

@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
+import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.loader.FeedbackSender
 

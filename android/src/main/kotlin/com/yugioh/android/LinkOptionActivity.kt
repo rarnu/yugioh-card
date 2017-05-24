@@ -2,7 +2,7 @@ package com.yugioh.android
 
 import android.app.Fragment
 import android.os.Bundle
-import com.yugioh.android.base.BaseDialog
+import com.rarnu.base.app.BaseDialog
 import com.yugioh.android.fragments.LinkOptionFragment
 
 class LinkOptionActivity : BaseDialog() {

@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = "1.1.2-4"
+    ext.kotlin_version = "1.1.2-2"
     repositories {
         jcenter()
     }
@@ -50,6 +50,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.github.rarnu:rarnubase:1.0.1"
+
     compile "com.squareup.okhttp3:okhttp:3.8.0"
     compile "com.android.support:support-v13:25.3.1"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

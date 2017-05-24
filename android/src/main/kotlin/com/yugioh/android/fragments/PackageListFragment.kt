@@ -12,18 +12,16 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.PackageCardsActivity
 import com.yugioh.android.R
 import com.yugioh.android.adapter.PackageAdapter
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.classes.CardItems
 import com.yugioh.android.classes.PackageItem
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.loader.PackageLoader
 import com.yugioh.android.utils.MiscUtils
-import com.yugioh.android.utils.ResourceUtils
-
-import java.util.ArrayList
 
 
 class PackageListFragment : BaseFragment(), AdapterView.OnItemClickListener, Loader.OnLoadCompleteListener<MutableList<PackageItem>?> {

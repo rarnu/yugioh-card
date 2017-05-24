@@ -1,7 +1,6 @@
 package com.yugioh.android.fragments
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,10 +13,12 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.app.common.Actions
+import com.rarnu.base.utils.DownloadUtils
+import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.classes.UpdateInfo
-import com.yugioh.android.common.Actions
 import com.yugioh.android.database.YugiohDatabase
 import com.yugioh.android.database.YugiohUtils
 import com.yugioh.android.define.NetworkDefine
@@ -25,7 +26,6 @@ import com.yugioh.android.define.PathDefine
 import com.yugioh.android.intf.IDestroyCallback
 import com.yugioh.android.intf.IUpdateIntf
 import com.yugioh.android.utils.*
-
 import java.io.File
 import kotlin.concurrent.thread
 
@@ -233,7 +233,7 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
                     YugiohUtils.closeDatabase(activity)
                     YugiohUtils.newDatabase(activity)
                     activity.finish()
-                    activity.sendBroadcast(Intent(Actions.ACTION_CLOSE_MAIN))
+                    activity.sendBroadcast(Intent(com.yugioh.android.common.Actions.ACTION_CLOSE_MAIN))
                 }
                 .show()
     }

@@ -9,7 +9,7 @@
             android:id="@+id/lvCards"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:cacheColorHint="@color/transparent"
+            android:cacheColorHint="@color/translucent"
             android:listSelector="@drawable/menu_list_selector"
             android:fastScrollEnabled="false" />
 

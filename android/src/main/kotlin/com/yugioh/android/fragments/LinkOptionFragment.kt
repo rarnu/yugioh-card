@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.*
 import com.yugioh.android.R
 import com.yugioh.android.adapter.LinkArrowAdapter
-import com.yugioh.android.base.BaseDialogFragment
+import com.rarnu.base.app.BaseDialogFragment
 import com.yugioh.android.classes.LinkArrowItem
 
 class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener, View.OnClickListener {

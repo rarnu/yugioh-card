@@ -5,6 +5,7 @@ import android.content.Intent
 import android.database.Cursor
 import android.os.Handler
 import android.os.Message
+import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.CardInfoActivity
 import com.yugioh.android.classes.CardInfo
 import com.yugioh.android.classes.CardItems

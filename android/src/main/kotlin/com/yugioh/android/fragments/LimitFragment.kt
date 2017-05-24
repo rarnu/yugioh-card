@@ -4,7 +4,7 @@ import android.app.Fragment
 import android.os.Bundle
 import android.view.Menu
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseTabFragment
+import com.rarnu.base.app.BaseTabFragment
 
 class LimitFragment : BaseTabFragment() {
 
@@ -20,17 +20,11 @@ class LimitFragment : BaseTabFragment() {
 
     override fun getCustomTitle(): String? = null
 
-    override fun getMainActivityName(): String? {
-        return ""
-    }
+    override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {
+    override fun initMenu(menu: Menu?) { }
 
-    }
-
-    override fun onGetNewArguments(bn: Bundle?) {
-
-    }
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun getFragmentState(): Bundle? = null
 

@@ -4,7 +4,7 @@ import android.Manifest
 import android.app.Fragment
 import android.content.pm.PackageManager
 import android.os.Bundle
-import com.yugioh.android.base.BaseActivity
+import com.rarnu.base.app.BaseActivity
 import com.yugioh.android.fragments.FeedbackFragment
 
 class FeedbackActivity : BaseActivity() {

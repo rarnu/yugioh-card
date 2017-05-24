@@ -6,9 +6,9 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Handler
 import android.os.Message
-import com.yugioh.android.common.Actions
+import com.rarnu.base.app.common.Actions
+import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.define.PathDefine
-import com.yugioh.android.utils.FileUtils
 
 import java.io.File
 
@@ -35,7 +35,7 @@ class FavDatabase {
         database = SQLiteDatabase.openDatabase(PathDefine.FAV_DATABASE_NAME, null, SQLiteDatabase.OPEN_READWRITE)
     }
 
-    private fun asyncCopy(context: Context?) = FileUtils.copyAssetFile(context, "fav.db", PathDefine.ROOT_PATH, hCopy)
+    private fun asyncCopy(context: Context?) = FileUtils.copyAssetFile(context!!, "fav.db", PathDefine.ROOT_PATH, hCopy)
 
     fun addFav(id: Int) {
         val cv = ContentValues()

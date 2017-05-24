@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
-import com.yugioh.android.utils.ResourceUtils
-import com.yugioh.android.utils.UIUtils
+import com.rarnu.base.utils.ResourceUtils
+import com.rarnu.base.utils.UIUtils
 
 import java.util.Timer
 import java.util.TimerTask

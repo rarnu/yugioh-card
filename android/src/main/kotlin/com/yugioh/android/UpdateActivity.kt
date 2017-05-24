@@ -2,15 +2,13 @@ package com.yugioh.android
 
 import android.app.AlertDialog
 import android.app.Fragment
-import android.content.DialogInterface
-import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MenuItem
-import com.yugioh.android.base.BaseActivity
+import com.rarnu.base.app.BaseActivity
+import com.rarnu.base.utils.DownloadUtils
 import com.yugioh.android.fragments.UpdateFragment
 import com.yugioh.android.intf.IUpdateIntf
-import com.yugioh.android.utils.DownloadUtils
 
 class UpdateActivity : BaseActivity(), IUpdateIntf {
 
@@ -36,8 +34,8 @@ class UpdateActivity : BaseActivity(), IUpdateIntf {
         return super.onKeyDown(keyCode, event)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
             android.R.id.home -> if (inProgress) {
                 confirmCloseUpdate()
                 return true
@@ -53,7 +51,7 @@ class UpdateActivity : BaseActivity(), IUpdateIntf {
                 .setTitle(R.string.hint)
                 .setMessage(R.string.update_downloading)
                 .setPositiveButton(R.string.ok) { _, _ ->
-                    DownloadUtils.stopDownloadTask(localDir, localFile)
+                    DownloadUtils.stopDownloadTask(localDir!!, localFile!!)
                     uf?.doDestroyHandler()
                     finish()
                 }

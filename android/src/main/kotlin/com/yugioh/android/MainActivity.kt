@@ -10,18 +10,17 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
-import com.yugioh.android.base.BaseSlidingActivity
-import com.yugioh.android.base.InnerFragment
-import com.yugioh.android.base.SlidingMenu
+import com.rarnu.base.app.BaseSlidingActivity
+import com.rarnu.base.app.inner.InnerFragment
+import com.rarnu.base.component.sliding.SlidingMenu
+import com.rarnu.base.utils.UIUtils
 import com.yugioh.android.common.Actions
-import com.yugioh.android.database.FavDatabase
 import com.yugioh.android.database.FavUtils
 import com.yugioh.android.database.YugiohDatabase
 import com.yugioh.android.database.YugiohUtils
 import com.yugioh.android.define.PathDefine
 import com.yugioh.android.fragments.*
 import com.yugioh.android.intf.IMainIntf
-import com.yugioh.android.utils.UIUtils
 import com.yugioh.android.utils.UpdateUtils
 
 class MainActivity : BaseSlidingActivity(), IMainIntf {

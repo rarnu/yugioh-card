@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseAdapter
+import com.rarnu.base.app.BaseAdapter
+import com.rarnu.base.utils.DownloadUtils
 import com.yugioh.android.classes.RecommandInfo
 import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.define.PathDefine
-import com.yugioh.android.utils.DownloadUtils
 
 class RecommandAdapter(context: Context, list: MutableList<RecommandInfo>?) : BaseAdapter<RecommandInfo>(context, list) {
 

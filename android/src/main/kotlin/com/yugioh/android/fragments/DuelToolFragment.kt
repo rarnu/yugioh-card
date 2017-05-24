@@ -12,10 +12,10 @@ import android.widget.TextView
 import android.widget.Toast
 import com.yugioh.android.CoinDiceActivity
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.utils.ConfigUtils
+import com.rarnu.base.utils.UIUtils
 import com.yugioh.android.common.MenuIds
-import com.yugioh.android.utils.ConfigUtils
-import com.yugioh.android.utils.UIUtils
 
 class DuelToolFragment : BaseFragment(), OnClickListener {
 
@@ -104,18 +104,18 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
 
     private fun setToolButtonLayout() {
         var width = (UIUtils.width!! - UIUtils.dip2px(16)) / 4
-        UIUtils.setViewWidth(btnP1Half, width)
-        UIUtils.setViewWidth(btnP2Half, width)
-        UIUtils.setViewWidth(btnP1Double, width)
-        UIUtils.setViewWidth(btnP2Double, width)
-        UIUtils.setViewWidth(btnP1Divide, width)
-        UIUtils.setViewWidth(btnP2Divide, width)
-        UIUtils.setViewWidth(btnP1Opt, width)
-        UIUtils.setViewWidth(btnP2Opt, width)
+        UIUtils.setViewWidth(btnP1Half!!, width)
+        UIUtils.setViewWidth(btnP2Half!!, width)
+        UIUtils.setViewWidth(btnP1Double!!, width)
+        UIUtils.setViewWidth(btnP2Double!!, width)
+        UIUtils.setViewWidth(btnP1Divide!!, width)
+        UIUtils.setViewWidth(btnP2Divide!!, width)
+        UIUtils.setViewWidth(btnP1Opt!!, width)
+        UIUtils.setViewWidth(btnP2Opt!!, width)
 
         width = (UIUtils.width!! - UIUtils.dip2px(16)) / 2
-        UIUtils.setViewWidth(btnCoin, width)
-        UIUtils.setViewWidth(btnDice, width)
+        UIUtils.setViewWidth(btnCoin!!, width)
+        UIUtils.setViewWidth(btnDice!!, width)
     }
 
     override fun initLogic() {

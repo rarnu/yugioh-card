@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Handler
 import android.os.Message
-import com.yugioh.android.common.Actions
+import com.rarnu.base.app.common.Actions
+import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.define.PathDefine
-import com.yugioh.android.utils.FileUtils
 import java.io.File
 
 class YugiohDatabase {
@@ -22,7 +22,7 @@ class YugiohDatabase {
         override fun handleMessage(msg: Message) {
             if (msg.what == Actions.WHAT_COPY_FINISH) {
                 database = SQLiteDatabase.openDatabase(PathDefine.DATABASE_PATH, null, SQLiteDatabase.OPEN_READONLY)
-                context?.sendBroadcast(Intent(Actions.ACTION_EXTRACT_DATABASE_COMPLETE))
+                context?.sendBroadcast(Intent(com.yugioh.android.common.Actions.ACTION_EXTRACT_DATABASE_COMPLETE))
             }
             super.handleMessage(msg)
         }
@@ -32,13 +32,13 @@ class YugiohDatabase {
         this.context = ctx
         val fDb = File(PathDefine.DATABASE_PATH)
         if (!fDb.exists()) {
-            asyncCopy(context)
+            asyncCopy(ctx)
         }
         database = SQLiteDatabase.openDatabase(PathDefine.DATABASE_PATH, null, SQLiteDatabase.OPEN_READONLY)
     }
 
-    private fun asyncCopy(context: Context?) {
-        context?.sendBroadcast(Intent(Actions.ACTION_EXTRACT_DATABASE))
+    private fun asyncCopy(context: Context) {
+        context.sendBroadcast(Intent(com.yugioh.android.common.Actions.ACTION_EXTRACT_DATABASE))
         FileUtils.copyAssetFile(context, "yugioh.db", PathDefine.ROOT_PATH, hCopy)
     }
 

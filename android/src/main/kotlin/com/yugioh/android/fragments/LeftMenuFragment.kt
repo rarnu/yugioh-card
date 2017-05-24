@@ -3,15 +3,16 @@ package com.yugioh.android.fragments
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.RelativeLayout
+import com.rarnu.base.app.BaseFragment
+import com.rarnu.base.utils.UIUtils
 import com.yugioh.android.MainActivity
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.intf.IMainIntf
-import com.yugioh.android.utils.UIUtils
-
-import java.util.ArrayList
 
 class LeftMenuFragment : BaseFragment(), OnItemClickListener {
 

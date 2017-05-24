@@ -11,16 +11,14 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.DeckCardActivity
 import com.yugioh.android.R
 import com.yugioh.android.adapter.DeckAdapter
-import com.yugioh.android.base.BaseFragment
 import com.yugioh.android.classes.CardItems
 import com.yugioh.android.classes.DeckItem
 import com.yugioh.android.loader.DeckLoader
 import com.yugioh.android.utils.MiscUtils
-
-import java.util.ArrayList
 
 class DeckFragment : BaseFragment(), AdapterView.OnItemClickListener, Loader.OnLoadCompleteListener<MutableList<DeckItem>?> {
 

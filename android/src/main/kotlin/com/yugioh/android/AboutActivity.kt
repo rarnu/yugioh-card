@@ -1,8 +1,8 @@
 package com.yugioh.android
 
 import android.app.Fragment
+import com.rarnu.base.app.BaseDialog
 
-import com.yugioh.android.base.BaseDialog
 import com.yugioh.android.fragments.AboutFragment
 
 class AboutActivity : BaseDialog() {

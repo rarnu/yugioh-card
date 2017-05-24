@@ -8,7 +8,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.ImageView
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
+import com.rarnu.base.app.BaseFragment
 
 import java.util.Timer
 import java.util.TimerTask

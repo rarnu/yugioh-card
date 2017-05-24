@@ -12,7 +12,7 @@ import android.widget.CursorAdapter
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
+import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.loader.LimitLoader
 import com.yugioh.android.utils.MiscUtils
 

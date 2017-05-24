@@ -1,7 +1,7 @@
 package com.yugioh.android.loader
 
 import android.content.Context
-import com.yugioh.android.base.BaseLoader
+import com.rarnu.base.app.BaseLoader
 import com.yugioh.android.classes.DeckItem
 import com.yugioh.android.utils.YGOAPI
 

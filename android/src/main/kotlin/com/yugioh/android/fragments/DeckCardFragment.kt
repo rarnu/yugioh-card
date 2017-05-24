@@ -7,7 +7,7 @@ import android.view.Menu
 import android.view.View
 import android.widget.*
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseFragment
+import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.loader.SearchLoader
 import com.yugioh.android.utils.MiscUtils
 

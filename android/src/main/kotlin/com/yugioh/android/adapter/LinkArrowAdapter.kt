@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.yugioh.android.R
-import com.yugioh.android.base.BaseAdapter
+import com.rarnu.base.app.BaseAdapter
 import com.yugioh.android.classes.LinkArrowItem
 
 /**

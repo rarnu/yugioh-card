@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:fastScrollEnabled="false"
             android:layout_below="@+id/etCardName"
-            android:cacheColorHint="@color/transparent"
+            android:cacheColorHint="@color/translucent"
             android:listSelector="@drawable/menu_list_selector"/>
 
 </RelativeLayout>

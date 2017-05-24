@@ -1,10 +1,10 @@
 package com.yugioh.android.loader
 
 import android.content.Context
-import com.yugioh.android.base.BaseLoader
+import com.rarnu.base.app.BaseLoader
+import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.classes.PackageItem
 import com.yugioh.android.define.PathDefine
-import com.yugioh.android.utils.FileUtils
 import com.yugioh.android.utils.YGOAPI
 
 class PackageLoader(context: Context) : BaseLoader<PackageItem>(context) {

@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Message
 import android.util.Log
+import com.rarnu.base.utils.ConfigUtils
+import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.classes.UpdateInfo
 import com.yugioh.android.common.Actions
 import com.yugioh.android.database.YugiohUtils
