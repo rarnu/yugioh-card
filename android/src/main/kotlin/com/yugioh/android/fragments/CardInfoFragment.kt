@@ -85,6 +85,7 @@ class CardInfoFragment : BaseTabFragment() {
         listFragment?.add(CardInfoCardFragment())
         listFragment?.add(CardInfoAdjustFragment())
         listFragment?.add(CardInfoPictureFragment())
+        listFragment?.add(CardInfoWikiFragment())
     }
 
     override fun getFragmentState(): Bundle? = null

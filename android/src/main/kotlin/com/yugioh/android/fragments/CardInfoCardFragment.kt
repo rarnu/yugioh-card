@@ -97,21 +97,13 @@ class CardInfoCardFragment : BaseFragment() {
         return ret
     }
 
-    override fun getFragmentLayoutResId(): Int {
-        return R.layout.fragment_cardinfo_card
-    }
+    override fun getFragmentLayoutResId(): Int = R.layout.fragment_cardinfo_card
 
-    override fun getMainActivityName(): String? {
-        return ""
-    }
+    override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {
+    override fun initMenu(menu: Menu?) { }
 
-    }
-
-    override fun onGetNewArguments(bn: Bundle?) {
-
-    }
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun getCustomTitle(): String? {
         var title: String? = null
@@ -121,8 +113,7 @@ class CardInfoCardFragment : BaseFragment() {
         return title
     }
 
-    override fun getFragmentState(): Bundle? {
-        return null
-    }
+    override fun getFragmentState(): Bundle? = null
+
 
 }

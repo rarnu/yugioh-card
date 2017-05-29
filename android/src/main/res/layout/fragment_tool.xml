@@ -85,63 +85,76 @@
     <Button
             android:id="@+id/btnP1Add"
             android:layout_width="60dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/tvP1Oper"
             android:layout_toLeftOf="@+id/btnP1Minus"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_plus"/>
 
     <Button
             android:id="@+id/btnP1Minus"
             android:layout_width="60dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/tvP1Oper"
             android:layout_toLeftOf="@+id/btnP1Set"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_minus"/>
 
     <Button
             android:id="@+id/btnP1Set"
             android:layout_width="60dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tvP1Oper"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_set"/>
 
     <Button
             android:id="@+id/btnP1Half"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
             android:layout_below="@+id/etP1Life"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_half"/>
 
     <Button
             android:id="@+id/btnP1Double"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/etP1Life"
             android:layout_toRightOf="@+id/btnP1Half"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_double"/>
 
     <Button
             android:id="@+id/btnP1Divide"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/etP1Life"
             android:layout_toRightOf="@+id/btnP1Double"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_divide"/>
 
     <Button
             android:id="@+id/btnP1Opt"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/etP1Life"
             android:layout_toRightOf="@+id/btnP1Divide"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_opt"/>
 
     <TextView
@@ -184,63 +197,76 @@
     <Button
             android:id="@+id/btnP2Add"
             android:layout_width="60dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/tvP2Oper"
             android:layout_toLeftOf="@+id/btnP2Minus"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_plus"/>
 
     <Button
             android:id="@+id/btnP2Minus"
             android:layout_width="60dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/tvP2Oper"
             android:layout_toLeftOf="@+id/btnP2Set"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_minus"/>
 
     <Button
             android:id="@+id/btnP2Set"
             android:layout_width="60dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tvP2Oper"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_set"/>
 
     <Button
             android:id="@+id/btnP2Half"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
             android:layout_below="@+id/etP2Life"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_half"/>
 
     <Button
             android:id="@+id/btnP2Double"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/etP2Life"
             android:layout_toRightOf="@+id/btnP2Half"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_double"/>
 
     <Button
             android:id="@+id/btnP2Divide"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/etP2Life"
             android:layout_toRightOf="@+id/btnP2Double"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_divide"/>
 
     <Button
             android:id="@+id/btnP2Opt"
             android:layout_width="75dip"
-            android:layout_height="48dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="4dip"
+            android:layout_marginLeft="4dip"
             android:layout_below="@+id/etP2Life"
             android:layout_toRightOf="@+id/btnP2Divide"
-            android:background="@drawable/button_style"
+            android:background="@drawable/bg_edittext"
             android:text="@string/tool_opt"/>
 
     <TextView
@@ -266,17 +292,18 @@
         <Button
                 android:id="@+id/btnCoin"
                 android:layout_width="80dip"
-                android:layout_height="48dip"
-                android:background="@drawable/button_style"
+                android:layout_height="40dip"
+                android:background="@drawable/bg_edittext"
                 android:text="@string/tool_coin"
                 android:textColor="@color/orange"/>
 
         <Button
                 android:id="@+id/btnDice"
                 android:layout_width="80dip"
-                android:layout_height="48dip"
+                android:layout_height="40dip"
+                android:layout_marginLeft="8dip"
                 android:layout_toRightOf="@+id/btnCoin"
-                android:background="@drawable/button_style"
+                android:background="@drawable/bg_edittext"
                 android:text="@string/tool_dice"
                 android:textColor="@color/orange"/>
     </RelativeLayout>

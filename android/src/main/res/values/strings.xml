@@ -26,6 +26,7 @@
     <string name="page_cardinfo">卡片信息</string>
     <string name="page_cardadjust">效果调整</string>
     <string name="page_picture">卡图</string>
+    <string name="page_wiki">百科</string>
     <string name="page_update">软件升级</string>
     <string name="page_assignedcard">关联卡片</string>
     
@@ -169,6 +170,7 @@
     <string name="assigned">关联卡片</string>
     <string name="no_assigned_card">这张卡片没有与之关联的卡片</string>
     <string name="assigned_to" formatted="false">与 %s 关联的卡片</string>
+    <string name="open_in_web">在浏览器中打开</string>
 
     <!-- settings -->
     <string name="settings">设置选项</string>

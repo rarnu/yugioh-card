@@ -15,6 +15,7 @@ object NetworkDefine {
     val URL_DATA = BASE_URL + "download/yugioh.zip"
 
     val URL_CARD_IMAGE_FMT = "http://p.ocgsoft.cn/%d.jpg"
+    val URL_WIKI_FMT = "http://www.ourocg.cn/Cards/Wiki-%d"
     val URL_OCGSOFT_BASE = "https://api.ourocg.cn/"
     val URL_OCGSOFT_GET_PACKAGE = URL_OCGSOFT_BASE + "Package/list"
     val URL_OCGSOFT_GET_PACKAGE_CARD = URL_OCGSOFT_BASE + "Package/card/packid/%s"
