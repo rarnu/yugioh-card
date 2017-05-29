@@ -57,7 +57,6 @@ class UpdateViewController: UIViewController, HttpUtilsDelegate, ZipUtilsDelegat
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
     
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {

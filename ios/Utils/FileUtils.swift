@@ -4,6 +4,7 @@ class FileUtils: NSObject {
     
     class func getDocumentPath() -> String {
         var paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true);
+        print("Document Path => \(paths[0])")
         return paths[0] 
     }
     

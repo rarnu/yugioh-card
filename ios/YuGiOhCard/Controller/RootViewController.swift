@@ -28,18 +28,12 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         }
         self.backgroundImage = UIImage(named: background_name!)
         self.delegate = self
-        
-        
     }
     
     func receivedNotification(notification: NSNotification) {
         let backImg = notification.object! as! String
         self.backgroundImage = UIImage(named: backImg)
     }
-    
-//    func receivedNotification(imgPath: String) {
-//        self.backgroundImage = UIImage(named: imgPath)
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -59,6 +59,7 @@
 		928B1D6319DB0094004EE0EE /* PackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B1D6219DB0094004EE0EE /* PackItem.swift */; };
 		928B1D6519DB08B8004EE0EE /* PackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B1D6419DB08B8004EE0EE /* PackDetailViewController.swift */; };
 		928B1D6719DB0D68004EE0EE /* ToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928B1D6619DB0D68004EE0EE /* ToolViewController.swift */; };
+		929310621EDC42530004BA65 /* CardWikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929310611EDC42530004BA65 /* CardWikiViewController.swift */; };
 		929B9D881BABD5D20008946B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 929B9D871BABD5D20008946B /* libsqlite3.tbd */; };
 		929B9D8A1BABD5DA0008946B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 929B9D891BABD5DA0008946B /* libz.tbd */; };
 		929B9D8C1BABD6BD0008946B /* LaunchImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929B9D8B1BABD6BD0008946B /* LaunchImage.xib */; };
@@ -131,6 +132,7 @@
 		928B1D6219DB0094004EE0EE /* PackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PackItem.swift; path = Module/PackItem.swift; sourceTree = "<group>"; };
 		928B1D6419DB08B8004EE0EE /* PackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PackDetailViewController.swift; path = Controller/PackDetailViewController.swift; sourceTree = "<group>"; };
 		928B1D6619DB0D68004EE0EE /* ToolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToolViewController.swift; path = Controller/ToolViewController.swift; sourceTree = "<group>"; };
+		929310611EDC42530004BA65 /* CardWikiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardWikiViewController.swift; path = Controller/CardWikiViewController.swift; sourceTree = "<group>"; };
 		929B9D871BABD5D20008946B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		929B9D891BABD5DA0008946B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		929B9D8B1BABD6BD0008946B /* LaunchImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchImage.xib; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				928B1D4D19DAFA67004EE0EE /* Limit2ViewController.swift */,
 				928B1D5B19DAFDD9004EE0EE /* LatestViewController.swift */,
 				922ABD1219DBEB7A0058FBAC /* FeedbackViewController.swift */,
+				929310611EDC42530004BA65 /* CardWikiViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				92655E4619D85F2F005F2265 /* StringConsts.swift in Sources */,
 				9221D81819D9829C00E1DE1B /* ConfigUtils.swift in Sources */,
 				926FE1001AC418AC0035FB9E /* LimitTabViewController.swift in Sources */,
+				929310621EDC42530004BA65 /* CardWikiViewController.swift in Sources */,
 				92655E5019D8653D005F2265 /* SearchViewController.swift in Sources */,
 				928B1D4E19DAFA67004EE0EE /* Limit2ViewController.swift in Sources */,
 				928B1D3F19DADE5E004EE0EE /* UrlConsts.swift in Sources */,
