@@ -36,7 +36,7 @@ class FileUtils: NSObject {
         var text: String = ""
         if (self.fileExists(fileName: fileName, filePath:path)) {
             let readData = NSData(contentsOfFile: fileOper)
-            text = NSString(data: readData! as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            text = NSString(data: readData! as Data, encoding: String.Encoding.utf8.rawValue)! as String
         }
         return text
     }

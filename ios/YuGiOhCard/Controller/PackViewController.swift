@@ -88,7 +88,7 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
 
     func httpUtils(httpUtils: HttpUtils, receivedData data: NSData?) {
         if (data != nil) {
-            let json = NSString(data: data! as Data, encoding:String.Encoding.utf8.rawValue) as! String
+            let json = NSString(data: data! as Data, encoding:String.Encoding.utf8.rawValue)! as String
             FileUtils.writeTextFile(fileName: _packages!, savePath:_data_path!, fileContent:json)
             self.loadData(jsonData: json)
         }
