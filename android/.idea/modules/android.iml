@@ -111,7 +111,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/exploded-aar/com.android.support/support-v13/25.3.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/exploded-aar/com.github.rarnu/rarnubase/1.0.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/exploded-aar/com.github.rarnu/rarnubase/1.0.8/jars" />
       <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/incremental-safeguard" />
       <excludeFolder url="file://$MODULE_DIR$/../../build/intermediates/jniLibs" />
@@ -129,8 +129,8 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="rarnubase-1.0.8" level="project" />
     <orderEntry type="library" exported="" name="okio-1.13.0" level="project" />
-    <orderEntry type="library" exported="" name="rarnubase-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="annotations-13.0" level="project" />
     <orderEntry type="library" exported="" name="okhttp-3.8.0" level="project" />
     <orderEntry type="library" exported="" name="support-core-ui-25.3.1" level="project" />

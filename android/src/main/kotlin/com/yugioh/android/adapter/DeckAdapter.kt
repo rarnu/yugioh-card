@@ -2,31 +2,26 @@ package com.yugioh.android.adapter
 
 import android.content.Context
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import com.yugioh.android.R
 import com.rarnu.base.app.BaseAdapter
+import com.yugioh.android.R
 import com.yugioh.android.classes.DeckItem
+import kotlinx.android.synthetic.main.item_deck.view.*
 
-class DeckAdapter(context: Context, list: MutableList<DeckItem>?) : BaseAdapter<DeckItem>(context, list) {
+class DeckAdapter(context: Context, list: MutableList<DeckItem>?) : BaseAdapter<DeckItem, DeckHolder>(context, list) {
 
-    override fun getValueText(item: DeckItem): String? = item.name + item.type
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-        var v: View? = convertView
-        if (v == null) {
-            v = inflater.inflate(R.layout.item_deck, parent, false)
-        }
-        var holder = v?.tag as DeckHolder?
-        if (holder == null) {
-            holder = DeckHolder()
-            holder.tvDeckName = v?.findViewById(R.id.tvDeckName) as TextView?
-            holder.tvDeckType = v?.findViewById(R.id.tvDeckType) as TextView?
-            v?.tag = holder
-        }
-        val item = list!![position]
+    override fun fillHolder(baseVew: View, holder: DeckHolder, item: DeckItem) {
         holder.tvDeckName?.text = item.name
         holder.tvDeckType?.text = item.type
-        return v
     }
+
+    override fun getAdapterLayout(): Int = R.layout.item_deck
+
+    override fun newHolder(baseView: View): DeckHolder {
+        val holder = DeckHolder()
+        holder.tvDeckName = baseView.tvDeckName
+        holder.tvDeckType = baseView.tvDeckType
+        return holder
+    }
+
+    override fun getValueText(item: DeckItem): String? = item.name + item.type
 }

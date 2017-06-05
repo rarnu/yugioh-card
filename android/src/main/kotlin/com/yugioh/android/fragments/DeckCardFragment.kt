@@ -10,11 +10,10 @@ import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.loader.SearchLoader
 import com.yugioh.android.utils.MiscUtils
+import kotlinx.android.synthetic.main.fragment_deck_cards.view.*
 
 class DeckCardFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, AdapterView.OnItemClickListener {
 
-    internal var lvCards: ListView? = null
-    internal var tvListNoCard: TextView? = null
     internal var loader: SearchLoader? = null
     internal var cSearchResult: Cursor? = null
     internal var adapterSearchResult: SimpleCursorAdapter? = null
@@ -26,18 +25,16 @@ class DeckCardFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, 
     override fun getCustomTitle(): String? = arguments.getString("name")
 
     override fun initComponents() {
-        lvCards = innerView?.findViewById(R.id.lvCards) as ListView?
-        tvListNoCard = innerView?.findViewById(R.id.tvListNoCard) as TextView?
         loader = SearchLoader(activity, arguments)
     }
 
     override fun initEvents() {
         loader?.registerListener(0, this)
-        lvCards?.onItemClickListener = this
+        innerView.lvCards.onItemClickListener = this
     }
 
     override fun initLogic() {
-        tvListNoCard?.setText(R.string.list_nocard_searching)
+        innerView.tvListNoCard.setText(R.string.list_nocard_searching)
         loader?.startLoading()
     }
 
@@ -45,7 +42,7 @@ class DeckCardFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, 
 
     override fun getMainActivityName(): String? = null
 
-    override fun initMenu(menu: Menu?) {}
+    override fun initMenu(menu: Menu) { }
 
     override fun onGetNewArguments(bn: Bundle?) {}
 
@@ -57,9 +54,9 @@ class DeckCardFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, 
             adapterSearchResult = SimpleCursorAdapter(activity, R.layout.item_card, cSearchResult, arrayOf("name", "sCardType"), intArrayOf(R.id.tvCardName, R.id.tvCardType), CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER)
         }
         if (activity != null) {
-            lvCards?.adapter = adapterSearchResult
-            tvListNoCard?.visibility = if (adapterSearchResult!!.count == 0) View.VISIBLE else View.GONE
-            tvListNoCard?.setText(R.string.deck_nocard)
+            innerView.lvCards.adapter = adapterSearchResult
+            innerView.tvListNoCard.visibility = if (adapterSearchResult!!.count == 0) View.VISIBLE else View.GONE
+            innerView.tvListNoCard.setText(R.string.deck_nocard)
         }
     }
 

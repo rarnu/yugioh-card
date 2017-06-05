@@ -7,6 +7,7 @@ import com.yugioh.android.classes.PackageItem
 import com.yugioh.android.define.PathDefine
 import com.yugioh.android.utils.YGOAPI
 
+@Suppress("UNCHECKED_CAST")
 class PackageLoader(context: Context) : BaseLoader<PackageItem>(context) {
 
     var refresh = false

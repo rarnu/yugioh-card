@@ -6,31 +6,25 @@ import android.database.Cursor
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
-import com.yugioh.android.R
+import android.widget.CursorAdapter
+import android.widget.SimpleCursorAdapter
 import com.rarnu.base.app.BaseFragment
-import com.rarnu.base.app.BaseTabFragment
 import com.rarnu.base.utils.ResourceUtils
+import com.yugioh.android.R
 import com.yugioh.android.loader.SearchLoader
 import com.yugioh.android.utils.MiscUtils
+import kotlinx.android.synthetic.main.fragment_search_result.view.*
 
 class SearchResultFragment : BaseFragment(), OnItemClickListener, OnLoadCompleteListener<Cursor> {
 
     internal var cSearchResult: Cursor? = null
     internal var adapterSearchResult: SimpleCursorAdapter? = null
-    internal var lvList: ListView? = null
-    internal var tvListNoCard: TextView? = null
     internal var loaderSearch: SearchLoader? = null
-
-    internal var parentFragment: BaseTabFragment? = null
 
     init {
         tabTitle = ResourceUtils.getString(R.string.page_list)
-    }
-
-    fun registerParent(intf: BaseTabFragment) {
-        this.parentFragment = intf
     }
 
     override fun getBarTitle(): Int = R.string.app_name
@@ -38,18 +32,16 @@ class SearchResultFragment : BaseFragment(), OnItemClickListener, OnLoadComplete
     override fun getBarTitleWithPath(): Int = R.string.app_name
 
     override fun initComponents() {
-        lvList = innerView?.findViewById(R.id.lvList) as ListView?
-        tvListNoCard = innerView?.findViewById(R.id.tvListNoCard) as TextView?
         loaderSearch = SearchLoader(activity, activity.intent.extras)
     }
 
     override fun initEvents() {
-        lvList?.onItemClickListener = this
+        innerView.lvList.onItemClickListener = this
         loaderSearch?.registerListener(0, this)
     }
 
     override fun initLogic() {
-        tvListNoCard?.setText(R.string.list_nocard_searching)
+        innerView.tvListNoCard.setText(R.string.list_nocard_searching)
         loaderSearch?.startLoading()
     }
 
@@ -57,7 +49,7 @@ class SearchResultFragment : BaseFragment(), OnItemClickListener, OnLoadComplete
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {}
+    override fun initMenu(menu: Menu) {}
 
     override fun onGetNewArguments(bn: Bundle?) {}
 
@@ -74,9 +66,9 @@ class SearchResultFragment : BaseFragment(), OnItemClickListener, OnLoadComplete
         }
 
         if (activity != null) {
-            lvList?.adapter = adapterSearchResult
-            tvListNoCard?.visibility = if (adapterSearchResult!!.count == 0) View.VISIBLE else View.GONE
-            tvListNoCard?.setText(R.string.list_nocard)
+            innerView.lvList.adapter = adapterSearchResult
+            innerView.tvListNoCard.visibility = if (adapterSearchResult!!.count == 0) View.VISIBLE else View.GONE
+            innerView.tvListNoCard.setText(R.string.list_nocard)
         }
     }
 

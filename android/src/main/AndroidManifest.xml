@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.yugioh.android"
-          android:versionCode="300"
-          android:versionName="ver 4.0.0 &lt;kotlin&gt;">
+          android:versionCode="301"
+          android:versionName="ver 4.0.1 &lt;kotlin&gt;">
 
     <uses-sdk
             android:minSdkVersion="23"

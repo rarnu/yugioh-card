@@ -9,10 +9,6 @@ import android.os.Message
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.RelativeLayout
-import android.widget.TextView
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.app.common.Actions
 import com.rarnu.base.utils.DownloadUtils
@@ -25,7 +21,10 @@ import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.define.PathDefine
 import com.yugioh.android.intf.IDestroyCallback
 import com.yugioh.android.intf.IUpdateIntf
-import com.yugioh.android.utils.*
+import com.yugioh.android.utils.UpdateUtils
+import com.yugioh.android.utils.YGOAPI
+import com.yugioh.android.utils.ZipUtils
+import kotlinx.android.synthetic.main.fragment_update.view.*
 import java.io.File
 import kotlin.concurrent.thread
 
@@ -33,15 +32,6 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
 
     internal val dbSource = PathDefine.DOWNLOAD_PATH + PathDefine.DATA_ZIP
     internal val apkSource = PathDefine.DOWNLOAD_PATH + PathDefine.APK_NAME
-    internal var btnUpdateApk: Button? = null
-    internal var btnUpdateData: Button? = null
-    internal var tvApkInfo: TextView? = null
-    internal var tvDataInfo: TextView? = null
-    internal var pbDownlaodingApk: ProgressBar? = null
-    internal var pbDownlaodingData: ProgressBar? = null
-    internal var layUpdateApk: RelativeLayout? = null
-    internal var layNoDatabase: RelativeLayout? = null
-    internal var tvUpdateLogValue: TextView? = null
     internal var updateInfo: UpdateInfo? = null
 
     internal var hasData = YugiohDatabase.isDatabaseFileExists
@@ -51,11 +41,11 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
             if (activity != null) {
                 when (msg.what) {
                     Actions.WHAT_DOWNLOAD_START, Actions.WHAT_DOWNLOAD_PROGRESS -> {
-                        pbDownlaodingApk?.max = msg.arg2
-                        pbDownlaodingApk?.progress = msg.arg1
+                        innerView.pbDownlaodingApk.max = msg.arg2
+                        innerView.pbDownlaodingApk.progress = msg.arg1
                     }
                     Actions.WHAT_DOWNLOAD_FINISH -> try {
-                        pbDownlaodingApk?.visibility = View.GONE
+                        innerView.pbDownlaodingApk.visibility = View.GONE
                         (activity as IUpdateIntf).setInProgress(false)
                         updateInfo?.updateApk = -1
                         updateCurrentStatus()
@@ -74,8 +64,8 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 Actions.WHAT_DOWNLOAD_START, Actions.WHAT_DOWNLOAD_PROGRESS -> {
-                    pbDownlaodingData?.max = msg.arg2
-                    pbDownlaodingData?.progress = msg.arg1
+                    innerView.pbDownlaodingData.max = msg.arg2
+                    innerView.pbDownlaodingData.progress = msg.arg1
                 }
                 Actions.WHAT_DOWNLOAD_FINISH -> unzipDataT()
             }
@@ -85,7 +75,7 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
     private val hUnzip = object : Handler() {
         override fun handleMessage(msg: Message) {
             if (msg.what == 1) {
-                pbDownlaodingData?.visibility = View.GONE
+                innerView.pbDownlaodingData.visibility = View.GONE
                 (activity as IUpdateIntf).setInProgress(false)
                 updateInfo!!.updateData = 0
                 updateCurrentStatus()
@@ -116,21 +106,11 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initComponents() {
-        layUpdateApk = innerView?.findViewById(R.id.layUpdateApk) as RelativeLayout?
-        layNoDatabase = innerView?.findViewById(R.id.layNoDatabase) as RelativeLayout?
-        btnUpdateApk = innerView?.findViewById(R.id.btnUpdateApk) as Button?
-        btnUpdateData = innerView?.findViewById(R.id.btnUpdateData) as Button?
-        tvApkInfo = innerView?.findViewById(R.id.tvApkInfo) as TextView?
-        tvDataInfo = innerView?.findViewById(R.id.tvDataInfo) as TextView?
-        pbDownlaodingApk = innerView?.findViewById(R.id.pbDownlaodingApk) as ProgressBar?
-        pbDownlaodingData = innerView?.findViewById(R.id.pbDownlaodingData) as ProgressBar?
-        tvUpdateLogValue = innerView?.findViewById(R.id.tvUpdateLogValue) as TextView?
-    }
+    override fun initComponents() {}
 
     override fun initEvents() {
-        btnUpdateApk?.setOnClickListener(this)
-        btnUpdateData?.setOnClickListener(this)
+        innerView.btnUpdateApk.setOnClickListener(this)
+        innerView.btnUpdateData.setOnClickListener(this)
     }
 
     override fun initLogic() {
@@ -146,7 +126,7 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
         val hLog = object : Handler() {
             override fun handleMessage(msg: Message) {
                 if (msg.what == 1) {
-                    this@UpdateFragment.tvUpdateLogValue?.text = msg.obj as String?
+                    innerView.tvUpdateLogValue?.text = msg.obj as String?
                 }
                 super.handleMessage(msg)
             }
@@ -167,48 +147,46 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
     }
 
     private fun updateCurrentStatus() {
-        tvApkInfo?.visibility = View.VISIBLE
-        tvDataInfo?.visibility = View.VISIBLE
+        innerView.tvApkInfo.visibility = View.VISIBLE
+        innerView.tvDataInfo.visibility = View.VISIBLE
         if (hasData) {
             when (updateInfo?.updateApk) {
                 -1 -> {
-                    tvApkInfo?.text = getString(R.string.update_apk_fmt, updateInfo!!.apkVersion)
-                    btnUpdateApk?.setText(R.string.update_install)
+                    innerView.tvApkInfo.text = getString(R.string.update_apk_fmt, updateInfo!!.apkVersion)
+                    innerView.btnUpdateApk.setText(R.string.update_install)
                 }
                 0 -> {
-                    tvApkInfo?.setText(R.string.update_no_apk)
-                    btnUpdateApk?.setText(R.string.update_renew)
+                    innerView.tvApkInfo.setText(R.string.update_no_apk)
+                    innerView.btnUpdateApk.setText(R.string.update_renew)
                 }
                 else -> {
-                    tvApkInfo?.text = getString(R.string.update_apk_fmt, updateInfo!!.apkVersion)
-                    btnUpdateApk?.setText(R.string.update_renew)
+                    innerView.tvApkInfo.text = getString(R.string.update_apk_fmt, updateInfo!!.apkVersion)
+                    innerView.btnUpdateApk.setText(R.string.update_renew)
                 }
             }
         }
         when (updateInfo?.updateData) {
-            0 -> tvDataInfo?.setText(R.string.update_no_data)
+            0 -> innerView.tvDataInfo.setText(R.string.update_no_data)
             else -> if (!hasData) {
-                tvDataInfo?.setText(R.string.update_data_full)
+                innerView.tvDataInfo.setText(R.string.update_data_full)
             } else {
-                tvDataInfo?.text = getString(R.string.update_data_fmt, updateInfo!!.newCard)
+                innerView.tvDataInfo.text = getString(R.string.update_data_fmt, updateInfo!!.newCard)
             }
         }
 
         if (!hasData) {
-            layUpdateApk?.visibility = View.GONE
-            layNoDatabase?.visibility = View.VISIBLE
+            innerView.layUpdateApk.visibility = View.GONE
+            innerView.layNoDatabase.visibility = View.VISIBLE
         } else {
-            layUpdateApk?.visibility = View.VISIBLE
-            layNoDatabase?.visibility = View.GONE
+            innerView.layUpdateApk.visibility = View.VISIBLE
+            innerView.layNoDatabase.visibility = View.GONE
         }
 
     }
 
-    override fun initMenu(menu: Menu?) {
-    }
+    override fun initMenu(menu: Menu) {}
 
-    override fun onGetNewArguments(bn: Bundle?) {
-    }
+    override fun onGetNewArguments(bn: Bundle?) {}
 
     private fun unzipDataT() {
         thread {
@@ -256,31 +234,31 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
                 installApk()
             } else {
                 (activity as IUpdateIntf).setUpdateFile(PathDefine.DOWNLOAD_PATH, PathDefine.APK_NAME)
-                tvApkInfo?.visibility = View.GONE
+                innerView.tvApkInfo.visibility = View.GONE
                 FileUtils.deleteFile(apkSource)
-                pbDownlaodingApk?.visibility = View.VISIBLE
+                innerView.pbDownlaodingApk.visibility = View.VISIBLE
                 DownloadUtils.downloadFileT(activity, null, NetworkDefine.URL_APK, PathDefine.DOWNLOAD_PATH, PathDefine.APK_NAME, hApkTask)
             }
             R.id.btnUpdateData -> {
                 (activity as IUpdateIntf).setUpdateFile(PathDefine.DOWNLOAD_PATH, PathDefine.DATA_ZIP)
-                tvDataInfo?.visibility = View.GONE
+                innerView.tvDataInfo.visibility = View.GONE
                 FileUtils.deleteFile(dbSource)
-                pbDownlaodingData?.visibility = View.VISIBLE
+                innerView.pbDownlaodingData.visibility = View.VISIBLE
                 DownloadUtils.downloadFileT(activity, null, NetworkDefine.URL_DATA, PathDefine.DOWNLOAD_PATH, PathDefine.DATA_ZIP, hDataTask)
             }
         }
     }
 
     private fun updateDisabled(enabled: Boolean) {
-        btnUpdateApk?.isEnabled = false
-        btnUpdateData?.isEnabled = false
+        innerView.btnUpdateApk.isEnabled = false
+        innerView.btnUpdateData.isEnabled = false
         if (enabled) {
 
             if (updateInfo?.updateApk != 0) {
-                btnUpdateApk?.isEnabled = true
+                innerView.btnUpdateApk.isEnabled = true
             }
             if (updateInfo?.updateData != 0) {
-                btnUpdateData?.isEnabled = true
+                innerView.btnUpdateData.isEnabled = true
             }
         }
     }

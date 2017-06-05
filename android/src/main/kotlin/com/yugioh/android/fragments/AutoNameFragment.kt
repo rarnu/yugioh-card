@@ -13,12 +13,10 @@ import android.widget.*
 import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.loader.AutoNameLoader
+import kotlinx.android.synthetic.main.fragment_auto_name.view.*
 
 class AutoNameFragment : BaseFragment(), AdapterView.OnItemClickListener, View.OnClickListener, Loader.OnLoadCompleteListener<Cursor> {
 
-    internal var etCardName: EditText? = null
-    internal var btnSearch: ImageView? = null
-    internal var lvHint: ListView? = null
     internal var cSearchResult: Cursor? = null
     internal var adapterSearchResult: SimpleCursorAdapter? = null
     internal var loader: AutoNameLoader? = null
@@ -30,14 +28,11 @@ class AutoNameFragment : BaseFragment(), AdapterView.OnItemClickListener, View.O
     override fun getCustomTitle(): String? = null
 
     override fun initComponents() {
-        etCardName = innerView?.findViewById(R.id.etCardName) as EditText?
-        btnSearch = innerView?.findViewById(R.id.btnSearch) as ImageView?
-        lvHint = innerView?.findViewById(R.id.lvHint) as ListView?
         loader = AutoNameLoader(activity)
     }
 
     override fun initEvents() {
-        etCardName?.addTextChangedListener(object : TextWatcher {
+        innerView.etCardName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 doSearchHint()
             }
@@ -46,23 +41,23 @@ class AutoNameFragment : BaseFragment(), AdapterView.OnItemClickListener, View.O
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
-        lvHint?.onItemClickListener = this
-        btnSearch?.setOnClickListener(this)
+        innerView.lvHint.onItemClickListener = this
+        innerView.btnSearch.setOnClickListener(this)
         loader?.registerListener(0, this)
     }
 
     override fun initLogic() {
-        etCardName?.requestFocus()
+        innerView.etCardName.requestFocus()
         val name = arguments.getString("name")
-        etCardName?.setText(name)
+        innerView.etCardName.setText(name)
         if (name != "") {
             doSearchHint()
-            etCardName?.setSelection(etCardName?.text.toString().length)
+            innerView.etCardName.setSelection(innerView.etCardName.text.toString().length)
         }
     }
 
     private fun doSearchHint() {
-        loader?.name = etCardName?.text.toString()
+        loader?.name = innerView.etCardName.text.toString()
         loader?.startLoading()
     }
 
@@ -70,17 +65,17 @@ class AutoNameFragment : BaseFragment(), AdapterView.OnItemClickListener, View.O
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {}
+    override fun initMenu(menu: Menu) { }
 
-    override fun onGetNewArguments(bn: Bundle?) {}
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun getFragmentState(): Bundle? = null
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         if (cSearchResult != null) {
             cSearchResult!!.moveToPosition(position)
-            etCardName?.setText(cSearchResult!!.getString(cSearchResult!!.getColumnIndex("name")))
-            etCardName?.setSelection(etCardName?.text.toString().length)
+            innerView.etCardName.setText(cSearchResult!!.getString(cSearchResult!!.getColumnIndex("name")))
+            innerView.etCardName.setSelection(innerView.etCardName.text.toString().length)
         }
     }
 
@@ -88,12 +83,11 @@ class AutoNameFragment : BaseFragment(), AdapterView.OnItemClickListener, View.O
         when (v.id) {
             R.id.btnSearch -> {
                 val inRet = Intent()
-                inRet.putExtra("name", etCardName?.text.toString())
+                inRet.putExtra("name", innerView.etCardName.text.toString())
                 activity.setResult(Activity.RESULT_OK, inRet)
                 activity.finish()
             }
         }
-
     }
 
     override fun onLoadComplete(loader: Loader<Cursor>, data: Cursor?) {
@@ -104,7 +98,7 @@ class AutoNameFragment : BaseFragment(), AdapterView.OnItemClickListener, View.O
             adapterSearchResult = null
         }
         if (activity != null) {
-            lvHint?.adapter = adapterSearchResult
+            innerView.lvHint.adapter = adapterSearchResult
         }
     }
 }

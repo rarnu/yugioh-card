@@ -10,36 +10,30 @@ import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.loader.FavLoader
 import com.yugioh.android.utils.MiscUtils
+import kotlinx.android.synthetic.main.fragment_myfav.view.*
 
 class FavFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, AdapterView.OnItemClickListener {
 
-    internal var tvListNoCard: TextView? = null
-    internal var lvList: ListView? = null
     internal var loader: FavLoader? = null
     internal var cSearch: Cursor? = null
     internal var adapterSearch: SimpleCursorAdapter? = null
 
     override fun getBarTitle(): Int = R.string.lm_myfav
 
-
     override fun getBarTitleWithPath(): Int = R.string.lm_myfav
-
 
     override fun getCustomTitle(): String? = null
 
-
     override fun initComponents() {
-        lvList = innerView?.findViewById(R.id.lvList) as ListView?
-        tvListNoCard = innerView?.findViewById(R.id.tvListNoCard) as TextView?
         loader = FavLoader(activity)
     }
 
     override fun initEvents() {
         loader?.registerListener(0, this)
-        lvList?.onItemClickListener = this
+        innerView.lvList.onItemClickListener = this
     }
 
-    override fun initLogic() {}
+    override fun initLogic() { }
 
     override fun onResume() {
         super.onResume()
@@ -48,15 +42,13 @@ class FavFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, Adapt
 
     override fun getFragmentLayoutResId(): Int = R.layout.fragment_myfav
 
-
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {}
+    override fun initMenu(menu: Menu) { }
 
     override fun onGetNewArguments(bn: Bundle?) {}
 
     override fun getFragmentState(): Bundle? = null
-
 
     override fun onLoadComplete(loader: Loader<Cursor>, data: Cursor?) {
         if (data != null) {
@@ -66,8 +58,8 @@ class FavFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, Adapt
             adapterSearch = null
         }
         if (activity != null) {
-            lvList?.adapter = adapterSearch
-            tvListNoCard?.visibility = if (adapterSearch == null || adapterSearch!!.count == 0) View.VISIBLE else View.GONE
+            innerView.lvList.adapter = adapterSearch
+            innerView.tvListNoCard.visibility = if (adapterSearch == null || adapterSearch!!.count == 0) View.VISIBLE else View.GONE
         }
     }
 

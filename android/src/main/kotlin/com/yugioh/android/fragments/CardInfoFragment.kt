@@ -37,8 +37,8 @@ class CardInfoFragment : BaseTabFragment() {
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {
-        itemFav = menu?.add(0, MenuIds.MENUID_FAV, 98, R.string.fav)
+    override fun initMenu(menu: Menu) {
+        itemFav = menu.add(0, MenuIds.MENUID_FAV, 98, R.string.fav)
         itemFav?.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
         itemFav?.setIcon(if (FavUtils.queryFav(activity, info!!.id)) android.R.drawable.ic_menu_close_clear_cancel else android.R.drawable.ic_menu_add)
     }
@@ -81,7 +81,7 @@ class CardInfoFragment : BaseTabFragment() {
         return title
     }
 
-    override fun initFragmentList(listFragment: MutableList<Fragment?>?) {
+    override fun initFragmentList(listFragment: MutableList<Fragment>?) {
         listFragment?.add(CardInfoCardFragment())
         listFragment?.add(CardInfoAdjustFragment())
         listFragment?.add(CardInfoPictureFragment())

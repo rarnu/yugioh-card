@@ -7,9 +7,6 @@ import android.os.Message
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.app.common.Actions
 import com.rarnu.base.utils.DownloadUtils
@@ -18,26 +15,24 @@ import com.yugioh.android.R
 import com.yugioh.android.classes.CardInfo
 import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.define.PathDefine
+import kotlinx.android.synthetic.main.fragment_cardinfo_pic.view.*
 import java.io.File
 
 class CardInfoPictureFragment : BaseFragment(), OnClickListener {
 
     internal var info: CardInfo? = null
-    internal var ivImage: ImageView? = null
-    internal var tvNoPic: TextView? = null
-    internal var pbDownload: ProgressBar? = null
 
     private val hDownloadProgress = object : Handler() {
         override fun handleMessage(msg: Message) {
             if (activity != null) {
                 when (msg.what) {
                     Actions.WHAT_DOWNLOAD_START, Actions.WHAT_DOWNLOAD_PROGRESS -> {
-                        pbDownload?.max = msg.arg2
-                        pbDownload?.progress = msg.arg1
+                        innerView.pbDownload.max = msg.arg2
+                        innerView.pbDownload.progress = msg.arg1
                     }
                     Actions.WHAT_DOWNLOAD_FINISH -> {
-                        pbDownload?.visibility = View.GONE
-                        ivImage?.visibility = View.VISIBLE
+                        innerView.pbDownload.visibility = View.GONE
+                        innerView.ivImage.visibility = View.VISIBLE
                     }
                 }
             }
@@ -53,14 +48,10 @@ class CardInfoPictureFragment : BaseFragment(), OnClickListener {
 
     override fun getBarTitleWithPath(): Int = 0
 
-    override fun initComponents() {
-        ivImage = innerView?.findViewById(R.id.ivImage) as ImageView?
-        tvNoPic = innerView?.findViewById(R.id.tvNoPic) as TextView?
-        pbDownload = innerView?.findViewById(R.id.pbDownload) as ProgressBar?
-    }
+    override fun initComponents() { }
 
     override fun initEvents() {
-        tvNoPic?.setOnClickListener(this)
+        innerView.tvNoPic.setOnClickListener(this)
     }
 
     override fun initLogic() {
@@ -69,26 +60,22 @@ class CardInfoPictureFragment : BaseFragment(), OnClickListener {
         val fPic = File(picName)
         if (fPic.exists()) {
             val cardImg = BitmapFactory.decodeFile(picName)
-            ivImage?.setImageBitmap(cardImg)
-            ivImage?.visibility = View.VISIBLE
-            tvNoPic?.visibility = View.GONE
+            innerView.ivImage.setImageBitmap(cardImg)
+            innerView.ivImage.visibility = View.VISIBLE
+            innerView.tvNoPic.visibility = View.GONE
         } else {
-            ivImage?.visibility = View.GONE
-            tvNoPic?.visibility = View.VISIBLE
+            innerView.ivImage.visibility = View.GONE
+            innerView.tvNoPic.visibility = View.VISIBLE
         }
     }
 
     override fun getFragmentLayoutResId(): Int = R.layout.fragment_cardinfo_pic
 
-
     override fun getMainActivityName(): String? = ""
 
+    override fun initMenu(menu: Menu) { }
 
-    override fun initMenu(menu: Menu?) {
-    }
-
-    override fun onGetNewArguments(bn: Bundle?) {
-    }
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun getCustomTitle(): String? {
         var title: String? = null
@@ -105,13 +92,13 @@ class CardInfoPictureFragment : BaseFragment(), OnClickListener {
     }
 
     private fun doDownloadT() {
-        pbDownload?.progress = 0
-        pbDownload?.visibility = View.VISIBLE
-        tvNoPic?.visibility = View.GONE
+        innerView.pbDownload.progress = 0
+        innerView.pbDownload.visibility = View.VISIBLE
+        innerView.tvNoPic.visibility = View.GONE
         val url = String.format(NetworkDefine.URL_CARD_IMAGE_FMT, info?.id)
         val localDir = PathDefine.PICTURE_PATH
         val localFile = "${info?.id}.jpg"
-        DownloadUtils.downloadFileT(activity, ivImage, url, localDir, localFile, hDownloadProgress)
+        DownloadUtils.downloadFileT(activity, innerView.ivImage, url, localDir, localFile, hDownloadProgress)
     }
 
     override fun getFragmentState(): Bundle? = null

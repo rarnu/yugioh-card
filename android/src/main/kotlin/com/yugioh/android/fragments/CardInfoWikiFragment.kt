@@ -6,26 +6,19 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.webkit.WebResourceRequest
-import android.webkit.WebResourceResponse
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import android.widget.Button
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.R
 import com.yugioh.android.classes.CardInfo
 import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.loader.WikiLoader
+import kotlinx.android.synthetic.main.fragment_cardinfo_wiki.view.*
 
 /**
  * Created by rarnu on 5/29/17.
  */
 class CardInfoWikiFragment : BaseFragment(), View.OnClickListener, Loader.OnLoadCompleteListener<String> {
 
-
-    internal var wvWiki: WebView? = null
-    internal var btnGotoWeb: Button? = null
     internal var info: CardInfo? = null
     internal var loader: WikiLoader? = null
 
@@ -52,13 +45,11 @@ class CardInfoWikiFragment : BaseFragment(), View.OnClickListener, Loader.OnLoad
     override fun getMainActivityName(): String? = ""
 
     override fun initComponents() {
-        wvWiki = innerView?.findViewById(R.id.wvWiki) as WebView?
-        btnGotoWeb = innerView?.findViewById(R.id.btnGotoWeb) as Button?
         loader = WikiLoader(activity)
     }
 
     override fun initEvents() {
-        btnGotoWeb?.setOnClickListener(this)
+        innerView.btnGotoWeb.setOnClickListener(this)
         loader?.registerListener(0, this)
     }
 
@@ -68,9 +59,9 @@ class CardInfoWikiFragment : BaseFragment(), View.OnClickListener, Loader.OnLoad
         loader?.startLoading()
     }
 
-    override fun initMenu(menu: Menu?) {}
+    override fun initMenu(menu: Menu) { }
 
-    override fun onGetNewArguments(bn: Bundle?) {}
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun onClick(v: View) {
         when (v.id) {
@@ -84,7 +75,7 @@ class CardInfoWikiFragment : BaseFragment(), View.OnClickListener, Loader.OnLoad
 
     override fun onLoadComplete(loader: Loader<String>?, data: String?) {
         try {
-            wvWiki?.loadData(data, "text/html; charset=UTF-8", null)
+            innerView.wvWiki.loadData(data, "text/html; charset=UTF-8", null)
         } catch (e: Exception) {
 
         }

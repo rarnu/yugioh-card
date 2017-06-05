@@ -15,11 +15,11 @@ import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
 import com.yugioh.android.loader.LimitLoader
 import com.yugioh.android.utils.MiscUtils
+import kotlinx.android.synthetic.main.fragment_limit_detail.view.*
 
 open class LimitDetailFragment : BaseFragment(), OnItemClickListener, OnLoadCompleteListener<Cursor> {
 
     protected var detailType: Int = 0
-    internal var lvLimitCard: ListView? = null
     internal var cLimit: Cursor? = null
     internal var adapterLimit: SimpleCursorAdapter? = null
     internal var loaderLimit: LimitLoader? = null
@@ -35,12 +35,11 @@ open class LimitDetailFragment : BaseFragment(), OnItemClickListener, OnLoadComp
     override fun getMainActivityName(): String? = ""
 
     override fun initComponents() {
-        lvLimitCard = innerView?.findViewById(R.id.lvLimitCard) as ListView?
         loaderLimit = LimitLoader(activity, detailType)
     }
 
     override fun initEvents() {
-        lvLimitCard?.onItemClickListener = this
+        innerView.lvLimitCard.onItemClickListener = this
         loaderLimit?.registerListener(0, this)
     }
 
@@ -48,13 +47,9 @@ open class LimitDetailFragment : BaseFragment(), OnItemClickListener, OnLoadComp
         loaderLimit?.startLoading()
     }
 
-    override fun initMenu(menu: Menu?) {
+    override fun initMenu(menu: Menu) { }
 
-    }
-
-    override fun onGetNewArguments(bn: Bundle?) {
-
-    }
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         MiscUtils.openCardDetail(activity, cLimit, position)
@@ -66,11 +61,9 @@ open class LimitDetailFragment : BaseFragment(), OnItemClickListener, OnLoadComp
             adapterLimit = SimpleCursorAdapter(activity, R.layout.item_card, cLimit, arrayOf("name", "sCardType"), intArrayOf(R.id.tvCardName, R.id.tvCardType), CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER)
         }
         if (activity != null) {
-            lvLimitCard?.adapter = adapterLimit
+            innerView.lvLimitCard.adapter = adapterLimit
         }
     }
 
     override fun getFragmentState(): Bundle? = null
-
-
 }

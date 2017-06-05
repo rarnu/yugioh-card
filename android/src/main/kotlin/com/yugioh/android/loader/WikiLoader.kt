@@ -29,8 +29,8 @@ class WikiLoader(context: Context): BaseClassLoader<String>(context) {
 
     private fun replaceALink(s: String): String {
         var s = s
-        var p = 0
-        var pEnd = 0
+        var p: Int
+        var pEnd: Int
         while (s.indexOf("<a href") >= 0) {
             p = s.indexOf("<a href")
             pEnd = s.indexOf(">", p)

@@ -10,13 +10,12 @@ import com.yugioh.android.R
 import com.yugioh.android.adapter.LinkArrowAdapter
 import com.rarnu.base.app.BaseDialogFragment
 import com.yugioh.android.classes.LinkArrowItem
+import kotlinx.android.synthetic.main.fragment_link_option.view.*
 
 class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener, View.OnClickListener {
 
-
     internal var list = arrayListOf("不限", "1", "2", "3", "4", "5", "6", "7", "8")
     internal var adapter: ArrayAdapter<String>? = null
-    internal var spLinkCount: Spinner? = null
     internal var listArrow = arrayListOf(
             LinkArrowItem(7, "↖", false),
             LinkArrowItem(8, "↑", false),
@@ -29,34 +28,25 @@ class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener
             LinkArrowItem(3, "↘", false)
     )
     internal var adapterArrow: LinkArrowAdapter? = null
-    internal var gvLinkArrow: GridView? = null
-    internal var btnOK: Button? = null
-    internal var btnCancel: Button? = null
 
     override fun getFragmentLayoutResId(): Int = R.layout.fragment_link_option
 
     override fun initComponents() {
-        spLinkCount = innerView?.findViewById(R.id.spLinkCount) as Spinner?
         adapter = ArrayAdapter(activity, R.layout.item_spin_link, list)
-        spLinkCount?.adapter = adapter
-
-        gvLinkArrow = innerView?.findViewById(R.id.gvLinkArrow) as GridView?
+        innerView.spLinkCount.adapter = adapter
         adapterArrow = LinkArrowAdapter(activity, listArrow)
-        gvLinkArrow?.adapter = adapterArrow
-
-        btnOK = innerView?.findViewById(R.id.btnOk) as Button?
-        btnCancel = innerView?.findViewById(R.id.btnCancel) as Button?
+        innerView.gvLinkArrow.adapter = adapterArrow
     }
 
     override fun initEvents() {
-        gvLinkArrow?.onItemClickListener = this
-        btnOK?.setOnClickListener(this)
-        btnCancel?.setOnClickListener(this)
+        innerView.gvLinkArrow.onItemClickListener = this
+        innerView.btnOk.setOnClickListener(this)
+        innerView.btnCancel.setOnClickListener(this)
     }
 
     override fun initLogic() {
         val count = activity.intent.extras.getInt("count", 0)
-        spLinkCount?.setSelection(count)
+        innerView.spLinkCount.setSelection(count)
         val arrow = activity.intent.extras.getString("arrow", "")
         val arrowArr = arrow.split(",")
         (0..listArrow.size - 1).forEach {
@@ -75,11 +65,9 @@ class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener
 
     override fun getMainActivityName(): String? = null
 
-    override fun initMenu(menu: Menu?) {
-    }
+    override fun initMenu(menu: Menu) { }
 
-    override fun onGetNewArguments(bn: Bundle?) {
-    }
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun getFragmentState(): Bundle? = null
 
@@ -96,7 +84,7 @@ class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener
         when(v.id) {
             R.id.btnOk -> {
                 val inRet = Intent()
-                inRet.putExtra("count", spLinkCount!!.selectedItemPosition)
+                inRet.putExtra("count", innerView.spLinkCount.selectedItemPosition)
                 var arr = ""
                 listArrow.filter { it.selected }.forEach { arr += "${it.pos}," }
                 arr = arr.trim { it == ',' }

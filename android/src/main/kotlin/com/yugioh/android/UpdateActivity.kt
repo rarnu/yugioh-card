@@ -34,8 +34,8 @@ class UpdateActivity : BaseActivity(), IUpdateIntf {
         return super.onKeyDown(keyCode, event)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             android.R.id.home -> if (inProgress) {
                 confirmCloseUpdate()
                 return true

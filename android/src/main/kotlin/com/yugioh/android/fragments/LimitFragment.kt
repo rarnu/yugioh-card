@@ -8,7 +8,7 @@ import com.rarnu.base.app.BaseTabFragment
 
 class LimitFragment : BaseTabFragment() {
 
-    override fun initFragmentList(listFragment: MutableList<Fragment?>?) {
+    override fun initFragmentList(listFragment: MutableList<Fragment>?) {
         listFragment?.add(LimitDetailFragment0())
         listFragment?.add(LimitDetailFragment1())
         listFragment?.add(LimitDetailFragment2())
@@ -22,7 +22,7 @@ class LimitFragment : BaseTabFragment() {
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) { }
+    override fun initMenu(menu: Menu) { }
 
     override fun onGetNewArguments(bn: Bundle?) { }
 

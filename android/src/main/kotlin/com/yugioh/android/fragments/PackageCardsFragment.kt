@@ -8,20 +8,20 @@ import android.os.Message
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
-import com.yugioh.android.R
+import android.widget.AdapterView
+import android.widget.CursorAdapter
+import android.widget.SimpleCursorAdapter
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.ResourceUtils
+import com.yugioh.android.R
 import com.yugioh.android.classes.CardItems
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.loader.SearchLoader
 import com.yugioh.android.utils.MiscUtils
+import kotlinx.android.synthetic.main.fragment_package_cards.view.*
 
 class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, AdapterView.OnItemClickListener {
 
-    internal var lvCards: ListView? = null
-    internal var tvListNoCard: TextView? = null
-    internal var tvLoading: TextView? = null
     internal var loader: SearchLoader? = null
     internal var cSearchResult: Cursor? = null
     internal var adapterSearchResult: SimpleCursorAdapter? = null
@@ -30,9 +30,9 @@ class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Curso
     private val hPack = object : Handler() {
         override fun handleMessage(msg: Message) {
             if (msg.what == 1) {
-                tvLoading?.visibility = View.GONE
+                innerView.tvLoading.visibility = View.GONE
                 itemRefresh?.isEnabled = true
-                lvCards?.isEnabled = true
+                innerView.lvCards.isEnabled = true
                 val items = msg.obj as CardItems?
                 val bn = Bundle()
                 bn.putIntArray("ids", items?.cardIds)
@@ -54,19 +54,16 @@ class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Curso
     override fun getCustomTitle(): String? = arguments.getString("pack")
 
     override fun initComponents() {
-        lvCards = innerView?.findViewById(R.id.lvCards) as ListView?
-        tvListNoCard = innerView?.findViewById(R.id.tvListNoCard) as TextView?
         loader = SearchLoader(activity, arguments)
-        tvLoading = innerView?.findViewById(R.id.tvLoading) as TextView?
     }
 
     override fun initEvents() {
         loader?.registerListener(0, this)
-        lvCards?.onItemClickListener = this
+        innerView.lvCards.onItemClickListener = this
     }
 
     override fun initLogic() {
-        tvListNoCard?.setText(R.string.list_nocard_searching)
+        innerView.tvListNoCard.setText(R.string.list_nocard_searching)
         loader?.startLoading()
     }
 
@@ -74,8 +71,8 @@ class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Curso
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {
-        itemRefresh = menu?.add(0, MenuIds.MENUID_REFRESH, 99, R.string.refresh)
+    override fun initMenu(menu: Menu) {
+        itemRefresh = menu.add(0, MenuIds.MENUID_REFRESH, 99, R.string.refresh)
         itemRefresh?.setIcon(android.R.drawable.ic_menu_revert)
         itemRefresh?.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
     }
@@ -83,16 +80,16 @@ class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Curso
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             MenuIds.MENUID_REFRESH -> {
-                tvLoading?.visibility = View.VISIBLE
+                innerView.tvLoading.visibility = View.VISIBLE
                 itemRefresh?.isEnabled = false
-                lvCards?.isEnabled = false
+                innerView.lvCards.isEnabled = false
                 MiscUtils.loadCardsDataT(0, arguments.getString("id"), hPack, true)
             }
         }
         return true
     }
 
-    override fun onGetNewArguments(bn: Bundle?) {}
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun getFragmentState(): Bundle? = null
 
@@ -103,9 +100,9 @@ class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Curso
 
         }
         if (activity != null) {
-            lvCards?.adapter = adapterSearchResult
-            tvListNoCard?.visibility = if (adapterSearchResult!!.count == 0) View.VISIBLE else View.GONE
-            tvListNoCard?.setText(R.string.package_nocard)
+            innerView.lvCards.adapter = adapterSearchResult
+            innerView.tvListNoCard.visibility = if (adapterSearchResult!!.count == 0) View.VISIBLE else View.GONE
+            innerView.tvListNoCard.setText(R.string.package_nocard)
         }
     }
 

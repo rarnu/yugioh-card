@@ -9,26 +9,17 @@ import android.os.Message
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.R
 import com.yugioh.android.common.Config
 import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.define.PathDefine
+import kotlinx.android.synthetic.main.fragment_settings.view.*
 import java.io.File
 import kotlin.concurrent.thread
 
 class SettingsFragment : BaseFragment(), OnClickListener {
-
-    internal var btnBigger: ImageView? = null
-    internal var btnSmaller: ImageView? = null
-    internal var tvFontDemo: TextView? = null
-    internal var tvData: TextView? = null
-    internal var btnSource: Button? = null
 
     internal var fontSize = -1
 
@@ -38,27 +29,21 @@ class SettingsFragment : BaseFragment(), OnClickListener {
 
     override fun getCustomTitle(): String? = null
 
-    override fun initComponents() {
-        btnBigger = innerView?.findViewById(R.id.btnBigger) as ImageButton?
-        btnSmaller = innerView?.findViewById(R.id.btnSmaller) as ImageButton?
-        tvData = innerView?.findViewById(R.id.tvData) as TextView?
-        tvFontDemo = innerView?.findViewById(R.id.tvFontDemo) as TextView?
-        btnSource = innerView?.findViewById(R.id.btnSource) as Button?
-    }
+    override fun initComponents() {}
 
     override fun initEvents() {
-        btnBigger?.setOnClickListener(this)
-        btnSmaller?.setOnClickListener(this)
-        tvData?.setOnClickListener(this)
-        btnSource?.setOnClickListener(this)
+        innerView.btnBigger.setOnClickListener(this)
+        innerView.btnSmaller.setOnClickListener(this)
+        innerView.tvData.setOnClickListener(this)
+        innerView.btnSource.setOnClickListener(this)
     }
 
     override fun initLogic() {
         fontSize = Config.cfgGetFontSize(activity)
         if (fontSize == -1) {
-            fontSize = tvFontDemo?.textSize!!.toInt()
+            fontSize = innerView.tvFontDemo.textSize.toInt()
         }
-        tvFontDemo?.textSize = fontSize.toFloat()
+        innerView.tvFontDemo.textSize = fontSize.toFloat()
         getDirSizeT()
     }
 
@@ -66,7 +51,7 @@ class SettingsFragment : BaseFragment(), OnClickListener {
         val hSize = object : Handler() {
             override fun handleMessage(msg: Message) {
                 if (msg.what == 1) {
-                    tvData?.text = "${msg.obj as Long} MB"
+                    innerView.tvData.text = "${msg.obj as Long} MB"
                 }
                 super.handleMessage(msg)
             }
@@ -86,11 +71,9 @@ class SettingsFragment : BaseFragment(), OnClickListener {
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {
-    }
+    override fun initMenu(menu: Menu) {}
 
-    override fun onGetNewArguments(bn: Bundle?) {
-    }
+    override fun onGetNewArguments(bn: Bundle?) {}
 
     override fun onClick(v: View) {
         when (v.id) {
@@ -99,7 +82,7 @@ class SettingsFragment : BaseFragment(), OnClickListener {
             R.id.tvData -> confirmDeleteImages()
             R.id.btnSource -> openSourceCodeSite()
         }
-        tvFontDemo?.textSize = fontSize.toFloat()
+        innerView.tvFontDemo.textSize = fontSize.toFloat()
         Config.cfgSetFontSize(activity, fontSize)
     }
 

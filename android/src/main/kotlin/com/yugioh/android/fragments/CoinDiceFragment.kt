@@ -6,12 +6,10 @@ import android.os.Message
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.ImageView
-import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
-
-import java.util.Timer
-import java.util.TimerTask
+import com.yugioh.android.R
+import kotlinx.android.synthetic.main.fragment_coindice.view.*
+import java.util.*
 
 class CoinDiceFragment : BaseFragment(), OnClickListener {
 
@@ -23,7 +21,7 @@ class CoinDiceFragment : BaseFragment(), OnClickListener {
             super.handleMessage(msg)
         }
     }
-    internal var imgCoinDice: ImageView? = null
+
     internal var tmrCloseWindow: Timer? = null
     internal var type = 0
     internal var count = 0
@@ -31,7 +29,6 @@ class CoinDiceFragment : BaseFragment(), OnClickListener {
     internal var _coin = intArrayOf(R.drawable.coin1, R.drawable.coin2)
 
     override fun getBarTitle(): Int = R.string.page_tool
-
 
     override fun getBarTitleWithPath(): Int = R.string.page_tool
 
@@ -41,13 +38,10 @@ class CoinDiceFragment : BaseFragment(), OnClickListener {
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initComponents() {
-        imgCoinDice = innerView?.findViewById(R.id.imgCoinDice) as ImageView?
-
-    }
+    override fun initComponents() { }
 
     override fun initEvents() {
-        imgCoinDice?.setOnClickListener(this)
+        innerView.imgCoinDice.setOnClickListener(this)
     }
 
     override fun initLogic() {
@@ -80,26 +74,22 @@ class CoinDiceFragment : BaseFragment(), OnClickListener {
         super.onDestroy()
     }
 
-    override fun initMenu(menu: Menu?) {
+    override fun initMenu(menu: Menu) { }
 
-    }
-
-    override fun onGetNewArguments(bn: Bundle?) {
-
-    }
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     private fun doDice() {
         // dice
         count++
         val dice = (Math.random() * 6 + 1).toInt()
-        imgCoinDice?.setImageResource(_dice[dice - 1])
+        innerView.imgCoinDice.setImageResource(_dice[dice - 1])
     }
 
     private fun doCoin() {
         // coin
         count++
         val coin = (Math.random() * 2 + 1).toInt()
-        imgCoinDice?.setImageResource(_coin[coin - 1])
+        innerView.imgCoinDice.setImageResource(_coin[coin - 1])
     }
 
     override fun onClick(v: View) {
@@ -113,7 +103,6 @@ class CoinDiceFragment : BaseFragment(), OnClickListener {
         } catch (e: Exception) {
 
         }
-
         tmrCloseWindow = null
     }
 
@@ -123,7 +112,6 @@ class CoinDiceFragment : BaseFragment(), OnClickListener {
         } catch (e: Exception) {
 
         }
-
     }
 
     override fun getFragmentState(): Bundle? = null

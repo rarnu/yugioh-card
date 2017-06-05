@@ -2,17 +2,16 @@ package com.yugioh.android.fragments
 
 import android.os.Bundle
 import android.view.Menu
-import android.widget.TextView
-import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.ResourceUtils
+import com.yugioh.android.R
 import com.yugioh.android.classes.CardInfo
 import com.yugioh.android.common.Config
 import com.yugioh.android.define.CardConstDefine
+import kotlinx.android.synthetic.main.fragment_cardinfo_card.view.*
 
 class CardInfoCardFragment : BaseFragment() {
 
-    internal var tvInfo: TextView? = null
     internal var info: CardInfo? = null
     internal var fontSize = -1
 
@@ -24,22 +23,19 @@ class CardInfoCardFragment : BaseFragment() {
 
     override fun getBarTitleWithPath(): Int = 0
 
-    override fun initComponents() {
-        tvInfo = innerView?.findViewById(R.id.tvInfo) as TextView?
-    }
+    override fun initComponents() { }
 
-    override fun initEvents() {
-    }
+    override fun initEvents() { }
 
     override fun initLogic() {
         info = activity.intent.getSerializableExtra("cardinfo") as CardInfo
-        tvInfo?.text = buildCardInfo(info)
+        innerView.tvInfo.text = buildCardInfo(info)
 
         fontSize = Config.cfgGetFontSize(activity)
         if (fontSize == -1) {
-            fontSize = tvInfo!!.textSize.toInt()
+            fontSize = innerView.tvInfo.textSize.toInt()
         }
-        tvInfo?.textSize = fontSize.toFloat()
+        innerView.tvInfo.textSize = fontSize.toFloat()
     }
 
     private fun buildCardInfo(info: CardInfo?): String {
@@ -101,7 +97,7 @@ class CardInfoCardFragment : BaseFragment() {
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) { }
+    override fun initMenu(menu: Menu) { }
 
     override fun onGetNewArguments(bn: Bundle?) { }
 

@@ -8,8 +8,10 @@ import android.os.Message
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.LinkOptionActivity
@@ -17,38 +19,19 @@ import com.yugioh.android.R
 import com.yugioh.android.SearchResultActivity
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.define.CardConstDefine
+import kotlinx.android.synthetic.main.fragment_search.view.*
 import kotlin.concurrent.thread
 
+@Suppress("UNCHECKED_CAST")
 class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListener {
 
-
-    internal var spCardRace: Spinner? = null
-    internal var spCardBelongs: Spinner? = null
-    internal var spCardType: Spinner? = null
-    internal var spCardAttribute: Spinner? = null
-    internal var spCardLevel: Spinner? = null
-    internal var spCardRare: Spinner? = null
-    internal var spCardLimit: Spinner? = null
-    internal var spCardTunner: Spinner? = null
-    internal var btnLink: Button? = null
-    internal var etCardName: EditText? = null
-    internal var etCardAttack: EditText? = null
-    internal var etCardDefense: EditText? = null
-    internal var etEffectText: EditText? = null
     internal var itemSearch: MenuItem? = null
     internal var itemReset: MenuItem? = null
-
     internal var linkCount = 1
     internal var linkArrow = ""
 
-    private var searchResultFragment: BaseFragment? = null
-
     init {
         tabTitle = ResourceUtils.getString(R.string.page_search)
-    }
-
-    fun registerSearchResult(intf: BaseFragment) {
-        this.searchResultFragment = intf
     }
 
     override fun getBarTitle(): Int = R.string.app_name
@@ -56,41 +39,26 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
     override fun getBarTitleWithPath(): Int = R.string.app_name
 
     override fun initComponents() {
-        etCardName = innerView?.findViewById(R.id.etCardName) as EditText?
-        etCardAttack = innerView?.findViewById(R.id.etCardAttack) as EditText?
-        etCardDefense = innerView?.findViewById(R.id.etCardDefense) as EditText?
-        etEffectText = innerView?.findViewById(R.id.etEffectText) as EditText?
-        spCardRace = innerView?.findViewById(R.id.spCardRace) as Spinner?
-        spCardBelongs = innerView?.findViewById(R.id.spCardBelongs) as Spinner?
-        spCardType = innerView?.findViewById(R.id.spCardType) as Spinner?
-        spCardAttribute = innerView?.findViewById(R.id.spCardAttribute) as Spinner?
-        spCardLevel = innerView?.findViewById(R.id.spCardLevel) as Spinner?
-        spCardRare = innerView?.findViewById(R.id.spCardRare) as Spinner?
-        spCardLimit = innerView?.findViewById(R.id.spCardLimit) as Spinner?
-        spCardTunner = innerView?.findViewById(R.id.spCardTunner) as Spinner?
-        btnLink = innerView?.findViewById(R.id.btnLink) as Button?
-        etCardName?.requestFocus()
+        innerView.etCardName.requestFocus()
     }
 
     override fun initEvents() {
-        btnLink?.setOnClickListener(this)
+        innerView.btnLink.setOnClickListener(this)
     }
 
     override fun initLogic() {
-        setSpinner(spCardRace, CardConstDefine.DEFID_CARDRACE)
-        setSpinner(spCardBelongs, CardConstDefine.DEFID_CARDBELONGS)
-        setSpinner(spCardType, CardConstDefine.DEFID_CARDTYPE)
-        setSpinner(spCardAttribute, CardConstDefine.DEFID_CARDATTRITUBE)
-        setSpinner(spCardLevel, CardConstDefine.DEFID_CARDLEVEL)
-        setSpinner(spCardRare, CardConstDefine.DEFID_CARDRARE)
-        setSpinner(spCardLimit, CardConstDefine.DEFID_CARDLIMIT)
-        setSpinner(spCardTunner, CardConstDefine.DEFID_CARDTUNNER)
-
+        setSpinner(innerView.spCardRace, CardConstDefine.DEFID_CARDRACE)
+        setSpinner(innerView.spCardBelongs, CardConstDefine.DEFID_CARDBELONGS)
+        setSpinner(innerView.spCardType, CardConstDefine.DEFID_CARDTYPE)
+        setSpinner(innerView.spCardAttribute, CardConstDefine.DEFID_CARDATTRITUBE)
+        setSpinner(innerView.spCardLevel, CardConstDefine.DEFID_CARDLEVEL)
+        setSpinner(innerView.spCardRare, CardConstDefine.DEFID_CARDRARE)
+        setSpinner(innerView.spCardLimit, CardConstDefine.DEFID_CARDLIMIT)
+        setSpinner(innerView.spCardTunner, CardConstDefine.DEFID_CARDTUNNER)
     }
 
     private fun setSpinner(sp: Spinner?, type: Int) {
         sp?.onItemSelectedListener = this
-
         val hSpin = object : Handler() {
             override fun handleMessage(msg: Message) {
                 if (msg.what == 1) {
@@ -148,18 +116,17 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
             msg.obj = list
             hSpin.sendMessage(msg)
         }
-
     }
 
     override fun getFragmentLayoutResId(): Int = R.layout.fragment_search
 
     override fun getMainActivityName(): String? = ""
 
-    override fun initMenu(menu: Menu?) {
-        itemSearch = menu?.add(0, MenuIds.MENUID_SEARCH, 98, R.string.search_search)
+    override fun initMenu(menu: Menu) {
+        itemSearch = menu.add(0, MenuIds.MENUID_SEARCH, 98, R.string.search_search)
         itemSearch?.setIcon(android.R.drawable.ic_menu_search)
         itemSearch?.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-        itemReset = menu?.add(0, MenuIds.MENUID_RESET, 99, R.string.search_reset)
+        itemReset = menu.add(0, MenuIds.MENUID_RESET, 99, R.string.search_reset)
         itemReset?.setIcon(android.R.drawable.ic_menu_close_clear_cancel)
         itemReset?.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
     }
@@ -173,45 +140,45 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
     }
 
     private fun doSearchCard() {
-        val cardName = etCardName?.text.toString()
+        val cardName = innerView.etCardName.text.toString()
         var cardType = ""
-        if (spCardType?.selectedItemPosition != 0) {
-            cardType = spCardType?.selectedItem as String
+        if (innerView.spCardType.selectedItemPosition != 0) {
+            cardType = innerView.spCardType.selectedItem as String
         }
         var cardAttribute = ""
-        if (spCardAttribute?.selectedItemPosition != 0) {
-            cardAttribute = spCardAttribute?.selectedItem as String
+        if (innerView.spCardAttribute.selectedItemPosition != 0) {
+            cardAttribute = innerView.spCardAttribute.selectedItem as String
         }
         var cardLevel = 0
-        if (spCardLevel?.selectedItemPosition != 0) {
-            cardLevel = Integer.parseInt(spCardLevel?.selectedItem as String)
+        if (innerView.spCardLevel.selectedItemPosition != 0) {
+            cardLevel = Integer.parseInt(innerView.spCardLevel.selectedItem as String)
         }
         var cardRare = ""
-        if (spCardRare?.selectedItemPosition != 0) {
-            cardRare = spCardRare?.selectedItem as String
+        if (innerView.spCardRare.selectedItemPosition != 0) {
+            cardRare = innerView.spCardRare.selectedItem as String
         }
         var cardRace = ""
-        if (spCardRace?.selectedItemPosition != 0) {
-            cardRace = spCardRace?.selectedItem as String
+        if (innerView.spCardRace.selectedItemPosition != 0) {
+            cardRace = innerView.spCardRace.selectedItem as String
         }
         var cardBelongs = ""
-        if (spCardBelongs?.selectedItemPosition != 0) {
-            cardBelongs = spCardBelongs?.selectedItem as String
+        if (innerView.spCardBelongs.selectedItemPosition != 0) {
+            cardBelongs = innerView.spCardBelongs.selectedItem as String
         }
-        val cardAtk = etCardAttack?.text.toString()
-        val cardDef = etCardDefense?.text.toString()
+        val cardAtk = innerView.etCardAttack.text.toString()
+        val cardDef = innerView.etCardDefense.text.toString()
 
         var cardLimit = ""
-        if (spCardLimit?.selectedItemPosition != 0) {
-            cardLimit = spCardLimit?.selectedItem as String
+        if (innerView.spCardLimit.selectedItemPosition != 0) {
+            cardLimit = innerView.spCardLimit.selectedItem as String
         }
 
-        var cardTunner = spCardTunner?.selectedItem as String
+        var cardTunner = innerView.spCardTunner.selectedItem as String
         if (cardTunner == getString(R.string.search_na)) {
             cardTunner = ""
         }
 
-        val cardEffect = etEffectText?.text.toString()
+        val cardEffect = innerView.etEffectText.text.toString()
 
         val bn = Bundle()
         bn.putString("cardType", cardType)
@@ -234,25 +201,27 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
     }
 
     private fun doSearchReset() {
-        spCardAttribute?.setSelection(0)
-        spCardBelongs?.setSelection(0)
-        spCardLevel?.setSelection(0)
-        spCardLimit?.setSelection(0)
-        spCardRace?.setSelection(0)
-        spCardRare?.setSelection(0)
-        spCardTunner?.setSelection(0)
-        spCardType?.setSelection(0)
-        etCardName?.setText("")
-        etCardAttack?.setText("")
-        etCardDefense?.setText("")
-        etEffectText?.setText("")
+        innerView.spCardAttribute.setSelection(0)
+        innerView.spCardBelongs.setSelection(0)
+        innerView.spCardLevel.setSelection(0)
+        innerView.spCardLimit.setSelection(0)
+        innerView.spCardRace.setSelection(0)
+        innerView.spCardRare.setSelection(0)
+        innerView.spCardTunner.setSelection(0)
+        innerView.spCardType.setSelection(0)
+        innerView.etCardName.setText("")
+        innerView.etCardAttack.setText("")
+        innerView.etCardDefense.setText("")
+        innerView.etEffectText.setText("")
     }
 
     override fun onGetNewArguments(bn: Bundle?) {
-        if (bn!!.getString("data") == "search") {
-            doSearchCard()
-        } else if (bn.getString("data") == "reset") {
-            doSearchReset()
+        if (bn != null) {
+            if (bn.getString("data") == "search") {
+                doSearchCard()
+            } else if (bn.getString("data") == "reset") {
+                doSearchReset()
+            }
         }
     }
 
@@ -261,17 +230,16 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
             R.id.spCardType -> {
                 linkCount = 0
                 linkArrow = ""
-                btnLink?.text = getString(R.string.search_link)
-                spCardTunner?.setSelection(0)
-                spCardTunner?.isEnabled = position in 1..7
-                btnLink?.visibility = if (position == 8) View.VISIBLE else View.GONE
-                spCardTunner?.visibility = if (position != 8) View.VISIBLE else View.GONE
+                innerView.btnLink.text = getString(R.string.search_link)
+                innerView.spCardTunner.setSelection(0)
+                innerView.spCardTunner.isEnabled = position in 1..7
+                innerView.btnLink.visibility = if (position == 8) View.VISIBLE else View.GONE
+                innerView.spCardTunner.visibility = if (position != 8) View.VISIBLE else View.GONE
             }
         }
     }
 
-    override fun onNothingSelected(parent: AdapterView<*>) {
-    }
+    override fun onNothingSelected(parent: AdapterView<*>) {}
 
     override fun getCustomTitle(): String? = null
 
@@ -282,11 +250,11 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
             return
         }
         when (requestCode) {
-            0 -> etCardName?.setText(data?.getStringExtra("name"))
+            0 -> innerView.etCardName.setText(data?.getStringExtra("name"))
             1 -> {
                 linkCount = data!!.getIntExtra("count", 0)
                 linkArrow = data.getStringExtra("arrow")
-                btnLink?.text = "$linkCount(${linkArrow
+                innerView.btnLink.text = "$linkCount(${linkArrow
                         .replace("1", CardConstDefine.linkArrow[0])
                         .replace("2", CardConstDefine.linkArrow[1])
                         .replace("3", CardConstDefine.linkArrow[2])

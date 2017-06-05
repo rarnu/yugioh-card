@@ -13,10 +13,10 @@ import com.rarnu.base.utils.UIUtils
 import com.yugioh.android.MainActivity
 import com.yugioh.android.R
 import com.yugioh.android.intf.IMainIntf
+import kotlinx.android.synthetic.main.menu_left.view.*
 
 class LeftMenuFragment : BaseFragment(), OnItemClickListener {
 
-    internal var lvCard: ListView? = null
     internal var adapterCard: ArrayAdapter<String>? = null
     internal var listCard: MutableList<String>? = null
 
@@ -24,9 +24,7 @@ class LeftMenuFragment : BaseFragment(), OnItemClickListener {
 
     override fun getBarTitleWithPath(): Int = R.string.app_name
 
-
     override fun initComponents() {
-        lvCard = innerView?.findViewById(R.id.lvCard) as ListView?
         listCard = arrayListOf()
         listCard?.add(getString(R.string.lm_search))        // 0
         listCard?.add(getString(R.string.lm_banned))        // 1
@@ -35,35 +33,29 @@ class LeftMenuFragment : BaseFragment(), OnItemClickListener {
         listCard?.add(getString(R.string.lm_myfav))         // 4
         listCard?.add(getString(R.string.lm_tool))          // 5
         adapterCard = ArrayAdapter(activity, R.layout.item_menu, listCard)
-        lvCard?.adapter = adapterCard
+        innerView.lvCard.adapter = adapterCard
 
         val lvHeight = UIUtils.dip2px((48 + UIUtils.density!! * 2).toInt() * 6)
         val marginTop = (UIUtils.height!! - UIUtils.statusBarHeight!! - lvHeight) / 2
-        val rllp = lvCard?.layoutParams as RelativeLayout.LayoutParams?
+        val rllp = innerView.lvCard.layoutParams as RelativeLayout.LayoutParams?
         rllp?.topMargin = marginTop
         rllp?.height = lvHeight
-        lvCard?.layoutParams = rllp
+        innerView.lvCard.layoutParams = rllp
     }
 
     override fun initEvents() {
-        lvCard?.onItemClickListener = this
+        innerView.lvCard.onItemClickListener = this
     }
 
-    override fun initLogic() {
-
-    }
+    override fun initLogic() { }
 
     override fun getFragmentLayoutResId(): Int = R.layout.menu_left
 
     override fun getMainActivityName(): String? = MainActivity::class.java.name
 
-    override fun initMenu(menu: Menu?) {
+    override fun initMenu(menu: Menu) { }
 
-    }
-
-    override fun onGetNewArguments(bn: Bundle?) {
-
-    }
+    override fun onGetNewArguments(bn: Bundle?) { }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when (parent?.id) {
