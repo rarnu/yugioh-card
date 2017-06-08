@@ -3,7 +3,9 @@ package com.yugioh.android.loader
 import android.content.Context
 import android.util.Log
 import com.rarnu.base.app.BaseClassLoader
+import com.rarnu.base.utils.HttpMethod
 import com.rarnu.base.utils.HttpUtils
+import com.rarnu.base.utils.http
 import com.yugioh.android.define.NetworkDefine
 
 /**
@@ -14,7 +16,10 @@ class WikiLoader(context: Context): BaseClassLoader<String>(context) {
     var cardId = 0
 
     override fun loadInBackground(): String? {
-        var s = HttpUtils.get(String.format(NetworkDefine.URL_WIKI_FMT, cardId), "")!!
+        var s = http {
+            url = String.format(NetworkDefine.URL_WIKI_FMT, cardId)
+            method = HttpMethod.GET
+        }!!
         val start = s.indexOf("<article class=\"detail\">")
         s = s.substring(start, s.indexOf("</article>", start))
         val startPre = s.indexOf("<pre>")

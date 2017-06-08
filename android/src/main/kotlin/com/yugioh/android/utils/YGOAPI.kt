@@ -2,9 +2,7 @@ package com.yugioh.android.utils
 
 import android.content.Context
 import android.os.Build
-import com.rarnu.base.utils.AccountUtils
-import com.rarnu.base.utils.DeviceUtils
-import com.rarnu.base.utils.HttpUtils
+import com.rarnu.base.utils.*
 import com.yugioh.android.classes.*
 import com.yugioh.android.define.NetworkDefine
 import org.json.JSONArray
@@ -19,7 +17,11 @@ object YGOAPI {
         val param = String.format(NetworkDefine.UPDATE_PARAM_FMT, DeviceUtils.getAppVersionCode(context), lastCardId, dbVer)
         var ui: UpdateInfo? = null
         try {
-            val jsonstr = HttpUtils.get(NetworkDefine.UPDATE_URL, param)
+            val jsonstr = http {
+                url = NetworkDefine.UPDATE_URL
+                method = HttpMethod.GET
+                getParam = param
+            }
             val json = JSONObject(jsonstr)
             ui = UpdateInfo()
             ui.updateApk = json.getInt("apk")
@@ -36,7 +38,10 @@ object YGOAPI {
         get() {
             var list: MutableList<RecommandInfo>? = null
             try {
-                val ret = HttpUtils.get(NetworkDefine.RECOMMAND_URL, "")
+                val ret = http {
+                    url = NetworkDefine.RECOMMAND_URL
+                    method = HttpMethod.GET
+                }
                 val json = JSONObject(ret)
                 val jarr = json.getJSONArray("data")
                 list = ArrayList<RecommandInfo>()
@@ -61,7 +66,10 @@ object YGOAPI {
         get() {
             var list: MutableList<PackageItem>? = null
             try {
-                val ret = HttpUtils.get(NetworkDefine.URL_OCGSOFT_GET_PACKAGE, "")
+                val ret = http {
+                    url = NetworkDefine.URL_OCGSOFT_GET_PACKAGE
+                    method = HttpMethod.GET
+                }
                 val jarr = JSONArray(ret)
 
                 list = ArrayList<PackageItem>()
@@ -85,7 +93,10 @@ object YGOAPI {
     fun getPackageCards(id: String): CardItems? {
         var item: CardItems? = null
         try {
-            val ret = HttpUtils.get(String.format(NetworkDefine.URL_OCGSOFT_GET_PACKAGE_CARD, id), "")
+            val ret = http {
+                url = String.format(NetworkDefine.URL_OCGSOFT_GET_PACKAGE_CARD, id)
+                method = HttpMethod.GET
+            }
             val json = JSONObject(ret)
             item = CardItems()
             item.packageName = json.getString("name")
@@ -131,7 +142,11 @@ object YGOAPI {
             text = URLEncoder.encode(text, "UTF-8")
             val appver = DeviceUtils.getAppVersionCode(context)
             val osver = Build.VERSION.SDK_INT
-            val str = HttpUtils.get(NetworkDefine.FEEDBACK_URL, String.format(NetworkDefine.FEEDBACK_PARAM_FMT, deviceId, email, text, appver, osver))
+            val str = http {
+                url = NetworkDefine.FEEDBACK_URL
+                method = HttpMethod.GET
+                getParam = String.format(NetworkDefine.FEEDBACK_PARAM_FMT, deviceId, email, text, appver, osver)
+            }
             ret = str != "0"
         } catch (e: Exception) {
 
@@ -144,7 +159,10 @@ object YGOAPI {
         get() {
             var ret: String? = ""
             try {
-                ret = HttpUtils.get(NetworkDefine.URL_UPDATE_LOG, "")
+                ret = http {
+                    url = NetworkDefine.URL_UPDATE_LOG
+                    method = HttpMethod.GET
+                }
             } catch (e: Exception) {
 
             }
