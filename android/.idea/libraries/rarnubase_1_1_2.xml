@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="rarnubase-1.1.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.github.rarnu/rarnubase/1.1.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.github.rarnu/rarnubase/1.1.2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.rarnu/rarnubase/1.1.2/5e4c36d7c7e0f20ddfd18f7ad801268c66f41e8e/rarnubase-1.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
