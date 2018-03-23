@@ -9,19 +9,18 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.CursorAdapter
-import android.widget.ListView
 import android.widget.SimpleCursorAdapter
-import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
+import com.yugioh.android.R
 import com.yugioh.android.loader.NewCardLoader
 import com.yugioh.android.utils.MiscUtils
 import kotlinx.android.synthetic.main.fragment_newcard.view.*
 
 class NewCardFragment : BaseFragment(), OnItemClickListener, OnLoadCompleteListener<Cursor> {
 
-    internal var cNewCard: Cursor? = null
-    internal var adapterNewCard: SimpleCursorAdapter? = null
-    internal var loaderNewcard: NewCardLoader? = null
+    private var cNewCard: Cursor? = null
+    private var adapterNewCard: SimpleCursorAdapter? = null
+    private var loaderNewcard: NewCardLoader? = null
 
     override fun getBarTitle(): Int = R.string.lm_newcard
 

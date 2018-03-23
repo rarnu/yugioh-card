@@ -3,8 +3,6 @@ package com.yugioh.android.fragments
 import android.content.Loader
 import android.database.Cursor
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -14,7 +12,6 @@ import android.widget.SimpleCursorAdapter
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.R
-import com.yugioh.android.classes.CardItems
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.loader.SearchLoader
 import com.yugioh.android.utils.MiscUtils
@@ -23,25 +20,9 @@ import kotlinx.android.synthetic.main.fragment_package_cards.view.*
 class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, AdapterView.OnItemClickListener {
 
     internal var loader: SearchLoader? = null
-    internal var cSearchResult: Cursor? = null
-    internal var adapterSearchResult: SimpleCursorAdapter? = null
-    internal var itemRefresh: MenuItem? = null
-
-    private val hPack = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == 1) {
-                innerView.tvLoading.visibility = View.GONE
-                itemRefresh?.isEnabled = true
-                innerView.lvCards.isEnabled = true
-                val items = msg.obj as CardItems?
-                val bn = Bundle()
-                bn.putIntArray("ids", items?.cardIds)
-                loader?.setBundle(bn)
-                loader?.startLoading()
-            }
-            super.handleMessage(msg)
-        }
-    }
+    private var cSearchResult: Cursor? = null
+    private var adapterSearchResult: SimpleCursorAdapter? = null
+    private var itemRefresh: MenuItem? = null
 
     init {
         tabTitle = ResourceUtils.getString(R.string.package_cards)
@@ -83,7 +64,17 @@ class PackageCardsFragment : BaseFragment(), Loader.OnLoadCompleteListener<Curso
                 innerView.tvLoading.visibility = View.VISIBLE
                 itemRefresh?.isEnabled = false
                 innerView.lvCards.isEnabled = false
-                MiscUtils.loadCardsDataT(0, arguments.getString("id"), hPack, true)
+                MiscUtils.loadCardsDataT(0, arguments.getString("id"), true) {
+                    activity.runOnUiThread {
+                        innerView.tvLoading.visibility = View.GONE
+                        itemRefresh?.isEnabled = true
+                        innerView.lvCards.isEnabled = true
+                        val bn = Bundle()
+                        bn.putIntArray("ids", it?.cardIds)
+                        loader?.setBundle(bn)
+                        loader?.startLoading()
+                    }
+                }
             }
         }
         return true

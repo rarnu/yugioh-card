@@ -1,8 +1,6 @@
 package com.yugioh.android.fragments
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
@@ -13,20 +11,11 @@ import java.util.*
 
 class CoinDiceFragment : BaseFragment(), OnClickListener {
 
-    internal val h: Handler = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == 1) {
-                doClose()
-            }
-            super.handleMessage(msg)
-        }
-    }
-
     internal var tmrCloseWindow: Timer? = null
     internal var type = 0
     internal var count = 0
-    internal var _dice = intArrayOf(R.drawable.dice1, R.drawable.dice2, R.drawable.dice3, R.drawable.dice4, R.drawable.dice5, R.drawable.dice6)
-    internal var _coin = intArrayOf(R.drawable.coin1, R.drawable.coin2)
+    private var _dice = intArrayOf(R.drawable.dice1, R.drawable.dice2, R.drawable.dice3, R.drawable.dice4, R.drawable.dice5, R.drawable.dice6)
+    private var _coin = intArrayOf(R.drawable.coin1, R.drawable.coin2)
 
     override fun getBarTitle(): Int = R.string.page_tool
 
@@ -62,8 +51,9 @@ class CoinDiceFragment : BaseFragment(), OnClickListener {
 
             override fun run() {
                 tmrCloseWindow!!.cancel()
-                h.sendEmptyMessage(1)
-
+                activity.runOnUiThread {
+                    doClose()
+                }
             }
         }, 2000)
 

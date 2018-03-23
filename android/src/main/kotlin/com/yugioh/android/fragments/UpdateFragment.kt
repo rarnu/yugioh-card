@@ -4,97 +4,35 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.app.common.Actions
-import com.rarnu.base.utils.DownloadUtils
 import com.rarnu.base.utils.FileUtils
+import com.rarnu.base.utils.downloadAsync
+import com.rarnu.base.utils.unzip
 import com.yugioh.android.R
 import com.yugioh.android.classes.UpdateInfo
 import com.yugioh.android.database.YugiohDatabase
 import com.yugioh.android.database.YugiohUtils
 import com.yugioh.android.define.NetworkDefine
 import com.yugioh.android.define.PathDefine
-import com.yugioh.android.intf.IDestroyCallback
 import com.yugioh.android.intf.IUpdateIntf
 import com.yugioh.android.utils.UpdateUtils
 import com.yugioh.android.utils.YGOAPI
-import com.yugioh.android.utils.ZipUtils
 import kotlinx.android.synthetic.main.fragment_update.view.*
 import java.io.File
 import kotlin.concurrent.thread
 
-class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
+class UpdateFragment : BaseFragment(), OnClickListener {
 
-    internal val dbSource = PathDefine.DOWNLOAD_PATH + PathDefine.DATA_ZIP
-    internal val apkSource = PathDefine.DOWNLOAD_PATH + PathDefine.APK_NAME
-    internal var updateInfo: UpdateInfo? = null
+    private val dbSource = PathDefine.DOWNLOAD_PATH + PathDefine.DATA_ZIP
+    private val apkSource = PathDefine.DOWNLOAD_PATH + PathDefine.APK_NAME
+    private var updateInfo: UpdateInfo? = null
 
-    internal var hasData = YugiohDatabase.isDatabaseFileExists
-
-    private var hApkTask: Handler? = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (activity != null) {
-                when (msg.what) {
-                    Actions.WHAT_DOWNLOAD_START, Actions.WHAT_DOWNLOAD_PROGRESS -> {
-                        innerView.pbDownlaodingApk.max = msg.arg2
-                        innerView.pbDownlaodingApk.progress = msg.arg1
-                    }
-                    Actions.WHAT_DOWNLOAD_FINISH -> try {
-                        innerView.pbDownlaodingApk.visibility = View.GONE
-                        (activity as IUpdateIntf).setInProgress(false)
-                        updateInfo?.updateApk = -1
-                        updateCurrentStatus()
-                        updateDisabled(true)
-
-                    } catch (e: Exception) {
-
-                    }
-
-                }
-            }
-            super.handleMessage(msg)
-        }
-    }
-    private var hDataTask: Handler? = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            when (msg.what) {
-                Actions.WHAT_DOWNLOAD_START, Actions.WHAT_DOWNLOAD_PROGRESS -> {
-                    innerView.pbDownlaodingData.max = msg.arg2
-                    innerView.pbDownlaodingData.progress = msg.arg1
-                }
-                Actions.WHAT_DOWNLOAD_FINISH -> unzipDataT()
-            }
-            super.handleMessage(msg)
-        }
-    }
-    private val hUnzip = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == 1) {
-                innerView.pbDownlaodingData.visibility = View.GONE
-                (activity as IUpdateIntf).setInProgress(false)
-                updateInfo!!.updateData = 0
-                updateCurrentStatus()
-                updateDisabled(true)
-                confirmClose()
-            }
-            super.handleMessage(msg)
-        }
-    }
-
-    internal val hUpdate: Handler = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == 1) {
-                updateInfo = msg.obj as UpdateInfo
-                showUpdateInfo(updateInfo)
-            }
-            super.handleMessage(msg)
-        }
-    }
+    private var hasData = YugiohDatabase.isDatabaseFileExists
 
     override fun getBarTitle(): Int = R.string.page_update
 
@@ -119,24 +57,17 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
             fDownload.mkdirs()
         }
         getUpdateLogT()
-        UpdateUtils.checkUpdateT(activity, hUpdate)
+        UpdateUtils.checkUpdateT(activity) {
+            activity.runOnUiThread { showUpdateInfo(it) }
+        }
     }
 
     private fun getUpdateLogT() {
-        val hLog = object : Handler() {
-            override fun handleMessage(msg: Message) {
-                if (msg.what == 1) {
-                    innerView.tvUpdateLogValue?.text = msg.obj as String?
-                }
-                super.handleMessage(msg)
-            }
-        }
         thread {
             val ret = YGOAPI.updateLog
-            val msg = Message()
-            msg.what = 1
-            msg.obj = ret
-            hLog.sendMessage(msg)
+            activity.runOnUiThread {
+                innerView.tvUpdateLogValue?.text = ret
+            }
         }
     }
 
@@ -193,10 +124,21 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
             try {
                 YugiohUtils.closeDatabase(activity)
                 FileUtils.deleteFile(PathDefine.DATABASE_PATH)
-                ZipUtils.unzipFile(File(dbSource), PathDefine.ROOT_PATH)
+                unzip {
+                    zipPath = dbSource
+                    destPath = PathDefine.ROOT_PATH
+                    error { Log.e("UNZIP", "$it") }
+                }
                 FileUtils.deleteFile(dbSource)
                 YugiohUtils.newDatabase(activity)
-                hUnzip.sendEmptyMessage(1)
+                activity.runOnUiThread {
+                    innerView.pbDownlaodingData.visibility = View.GONE
+                    (activity as IUpdateIntf).setInProgress(false)
+                    updateInfo!!.updateData = 0
+                    updateCurrentStatus()
+                    updateDisabled(true)
+                    confirmClose()
+                }
             } catch (e: Exception) {
 
             }
@@ -237,14 +179,53 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
                 innerView.tvApkInfo.visibility = View.GONE
                 FileUtils.deleteFile(apkSource)
                 innerView.pbDownlaodingApk.visibility = View.VISIBLE
-                DownloadUtils.downloadFileT(activity, null, NetworkDefine.URL_APK, PathDefine.DOWNLOAD_PATH, PathDefine.APK_NAME, hApkTask)
+                downloadAsync(activity) {
+                    url = NetworkDefine.URL_APK
+                    localDir = PathDefine.DOWNLOAD_PATH
+                    localFile = PathDefine.APK_NAME
+                    progress { status, position, fileSize, _ ->
+                        activity.runOnUiThread {
+                            when (status) {
+                                Actions.WHAT_DOWNLOAD_START, Actions.WHAT_DOWNLOAD_PROGRESS -> {
+                                    innerView.pbDownlaodingApk.max = fileSize
+                                    innerView.pbDownlaodingApk.progress = position
+                                }
+                                Actions.WHAT_DOWNLOAD_FINISH -> try {
+                                    innerView.pbDownlaodingApk.visibility = View.GONE
+                                    (activity as IUpdateIntf).setInProgress(false)
+                                    updateInfo?.updateApk = -1
+                                    updateCurrentStatus()
+                                    updateDisabled(true)
+                                } catch (e: Exception) {
+
+                                }
+
+                            }
+                        }
+                    }
+                }
             }
             R.id.btnUpdateData -> {
                 (activity as IUpdateIntf).setUpdateFile(PathDefine.DOWNLOAD_PATH, PathDefine.DATA_ZIP)
                 innerView.tvDataInfo.visibility = View.GONE
                 FileUtils.deleteFile(dbSource)
                 innerView.pbDownlaodingData.visibility = View.VISIBLE
-                DownloadUtils.downloadFileT(activity, null, NetworkDefine.URL_DATA, PathDefine.DOWNLOAD_PATH, PathDefine.DATA_ZIP, hDataTask)
+                downloadAsync(activity) {
+                    url = NetworkDefine.URL_DATA
+                    localDir = PathDefine.DOWNLOAD_PATH
+                    localFile = PathDefine.DATA_ZIP
+                    progress { status, position, fileSize, _ ->
+                        activity.runOnUiThread {
+                            when (status) {
+                                Actions.WHAT_DOWNLOAD_START, Actions.WHAT_DOWNLOAD_PROGRESS -> {
+                                    innerView.pbDownlaodingData.max = fileSize
+                                    innerView.pbDownlaodingData.progress = position
+                                }
+                                Actions.WHAT_DOWNLOAD_FINISH -> unzipDataT()
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -261,11 +242,6 @@ class UpdateFragment : BaseFragment(), IDestroyCallback, OnClickListener {
                 innerView.btnUpdateData.isEnabled = true
             }
         }
-    }
-
-    override fun doDestroyHandler() {
-        hApkTask = null
-        hDataTask = null
     }
 
     override fun getFragmentState(): Bundle? = null

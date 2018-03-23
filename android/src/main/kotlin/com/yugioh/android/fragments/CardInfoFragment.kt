@@ -18,14 +18,14 @@ import java.io.File
 
 class CardInfoFragment : BaseTabFragment() {
 
-    internal var itemFav: MenuItem? = null
-    internal var info: CardInfo? = null
+    private var itemFav: MenuItem? = null
+    private var info: CardInfo? = null
 
     init {
         tabTitle = ""
     }
 
-    @Suppress("DEPRECATION")
+    @Suppress("OverridingDeprecatedMember", "DEPRECATION")
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
         info = getActivity().intent.getSerializableExtra("cardinfo") as CardInfo

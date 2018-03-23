@@ -13,7 +13,7 @@ class SearchLoader(context: Context, private var bn: Bundle?) : BaseCursorLoader
     }
 
     override fun loadInBackground(): Cursor? {
-        var cSearchResult: Cursor?
+        val cSearchResult: Cursor?
         if (bn!!.containsKey("ids")) {
             val ids = bn!!.getIntArray("ids")
             cSearchResult = YugiohUtils.getCardsViaIds(context, ids)

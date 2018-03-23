@@ -6,9 +6,9 @@ import android.database.Cursor
 
 object FavUtils {
 
-    fun newFavDatabase(context: Context) = context.contentResolver.query(ContentUris.withAppendedId(FavProvider.CONTENT_URI, FavProvider.ACTION_NEW.toLong()), null, null, null, null)
+    fun newFavDatabase(context: Context) = context.contentResolver.query(ContentUris.withAppendedId(FavProvider.CONTENT_URI, FavProvider.ACTION_NEW.toLong()), null, null, null, null)!!
 
-    fun addFav(context: Context, id: Int) = context.contentResolver.insert(ContentUris.withAppendedId(FavProvider.CONTENT_URI, id.toLong()), null)
+    fun addFav(context: Context, id: Int) = context.contentResolver.insert(ContentUris.withAppendedId(FavProvider.CONTENT_URI, id.toLong()), null)!!
 
     fun removeFav(context: Context, id: Int) = context.contentResolver.delete(ContentUris.withAppendedId(FavProvider.CONTENT_URI, id.toLong()), null, null)
 

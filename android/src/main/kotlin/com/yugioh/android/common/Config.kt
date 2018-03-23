@@ -5,8 +5,8 @@ import com.rarnu.base.utils.ConfigUtils
 
 object Config {
 
-    private val KEY_FONT_SIZE = "key_font_size"
-    private val KEY_ASSIGNED_CARD = "key_assigned_card"
+    private const val KEY_FONT_SIZE = "key_font_size"
+    private const val KEY_ASSIGNED_CARD = "key_assigned_card"
 
     fun cfgGetFontSize(context: Context): Int = ConfigUtils.getIntConfig(context, KEY_FONT_SIZE, 15)!!
 

@@ -15,17 +15,13 @@ import kotlin.concurrent.thread
 
 object UpdateUtils {
 
-    fun checkUpdateT(context: Context, hHint: Handler) {
-        thread {
-            val dbVer = YugiohUtils.getDatabaseVersion(context)
-            val lastCardId = YugiohUtils.getLastCardId(context)
-            val ui = YGOAPI.findUpdate(context, dbVer, lastCardId)
-            val msg = Message()
-            msg.what = 1
-            msg.obj = ui
-            hHint.sendMessage(msg)
-        }
+    fun checkUpdateT(context: Context, callback: (UpdateInfo?) -> Unit) = thread {
+        val dbVer = YugiohUtils.getDatabaseVersion(context)
+        val lastCardId = YugiohUtils.getLastCardId(context)
+        val ui = YGOAPI.findUpdate(context, dbVer, lastCardId)
+        callback(ui)
     }
+
 
     fun updateLocalDatabase(context: Context) {
         thread {

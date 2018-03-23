@@ -9,10 +9,9 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.CursorAdapter
-import android.widget.ListView
 import android.widget.SimpleCursorAdapter
-import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
+import com.yugioh.android.R
 import com.yugioh.android.loader.LimitLoader
 import com.yugioh.android.utils.MiscUtils
 import kotlinx.android.synthetic.main.fragment_limit_detail.view.*
@@ -20,9 +19,9 @@ import kotlinx.android.synthetic.main.fragment_limit_detail.view.*
 open class LimitDetailFragment : BaseFragment(), OnItemClickListener, OnLoadCompleteListener<Cursor> {
 
     protected var detailType: Int = 0
-    internal var cLimit: Cursor? = null
-    internal var adapterLimit: SimpleCursorAdapter? = null
-    internal var loaderLimit: LimitLoader? = null
+    private var cLimit: Cursor? = null
+    private var adapterLimit: SimpleCursorAdapter? = null
+    private var loaderLimit: LimitLoader? = null
 
     override fun getBarTitle(): Int = R.string.lm_banned
 

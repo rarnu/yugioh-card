@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.ListView
 import android.widget.RelativeLayout
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.UIUtils
@@ -17,8 +16,8 @@ import kotlinx.android.synthetic.main.menu_left.view.*
 
 class LeftMenuFragment : BaseFragment(), OnItemClickListener {
 
-    internal var adapterCard: ArrayAdapter<String>? = null
-    internal var listCard: MutableList<String>? = null
+    private var adapterCard: ArrayAdapter<String>? = null
+    private var listCard: MutableList<String>? = null
 
     override fun getBarTitle(): Int = R.string.app_name
 

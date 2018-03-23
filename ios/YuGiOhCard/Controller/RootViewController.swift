@@ -30,7 +30,7 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.delegate = self
     }
     
-    func receivedNotification(notification: NSNotification) {
+    @objc func receivedNotification(notification: NSNotification) {
         let backImg = notification.object! as! String
         self.backgroundImage = UIImage(named: backImg)
     }

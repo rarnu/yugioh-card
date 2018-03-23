@@ -32,7 +32,7 @@ class DiceView: UIView {
         self.addSubview(self.imgDice!)
     }
     
-    func closeClicked(sender: AnyObject) {
+    @objc func closeClicked(sender: AnyObject) {
         self.delegate?.doneDice?()
     }
     

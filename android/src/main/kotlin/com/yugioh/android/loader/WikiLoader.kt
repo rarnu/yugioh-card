@@ -1,10 +1,8 @@
 package com.yugioh.android.loader
 
 import android.content.Context
-import android.util.Log
 import com.rarnu.base.app.BaseClassLoader
 import com.rarnu.base.utils.HttpMethod
-import com.rarnu.base.utils.HttpUtils
 import com.rarnu.base.utils.http
 import com.yugioh.android.define.NetworkDefine
 
@@ -33,6 +31,7 @@ class WikiLoader(context: Context): BaseClassLoader<String>(context) {
     }
 
     private fun replaceALink(s: String): String {
+        @Suppress("NAME_SHADOWING")
         var s = s
         var p: Int
         var pEnd: Int

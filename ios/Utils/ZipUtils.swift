@@ -15,7 +15,7 @@ class ZipUtils: NSObject {
         Thread.detachNewThreadSelector(#selector(doUncompress), toTarget: self, with: nil)
     }
     
-    func doUncompress() {
+    @objc func doUncompress() {
         var b = false
         if (self.delegate?.zipWillUnzip != nil) {
             b = self.delegate!.zipWillUnzip!()

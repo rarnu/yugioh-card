@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.fragment_feedback.view.*
 
 class FeedbackFragment : BaseFragment(), Loader.OnLoadCompleteListener<Boolean> {
 
-    internal var itemSend: MenuItem? = null
-    internal var sender: FeedbackSender? = null
+    private var itemSend: MenuItem? = null
+    private var sender: FeedbackSender? = null
 
     override fun getBarTitle(): Int = 0
 

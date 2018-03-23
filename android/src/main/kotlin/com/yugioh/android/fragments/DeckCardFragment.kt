@@ -15,8 +15,8 @@ import kotlinx.android.synthetic.main.fragment_deck_cards.view.*
 class DeckCardFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, AdapterView.OnItemClickListener {
 
     internal var loader: SearchLoader? = null
-    internal var cSearchResult: Cursor? = null
-    internal var adapterSearchResult: SimpleCursorAdapter? = null
+    private var cSearchResult: Cursor? = null
+    private var adapterSearchResult: SimpleCursorAdapter? = null
 
     override fun getBarTitle(): Int = 0
 

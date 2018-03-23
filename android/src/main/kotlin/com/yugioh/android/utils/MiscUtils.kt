@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Message
 import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.CardInfoActivity
-import com.yugioh.android.classes.CardInfo
 import com.yugioh.android.classes.CardItems
 import com.yugioh.android.database.YugiohUtils
 import com.yugioh.android.define.PathDefine
@@ -33,7 +32,7 @@ object MiscUtils {
      * *
      * @param h
      */
-    fun loadCardsDataT(type: Int, id: String, h: Handler?, refresh: Boolean) {
+    fun loadCardsDataT(type: Int, id: String, refresh: Boolean, callback:(CardItems?) -> Unit) {
         thread {
 
             var items: CardItems? = null
@@ -74,10 +73,7 @@ object MiscUtils {
             if (items != null) {
                 items.id = id
             }
-            val msg = Message()
-            msg.what = 1
-            msg.obj = items
-            h?.sendMessage(msg)
+            callback(items)
         }
 
     }

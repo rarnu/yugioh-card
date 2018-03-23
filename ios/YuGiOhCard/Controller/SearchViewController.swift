@@ -167,12 +167,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, CardAttribute
     }
     
     
-    func searchClick(sender: AnyObject) {
+    @objc func searchClick(sender: AnyObject) {
         self.view.endEditing(true)
         self.pushViewController()
     }
     
-    func cancelClick(sender: AnyObject) {
+    @objc func cancelClick(sender: AnyObject) {
         self.resetData()
     }
     

@@ -106,7 +106,8 @@ class SearchResultViewController: UITableViewController {
                             sql += "linkArrow like '%\(s)%' or "
                         }
                         let idx = sql.index(sql.startIndex, offsetBy: sql.characters.count - 3)
-                        sql = sql.substring(to: idx)
+                        // sql = sql.substring(to: idx)
+                        sql = String(sql[..<idx])
                         sql += " ) "
                     }
                 }

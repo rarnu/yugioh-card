@@ -3,8 +3,6 @@ package com.yugioh.android.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -25,10 +23,10 @@ import kotlin.concurrent.thread
 @Suppress("UNCHECKED_CAST")
 class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListener {
 
-    internal var itemSearch: MenuItem? = null
-    internal var itemReset: MenuItem? = null
-    internal var linkCount = 1
-    internal var linkArrow = ""
+    private var itemSearch: MenuItem? = null
+    private var itemReset: MenuItem? = null
+    private var linkCount = 1
+    private var linkArrow = ""
 
     init {
         tabTitle = ResourceUtils.getString(R.string.page_search)
@@ -59,20 +57,6 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
 
     private fun setSpinner(sp: Spinner?, type: Int) {
         sp?.onItemSelectedListener = this
-        val hSpin = object : Handler() {
-            override fun handleMessage(msg: Message) {
-                if (msg.what == 1) {
-                    val list = msg.obj as List<String>?
-                    if (list != null) {
-                        val adapter = ArrayAdapter(activity, R.layout.item_spin, list)
-                        sp?.adapter = adapter
-                        sp?.setSelection(0)
-                    }
-                }
-                super.handleMessage(msg)
-            }
-        }
-
         thread {
             var list: MutableList<String>? = null
             when (type) {
@@ -111,10 +95,13 @@ class SearchFragment : BaseFragment(), OnItemSelectedListener, View.OnClickListe
                 }
             }
 
-            val msg = Message()
-            msg.what = 1
-            msg.obj = list
-            hSpin.sendMessage(msg)
+            activity.runOnUiThread {
+                if (list != null) {
+                    val adapter = ArrayAdapter(activity, R.layout.item_spin, list)
+                    sp?.adapter = adapter
+                    sp?.setSelection(0)
+                }
+            }
         }
     }
 

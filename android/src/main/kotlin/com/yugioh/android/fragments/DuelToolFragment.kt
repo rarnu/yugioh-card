@@ -6,23 +6,21 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.yugioh.android.CoinDiceActivity
-import com.yugioh.android.R
 import com.rarnu.base.app.BaseFragment
 import com.rarnu.base.utils.ConfigUtils
 import com.rarnu.base.utils.UIUtils
+import com.yugioh.android.CoinDiceActivity
+import com.yugioh.android.R
 import com.yugioh.android.common.MenuIds
 import kotlinx.android.synthetic.main.fragment_tool.view.*
 
 class DuelToolFragment : BaseFragment(), OnClickListener {
 
-    internal var itemResetDuel: MenuItem? = null
-    private var Player1Life = 8000
-    private var Player2Life = 8000
+    private var itemResetDuel: MenuItem? = null
+    private var player1Life = 8000
+    private var player2Life = 8000
 
     override fun getBarTitle(): Int = R.string.lm_tool
 
@@ -89,10 +87,10 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             MenuIds.MENUID_RESET_DUEL -> {
-                Player1Life = 8000
-                Player2Life = 8000
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player1Life = 8000
+                player2Life = 8000
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
             }
         }
         return true
@@ -111,19 +109,19 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
     }
 
     private fun backupLifePoints() {
-        ConfigUtils.setIntConfig(activity, KEY_P1LIFE, Player1Life)
-        ConfigUtils.setIntConfig(activity, KEY_P2LIFE, Player2Life)
+        ConfigUtils.setIntConfig(activity, KEY_P1LIFE, player1Life)
+        ConfigUtils.setIntConfig(activity, KEY_P2LIFE, player2Life)
     }
 
     private fun restoreLifePoints() {
-        Player1Life = ConfigUtils.getIntConfig(activity, KEY_P1LIFE, 8000)!!
-        Player2Life = ConfigUtils.getIntConfig(activity, KEY_P2LIFE, 8000)!!
-        setLifePoint(innerView.tvPlayer1Life, Player1Life)
-        setLifePoint(innerView.tvPlayer2Life, Player2Life)
+        player1Life = ConfigUtils.getIntConfig(activity, KEY_P1LIFE, 8000)!!
+        player2Life = ConfigUtils.getIntConfig(activity, KEY_P2LIFE, 8000)!!
+        setLifePoint(innerView.tvPlayer1Life, player1Life)
+        setLifePoint(innerView.tvPlayer2Life, player2Life)
     }
 
     override fun onClick(v: View) {
-        var point: Int
+        val point: Int
         var life: Int
 
         when (v.id) {
@@ -133,8 +131,8 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
                     return
                 }
                 point = Integer.parseInt(innerView.etP1Life.text.toString())
-                Player1Life += point
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
+                player1Life += point
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
                 innerView.etP1Life.setText("")
             }
             R.id.btnP2Add -> {
@@ -143,8 +141,8 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
                     return
                 }
                 point = Integer.parseInt(innerView.etP2Life.text.toString())
-                Player2Life += point
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player2Life += point
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
                 innerView.etP2Life.setText("")
             }
             R.id.btnP1Minus -> {
@@ -153,11 +151,11 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
                     return
                 }
                 point = Integer.parseInt(innerView.etP1Life.text.toString())
-                Player1Life -= point
-                if (Player1Life < 0) {
-                    Player1Life = 0
+                player1Life -= point
+                if (player1Life < 0) {
+                    player1Life = 0
                 }
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
                 innerView.etP1Life.setText("")
             }
             R.id.btnP2Minus -> {
@@ -166,11 +164,11 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
                     return
                 }
                 point = Integer.parseInt(innerView.etP2Life.text.toString())
-                Player2Life -= point
-                if (Player2Life < 0) {
-                    Player2Life = 0
+                player2Life -= point
+                if (player2Life < 0) {
+                    player2Life = 0
                 }
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
                 innerView.etP2Life.setText("")
             }
             R.id.btnP1Set -> {
@@ -179,8 +177,8 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
                     return
                 }
                 point = Integer.parseInt(innerView.etP1Life.text.toString())
-                Player1Life = point
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
+                player1Life = point
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
                 innerView.etP1Life.setText("")
             }
             R.id.btnP2Set -> {
@@ -189,68 +187,68 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
                     return
                 }
                 point = Integer.parseInt(innerView.etP2Life.text.toString())
-                Player2Life = point
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player2Life = point
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
                 innerView.etP2Life.setText("")
             }
 
             R.id.btnP1Half -> {
-                if (Player1Life % 2 != 0) {
-                    Player1Life += 1
+                if (player1Life % 2 != 0) {
+                    player1Life += 1
                 }
-                Player1Life /= 2
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
+                player1Life /= 2
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
             }
 
             R.id.btnP2Half -> {
-                if (Player2Life % 2 != 0) {
-                    Player2Life += 1
+                if (player2Life % 2 != 0) {
+                    player2Life += 1
                 }
-                Player2Life /= 2
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player2Life /= 2
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
             }
 
             R.id.btnP1Double -> {
-                Player1Life *= 2
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
+                player1Life *= 2
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
             }
 
             R.id.btnP2Double -> {
-                Player2Life *= 2
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player2Life *= 2
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
             }
             R.id.btnP1Divide -> {
-                life = Player1Life + Player2Life
+                life = player1Life + player2Life
                 if (life % 2 != 0) {
                     life += 1
                 }
                 life /= 2
-                Player1Life = life
-                Player2Life = life
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player1Life = life
+                player2Life = life
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
             }
 
             R.id.btnP2Divide -> {
-                life = Player1Life + Player2Life
+                life = player1Life + player2Life
                 if (life % 2 != 0) {
                     life += 1
                 }
                 life /= 2
-                Player1Life = life
-                Player2Life = life
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player1Life = life
+                player2Life = life
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
             }
 
             R.id.btnP1Opt -> {
-                Player1Life = Player2Life
-                setLifePoint(innerView.tvPlayer1Life, Player1Life)
+                player1Life = player2Life
+                setLifePoint(innerView.tvPlayer1Life, player1Life)
             }
 
             R.id.btnP2Opt -> {
-                Player2Life = Player1Life
-                setLifePoint(innerView.tvPlayer2Life, Player2Life)
+                player2Life = player1Life
+                setLifePoint(innerView.tvPlayer2Life, player2Life)
             }
 
             R.id.btnDice -> {
@@ -274,8 +272,8 @@ class DuelToolFragment : BaseFragment(), OnClickListener {
     override fun getFragmentState(): Bundle? = null
 
     companion object {
-        private val KEY_P1LIFE = "key_p1_life"
-        private val KEY_P2LIFE = "key_p2_life"
+        private const val KEY_P1LIFE = "key_p1_life"
+        private const val KEY_P2LIFE = "key_p2_life"
     }
 
 }

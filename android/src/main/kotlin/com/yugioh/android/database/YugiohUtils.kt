@@ -3,21 +3,17 @@ package com.yugioh.android.database
 import android.content.ContentUris
 import android.content.Context
 import android.database.Cursor
-import android.util.Log
 import com.yugioh.android.R
 import com.yugioh.android.classes.CardInfo
-
-import java.lang.reflect.Field
-import java.lang.reflect.Method
 
 object YugiohUtils {
 
     fun closeDatabase(context: Context) =
-            context.contentResolver.query(ContentUris.withAppendedId(YugiohProvider.CONTENT_URI, YugiohProvider.ACTIONID_CLOSEDATABASE.toLong()), null, null, null, null)
+            context.contentResolver.query(ContentUris.withAppendedId(YugiohProvider.CONTENT_URI, YugiohProvider.ACTIONID_CLOSEDATABASE.toLong()), null, null, null, null)!!
 
 
     fun newDatabase(context: Context) =
-            context.contentResolver.query(ContentUris.withAppendedId(YugiohProvider.CONTENT_URI, YugiohProvider.ACTIONID_NEWDATABASE.toLong()), null, null, null, null)
+            context.contentResolver.query(ContentUris.withAppendedId(YugiohProvider.CONTENT_URI, YugiohProvider.ACTIONID_NEWDATABASE.toLong()), null, null, null, null)!!
 
 
     fun getOneCard(context: Context, cardId: Int): CardInfo? {
@@ -132,18 +128,18 @@ object YugiohUtils {
             argCnt++
         }
         if (cardAtk != "") {
-            if (isNumeric(cardAtk)) {
-                where += " and atkValue=?"
+            where += if (isNumeric(cardAtk)) {
+                " and atkValue=?"
             } else {
-                where += " and atk=?"
+                " and atk=?"
             }
             argCnt++
         }
         if (cardDef != "") {
-            if (isNumeric(cardDef)) {
-                where += " and defValue=?"
+            where += if (isNumeric(cardDef)) {
+                " and defValue=?"
             } else {
-                where += " and def=?"
+                " and def=?"
             }
             argCnt++
         }
@@ -232,9 +228,9 @@ object YugiohUtils {
             args[argId] = "%$cardEffect%"
             argId++
         }
-        var LogArg = ""
+        var logArg = ""
         for (l in args) {
-            LogArg += l + ", "
+            logArg += l + ", "
         }
         return context.contentResolver.query(ContentUris.withAppendedId(YugiohProvider.CONTENT_URI, YugiohProvider.ACTIONID_SEARCH.toLong()), arrayOf("_id", "name", "sCardType"), where, args, null)
 
@@ -281,7 +277,7 @@ object YugiohUtils {
         return context.contentResolver.query(ContentUris.withAppendedId(YugiohProvider.CONTENT_URI, YugiohProvider.ACTIONID_SEARCH.toLong()), arrayOf("_id", "name", "sCardType"), where, null, null)
     }
 
-    fun cursorToCardInfo(c: Cursor): CardInfo {
+    private fun cursorToCardInfo(c: Cursor): CardInfo {
 
         val info = CardInfo()
         try {

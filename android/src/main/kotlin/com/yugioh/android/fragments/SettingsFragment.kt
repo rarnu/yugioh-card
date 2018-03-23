@@ -4,8 +4,6 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.view.Menu
 import android.view.View
 import android.view.View.OnClickListener
@@ -21,7 +19,7 @@ import kotlin.concurrent.thread
 
 class SettingsFragment : BaseFragment(), OnClickListener {
 
-    internal var fontSize = -1
+    private var fontSize = -1
 
     override fun getBarTitle(): Int = R.string.settings
 
@@ -48,22 +46,12 @@ class SettingsFragment : BaseFragment(), OnClickListener {
     }
 
     private fun getDirSizeT() {
-        val hSize = object : Handler() {
-            override fun handleMessage(msg: Message) {
-                if (msg.what == 1) {
-                    innerView.tvData.text = "${msg.obj as Long} MB"
-                }
-                super.handleMessage(msg)
-            }
-        }
-
         thread {
             var size: Long = FileUtils.getDirSize(PathDefine.ROOT_PATH)
             size /= (1024 * 1024).toLong()
-            val msg = Message()
-            msg.what = 1
-            msg.obj = size
-            hSize.sendMessage(msg)
+            activity.runOnUiThread {
+                innerView.tvData.text = "$size MB"
+            }
         }
     }
 
@@ -99,22 +87,15 @@ class SettingsFragment : BaseFragment(), OnClickListener {
                 .show()
     }
 
-    private val hDelete = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == 1) {
-                getDirSizeT()
-            }
-            super.handleMessage(msg)
-        }
-    }
-
     private fun doDeleteImageT() {
         thread {
             val f = File(PathDefine.PICTURE_PATH)
             for (s in f.list()) {
                 File(PathDefine.PICTURE_PATH + s).delete()
             }
-            hDelete.sendEmptyMessage(1)
+            activity.runOnUiThread {
+                getDirSizeT()
+            }
         }
     }
 

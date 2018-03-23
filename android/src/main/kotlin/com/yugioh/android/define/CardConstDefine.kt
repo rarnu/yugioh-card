@@ -2,14 +2,14 @@ package com.yugioh.android.define
 
 object CardConstDefine {
 
-    val DEFID_CARDRACE = 1
-    val DEFID_CARDBELONGS = 2
-    val DEFID_CARDTYPE = 3
-    val DEFID_CARDATTRITUBE = 4
-    val DEFID_CARDLEVEL = 5
-    val DEFID_CARDRARE = 6
-    val DEFID_CARDLIMIT = 7
-    val DEFID_CARDTUNNER = 8
+    const val DEFID_CARDRACE = 1
+    const val DEFID_CARDBELONGS = 2
+    const val DEFID_CARDTYPE = 3
+    const val DEFID_CARDATTRITUBE = 4
+    const val DEFID_CARDLEVEL = 5
+    const val DEFID_CARDRARE = 6
+    const val DEFID_CARDLIMIT = 7
+    const val DEFID_CARDTUNNER = 8
 
     val cardRace: MutableList<String>
         get() = getDefine(CardRace)

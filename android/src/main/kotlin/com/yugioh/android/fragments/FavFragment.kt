@@ -15,8 +15,8 @@ import kotlinx.android.synthetic.main.fragment_myfav.view.*
 class FavFragment : BaseFragment(), Loader.OnLoadCompleteListener<Cursor>, AdapterView.OnItemClickListener {
 
     internal var loader: FavLoader? = null
-    internal var cSearch: Cursor? = null
-    internal var adapterSearch: SimpleCursorAdapter? = null
+    private var cSearch: Cursor? = null
+    private var adapterSearch: SimpleCursorAdapter? = null
 
     override fun getBarTitle(): Int = R.string.lm_myfav
 

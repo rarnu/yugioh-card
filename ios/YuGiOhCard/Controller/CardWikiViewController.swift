@@ -26,7 +26,7 @@ class CardWikiViewController: UIViewController, HttpUtilsDelegate {
         hu.get(url: url)
     }
     
-    func handleWikiData(data: Data) {
+    @objc func handleWikiData(data: Data) {
         self.wvWiki?.load(data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: NSURL(string: BASE_OCG_URL)! as URL)
     }
 

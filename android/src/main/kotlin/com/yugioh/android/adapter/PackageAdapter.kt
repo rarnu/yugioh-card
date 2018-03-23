@@ -11,7 +11,7 @@ import com.yugioh.android.R
 import com.yugioh.android.classes.PackageItem
 import kotlinx.android.synthetic.main.item_package.view.*
 
-class PackageAdapter : BaseAdapter<PackageItem, PackageHolder> {
+class PackageAdapter(ctx: Context, list: MutableList<PackageItem>?) : BaseAdapter<PackageItem, PackageHolder>(ctx, list) {
 
     override fun fillHolder(baseVew: View, holder: PackageHolder, item: PackageItem) {
         holder.tvPackName?.text = item.name
@@ -38,12 +38,12 @@ class PackageAdapter : BaseAdapter<PackageItem, PackageHolder> {
     private var allpTitle: AbsListView.LayoutParams? = null
     private var allpList: AbsListView.LayoutParams? = null
 
-    constructor(ctx: Context, list: MutableList<PackageItem>?) : super(ctx, list) {
-        allpTitle = AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, UIUtils.dip2px(24))
-        allpList = AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, UIUtils.dip2px(48))
-    }
-
     override fun getValueText(item: PackageItem): String? = ""
 
     override fun isEnabled(position: Int): Boolean = !list!![position].isPackageTitle
+
+    init {
+        allpTitle = AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, UIUtils.dip2px(24))
+        allpList = AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, UIUtils.dip2px(48))
+    }
 }

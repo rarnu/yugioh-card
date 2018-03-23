@@ -44,7 +44,7 @@ class CardPicViewController: UIViewController, HttpUtilsDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func downloadClick(sender: AnyObject) {
+    @objc func downloadClick(sender: AnyObject) {
         self.aivDownload!.isHidden = false
         self.btnDownload!.isHidden = true
         let hu = HttpUtils()

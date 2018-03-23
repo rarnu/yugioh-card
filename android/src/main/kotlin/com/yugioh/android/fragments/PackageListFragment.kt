@@ -3,8 +3,6 @@ package com.yugioh.android.fragments
 import android.content.Intent
 import android.content.Loader
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,7 +13,6 @@ import com.rarnu.base.utils.ResourceUtils
 import com.yugioh.android.PackageCardsActivity
 import com.yugioh.android.R
 import com.yugioh.android.adapter.PackageAdapter
-import com.yugioh.android.classes.CardItems
 import com.yugioh.android.classes.PackageItem
 import com.yugioh.android.common.MenuIds
 import com.yugioh.android.loader.PackageLoader
@@ -27,29 +24,7 @@ class PackageListFragment : BaseFragment(), AdapterView.OnItemClickListener, Loa
     internal var loader: PackageLoader? = null
     internal var adapter: PackageAdapter? = null
     internal var list: MutableList<PackageItem>? = null
-    internal var itemRefresh: MenuItem? = null
-
-    private val hPack = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == 1) {
-                innerView.lvPackage.isEnabled = true
-                innerView.tvLoading.visibility = View.GONE
-                val bn = Bundle()
-                val items = msg.obj as CardItems?
-                if (items != null) {
-                    bn.putIntArray("ids", items.cardIds)
-                    bn.putString("pack", items.packageName)
-                    bn.putString("id", items.id)
-                    val inCards = Intent(activity, PackageCardsActivity::class.java)
-                    inCards.putExtras(bn)
-                    startActivity(inCards)
-                } else {
-                    Toast.makeText(activity, R.string.package_cannot_load, Toast.LENGTH_LONG).show()
-                }
-            }
-            super.handleMessage(msg)
-        }
-    }
+    private var itemRefresh: MenuItem? = null
 
     init {
         tabTitle = ResourceUtils.getString(R.string.package_list)
@@ -108,7 +83,23 @@ class PackageListFragment : BaseFragment(), AdapterView.OnItemClickListener, Loa
         innerView.tvLoading.visibility = View.VISIBLE
         innerView.lvPackage.isEnabled = false
         val item = list!![position]
-        MiscUtils.loadCardsDataT(0, item.id, hPack, false)
+        MiscUtils.loadCardsDataT(0, item.id, false) {
+            activity.runOnUiThread {
+                innerView.lvPackage.isEnabled = true
+                innerView.tvLoading.visibility = View.GONE
+                val bn = Bundle()
+                if (it != null) {
+                    bn.putIntArray("ids", it.cardIds)
+                    bn.putString("pack", it.packageName)
+                    bn.putString("id", it.id)
+                    val inCards = Intent(activity, PackageCardsActivity::class.java)
+                    inCards.putExtras(bn)
+                    startActivity(inCards)
+                } else {
+                    Toast.makeText(activity, R.string.package_cannot_load, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     override fun onLoadComplete(loader: Loader<MutableList<PackageItem>?>?, data: MutableList<PackageItem>?) {

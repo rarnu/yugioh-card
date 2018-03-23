@@ -54,12 +54,12 @@ class YugiohProvider : ContentProvider() {
     companion object {
 
         val CONTENT_URI = Uri.parse("content://com.yugioh.card")!!
-        val ACTIONID_CLOSEDATABASE = -99
-        val ACTIONID_NEWDATABASE = -98
-        val ACTIONID_CARDCOUNT = -4
-        val ACTIONID_TOP100 = -2
-        val ACTIONID_SEARCH = -1
-        val ACTIONID_VERSION = -5
+        const val ACTIONID_CLOSEDATABASE = -99
+        const val ACTIONID_NEWDATABASE = -98
+        const val ACTIONID_CARDCOUNT = -4
+        const val ACTIONID_TOP100 = -2
+        const val ACTIONID_SEARCH = -1
+        const val ACTIONID_VERSION = -5
     }
 
 }

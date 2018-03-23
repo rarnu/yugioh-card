@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.fragment_auto_name.view.*
 
 class AutoNameFragment : BaseFragment(), AdapterView.OnItemClickListener, View.OnClickListener, Loader.OnLoadCompleteListener<Cursor> {
 
-    internal var cSearchResult: Cursor? = null
-    internal var adapterSearchResult: SimpleCursorAdapter? = null
+    private var cSearchResult: Cursor? = null
+    private var adapterSearchResult: SimpleCursorAdapter? = null
     internal var loader: AutoNameLoader? = null
 
     override fun getBarTitle(): Int = 0

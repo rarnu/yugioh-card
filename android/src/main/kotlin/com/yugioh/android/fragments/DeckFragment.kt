@@ -25,27 +25,6 @@ class DeckFragment : BaseFragment(), AdapterView.OnItemClickListener, Loader.OnL
     internal var list: MutableList<DeckItem>? = null
     internal var loader: DeckLoader? = null
 
-    private val hDeck = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == 1) {
-                innerView.lvDeck.isEnabled = true
-                innerView.tvLoading.visibility = View.GONE
-                val bn = Bundle()
-                val items = msg.obj as CardItems?
-                if (items != null) {
-                    bn.putIntArray("ids", items.cardIds)
-                    bn.putString("pack", items.packageName)
-                    val inCards = Intent(activity, DeckCardActivity::class.java)
-                    inCards.putExtras(bn)
-                    startActivity(inCards)
-                } else {
-                    Toast.makeText(activity, R.string.package_cannot_load, Toast.LENGTH_LONG).show()
-                }
-            }
-            super.handleMessage(msg)
-        }
-    }
-
     override fun getBarTitle(): Int = R.string.lm_deck
 
     override fun getBarTitleWithPath(): Int = R.string.lm_deck
@@ -84,7 +63,22 @@ class DeckFragment : BaseFragment(), AdapterView.OnItemClickListener, Loader.OnL
         innerView.lvDeck.isEnabled = false
         innerView.tvLoading.visibility = View.VISIBLE
         val (id1) = list!![position]
-        MiscUtils.loadCardsDataT(1, id1, hDeck, false)
+        MiscUtils.loadCardsDataT(1, id1, false) {
+            activity.runOnUiThread {
+                innerView.lvDeck.isEnabled = true
+                innerView.tvLoading.visibility = View.GONE
+                val bn = Bundle()
+                if (it != null) {
+                    bn.putIntArray("ids", it.cardIds)
+                    bn.putString("pack", it.packageName)
+                    val inCards = Intent(activity, DeckCardActivity::class.java)
+                    inCards.putExtras(bn)
+                    startActivity(inCards)
+                } else {
+                    Toast.makeText(activity, R.string.package_cannot_load, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     override fun onLoadComplete(loader: Loader<MutableList<DeckItem>?>?, data: MutableList<DeckItem>?) {

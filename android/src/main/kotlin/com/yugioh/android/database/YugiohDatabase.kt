@@ -6,40 +6,23 @@ import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
-import android.os.Handler
-import android.os.Message
 import com.rarnu.base.app.common.Actions
 import com.rarnu.base.utils.FileUtils
 import com.yugioh.android.define.PathDefine
 import java.io.File
 
-class YugiohDatabase {
+class YugiohDatabase(ctx: Context) {
 
-    private var context: Context? = null
     private var database: SQLiteDatabase? = null
-
-    private val hCopy = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            if (msg.what == Actions.WHAT_COPY_FINISH) {
-                database = SQLiteDatabase.openDatabase(PathDefine.DATABASE_PATH, null, SQLiteDatabase.OPEN_READONLY)
-                context?.sendBroadcast(Intent(com.yugioh.android.common.Actions.ACTION_EXTRACT_DATABASE_COMPLETE))
-            }
-            super.handleMessage(msg)
-        }
-    }
-
-    constructor(ctx: Context) {
-        this.context = ctx
-        val fDb = File(PathDefine.DATABASE_PATH)
-        if (!fDb.exists()) {
-            asyncCopy(ctx)
-        }
-        database = SQLiteDatabase.openDatabase(PathDefine.DATABASE_PATH, null, SQLiteDatabase.OPEN_READONLY)
-    }
 
     private fun asyncCopy(context: Context) {
         context.sendBroadcast(Intent(com.yugioh.android.common.Actions.ACTION_EXTRACT_DATABASE))
-        FileUtils.copyAssetFile(context, "yugioh.db", PathDefine.ROOT_PATH, hCopy)
+        FileUtils.copyAssetFile(context, "yugioh.db", PathDefine.ROOT_PATH) { status, _, _ ->
+            if (status == Actions.WHAT_COPY_FINISH) {
+                database = SQLiteDatabase.openDatabase(PathDefine.DATABASE_PATH, null, SQLiteDatabase.OPEN_READONLY)
+                context.sendBroadcast(Intent(com.yugioh.android.common.Actions.ACTION_EXTRACT_DATABASE_COMPLETE))
+            }
+        }
     }
 
     fun doQuery(uri: Uri?, projection: Array<String>?, selection: String?, selectionArgs: Array<String>?, sortOrder: String?): Cursor? {
@@ -79,6 +62,14 @@ class YugiohDatabase {
 
         val isDatabaseFileExists: Boolean
             get() = File(PathDefine.DATABASE_PATH).exists()
+    }
+
+    init {
+        val fDb = File(PathDefine.DATABASE_PATH)
+        if (!fDb.exists()) {
+            asyncCopy(ctx)
+        }
+        database = SQLiteDatabase.openDatabase(PathDefine.DATABASE_PATH, null, SQLiteDatabase.OPEN_READONLY)
     }
 
 }

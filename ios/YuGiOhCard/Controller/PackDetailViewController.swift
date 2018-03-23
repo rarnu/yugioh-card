@@ -42,7 +42,7 @@ class PackDetailViewController: UITableViewController, HttpUtilsDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func refreshClicked(sender: AnyObject) {
+    @objc func refreshClicked(sender: AnyObject) {
         let hu = HttpUtils()
         hu.delegate = self
         let packageCardUrl = String(format: URL_PACAKGE_CARD, self.packageId!)

@@ -12,7 +12,7 @@ import com.yugioh.android.intf.IUpdateIntf
 
 class UpdateActivity : BaseActivity(), IUpdateIntf {
 
-    internal var uf: UpdateFragment? = null
+    private var uf: UpdateFragment? = null
     private var inProgress = false
     private var localDir: String? = null
     private var localFile: String? = null
@@ -52,7 +52,6 @@ class UpdateActivity : BaseActivity(), IUpdateIntf {
                 .setMessage(R.string.update_downloading)
                 .setPositiveButton(R.string.ok) { _, _ ->
                     DownloadUtils.stopDownloadTask(localDir!!, localFile!!)
-                    uf?.doDestroyHandler()
                     finish()
                 }
                 .setNegativeButton(R.string.cancel, null)

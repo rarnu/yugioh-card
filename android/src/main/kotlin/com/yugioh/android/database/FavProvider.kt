@@ -50,8 +50,8 @@ class FavProvider : ContentProvider() {
 
     companion object {
         val CONTENT_URI = Uri.parse("content://com.yugioh.fav")!!
-        val ACTION_QUERY = 1
-        val ACTION_QUERY_ALL = 2
-        val ACTION_NEW = 3;
+        const val ACTION_QUERY = 1
+        const val ACTION_QUERY_ALL = 2
+        const val ACTION_NEW = 3
     }
 }

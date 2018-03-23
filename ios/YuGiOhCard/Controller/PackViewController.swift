@@ -37,7 +37,7 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
         super.didReceiveMemoryWarning()
     }
 
-    func refreshClicked(sender: AnyObject) {
+    @objc func refreshClicked(sender: AnyObject) {
         let hu = HttpUtils()
         hu.delegate = self
         hu.get(url: URL_PACKAGES)
@@ -92,10 +92,6 @@ class PackViewController: UITableViewController, HttpUtilsDelegate {
             FileUtils.writeTextFile(fileName: _packages!, savePath:_data_path!, fileContent:json)
             self.loadData(jsonData: json)
         }
-    }
-
-    func httpUtils(httpUtils: HttpUtils, receivedError err: String) {
-        
     }
     
     func loadData(jsonData: String) {

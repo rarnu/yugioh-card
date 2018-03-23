@@ -38,7 +38,7 @@ class AboutView: UIView {
         self.lblPublic!.text =  String(format: STR_PUBLIC_DATE, ApplicationUtils.getPublicDate())
     }
     
-    func tapped(sender: AnyObject) {
+    @objc func tapped(sender: AnyObject) {
         self.delegate?.aboutview?(view: self, tapped: true)
     }
 

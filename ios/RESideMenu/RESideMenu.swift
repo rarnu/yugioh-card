@@ -202,7 +202,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
         self.__showRightMenuViewController()
     }
     
-    func hideMenuViewController() {
+    @objc func hideMenuViewController() {
         self.__hideMenuViewControllerAnimated(animated: true)
     }
     
@@ -582,7 +582,7 @@ class RESideMenu: UIViewController, UIGestureRecognizerDelegate {
     // Pan gesture recognizer
     // =================================
     
-    func __panGestureRecognized(recognizer: UIPanGestureRecognizer) {
+    @objc func __panGestureRecognized(recognizer: UIPanGestureRecognizer) {
         self.delegate?.sideMenu?(sideMenu: self, didRecognizePanGesture: recognizer)
         if (!self.panGestureEnabled!) {
             return

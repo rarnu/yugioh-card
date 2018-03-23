@@ -44,8 +44,8 @@ object YGOAPI {
                 }
                 val json = JSONObject(ret)
                 val jarr = json.getJSONArray("data")
-                list = ArrayList<RecommandInfo>()
-                for (i in 0..jarr.length() - 1) {
+                list = ArrayList()
+                for (i in 0 until jarr.length()) {
                     val item = RecommandInfo()
                     item.id = jarr.getJSONObject(i).getInt("id")
                     item.name = jarr.getJSONObject(i).getString("name")
@@ -72,14 +72,14 @@ object YGOAPI {
                 }
                 val jarr = JSONArray(ret)
 
-                list = ArrayList<PackageItem>()
+                list = ArrayList()
                 var jobj: JSONObject?
                 var jarrPkg: JSONArray?
-                for (i in 0..jarr.length() - 1) {
+                for (i in 0 until jarr.length()) {
                     jobj = jarr.getJSONObject(i)
                     list.add(PackageItem(true, "", jobj!!.getString("serial")))
                     jarrPkg = jobj.getJSONArray("packages")
-                    for (j in 0..jarrPkg!!.length() - 1) {
+                    for (j in 0 until jarrPkg!!.length()) {
                         list.add(PackageItem(false, jarrPkg.getJSONObject(j).getString("id"), jarrPkg.getJSONObject(j).getString("packname")))
                     }
                 }
@@ -102,7 +102,7 @@ object YGOAPI {
             item.packageName = json.getString("name")
             val jarr = json.getJSONArray("cards")
             item.cardIds = IntArray(jarr.length())
-            for (i in 0..jarr.length() - 1) {
+            for (i in 0 until jarr.length()) {
                 item.cardIds!![i] = jarr.getInt(i)
             }
         } catch (e: Exception) {
@@ -134,6 +134,7 @@ object YGOAPI {
     }
 
     fun sendFeedback(context: Context, text: String?): Boolean {
+        @Suppress("NAME_SHADOWING")
         var text = text
         var ret = false
         try {

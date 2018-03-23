@@ -34,7 +34,7 @@ class CoinView: UIView {
         self.addSubview(self.imgCoin!)
     }
     
-    func closeClicked(sender: AnyObject) {
+    @objc func closeClicked(sender: AnyObject) {
         self.delegate?.doneCoin?()
     }
 

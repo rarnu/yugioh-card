@@ -30,6 +30,7 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
         // self.backgroundColor = UIColor.blackColor()
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.gray.cgColor
+        self.isUserInteractionEnabled = true
     
         self.toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 50))
         self.toolbar!.tintColor = UIColor.white
@@ -44,10 +45,12 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
         self.toolbar!.addSubview(splitLine)
     
         toolButton = UIButton(type: UIButtonType.system)
-        toolButton!.backgroundColor = UIColor.clear
-        toolButton!.frame = (CGRect(x: self.toolbar!.frame.size.width-50, y: 0, width: 50, height: self.toolbar!.frame.size.height))
-        toolButton!.setTitle(COMMON_DONE, for: [])
-        toolButton!.addTarget(self, action:#selector(doneClick(sender:)), for:UIControlEvents.touchDown)
+        toolButton?.backgroundColor = UIColor.red
+        toolButton?.frame = (CGRect(x: self.toolbar!.frame.size.width-50, y: 0, width: 50, height: self.toolbar!.frame.size.height))
+        toolButton?.setTitle(COMMON_DONE, for: [])
+        toolButton?.isUserInteractionEnabled = true
+        
+        // toolButton!.addTarget(self, action: #selector(doneClick(sender:)), for: UIControlEvents.touchUpInside)
         self.toolbar!.addSubview(toolButton!)
     
         self.picker = UIPickerView(frame: CGRect(x: 0, y: 51, width: self.frame.size.width, height: self.frame.size.height - 50))
@@ -59,6 +62,8 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
     
         self.addSubview(self.toolbar!)
         self.addSubview(self.picker!)
+        
+        toolButton?.addTarget(self, action: #selector(doneClick(sender:)), for: UIControlEvents.touchDown)
     }
     
     func setTitle(title: String) {
@@ -97,7 +102,7 @@ class CardAttributePicker: UIView, UIPickerViewDataSource, UIPickerViewDelegate 
         return lblView!
     }
     
-    func doneClick(sender: AnyObject) {
+    @objc func doneClick(sender: AnyObject) {
         let picked = self.pickObjects![self.picker!.selectedRow(inComponent: 0) % self.pickObjects!.count] as! String
         self.delegate?.pickDone?(picked: picked, textField: self.txtResult)
     }

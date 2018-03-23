@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_cardinfo_wiki.view.*
  */
 class CardInfoWikiFragment : BaseFragment(), View.OnClickListener, Loader.OnLoadCompleteListener<String> {
 
-    internal var info: CardInfo? = null
+    private var info: CardInfo? = null
     internal var loader: WikiLoader? = null
 
     init {

@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.fragment_cardinfo_card.view.*
 
 class CardInfoCardFragment : BaseFragment() {
 
-    internal var info: CardInfo? = null
-    internal var fontSize = -1
+    private var info: CardInfo? = null
+    private var fontSize = -1
 
     init {
         tabTitle = ResourceUtils.getString(R.string.page_cardinfo)

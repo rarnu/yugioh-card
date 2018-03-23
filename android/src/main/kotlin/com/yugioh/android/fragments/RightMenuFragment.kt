@@ -12,13 +12,12 @@ import com.rarnu.base.utils.UIUtils
 import com.yugioh.android.*
 import com.yugioh.android.adapter.RightMenuAdapter
 import com.yugioh.android.classes.RightMenuItem
-import com.yugioh.android.classes.UpdateInfo
 import kotlinx.android.synthetic.main.menu_right.view.*
 
 class RightMenuFragment : BaseFragment(), OnItemClickListener {
 
-    internal var listSettings: MutableList<RightMenuItem>? = null
-    internal var adapterSettings: RightMenuAdapter? = null
+    private var listSettings: MutableList<RightMenuItem>? = null
+    private var adapterSettings: RightMenuAdapter? = null
 
     override fun getBarTitle(): Int = R.string.app_name
 

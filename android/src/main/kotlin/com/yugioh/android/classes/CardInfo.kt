@@ -1,8 +1,6 @@
 package com.yugioh.android.classes
 
 import java.io.Serializable
-import java.lang.reflect.Field
-import java.lang.reflect.Method
 
 class CardInfo : Serializable {
 

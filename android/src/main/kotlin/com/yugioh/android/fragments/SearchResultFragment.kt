@@ -19,9 +19,9 @@ import kotlinx.android.synthetic.main.fragment_search_result.view.*
 
 class SearchResultFragment : BaseFragment(), OnItemClickListener, OnLoadCompleteListener<Cursor> {
 
-    internal var cSearchResult: Cursor? = null
-    internal var adapterSearchResult: SimpleCursorAdapter? = null
-    internal var loaderSearch: SearchLoader? = null
+    private var cSearchResult: Cursor? = null
+    private var adapterSearchResult: SimpleCursorAdapter? = null
+    private var loaderSearch: SearchLoader? = null
 
     init {
         tabTitle = ResourceUtils.getString(R.string.page_list)

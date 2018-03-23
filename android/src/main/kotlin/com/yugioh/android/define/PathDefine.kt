@@ -7,16 +7,16 @@ import java.io.File
 object PathDefine {
 
     val ROOT_PATH = Environment.getExternalStorageDirectory().absolutePath + "/.yugioh/"
-    val APK_NAME = "YuGiOhCard.apk"
-    val DATA_ZIP = "yugioh.zip"
-    val DATA_NAME = "yugioh.db"
-    val FAV_NAME = "fav.db"
+    const val APK_NAME = "YuGiOhCard.apk"
+    const val DATA_ZIP = "yugioh.zip"
+    private const val DATA_NAME = "yugioh.db"
+    private const val FAV_NAME = "fav.db"
     val DATABASE_PATH = ROOT_PATH + DATA_NAME
     val FAV_DATABASE_NAME = ROOT_PATH + FAV_NAME
     val PICTURE_PATH = ROOT_PATH + "images/"
     val DOWNLOAD_PATH = ROOT_PATH + "downloads/"
     val RECOMMAND_PATH = ROOT_PATH + "recommand/"
-    val PACK_PATH = ROOT_PATH + "pack/"
+    private val PACK_PATH = ROOT_PATH + "pack/"
     val DECK_PATH = ROOT_PATH + "deck/"
     val PACK_LIST = PACK_PATH + "list"
     val PACK_ITEM = PACK_PATH + "pack_%s"

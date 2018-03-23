@@ -16,7 +16,7 @@ class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener
 
     internal var list = arrayListOf("不限", "1", "2", "3", "4", "5", "6", "7", "8")
     internal var adapter: ArrayAdapter<String>? = null
-    internal var listArrow = arrayListOf(
+    private var listArrow = arrayListOf(
             LinkArrowItem(7, "↖", false),
             LinkArrowItem(8, "↑", false),
             LinkArrowItem(9, "↗", false),
@@ -27,7 +27,7 @@ class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener
             LinkArrowItem(2, "↓", false),
             LinkArrowItem(3, "↘", false)
     )
-    internal var adapterArrow: LinkArrowAdapter? = null
+    private var adapterArrow: LinkArrowAdapter? = null
 
     override fun getFragmentLayoutResId(): Int = R.layout.fragment_link_option
 
@@ -49,7 +49,7 @@ class LinkOptionFragment : BaseDialogFragment(), AdapterView.OnItemClickListener
         innerView.spLinkCount.setSelection(count)
         val arrow = activity.intent.extras.getString("arrow", "")
         val arrowArr = arrow.split(",")
-        (0..listArrow.size - 1).forEach {
+        (0 until listArrow.size).forEach {
             if (arrowArr.indexOf(listArrow[it].pos.toString()) != -1) {
                 listArrow[it].selected = true
             }

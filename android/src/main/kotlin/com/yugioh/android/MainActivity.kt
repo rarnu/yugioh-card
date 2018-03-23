@@ -25,7 +25,7 @@ import com.yugioh.android.utils.UpdateUtils
 
 class MainActivity : BaseSlidingActivity(), IMainIntf {
 
-    internal var currentPage = 0
+    private var currentPage = 0
     private val filterClose = IntentFilter(Actions.ACTION_CLOSE_MAIN)
     private val receiverClose = CloseReceiver()
     private val receiverDatabase = DatabaseMessageReceiver()
@@ -42,7 +42,7 @@ class MainActivity : BaseSlidingActivity(), IMainIntf {
         registerReceiver(receiverClose, filterClose)
     }
 
-    fun checkPermission() {
+    private fun checkPermission() {
         if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             initDatabase()
         } else {
@@ -52,7 +52,7 @@ class MainActivity : BaseSlidingActivity(), IMainIntf {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?) {
         if (permissions != null && grantResults != null) {
-            (0..permissions.size - 1).forEach {
+            (0 until permissions.size).forEach {
                 if (permissions[it] == Manifest.permission.WRITE_EXTERNAL_STORAGE && grantResults[it] == PackageManager.PERMISSION_GRANTED) {
                     initDatabase()
                 }
@@ -118,25 +118,22 @@ class MainActivity : BaseSlidingActivity(), IMainIntf {
             if (!f.isAdded) {
                 fragmentManager.beginTransaction().replace(R.id.fReplacement, f).commit()
             }
-            actionBar.title = getString((f as InnerFragment).getBarTitle())
+            actionBar.title = getString(f.getBarTitle())
         }
         if (needToggle) {
             toggle()
         }
     }
 
-    private fun getCurrentFragment(page: Int): Fragment {
-        var f: Fragment
-        when (page) {
-            1 -> f = LimitFragment()  // LIMIT
-            2 -> f = NewCardFragment()  // NEW CARD
-            3 -> f = PackageListFragment()  // PACKAGE
-            4 -> f = FavFragment()  // my fav
-            5 -> f = DuelToolFragment()  // DUEL TOOL
-            else -> f = SearchFragment()  // MAIN
-        }
-        return f
+    private fun getCurrentFragment(page: Int) = when (page) {
+        1 -> LimitFragment()  // LIMIT
+        2 -> NewCardFragment()  // NEW CARD
+        3 -> PackageListFragment()  // PACKAGE
+        4 -> FavFragment()  // my fav
+        5 -> DuelToolFragment()  // DUEL TOOL
+        else -> SearchFragment()  // MAIN
     }
+
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_MENU) {

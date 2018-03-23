@@ -30,12 +30,12 @@ class CardViewController: UITabBarController {
         super.didReceiveMemoryWarning()
     }
     
-    func likeClicked(sender: AnyObject) {
+    @objc func likeClicked(sender: AnyObject) {
         DatabaseUtils.favAdd(cardId: self.cardId!)
         self.navigationItem.rightBarButtonItem = unlikeButton!
     }
     
-    func unlikeClicked(sender: AnyObject) {
+    @objc func unlikeClicked(sender: AnyObject) {
         DatabaseUtils.favRemove(cardId: self.cardId!)
         self.navigationItem.rightBarButtonItem = likeButton!
     }
