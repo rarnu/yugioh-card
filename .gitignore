@@ -5,8 +5,11 @@
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control?
 #
 # Pods/
-.DS_*
+.DS_Store
+ios/build
 ios/Build
 android/build
-*.pyc
 .gradle/
+lib/
+ppas.sh
+
