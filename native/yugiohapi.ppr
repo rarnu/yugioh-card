@@ -1,0 +1,230 @@
+{.$DEFINE DEBUG}
+
+{$IFDEF DEBUG}
+program yugiohapi;
+{$ELSE}
+library yugiohapi;
+{$ENDIF}
+
+{$mode objfpc}{$H+}
+
+uses
+  Classes, sysutils, searchapi, JNI2;
+
+
+
+{$IFNDEF DEBUG}
+// common apis
+function cardSearch(
+  aname: PChar;
+  ajapname: PChar;
+  aenname: PChar;
+  arace: PChar;
+  aelement: PChar;
+  aatk: PChar;
+  adef: PChar;
+  alevel: PChar;
+  apendulum: PChar;
+  alink: PChar;
+  alinkarrow: PChar;
+  acardtype: PChar;
+  acardtype2: PChar;
+  aeffect: PChar;
+  apage: Integer): PChar; cdecl;
+var
+  ret: string;
+begin
+  ret := TSearchCard.search(
+    string(aname),
+    string(ajapname),
+    string(aenname),
+    string(arace),
+    string(aelement),
+    string(aatk),
+    string(adef),
+    string(alevel),
+    string(apendulum),
+    string(alink),
+    string(alinkarrow),
+    string(acardtype),
+    string(acardtype2),
+    string(aeffect),
+    apage);
+  Result := StrAlloc(ret.Length + 1);
+  strcopy(Result, PChar(ret));
+end;
+
+function cardDetail(acardid: PChar): PChar; cdecl;
+var
+  ret: string;
+begin
+  ret := TSearchCard.cardDetail(string(acardid));
+  Result := StrAlloc(ret.Length + 1);
+  strcopy(Result, PChar(ret));
+end;
+
+function cardAdjust(acardid: PChar): PChar; cdecl;
+var
+  ret: string;
+begin
+  ret := TSearchCard.cardAdjust(string(acardid));
+  Result := StrAlloc(ret.Length + 1);
+  strcopy(Result, PChar(ret));
+end;
+
+function cardWiki(acardid: PChar): PChar; cdecl;
+var
+  ret: string;
+begin
+  ret := TSearchCard.cardWiki(string(acardid));
+  Result := StrAlloc(ret.Length + 1);
+  strcopy(Result, PChar(ret));
+end;
+
+function cardLimit(): PChar; cdecl;
+var
+  ret: string;
+begin
+  ret := TSearchCard.limit();
+  Result := StrAlloc(ret.Length + 1);
+  strcopy(Result, PChar(ret));
+end;
+
+function cardPackageList(): PChar; cdecl;
+var
+  ret: string;
+begin
+  ret := TSearchCard.packageList();
+  Result := StrAlloc(ret.Length + 1);
+  strcopy(Result, PChar(ret));
+end;
+
+function cardPackageDetail(apackageid: PChar): PChar; cdecl;
+var
+  ret: string;
+begin
+  ret := TSearchCard.packageDetail(string(apackageid));
+  Result := StrAlloc(ret.Length + 1);
+  strcopy(Result, PChar(ret));
+end;
+
+// jni apis
+function Java_com_rarnu_yugioh_NativeAPI_cardSearch(env: PJNIEnv; obj: jobject;
+  aname: jstring;
+  ajapname: jstring;
+  aenname: jstring;
+  arace: jstring;
+  aelement: jstring;
+  aatk: jstring;
+  adef: jstring;
+  alevel: jstring;
+  apendulum: jstring;
+  alink: jstring;
+  alinkarrow: jstring;
+  acardtype: jstring;
+  acardtype2: jstring;
+  aeffect: jstring;
+  apage: jint): jstring; cdecl;
+begin
+  Exit(TJNIEnv.StringToJString(env, TSearchCard.search(
+    TJNIEnv.JStringToString(env, aname),
+    TJNIEnv.JStringToString(env, ajapname),
+    TJNIEnv.JStringToString(env, aenname),
+    TJNIEnv.JStringToString(env, arace),
+    TJNIEnv.JStringToString(env, aelement),
+    TJNIEnv.JStringToString(env, aatk),
+    TJNIEnv.JStringToString(env, adef),
+    TJNIEnv.JStringToString(env, alevel),
+    TJNIEnv.JStringToString(env, apendulum),
+    TJNIEnv.JStringToString(env, alink),
+    TJNIEnv.JStringToString(env, alinkarrow),
+    TJNIEnv.JStringToString(env, acardtype),
+    TJNIEnv.JStringToString(env, acardtype2),
+    TJNIEnv.JStringToString(env, aeffect),
+    apage
+  )));
+end;
+
+function Java_com_rarnu_yugioh_NativeAPI_cardDetail(env: PJNIEnv; obj: jobject; acardid: jstring): jstring; cdecl;
+begin
+  Exit(TJNIEnv.StringToJString(env, TSearchCard.cardDetail(TJNIEnv.JStringToString(env, acardid))));
+end;
+
+function Java_com_rarnu_yugioh_NativeAPI_cardAdjust(env: PJNIEnv; obj: jobject; acardid: jstring): jstring; cdecl;
+begin
+  Exit(TJNIEnv.StringToJString(env, TSearchCard.cardAdjust(TJNIEnv.JStringToString(env, acardid))));
+end;
+
+function Java_com_rarnu_yugioh_NativeAPI_cardWiki(env: PJNIEnv; obj: jobject; acardid: jstring): jstring; cdecl;
+begin
+  Exit(TJNIEnv.StringToJString(env, TSearchCard.cardWiki(TJNIEnv.JStringToString(env, acardid))));
+end;
+
+function Java_com_rarnu_yugioh_NativeAPI_cardLimit(env: PJNIEnv; obj: jobject): jstring; cdecl;
+begin
+  Exit(TJNIEnv.StringToJString(env, TSearchCard.limit()));
+end;
+
+function Java_com_rarnu_yugioh_NativeAPI_cardPackageList(env: PJNIEnv; obj: jobject): jstring; cdecl;
+begin
+  Exit(TJNIEnv.StringToJString(env, TSearchCard.packageList()));
+end;
+
+function Java_com_rarnu_yugioh_NativeAPI_cardPackageDetail(env: PJNIEnv; obj: jobject; apackageid: jstring): jstring; cdecl;
+begin
+  Exit(TJNIEnv.StringToJString(env, TSearchCard.packageDetail(TJNIEnv.JStringToString(env, apackageid))));
+end;
+
+// export apis
+exports
+  cardSearch,
+  Java_com_rarnu_yugioh_NativeAPI_cardSearch,
+  cardDetail,
+  Java_com_rarnu_yugioh_NativeAPI_cardDetail,
+  cardAdjust,
+  Java_com_rarnu_yugioh_NativeAPI_cardAdjust,
+  cardWiki,
+  Java_com_rarnu_yugioh_NativeAPI_cardWiki,
+  cardLimit,
+  Java_com_rarnu_yugioh_NativeAPI_cardLimit,
+  cardPackageList,
+  Java_com_rarnu_yugioh_NativeAPI_cardPackageList,
+  cardPackageDetail,
+  Java_com_rarnu_yugioh_NativeAPI_cardPackageDetail;
+
+{$ENDIF}
+
+{$IFDEF DEBUG}
+var
+  ret: string;
+{$ENDIF}
+begin
+  {$IFDEF DEBUG}
+  ret := TSearchCard.search('影灵衣', '', '', '', '', '', '', '', '', '', '', '', '', '', 1);
+  WriteLn(ret);
+
+  ret := TSearchCard.search('影灵衣', '', '', '', '', '', '', '', '', '', '', '', '', '', 2);
+  WriteLn(ret);
+
+  ret := TSearchCard.cardDetail('16sBe0');
+  WriteLn(ret);
+
+  ret := TSearchCard.cardAdjust('16sBe0');
+  WriteLn(ret);
+
+  ret := TSearchCard.cardWiki('16sBe0');
+  WriteLn(ret);
+
+  ret := TSearchCard.limit();
+  WriteLn(ret);
+
+  ret := TSearchCard.packageList();
+  WriteLn(ret);
+
+  ret := TSearchCard.packageDetail('/package/CP18/wwSYE');
+  WriteLn(ret);
+
+  {$ENDIF}
+
+end.
+

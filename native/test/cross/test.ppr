@@ -1,0 +1,16 @@
+program test;
+
+{$mode objfpc}{$H+}
+
+uses
+  Classes, sysutils, apiYugioh;
+
+var
+  ret: string;
+begin
+  ret := TYGOAPI.cardSearch('', '', '', '', '', '0', '0', '8', '', '', '', '', '', '', 1);
+  WriteLn(ret);
+  WriteLn('');
+
+end.
+
