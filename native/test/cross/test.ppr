@@ -8,9 +8,12 @@ uses
 var
   ret: string;
 begin
-  ret := TYGOAPI.cardSearch('', '', '', '', '', '0', '0', '8', '', '', '', '', '', '', 1);
+  ret := TYGOAPI.cardCommonSearch('a');
   WriteLn(ret);
-  WriteLn('');
+
+  // ret := TYGOAPI.cardSearch('', '', '', '', '', '0', '0', '8', '', '', '', '', '', '', 1);
+  // WriteLn(ret);
+  //WriteLn('');
 
 end.
 

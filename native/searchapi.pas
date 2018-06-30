@@ -5,7 +5,7 @@ unit searchapi;
 interface
 
 uses
-  Classes, SysUtils, fphttpclient, jsonparser, fpjson, jsonscanner;
+  Classes, SysUtils, fphttpclient, jsonparser, fpjson, jsonscanner, android;
 
 type
 
@@ -13,6 +13,9 @@ type
 
   TSearchCard = class
   public
+    // key: keyword
+    class function commonSearch(akey: string; apage: Integer): string;
+
     // name: card name
     // japname: japanese name
     // enname: english name
@@ -57,6 +60,31 @@ const
 
 
 { TSearchCard }
+
+class function TSearchCard.commonSearch(akey: string; apage: Integer): string;
+var
+  jsonstr: string = '';
+  httpstr: string;
+  u: string;
+begin
+  with TFPHTTPClient.Create(nil) do begin
+    try
+      u := BASE_URL + '/search/' + akey + '/' + apage.ToString();
+      httpstr:= Get(u);
+      LOGE('CALL6666');
+      jsonstr := THtmlParser.getStoredJson(Get(u));
+      LOGE('CALL77777');
+    except
+      on E: Exception do begin
+        LOGE('Error: ' + E.Message);
+      end;
+    end;
+    Free;
+  end;
+  LOGE('CALL88888');
+  LOGE(jsonstr);
+  Exit(TSearchResult.parseSearchResult(jsonstr));
+end;
 
 class function TSearchCard.search(aname: string; ajapname: string;
   aenname: string; arace: string; aelement: string; aatk: string; adef: string;

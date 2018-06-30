@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ListView
+            android:id="@+id/lvCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/layPager"/>
+    <LinearLayout
+            android:id="@+id/layPager"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/btnPageFirst"
+                android:layout_width="0px" android:layout_height="40dip"
+                android:layout_weight="1"
+                android:text="&lt;&lt;"/>
+        <Button
+                android:id="@+id/btnPagePrior"
+                android:layout_width="0px" android:layout_height="40dip"
+                android:layout_weight="1"
+                android:text="&lt;"/>
+        <TextView
+                android:id="@+id/tvPage"
+                android:layout_width="0px" android:layout_height="40dip"
+                android:layout_weight="1"
+                android:gravity="center"/>
+        <Button
+                android:id="@+id/btnPageNext"
+                android:layout_width="0px" android:layout_height="40dip"
+                android:layout_weight="1"
+                android:text="&gt;"/>
+        <Button
+                android:id="@+id/btnPageLast"
+                android:layout_width="0px" android:layout_height="40dip"
+                android:layout_weight="1"
+                android:text="&gt;&gt;"/>
+
+    </LinearLayout>
+</RelativeLayout>

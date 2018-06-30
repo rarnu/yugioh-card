@@ -9,188 +9,101 @@ library yugiohapi;
 {$mode objfpc}{$H+}
 
 uses
-  Classes, sysutils, searchapi, JNI2;
-
-
+  Classes, sysutils, JNI2, android, htmlparser;
 
 {$IFNDEF DEBUG}
-// common apis
-function cardSearch(
-  aname: PChar;
-  ajapname: PChar;
-  aenname: PChar;
-  arace: PChar;
-  aelement: PChar;
-  aatk: PChar;
-  adef: PChar;
-  alevel: PChar;
-  apendulum: PChar;
-  alink: PChar;
-  alinkarrow: PChar;
-  acardtype: PChar;
-  acardtype2: PChar;
-  aeffect: PChar;
-  apage: Integer): PChar; cdecl;
+
+function parse(ahtml: PChar; atype: Integer): PChar; cdecl;
 var
-  ret: string;
+  ret: string = '';
+  jsonstr: string;
 begin
-  ret := TSearchCard.search(
-    string(aname),
-    string(ajapname),
-    string(aenname),
-    string(arace),
-    string(aelement),
-    string(aatk),
-    string(adef),
-    string(alevel),
-    string(apendulum),
-    string(alink),
-    string(alinkarrow),
-    string(acardtype),
-    string(acardtype2),
-    string(aeffect),
-    apage);
+  case atype of
+  0:
+    begin
+      // 0: search result list, package detail
+      jsonstr:= THtmlParser.getStoredJson(string(ahtml));
+      ret := TSearchResult.parseSearchResult(jsonstr);
+    end;
+  1:
+    begin
+      // 1: card detail
+      ret := THtmlParser.getArticle(string(ahtml));
+    end;
+  2:
+    begin
+      // 2: card adjust
+      ret := THtmlParser.getAdjust(string(ahtml));
+    end;
+  3:
+    begin
+      // 3. card wiki
+      ret := THtmlParser.getWiki(string(ahtml));
+    end;
+  4:
+    begin
+      // 4. limit
+      ret := THtmlParser.getLimitList(string(ahtml));
+    end;
+  5:
+    begin
+      // 5: package list
+      ret := THtmlParser.getPackageList(string(ahtml));
+    end;
+  end;
+
   Result := StrAlloc(ret.Length + 1);
   strcopy(Result, PChar(ret));
 end;
 
-function cardDetail(acardid: PChar): PChar; cdecl;
+function Java_com_rarnu_yugioh_NativeAPI_parse(env: PJNIEnv; obj: jobject; ahtml: jstring; atype: jint): jstring; cdecl;
 var
-  ret: string;
+  strhtml: string;
+  ret: string = '';
+  jsonstr: string;
 begin
-  ret := TSearchCard.cardDetail(string(acardid));
-  Result := StrAlloc(ret.Length + 1);
-  strcopy(Result, PChar(ret));
-end;
+  strhtml:= TJNIEnv.JStringToString(env, ahtml);
+  case atype of
+  0:
+    begin
+      // 0: search result list, package detail
+      jsonstr:= THtmlParser.getStoredJson(strhtml);
+      ret := TSearchResult.parseSearchResult(jsonstr);
+    end;
+  1:
+    begin
+      // 1: card detail
+      ret := THtmlParser.getArticle(strhtml);
+    end;
+  2:
+    begin
+      // 2: card adjust
+      ret := THtmlParser.getAdjust(strhtml);
+    end;
+  3:
+    begin
+      // 3. card wiki
+      ret := THtmlParser.getWiki(strhtml);
+    end;
+  4:
+    begin
+      // 4. limit
+      ret := THtmlParser.getLimitList(strhtml);
+    end;
+  5:
+    begin
+      // 5: package list
+      ret := THtmlParser.getPackageList(strhtml);
+    end;
+  end;
 
-function cardAdjust(acardid: PChar): PChar; cdecl;
-var
-  ret: string;
-begin
-  ret := TSearchCard.cardAdjust(string(acardid));
-  Result := StrAlloc(ret.Length + 1);
-  strcopy(Result, PChar(ret));
-end;
-
-function cardWiki(acardid: PChar): PChar; cdecl;
-var
-  ret: string;
-begin
-  ret := TSearchCard.cardWiki(string(acardid));
-  Result := StrAlloc(ret.Length + 1);
-  strcopy(Result, PChar(ret));
-end;
-
-function cardLimit(): PChar; cdecl;
-var
-  ret: string;
-begin
-  ret := TSearchCard.limit();
-  Result := StrAlloc(ret.Length + 1);
-  strcopy(Result, PChar(ret));
-end;
-
-function cardPackageList(): PChar; cdecl;
-var
-  ret: string;
-begin
-  ret := TSearchCard.packageList();
-  Result := StrAlloc(ret.Length + 1);
-  strcopy(Result, PChar(ret));
-end;
-
-function cardPackageDetail(apackageid: PChar): PChar; cdecl;
-var
-  ret: string;
-begin
-  ret := TSearchCard.packageDetail(string(apackageid));
-  Result := StrAlloc(ret.Length + 1);
-  strcopy(Result, PChar(ret));
-end;
-
-// jni apis
-function Java_com_rarnu_yugioh_NativeAPI_cardSearch(env: PJNIEnv; obj: jobject;
-  aname: jstring;
-  ajapname: jstring;
-  aenname: jstring;
-  arace: jstring;
-  aelement: jstring;
-  aatk: jstring;
-  adef: jstring;
-  alevel: jstring;
-  apendulum: jstring;
-  alink: jstring;
-  alinkarrow: jstring;
-  acardtype: jstring;
-  acardtype2: jstring;
-  aeffect: jstring;
-  apage: jint): jstring; cdecl;
-begin
-  Exit(TJNIEnv.StringToJString(env, TSearchCard.search(
-    TJNIEnv.JStringToString(env, aname),
-    TJNIEnv.JStringToString(env, ajapname),
-    TJNIEnv.JStringToString(env, aenname),
-    TJNIEnv.JStringToString(env, arace),
-    TJNIEnv.JStringToString(env, aelement),
-    TJNIEnv.JStringToString(env, aatk),
-    TJNIEnv.JStringToString(env, adef),
-    TJNIEnv.JStringToString(env, alevel),
-    TJNIEnv.JStringToString(env, apendulum),
-    TJNIEnv.JStringToString(env, alink),
-    TJNIEnv.JStringToString(env, alinkarrow),
-    TJNIEnv.JStringToString(env, acardtype),
-    TJNIEnv.JStringToString(env, acardtype2),
-    TJNIEnv.JStringToString(env, aeffect),
-    apage
-  )));
-end;
-
-function Java_com_rarnu_yugioh_NativeAPI_cardDetail(env: PJNIEnv; obj: jobject; acardid: jstring): jstring; cdecl;
-begin
-  Exit(TJNIEnv.StringToJString(env, TSearchCard.cardDetail(TJNIEnv.JStringToString(env, acardid))));
-end;
-
-function Java_com_rarnu_yugioh_NativeAPI_cardAdjust(env: PJNIEnv; obj: jobject; acardid: jstring): jstring; cdecl;
-begin
-  Exit(TJNIEnv.StringToJString(env, TSearchCard.cardAdjust(TJNIEnv.JStringToString(env, acardid))));
-end;
-
-function Java_com_rarnu_yugioh_NativeAPI_cardWiki(env: PJNIEnv; obj: jobject; acardid: jstring): jstring; cdecl;
-begin
-  Exit(TJNIEnv.StringToJString(env, TSearchCard.cardWiki(TJNIEnv.JStringToString(env, acardid))));
-end;
-
-function Java_com_rarnu_yugioh_NativeAPI_cardLimit(env: PJNIEnv; obj: jobject): jstring; cdecl;
-begin
-  Exit(TJNIEnv.StringToJString(env, TSearchCard.limit()));
-end;
-
-function Java_com_rarnu_yugioh_NativeAPI_cardPackageList(env: PJNIEnv; obj: jobject): jstring; cdecl;
-begin
-  Exit(TJNIEnv.StringToJString(env, TSearchCard.packageList()));
-end;
-
-function Java_com_rarnu_yugioh_NativeAPI_cardPackageDetail(env: PJNIEnv; obj: jobject; apackageid: jstring): jstring; cdecl;
-begin
-  Exit(TJNIEnv.StringToJString(env, TSearchCard.packageDetail(TJNIEnv.JStringToString(env, apackageid))));
+  Exit(TJNIEnv.StringToJString(env, ret));
 end;
 
 // export apis
 exports
-  cardSearch,
-  Java_com_rarnu_yugioh_NativeAPI_cardSearch,
-  cardDetail,
-  Java_com_rarnu_yugioh_NativeAPI_cardDetail,
-  cardAdjust,
-  Java_com_rarnu_yugioh_NativeAPI_cardAdjust,
-  cardWiki,
-  Java_com_rarnu_yugioh_NativeAPI_cardWiki,
-  cardLimit,
-  Java_com_rarnu_yugioh_NativeAPI_cardLimit,
-  cardPackageList,
-  Java_com_rarnu_yugioh_NativeAPI_cardPackageList,
-  cardPackageDetail,
-  Java_com_rarnu_yugioh_NativeAPI_cardPackageDetail;
+  parse,
+  Java_com_rarnu_yugioh_NativeAPI_parse;
 
 {$ENDIF}
 
@@ -200,29 +113,7 @@ var
 {$ENDIF}
 begin
   {$IFDEF DEBUG}
-  ret := TSearchCard.search('影灵衣', '', '', '', '', '', '', '', '', '', '', '', '', '', 1);
-  WriteLn(ret);
 
-  ret := TSearchCard.search('影灵衣', '', '', '', '', '', '', '', '', '', '', '', '', '', 2);
-  WriteLn(ret);
-
-  ret := TSearchCard.cardDetail('16sBe0');
-  WriteLn(ret);
-
-  ret := TSearchCard.cardAdjust('16sBe0');
-  WriteLn(ret);
-
-  ret := TSearchCard.cardWiki('16sBe0');
-  WriteLn(ret);
-
-  ret := TSearchCard.limit();
-  WriteLn(ret);
-
-  ret := TSearchCard.packageList();
-  WriteLn(ret);
-
-  ret := TSearchCard.packageDetail('/package/CP18/wwSYE');
-  WriteLn(ret);
 
   {$ENDIF}
 

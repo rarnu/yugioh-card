@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-</RelativeLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="40dip">
+            <EditText
+                    android:id="@+id/edtFastSearch"
+                    android:layout_width="match_parent" android:layout_height="40dip"
+                    android:layout_toLeftOf="@+id/btnFastSearch"/>
+            <Button
+                    android:id="@+id/btnFastSearch"
+                    android:layout_width="60dip" android:layout_height="40dip"
+                    android:layout_alignParentRight="true"
+                    android:text="GO"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

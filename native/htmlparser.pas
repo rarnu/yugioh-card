@@ -5,7 +5,7 @@ unit htmlparser;
 interface
 
 uses
-  Classes, SysUtils, jsonparser, fpjson, jsonscanner;
+  Classes, SysUtils, jsonparser, fpjson, jsonscanner, android;
 
 type
 
@@ -47,6 +47,8 @@ var
   i: Integer;
   page: Integer = 0;
   pageCount: Integer = 0;
+  ajapname: string = '';
+  aenname: string = '';
 begin
   ret := '{"result":0, "data":[';
   try
@@ -58,12 +60,22 @@ begin
       jarr := json.Arrays['cards'];
       for i := 0 to jarr.Count -1 do begin
         with jarr.Objects[i] do begin
+          try
+            ajapname:= string(Strings['name_ja']).Replace('"', '\"');
+          except
+            ajapname:= '';
+          end;
+          try
+            aenname:= string(Strings['name_en']).Replace('"', '\"');
+          except
+            aenname:= '';
+          end;
           ret += Format('{"id":%d,"hashid":"%s","name":"%s","japname":"%s","enname":"%s","cardtype":"%s"},', [
             Integers['id'],
             Strings['hash_id'],
-            Strings['name'],
-            Strings['name_ja'],
-            Strings['name_en'],
+            string(Strings['name']).Replace('"', '\"'),
+            ajapname,
+            aenname,
             Strings['type_st']
           ]);
         end;
@@ -233,7 +245,7 @@ begin
     ret := ret.Substring(ret.IndexOf(H4) + H4.Length);
     cpack:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
     ret := ret.Substring(ret.IndexOf(H5) + H5.Length);
-    ceffect:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
+    ceffect:= ret.Substring(0, ret.IndexOf(HDIV)).Trim.Replace(#13, '').Replace(#10, '');
 
     // parse packs list
     ret := ret.Substring(ret.IndexOf(H6) + H6.Length);

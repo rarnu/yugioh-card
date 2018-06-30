@@ -35,7 +35,7 @@ implementation
 procedure LOGE(Text: string);
 begin
   {$IFDEF ANDROID}
-  __android_log_write(ANDROID_LOG_ERROR, 'VAPI', PChar(Text));
+  __android_log_write(ANDROID_LOG_ERROR, 'YGO', PChar(Text));
   {$ELSE}
   WriteLn(Text);
   {$ENDIF}

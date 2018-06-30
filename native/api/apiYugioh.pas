@@ -13,6 +13,7 @@ type
 
   TYGOAPI = class
   public
+    class function cardCommonSearch(akey: string): string;
     class function cardSearch(
       aname: string;
       ajapname: string;
@@ -40,6 +41,8 @@ type
 implementation
 
 type
+  TAPICardCommonSearch = function (akey: PChar): PChar; cdecl;
+
   TAPICardSearch = function (
     aname: PChar;
     ajapname: PChar;
@@ -66,6 +69,7 @@ type
 
 var
   hLib: TLibHandle = 0;
+  varCardCommonSearch: TAPICardCommonSearch;
   varCardSearch: TAPICardSearch;
   varCardDetail: TAPICardDetail;
   varCardAdjust: TAPICardAdjust;
@@ -83,6 +87,7 @@ begin
   libPath := ExtractFilePath(ParamStr(0)) + LIBNAME;
   if (FileExists(libPath)) then begin
     hLib := LoadLibrary(libPath);
+    varCardCommonSearch := TAPICardCommonSearch(GetProcAddress(hLib, 'cardCommonSearch'));
     varCardSearch := TAPICardSearch(GetProcAddress(hLib, 'cardSearch'));
     varCardDetail:= TAPICardDetail(GetProcAddress(hLib, 'cardDetail'));
     varCardAdjust:= TAPICardAdjust(GetProcAddress(hLib, 'cardAdjust'));
@@ -101,6 +106,11 @@ begin
 end;
 
 { TYGOAPI }
+
+class function TYGOAPI.cardCommonSearch(akey: string): string;
+begin
+  Exit(string(varCardCommonSearch(PChar(akey))));
+end;
 
 class function TYGOAPI.cardSearch(aname: string; ajapname: string;
   aenname: string; arace: string; aelement: string; aatk: string; adef: string;

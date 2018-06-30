@@ -6,6 +6,7 @@
 #
 # Pods/
 .DS_Store
+DerivedData/
 ios/build
 ios/Build
 android/build
