@@ -5,7 +5,7 @@ unit nativeapi;
 interface
 
 uses
-  Classes, SysUtils;
+  dynlibs, Classes, SysUtils;
 
 type
   TAPIParse = function (ahtml: PChar; atype: Integer): PChar; cdecl;

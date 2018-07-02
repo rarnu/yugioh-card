@@ -234,7 +234,7 @@ begin
     Result.atk := obj.Strings['atk'];
     Result.def := obj.Strings['def'];
     Result.link := obj.Strings['link'];
-    jarr := json.Arrays['packs'];
+    jarr := obj.Arrays['packs'];
     for i := 0 to jarr.Count -1  do begin
       pkinfo := jarr.Objects[i];
       info := TCardPackInfo.Create;

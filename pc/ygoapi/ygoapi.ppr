@@ -8,6 +8,17 @@ uses
   {$ENDIF}
   Classes, sysutils, nativeapi, ygorequest, ygodata;
 
+var
+  d1: TSearchResult;
+  d2: TCardDetail;
+  d3: TLimitList;
+  d4: TPackageList;
+  d5: TSearchResult;
 begin
+  // d1 := TYGOData.searchCommon('影依', 1);
+  // d2 := TYGOData.cardDetail('qPs8Xb');
+  // d3 := TYGOData.limit();
+  // d4 := TYGOData.packageList();
+  // d5 := TYGOData.packageDetail('/package/CP18/wwSYE');
 end.
 
