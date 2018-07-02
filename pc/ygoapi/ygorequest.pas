@@ -21,6 +21,7 @@ type
     class function limit(): string;
     class function packageList(): string;
     class function packageDetail(aurl: string): string;
+    class function hotest(): string;
   end;
 
 implementation
@@ -90,6 +91,11 @@ var
 begin
   urlstr:= BASE_URL + aurl;
   Exit(request(urlstr));
+end;
+
+class function TYGORequest.hotest(): string;
+begin
+  Exit(request(BASE_URL));
 end;
 
 end.

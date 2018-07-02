@@ -50,6 +50,11 @@ begin
       // 5: package list
       ret := THtmlParser.getPackageList(string(ahtml));
     end;
+  6:
+    begin
+      // 6: hotest
+      ret := THtmlParser.getHotest(string(ahtml));
+    end;
   end;
 
   Result := StrAlloc(ret.Length + 1);
@@ -94,6 +99,11 @@ begin
     begin
       // 5: package list
       ret := THtmlParser.getPackageList(strhtml);
+    end;
+  6:
+    begin
+      // 6: hostes
+      ret := THtmlParser.getHotest(strhtml);
     end;
   end;
 

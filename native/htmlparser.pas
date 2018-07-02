@@ -20,6 +20,7 @@ type
     class function getArticle(ahtml: string): string;
     class function getLimitList(ahtml: string): string;
     class function getPackageList(ahtml: string): string;
+    class function getHotest(ahtml: string): string;
 
     // pure data
     class function getAdjust(ahtml: string): string;
@@ -344,6 +345,46 @@ begin
   end;
   ret := ret.TrimRight([',']);
   ret += ']}';
+  Exit(ret);
+end;
+
+class function THtmlParser.getHotest(ahtml: string): string;
+const
+  HSEARCH = '<h3>热门搜索</h3>';
+  HULEND = '</ul>';
+  HSEARCHITEM = '<li class="el-button el-button--info is-plain el-button--small"><a href="';
+
+  HCARD = '<h3 class="no-underline">热门卡片</h3>';
+
+  HPACK = '<h3 class="no-underline">热门卡包 <div class="more-btn"><a href="https://www.ourocg.cn/package">卡包列表</a></div></h3>';
+var
+  htmlSearch: string;
+  htmlCard: string;
+  htmlPack: string;
+  strSearch: string = '';
+  strCard: string = '';
+  strPackage: string = '';
+  ret: string;
+begin
+  // hot search
+  htmlSearch:= ahtml.Substring(ahtml.IndexOf(HSEARCH) + HSEARCH.Length);
+  htmlSearch:= htmlSearch.Substring(0, htmlSearch.IndexOf(HULEND)).Trim;
+  while True do begin
+    if (not htmlSearch.Contains(HSEARCHITEM)) then Break;
+    htmlSearch:= htmlSearch.Substring(htmlSearch.IndexOf(HSEARCHITEM) + HSEARCHITEM.Length).Trim;
+    strSearch += Format('"%s",', [htmlSearch.Substring(0, htmlSearch.IndexOf('"')).Trim.Replace('/search/', '')]);
+  end;
+  strSearch:= strSearch.TrimRight([',']);
+
+  // TODO: hot card
+  htmlCard:= ahtml.Substring(ahtml.IndexOf(HCARD) + HCARD.Length);
+  htmlCard:= htmlCard.Substring(0, htmlCard.IndexOf(HULEND)).Trim;
+
+  // TODO: hot package
+  htmlPack:= ahtml.Substring(ahtml.IndexOf(HPACK) + HPACK.Length);
+  htmlPack:= htmlPack.Substring(0, htmlPack.IndexOf(HULEND)).Trim;
+
+  ret := Format('{"result":0, "search":[%s], "card":[%s], "pack":[%s]}', [strSearch, strCard, strPackage]);
   Exit(ret);
 end;
 

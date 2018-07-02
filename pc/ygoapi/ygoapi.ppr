@@ -14,11 +14,14 @@ var
   d3: TLimitList;
   d4: TPackageList;
   d5: TSearchResult;
+  d6: THotest;
 begin
   // d1 := TYGOData.searchCommon('影依', 1);
   // d2 := TYGOData.cardDetail('qPs8Xb');
   // d3 := TYGOData.limit();
   // d4 := TYGOData.packageList();
   // d5 := TYGOData.packageDetail('/package/CP18/wwSYE');
+  d6 := TYGOData.hostest();
+  WriteLn(d6.ToString);
 end.
 
