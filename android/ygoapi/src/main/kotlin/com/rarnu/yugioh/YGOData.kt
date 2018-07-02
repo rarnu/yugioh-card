@@ -1,5 +1,6 @@
 package com.rarnu.yugioh
 
+import android.util.Log
 import org.json.JSONObject
 
 class PackageInfo {
@@ -84,7 +85,10 @@ object YGOData {
         return result
     }
 
-    fun searchCommon(akey: String, apage: Int) = parseSearchResult(NativeAPI.parse(YGORequest.search(akey, apage), 0))
+    fun searchCommon(akey: String, apage: Int): SearchResult {
+        val ahtml = YGORequest.search(akey, apage)
+        return parseSearchResult(NativeAPI.parse(ahtml, 0))
+    }
 
     fun searchComplex(
             aname: String,
@@ -128,6 +132,7 @@ object YGOData {
         val wikiHtml = YGORequest.cardWiki(hashid)
         val wiki = NativeAPI.parse(wikiHtml, 3)
         val json = JSONObject(parsed)
+        Log.e("YGO", parsed)
         val result = CardDetail()
         if (json.getInt("result") == 0) {
             val obj = json.getJSONObject("data")
@@ -147,7 +152,7 @@ object YGOData {
             result.atk = obj.getString("atk")
             result.def = obj.getString("def")
             result.link = obj.getString("link")
-            val jarr = json.getJSONArray("packs")
+            val jarr = obj.getJSONArray("packs")
             (0 until jarr.length()).forEach {
                 val pkinfo = jarr.getJSONObject(it)
                 val info = CardPackInfo()

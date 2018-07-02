@@ -1,0 +1,13 @@
+program ygoapi;
+
+{$mode objfpc}{$H+}
+
+uses
+  {$IFNDEF WINDOWS}
+  cthreads,
+  {$ENDIF}
+  Classes, sysutils, nativeapi, ygorequest, ygodata;
+
+begin
+end.
+

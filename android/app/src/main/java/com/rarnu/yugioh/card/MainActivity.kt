@@ -1,9 +1,10 @@
 package com.rarnu.yugioh.card
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import android.util.Log
+import com.rarnu.yugioh.YGOData
+import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
 
@@ -11,13 +12,14 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnFastSearch.setOnClickListener {
-            val key = edtFastSearch.text.toString()
-            if (key != "") {
-                val inSearch = Intent(this, CardListActivity::class.java)
-                inSearch.putExtra("key", key)
-                startActivity(inSearch)
-            }
+        thread {
+            // val str = YGOData.searchCommon("影依", 1)
+            // val str = YGOData.cardDetail("qPs8Xb")
+            // val str = YGOData.limit()
+            // val str = YGOData.packageList()
+            // val str = YGOData.packageDetail("/package/CP18/wwSYE")
+            // Log.e("YGO", "$str")
         }
+
     }
 }

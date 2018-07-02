@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="ygoapi.ppr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="12" Y="7"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="nativeapi.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="9"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="20"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="ygorequest.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="25" Y="92"/>
+        <UsageCount Value="20"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="ygodata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="90"/>
+        <CursorPos X="5" Y="112"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="5" HistoryIndex="4">
+      <Position1>
+        <Filename Value="ygodata.pas"/>
+        <Caret Line="62" Column="24" TopLine="48"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ygodata.pas"/>
+        <Caret Line="100" Column="35" TopLine="65"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ygodata.pas"/>
+        <Caret Line="63" Column="34" TopLine="35"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ygodata.pas"/>
+        <Caret Line="86" Column="34" TopLine="62"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ygodata.pas"/>
+        <Caret Line="93" Column="23" TopLine="60"/>
+      </Position5>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

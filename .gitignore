@@ -13,4 +13,7 @@ android/build
 .gradle/
 lib/
 ppas.sh
+.ctps
+.ppu
+.o
 
