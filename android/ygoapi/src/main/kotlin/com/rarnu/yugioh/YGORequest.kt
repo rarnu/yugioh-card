@@ -3,9 +3,10 @@ package com.rarnu.yugioh
 import com.rarnu.kt.android.HttpMethod
 import com.rarnu.kt.android.http
 
-internal object YGORequest {
+object YGORequest {
 
-    private const val BASE_URL = "https://www.ourocg.cn"
+    const val BASE_URL = "https://www.ourocg.cn"
+    const val RES_URL = "http://ocg.resource.m2v.cn/%s.jpg"
 
     private fun request(aurl: String) = http {
         url = aurl

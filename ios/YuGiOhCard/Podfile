@@ -1,0 +1,9 @@
+source 'https://github.com/rarnu/RarnuSpecs.git'
+
+platform :ios, '10.0'
+
+target 'YuGiOhCard' do
+    use_frameworks!
+    pod 'sfunctional', '0.1.5'
+
+end

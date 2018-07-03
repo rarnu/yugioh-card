@@ -15,6 +15,7 @@ var
   d4: TPackageList;
   d5: TSearchResult;
   d6: THotest;
+  i: Integer;
 begin
   // d1 := TYGOData.searchCommon('影依', 1);
   // d2 := TYGOData.cardDetail('qPs8Xb');
@@ -22,6 +23,18 @@ begin
   // d4 := TYGOData.packageList();
   // d5 := TYGOData.packageDetail('/package/CP18/wwSYE');
   d6 := TYGOData.hostest();
-  WriteLn(d6.ToString);
+  WriteLn('== search ==');
+  for i:= 0 to d6.search.Count - 1 do begin
+    WriteLn(d6.search[i]);
+  end;
+  WriteLn('== card ==');
+  for i:= 0 to d6.card.Count - 1 do begin
+    WriteLn(Format('%s (%s)', [d6.card[i].name, d6.card[i].hashid]));
+  end;
+  WriteLn('== pack ==');
+  for i:= 0 to d6.pack.Count - 1 do begin
+    WriteLn(Format('%s (%s)', [d6.pack[i].name, d6.pack[i].packid]));
+  end;
+  // WriteLn(d6.ToString);
 end.
 

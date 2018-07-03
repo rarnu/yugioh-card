@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YGOAPI/YGORequest.h>
 #import <YGOAPI/YGOData.h>
 
 //! Project version number for YGOAPI.

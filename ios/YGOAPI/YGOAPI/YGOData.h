@@ -67,6 +67,22 @@
 @property NSInteger pageCount;
 @end
 
+@interface HotCard: NSObject
+@property NSString* hashid;
+@property NSString* name;
+@end
+
+@interface HotPack: NSObject
+@property NSString* packid;
+@property NSString* name;
+@end
+
+@interface Hotest: NSObject
+@property NSArray<NSString*>* search;
+@property NSArray<HotCard*>* card;
+@property NSArray<HotPack*>* pack;
+@end
+
 @interface YGOData : NSObject
 +(SearchResult*) searchCommon:(NSString*) key page:(NSInteger)page;
 +(SearchResult*) searchComplex:(NSString*) name japname:(NSString*)japname enname:(NSString*) enname race:(NSString*) race element:(NSString*) element atk:(NSString*) atk def:(NSString*) def level:(NSString*) level pendulum:(NSString*) pendulum link:(NSString*) link linkArrow:(NSString*) linkArrow cardType:(NSString*) cardType cardType2:(NSString*) cardType2 effect:(NSString*) effect page:(NSInteger)page;
@@ -74,6 +90,7 @@
 +(NSArray<LimitInfo*>*) limit;
 +(NSArray<PackageInfo*>*) packageList;
 +(SearchResult*) packageDetail:(NSString*) url;
++(Hotest*) hostest;
 
 
 @end

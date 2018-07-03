@@ -22,6 +22,12 @@
 @end
 @implementation SearchResult
 @end
+@implementation HotCard
+@end
+@implementation HotPack
+@end
+@implementation Hotest
+@end
 
 @implementation YGOData
 
@@ -192,6 +198,40 @@
     NSString* data = [YGORequest packageDetail:url];
     NSString* parsed = [NSString stringWithUTF8String:parse([data UTF8String], 0)];
     return [YGOData parseSearchResult:parsed];
+}
+
++(Hotest*) hostest {
+    NSString* data = [YGORequest hotest];
+    NSString* parsed = [NSString stringWithUTF8String:parse([data UTF8String], 6)];
+    Hotest* result = [[Hotest alloc] init];
+    NSJSONSerialization* json = [NSJSONSerialization JSONObjectWithData:[parsed dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
+    if ([[json valueForKey:@"result"] intValue] == 0) {
+        NSArray* arrSearch = [json valueForKey:@"search"];
+        NSMutableArray<NSString*>* retSearch = [NSMutableArray array];
+        for (int i = 0; i < arrSearch.count; i++) {
+            [retSearch addObject:[arrSearch objectAtIndex:i]];
+        }
+        NSArray* arrCard = [json valueForKey:@"card"];
+        NSMutableArray<HotCard*>* retCard = [NSMutableArray array];
+        for (int i = 0; i < arrCard.count; i++) {
+            HotCard* ci = [[HotCard alloc] init];
+            ci.name = [[arrCard objectAtIndex:i] valueForKey:@"name"];
+            ci.hashid = [[arrCard objectAtIndex:i] valueForKey:@"hashid"];
+            [retCard addObject:ci];
+        }
+        NSArray* arrPack = [json valueForKey:@"pack"];
+        NSMutableArray<HotPack*>* retPack = [NSMutableArray array];
+        for (int i = 0; i < arrPack.count; i++) {
+            HotPack* pi = [[HotPack alloc] init];
+            pi.name = [[arrPack objectAtIndex:i] valueForKey:@"name"];
+            pi.packid = [[arrPack objectAtIndex:i] valueForKey:@"packid"];
+            [retPack addObject:pi];
+        }
+        result.search = retSearch;
+        result.card = retCard;
+        result.pack = retPack;
+    }
+    return result;
 }
 
 @end

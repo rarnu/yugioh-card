@@ -353,10 +353,11 @@ const
   HSEARCH = '<h3>热门搜索</h3>';
   HULEND = '</ul>';
   HSEARCHITEM = '<li class="el-button el-button--info is-plain el-button--small"><a href="';
-
+  HAEND = '</a>';
   HCARD = '<h3 class="no-underline">热门卡片</h3>';
-
-  HPACK = '<h3 class="no-underline">热门卡包 <div class="more-btn"><a href="https://www.ourocg.cn/package">卡包列表</a></div></h3>';
+  HCARDITEM = '<li><a href="/card/';
+  HPACK = '<h3 class="no-underline">热门卡包';
+  HPACKITEM = '<li><a href="';
 var
   htmlSearch: string;
   htmlCard: string;
@@ -372,19 +373,37 @@ begin
   while True do begin
     if (not htmlSearch.Contains(HSEARCHITEM)) then Break;
     htmlSearch:= htmlSearch.Substring(htmlSearch.IndexOf(HSEARCHITEM) + HSEARCHITEM.Length).Trim;
-    strSearch += Format('"%s",', [htmlSearch.Substring(0, htmlSearch.IndexOf('"')).Trim.Replace('/search/', '')]);
+    htmlSearch:= htmlSearch.Substring(htmlSearch.IndexOf('>') + 1).Trim;
+    strSearch += Format('"%s",', [htmlSearch.Substring(0, htmlSearch.IndexOf(HAEND)).Trim]);
   end;
   strSearch:= strSearch.TrimRight([',']);
 
-  // TODO: hot card
+  // hot card
   htmlCard:= ahtml.Substring(ahtml.IndexOf(HCARD) + HCARD.Length);
   htmlCard:= htmlCard.Substring(0, htmlCard.IndexOf(HULEND)).Trim;
+  while True do begin
+    if (not htmlCard.Contains(HCARDITEM)) then Break;
+    htmlCard:= htmlCard.Substring(htmlCard.IndexOf(HCARDITEM) + HCARDITEM.Length).Trim;
+    strCard += Format('{"hashid":"%s",', [htmlCard.Substring(0, htmlCard.IndexOf('"')).Trim]);
+    htmlCard:= htmlCard.Substring(htmlCard.IndexOf('>') + 1);
+    strCard += Format('"name":"%s"},', [htmlCard.Substring(0, htmlCard.IndexOf(HAEND)).Trim]);
+  end;
+  strCard:= strCard.TrimRight([',']);
 
-  // TODO: hot package
+  // hot package
   htmlPack:= ahtml.Substring(ahtml.IndexOf(HPACK) + HPACK.Length);
   htmlPack:= htmlPack.Substring(0, htmlPack.IndexOf(HULEND)).Trim;
+  while True do begin
+    if (not htmlPack.Contains(HPACKITEM)) then Break;
+    htmlPack:= htmlPack.Substring(htmlPack.IndexOf(HPACKITEM) + HPACKITEM.Length).Trim;
+    strPackage += Format('{"packid":"%s",', [htmlPack.Substring(0, htmlPack.IndexOf('"')).Trim]);
+    htmlPack:= htmlPack.Substring(htmlPack.IndexOf('>') + 1).Trim;
+    strPackage += Format('"name":"%s"},', [htmlPack.Substring(0, htmlPack.IndexOf(HAEND)).Trim]);
+  end;
+  strPackage:= strPackage.TrimRight([',']);
 
   ret := Format('{"result":0, "search":[%s], "card":[%s], "pack":[%s]}', [strSearch, strCard, strPackage]);
+  WriteLn(ret);
   Exit(ret);
 end;
 

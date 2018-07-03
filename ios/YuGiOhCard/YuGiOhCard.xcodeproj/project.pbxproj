@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18BFA818D5169E1E681B3591 /* Pods_YuGiOhCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */; };
 		9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207E76020E67E8F00735721 /* AppDelegate.swift */; };
-		9207E76320E67E8F00735721 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207E76220E67E8F00735721 /* ViewController.swift */; };
+		9207E76320E67E8F00735721 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207E76220E67E8F00735721 /* MainController.swift */; };
 		9207E76620E67E8F00735721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9207E76420E67E8F00735721 /* Main.storyboard */; };
 		9207E76820E67E9000735721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9207E76720E67E9000735721 /* Assets.xcassets */; };
 		9207E76B20E67E9000735721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9207E76920E67E9000735721 /* LaunchScreen.storyboard */; };
 		9207E77B20E755AB00735721 /* YGOAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9207E77A20E755AB00735721 /* YGOAPI.framework */; };
 		9207E77C20E755AB00735721 /* YGOAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9207E77A20E755AB00735721 /* YGOAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9208BEE120EB651600F795EA /* CardListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208BEE020EB651600F795EA /* CardListController.swift */; };
+		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,14 +34,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YuGiOhCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9207E75D20E67E8F00735721 /* YuGiOhCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuGiOhCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9207E76020E67E8F00735721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9207E76220E67E8F00735721 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9207E76220E67E8F00735721 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		9207E76520E67E8F00735721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9207E76720E67E9000735721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9207E76A20E67E9000735721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9207E76C20E67E9000735721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9207E77A20E755AB00735721 /* YGOAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YGOAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9208BEE020EB651600F795EA /* CardListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListController.swift; sourceTree = "<group>"; };
+		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
+		A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.release.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.release.xcconfig"; sourceTree = "<group>"; };
+		AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,18 +55,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				9207E77B20E755AB00735721 /* YGOAPI.framework in Frameworks */,
+				18BFA818D5169E1E681B3591 /* Pods_YuGiOhCard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79F2E88925E6611F06FB7D9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9207E75420E67E8F00735721 = {
 			isa = PBXGroup;
 			children = (
 				9207E77A20E755AB00735721 /* YGOAPI.framework */,
 				9207E75F20E67E8F00735721 /* YuGiOhCard */,
 				9207E75E20E67E8F00735721 /* Products */,
+				BCC9CFABF60A7CBC51A72B2F /* Pods */,
+				79F2E88925E6611F06FB7D9E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,14 +92,33 @@
 		9207E75F20E67E8F00735721 /* YuGiOhCard */ = {
 			isa = PBXGroup;
 			children = (
+				92E7F6F520EB6BD00078574B /* Cell */,
 				9207E76020E67E8F00735721 /* AppDelegate.swift */,
-				9207E76220E67E8F00735721 /* ViewController.swift */,
+				9207E76220E67E8F00735721 /* MainController.swift */,
 				9207E76420E67E8F00735721 /* Main.storyboard */,
 				9207E76720E67E9000735721 /* Assets.xcassets */,
 				9207E76920E67E9000735721 /* LaunchScreen.storyboard */,
 				9207E76C20E67E9000735721 /* Info.plist */,
+				9208BEE020EB651600F795EA /* CardListController.swift */,
 			);
 			path = YuGiOhCard;
+			sourceTree = "<group>";
+		};
+		92E7F6F520EB6BD00078574B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				92E7F6F620EB6BE70078574B /* CardListCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BCC9CFABF60A7CBC51A72B2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */,
+				A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,10 +128,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9207E76F20E67E9000735721 /* Build configuration list for PBXNativeTarget "YuGiOhCard" */;
 			buildPhases = (
+				94479CF5CDF56D721320D00E /* [CP] Check Pods Manifest.lock */,
 				9207E75920E67E8F00735721 /* Sources */,
 				9207E75A20E67E8F00735721 /* Frameworks */,
 				9207E75B20E67E8F00735721 /* Resources */,
 				9207E77D20E755AB00735721 /* Embed Frameworks */,
+				8172EE999E847F28F6FB6619 /* [CP] Embed Pods Frameworks */,
+				977D948B96075F3FD85C5CF7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,13 +191,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8172EE999E847F28F6FB6619 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/sfunctional/sfunctional.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sfunctional.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94479CF5CDF56D721320D00E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YuGiOhCard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		977D948B96075F3FD85C5CF7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9207E75920E67E8F00735721 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9207E76320E67E8F00735721 /* ViewController.swift in Sources */,
+				9207E76320E67E8F00735721 /* MainController.swift in Sources */,
+				9208BEE120EB651600F795EA /* CardListController.swift in Sources */,
 				9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */,
+				92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +395,7 @@
 		};
 		9207E77020E67E9000735721 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -315,6 +413,7 @@
 		};
 		9207E77120E67E9000735721 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

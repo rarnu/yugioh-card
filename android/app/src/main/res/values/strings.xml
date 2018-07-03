@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">YuGiOhCard</string>
+    <string name="card_list">卡片列表</string>
+
+    <string name="btn_search">搜索</string>
+    <string name="btn_adv_search">高级搜索</string>
+
+    <string name="toast_empty_search_key">不能搜索空关键字</string>
+
+    <string name="item_name" formatted="false">中文名称: %s</string>
+    <string name="item_japname" formatted="false">日文名称: %s</string>
+    <string name="item_enname" formatted="false">英文名称: %s</string>
+
+    <string name="btn_first">&lt;&lt;</string>
+    <string name="btn_prior">&lt;</string>
+    <string name="btn_next">&gt;</string>
+    <string name="btn_last">&gt;&gt;</string>
 </resources>

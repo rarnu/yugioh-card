@@ -10,7 +10,7 @@
 
 @implementation YGORequest
 
-#define BASE_URL @"https://www.ourocg.cn"
+
 
 +(NSString*) request:(NSString*) url {
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -53,6 +53,10 @@
 +(NSString*) packageDetail:(NSString*) url {
     NSString* urlStr = [BASE_URL stringByAppendingString:url];
     return [YGORequest request:urlStr];
+}
+
++(NSString*) hotest {
+    return [YGORequest request:BASE_URL];
 }
 
 @end

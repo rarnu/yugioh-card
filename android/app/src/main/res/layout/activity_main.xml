@@ -9,6 +9,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <EditText
+                    android:id="@+id/edtSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_toLeftOf="@+id/btnSearch"/>
+            <Button
+                    android:id="@+id/btnSearch"
+                    android:layout_width="60dip" android:layout_height="40dip"
+                    android:text="@string/btn_search"
+                    android:layout_toLeftOf="@+id/btnAdvSearch"/>
+            <Button
+                    android:id="@+id/btnAdvSearch"
+                    android:layout_width="80dip" android:layout_height="40dip"
+                    android:text="@string/btn_adv_search"
+                    android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
 

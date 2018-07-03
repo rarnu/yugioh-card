@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9207E77420E7523A00735721 /* YGORequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9207E77220E7523A00735721 /* YGORequest.h */; };
+		9207E77420E7523A00735721 /* YGORequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9207E77220E7523A00735721 /* YGORequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9207E77520E7523A00735721 /* YGORequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9207E77320E7523A00735721 /* YGORequest.m */; };
 		9207E77820E752A900735721 /* YGOData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9207E77620E752A900735721 /* YGOData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9207E77920E752A900735721 /* YGOData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9207E77720E752A900735721 /* YGOData.m */; };
@@ -77,8 +77,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9207E77420E7523A00735721 /* YGORequest.h in Headers */,
 				9207E77820E752A900735721 /* YGOData.h in Headers */,
+				9207E77420E7523A00735721 /* YGORequest.h in Headers */,
 				92D9735620E67E6200154225 /* YGOAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

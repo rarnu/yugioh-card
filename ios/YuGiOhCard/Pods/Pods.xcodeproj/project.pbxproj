@@ -1,0 +1,792 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		056C419BB66F5E0B232B3D6C75D85719 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 91B40BA7E0917ABBB476FBEF856EFEFF /* aes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07F67B5AAAB148CB5CD84824D6B82044 /* DatetimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC38C65BE48FA100577602018624DBE2 /* DatetimeUtils.swift */; };
+		16EF1A6648AE727CC271FA98F34DE0DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		1DE7F74463AC0DED2037402AB0D44F4D /* sfunctional.h in Headers */ = {isa = PBXBuildFile; fileRef = 098A9D582EE75DADDC2D2DDF093DE172 /* sfunctional.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2267003D369A5C787E7774717169FCD0 /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F46ED56F8CD37EB3E66D9063D5A8F6D /* prng.c */; };
+		253E31A271C7A76213D927E7BEF7298D /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF59F3702492CCCABB0A051DA731DF4 /* sha1.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27195E10DE0CC7686496C7DF054FF1BA /* SystemUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E5A866B4A8CBB2CFD8D751DA890A4F /* SystemUtils.swift */; };
+		2739BD57C04D3E3C0040CBDFBCDD8A16 /* sfunctional-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE383B84C355599E4594E77FCF567F6 /* sfunctional-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EB706DB1952DD90E7C2528831483F7E /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = BE884EF551EE93753514E9FB54E30493 /* Info.plist */; };
+		330DBDB8A5836D1FDC437ECE13C7D8B8 /* aestab.h in Headers */ = {isa = PBXBuildFile; fileRef = 374BD3127CD417A87613E71877A081B7 /* aestab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		345D4234548E2FC36F16092D2E042A97 /* Pods-YuGiOhCard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FF85B13C2D3E99147C312FEBA07CF4 /* Pods-YuGiOhCard-dummy.m */; };
+		3720541F3EBDDEAB222E67097966B02B /* ioapi_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 7795D9FAFACF5F16A7ED042788A34ADA /* ioapi_buf.c */; };
+		394D4838E3774C9E7E6F3DAEE024A5A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		3998A70C5DAE104B4311EDFADA81D102 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B29576227FE987F09CB649B8175B71 /* ImageUtils.swift */; };
+		3C30B226904CEDFB5E050467E3E5B4F6 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 60F0D77DC87E4A4ED6B85D42287BD096 /* sha1.c */; };
+		3C72CE5C548522CFB837AA65EA793C53 /* brg_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 26EA3165610CF3B8281A96CF441C7AE4 /* brg_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42BF00FC0D3DC0E5F8063D9BA2B6C476 /* IDEWorkspaceChecks.plist in Sources */ = {isa = PBXBuildFile; fileRef = F5164E6FA4F9699ECFE0322E4ECC99E9 /* IDEWorkspaceChecks.plist */; };
+		4A66FD1395D121B72A8D144F1C629588 /* sfunctional-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD760D32C5465BF66ED0B112D37FC4 /* sfunctional-dummy.m */; };
+		4B41343B47E0D05E844182F6DE3D42FE /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = D6475CBC2685999B901A24457D9D4ACA /* hmac.c */; };
+		4CC1A62EE63E18EE106BE7D4A4139DC2 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A942597C8D9E06A002108D3A685C522 /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		508DBDBC11D17AC61CF97AEA5A0DF8BE /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = D252319913B77832A83E98800F7AAF09 /* unzip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5827B006EDDFEAA59668C7BA94A667A2 /* fileenc.h in Headers */ = {isa = PBXBuildFile; fileRef = 4295040322B3FBE0B879B34FE842FF7A /* fileenc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60B9DCBE63C49FC2C7A0799EC691C6AB /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8884732447A5B28EEE0B09DF165C0 /* unzip.c */; };
+		620CC272317D517F9BE9548F25994B41 /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 788F681BC2CA9406BB784F49297CE39F /* ZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DF8AF21CE90E5D466A641F1517E54E2 /* aesopt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EF2D28B944982C5DF64C66E3A548C32 /* aesopt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E5924098E2EF1A272CFFC53110BB08A /* ioapi_buf.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B955D94FEE318FBCB61341D948B9BF4 /* ioapi_buf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		703BF5E47E8CA691D8CD260C9AEC3A55 /* BundleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFE3125EDC97F9F716AA6DB6618679 /* BundleUtils.swift */; };
+		7A7E83979ECE28750A83A180685BDDF8 /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D35C53530FE0E39DFF88014F59A6DD6 /* ioapi_mem.c */; };
+		7A9658E5706F1BC99EE9B7971D549745 /* ZipUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274731A4FEB4FE4C8BBB0353C6E6AF6 /* ZipUtils.swift */; };
+		7F28133989DD7C8A7924850FA8AAD500 /* ioapi_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = 60A177605A7E38DA994AAF1273F23DFD /* ioapi_mem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F7689E48DFAAD3017B1B5CC4F1D46A0 /* SysEmu.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A19F82C286978EC6AF0D6644ADF8A1 /* SysEmu.m */; };
+		82EC72BD86125DFE1040464D00773A9D /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 825898C2E04B2AA524A239D66887335E /* aeskey.c */; };
+		92114AD44F951C756D7BDCBF96E24787 /* minishared.c in Sources */ = {isa = PBXBuildFile; fileRef = D4FD61037E6374C1B67051D5E882422F /* minishared.c */; };
+		9360EB1718B71C88B1FD03313DD55D12 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 411438DC20040D030E0B8B999A9C9594 /* pwd2key.c */; };
+		98E84E4A37D77DF7727B8A52E334F29D /* SSZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC0B8421DCEA5383222606B5CD56A28 /* SSZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE37EDCFD5F0DB8C8A0E54F278FA884 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = CD28B349B2BE95D9D3D412071B7522A2 /* fileenc.c */; };
+		9B7262B5B8720688885C8DB2F4311DCC /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DD236A2E591DBE1EE19DC911796E1FD7 /* ioapi.c */; };
+		9CFD5F3C54A357A5FC2D3F905916702F /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A26FABD49E6CABAC7D3EAD5762C2E /* FileUtils.swift */; };
+		A04EA72D594E82D8F7487107D607D831 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F06E7F7821BF08B2889EC2D9FEADF /* zip.c */; };
+		A1670E3781B3F28A5EF7FD386A307A44 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 78CD56D2F60315923D4B53D590785047 /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A303FEC5CEB53D713207C2781D972BE7 /* minishared.h in Headers */ = {isa = PBXBuildFile; fileRef = 5796628FAD65E99FD6ED062C7CBC1435 /* minishared.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3DE52B1D42EB8FF7C44D5251F7A656B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B949F30118B8E7F07D92573EE821 /* Extensions.swift */; };
+		B49624ED5D519DACCCA5D3AFB9102A42 /* Pods-YuGiOhCard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAFBB27EF8C105AC462CAC43B6AE3F1 /* Pods-YuGiOhCard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B596844677EAFB4B7B4C5A639B35F2F6 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 555417CE79CBE1F31F32350554BD57EB /* crypt.c */; };
+		B6A79958490AD02A342018026630B7A2 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5697B0462FDA75EEAB2EE307FE7DAA4 /* HttpUtils.swift */; };
+		BFF278FC9618E504B900F102456CF83D /* SSZipCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC46567FE0ACBD0E52E1E1F118AF9D2 /* SSZipCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C16E6374DF2C0DCCDEB1A913B0ACBE9D /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 52E51C6606E8EB49E995E500DE0C19EA /* aescrypt.c */; };
+		C26199DE1899B458E5A11DEBC8512D75 /* project.pbxproj in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D8F8022B79CF6B99688B78FC462FA /* project.pbxproj */; };
+		C90C814A37E7706BCC52827A36EED5F3 /* DownloadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC4493B7FA344AD9FF897001F906D9D /* DownloadUtils.swift */; };
+		D666101D0A1753B6D1366DE60B708D5D /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DC6515E517E6DE32E9C48A2B6F3E473 /* aestab.c */; };
+		DC969560FE5699606462BC835438B533 /* contents.xcworkspacedata in Sources */ = {isa = PBXBuildFile; fileRef = 2E38948253D7FD951EA2C22766A06DE2 /* contents.xcworkspacedata */; };
+		E0B028854D044DF1E1B05B3CBF1E776B /* sfunctional.podspec in Sources */ = {isa = PBXBuildFile; fileRef = 3DD63745CD7C51A8FAE50C1583E16795 /* sfunctional.podspec */; };
+		E3E29E4A81E79F3CE8500C7EC87EA1CA /* ToastUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A92EC18E07D1B8E81AFDC67A1BD6BA /* ToastUtils.swift */; };
+		E5DF60F395BAB732A6303E9DFDE688BD /* SysEmu.h in Headers */ = {isa = PBXBuildFile; fileRef = 724029B7CC08A706815A3DD269DC642C /* SysEmu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6A0DE8FD63ECD91EB3AB5EA6484B0B2 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 28113CD5A9DAACFA10EEC43FADA19E16 /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC552B734732DBD303C8C81172FDE285 /* aes_ni.h in Headers */ = {isa = PBXBuildFile; fileRef = A135D8A69AC5FD49E2FDD3D9B3DDC2A7 /* aes_ni.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEEF2EDFAD5278C4316AA53C72CE15E6 /* brg_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = ABFD0F17A5229206B1FBD99B0419985B /* brg_endian.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F64FC4BE7D0DE09D70FBD28D4660D1F8 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = D52FE45C22DD9CD7C0715A913831310B /* Info.plist */; };
+		F67D043F1A7763EC23231645CE1C0C73 /* ContextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B608A7B65E35FFD60623A26D3B09E13A /* ContextUtils.swift */; };
+		F7985D3D04F13FD2ADD105D627E11D2D /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = 36BB9B964EFF8046F5D51BD73C9A1B4F /* pwd2key.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8AE90D31D3C6AB34888B2145E23537D /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 78264565B7A88F189E19BAAC04258F30 /* SSZipArchive.m */; };
+		FB6DAA6E559903F69A9F06CCF88469A1 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = B44AB85AEA4E37362B08DF08B0919B14 /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDB7E4DF601F595AA3C347AF880E381F /* UrlDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3511155165EADE80B5A67BCEB7B1E9D /* UrlDecoder.swift */; };
+		FE1C833CA0DD17A10C21787881EA2B3B /* aes_ni.c in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA448FA946979A90D90DD7BCD58D80 /* aes_ni.c */; };
+		FF1EDEF650752CDAFF37635C6E4FF552 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = ED7F639B29F59AF975F9017E3A41D28B /* prng.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D8C5EC914ACC25052668CFEDD6C467A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99E59A6630D558B785AE48A71F7A7DFB;
+			remoteInfo = sfunctional;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00EC9F853D4921D0FE79D072FB18971C /* sfunctional.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sfunctional.xcconfig; sourceTree = "<group>"; };
+		098A9D582EE75DADDC2D2DDF093DE172 /* sfunctional.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sfunctional.h; path = sfunctional/sfunctional/sfunctional.h; sourceTree = "<group>"; };
+		0B25DED3E4E2FADAC4C766843C6B273D /* Pods-YuGiOhCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YuGiOhCard.release.xcconfig"; sourceTree = "<group>"; };
+		0D35C53530FE0E39DFF88014F59A6DD6 /* ioapi_mem.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ioapi_mem.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.c; sourceTree = "<group>"; };
+		0DAD760D32C5465BF66ED0B112D37FC4 /* sfunctional-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "sfunctional-dummy.m"; sourceTree = "<group>"; };
+		1274731A4FEB4FE4C8BBB0353C6E6AF6 /* ZipUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZipUtils.swift; path = sfunctional/sfunctional/ZipUtils.swift; sourceTree = "<group>"; };
+		1903AD896721C1607B58F6B23B4C251F /* sfunctional.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = sfunctional.framework; path = sfunctional.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		235048485EF57D4FC4E8FEF711C10970 /* Pods-YuGiOhCard-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YuGiOhCard-frameworks.sh"; sourceTree = "<group>"; };
+		26EA3165610CF3B8281A96CF441C7AE4 /* brg_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_types.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_types.h; sourceTree = "<group>"; };
+		278A89E61F21D25D52BF8ACD834DC7B8 /* Pods-YuGiOhCard-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YuGiOhCard-acknowledgements.markdown"; sourceTree = "<group>"; };
+		28113CD5A9DAACFA10EEC43FADA19E16 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi.h; sourceTree = "<group>"; };
+		2E38948253D7FD951EA2C22766A06DE2 /* contents.xcworkspacedata */ = {isa = PBXFileReference; includeInIndex = 1; name = contents.xcworkspacedata; path = sfunctional/sfunctional.xcodeproj/project.xcworkspace/contents.xcworkspacedata; sourceTree = "<group>"; };
+		2EE383B84C355599E4594E77FCF567F6 /* sfunctional-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sfunctional-umbrella.h"; sourceTree = "<group>"; };
+		32D8EE81E6479FFCF3298367B3D732E8 /* Pods-YuGiOhCard-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YuGiOhCard-resources.sh"; sourceTree = "<group>"; };
+		3441491F9C65AAFBD8B76EEC97523938 /* Pods-YuGiOhCard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YuGiOhCard.modulemap"; sourceTree = "<group>"; };
+		35A19F82C286978EC6AF0D6644ADF8A1 /* SysEmu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SysEmu.m; path = sfunctional/sfunctional/SysEmu/SysEmu.m; sourceTree = "<group>"; };
+		36BB9B964EFF8046F5D51BD73C9A1B4F /* pwd2key.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pwd2key.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.h; sourceTree = "<group>"; };
+		36CFE3125EDC97F9F716AA6DB6618679 /* BundleUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BundleUtils.swift; path = sfunctional/sfunctional/BundleUtils.swift; sourceTree = "<group>"; };
+		374BD3127CD417A87613E71877A081B7 /* aestab.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aestab.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.h; sourceTree = "<group>"; };
+		3D0D8F8022B79CF6B99688B78FC462FA /* project.pbxproj */ = {isa = PBXFileReference; includeInIndex = 1; name = project.pbxproj; path = sfunctional/sfunctional.xcodeproj/project.pbxproj; sourceTree = "<group>"; };
+		3DD63745CD7C51A8FAE50C1583E16795 /* sfunctional.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = sfunctional.podspec; path = sfunctional/sfunctional.podspec; sourceTree = "<group>"; };
+		3EF2D28B944982C5DF64C66E3A548C32 /* aesopt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aesopt.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aesopt.h; sourceTree = "<group>"; };
+		411438DC20040D030E0B8B999A9C9594 /* pwd2key.c */ = {isa = PBXFileReference; includeInIndex = 1; name = pwd2key.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.c; sourceTree = "<group>"; };
+		4295040322B3FBE0B879B34FE842FF7A /* fileenc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fileenc.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.h; sourceTree = "<group>"; };
+		4989B949F30118B8E7F07D92573EE821 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = sfunctional/sfunctional/Extensions.swift; sourceTree = "<group>"; };
+		4A1068918E739518CCBD6421EA149458 /* Pods-YuGiOhCard-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YuGiOhCard-acknowledgements.plist"; sourceTree = "<group>"; };
+		4A942597C8D9E06A002108D3A685C522 /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = sfunctional/sfunctional/SSZipArchive/minizip/zip.h; sourceTree = "<group>"; };
+		4AAA448FA946979A90D90DD7BCD58D80 /* aes_ni.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aes_ni.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.c; sourceTree = "<group>"; };
+		4B955D94FEE318FBCB61341D948B9BF4 /* ioapi_buf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi_buf.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.h; sourceTree = "<group>"; };
+		4CAFBB27EF8C105AC462CAC43B6AE3F1 /* Pods-YuGiOhCard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YuGiOhCard-umbrella.h"; sourceTree = "<group>"; };
+		52E51C6606E8EB49E995E500DE0C19EA /* aescrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aescrypt.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aescrypt.c; sourceTree = "<group>"; };
+		555417CE79CBE1F31F32350554BD57EB /* crypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = crypt.c; path = sfunctional/sfunctional/SSZipArchive/minizip/crypt.c; sourceTree = "<group>"; };
+		5796628FAD65E99FD6ED062C7CBC1435 /* minishared.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = minishared.h; path = sfunctional/sfunctional/SSZipArchive/minizip/minishared.h; sourceTree = "<group>"; };
+		5D2F06E7F7821BF08B2889EC2D9FEADF /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = zip.c; path = sfunctional/sfunctional/SSZipArchive/minizip/zip.c; sourceTree = "<group>"; };
+		5DF59F3702492CCCABB0A051DA731DF4 /* sha1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.h; sourceTree = "<group>"; };
+		60A177605A7E38DA994AAF1273F23DFD /* ioapi_mem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi_mem.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.h; sourceTree = "<group>"; };
+		60E5A866B4A8CBB2CFD8D751DA890A4F /* SystemUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemUtils.swift; path = sfunctional/sfunctional/SystemUtils.swift; sourceTree = "<group>"; };
+		60F0D77DC87E4A4ED6B85D42287BD096 /* sha1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha1.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.c; sourceTree = "<group>"; };
+		652A26FABD49E6CABAC7D3EAD5762C2E /* FileUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileUtils.swift; path = sfunctional/sfunctional/FileUtils.swift; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6DC6515E517E6DE32E9C48A2B6F3E473 /* aestab.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aestab.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.c; sourceTree = "<group>"; };
+		724029B7CC08A706815A3DD269DC642C /* SysEmu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SysEmu.h; path = sfunctional/sfunctional/SysEmu/SysEmu.h; sourceTree = "<group>"; };
+		74FF85B13C2D3E99147C312FEBA07CF4 /* Pods-YuGiOhCard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YuGiOhCard-dummy.m"; sourceTree = "<group>"; };
+		7795D9FAFACF5F16A7ED042788A34ADA /* ioapi_buf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ioapi_buf.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.c; sourceTree = "<group>"; };
+		78264565B7A88F189E19BAAC04258F30 /* SSZipArchive.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSZipArchive.m; path = sfunctional/sfunctional/SSZipArchive/SSZipArchive.m; sourceTree = "<group>"; };
+		788F681BC2CA9406BB784F49297CE39F /* ZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = sfunctional/sfunctional/SSZipArchive/ZipArchive.h; sourceTree = "<group>"; };
+		78CD56D2F60315923D4B53D590785047 /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.h; sourceTree = "<group>"; };
+		7BB8884732447A5B28EEE0B09DF165C0 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = unzip.c; path = sfunctional/sfunctional/SSZipArchive/minizip/unzip.c; sourceTree = "<group>"; };
+		7F46ED56F8CD37EB3E66D9063D5A8F6D /* prng.c */ = {isa = PBXFileReference; includeInIndex = 1; name = prng.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.c; sourceTree = "<group>"; };
+		825898C2E04B2AA524A239D66887335E /* aeskey.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aeskey.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aeskey.c; sourceTree = "<group>"; };
+		91B40BA7E0917ABBB476FBEF856EFEFF /* aes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes.h; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9645B42F5340CEC20299BE2199BD8777 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97A92EC18E07D1B8E81AFDC67A1BD6BA /* ToastUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToastUtils.swift; path = sfunctional/sfunctional/ToastUtils.swift; sourceTree = "<group>"; };
+		A135D8A69AC5FD49E2FDD3D9B3DDC2A7 /* aes_ni.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes_ni.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.h; sourceTree = "<group>"; };
+		A1E834100587E31773A33CEA60E1CACC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5697B0462FDA75EEAB2EE307FE7DAA4 /* HttpUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpUtils.swift; path = sfunctional/sfunctional/HttpUtils.swift; sourceTree = "<group>"; };
+		ABFD0F17A5229206B1FBD99B0419985B /* brg_endian.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_endian.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_endian.h; sourceTree = "<group>"; };
+		B02CA87838D3C9C28C4703ECABA684E5 /* Pods-YuGiOhCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YuGiOhCard.debug.xcconfig"; sourceTree = "<group>"; };
+		B2B29576227FE987F09CB649B8175B71 /* ImageUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageUtils.swift; path = sfunctional/sfunctional/ImageUtils.swift; sourceTree = "<group>"; };
+		B44AB85AEA4E37362B08DF08B0919B14 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = sfunctional/sfunctional/SSZipArchive/minizip/crypt.h; sourceTree = "<group>"; };
+		B608A7B65E35FFD60623A26D3B09E13A /* ContextUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContextUtils.swift; path = sfunctional/sfunctional/ContextUtils.swift; sourceTree = "<group>"; };
+		BE884EF551EE93753514E9FB54E30493 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = sfunctional/sfunctional/SSZipArchive/Info.plist; sourceTree = "<group>"; };
+		C690C299BE263D6A34161C030EBA0FB0 /* sfunctional-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sfunctional-prefix.pch"; sourceTree = "<group>"; };
+		CD28B349B2BE95D9D3D412071B7522A2 /* fileenc.c */ = {isa = PBXFileReference; includeInIndex = 1; name = fileenc.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.c; sourceTree = "<group>"; };
+		CFC46567FE0ACBD0E52E1E1F118AF9D2 /* SSZipCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSZipCommon.h; path = sfunctional/sfunctional/SSZipArchive/SSZipCommon.h; sourceTree = "<group>"; };
+		D252319913B77832A83E98800F7AAF09 /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = sfunctional/sfunctional/SSZipArchive/minizip/unzip.h; sourceTree = "<group>"; };
+		D3511155165EADE80B5A67BCEB7B1E9D /* UrlDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UrlDecoder.swift; path = sfunctional/sfunctional/UrlDecoder.swift; sourceTree = "<group>"; };
+		D4FD61037E6374C1B67051D5E882422F /* minishared.c */ = {isa = PBXFileReference; includeInIndex = 1; name = minishared.c; path = sfunctional/sfunctional/SSZipArchive/minizip/minishared.c; sourceTree = "<group>"; };
+		D52FE45C22DD9CD7C0715A913831310B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = sfunctional/sfunctional/Info.plist; sourceTree = "<group>"; };
+		D5FAE771495A53FE870BD7E9684ABE17 /* sfunctional.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = sfunctional.modulemap; sourceTree = "<group>"; };
+		D6475CBC2685999B901A24457D9D4ACA /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; name = hmac.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.c; sourceTree = "<group>"; };
+		DC38C65BE48FA100577602018624DBE2 /* DatetimeUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DatetimeUtils.swift; path = sfunctional/sfunctional/DatetimeUtils.swift; sourceTree = "<group>"; };
+		DD236A2E591DBE1EE19DC911796E1FD7 /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ioapi.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi.c; sourceTree = "<group>"; };
+		ED7F639B29F59AF975F9017E3A41D28B /* prng.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = prng.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.h; sourceTree = "<group>"; };
+		F5164E6FA4F9699ECFE0322E4ECC99E9 /* IDEWorkspaceChecks.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = IDEWorkspaceChecks.plist; path = sfunctional/sfunctional.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist; sourceTree = "<group>"; };
+		FBC4493B7FA344AD9FF897001F906D9D /* DownloadUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownloadUtils.swift; path = sfunctional/sfunctional/DownloadUtils.swift; sourceTree = "<group>"; };
+		FCC0B8421DCEA5383222606B5CD56A28 /* SSZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSZipArchive.h; path = sfunctional/sfunctional/SSZipArchive/SSZipArchive.h; sourceTree = "<group>"; };
+		FD6ACCC741E3666BB81C1CB72AA06ED4 /* Pods_YuGiOhCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YuGiOhCard.framework; path = "Pods-YuGiOhCard.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		29E9520C417FF940E1FBFC498AABE478 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				394D4838E3774C9E7E6F3DAEE024A5A6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D9A48B5B05640AC736BB925A3F6253E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16EF1A6648AE727CC271FA98F34DE0DD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		77A9A4D5D616B3355CB00144AED2CD84 /* Pods-YuGiOhCard */ = {
+			isa = PBXGroup;
+			children = (
+				9645B42F5340CEC20299BE2199BD8777 /* Info.plist */,
+				3441491F9C65AAFBD8B76EEC97523938 /* Pods-YuGiOhCard.modulemap */,
+				278A89E61F21D25D52BF8ACD834DC7B8 /* Pods-YuGiOhCard-acknowledgements.markdown */,
+				4A1068918E739518CCBD6421EA149458 /* Pods-YuGiOhCard-acknowledgements.plist */,
+				74FF85B13C2D3E99147C312FEBA07CF4 /* Pods-YuGiOhCard-dummy.m */,
+				235048485EF57D4FC4E8FEF711C10970 /* Pods-YuGiOhCard-frameworks.sh */,
+				32D8EE81E6479FFCF3298367B3D732E8 /* Pods-YuGiOhCard-resources.sh */,
+				4CAFBB27EF8C105AC462CAC43B6AE3F1 /* Pods-YuGiOhCard-umbrella.h */,
+				B02CA87838D3C9C28C4703ECABA684E5 /* Pods-YuGiOhCard.debug.xcconfig */,
+				0B25DED3E4E2FADAC4C766843C6B273D /* Pods-YuGiOhCard.release.xcconfig */,
+			);
+			name = "Pods-YuGiOhCard";
+			path = "Target Support Files/Pods-YuGiOhCard";
+			sourceTree = "<group>";
+		};
+		79F25507BA0F22D3FAB34B5C6499BDF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD6ACCC741E3666BB81C1CB72AA06ED4 /* Pods_YuGiOhCard.framework */,
+				1903AD896721C1607B58F6B23B4C251F /* sfunctional.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				B4E48AF8802FB4A747B4A39C2640E684 /* Pods */,
+				79F25507BA0F22D3FAB34B5C6499BDF0 /* Products */,
+				B9FD839F8B1BA35A19D0174E9BA06001 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8B914EE21C9CDFC19348C544575F6092 /* sfunctional */ = {
+			isa = PBXGroup;
+			children = (
+				91B40BA7E0917ABBB476FBEF856EFEFF /* aes.h */,
+				4AAA448FA946979A90D90DD7BCD58D80 /* aes_ni.c */,
+				A135D8A69AC5FD49E2FDD3D9B3DDC2A7 /* aes_ni.h */,
+				52E51C6606E8EB49E995E500DE0C19EA /* aescrypt.c */,
+				825898C2E04B2AA524A239D66887335E /* aeskey.c */,
+				3EF2D28B944982C5DF64C66E3A548C32 /* aesopt.h */,
+				6DC6515E517E6DE32E9C48A2B6F3E473 /* aestab.c */,
+				374BD3127CD417A87613E71877A081B7 /* aestab.h */,
+				ABFD0F17A5229206B1FBD99B0419985B /* brg_endian.h */,
+				26EA3165610CF3B8281A96CF441C7AE4 /* brg_types.h */,
+				36CFE3125EDC97F9F716AA6DB6618679 /* BundleUtils.swift */,
+				2E38948253D7FD951EA2C22766A06DE2 /* contents.xcworkspacedata */,
+				B608A7B65E35FFD60623A26D3B09E13A /* ContextUtils.swift */,
+				555417CE79CBE1F31F32350554BD57EB /* crypt.c */,
+				B44AB85AEA4E37362B08DF08B0919B14 /* crypt.h */,
+				DC38C65BE48FA100577602018624DBE2 /* DatetimeUtils.swift */,
+				FBC4493B7FA344AD9FF897001F906D9D /* DownloadUtils.swift */,
+				4989B949F30118B8E7F07D92573EE821 /* Extensions.swift */,
+				CD28B349B2BE95D9D3D412071B7522A2 /* fileenc.c */,
+				4295040322B3FBE0B879B34FE842FF7A /* fileenc.h */,
+				652A26FABD49E6CABAC7D3EAD5762C2E /* FileUtils.swift */,
+				D6475CBC2685999B901A24457D9D4ACA /* hmac.c */,
+				78CD56D2F60315923D4B53D590785047 /* hmac.h */,
+				A5697B0462FDA75EEAB2EE307FE7DAA4 /* HttpUtils.swift */,
+				F5164E6FA4F9699ECFE0322E4ECC99E9 /* IDEWorkspaceChecks.plist */,
+				B2B29576227FE987F09CB649B8175B71 /* ImageUtils.swift */,
+				BE884EF551EE93753514E9FB54E30493 /* Info.plist */,
+				D52FE45C22DD9CD7C0715A913831310B /* Info.plist */,
+				DD236A2E591DBE1EE19DC911796E1FD7 /* ioapi.c */,
+				28113CD5A9DAACFA10EEC43FADA19E16 /* ioapi.h */,
+				7795D9FAFACF5F16A7ED042788A34ADA /* ioapi_buf.c */,
+				4B955D94FEE318FBCB61341D948B9BF4 /* ioapi_buf.h */,
+				0D35C53530FE0E39DFF88014F59A6DD6 /* ioapi_mem.c */,
+				60A177605A7E38DA994AAF1273F23DFD /* ioapi_mem.h */,
+				D4FD61037E6374C1B67051D5E882422F /* minishared.c */,
+				5796628FAD65E99FD6ED062C7CBC1435 /* minishared.h */,
+				7F46ED56F8CD37EB3E66D9063D5A8F6D /* prng.c */,
+				ED7F639B29F59AF975F9017E3A41D28B /* prng.h */,
+				3D0D8F8022B79CF6B99688B78FC462FA /* project.pbxproj */,
+				411438DC20040D030E0B8B999A9C9594 /* pwd2key.c */,
+				36BB9B964EFF8046F5D51BD73C9A1B4F /* pwd2key.h */,
+				098A9D582EE75DADDC2D2DDF093DE172 /* sfunctional.h */,
+				3DD63745CD7C51A8FAE50C1583E16795 /* sfunctional.podspec */,
+				60F0D77DC87E4A4ED6B85D42287BD096 /* sha1.c */,
+				5DF59F3702492CCCABB0A051DA731DF4 /* sha1.h */,
+				FCC0B8421DCEA5383222606B5CD56A28 /* SSZipArchive.h */,
+				78264565B7A88F189E19BAAC04258F30 /* SSZipArchive.m */,
+				CFC46567FE0ACBD0E52E1E1F118AF9D2 /* SSZipCommon.h */,
+				724029B7CC08A706815A3DD269DC642C /* SysEmu.h */,
+				35A19F82C286978EC6AF0D6644ADF8A1 /* SysEmu.m */,
+				60E5A866B4A8CBB2CFD8D751DA890A4F /* SystemUtils.swift */,
+				97A92EC18E07D1B8E81AFDC67A1BD6BA /* ToastUtils.swift */,
+				7BB8884732447A5B28EEE0B09DF165C0 /* unzip.c */,
+				D252319913B77832A83E98800F7AAF09 /* unzip.h */,
+				D3511155165EADE80B5A67BCEB7B1E9D /* UrlDecoder.swift */,
+				5D2F06E7F7821BF08B2889EC2D9FEADF /* zip.c */,
+				4A942597C8D9E06A002108D3A685C522 /* zip.h */,
+				788F681BC2CA9406BB784F49297CE39F /* ZipArchive.h */,
+				1274731A4FEB4FE4C8BBB0353C6E6AF6 /* ZipUtils.swift */,
+				CE424BD11833CCB843A3775005A562AF /* Support Files */,
+			);
+			name = sfunctional;
+			path = sfunctional;
+			sourceTree = "<group>";
+		};
+		B4E48AF8802FB4A747B4A39C2640E684 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B914EE21C9CDFC19348C544575F6092 /* sfunctional */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B9FD839F8B1BA35A19D0174E9BA06001 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				77A9A4D5D616B3355CB00144AED2CD84 /* Pods-YuGiOhCard */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE424BD11833CCB843A3775005A562AF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A1E834100587E31773A33CEA60E1CACC /* Info.plist */,
+				D5FAE771495A53FE870BD7E9684ABE17 /* sfunctional.modulemap */,
+				00EC9F853D4921D0FE79D072FB18971C /* sfunctional.xcconfig */,
+				0DAD760D32C5465BF66ED0B112D37FC4 /* sfunctional-dummy.m */,
+				C690C299BE263D6A34161C030EBA0FB0 /* sfunctional-prefix.pch */,
+				2EE383B84C355599E4594E77FCF567F6 /* sfunctional-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/sfunctional";
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		01E1A4785BC1E84FE97FB6634AC63DD9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				056C419BB66F5E0B232B3D6C75D85719 /* aes.h in Headers */,
+				EC552B734732DBD303C8C81172FDE285 /* aes_ni.h in Headers */,
+				6DF8AF21CE90E5D466A641F1517E54E2 /* aesopt.h in Headers */,
+				330DBDB8A5836D1FDC437ECE13C7D8B8 /* aestab.h in Headers */,
+				EEEF2EDFAD5278C4316AA53C72CE15E6 /* brg_endian.h in Headers */,
+				3C72CE5C548522CFB837AA65EA793C53 /* brg_types.h in Headers */,
+				FB6DAA6E559903F69A9F06CCF88469A1 /* crypt.h in Headers */,
+				5827B006EDDFEAA59668C7BA94A667A2 /* fileenc.h in Headers */,
+				A1670E3781B3F28A5EF7FD386A307A44 /* hmac.h in Headers */,
+				E6A0DE8FD63ECD91EB3AB5EA6484B0B2 /* ioapi.h in Headers */,
+				6E5924098E2EF1A272CFFC53110BB08A /* ioapi_buf.h in Headers */,
+				7F28133989DD7C8A7924850FA8AAD500 /* ioapi_mem.h in Headers */,
+				A303FEC5CEB53D713207C2781D972BE7 /* minishared.h in Headers */,
+				FF1EDEF650752CDAFF37635C6E4FF552 /* prng.h in Headers */,
+				F7985D3D04F13FD2ADD105D627E11D2D /* pwd2key.h in Headers */,
+				2739BD57C04D3E3C0040CBDFBCDD8A16 /* sfunctional-umbrella.h in Headers */,
+				1DE7F74463AC0DED2037402AB0D44F4D /* sfunctional.h in Headers */,
+				253E31A271C7A76213D927E7BEF7298D /* sha1.h in Headers */,
+				98E84E4A37D77DF7727B8A52E334F29D /* SSZipArchive.h in Headers */,
+				BFF278FC9618E504B900F102456CF83D /* SSZipCommon.h in Headers */,
+				E5DF60F395BAB732A6303E9DFDE688BD /* SysEmu.h in Headers */,
+				508DBDBC11D17AC61CF97AEA5A0DF8BE /* unzip.h in Headers */,
+				4CC1A62EE63E18EE106BE7D4A4139DC2 /* zip.h in Headers */,
+				620CC272317D517F9BE9548F25994B41 /* ZipArchive.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCADBF79A371C56896896F33977F40E0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B49624ED5D519DACCCA5D3AFB9102A42 /* Pods-YuGiOhCard-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		99E59A6630D558B785AE48A71F7A7DFB /* sfunctional */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08F468F14D0A2E80BBD1F16EF925A2D3 /* Build configuration list for PBXNativeTarget "sfunctional" */;
+			buildPhases = (
+				99CA495E88C08607F5681D48B4F77CF9 /* Sources */,
+				29E9520C417FF940E1FBFC498AABE478 /* Frameworks */,
+				01E1A4785BC1E84FE97FB6634AC63DD9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sfunctional;
+			productName = sfunctional;
+			productReference = 1903AD896721C1607B58F6B23B4C251F /* sfunctional.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C42AF3F377316AE1A52A41EFDC3CE9FE /* Pods-YuGiOhCard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A54EFEFFD2A2D817B8FBB699DE98E485 /* Build configuration list for PBXNativeTarget "Pods-YuGiOhCard" */;
+			buildPhases = (
+				4FAECE69E93E96903D49B56706414930 /* Sources */,
+				2D9A48B5B05640AC736BB925A3F6253E /* Frameworks */,
+				BCADBF79A371C56896896F33977F40E0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B929C687534A80245C5E81C45A6ABDB2 /* PBXTargetDependency */,
+			);
+			name = "Pods-YuGiOhCard";
+			productName = "Pods-YuGiOhCard";
+			productReference = FD6ACCC741E3666BB81C1CB72AA06ED4 /* Pods_YuGiOhCard.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 79F25507BA0F22D3FAB34B5C6499BDF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C42AF3F377316AE1A52A41EFDC3CE9FE /* Pods-YuGiOhCard */,
+				99E59A6630D558B785AE48A71F7A7DFB /* sfunctional */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4FAECE69E93E96903D49B56706414930 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				345D4234548E2FC36F16092D2E042A97 /* Pods-YuGiOhCard-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99CA495E88C08607F5681D48B4F77CF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE1C833CA0DD17A10C21787881EA2B3B /* aes_ni.c in Sources */,
+				C16E6374DF2C0DCCDEB1A913B0ACBE9D /* aescrypt.c in Sources */,
+				82EC72BD86125DFE1040464D00773A9D /* aeskey.c in Sources */,
+				D666101D0A1753B6D1366DE60B708D5D /* aestab.c in Sources */,
+				703BF5E47E8CA691D8CD260C9AEC3A55 /* BundleUtils.swift in Sources */,
+				DC969560FE5699606462BC835438B533 /* contents.xcworkspacedata in Sources */,
+				F67D043F1A7763EC23231645CE1C0C73 /* ContextUtils.swift in Sources */,
+				B596844677EAFB4B7B4C5A639B35F2F6 /* crypt.c in Sources */,
+				07F67B5AAAB148CB5CD84824D6B82044 /* DatetimeUtils.swift in Sources */,
+				C90C814A37E7706BCC52827A36EED5F3 /* DownloadUtils.swift in Sources */,
+				A3DE52B1D42EB8FF7C44D5251F7A656B /* Extensions.swift in Sources */,
+				9AE37EDCFD5F0DB8C8A0E54F278FA884 /* fileenc.c in Sources */,
+				9CFD5F3C54A357A5FC2D3F905916702F /* FileUtils.swift in Sources */,
+				4B41343B47E0D05E844182F6DE3D42FE /* hmac.c in Sources */,
+				B6A79958490AD02A342018026630B7A2 /* HttpUtils.swift in Sources */,
+				42BF00FC0D3DC0E5F8063D9BA2B6C476 /* IDEWorkspaceChecks.plist in Sources */,
+				3998A70C5DAE104B4311EDFADA81D102 /* ImageUtils.swift in Sources */,
+				2EB706DB1952DD90E7C2528831483F7E /* Info.plist in Sources */,
+				F64FC4BE7D0DE09D70FBD28D4660D1F8 /* Info.plist in Sources */,
+				9B7262B5B8720688885C8DB2F4311DCC /* ioapi.c in Sources */,
+				3720541F3EBDDEAB222E67097966B02B /* ioapi_buf.c in Sources */,
+				7A7E83979ECE28750A83A180685BDDF8 /* ioapi_mem.c in Sources */,
+				92114AD44F951C756D7BDCBF96E24787 /* minishared.c in Sources */,
+				2267003D369A5C787E7774717169FCD0 /* prng.c in Sources */,
+				C26199DE1899B458E5A11DEBC8512D75 /* project.pbxproj in Sources */,
+				9360EB1718B71C88B1FD03313DD55D12 /* pwd2key.c in Sources */,
+				4A66FD1395D121B72A8D144F1C629588 /* sfunctional-dummy.m in Sources */,
+				E0B028854D044DF1E1B05B3CBF1E776B /* sfunctional.podspec in Sources */,
+				3C30B226904CEDFB5E050467E3E5B4F6 /* sha1.c in Sources */,
+				F8AE90D31D3C6AB34888B2145E23537D /* SSZipArchive.m in Sources */,
+				7F7689E48DFAAD3017B1B5CC4F1D46A0 /* SysEmu.m in Sources */,
+				27195E10DE0CC7686496C7DF054FF1BA /* SystemUtils.swift in Sources */,
+				E3E29E4A81E79F3CE8500C7EC87EA1CA /* ToastUtils.swift in Sources */,
+				60B9DCBE63C49FC2C7A0799EC691C6AB /* unzip.c in Sources */,
+				FDB7E4DF601F595AA3C347AF880E381F /* UrlDecoder.swift in Sources */,
+				A04EA72D594E82D8F7487107D607D831 /* zip.c in Sources */,
+				7A9658E5706F1BC99EE9B7971D549745 /* ZipUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B929C687534A80245C5E81C45A6ABDB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = sfunctional;
+			target = 99E59A6630D558B785AE48A71F7A7DFB /* sfunctional */;
+			targetProxy = D8C5EC914ACC25052668CFEDD6C467A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		38653965F52329B59B35C381B512D0BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00EC9F853D4921D0FE79D072FB18971C /* sfunctional.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/sfunctional/sfunctional-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/sfunctional/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/sfunctional/sfunctional.modulemap";
+				PRODUCT_NAME = sfunctional;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6E1C4A908803567103181CF0BD950893 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00EC9F853D4921D0FE79D072FB18971C /* sfunctional.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/sfunctional/sfunctional-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/sfunctional/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/sfunctional/sfunctional.modulemap";
+				PRODUCT_NAME = sfunctional;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C07ED8089F70A31B83996A8910D7F18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		973D667E84CC5704DD761E60E8F1DEE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B25DED3E4E2FADAC4C766843C6B273D /* Pods-YuGiOhCard.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YuGiOhCard/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YuGiOhCard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		98F29E7567052F62660DDD7069ADF73C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		F90A8FBCF55DCEB2314FC39B8D8F98CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B02CA87838D3C9C28C4703ECABA684E5 /* Pods-YuGiOhCard.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YuGiOhCard/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YuGiOhCard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		08F468F14D0A2E80BBD1F16EF925A2D3 /* Build configuration list for PBXNativeTarget "sfunctional" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38653965F52329B59B35C381B512D0BF /* Debug */,
+				6E1C4A908803567103181CF0BD950893 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C07ED8089F70A31B83996A8910D7F18 /* Debug */,
+				98F29E7567052F62660DDD7069ADF73C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A54EFEFFD2A2D817B8FBB699DE98E485 /* Build configuration list for PBXNativeTarget "Pods-YuGiOhCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F90A8FBCF55DCEB2314FC39B8D8F98CC /* Debug */,
+				973D667E84CC5704DD761E60E8F1DEE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
