@@ -1,0 +1,2 @@
+inherited FormMain: TFormMain
+end
