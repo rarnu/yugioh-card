@@ -1,9 +1,11 @@
 package com.rarnu.yugioh.card
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import com.rarnu.kt.android.resStr
 import com.rarnu.kt.android.showActionBack
 import com.rarnu.yugioh.CardInfo
@@ -12,7 +14,8 @@ import com.rarnu.yugioh.card.adapter.CardListAdapter
 import kotlinx.android.synthetic.main.activity_cardlist.*
 import kotlin.concurrent.thread
 
-class CardListActivity: Activity(), View.OnClickListener {
+class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {
+
 
     private var key = ""
     private var currentPage = 1
@@ -28,6 +31,7 @@ class CardListActivity: Activity(), View.OnClickListener {
 
         adapter = CardListAdapter(this, list)
         lvCard.adapter = adapter
+        lvCard.onItemClickListener = this
 
         btnFirst.setOnClickListener(this)
         btnPrior.setOnClickListener(this)
@@ -35,7 +39,7 @@ class CardListActivity: Activity(), View.OnClickListener {
         btnLast.setOnClickListener(this)
 
         val type = intent.getIntExtra("type", 0)
-        when(type) {
+        when (type) {
             0 -> key = intent.getStringExtra("key")
             1 -> {
                 // complex search
@@ -60,14 +64,14 @@ class CardListActivity: Activity(), View.OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             android.R.id.home -> finish()
         }
         return true
     }
 
     override fun onClick(v: View) {
-        when(v.id) {
+        when (v.id) {
             R.id.btnFirst -> {
                 if (currentPage != 1) {
                     currentPage = 1
@@ -93,6 +97,15 @@ class CardListActivity: Activity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val hashid = list[position].hashid
+        val name = list[position].name
+        val inDetail = Intent(this, CardDetailActivity::class.java)
+        inDetail.putExtra("name", name)
+        inDetail.putExtra("hashid", hashid)
+        startActivity(inDetail)
     }
 
 }

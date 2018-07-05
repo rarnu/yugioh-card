@@ -22,6 +22,9 @@
         <activity android:name=".CardListActivity"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".CardDetailActivity"
+                  android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

@@ -79,6 +79,15 @@ class Hotest {
 }
 
 object YGOData {
+
+    private fun replaceChars(str: String): String {
+        var s = str
+        s = s.replace("&quot;", "\n")
+        s = s.replace("&#039;", "'")
+        s = s.replace("　", "")
+        return s
+    }
+
     private fun parseSearchResult(jsonString: String): SearchResult {
         val result = SearchResult()
         try {
@@ -92,9 +101,9 @@ object YGOData {
                     val info = CardInfo()
                     info.cardid = obj.getInt("id")
                     info.hashid = obj.getString("hashid")
-                    info.name = obj.getString("name")
-                    info.japname = obj.getString("japname")
-                    info.enname = obj.getString("enname")
+                    info.name = replaceChars(obj.getString("name"))
+                    info.japname = replaceChars(obj.getString("japname"))
+                    info.enname = replaceChars(obj.getString("enname"))
                     info.cardtype = obj.getString("cardtype")
                     result.data.add(info)
                 }
@@ -169,16 +178,16 @@ object YGOData {
             val json = JSONObject(parsed)
             if (json.getInt("result") == 0) {
                 val obj = json.getJSONObject("data")
-                result.name = obj.getString("name")
-                result.japname = obj.getString("japname")
-                result.enname = obj.getString("enname")
+                result.name = replaceChars(obj.getString("name"))
+                result.japname = replaceChars(obj.getString("japname"))
+                result.enname = replaceChars(obj.getString("enname"))
                 result.cardtype = obj.getString("cardtype")
                 result.password = obj.getString("password")
                 result.limit = obj.getString("limit")
                 result.belongs = obj.getString("belongs")
                 result.rare = obj.getString("rare")
-                result.pack = obj.getString("pack")
-                result.effect = obj.getString("effect")
+                result.pack = replaceChars(obj.getString("pack"))
+                result.effect = replaceChars(obj.getString("effect"))
                 result.race = obj.getString("race")
                 result.element = obj.getString("element")
                 result.level = obj.getString("level")
@@ -190,14 +199,14 @@ object YGOData {
                     val pkinfo = jarr.getJSONObject(it)
                     val info = CardPackInfo()
                     info.url = pkinfo.getString("url")
-                    info.name = pkinfo.getString("name")
+                    info.name = replaceChars(pkinfo.getString("name"))
                     info.date = pkinfo.getString("date")
                     info.abbr = pkinfo.getString("abbr")
                     info.rare = pkinfo.getString("rare")
                     result.packs.add(info)
                 }
-                result.adjust = adjust
-                result.wiki = wiki
+                result.adjust = replaceChars(adjust)
+                result.wiki = replaceChars(wiki)
             }
         } catch (e: Exception) {
 
@@ -223,7 +232,7 @@ object YGOData {
                     info.limit = obj.getInt("limit")
                     info.color = obj.getString("color")
                     info.hashid = obj.getString("hashid")
-                    info.name = obj.getString("name")
+                    info.name = replaceChars(obj.getString("name"))
                     result.add(info)
                 }
             }
@@ -249,7 +258,7 @@ object YGOData {
                     val info = PackageInfo()
                     info.season = obj.getString("season")
                     info.url = obj.getString("url")
-                    info.name = obj.getString("name")
+                    info.name = replaceChars(obj.getString("name"))
                     info.abbr = obj.getString("abbr")
                     result.add(info)
                 }
@@ -287,13 +296,13 @@ object YGOData {
                 (0 until arrCard.length()).forEach {
                     val ci = HotCard()
                     ci.hashid = arrCard.getJSONObject(it).getString("hashid")
-                    ci.name = arrCard.getJSONObject(it).getString("name")
+                    ci.name = replaceChars(arrCard.getJSONObject(it).getString("name"))
                     result.card.add(ci)
                 }
                 val arrPack = json.getJSONArray("pack")
                 (0 until arrPack.length()).forEach {
                     val pi = HotPack()
-                    pi.name = arrPack.getJSONObject(it).getString("name")
+                    pi.name = replaceChars(arrPack.getJSONObject(it).getString("name"))
                     pi.packid = arrPack.getJSONObject(it).getString("packid")
                     result.pack.add(pi)
                 }

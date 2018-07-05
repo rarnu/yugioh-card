@@ -119,6 +119,7 @@ type
 
   TYGOData = class
   private
+    class function replaceChars(str: string): string;
     class function parseSearchResult(jsonString: string): TSearchResult;
   public
     class function searchCommon(akey: string; apage: integer): TSearchResult;
@@ -160,6 +161,14 @@ end;
 
 { TYGOData }
 
+class function TYGOData.replaceChars(str: string): string;
+begin
+  str := str.Replace('&quot;', '"');
+  str := str.Replace('&#039;', '''');
+  str := str.Replace('　', '');
+  Exit(str);
+end;
+
 class function TYGOData.parseSearchResult(jsonString: string): TSearchResult;
 var
   parser: TJSONParser;
@@ -184,9 +193,9 @@ begin
         info := TCardInfo.Create;
         info.cardid := jobj.Integers['id'];
         info.hashid := jobj.Strings['hashid'];
-        info.Name := jobj.Strings['name'];
-        info.japname := jobj.Strings['japname'];
-        info.enname := jobj.Strings['enname'];
+        info.name := replaceChars(jobj.Strings['name']);
+        info.japname := replaceChars(jobj.Strings['japname']);
+        info.enname := replaceChars(jobj.Strings['enname']);
         info.cardtype := jobj.Strings['cardtype'];
         Result.Data.Add(info);
       end;
@@ -273,16 +282,16 @@ begin
     if (json.Integers['result'] = 0) then
     begin
       obj := json.Objects['data'];
-      Result.Name := obj.Strings['name'];
-      Result.japname := obj.Strings['japname'];
-      Result.enname := obj.Strings['enname'];
+      Result.name := replaceChars(obj.Strings['name']);
+      Result.japname := replaceChars(obj.Strings['japname']);
+      Result.enname := replaceChars(obj.Strings['enname']);
       Result.cardtype := obj.Strings['cardtype'];
       Result.password := obj.Strings['password'];
       Result.limit := obj.Strings['limit'];
       Result.belongs := obj.Strings['belongs'];
       Result.rare := obj.Strings['rare'];
-      Result.pack := obj.Strings['pack'];
-      Result.effect := obj.Strings['effect'];
+      Result.pack := replaceChars(obj.Strings['pack']);
+      Result.effect := replaceChars(obj.Strings['effect']);
       Result.race := obj.Strings['race'];
       Result.element := obj.Strings['element'];
       Result.level := obj.Strings['level'];
@@ -295,7 +304,7 @@ begin
         pkinfo := jarr.Objects[i];
         info := TCardPackInfo.Create;
         info.url := pkinfo.Strings['url'];
-        info.Name := pkinfo.Strings['name'];
+        info.name := replaceChars(pkinfo.Strings['name']);
         info.date := pkinfo.Strings['date'];
         info.abbr := pkinfo.Strings['abbr'];
         info.rare := pkinfo.Strings['rare'];
@@ -338,7 +347,7 @@ begin
         info.limit := obj.Integers['limit'];
         info.color := obj.Strings['color'];
         info.hashid := obj.Strings['hashid'];
-        info.Name := obj.Strings['name'];
+        info.name := replaceChars(obj.Strings['name']);
         Result.Add(info);
       end;
     end;
@@ -375,7 +384,7 @@ begin
         info := TPackageInfo.Create;
         info.season := obj.Strings['season'];
         info.url := obj.Strings['url'];
-        info.Name := obj.Strings['name'];
+        info.name := replaceChars(obj.Strings['name']);
         info.abbr := obj.Strings['abbr'];
         Result.Add(info);
       end;
@@ -429,7 +438,7 @@ begin
         obj := jarr.Objects[i];
         infoCard := THotCard.Create;
         infoCard.hashid := obj.Strings['hashid'];
-        infoCard.Name := obj.Strings['name'];
+        infoCard.name := replaceChars(obj.Strings['name']);
         Result.card.Add(infoCard);
       end;
       jarr := json.Arrays['pack'];
@@ -438,7 +447,7 @@ begin
         obj := jarr.Objects[i];
         infoPack := THotPack.Create;
         infoPack.packid := obj.Strings['packid'];
-        infoPack.Name := obj.Strings['name'];
+        infoPack.name := replaceChars(obj.Strings['name']);
         Result.pack.Add(infoPack);
       end;
     end;

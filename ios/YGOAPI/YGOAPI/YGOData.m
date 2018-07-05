@@ -31,6 +31,16 @@
 
 @implementation YGOData
 
++(NSString*) replaceChars:(NSString*) str {
+    if (str == nil) {
+        return @"";
+    }
+    str = [str stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+    str = [str stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+    str = [str stringByReplacingOccurrencesOfString:@"　" withString:@""];
+    return str;
+}
+
 +(SearchResult*) parseSearchResult:(NSString*) jsonString {
     SearchResult* result = [[SearchResult alloc] init];
     @try {
@@ -45,9 +55,9 @@
                 CardInfo* info = [[CardInfo alloc] init];
                 info.cardid = [[obj valueForKey:@"id"] integerValue];
                 info.hashid = [obj valueForKey:@"hashid"];
-                info.name = [obj valueForKey:@"name"];
-                info.japname = [obj valueForKey:@"japname"];
-                info.enname = [obj valueForKey:@"enname"];
+                info.name = [YGOData replaceChars:[obj valueForKey:@"name"]];
+                info.japname = [YGOData replaceChars:[obj valueForKey:@"japname"]];
+                info.enname = [YGOData replaceChars:[obj valueForKey:@"enname"]];
                 info.cardtype = [obj valueForKey:@"cardtype"];
                 [arr addObject:info];
             }
@@ -136,16 +146,16 @@
         NSJSONSerialization* json = [NSJSONSerialization JSONObjectWithData:[parsed dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
         if ([[json valueForKey:@"result"] intValue] == 0) {
             id obj = [json valueForKey:@"data"];
-            result.name = [obj valueForKey:@"name"];
-            result.japname = [obj valueForKey:@"japname"];
-            result.enname = [obj valueForKey:@"enname"];
+            result.name = [YGOData replaceChars:[obj valueForKey:@"name"]];
+            result.japname = [YGOData replaceChars:[obj valueForKey:@"japname"]];
+            result.enname = [YGOData replaceChars:[obj valueForKey:@"enname"]];
             result.cardtype = [obj valueForKey:@"cardtype"];
             result.password = [obj valueForKey:@"password"];
             result.limit = [obj valueForKey:@"limit"];
             result.belongs = [obj valueForKey:@"belongs"];
             result.rare = [obj valueForKey:@"rare"];
-            result.pack = [obj valueForKey:@"pack"];
-            result.effect = [obj valueForKey:@"effect"];
+            result.pack = [YGOData replaceChars:[obj valueForKey:@"pack"]];
+            result.effect = [YGOData replaceChars:[obj valueForKey:@"effect"]];
             result.race = [obj valueForKey:@"race"];
             result.element = [obj valueForKey:@"element"];
             result.level = [obj valueForKey:@"level"];
@@ -159,15 +169,15 @@
                 id pkinfo = [jarr objectAtIndex:i];
                 CardPackInfo* info = [[CardPackInfo alloc] init];
                 info.url = [pkinfo valueForKey:@"url"];
-                info.name = [pkinfo valueForKey:@"name"];
+                info.name = [YGOData replaceChars:[pkinfo valueForKey:@"name"]];
                 info.date = [pkinfo valueForKey:@"date"];
                 info.abbr = [pkinfo valueForKey:@"abbr"];
                 info.rare = [pkinfo valueForKey:@"rare"];
                 [pk addObject:info];
             }
             result.packs = pk;
-            result.adjust = adjust;
-            result.wiki = wikiparsed;
+            result.adjust = [YGOData replaceChars:adjust];
+            result.wiki = [YGOData replaceChars:wikiparsed];
         }
     } @catch (NSException *exception) {
         
@@ -194,7 +204,7 @@
                 info.limit = [[obj valueForKey:@"limit"] integerValue];
                 info.color = [obj valueForKey:@"color"];
                 info.hashid = [obj valueForKey:@"hashid"];
-                info.name = [obj valueForKey:@"name"];
+                info.name = [YGOData replaceChars:[obj valueForKey:@"name"]];
                 [result addObject:info];
             }
         }
@@ -222,7 +232,7 @@
                 PackageInfo* info = [[PackageInfo alloc] init];
                 info.season = [obj valueForKey:@"season"];
                 info.url = [obj valueForKey:@"url"];
-                info.name = [obj valueForKey:@"name"];
+                info.name = [YGOData replaceChars:[obj valueForKey:@"name"]];
                 info.abbr = [obj valueForKey:@"abbr"];
                 [result addObject:info];
             }
@@ -263,7 +273,7 @@
             NSMutableArray<HotCard*>* retCard = [NSMutableArray array];
             for (int i = 0; i < arrCard.count; i++) {
                 HotCard* ci = [[HotCard alloc] init];
-                ci.name = [[arrCard objectAtIndex:i] valueForKey:@"name"];
+                ci.name = [YGOData replaceChars:[[arrCard objectAtIndex:i] valueForKey:@"name"]];
                 ci.hashid = [[arrCard objectAtIndex:i] valueForKey:@"hashid"];
                 [retCard addObject:ci];
             }
@@ -271,7 +281,7 @@
             NSMutableArray<HotPack*>* retPack = [NSMutableArray array];
             for (int i = 0; i < arrPack.count; i++) {
                 HotPack* pi = [[HotPack alloc] init];
-                pi.name = [[arrPack objectAtIndex:i] valueForKey:@"name"];
+                pi.name = [YGOData replaceChars:[[arrPack objectAtIndex:i] valueForKey:@"name"]];
                 pi.packid = [[arrPack objectAtIndex:i] valueForKey:@"packid"];
                 [retPack addObject:pi];
             }

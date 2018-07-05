@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,6 +58,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COj-4u-Y6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1046" y="159"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="msr-Xh-Q3q">
+            <objects>
+                <viewController storyboardIdentifier="detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ez0-b0-2Xh" customClass="CardDetailController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MUM-np-7dL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="a8P-9I-bFs"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="uBI-e1-Jci">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Wiki" id="8tT-gJ-qHE">
+                                <connections>
+                                    <action selector="btnWikiClickedWithSender:" destination="Ez0-b0-2Xh" id="JCP-am-Euy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Image" id="xJJ-cj-kCP">
+                                <connections>
+                                    <action selector="btnImageClickedWithSender:" destination="Ez0-b0-2Xh" id="PVV-Jj-7Lp"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dwr-EZ-ZwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1726" y="158"/>
+        </scene>
+        <!--Wiki-->
+        <scene sceneID="BCE-JN-pCd">
+            <objects>
+                <viewController storyboardIdentifier="wiki" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pDL-jr-DDH" customClass="CardWikiController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8go-o4-A8p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PGx-pg-uTw"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Wiki" id="fOG-H6-vBY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sgv-KQ-PyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2394" y="158"/>
+        </scene>
+        <!--Image-->
+        <scene sceneID="JO0-eF-5Hf">
+            <objects>
+                <viewController storyboardIdentifier="image" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Uu-OA-8v3" customClass="CardImageController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bWh-3Y-eTi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KaO-Ts-rcX"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Image" id="xg0-Hc-2CR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZcE-wx-3EV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3070" y="160"/>
         </scene>
     </scenes>
 </document>

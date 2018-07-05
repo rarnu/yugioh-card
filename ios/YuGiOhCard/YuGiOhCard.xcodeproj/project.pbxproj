@@ -16,6 +16,9 @@
 		9207E77B20E755AB00735721 /* YGOAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9207E77A20E755AB00735721 /* YGOAPI.framework */; };
 		9207E77C20E755AB00735721 /* YGOAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9207E77A20E755AB00735721 /* YGOAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9208BEE120EB651600F795EA /* CardListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208BEE020EB651600F795EA /* CardListController.swift */; };
+		9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3B20EDF0BA00839678 /* CardDetailController.swift */; };
+		9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3D20EE1A8500839678 /* CardWikiController.swift */; };
+		9246AD4020EE1CB400839678 /* CardImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3F20EE1CB400839678 /* CardImageController.swift */; };
 		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,9 @@
 		9207E76C20E67E9000735721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9207E77A20E755AB00735721 /* YGOAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YGOAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9208BEE020EB651600F795EA /* CardListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListController.swift; sourceTree = "<group>"; };
+		9246AD3B20EDF0BA00839678 /* CardDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailController.swift; sourceTree = "<group>"; };
+		9246AD3D20EE1A8500839678 /* CardWikiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWikiController.swift; sourceTree = "<group>"; };
+		9246AD3F20EE1CB400839678 /* CardImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageController.swift; sourceTree = "<group>"; };
 		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
 		A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.release.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.release.xcconfig"; sourceTree = "<group>"; };
 		AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 				9207E76920E67E9000735721 /* LaunchScreen.storyboard */,
 				9207E76C20E67E9000735721 /* Info.plist */,
 				9208BEE020EB651600F795EA /* CardListController.swift */,
+				9246AD3B20EDF0BA00839678 /* CardDetailController.swift */,
+				9246AD3D20EE1A8500839678 /* CardWikiController.swift */,
+				9246AD3F20EE1CB400839678 /* CardImageController.swift */,
 			);
 			path = YuGiOhCard;
 			sourceTree = "<group>";
@@ -253,6 +262,9 @@
 				9207E76320E67E8F00735721 /* MainController.swift in Sources */,
 				9208BEE120EB651600F795EA /* CardListController.swift in Sources */,
 				9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */,
+				9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */,
+				9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */,
+				9246AD4020EE1CB400839678 /* CardImageController.swift in Sources */,
 				92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
