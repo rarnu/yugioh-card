@@ -89,13 +89,13 @@ type
   THotCard = class
   public
     hashid: string;
-    name: string;
+    Name: string;
   end;
 
   THotPack = class
   public
     packid: string;
-    name: string;
+    Name: string;
   end;
 
   THotCardList = specialize TFPGList<THotCard>;
@@ -146,12 +146,14 @@ end;
 
 destructor THotest.Destroy;
 var
-  i: Integer;
+  i: integer;
 begin
   search.Free;
-  for i := card.Count - 1 downto 0 do card[i].Free;
+  for i := card.Count - 1 downto 0 do
+    card[i].Free;
   card.Free;
-  for i := pack.Count - 1 downto 0 do pack[i].Free;
+  for i := pack.Count - 1 downto 0 do
+    pack[i].Free;
   pack.Free;
   inherited Destroy;
 end;
@@ -167,38 +169,43 @@ var
   i: integer;
   info: TCardInfo;
 begin
-  parser := TJSONParser.Create(jsonString, []);
-  json := TJSONObject(parser.Parse);
   Result := TSearchResult.Create;
-  if (json.Integers['result'] = 0) then
-  begin
-    Result.page := json.Integers['page'];
-    Result.pageCount := json.Integers['pagecount'];
-    jarr := json.Arrays['data'];
-    for i := 0 to jarr.Count - 1 do
+  try
+    parser := TJSONParser.Create(jsonString, []);
+    json := TJSONObject(parser.Parse);
+    if (json.Integers['result'] = 0) then
     begin
-      jobj := jarr.Objects[i];
-      info := TCardInfo.Create;
-      info.cardid := jobj.Integers['id'];
-      info.hashid := jobj.Strings['hashid'];
-      info.Name := jobj.Strings['name'];
-      info.japname := jobj.Strings['japname'];
-      info.enname := jobj.Strings['enname'];
-      info.cardtype := jobj.Strings['cardtype'];
-      Result.Data.Add(info);
+      Result.page := json.Integers['page'];
+      Result.pageCount := json.Integers['pagecount'];
+      jarr := json.Arrays['data'];
+      for i := 0 to jarr.Count - 1 do
+      begin
+        jobj := jarr.Objects[i];
+        info := TCardInfo.Create;
+        info.cardid := jobj.Integers['id'];
+        info.hashid := jobj.Strings['hashid'];
+        info.Name := jobj.Strings['name'];
+        info.japname := jobj.Strings['japname'];
+        info.enname := jobj.Strings['enname'];
+        info.cardtype := jobj.Strings['cardtype'];
+        Result.Data.Add(info);
+      end;
     end;
+    json.Free;
+    parser.Free;
+  except
   end;
-  json.Free;
-  parser.Free;
 end;
 
 class function TYGOData.searchCommon(akey: string; apage: integer): TSearchResult;
 var
-  Data: string;
-  parsed: string;
+  data: string = '';
+  parsed: string = '';
 begin
-  Data := TYGORequest.search(akey, apage);
-  parsed := string(parse(PChar(Data), 0));
+  data := TYGORequest.search(akey, apage);
+  if (data <> '') then begin
+    parsed := string(parse(PChar(data), 0));
+  end;
   Exit(parseSearchResult(parsed));
 end;
 
@@ -259,45 +266,49 @@ begin
   adjust := string(parse(PChar(ahtml), 2));
   wikiHtml := TYGORequest.cardWiki(hashid);
   wiki := string(parse(PChar(wikiHtml), 3));
-
   parser := TJSONParser.Create(parsed, []);
-  json := TJSONObject(parser.Parse);
   Result := TCardDetail.Create;
-  if (json.Integers['result'] = 0) then
-  begin
-    obj := json.Objects['data'];
-    Result.Name := obj.Strings['name'];
-    Result.japname := obj.Strings['japname'];
-    Result.enname := obj.Strings['enname'];
-    Result.cardtype := obj.Strings['cardtype'];
-    Result.password := obj.Strings['password'];
-    Result.limit := obj.Strings['limit'];
-    Result.belongs := obj.Strings['belongs'];
-    Result.rare := obj.Strings['rare'];
-    Result.pack := obj.Strings['pack'];
-    Result.effect := obj.Strings['effect'];
-    Result.race := obj.Strings['race'];
-    Result.element := obj.Strings['element'];
-    Result.level := obj.Strings['level'];
-    Result.atk := obj.Strings['atk'];
-    Result.def := obj.Strings['def'];
-    Result.link := obj.Strings['link'];
-    jarr := obj.Arrays['packs'];
-    for i := 0 to jarr.Count -1  do begin
-      pkinfo := jarr.Objects[i];
-      info := TCardPackInfo.Create;
-      info.url := pkinfo.Strings['url'];
-      info.name := pkinfo.Strings['name'];
-      info.date := pkinfo.Strings['date'];
-      info.abbr := pkinfo.Strings['abbr'];
-      info.rare := pkinfo.Strings['rare'];
-      Result.packs.Add(info);
+  try
+    json := TJSONObject(parser.Parse);
+    if (json.Integers['result'] = 0) then
+    begin
+      obj := json.Objects['data'];
+      Result.Name := obj.Strings['name'];
+      Result.japname := obj.Strings['japname'];
+      Result.enname := obj.Strings['enname'];
+      Result.cardtype := obj.Strings['cardtype'];
+      Result.password := obj.Strings['password'];
+      Result.limit := obj.Strings['limit'];
+      Result.belongs := obj.Strings['belongs'];
+      Result.rare := obj.Strings['rare'];
+      Result.pack := obj.Strings['pack'];
+      Result.effect := obj.Strings['effect'];
+      Result.race := obj.Strings['race'];
+      Result.element := obj.Strings['element'];
+      Result.level := obj.Strings['level'];
+      Result.atk := obj.Strings['atk'];
+      Result.def := obj.Strings['def'];
+      Result.link := obj.Strings['link'];
+      jarr := obj.Arrays['packs'];
+      for i := 0 to jarr.Count - 1 do
+      begin
+        pkinfo := jarr.Objects[i];
+        info := TCardPackInfo.Create;
+        info.url := pkinfo.Strings['url'];
+        info.Name := pkinfo.Strings['name'];
+        info.date := pkinfo.Strings['date'];
+        info.abbr := pkinfo.Strings['abbr'];
+        info.rare := pkinfo.Strings['rare'];
+        Result.packs.Add(info);
+      end;
+      Result.adjust := adjust;
+      Result.wiki := wiki;
     end;
-    Result.adjust:= adjust;
-    Result.wiki:= wiki;
+    json.Free;
+    parser.Free;
+  except
   end;
-  json.Free;
-  parser.Free;
+
 end;
 
 class function TYGOData.limit(): TLimitList;
@@ -307,29 +318,35 @@ var
   json: TJSONObject;
   parser: TJSONParser;
   jarr: TJSONArray;
-  i: Integer;
+  i: integer;
   obj: TJSONObject;
   info: TLimitInfo;
 begin
-  ahtml:= TYGORequest.limit();
-  parsed:= string(parse(PChar(ahtml), 4));
+  ahtml := TYGORequest.limit();
+  parsed := string(parse(PChar(ahtml), 4));
   Result := TLimitList.Create;
-  parser:= TJSONParser.Create(parsed, []);
-  json := TJSONObject(parser.Parse);
-  if (json.Integers['result'] = 0) then begin
-    jarr := json.Arrays['data'];
-    for i := 0 to jarr.Count - 1 do begin
-      obj := jarr.Objects[i];
-      info := TLimitInfo.Create;
-      info.limit := obj.Integers['limit'];
-      info.color := obj.Strings['color'];
-      info.hashid := obj.Strings['hashid'];
-      info.name := obj.Strings['name'];
-      Result.Add(info);
+  try
+    parser := TJSONParser.Create(parsed, []);
+    json := TJSONObject(parser.Parse);
+    if (json.Integers['result'] = 0) then
+    begin
+      jarr := json.Arrays['data'];
+      for i := 0 to jarr.Count - 1 do
+      begin
+        obj := jarr.Objects[i];
+        info := TLimitInfo.Create;
+        info.limit := obj.Integers['limit'];
+        info.color := obj.Strings['color'];
+        info.hashid := obj.Strings['hashid'];
+        info.Name := obj.Strings['name'];
+        Result.Add(info);
+      end;
     end;
+    json.Free;
+    parser.Free;
+  except
   end;
-  json.Free;
-  parser.Free;
+
 end;
 
 class function TYGOData.packageList(): TPackageList;
@@ -340,28 +357,34 @@ var
   parser: TJSONParser;
   obj: TJSONObject;
   jarr: TJSONArray;
-  i: Integer;
+  i: integer;
   info: TPackageInfo;
 begin
-  ahtml:= TYGORequest.packageList();
+  ahtml := TYGORequest.packageList();
   parsed := string(parse(PChar(ahtml), 5));
   Result := TPackageList.Create;
-  parser := TJSONParser.Create(parsed, []);
-  json := TJSONObject(parser.Parse);
-  if (json.Integers['result'] = 0) then begin
-    jarr := json.Arrays['data'];
-    for i := 0 to jarr.Count - 1 do begin
-      obj := jarr.Objects[i];
-      info := TPackageInfo.Create;
-      info.season := obj.Strings['season'];
-      info.url := obj.Strings['url'];
-      info.name := obj.Strings['name'];
-      info.abbr := obj.Strings['abbr'];
-      Result.Add(info);
+  try
+    parser := TJSONParser.Create(parsed, []);
+    json := TJSONObject(parser.Parse);
+    if (json.Integers['result'] = 0) then
+    begin
+      jarr := json.Arrays['data'];
+      for i := 0 to jarr.Count - 1 do
+      begin
+        obj := jarr.Objects[i];
+        info := TPackageInfo.Create;
+        info.season := obj.Strings['season'];
+        info.url := obj.Strings['url'];
+        info.Name := obj.Strings['name'];
+        info.abbr := obj.Strings['abbr'];
+        Result.Add(info);
+      end;
     end;
+    json.Free;
+    parser.Free;
+  except
   end;
-  json.Free;
-  parser.Free;
+
 end;
 
 class function TYGOData.packageDetail(aurl: string): TSearchResult;
@@ -370,7 +393,7 @@ var
   parsed: string;
 begin
   ahtml := TYGORequest.packageDetail(aurl);
-  parsed:= String(parse(PChar(ahtml), 0));
+  parsed := string(parse(PChar(ahtml), 0));
   Exit(parseSearchResult(parsed));
 end;
 
@@ -382,39 +405,48 @@ var
   parser: TJSONParser;
   jarr: TJSONArray;
   obj: TJSONObject;
-  i: Integer;
+  i: integer;
   infoCard: THotCard;
   infoPack: THotPack;
 begin
-  ahtml:= TYGORequest.hotest();
-  parsed:= string(parse(PChar(ahtml), 6));
-  parser := TJSONParser.Create(parsed, []);
-  json := TJSONObject(parser.Parse);
+  ahtml := TYGORequest.hotest();
+  parsed := string(parse(PChar(ahtml), 6));
   Result := THotest.Create;
-  if (json.Integers['result'] = 0) then begin
-    jarr := json.Arrays['search'];
-    for i:= 0 to jarr.Count - 1 do begin
-      Result.search.Add(jarr.Strings[i]);
+  try
+    parser := TJSONParser.Create(parsed, []);
+    json := TJSONObject(parser.Parse);
+
+    if (json.Integers['result'] = 0) then
+    begin
+      jarr := json.Arrays['search'];
+      for i := 0 to jarr.Count - 1 do
+      begin
+        Result.search.Add(jarr.Strings[i]);
+      end;
+      jarr := json.Arrays['card'];
+      for i := 0 to jarr.Count - 1 do
+      begin
+        obj := jarr.Objects[i];
+        infoCard := THotCard.Create;
+        infoCard.hashid := obj.Strings['hashid'];
+        infoCard.Name := obj.Strings['name'];
+        Result.card.Add(infoCard);
+      end;
+      jarr := json.Arrays['pack'];
+      for i := 0 to jarr.Count - 1 do
+      begin
+        obj := jarr.Objects[i];
+        infoPack := THotPack.Create;
+        infoPack.packid := obj.Strings['packid'];
+        infoPack.Name := obj.Strings['name'];
+        Result.pack.Add(infoPack);
+      end;
     end;
-    jarr := json.Arrays['card'];
-    for i:= 0 to jarr.Count - 1 do begin
-      obj := jarr.Objects[i];
-      infoCard := THotCard.Create;
-      infoCard.hashid:= obj.Strings['hashid'];
-      infoCard.name:= obj.Strings['name'];
-      Result.card.Add(infoCard);
-    end;
-    jarr := json.Arrays['pack'];
-    for i := 0 to jarr.Count -1 do begin
-      obj := jarr.Objects[i];
-      infoPack := THotPack.Create;
-      infoPack.packid:= obj.Strings['packid'];
-      infoPack.name:= obj.Strings['name'];
-      Result.pack.Add(infoPack);
-    end;
+    json.Free;
+    parser.Free;
+  except
   end;
-  json.Free;
-  parser.Free;
+
 end;
 
 { TSearchResult }
@@ -422,6 +454,8 @@ end;
 constructor TSearchResult.Create;
 begin
   Data := TCardInfoList.Create;
+  page:= 1;
+  pageCount:= 1;
 end;
 
 destructor TSearchResult.Destroy;

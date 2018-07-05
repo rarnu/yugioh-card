@@ -18,4 +18,5 @@ linksyms.fpc
 *.ctps
 *.ppu
 *.o
+CardImage/
 

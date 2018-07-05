@@ -50,6 +50,7 @@ begin
   FWindow.ShowSizeGrip:= False;
   FBackground.AddObject(FWindow);
   FRoot := TD2Layout.Create(FWindow);
+  FRoot.Align:= vaClient;
   FRoot.Padding.Top:= 38;
   FRoot.Padding.Bottom:= 16;
   FRoot.Padding.Left:= 16;

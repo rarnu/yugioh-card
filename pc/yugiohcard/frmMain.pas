@@ -5,12 +5,44 @@ unit frmMain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, frmBase;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, frmBase, orca_scene2d, ygodata;
 
 type
-  TFormMain = class(TFormBase)
-  private
 
+  { TFormMain }
+
+  TFormMain = class(TFormBase)
+    procedure FormCreate(Sender: TObject);
+  private
+    FLayTop: TD2Layout;
+    FEdtSearch: TD2HudTextBox;
+    FBtnSearch: TD2HudButton;
+    FBtnAdvSearch: TD2HudButton;
+
+    FLayCenter: TD2Layout;
+    FLayCards: TD2Layout;
+    FLayRight: TD2Layout;
+    FLvCard: TD2HudListBox;
+    FLayPage: TD2Layout;
+    FBtnFirst: TD2HudButton;
+    FBtnPrior: TD2HudButton;
+    FBtnNext: TD2HudButton;
+    FBtnLast: TD2HudButton;
+    FTVPage: TD2Text;
+
+    // data
+    FCurrentPage: Integer;
+    FPageCount: Integer;
+    FType: Integer;
+    FKey: string;
+
+
+    procedure onBtnFirstClicked(Sender: TObject);
+    procedure onBtnLastClicked(Sender: TObject);
+    procedure onBtnNextClicked(Sender: TObject);
+    procedure onBtnPriorClicked(Sender: TObject);
+    procedure onBtnSearchClicked(Sender: TObject);
+    procedure onSearchCallback(Sender: TObject; AData: TSearchResult);
   public
 
   end;
@@ -20,7 +52,195 @@ var
 
 implementation
 
+uses
+  toaster, threads, cardlistitem;
+
 {$R *.frm}
+
+{ TFormMain }
+
+procedure TFormMain.FormCreate(Sender: TObject);
+begin
+  inherited;
+
+  // data
+  FCurrentPage := 1;
+  FPageCount:= 1;
+  FType:= 0;
+  FKey:= '';
+
+    // ui
+  Width:= Trunc(Screen.Width * 0.7);
+  Height:= TRunc(Screen.Height * 0.7);
+
+  FLayTop := TD2Layout.Create(Root);
+  FLayTop.Align:= vaTop;
+  FLayTop.Height:= 40;
+  FLayTop.Padding.Top:= 8;
+  FLayTop.Padding.Left:= 8;
+  FLayTop.Padding.Right:= 8;
+  Root.AddObject(FLayTop);
+
+  FBtnAdvSearch := TD2HudButton.Create(FLayTop);
+  FBtnAdvSearch.Align:= vaMostRight;
+  FBtnAdvSearch.Width:= 80;
+  FBtnAdvSearch.Padding.Left:= 8;
+  FBtnAdvSearch.Text:= '高级搜索';
+  FLayTop.AddObject(FBtnAdvSearch);
+
+  FBtnSearch := TD2HudButton.Create(FLayTop);
+  FBtnSearch.Align:= vaRight;
+  FBtnSearch.Width:= 60;
+  FBtnSearch.Padding.Left:= 8;
+  FBtnSearch.Text:= '搜索';
+  FLayTop.AddObject(FBtnSearch);
+
+  FEdtSearch := TD2HudTextBox.Create(FLayTop);
+  FEdtSearch.Align:= vaClient;
+  FLayTop.AddObject(FEdtSearch);
+
+  FLayCenter := TD2Layout.Create(Root);
+  FLayCenter.Align:= vaClient;
+  FLayCenter.Padding.Top:= 8;
+  FLayCenter.Padding.Left:= 8;
+  FLayCenter.Padding.Right:= 8;
+  FLayCenter.Padding.Bottom:= 8;
+  Root.AddObject(FLayCenter);
+
+  FLayRight := TD2Layout.Create(FLayCenter);
+  FLayRight.Align:= vaRight;
+  FLayRight.Width:= Width * 0.2;
+  FLayCenter.AddObject(FLayRight);
+
+  FLayCards := TD2Layout.Create(FLayCenter);
+  FLayCards.Align:= vaClient;
+  FLayCards.Padding.Right:= 8;
+  FLayCenter.AddObject(FLayCards);
+
+  FLvCard := TD2HudListBox.Create(FLayCards);
+  FLvCard.Align:= vaClient;
+  FLayCards.AddObject(FLvCard);
+
+  FLayPage:= TD2Layout.Create(FLayCards);
+  FLayPage.Align:= vaBottom;
+  FLayPage.Height:= 40;
+  FLayPage.Padding.Top:= 8;
+  FLayCards.AddObject(FLayPage);
+
+  FBtnFirst := TD2HudButton.Create(FLayPage);
+  FBtnFirst.Align:= vaMostLeft;
+  FBtnFirst.Text:= '<<';
+  FBtnFirst.Width:= 60;
+  FLayPage.AddObject(FBtnFirst);
+
+  FBtnPrior := TD2HudButton.Create(FLayPage);
+  FBtnPrior.Align:= vaLeft;
+  FBtnPrior.Text:= '<';
+  FBtnPrior.Width:= 60;
+  FBtnPrior.Padding.Left:= 8;
+  FLayPage.AddObject(FBtnPrior);
+
+  FBtnNext := TD2HudButton.Create(FLayPage);
+  FBtnNext.Align:= vaRight;
+  FBtnNext.Text:= '>';
+  FBtnNext.Width:= 60;
+  FBtnNext.Padding.Right:= 8;
+  FLayPage.AddObject(FBtnNext);
+
+  FBtnLast := TD2HudButton.Create(FLayPage);
+  FBtnLast.Align:= vaMostRight;
+  FBtnLast.Text:= '>>';
+  FBtnLast.Width:= 60;
+  FLayPage.AddObject(FBtnLast);
+
+  FTVPage := TD2Text.Create(FLayPage);
+  FTVPage.Align:= vaClient;
+  FTVPage.Fill.Color:= vcWhite;
+  FTVPage.HorzTextAlign:= TD2TextAlign.d2TextAlignCenter;
+  FTVPage.VertTextAlign:= TD2TextAlign.d2TextAlignCenter;
+  FTVPage.Padding.Left:= 8;
+  FTVPage.Padding.Right:= 8;
+  FLayPage.AddObject(FTVPage);
+
+  // events
+  FBtnSearch.OnClick:=@onBtnSearchClicked;
+  FBtnFirst.OnClick:=@onBtnFirstClicked;
+  FBtnPrior.OnClick:=@onBtnPriorClicked;
+  FBtnNext.OnClick:=@onBtnNextClicked;
+  FBtnLast.OnClick:=@onBtnLastClicked;
+
+end;
+
+procedure TFormMain.onBtnSearchClicked(Sender: TObject);
+var
+  key: string;
+begin
+  key := FEdtSearch.Text.Trim;
+  if (key = '') then begin
+    TToast.show(FLayCenter, '不能搜索空关键字');
+    Exit;
+  end;
+
+  FType:= 0;
+  FKey:= key;
+
+  TSearchCommonThread.threadSearchCommon(FKey, 1, @onSearchCallback);
+
+end;
+
+procedure TFormMain.onBtnFirstClicked(Sender: TObject);
+begin
+  if (FCurrentPage <> 1) then begin
+    FCurrentPage:= 1;
+    TSearchCommonThread.threadSearchCommon(FKey, FCurrentPage, @onSearchCallback);
+  end;
+end;
+
+procedure TFormMain.onBtnLastClicked(Sender: TObject);
+begin
+  if (FCurrentPage <> FPageCount) then begin
+    FCurrentPage:= FPageCount;
+    TSearchCommonThread.threadSearchCommon(FKey, FCurrentPage, @onSearchCallback);
+  end;
+end;
+
+procedure TFormMain.onBtnNextClicked(Sender: TObject);
+begin
+  if (FCurrentPage < FPageCount) then begin
+    FCurrentPage += 1;
+    TSearchCommonThread.threadSearchCommon(FKey, FCurrentPage, @onSearchCallback);
+  end;
+end;
+
+procedure TFormMain.onBtnPriorClicked(Sender: TObject);
+begin
+  if (FCurrentPage > 1) then begin
+    FCurrentPage -= 1;
+    TSearchCommonThread.threadSearchCommon(FKey, FCurrentPage, @onSearchCallback);
+  end;
+end;
+
+procedure TFormMain.onSearchCallback(Sender: TObject; AData: TSearchResult);
+var
+  i: Integer;
+  item: TCardListItem;
+begin
+  FCurrentPage:= AData.page;
+  FPageCount:= AData.pageCount;
+  FTVPage.Text:= Format('%d / %d', [FCurrentPage, FPageCount]);
+  FLvCard.Clear;
+  for i := 0 to AData.Data.Count - 1 do begin
+    item := TCardListItem.Create(FLvCard);
+    item.CardName:= AData.Data[i].name;
+    item.CardJapName:= AData.Data[i].japname;
+    item.CardEnName:= AData.Data[i].enname;
+    item.CardType:= AData.Data[i].cardtype;
+    item.CardId:= AData.Data[i].cardid;
+    item.HashId:= AData.Data[i].hashid;
+    FLvCard.AddObject(item);
+  end;
+  AData.Free;
+end;
 
 end.
 

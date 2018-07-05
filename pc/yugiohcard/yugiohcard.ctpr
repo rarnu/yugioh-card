@@ -29,7 +29,7 @@
         <PackageName Value="adLCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="7">
       <Unit0>
         <Filename Value="yugiohcard.ppr"/>
         <IsPartOfProject Value="True"/>
@@ -38,15 +38,32 @@
         <Filename Value="frmBase.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormBase"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
       <Unit2>
         <Filename Value="frmMain.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="FormBase1"/>
+        <ComponentName Value="FormMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="utils/toaster.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="view/cardlistitem.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="utils/threads.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../ygoapi/ygodata.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -56,6 +73,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="utils;view;../ygoapi"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

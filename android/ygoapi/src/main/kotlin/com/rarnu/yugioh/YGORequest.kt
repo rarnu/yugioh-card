@@ -25,4 +25,5 @@ object YGORequest {
 
     fun packageDetail(aurl: String) = request("$BASE_URL$aurl")
 
+    fun hotest() = request(BASE_URL)
 }
