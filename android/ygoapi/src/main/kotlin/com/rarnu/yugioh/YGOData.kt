@@ -82,7 +82,7 @@ object YGOData {
 
     private fun replaceChars(str: String): String {
         var s = str
-        s = s.replace("&quot;", "\n")
+        s = s.replace("&quot;", "\"")
         s = s.replace("&#039;", "'")
         s = s.replace("　", "")
         return s

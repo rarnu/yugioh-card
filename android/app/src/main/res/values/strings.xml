@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">YuGiOhCard</string>
     <string name="card_list">卡片列表</string>
+    <string name="card_image">Image</string>
+    <string name="card_wiki">Wiki</string>
 
     <string name="btn_search">搜索</string>
     <string name="btn_adv_search">高级搜索</string>
@@ -15,4 +17,19 @@
     <string name="btn_prior">&lt;</string>
     <string name="btn_next">&gt;</string>
     <string name="btn_last">&gt;&gt;</string>
+
+    <string name="tv_cardname">中文名称:</string>
+    <string name="tv_cardjapname">日文名称:</string>
+    <string name="tv_cardenname">英文名称:</string>
+    <string name="tv_cardtype">卡片种类:</string>
+    <string name="tv_password">卡片密码:</string>
+    <string name="tv_limit">使用限制:</string>
+    <string name="tv_rare">罕贵度:</string>
+    <string name="tv_pack">所在卡包:</string>
+    <string name="tv_effect">效果:</string>
+    <string name="tv_publish_pack">发行卡包</string>
+    <string name="tv_adjust">事务局调整</string>
+
+    <string name="menu_image">Image</string>
+    <string name="menu_wiki">Wiki</string>
 </resources>

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.media.ThumbnailUtils
 import android.os.Bundle
 import android.view.View
+import com.rarnu.kt.android.initUI
 import com.rarnu.kt.android.resStr
 import com.rarnu.kt.android.toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +17,7 @@ class MainActivity : Activity(), View.OnClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initUI()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

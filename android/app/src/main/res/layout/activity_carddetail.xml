@@ -1,6 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-</RelativeLayout>
+    <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dip">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_cardname"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvCardNameValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_cardjapname"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvCardJapNameValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_cardenname"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvCardEnNameValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_cardtype"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvCardTypeValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_password"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvPasswordValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_limit"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvLimitValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_rare"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvRareValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dip"
+                android:orientation="horizontal"
+                android:weightSum="4">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_pack"
+                    android:gravity="left|center_vertical"/>
+            <TextView
+                    android:id="@+id/tvPackValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginTop="8dip">
+            <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/tv_effect"
+                    android:gravity="left|top"/>
+            <TextView
+                    android:id="@+id/tvEffectValue"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|top"/>
+
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dip"
+              android:background="@android:color/darker_gray"
+              android:layout_marginTop="8dip"
+              android:layout_marginBottom="8dip"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="32dip"
+                  android:text="@string/tv_publish_pack"
+                  android:gravity="left|center_vertical"/>
+        <LinearLayout
+                android:id="@+id/layPubPacks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+        </LinearLayout>
+
+        <View
+                android:id="@+id/vAdjustLine"
+                android:layout_width="match_parent" android:layout_height="1dip"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="8dip"
+                android:layout_marginBottom="8dip"/>
+        <TextView
+                android:id="@+id/tvAdjustTitle"
+                android:layout_width="match_parent" android:layout_height="32dip"
+                android:text="@string/tv_adjust"
+                android:gravity="left|center_vertical"/>
+        <TextView
+                android:id="@+id/tvAdjustValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|top"
+                android:textSize="13sp"/>
+        <View android:layout_width="match_parent" android:layout_height="8dip"/>
+
+    </LinearLayout>
+
+</ScrollView>
