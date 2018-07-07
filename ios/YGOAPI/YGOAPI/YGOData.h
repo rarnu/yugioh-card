@@ -47,6 +47,7 @@
 @property NSString* atk;
 @property NSString* def;
 @property NSString* link;
+@property NSString* linkarrow;
 @property NSArray<CardPackInfo*>* packs;
 @property NSString* adjust;
 @property NSString* wiki;

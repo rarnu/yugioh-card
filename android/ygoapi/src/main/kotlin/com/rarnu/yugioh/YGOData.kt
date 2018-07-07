@@ -42,6 +42,7 @@ class CardDetail {
     var atk = ""
     var def = ""
     var link = ""
+    var linkarrow = ""
     val packs = arrayListOf<CardPackInfo>()
     var adjust = ""
     var wiki = ""
@@ -194,6 +195,7 @@ object YGOData {
                 result.atk = obj.getString("atk")
                 result.def = obj.getString("def")
                 result.link = obj.getString("link")
+                result.linkarrow = obj.getString("linkarrow")
                 val jarr = obj.getJSONArray("packs")
                 (0 until jarr.length()).forEach {
                     val pkinfo = jarr.getJSONObject(it)

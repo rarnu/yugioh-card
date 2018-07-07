@@ -41,7 +41,54 @@ type
     constructor Create(acardid: Integer; acontainer: TD2Image);
   end;
 
+  TCardDetailCallback = procedure(Sender: TObject; ACard: TCardDetail) of object;
+
+  { TCardDetailThread }
+
+  TCardDetailThread = class(TThread)
+  private
+    FHashId: string;
+    FCardDetail: TCardDetail;
+    FCallback: TCardDetailCallback;
+    procedure onThreadTerminated(Sender: TObject);
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(AHashId: string; ACallback: TCardDetailCallback);
+    class procedure threadCardDetail(AHashId: string; ACallback: TCardDetailCallback);
+  end;
+
 implementation
+
+{ TCardDetailThread }
+
+procedure TCardDetailThread.onThreadTerminated(Sender: TObject);
+begin
+  if (Assigned(FCallback)) then begin
+    FCallback(Self, FCardDetail);
+  end;
+end;
+
+procedure TCardDetailThread.Execute;
+begin
+  FCardDetail := TYGOData.cardDetail(FHashId);
+end;
+
+constructor TCardDetailThread.Create(AHashId: string;
+  ACallback: TCardDetailCallback);
+begin
+  inherited Create(True);
+  FHashId:= AHashId;
+  FCallback:= ACallback;
+  FreeOnTerminate:= True;
+  OnTerminate:=@onThreadTerminated;
+end;
+
+class procedure TCardDetailThread.threadCardDetail(AHashId: string;
+  ACallback: TCardDetailCallback);
+begin
+  with TCardDetailThread.Create(AHashId, ACallback) do Start;
+end;
 
 { TDownloadImageThread }
 

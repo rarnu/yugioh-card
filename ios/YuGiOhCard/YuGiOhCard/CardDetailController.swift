@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import sfunctional
 import YGOAPI
+import TangramKit
 
 class CardDetailController: UIViewController {
 

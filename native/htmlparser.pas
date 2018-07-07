@@ -156,16 +156,16 @@ const
   H1 = '<div class="val el-col-xs-18 el-col-sm-12 el-col-md-14 el-col-sm-pull-8 el-col-md-pull-6">';
   H2 = '<div class="val el-col-xs-8 el-col-sm-6 el-col-sm-pull-8 el-col-md-6 el-col-md-pull-6">';
   H3 = '<div class="val el-col-xs-10 el-col-sm-6 el-col-sm-pull-8 el-col-md-8 el-col-md-pull-6">';
-
   H31 = '<div class="val el-col-xs-6 el-col-sm-4">';
   H32 = '<div class="val el-col-xs-18 el-col-sm-4">';
   H33 = '<div class="val el-col-xs-6 el-col-sm-12">';
   H34 = '<div class="val el-col-xs-6 el-col-sm-4 el-col-md-6">';
-
   H4 = '<div class="val el-col-xs-18 el-col-sm-20">';
   H5 = '<div class="val el-col-24 effect">';
-
   H6 = '<table style="width:100%" ID="pack_table_main">';
+  H7 = '<div class="linkMark-Context visible-xs"></div>';
+
+  HLINKON = 'mark-linkmarker_%d_on';
 var
   ret: string = '';
 
@@ -180,16 +180,15 @@ var
   crare: string = '';
   cpack: string = '';
   ceffect: string = '';
-
   crace: string = '';
   celement: string = '';
   clevel: string = '';
   catk: string = '';
   cdef: string = '';
   clink: string = '';
-
+  clinkarrow: string = '';
+  tmpArrow: string = '';
   cpacklist: string = '';
-
   i: Integer;
 begin
   // get article
@@ -226,6 +225,17 @@ begin
         catk:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
         ret := ret.Substring(ret.IndexOf(H34) + H34.Length);
         clink:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
+
+        // linkarrow
+        ret := ret.Substring(ret.IndexOf(H7) + H7.Length);
+        tmpArrow:= ret.Substring(0, ret.IndexOf(HDIV));
+
+        for i:= 1 to 9 do begin
+          if (tmpArrow.Contains(Format(HLINKON, [i]))) then begin
+            clinkarrow += i.ToString;
+          end;
+        end;
+
       end else begin
         // monster
         ret := ret.Substring(ret.IndexOf(H31) + H31.Length);
@@ -254,8 +264,8 @@ begin
     cpacklist:= getPackList(ret);
   end;
 
-  Exit(Format('{"result":0, "data":{"name":"%s","japname":"%s","enname":"%s","cardtype":"%s","password":"%s","limit":"%s","belongs":"%s","rare":"%s","pack":"%s","effect":"%s","race":"%s","element":"%s","level":"%s","atk":"%s","def":"%s","link":"%s", "packs":[%s]}}', [
-    cname, cjapname, cenname, ccardtype, cpassword, climit, cbelongs, crare, cpack, ceffect, crace, celement, clevel, catk, cdef, clink, cpacklist
+  Exit(Format('{"result":0, "data":{"name":"%s","japname":"%s","enname":"%s","cardtype":"%s","password":"%s","limit":"%s","belongs":"%s","rare":"%s","pack":"%s","effect":"%s","race":"%s","element":"%s","level":"%s","atk":"%s","def":"%s","link":"%s","linkarrow":"%s","packs":[%s]}}', [
+    cname, cjapname, cenname, ccardtype, cpassword, climit, cbelongs, crare, cpack, ceffect, crace, celement, clevel, catk, cdef, clink, clinkarrow, cpacklist
   ]));
 
 end;

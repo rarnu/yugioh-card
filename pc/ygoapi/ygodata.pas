@@ -12,7 +12,7 @@ type
   public
     season: string;
     url: string;
-    Name: string;
+    name: string;
     abbr: string;
   end;
 
@@ -21,13 +21,13 @@ type
     limit: integer;
     color: string;
     hashid: string;
-    Name: string;
+    name: string;
   end;
 
   TCardPackInfo = class
   public
     url: string;
-    Name: string;
+    name: string;
     date: string;
     abbr: string;
     rare: string;
@@ -39,7 +39,7 @@ type
 
   TCardDetail = class
   public
-    Name: string;
+    name: string;
     japname: string;
     enname: string;
     cardtype: string;
@@ -55,6 +55,7 @@ type
     atk: string;
     def: string;
     link: string;
+    linkArrow: string;
     packs: TCardPackInfoList;
     adjust: string;
     wiki: string;
@@ -66,7 +67,7 @@ type
   public
     cardid: integer;
     hashid: string;
-    Name: string;
+    name: string;
     japname: string;
     enname: string;
     cardtype: string;
@@ -79,7 +80,7 @@ type
 
   TSearchResult = class
   public
-    Data: TCardInfoList;
+    data: TCardInfoList;
     page: integer;
     pageCount: integer;
     constructor Create;
@@ -89,13 +90,13 @@ type
   THotCard = class
   public
     hashid: string;
-    Name: string;
+    name: string;
   end;
 
   THotPack = class
   public
     packid: string;
-    Name: string;
+    name: string;
   end;
 
   THotCardList = specialize TFPGList<THotCard>;
@@ -298,6 +299,7 @@ begin
       Result.atk := obj.Strings['atk'];
       Result.def := obj.Strings['def'];
       Result.link := obj.Strings['link'];
+      Result.linkArrow:= obj.Strings['linkarrow'];
       jarr := obj.Arrays['packs'];
       for i := 0 to jarr.Count - 1 do
       begin

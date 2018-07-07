@@ -29,7 +29,7 @@
         <PackageName Value="adLCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="8">
       <Unit0>
         <Filename Value="yugiohcard.ppr"/>
         <IsPartOfProject Value="True"/>
@@ -64,6 +64,13 @@
         <Filename Value="../ygoapi/ygodata.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="frmCardDetail.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormCardDetail"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

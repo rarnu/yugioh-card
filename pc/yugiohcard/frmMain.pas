@@ -42,6 +42,7 @@ type
     procedure onBtnNextClicked(Sender: TObject);
     procedure onBtnPriorClicked(Sender: TObject);
     procedure onBtnSearchClicked(Sender: TObject);
+    procedure onLvCardClicked(Sender: TObject);
     procedure onSearchCallback(Sender: TObject; AData: TSearchResult);
   public
 
@@ -53,7 +54,7 @@ var
 implementation
 
 uses
-  toaster, threads, cardlistitem;
+  toaster, threads, cardlistitem, frmCardDetail;
 
 {$R *.frm}
 
@@ -63,6 +64,7 @@ procedure TFormMain.FormCreate(Sender: TObject);
 begin
   inherited;
 
+  Window.Text:= 'YuGiOh Card';
   // data
   FCurrentPage := 1;
   FPageCount:= 1;
@@ -168,6 +170,7 @@ begin
   FBtnPrior.OnClick:=@onBtnPriorClicked;
   FBtnNext.OnClick:=@onBtnNextClicked;
   FBtnLast.OnClick:=@onBtnLastClicked;
+  FLvCard.OnClick:=@onLvCardClicked;
 
 end;
 
@@ -186,6 +189,21 @@ begin
 
   TSearchCommonThread.threadSearchCommon(FKey, 1, @onSearchCallback);
 
+end;
+
+procedure TFormMain.onLvCardClicked(Sender: TObject);
+var
+  item: TCardListItem;
+begin
+  item := TCardListItem(FLvCard.Selected);
+  if (item = nil) then Exit;
+  with TFormCardDetail.Create(nil) do begin
+    CardName:= item.CardName;
+    CardId:= item.CardId;
+    HashId:= item.HashId;
+    ShowModal;
+    Free;
+  end;
 end;
 
 procedure TFormMain.onBtnFirstClicked(Sender: TObject);

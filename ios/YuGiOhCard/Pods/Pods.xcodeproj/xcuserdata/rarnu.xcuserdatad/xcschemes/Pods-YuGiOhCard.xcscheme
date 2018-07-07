@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C42AF3F377316AE1A52A41EFDC3CE9FE"
+               BlueprintIdentifier = "270164512FAA2AB6E0CB5EFF8BD62E0E"
                BuildableName = "Pods_YuGiOhCard.framework"
                BlueprintName = "Pods-YuGiOhCard"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C42AF3F377316AE1A52A41EFDC3CE9FE"
+            BlueprintIdentifier = "270164512FAA2AB6E0CB5EFF8BD62E0E"
             BuildableName = "Pods_YuGiOhCard.framework"
             BlueprintName = "Pods-YuGiOhCard"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -162,6 +162,7 @@
             result.atk = [obj valueForKey:@"atk"];
             result.def = [obj valueForKey:@"def"];
             result.link = [obj valueForKey:@"link"];
+            result.linkarrow = [obj valueForKey:@"linkarrow"];
             
             NSMutableArray<CardPackInfo*>* pk = [NSMutableArray array];
             NSArray* jarr = [obj valueForKey:@"packs"];
