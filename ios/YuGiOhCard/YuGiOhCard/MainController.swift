@@ -41,7 +41,7 @@ class MainController: UIViewController {
     }
     
     @objc func btnSearchClicked(sender: Any?) {
-        // TODO: search clicked
+        // search clicked
         let key = edtSearch?.text
         if (key == nil || key == "") {
             self.view.toast(msg: "不能搜索空关键字")

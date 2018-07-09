@@ -20,6 +20,8 @@ class CardDetailController: UIViewController {
     
     // ui
     var sv: UIScrollView?
+    var layMain: TGLinearLayout?
+    
     var tvCardNameValue: UILabel?
     var tvCardJapNameValue: UILabel?
     var tvCardEnNameValue: UILabel?
@@ -29,20 +31,88 @@ class CardDetailController: UIViewController {
     var tvRareValue: UILabel?
     var tvPackValue: UILabel?
     var tvEffectValue: UILabel?
+    // monster
+    var tvMonRace: UILabel?
+    var tvMonElement: UILabel?
+    var tvMonLevel: UILabel?
+    var tvMonAtk: UILabel?
+    var tvMonDef: UILabel?
+    var tvMonLink: UILabel?
+    var tvMonLinkArrow: UILabel?
     
-    private func makeLabel(_ x: Int, _ y: Int, _ width: Int, _ height: Int, _ txt: String, _ container: UIScrollView) -> UILabel {
-        let lbl = UILabel(frame: CGRect(x: x, y: y, width: width, height: height))
-        lbl.numberOfLines = 1
-        lbl.text = txt
-        container.addSubview(lbl)
+    // image
+    var ivCardImg: UIImageView?
+    // adjust
+    var tvAdjust: UILabel?
+    
+    private func makeAdjust() -> UILabel {
+        let lbl = UILabel()
+        lbl.tg_width.equal(100%)
+        lbl.tg_height.equal(.wrap)
+        lbl.font = UIFont.systemFont(ofSize: 15)
+        layMain?.addSubview(lbl)
         return lbl
     }
     
-    private func makeLine(_ x: Int, _ y: Int, _ width: Int, _ height: Int, _ container: UIScrollView) -> UIView {
-        let v = UIView(frame: CGRect(x: x, y: y, width: width, height: height))
+    private func makeLabel(_ txt: String, _ multiLine: Bool = false, _ h: CGFloat = 32) -> UILabel {
+        let laySub = TGLinearLayout(.horz)
+        laySub.tg_width.equal(100%)
+        laySub.tg_height.equal(.wrap)
+        layMain?.addSubview(laySub)
+        let lbl = UILabel()
+        lbl.tg_width.equal(25%)
+        lbl.tg_height.equal(32)
+        lbl.text = txt
+        laySub.addSubview(lbl)
+        let lblValue = UILabel()
+        if (h > 32) {
+            lblValue.tg_width.equal(100%)
+            lblValue.tg_height.equal(.wrap)
+            let lblSub = TGLinearLayout(.vert)
+            lblSub.tg_width.equal(75%)
+            lblSub.tg_height.equal(.wrap)
+            let lblFill = UILabel()
+            lblFill.tg_width.equal(100%)
+            lblFill.tg_height.equal(8)
+            lblSub.addSubview(lblFill)
+            lblSub.addSubview(lblValue)
+            laySub.addSubview(lblSub)
+        } else {
+            lblValue.tg_width.equal(75%)
+            lblValue.tg_height.equal(h)
+            laySub.addSubview(lblValue)
+        }
+        if (multiLine) {
+            lblValue.lineBreakMode = NSLineBreakMode.byWordWrapping
+            lblValue.numberOfLines = 0
+        } else {
+            lblValue.numberOfLines = 1
+        }
+        return lblValue
+    }
+    
+    private func makeLine() -> UIView {
+        let v = UIView()
+        v.tg_width.equal(100%)
+        v.tg_height.equal(1)
+        v.tg_vertMargin(16)
         v.backgroundColor = UIColor.lightGray
-        container.addSubview(v)
+        layMain?.addSubview(v)
         return v
+    }
+    
+    private func makeImage() -> UIImageView {
+        let img = UIImageView()
+        img.tg_width.equal(160)
+        img.tg_height.equal(230)
+        let lay = TGRelativeLayout()
+        lay.tg_width.equal(100%)
+        lay.tg_height.equal(230)
+        img.tg_centerX.equal(0)
+        img.tg_centerY.equal(0)
+        lay.addSubview(img)
+        layMain?.addSubview(lay)
+        return img
     }
     
     private func getTextSize(str: String, width: Int, fontSize: CGFloat) -> CGSize {
@@ -56,29 +126,20 @@ class CardDetailController: UIViewController {
         sv = UIScrollView(frame: CGRect(x: 8, y: 8, width: screenWidth() - 16, height: screenHeight() - 16))
         sv?.showsVerticalScrollIndicator = false
         sv?.showsHorizontalScrollIndicator = false
-        
-        let valueWidth = Int(screenWidth() - 16 - 80)
-        _ = makeLabel(0, 0, 80, 32, "中文名称:", sv!)
-        tvCardNameValue = makeLabel(88, 0, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 32, 80, 32, "日文名称:", sv!)
-        tvCardJapNameValue = makeLabel(88, 32, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 64, 80, 32, "英文名称:", sv!)
-        tvCardEnNameValue = makeLabel(88, 64, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 96, 80, 32, "卡片种类:", sv!)
-        tvCardTypeValue = makeLabel(88, 96, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 128, 80, 32, "卡片密码:", sv!)
-        tvPasswordValue = makeLabel(88, 128, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 160, 80, 32, "使用限制:", sv!)
-        tvLimitValue = makeLabel(88, 160, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 192, 80, 32, "罕贵度:", sv!)
-        tvRareValue = makeLabel(88, 192, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 224, 80, 32, "所在卡包:", sv!)
-        tvPackValue = makeLabel(88, 224, valueWidth, 32, "", sv!)
-        _ = makeLabel(0, 256, 80, 32, "效果:", sv!)
-        tvEffectValue = makeLabel(88, 262, valueWidth, 32, "", sv!)
-        tvEffectValue?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        tvEffectValue?.numberOfLines = 0
         self.view.addSubview(sv!)
+        layMain = TGLinearLayout(.vert)
+        layMain?.tg_vspace = 0
+        layMain?.tg_width.equal(100%)
+        layMain?.tg_height.equal(.wrap).min(sv!.tg_height, increment: 0)
+        sv?.addSubview(layMain!)
+        tvCardNameValue = makeLabel("中文名称:")
+        tvCardJapNameValue = makeLabel("日文名称:")
+        tvCardEnNameValue = makeLabel("英文名称:")
+        tvCardTypeValue = makeLabel("卡片种类:")
+        tvPasswordValue = makeLabel("卡片密码:")
+        tvLimitValue = makeLabel("使用限制:")
+        tvRareValue = makeLabel("罕贵度:")
+        tvPackValue = makeLabel("所在卡包:")
         
         thread {
             let ret = YGOData.cardDetail(self.hashid)
@@ -92,44 +153,66 @@ class CardDetailController: UIViewController {
                     self.tvLimitValue?.text = ret!.limit
                     self.tvRareValue?.text = ret!.rare
                     self.tvPackValue?.text = ret!.pack
-                    self.tvEffectValue?.text = ret!.effect
-                    let size = self.getTextSize(str: ret!.effect, width:Int(screenWidth() - 16 - 80 - 8), fontSize: self.tvEffectValue!.font.pointSize)
-                    self.tvEffectValue?.frame = CGRect(x: 88, y: 262, width: size.width, height: size.height)
                     
-                    var top = 262 + size.height + 8
-                    let subWidth = Int(screenWidth() - 16)
-                    // line
-                    _ = self.makeLine(0, Int(top), subWidth, 1, self.sv!)
-                    _ = self.makeLabel(0, Int(top + 8), subWidth, 32, "发行卡包", self.sv!)
-                    top += 40
-                    if (ret!.packs != nil) {
-                        for p in ret!.packs! {
-                            let lbl = self.makeLabel(0, Int(top), subWidth, 20, "\(p.name!)", self.sv!)
-                            lbl.font = UIFont.systemFont(ofSize: 12)
-                            top += 20
+                    if (ret!.cardtype.contains("怪兽")) {
+                        self.tvMonRace = self.makeLabel("怪兽种族:")
+                        self.tvMonRace?.text = ret!.race
+                        self.tvMonElement = self.makeLabel("怪兽属性:")
+                        self.tvMonElement?.text = ret!.element
+                        
+                        if (ret!.cardtype.contains("连接")) {
+                            // link monster
+                            self.tvMonAtk = self.makeLabel("攻击力:")
+                            self.tvMonAtk?.text = ret!.atk
+                            self.tvMonLink = self.makeLabel("连接数:")
+                            self.tvMonLink?.text = ret!.link
+                            self.tvMonLinkArrow = self.makeLabel("连接方向:")
+                            self.tvMonLinkArrow?.text = ret!.linkarrow
+                            
+                        } else {
+                            if (ret!.cardtype.contains("XYZ")) {
+                                self.tvMonLevel = self.makeLabel("怪兽阶级:")
+                            } else {
+                                self.tvMonLevel = self.makeLabel("怪兽星级:")
+                            }
+                            self.tvMonLevel?.text = ret!.level
+                            self.tvMonAtk = self.makeLabel("攻击力:")
+                            self.tvMonAtk?.text = ret!.atk
+                            self.tvMonDef = self.makeLabel("守备力:")
+                            self.tvMonDef?.text = ret!.def
                         }
                     }
                     
-                    if (ret!.adjust != nil && ret!.adjust != "") {
-                        _ = self.makeLine(0, Int(top + 8), subWidth, 1, self.sv!)
-                        _ = self.makeLabel(0, Int(top + 16), subWidth, 32, "事务局调整", self.sv!)
-                        top += 40
-                        let lbl = self.makeLabel(0, Int(top), subWidth, 32, ret!.adjust, self.sv!)
-                        lbl.font = UIFont.systemFont(ofSize: 14)
-                        lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
-                        lbl.numberOfLines = 0
-                        let adjSize = self.getTextSize(str: ret!.adjust, width: subWidth, fontSize: 14)
-                        lbl.frame = CGRect(x: 0, y: CGFloat(top), width: adjSize.width, height: adjSize.height)
-                        top += adjSize.height
-                    }
-                    
-                    self.sv?.contentSize = CGSize(width: screenWidth() - 16, height:top + 8)
-                    
+                    let size = self.getTextSize(str: ret!.effect, width:Int(screenWidth() - 16 - 80 - 8), fontSize: 17)
+                    self.tvEffectValue = self.makeLabel("效果:", true, size.height)
+                    self.tvEffectValue?.text = ret!.effect
+                    _ = self.makeLine()
+                    self.ivCardImg = self.makeImage()
+                    self.loadImage()
+                    _ = self.makeLine()
+                    self.tvAdjust = self.makeAdjust()
+                    self.tvAdjust?.text = ret!.adjust
                 }
             }
             
         }
-        
+    }
+    
+    private func loadImage() {
+        let localfile = documentPath(true) + "\(cardid)"
+        if (FileManager.default.fileExists(atPath: localfile)) {
+            self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
+        } else {
+            download(String(format: RES_URL, cardid), localfile) { (state, _, _, _) in
+                if (state == DownloadState.Complete) {
+                    if (FileManager.default.fileExists(atPath: localfile)) {
+                        self.mainThread {
+                            self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,12 +222,6 @@ class CardDetailController: UIViewController {
     @IBAction func btnWikiClicked(sender: Any?) {
         let c = vc(name: "wiki") as! CardWikiController
         c.hashid = hashid
-        navigationController?.pushViewController(c, animated: true)
-    }
-    
-    @IBAction func btnImageClicked(sender: Any?) {
-        let c = vc(name: "image") as! CardImageController
-        c.cardid = cardid
         navigationController?.pushViewController(c, animated: true)
     }
 }

@@ -37,6 +37,7 @@
     }
     str = [str stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
     str = [str stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+    str = [str stringByReplacingOccurrencesOfString:@"<br />" withString:@"\n"];
     str = [str stringByReplacingOccurrencesOfString:@"　" withString:@""];
     return str;
 }

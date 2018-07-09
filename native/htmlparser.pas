@@ -166,6 +166,10 @@ const
   H7 = '<div class="linkMark-Context visible-xs"></div>';
 
   HLINKON = 'mark-linkmarker_%d_on';
+  HDIVLINE = '<div class="line"></div>';
+  HDIVLINE2 = '<div class=''line''></div>';
+
+  ESPLIT = '- - - - - -';
 var
   ret: string = '';
 
@@ -253,9 +257,11 @@ begin
 
     ret := ret.Substring(ret.IndexOf(H4) + H4.Length);
     crare:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
+    if (crare.Contains('>')) then crare:= '';
     ret := ret.Substring(ret.IndexOf(H4) + H4.Length);
     cpack:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
-    ret := ret.Substring(ret.IndexOf(H5) + H5.Length);
+    if (cpack.Contains('>')) then cpack:= '';
+    ret := ret.Substring(ret.IndexOf(H5) + H5.Length).Replace(HDIVLINE, ESPLIT).Replace(HDIVLINE2, ESPLIT).Replace('<br>', '');
     ceffect:= ret.Substring(0, ret.IndexOf(HDIV)).Trim.Replace(#13, '').Replace(#10, '');
 
     // parse packs list

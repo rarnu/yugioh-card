@@ -273,6 +273,7 @@ var
 begin
   ahtml := TYGORequest.cardDetail(hashid);
   parsed := string(parse(PChar(ahtml), 1));
+  WriteLn(parsed);
   adjust := string(parse(PChar(ahtml), 2));
   wikiHtml := TYGORequest.cardWiki(hashid);
   wiki := string(parse(PChar(wikiHtml), 3));
