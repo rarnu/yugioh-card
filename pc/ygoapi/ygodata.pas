@@ -166,6 +166,7 @@ class function TYGOData.replaceChars(str: string): string;
 begin
   str := str.Replace('&quot;', '"');
   str := str.Replace('&#039;', '''');
+  str := str.Replace('<br />', #13#10);
   str := str.Replace('　', '');
   Exit(str);
 end;

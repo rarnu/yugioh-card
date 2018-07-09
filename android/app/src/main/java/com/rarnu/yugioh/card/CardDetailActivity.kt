@@ -2,17 +2,19 @@ package com.rarnu.yugioh.card
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
-import com.rarnu.kt.android.dip2px
+import com.rarnu.kt.android.DownloadState
+import com.rarnu.kt.android.downloadAsync
+import com.rarnu.kt.android.resStr
 import com.rarnu.kt.android.showActionBack
 import com.rarnu.yugioh.YGOData
+import com.rarnu.yugioh.YGORequest
 import kotlinx.android.synthetic.main.activity_carddetail.*
+import java.io.File
 import kotlin.concurrent.thread
 
 class CardDetailActivity : Activity() {
@@ -20,8 +22,7 @@ class CardDetailActivity : Activity() {
     private var cardid = 0
     private var hashid = ""
 
-    private val MENUID_IMAGE = 0
-    private val MENUID_WIKI = 1
+    private val MENUID_WIKI = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,34 +45,64 @@ class CardDetailActivity : Activity() {
                 tvLimitValue.text = ret.limit
                 tvRareValue.text = ret.rare
                 tvPackValue.text = ret.pack
+
+                if (ret.cardtype.contains("怪兽")) {
+                    layMonRace.visibility = View.VISIBLE
+                    layMonElement.visibility = View.VISIBLE
+                    tvMonRaceValue.text = ret.race
+                    tvMonElementValue.text = ret.element
+                    if (ret.cardtype.contains("连接")) {
+                        layMonAtk.visibility = View.VISIBLE
+                        tvMonAtkValue.text = ret.atk
+                        layMonLink.visibility = View.VISIBLE
+                        layMonLinkArrow.visibility = View.VISIBLE
+                        tvMonLinkValue.text = ret.link
+                        tvMonLinkArrowValue.text = ret.linkarrow
+                    } else {
+                        layMonLevel.visibility = View.VISIBLE
+                        if (ret.cardtype.contains("XYZ")) {
+                            tvLevelTitle.text = resStr(R.string.tv_mon_rank)
+                        } else {
+                            tvLevelTitle.text = resStr(R.string.tv_mon_level)
+                        }
+                        tvMonLevelValue.text = ret.level
+                        layMonAtk.visibility = View.VISIBLE
+                        layMonDef.visibility = View.VISIBLE
+                        tvMonAtkValue.text = ret.atk
+                        tvMonDefValue.text = ret.def
+                    }
+                }
+
                 tvEffectValue.text = ret.effect
-
-                for (p in ret.packs) {
-                    val lbl = TextView(this)
-                    lbl.gravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
-                    lbl.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 20.dip2px())
-                    lbl.textSize = 11F
-                    lbl.text = p.name
-                    layPubPacks.addView(lbl)
-                }
-
-                if (ret.adjust == "") {
-                    vAdjustLine.visibility = View.GONE
-                    tvAdjustTitle.visibility = View.GONE
-                    tvAdjustValue.visibility = View.GONE
-                } else {
-                    tvAdjustValue.text = ret.adjust
-                }
-
-
+                loadImage()
+                tvAdjustValue.text = ret.adjust
             }
         }
 
     }
 
+    private fun loadImage() {
+        val localImg = File(PathUtils.IMAGE_PATH, cardid.toString()).absolutePath
+        if (File(localImg).exists()) {
+            ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localImg))
+        } else {
+            downloadAsync {
+                url = String.format(YGORequest.RES_URL, cardid)
+                localFile = localImg
+                progress { state, _, _, _ ->
+                    if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {
+                        if (File(localFile).exists()) {
+                            runOnUiThread {
+                                ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localFile))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val mImg = menu.add(0, MENUID_IMAGE, 0, R.string.menu_image)
-        mImg.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         val mWiki = menu.add(0, MENUID_WIKI, 1, R.string.menu_wiki)
         mWiki.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         return super.onCreateOptionsMenu(menu)
@@ -80,11 +111,6 @@ class CardDetailActivity : Activity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> finish()
-            MENUID_IMAGE -> {
-                val inImage = Intent(this, CardImageActivity::class.java)
-                inImage.putExtra("cardid", cardid)
-                startActivity(inImage)
-            }
             MENUID_WIKI -> {
                 val inWiki = Intent(this, CardWikiActivity::class.java)
                 inWiki.putExtra("hashid", hashid)

@@ -26,6 +26,15 @@
     <string name="tv_limit">使用限制:</string>
     <string name="tv_rare">罕贵度:</string>
     <string name="tv_pack">所在卡包:</string>
+    <string name="tv_mon_race">怪兽种族:</string>
+    <string name="tv_mon_element">怪兽属性:</string>
+    <string name="tv_mon_level">怪兽星级:</string>
+    <string name="tv_mon_rank">怪兽阶级:</string>
+    <string name="tv_mon_atk">攻击力:</string>
+    <string name="tv_mon_def">守备力:</string>
+    <string name="tv_mon_link">连接数:</string>
+    <string name="tv_mon_linkarrow">连接方向:</string>
+
     <string name="tv_effect">效果:</string>
     <string name="tv_publish_pack">发行卡包</string>
     <string name="tv_adjust">事务局调整</string>
