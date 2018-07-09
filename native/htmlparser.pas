@@ -153,6 +153,7 @@ const
   ARTICLE_END = '</article>';
   HDIV = '</div>';
   HTABLE = '</table>';
+  HIMGID = 'http://ocg.resource.m2v.cn/';
   H1 = '<div class="val el-col-xs-18 el-col-sm-12 el-col-md-14 el-col-sm-pull-8 el-col-md-pull-6">';
   H2 = '<div class="val el-col-xs-8 el-col-sm-6 el-col-sm-pull-8 el-col-md-6 el-col-md-pull-6">';
   H3 = '<div class="val el-col-xs-10 el-col-sm-6 el-col-sm-pull-8 el-col-md-8 el-col-md-pull-6">';
@@ -172,7 +173,7 @@ const
   ESPLIT = '- - - - - -';
 var
   ret: string = '';
-
+  cimgid: string = '';
   cname: string = '';
   cjapname: string = '';
   cenname: string = '';
@@ -199,6 +200,8 @@ begin
   if (ahtml.Contains(ARTICLE_BEGIN)) then begin
     ret := ahtml.Substring(ahtml.IndexOf(ARTICLE_BEGIN));
     ret := ret.Substring(0, ret.IndexOf(ARTICLE_END));
+    ret := ret.Substring(ret.IndexOf(HIMGID) + HIMGID.Length);
+    cimgid:= ret.Substring(0, ret.IndexOf('.')).Trim;
     ret := ret.Substring(ret.IndexOf(H1) + H1.Length);
     cname:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
     ret := ret.Substring(ret.IndexOf(H1) + H1.Length);
@@ -270,8 +273,8 @@ begin
     cpacklist:= getPackList(ret);
   end;
 
-  Exit(Format('{"result":0, "data":{"name":"%s","japname":"%s","enname":"%s","cardtype":"%s","password":"%s","limit":"%s","belongs":"%s","rare":"%s","pack":"%s","effect":"%s","race":"%s","element":"%s","level":"%s","atk":"%s","def":"%s","link":"%s","linkarrow":"%s","packs":[%s]}}', [
-    cname, cjapname, cenname, ccardtype, cpassword, climit, cbelongs, crare, cpack, ceffect, crace, celement, clevel, catk, cdef, clink, clinkarrow, cpacklist
+  Exit(Format('{"result":0, "data":{"name":"%s","japname":"%s","enname":"%s","cardtype":"%s","password":"%s","limit":"%s","belongs":"%s","rare":"%s","pack":"%s","effect":"%s","race":"%s","element":"%s","level":"%s","atk":"%s","def":"%s","link":"%s","linkarrow":"%s","imageid":"%s","packs":[%s]}}', [
+    cname, cjapname, cenname, ccardtype, cpassword, climit, cbelongs, crare, cpack, ceffect, crace, celement, clevel, catk, cdef, clink, clinkarrow, cimgid, cpacklist
   ]));
 
 end;

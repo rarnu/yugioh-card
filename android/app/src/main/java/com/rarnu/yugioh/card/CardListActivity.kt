@@ -102,11 +102,9 @@ class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemCli
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val hashid = list[position].hashid
         val name = list[position].name
-        val cardid = list[position].cardid
         val inDetail = Intent(this, CardDetailActivity::class.java)
         inDetail.putExtra("name", name)
         inDetail.putExtra("hashid", hashid)
-        inDetail.putExtra("cardid", cardid)
         startActivity(inDetail)
     }
 

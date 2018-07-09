@@ -51,6 +51,7 @@
 @property NSArray<CardPackInfo*>* packs;
 @property NSString* adjust;
 @property NSString* wiki;
+@property NSString* imageId;
 @end
 
 @interface CardInfo: NSObject

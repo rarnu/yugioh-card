@@ -180,6 +180,7 @@
             result.packs = pk;
             result.adjust = [YGOData replaceChars:adjust];
             result.wiki = [YGOData replaceChars:wikiparsed];
+            result.imageId = [obj valueForKey:@"imageid"];
         }
     } @catch (NSException *exception) {
         

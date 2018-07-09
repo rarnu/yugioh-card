@@ -19,20 +19,15 @@ import kotlin.concurrent.thread
 
 class CardDetailActivity : Activity() {
 
-    private var cardid = 0
     private var hashid = ""
-
     private val MENUID_WIKI = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carddetail)
-
         actionBar.title = intent.getStringExtra("name")
         showActionBack()
-
         hashid = intent.getStringExtra("hashid")
-        cardid = intent.getIntExtra("cardid", 0)
 
         thread {
             val ret = YGOData.cardDetail(hashid)
@@ -74,15 +69,15 @@ class CardDetailActivity : Activity() {
                 }
 
                 tvEffectValue.text = ret.effect
-                loadImage()
+                loadImage(ret.imageid)
                 tvAdjustValue.text = ret.adjust
             }
         }
 
     }
 
-    private fun loadImage() {
-        val localImg = File(PathUtils.IMAGE_PATH, cardid.toString()).absolutePath
+    private fun loadImage(cardid: String) {
+        val localImg = File(PathUtils.IMAGE_PATH, cardid).absolutePath
         if (File(localImg).exists()) {
             ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localImg))
         } else {

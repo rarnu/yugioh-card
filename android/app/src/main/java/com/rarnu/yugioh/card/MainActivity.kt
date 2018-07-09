@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.ThumbnailUtils
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.rarnu.kt.android.initUI
 import com.rarnu.kt.android.resStr
@@ -15,6 +17,8 @@ import kotlin.concurrent.thread
 
 class MainActivity : Activity(), View.OnClickListener {
 
+    private val MENUID_LIMIT = 0
+    private val MENUID_PACK = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initUI()
@@ -27,16 +31,6 @@ class MainActivity : Activity(), View.OnClickListener {
         if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
-        /*
-        thread {
-            // val str = YGOData.searchCommon("影依", 1)
-            // val str = YGOData.cardDetail("qPs8Xb")
-            // val str = YGOData.limit()
-            // val str = YGOData.packageList()
-            // val str = YGOData.packageDetail("/package/CP18/wwSYE")
-            // Log.e("YGO", "$str")
-        }
-        */
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?) {
@@ -62,7 +56,27 @@ class MainActivity : Activity(), View.OnClickListener {
                 inSearch.putExtra("key", key)
                 startActivity(inSearch)
             }
-            R.id.btnAdvSearch -> { }
+            R.id.btnAdvSearch -> {
+                // TODO: adv search
+            }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val mLimit = menu.add(0, MENUID_LIMIT, 0, R.string.card_limit)
+        mLimit.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        val mPack = menu.add(0, MENUID_PACK, 1, R.string.card_pack)
+        mPack.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            MENUID_LIMIT -> startActivity(Intent(this, LimitActivity::class.java))
+            MENUID_PACK -> {
+                // TODO: pack
+            }
+        }
+        return true
     }
 }

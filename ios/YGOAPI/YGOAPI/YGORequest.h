@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define BASE_URL @"https://www.ourocg.cn"
-#define RES_URL @"http://ocg.resource.m2v.cn/%ld.jpg"
+#define RES_URL @"http://ocg.resource.m2v.cn/%@.jpg"
 
 @interface YGORequest : NSObject
 

@@ -14,7 +14,6 @@ import TangramKit
 
 class CardDetailController: UIViewController {
 
-    var cardid = 0
     var cardname = ""
     var hashid = ""
     
@@ -188,7 +187,7 @@ class CardDetailController: UIViewController {
                     self.tvEffectValue?.text = ret!.effect
                     _ = self.makeLine()
                     self.ivCardImg = self.makeImage()
-                    self.loadImage()
+                    self.loadImage(cardid: ret!.imageId)
                     _ = self.makeLine()
                     self.tvAdjust = self.makeAdjust()
                     self.tvAdjust?.text = ret!.adjust
@@ -198,7 +197,7 @@ class CardDetailController: UIViewController {
         }
     }
     
-    private func loadImage() {
+    private func loadImage(cardid: String) {
         let localfile = documentPath(true) + "\(cardid)"
         if (FileManager.default.fileExists(atPath: localfile)) {
             self.ivCardImg?.image = UIImage(contentsOfFile: localfile)

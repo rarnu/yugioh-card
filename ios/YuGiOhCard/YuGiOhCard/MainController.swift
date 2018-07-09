@@ -56,5 +56,14 @@ class MainController: UIViewController {
     @objc func btnAdvSearchClicked(sender: Any?) {
         // TODO: adv search clicked
     }
+    
+    @IBAction func btnLimitClicked(sender: Any?) {
+        let c = vc(name: "limit") as! LimitController
+        navigationController?.pushViewController(c, animated: true)
+    }
+    
+    @IBAction func btnPackClicked(sender: Any?) {
+        // TODO: pack
+    }
 }
 

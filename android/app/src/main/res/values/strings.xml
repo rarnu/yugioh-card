@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">YuGiOhCard</string>
     <string name="card_list">卡片列表</string>
-    <string name="card_image">Image</string>
     <string name="card_wiki">Wiki</string>
+    <string name="card_limit">限制</string>
+    <string name="card_limit_full">禁止限制卡表</string>
+    <string name="card_pack">卡包</string>
 
     <string name="btn_search">搜索</string>
     <string name="btn_adv_search">高级搜索</string>
@@ -41,4 +43,8 @@
 
     <string name="menu_image">Image</string>
     <string name="menu_wiki">Wiki</string>
+
+    <string name="limit_0">禁止</string>
+    <string name="limit_1">限制</string>
+    <string name="limit_2">准限制</string>
 </resources>

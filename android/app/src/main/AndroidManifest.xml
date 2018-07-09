@@ -28,6 +28,9 @@
         <activity android:name=".CardWikiActivity"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".LimitActivity"
+                  android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

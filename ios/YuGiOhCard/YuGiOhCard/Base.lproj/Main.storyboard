@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +27,24 @@
             </objects>
             <point key="canvasLocation" x="-432" y="165"/>
         </scene>
+        <!--Limit Controller-->
+        <scene sceneID="OZQ-rG-NmG">
+            <objects>
+                <tableViewController storyboardIdentifier="limit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ckM-Df-X5e" customClass="LimitController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wlj-eO-Nhm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="ckM-Df-X5e" id="MqU-JQ-zNm"/>
+                            <outlet property="delegate" destination="ckM-Df-X5e" id="72m-dF-M2d"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xly-yZ-Hmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-409" y="937"/>
+        </scene>
         <!--YuGiOhCard-->
         <scene sceneID="MoN-RT-UOE">
             <objects>
@@ -36,7 +55,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R8A-Xy-A2U"/>
                     </view>
-                    <navigationItem key="navigationItem" title="YuGiOhCard" id="mCp-EV-cju"/>
+                    <navigationItem key="navigationItem" title="YuGiOhCard" id="mCp-EV-cju">
+                        <rightBarButtonItems>
+                            <barButtonItem title="卡包" id="cBb-0Y-Coc">
+                                <connections>
+                                    <action selector="btnPackClickedWithSender:" destination="x9G-W6-ygQ" id="3y0-UQ-EvL"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="限制" id="QIx-Xk-ba8">
+                                <connections>
+                                    <action selector="btnLimitClickedWithSender:" destination="x9G-W6-ygQ" id="dJM-sX-aWj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jz-gm-8OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

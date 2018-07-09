@@ -46,6 +46,7 @@ class CardDetail {
     val packs = arrayListOf<CardPackInfo>()
     var adjust = ""
     var wiki = ""
+    var imageid = ""
 }
 
 class CardInfo {
@@ -210,6 +211,7 @@ object YGOData {
                 }
                 result.adjust = replaceChars(adjust)
                 result.wiki = replaceChars(wiki)
+                result.imageid = obj.getString("imageid")
             }
         } catch (e: Exception) {
 

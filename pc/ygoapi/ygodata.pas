@@ -59,6 +59,7 @@ type
     packs: TCardPackInfoList;
     adjust: string;
     wiki: string;
+    imageid: string;
     constructor Create;
     destructor Destroy; override;
   end;
@@ -315,6 +316,7 @@ begin
       end;
       Result.adjust := adjust;
       Result.wiki := wiki;
+      Result.imageid:= obj.Strings['imageid'];
     end;
     json.Free;
     parser.Free;

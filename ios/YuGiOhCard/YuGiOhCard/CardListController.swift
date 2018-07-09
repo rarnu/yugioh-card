@@ -128,13 +128,11 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cardid = self.list[indexPath.row].cardid
         let name = self.list[indexPath.row].name
         let hashid = self.list[indexPath.row].hashid
         let c = vc(name: "detail") as! CardDetailController
         c.cardname = name!
         c.hashid = hashid!
-        c.cardid = cardid
         navigationController?.pushViewController(c, animated: true)
     }
     

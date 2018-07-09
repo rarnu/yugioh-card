@@ -16,8 +16,8 @@ type
   private
     FLayTop: TD2Layout;
     FEdtSearch: TD2HudTextBox;
-    FBtnSearch: TD2HudButton;
-    FBtnAdvSearch: TD2HudButton;
+    FBtnSearch: TD2HudCornerButton;
+    FBtnAdvSearch: TD2HudCornerButton;
 
     FLayCenter: TD2Layout;
     FLayCards: TD2Layout;
@@ -30,16 +30,22 @@ type
     FBtnLast: TD2HudButton;
     FTVPage: TD2Text;
 
+    FLayLimitPack: TD2Layout;
+    FBtnLimit: TD2HudCornerButton;
+    FBtnPack: TD2HudCornerButton;
+
     // data
     FCurrentPage: Integer;
     FPageCount: Integer;
     FType: Integer;
     FKey: string;
 
-
+    procedure onBtnAdvSearchClicked(Sender: TObject);
     procedure onBtnFirstClicked(Sender: TObject);
     procedure onBtnLastClicked(Sender: TObject);
+    procedure onBtnLimitClicked(Sender: TObject);
     procedure onBtnNextClicked(Sender: TObject);
+    procedure onBtnPackClicked(Sender: TObject);
     procedure onBtnPriorClicked(Sender: TObject);
     procedure onBtnSearchClicked(Sender: TObject);
     procedure onLvCardClicked(Sender: TObject);
@@ -83,16 +89,17 @@ begin
   FLayTop.Padding.Right:= 8;
   Root.AddObject(FLayTop);
 
-  FBtnAdvSearch := TD2HudButton.Create(FLayTop);
+  FBtnAdvSearch := TD2HudCornerButton.Create(FLayTop);
   FBtnAdvSearch.Align:= vaMostRight;
   FBtnAdvSearch.Width:= 80;
-  FBtnAdvSearch.Padding.Left:= 8;
+  FBtnAdvSearch.Corners:= [d2CornerTopRight, d2CornerBottomRight];
   FBtnAdvSearch.Text:= '高级搜索';
   FLayTop.AddObject(FBtnAdvSearch);
 
-  FBtnSearch := TD2HudButton.Create(FLayTop);
+  FBtnSearch := TD2HudCornerButton.Create(FLayTop);
   FBtnSearch.Align:= vaRight;
   FBtnSearch.Width:= 60;
+  FBtnSearch.Corners:= [d2CornerTopLeft, d2CornerBottomLeft];
   FBtnSearch.Padding.Left:= 8;
   FBtnSearch.Text:= '搜索';
   FLayTop.AddObject(FBtnSearch);
@@ -164,13 +171,35 @@ begin
   FTVPage.Padding.Right:= 8;
   FLayPage.AddObject(FTVPage);
 
+  FLayLimitPack:= TD2Layout.Create(FLayRight);
+  FLayLimitPack.Align:= vaMostTop;
+  FLayLimitPack.Height:= 80;
+  FLayRight.AddObject(FLayLimitPack);
+
+  FBtnLimit := TD2HudCornerButton.Create(FLayLimitPack);
+  FBtnLimit.Align:= vaMostTop;
+  FBtnLimit.Height:= 40;
+  FBtnLimit.Text:= '禁止限制卡表';
+  FBtnLimit.Corners:= [d2CornerTopLeft, d2CornerTopRight];
+  FLayLimitPack.AddObject(FBtnLimit);
+
+  FBtnPack := TD2HudCornerButton.Create(FLayLimitPack);
+  FBtnPack.Align:= vaTop;
+  FBtnPack.Height:= 40;
+  FBtnPack.Text:= '卡包列表';
+  FBtnPack.Corners:= [d2CornerBottomLeft, d2CornerBottomRight];
+  FLayLimitPack.AddObject(FBtnPack);
+
   // events
   FBtnSearch.OnClick:=@onBtnSearchClicked;
+  FBtnAdvSearch.OnClick:=@onBtnAdvSearchClicked;
   FBtnFirst.OnClick:=@onBtnFirstClicked;
   FBtnPrior.OnClick:=@onBtnPriorClicked;
   FBtnNext.OnClick:=@onBtnNextClicked;
   FBtnLast.OnClick:=@onBtnLastClicked;
   FLvCard.OnClick:=@onLvCardClicked;
+  FBtnLimit.OnClick:=@onBtnLimitClicked;
+  FBtnPack.OnClick:=@onBtnPackClicked;
 
 end;
 
@@ -214,6 +243,11 @@ begin
   end;
 end;
 
+procedure TFormMain.onBtnAdvSearchClicked(Sender: TObject);
+begin
+  // TODO: adv search
+end;
+
 procedure TFormMain.onBtnLastClicked(Sender: TObject);
 begin
   if (FCurrentPage <> FPageCount) then begin
@@ -222,12 +256,22 @@ begin
   end;
 end;
 
+procedure TFormMain.onBtnLimitClicked(Sender: TObject);
+begin
+  // TODO: limit
+end;
+
 procedure TFormMain.onBtnNextClicked(Sender: TObject);
 begin
   if (FCurrentPage < FPageCount) then begin
     FCurrentPage += 1;
     TSearchCommonThread.threadSearchCommon(FKey, FCurrentPage, @onSearchCallback);
   end;
+end;
+
+procedure TFormMain.onBtnPackClicked(Sender: TObject);
+begin
+  // TODO: pack
 end;
 
 procedure TFormMain.onBtnPriorClicked(Sender: TObject);
