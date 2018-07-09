@@ -19,4 +19,8 @@ linksyms.fpc
 *.ppu
 *.o
 CardImage/
-
+# binary
+yugiohcard
+yugiohcard.exe
+yugiohcard.app/
+api

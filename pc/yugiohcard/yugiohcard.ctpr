@@ -92,7 +92,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="3">
+    <Exceptions Count="6">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -102,6 +102,15 @@
       <Item3>
         <Name Value="EFOpenError"/>
       </Item3>
+      <Item4>
+        <Name Value="ESocketError"/>
+      </Item4>
+      <Item5>
+        <Name Value="RunError(211)"/>
+      </Item5>
+      <Item6>
+        <Name Value="EAbstractError"/>
+      </Item6>
     </Exceptions>
   </Debugging>
 </CONFIG>

@@ -18,11 +18,13 @@ type
     FBackground: TD2Background;
     FWindow: TD2HudWindow;
     FRoot: TD2Layout;
+    function GetD2Canvas: TD2Canvas;
   public
 
   published
     property Window: TD2HudWindow read FWindow;
     property Root: TD2Layout read FRoot;
+    property D2Canvas: TD2Canvas read GetD2Canvas;
   end;
 
 var
@@ -57,6 +59,11 @@ begin
   FRoot.Padding.Right:= 16;
   FWindow.AddObject(FRoot);
 
+end;
+
+function TFormBase.GetD2Canvas: TD2Canvas;
+begin
+  Result := FScene.Canvas;
 end;
 
 end.

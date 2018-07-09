@@ -21,8 +21,9 @@ type
     FTabWiki: TD2HudCornerButton;
 
     FLayInfo: TD2Layout;
-    FLayAddition: TD2Layout;
+    FSvInfo: TD2ScrollBox;
     FLayWiki: TD2Layout;
+    FSvWiki: TD2ScrollBox;
 
     // info
     FlblCardNameValue: TD2Text;
@@ -34,10 +35,15 @@ type
     FlblRareValue: TD2Text;
     FlblPackValue: TD2Text;
     FlblEffectValue: TD2Text;
-
-    // pubpack
-
-    // adjust
+    FlblMonRace: TD2Text;
+    FlblMonElement: TD2Text;
+    FlblMonLevel: TD2Text;
+    FlblMonAtk: TD2Text;
+    FlblMonDef: TD2Text;
+    FlblMonLink: TD2Text;
+    FlblMonLinkArrow: TD2Text;
+    FlblAdjust: TD2Text;
+    FivCardImg: TD2Image;
 
     // wiki
 
@@ -48,7 +54,12 @@ type
     procedure onCardDetailCallback(Sender: TObject; ACard: TCardDetail);
     procedure SetCardName(AValue: string);
     procedure SetHashId(AValue: string);
-    function makeText(x, y, w, h: Integer; txt: String; container: TD2VisualObject): TD2Text;
+    function getTextHeight(txt: string): Single;
+    function makeText(txt: String; idx: Integer; multiline: Boolean = False; content: string = ''): TD2Text;
+    procedure makeLine(idx: Integer);
+    function makeImage(idx: Integer): TD2Image;
+    function makeAdjust(idx: Integer; content: string): TD2Text;
+    procedure loadImage();
   public
 
   published
@@ -72,7 +83,6 @@ uses
 procedure TFormCardDetail.FormCreate(Sender: TObject);
 var
   FLayTab: TD2Layout;
-  valueWidth: Integer =  260;
 begin
   inherited;
 
@@ -96,22 +106,6 @@ begin
   FTabInfo.Corners:= [d2CornerTopLeft, d2CornerBottomLeft];
   FLayTab.AddObject(FTabInfo);
 
-  FTabPubPack := TD2HudCornerButton.Create(FLayTab);
-  FTabPubPack.Text:= '发布卡包';
-  FTabPubPack.Align:= vaLeft;
-  FTabPubPack.Width:= 75;
-  FTabPubPack.Position.X:= 76;
-  FTabPubPack.Corners:= [];
-  FLayTab.AddObject(FTabPubPack);
-
-  FTabAdjust:= TD2HudCornerButton.Create(FLayTab);
-  FTabAdjust.Text:= '事务局调整';
-  FTabAdjust.Align:= vaLeft;
-  FTabAdjust.Width:= 75;
-  FTabAdjust.Position.X:= 151;
-  FTabAdjust.Corners:= [];
-  FLayTab.AddObject(FTabAdjust);
-
   FTabWiki:= TD2HudCornerButton.Create(FLayTab);
   FTabWiki.Text:= 'Wiki';
   FTabWiki.Align:= vaLeft;
@@ -128,21 +122,10 @@ begin
   FLayInfo.Padding.Bottom:= 8;
   Root.AddObject(FLayInfo);
 
-  FLayPubPack := TD2Layout.Create(Root);
-  FLayPubPack.Align:= vaClient;
-  FLayPubPack.Visible:= False;
-  FLayPubPack.Padding.Left:= 8;
-  FLayPubPack.Padding.Right:= 8;
-  FLayPubPack.Padding.Bottom:= 8;
-  Root.AddObject(FLayPubPack);
-
-  FLayAdjust:= TD2Layout.Create(Root);
-  FLayAdjust.Align:= vaClient;
-  FLayAdjust.Visible:= False;
-  FLayAdjust.Padding.Left:= 8;
-  FLayAdjust.Padding.Right:= 8;
-  FLayAdjust.Padding.Bottom:= 8;
-  Root.AddObject(FLayAdjust);
+  FSvInfo := TD2ScrollBox.Create(FLayInfo);
+  FSvInfo.Align:= vaClient;
+  FSvInfo.UseSmallScrollBars:= True;
+  FLayInfo.AddObject(FSvInfo);
 
   FLayWiki:= TD2Layout.Create(Root);
   FLayWiki.Align:= vaClient;
@@ -152,31 +135,19 @@ begin
   FLayWiki.Padding.Bottom:= 8;
   Root.AddObject(FLayWiki);
 
+  FSvWiki := TD2ScrollBox.Create(FLayWiki);
+  FSvWiki.Align := vaClient;
+  FLayWiki.AddObject(FSvWiki);
+
   // info
-  makeText(0, 0, 80, 32, '中文名称:', FLayInfo);
-  FlblCardNameValue:= makeText(88, 0, valueWidth, 32, '', FLayInfo);
-  makeText(0, 32, 80, 32, '日文名称:', FLayInfo);
-  FlblCardJapNameValue := makeText(88,32, valueWidth, 32, '', FLayInfo);
-  makeText(0, 64, 80, 32, '英文名称:', FLayInfo);
-  FlblCardEnNameValue := makeText(88, 64, valueWidth, 32, '', FLayInfo);
-  makeText(0, 96, 80, 32, '卡片种类:', FLayInfo);
-  FlblCardTypeValue:= makeText(88, 96, valueWidth, 32, '', FLayInfo);
-  makeText(0, 128, 80,32, '卡片密码:', FLayInfo);
-  FlblPasswordValue:= makeText(88, 128, valueWidth, 32, '', FLayInfo);
-  makeText(0, 160, 80,32, '使用限制:', FLayInfo);
-  FlblLimitValue:= makeText(88, 160, valueWidth, 32, '', FLayInfo);
-  makeText(0, 192, 80, 32, '罕贵度:', FLayInfo);
-  FlblRareValue:= makeText(88, 192, valueWidth, 32, '', FLayInfo);
-  makeText(0, 224, 80, 32, '所在卡包:', FLayInfo);
-  FlblPackValue:= makeText(88, 224, valueWidth, 32, '', FLayInfo);
-  makeText(0, 256, 80, 32, '效果:', FLayInfo);
-  FlblEffectValue:= makeText(88, 262, valueWidth, 160, '', FLayInfo);
-  FlblEffectValue.VertTextAlign:= TD2TextAlign.d2TextAlignNear;
-  FlblEffectValue.WordWrap:= True;
-
-  // pubpack
-
-  // adjust
+  FlblCardNameValue:= makeText('中文名称:', 0);
+  FlblCardJapNameValue := makeText('日文名称:', 1);
+  FlblCardEnNameValue := makeText('英文名称:', 2);
+  FlblCardTypeValue:= makeText('卡片种类:', 3);
+  FlblPasswordValue:= makeText('卡片密码:', 4);
+  FlblLimitValue:= makeText('使用限制:', 5);
+  FlblRareValue:= makeText('罕贵度:', 6);
+  FlblPackValue:= makeText('所在卡包:', 7);
 
   // wiki
 
@@ -199,30 +170,156 @@ begin
   FlblLimitValue.Text:= ACard.limit;
   FlblRareValue.Text:= ACard.rare;
   FlblPackValue.Text:= ACard.pack;
-  FlblEffectValue.Text:= ACard.effect;
+
+  if (ACard.cardtype.Contains('怪兽')) then begin
+    FlblMonRace := makeText('怪兽种族:', 8);
+    FlblMonRace.Text:= ACard.race;
+    FlblMonElement:= makeText('怪兽属性:', 9);
+    FlblMonElement.Text:= ACard.element;
+    if (ACard.cardtype.Contains('连接')) then begin
+      FlblMonAtk := makeText('攻击力:', 10);
+      FlblMonAtk.Text:= ACard.atk;
+      FlblMonLink := makeText('连接数:', 11);
+      FlblMonLink.Text:= ACard.link;
+      FlblMonLinkArrow := makeText('连接方向:', 12);
+      FlblMonLinkArrow.Text:= ACard.linkArrow;
+    end else begin
+        if (ACard.cardtype.Contains('XYZ')) then begin
+          FlblMonLevel := makeText('怪兽阶级:', 10);
+        end else begin
+          FlblMonLevel := makeText('怪兽星级:', 10);
+        end;
+        FlblMonLevel.Text:= ACard.level;
+        FlblMonAtk := makeText('攻击力:', 11);
+        FlblMonAtk.Text:= ACard.atk;
+        FlblMonDef := makeText('守备力:', 12);
+        FlblMonDef.Text:= ACard.def;
+    end;
+  end;
+  FlblEffectValue := makeText('效果:', 13, True, ACard.effect);
+  makeLine(14);
+  FivCardImg := makeImage(15);
+  loadImage();
+  makeLine(16);
+  FlblAdjust := makeAdjust(17, ACard.adjust);
+
+  if (FSvInfo.HScrollBar <> nil) then begin
+    FSvInfo.HScrollBar.Visible:= False;
+  end;
   ACard.Free;
 end;
 
 procedure TFormCardDetail.SetHashId(AValue: string);
 begin
   FHashId:=AValue;
-  // TODO: load card data
+  // load card data
   TCardDetailThread.threadCardDetail(FHashId, @onCardDetailCallback);
 end;
 
-function TFormCardDetail.makeText(x, y, w, h: Integer; txt: String;
-  container: TD2VisualObject): TD2Text;
+function TFormCardDetail.getTextHeight(txt: string): Single;
+var
+  t: TD2Text;
+  r: TD2Rect;
+  c: TD2Canvas;
 begin
-  Result := TD2Text.Create(container);
-  Result.Position.X:= x;
-  Result.Position.Y:= y;
-  Result.Width:= w;
-  Result.Height:= h;
-  Result.Text:= txt;
+  t := TD2Text.Create(Root);
+  c := D2Canvas;
+  c.Font.Assign(t.Font);
+  r:= d2Rect(0,0,200,1000);
+  c.MeasureText(r, r, WideString(txt), True, d2TextAlignNear, d2TextAlignNear);
+  t.Free;
+  Result := r.Bottom;
+end;
+
+function TFormCardDetail.makeText(txt: String; idx: Integer;
+  multiline: Boolean; content: string): TD2Text;
+var
+  lay: TD2Layout;
+  lbl: TD2Text;
+begin
+  lay := TD2Layout.Create(FSvInfo);
+  lay.Align:= vaTop;
+  lay.Padding.Right:= 20;
+  lay.Position.Y:= idx * 200;
+  lay.Height:= 24;
+  lbl := TD2Text.Create(lay);
+  lbl.Align:= vaLeft;
+  lbl.Width:= 80;
+  lbl.Fill.Color:= vcWhite;
+  lbl.Text:= txt;
+  lbl.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
+  lbl.VertTextAlign:= TD2TextAlign.d2TextAlignCenter;
+  lay.AddObject(lbl);
+  Result := TD2Text.Create(lay);
+  Result.Align:= vaClient;
+  if (multiline) then begin
+    lay.Padding.Top:= 8;
+    lbl.VertTextAlign:= TD2TextAlign.d2TextAlignNear;
+    Result.VertTextAlign:= TD2TextAlign.d2TextAlignNear;
+    Result.WordWrap:= True;
+    Result.AutoSize:= True;
+    lay.Height:= getTextHeight(content) + 8;
+    Result.Text:= content;
+  end else begin
+    Result.VertTextAlign:= TD2TextAlign.d2TextAlignCenter;
+  end;
   Result.Fill.Color:= vcWhite;
   Result.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
-  Result.VertTextAlign:= TD2TextAlign.d2TextAlignCenter;
-  container.AddObject(Result);
+  lay.AddObject(Result);
+  FSvInfo.AddObject(lay);
+end;
+
+procedure TFormCardDetail.makeLine(idx: Integer);
+var
+  line: TD2Line;
+begin
+  line := TD2Line.Create(FSvInfo);
+  line.Stroke.Color:= vcDarkgray;
+  line.LineType:= TD2LineType.d2LineHorizontal;
+  line.Align:= vaTop;
+  line.Height:= 1;
+  line.Padding.Top:= 8;
+  line.Padding.Bottom:= 8;
+  line.Position.Y:= idx * 200;
+  FSvInfo.AddObject(line);
+end;
+
+function TFormCardDetail.makeImage(idx: Integer): TD2Image;
+var
+  lay: TD2Layout;
+begin
+  lay := TD2Layout.Create(FSvInfo);
+  lay.Align:= vaTop;
+  lay.Padding.Right:= 20;
+  lay.Position.Y:= idx * 200;
+  lay.Height:= 230;
+  Result := TD2Image.Create(lay);
+  Result.Width:= 160;
+  Result.Height:= 230;
+  Result.Align:= vaCenter;
+  Result.WrapMode:= TD2ImageWrap.d2ImageFit;
+  lay.AddObject(Result);
+  FSvInfo.AddObject(lay);
+end;
+
+function TFormCardDetail.makeAdjust(idx: Integer; content: string): TD2Text;
+begin
+  Result := TD2Text.Create(FSvInfo);
+  Result.Align:= vaTop;
+  Result.Padding.Right:= 20;
+  Result.Position.Y:= idx * 200;
+  Result.VertTextAlign:= TD2TextAlign.d2TextAlignNear;
+  Result.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
+  Result.WordWrap:= True;
+  Result.AutoSize:= True;
+  Result.Fill.Color:= vcWhite;
+  Result.Text:= content;
+  FSvInfo.AddObject(Result);
+end;
+
+procedure TFormCardDetail.loadImage();
+begin
+  TDownloadImageThread.Create(FCardId, FivCardImg);
 end;
 
 end.
