@@ -73,9 +73,7 @@ class MainActivity : Activity(), View.OnClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             MENUID_LIMIT -> startActivity(Intent(this, LimitActivity::class.java))
-            MENUID_PACK -> {
-                // TODO: pack
-            }
+            MENUID_PACK -> startActivity(Intent(this, PackActivity::class.java))
         }
         return true
     }

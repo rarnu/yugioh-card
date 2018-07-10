@@ -48,7 +48,6 @@ class MainController: UIViewController {
             return
         }
         let c = vc(name: "cardlist") as! CardListController
-        c.type = 0
         c.key = key!
         navigationController?.pushViewController(c, animated: true)
     }
@@ -63,7 +62,8 @@ class MainController: UIViewController {
     }
     
     @IBAction func btnPackClicked(sender: Any?) {
-        // TODO: pack
+        let c = vc(name: "pack") as! PackController
+        navigationController?.pushViewController(c, animated: true)
     }
 }
 

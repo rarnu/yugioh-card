@@ -59,7 +59,7 @@ type
     packs: TCardPackInfoList;
     adjust: string;
     wiki: string;
-    imageid: string;
+    imageid: Integer;
     constructor Create;
     destructor Destroy; override;
   end;
@@ -121,6 +121,7 @@ type
 
   TYGOData = class
   private
+    class function replaceLinkArrow(str: string): string;
     class function replaceChars(str: string): string;
     class function parseSearchResult(jsonString: string): TSearchResult;
   public
@@ -162,6 +163,19 @@ begin
 end;
 
 { TYGOData }
+
+class function TYGOData.replaceLinkArrow(str: string): string;
+begin
+  str := str.Replace('1', '↙');
+  str := str.Replace('2', '↓');
+  str := str.Replace('3', '↘');
+  str := str.Replace('4', '←');
+  str := str.Replace('6', '→');
+  str := str.Replace('7', '↖');
+  str := str.Replace('8', '↑');
+  str := str.Replace('9', '↗');
+  Exit(str);
+end;
 
 class function TYGOData.replaceChars(str: string): string;
 begin
@@ -301,7 +315,7 @@ begin
       Result.atk := obj.Strings['atk'];
       Result.def := obj.Strings['def'];
       Result.link := obj.Strings['link'];
-      Result.linkArrow:= obj.Strings['linkarrow'];
+      Result.linkArrow:= replaceLinkArrow(obj.Strings['linkarrow']);
       jarr := obj.Arrays['packs'];
       for i := 0 to jarr.Count - 1 do
       begin
@@ -316,7 +330,7 @@ begin
       end;
       Result.adjust := adjust;
       Result.wiki := wiki;
-      Result.imageid:= obj.Strings['imageid'];
+      Result.imageid:= obj.Integers['imageid'];
     end;
     json.Free;
     parser.Free;

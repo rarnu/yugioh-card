@@ -4,11 +4,18 @@
                 android:layout_height="40dip">
 
     <TextView
+            android:id="@+id/tvLimitType"
+            android:layout_width="22dip"
+            android:layout_height="32dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dip"/>
+    <TextView
             android:id="@+id/tvLimitName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
             android:paddingLeft="8dip"
+            android:layout_toRightOf="@+id/tvLimitType"
             android:layout_toLeftOf="@+id/tvLimitDesc"/>
     <TextView
             android:id="@+id/tvLimitDesc"

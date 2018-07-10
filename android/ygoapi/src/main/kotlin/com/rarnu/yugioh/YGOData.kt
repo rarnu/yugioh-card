@@ -1,6 +1,5 @@
 package com.rarnu.yugioh
 
-import android.util.Log
 import org.json.JSONObject
 
 class PackageInfo {
@@ -46,7 +45,7 @@ class CardDetail {
     val packs = arrayListOf<CardPackInfo>()
     var adjust = ""
     var wiki = ""
-    var imageid = ""
+    var imageid = -1
 }
 
 class CardInfo {
@@ -88,6 +87,19 @@ object YGOData {
         s = s.replace("&#039;", "'")
         s = s.replace("<br />", "\n")
         s = s.replace("　", "")
+        return s
+    }
+
+    private fun replaceLinkArrow(str: String): String {
+        var s = str
+        s = s.replace("1", "↙")
+        s = s.replace("2", "↓")
+        s = s.replace("3", "↘")
+        s = s.replace("4", "←")
+        s = s.replace("6", "→")
+        s = s.replace("7", "↖")
+        s = s.replace("8", "↑")
+        s = s.replace("9", "↗")
         return s
     }
 
@@ -197,7 +209,7 @@ object YGOData {
                 result.atk = obj.getString("atk")
                 result.def = obj.getString("def")
                 result.link = obj.getString("link")
-                result.linkarrow = obj.getString("linkarrow")
+                result.linkarrow = replaceLinkArrow(obj.getString("linkarrow"))
                 val jarr = obj.getJSONArray("packs")
                 (0 until jarr.length()).forEach {
                     val pkinfo = jarr.getJSONObject(it)
@@ -211,7 +223,7 @@ object YGOData {
                 }
                 result.adjust = replaceChars(adjust)
                 result.wiki = replaceChars(wiki)
-                result.imageid = obj.getString("imageid")
+                result.imageid = obj.getInt("imageid")
             }
         } catch (e: Exception) {
 

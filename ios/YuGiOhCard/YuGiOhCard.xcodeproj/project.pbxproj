@@ -18,9 +18,13 @@
 		9208BEE120EB651600F795EA /* CardListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208BEE020EB651600F795EA /* CardListController.swift */; };
 		9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3B20EDF0BA00839678 /* CardDetailController.swift */; };
 		9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3D20EE1A8500839678 /* CardWikiController.swift */; };
+		9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269239720F48D1D002F4E8E /* PackDetailController.swift */; };
 		9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2C20F35E8A00DC235F /* LimitController.swift */; };
 		9270AC2F20F35F1A00DC235F /* LimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2E20F35F1A00DC235F /* LimitCell.swift */; };
 		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
+		92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1120F4583E00D4D1F5 /* PackController.swift */; };
+		92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1320F4599600D4D1F5 /* SeasonCell.swift */; };
+		92F88B1620F45E5300D4D1F5 /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1520F45E5300D4D1F5 /* PackCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,9 +54,13 @@
 		9208BEE020EB651600F795EA /* CardListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListController.swift; sourceTree = "<group>"; };
 		9246AD3B20EDF0BA00839678 /* CardDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailController.swift; sourceTree = "<group>"; };
 		9246AD3D20EE1A8500839678 /* CardWikiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWikiController.swift; sourceTree = "<group>"; };
+		9269239720F48D1D002F4E8E /* PackDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackDetailController.swift; sourceTree = "<group>"; };
 		9270AC2C20F35E8A00DC235F /* LimitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitController.swift; sourceTree = "<group>"; };
 		9270AC2E20F35F1A00DC235F /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
 		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
+		92F88B1120F4583E00D4D1F5 /* PackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackController.swift; sourceTree = "<group>"; };
+		92F88B1320F4599600D4D1F5 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
+		92F88B1520F45E5300D4D1F5 /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
 		A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.release.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.release.xcconfig"; sourceTree = "<group>"; };
 		AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +119,8 @@
 				9246AD3B20EDF0BA00839678 /* CardDetailController.swift */,
 				9246AD3D20EE1A8500839678 /* CardWikiController.swift */,
 				9270AC2C20F35E8A00DC235F /* LimitController.swift */,
+				92F88B1120F4583E00D4D1F5 /* PackController.swift */,
+				9269239720F48D1D002F4E8E /* PackDetailController.swift */,
 			);
 			path = YuGiOhCard;
 			sourceTree = "<group>";
@@ -120,6 +130,8 @@
 			children = (
 				92E7F6F620EB6BE70078574B /* CardListCell.swift */,
 				9270AC2E20F35F1A00DC235F /* LimitCell.swift */,
+				92F88B1320F4599600D4D1F5 /* SeasonCell.swift */,
+				92F88B1520F45E5300D4D1F5 /* PackCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -265,12 +277,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9207E76320E67E8F00735721 /* MainController.swift in Sources */,
+				92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */,
+				92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */,
 				9270AC2F20F35F1A00DC235F /* LimitCell.swift in Sources */,
 				9208BEE120EB651600F795EA /* CardListController.swift in Sources */,
 				9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */,
 				9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */,
+				9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */,
 				9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */,
 				9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */,
+				92F88B1620F45E5300D4D1F5 /* PackCell.swift in Sources */,
 				92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

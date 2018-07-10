@@ -6,7 +6,7 @@ import com.rarnu.kt.android.http
 object YGORequest {
 
     const val BASE_URL = "https://www.ourocg.cn"
-    const val RES_URL = "http://ocg.resource.m2v.cn/%s.jpg"
+    const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
     private fun request(aurl: String) = http {
         url = aurl

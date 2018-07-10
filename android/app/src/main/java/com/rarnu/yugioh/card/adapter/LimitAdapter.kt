@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.item_limitlist.view.*
 
 class LimitAdapter(ctx: Context, list: MutableList<LimitInfo>) : BaseAdapter<LimitInfo, LimitAdapter.LimitHolder>(ctx, list) {
     override fun fillHolder(baseVew: View, holder: LimitHolder, item: LimitInfo, position: Int) {
+        holder.tvLimitType.setBackgroundColor(Color.parseColor(item.color))
         holder.tvLimitName.text = item.name
         when(item.limit) {
             0 -> {
@@ -19,7 +20,7 @@ class LimitAdapter(ctx: Context, list: MutableList<LimitInfo>) : BaseAdapter<Lim
             }
             1 -> {
                 holder.tvLimitDesc.text = context.resStr(R.string.limit_1)
-                holder.tvLimitDesc.setTextColor(Color.YELLOW)
+                holder.tvLimitDesc.setTextColor(Color.parseColor("#FFA500"))
             }
             else -> {
                 holder.tvLimitDesc.text = context.resStr(R.string.limit_2)
@@ -35,7 +36,7 @@ class LimitAdapter(ctx: Context, list: MutableList<LimitInfo>) : BaseAdapter<Lim
     override fun newHolder(baseView: View) = LimitHolder(baseView)
 
     inner class LimitHolder(v: View) {
-
+        internal val tvLimitType = v.tvLimitType
         internal val tvLimitName = v.tvLimitName
         internal val tvLimitDesc = v.tvLimitDesc
     }

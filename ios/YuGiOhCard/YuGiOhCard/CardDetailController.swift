@@ -197,7 +197,7 @@ class CardDetailController: UIViewController {
         }
     }
     
-    private func loadImage(cardid: String) {
+    private func loadImage(cardid: Int) {
         let localfile = documentPath(true) + "\(cardid)"
         if (FileManager.default.fileExists(atPath: localfile)) {
             self.ivCardImg?.image = UIImage(contentsOfFile: localfile)

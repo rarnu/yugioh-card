@@ -76,8 +76,8 @@ class CardDetailActivity : Activity() {
 
     }
 
-    private fun loadImage(cardid: String) {
-        val localImg = File(PathUtils.IMAGE_PATH, cardid).absolutePath
+    private fun loadImage(cardid: Int) {
+        val localImg = File(PathUtils.IMAGE_PATH, cardid.toString()).absolutePath
         if (File(localImg).exists()) {
             ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localImg))
         } else {

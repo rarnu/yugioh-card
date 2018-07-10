@@ -42,6 +42,21 @@
     return str;
 }
 
++(NSString*) replaceLinkArrow:(NSString*) str {
+    if (str == nil) {
+        return @"";
+    }
+    str = [str stringByReplacingOccurrencesOfString:@"1" withString:@"↙"];
+    str = [str stringByReplacingOccurrencesOfString:@"2" withString:@"↓"];
+    str = [str stringByReplacingOccurrencesOfString:@"3" withString:@"↘"];
+    str = [str stringByReplacingOccurrencesOfString:@"4" withString:@"←"];
+    str = [str stringByReplacingOccurrencesOfString:@"6" withString:@"→"];
+    str = [str stringByReplacingOccurrencesOfString:@"7" withString:@"↖"];
+    str = [str stringByReplacingOccurrencesOfString:@"8" withString:@"↑"];
+    str = [str stringByReplacingOccurrencesOfString:@"9" withString:@"↗"];
+    return str;
+}
+
 +(SearchResult*) parseSearchResult:(NSString*) jsonString {
     SearchResult* result = [[SearchResult alloc] init];
     @try {
@@ -163,7 +178,7 @@
             result.atk = [obj valueForKey:@"atk"];
             result.def = [obj valueForKey:@"def"];
             result.link = [obj valueForKey:@"link"];
-            result.linkarrow = [obj valueForKey:@"linkarrow"];
+            result.linkarrow = [YGOData replaceLinkArrow:[obj valueForKey:@"linkarrow"]];
             
             NSMutableArray<CardPackInfo*>* pk = [NSMutableArray array];
             NSArray* jarr = [obj valueForKey:@"packs"];
@@ -180,7 +195,7 @@
             result.packs = pk;
             result.adjust = [YGOData replaceChars:adjust];
             result.wiki = [YGOData replaceChars:wikiparsed];
-            result.imageId = [obj valueForKey:@"imageid"];
+            result.imageId = [[obj valueForKey:@"imageid"] integerValue];
         }
     } @catch (NSException *exception) {
         

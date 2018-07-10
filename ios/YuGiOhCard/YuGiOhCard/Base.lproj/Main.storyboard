@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-432" y="165"/>
         </scene>
-        <!--Limit Controller-->
+        <!--禁止限制卡表-->
         <scene sceneID="OZQ-rG-NmG">
             <objects>
                 <tableViewController storyboardIdentifier="limit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ckM-Df-X5e" customClass="LimitController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,10 +40,46 @@
                             <outlet property="delegate" destination="ckM-Df-X5e" id="72m-dF-M2d"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="禁止限制卡表" id="tRo-p6-zIJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xly-yZ-Hmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-409" y="937"/>
+        </scene>
+        <!--卡包-->
+        <scene sceneID="LnB-ss-g58">
+            <objects>
+                <viewController storyboardIdentifier="pack" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cKW-IE-cZZ" customClass="PackController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p4M-uD-Rgm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Li5-a0-f9n"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="卡包" id="KAc-rD-IJ5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FpJ-Ea-8aq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="346" y="937"/>
+        </scene>
+        <!--Pack Detail Controller-->
+        <scene sceneID="mV0-XK-OEg">
+            <objects>
+                <tableViewController storyboardIdentifier="packdetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UwS-Ji-x9W" customClass="PackDetailController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H6A-67-nZ1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="UwS-Ji-x9W" id="g0L-Gr-DUl"/>
+                            <outlet property="delegate" destination="UwS-Ji-x9W" id="Vsk-em-5WC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="DOv-NR-Nxe"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ymq-IA-iG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1058" y="934"/>
         </scene>
         <!--YuGiOhCard-->
         <scene sceneID="MoN-RT-UOE">

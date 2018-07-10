@@ -12,7 +12,6 @@ import sfunctional
 
 class CardListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var type = 0
     var key = ""
     var currentPage = 1
     var pageCount = 1
@@ -34,14 +33,7 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
         tvCard?.delegate = self
         tvCard?.dataSource = self
         self.view.addSubview(tvCard!)
-        
-        /*
-         var btnFirst: UIButton?
-         var btnPrior: UIButton?
-         var btnNext: UIButton?
-         var btnLast: UIButton?
-         var tvPage: UILabel?
-         */
+
         let w = screenWidth() / 6
         btnFirst = UIButton(type: UIButtonType.system)
         btnFirst?.frame = CGRect(x: 0, y: screenHeight() - 36, width: w, height: 36)
@@ -68,20 +60,7 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
         btnNext?.addTarget(self, action: #selector(btnNextClicked(sender:)), for: UIControlEvents.touchDown)
         btnLast?.addTarget(self, action: #selector(btnLastClicked(sender:)), for: UIControlEvents.touchDown)
         
-        switch (type) {
-        case 0:
-            // search common
-            searchCommon(akey: key, apage: 1)
-            break
-        case 1:
-            // search complex
-            break
-        case 2:
-            // card pack
-            break
-        default:
-            break
-        }
+        searchCommon(akey: key, apage: 1)
     }
     
     private func searchCommon(akey: String, apage: Int) {

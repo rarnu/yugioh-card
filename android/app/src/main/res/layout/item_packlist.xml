@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="40dip">
 
-    <ListView
-            android:id="@+id/lvLimit"
+    <TextView
+            android:id="@+id/tvPackName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:cacheColorHint="@android:color/transparent"
-            android:scrollbars="none"/>
+            android:gravity="left|center_vertical"
+            android:paddingLeft="8dip"
+            android:textSize="12sp"/>
 
 </RelativeLayout>

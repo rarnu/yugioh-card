@@ -103,7 +103,7 @@ end;
 
 procedure TDownloadImageThread.Execute;
 const
-  IMG_URL = 'http://ocg.resource.m2v.cn/%s.jpg';
+  IMG_URL = 'http://ocg.resource.m2v.cn/%d.jpg';
 begin
   // download image if not exists
   FImgPath:= ExtractFilePath(ParamStr(0)) + 'CardImage';
@@ -114,7 +114,7 @@ begin
   if (not FileExists(FImgPath)) then begin
     with TFPHTTPClient.Create(nil) do begin
       try
-        Get(Format(IMG_URL, [FCardId.ToString]), FImgPath);
+        Get(Format(IMG_URL, [FCardId]), FImgPath);
       except
         on E: Exception do begin
           WriteLn(E.Message);

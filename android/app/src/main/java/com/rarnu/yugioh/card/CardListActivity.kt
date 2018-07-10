@@ -16,7 +16,6 @@ import kotlin.concurrent.thread
 
 class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {
 
-
     private var key = ""
     private var currentPage = 1
     private var pageCount = 1
@@ -37,17 +36,7 @@ class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemCli
         btnPrior.setOnClickListener(this)
         btnNext.setOnClickListener(this)
         btnLast.setOnClickListener(this)
-
-        val type = intent.getIntExtra("type", 0)
-        when (type) {
-            0 -> key = intent.getStringExtra("key")
-            1 -> {
-                // complex search
-            }
-            2 -> {
-                // card pack
-            }
-        }
+        key = intent.getStringExtra("key")
         searchCommon(key, 1)
     }
 
