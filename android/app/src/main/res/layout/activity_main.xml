@@ -9,23 +9,36 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:paddingTop="8dip" android:paddingLeft="8dip" android:paddingRight="8dip">
             <EditText
                     android:id="@+id/edtSearch"
                     android:layout_width="match_parent"
                     android:layout_height="40dip"
-                    android:layout_toLeftOf="@+id/btnSearch"/>
+                    android:hint="@string/hint_search"
+                    android:layout_toLeftOf="@+id/btnSearch"
+                    android:background="@null"/>
             <Button
                     android:id="@+id/btnSearch"
                     android:layout_width="60dip" android:layout_height="40dip"
                     android:text="@string/btn_search"
-                    android:layout_toLeftOf="@+id/btnAdvSearch"/>
+                    android:layout_toLeftOf="@+id/btnAdvSearch"
+                    android:background="@null"
+                    android:textColor="@android:color/black"/>
             <Button
                     android:id="@+id/btnAdvSearch"
                     android:layout_width="80dip" android:layout_height="40dip"
                     android:text="@string/btn_adv_search"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@null"
+                    android:textColor="@android:color/black"/>
         </RelativeLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dip"
+              android:background="@android:color/darker_gray"
+              android:layout_marginLeft="8dip"
+              android:layout_marginRight="8dip"
+        />
 
 
     </LinearLayout>

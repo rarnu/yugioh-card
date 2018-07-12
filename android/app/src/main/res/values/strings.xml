@@ -47,4 +47,93 @@
     <string name="limit_0">禁止</string>
     <string name="limit_1">限制</string>
     <string name="limit_2">准限制</string>
+
+    <string name="hint_search">输入要搜索的关键字</string>
+    <string name="hint_effect">输入效果关键字</string>
+    <string name="hint_link">可以是范围，如 1-3</string>
+    <string name="hint_atk">可以是范围，如 1500-2000</string>
+    <string name="hint_def">可以是范围，如 1500-2000</string>
+    <string name="hint_scale">可以是范围，如 1-4</string>
+    <string name="hint_level">可以是范围，如 1-4</string>
+
+    <string name="search_cardtype">卡片种类</string>
+    <string name="search_effect">卡片效果</string>
+
+    <string name="search_ct_mon">怪兽</string>
+    <string name="search_ct_magic">魔法</string>
+    <string name="search_ct_trap">陷阱</string>
+
+    <string name="search_mt">魔法种类</string>
+    <string name="search_mt_normal">通常</string>
+    <string name="search_mt_equip">装备</string>
+    <string name="search_mt_field">场地</string>
+    <string name="search_mt_quick">速攻</string>
+    <string name="search_mt_ritual">仪式</string>
+    <string name="search_mt_cont">永续</string>
+
+    <string name="search_tt">陷阱种类</string>
+    <string name="search_tt_normal">通常</string>
+    <string name="search_tt_cont">永续</string>
+    <string name="search_tt_counter">反击</string>
+
+    <string name="search_mon_ele">怪兽属性</string>
+    <string name="search_mon_ele_light">光</string>
+    <string name="search_mon_ele_dark">暗</string>
+    <string name="search_mon_ele_fire">炎</string>
+    <string name="search_mon_ele_water">水</string>
+    <string name="search_mon_ele_earth">地</string>
+    <string name="search_mon_ele_wind">风</string>
+    <string name="search_mon_ele_god">神</string>
+    
+    <string name="search_mon_sub">怪兽种类</string>
+    <string name="search_mon_race">怪兽种族</string>
+    <string name="search_mon_level">星数阶级</string>
+    <string name="search_mon_scale">灵摆刻度</string>
+    <string name="search_mon_atk">攻击力</string>
+    <string name="search_mon_def">守备力</string>
+    <string name="search_mon_link">连接值</string>
+    <string name="search_mon_linkarrow">连接方向</string>
+    
+    <string name="search_monct_normal">通常</string>
+    <string name="search_monct_effect">效果</string>
+    <string name="search_monct_ritual">仪式</string>
+    <string name="search_monct_fusion">融合</string>
+    <string name="search_monct_sync">同调</string>
+    <string name="search_monct_xyz">XYZ</string>
+    <string name="search_monct_toon">卡通</string>
+    <string name="search_monct_union">同盟</string>
+    <string name="search_monct_spirit">灵魂</string>
+    <string name="search_monct_tuner">调整</string>
+    <string name="search_monct_double">二重</string>
+    <string name="search_monct_pendulum">灵摆</string>
+    <string name="search_monct_reverse">反转</string>
+    <string name="search_monct_ss">特殊召唤</string>
+    <string name="search_monct_link">连接</string>
+    
+    <string name="search_monrace_water">水</string>
+    <string name="search_monrace_beast">兽</string>
+    <string name="search_monrace_bw">兽战士</string>
+    <string name="search_monrace_creation">创造神</string>
+    <string name="search_monrace_dino">恐龙</string>
+    <string name="search_monrace_god">幻神兽</string>
+    <string name="search_monrace_dragon">龙</string>
+    <string name="search_monrace_angel">天使</string>
+    <string name="search_monrace_demon">恶魔</string>
+    <string name="search_monrace_fish">鱼</string>
+    <string name="search_monrace_insect">昆虫</string>
+    <string name="search_monrace_machine">机械</string>
+    <string name="search_monrace_plant">植物</string>
+    <string name="search_monrace_cy">念动力</string>
+    <string name="search_monrace_fire">炎</string>
+    <string name="search_monrace_claim">爬虫类</string>
+    <string name="search_monrace_rock">岩石</string>
+    <string name="search_monrace_sd">海龙</string>
+    <string name="search_monrace_magician">魔法师</string>
+    <string name="search_monrace_thunder">雷</string>
+    <string name="search_monrace_warrior">战士</string>
+    <string name="search_monrace_wb">鸟兽</string>
+    <string name="search_monrace_undead">不死</string>
+    <string name="search_monrace_dd">幻龙</string>
+    <string name="search_monrace_cyber">电子界</string>
+
 </resources>

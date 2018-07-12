@@ -76,6 +76,7 @@ class PackActivity: Activity(), AdapterView.OnItemClickListener {
                 }
                 runOnUiThread {
                     adapterPack.setNewList(listPack)
+                    adapterSeason.setHighlight(position)
                 }
             }
         } else {

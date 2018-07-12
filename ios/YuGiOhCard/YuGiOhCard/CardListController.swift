@@ -34,24 +34,26 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
         tvCard?.dataSource = self
         self.view.addSubview(tvCard!)
 
-        let w = screenWidth() / 6
+        let w = 40
         btnFirst = UIButton(type: UIButtonType.system)
-        btnFirst?.frame = CGRect(x: 0, y: screenHeight() - 36, width: w, height: 36)
+        btnFirst?.frame = CGRect(x: 0, y: Int(screenHeight()) - 36, width: w, height: 36)
         btnFirst?.setTitle("<<", for: UIControlState.normal)
         self.view.addSubview(btnFirst!)
         btnPrior = UIButton(type: UIButtonType.system)
-        btnPrior?.frame = CGRect(x: w, y: screenHeight() - 36, width: w, height: 36)
+        btnPrior?.frame = CGRect(x: w, y: Int(screenHeight()) - 36, width: w, height: 36)
         btnPrior?.setTitle("<", for: UIControlState.normal)
         self.view.addSubview(btnPrior!)
+        
         btnNext = UIButton(type: UIButtonType.system)
-        tvPage = UILabel(frame: CGRect(x: w * 2, y: screenHeight() - 36, width: w * 2, height: 36))
+        tvPage = UILabel(frame: CGRect(x: w * 2, y: Int(screenHeight()) - 36, width: Int(screenWidth()) - w * 4, height: 36))
         tvPage?.textAlignment = NSTextAlignment.center
         self.view.addSubview(tvPage!)
-        btnNext?.frame = CGRect(x: w * 4, y: screenHeight() - 36, width: w, height: 36)
+        
+        btnNext?.frame = CGRect(x: Int(screenWidth()) - w * 2, y: Int(screenHeight()) - 36, width: w, height: 36)
         btnNext?.setTitle(">", for: UIControlState.normal)
         self.view.addSubview(btnNext!)
         btnLast = UIButton(type: UIButtonType.system)
-        btnLast?.frame = CGRect(x: w * 5, y: screenHeight() - 36, width: w, height: 36)
+        btnLast?.frame = CGRect(x: Int(screenWidth()) - w, y: Int(screenHeight()) - 36, width: w, height: 36)
         btnLast?.setTitle(">>", for: UIControlState.normal)
         self.view.addSubview(btnLast!)
         
@@ -78,7 +80,6 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tvCard?.reloadData()
                 self.tvPage?.text = "\(self.currentPage) / \(self.pageCount)"
             }
-            
         }
     }
 

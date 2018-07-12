@@ -31,6 +31,8 @@ class MainActivity : Activity(), View.OnClickListener {
         if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
+
+        // TODO: hotest
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?) {
@@ -52,13 +54,24 @@ class MainActivity : Activity(), View.OnClickListener {
                     return
                 }
                 val inSearch = Intent(this, CardListActivity::class.java)
-                inSearch.putExtra("type", 0)
                 inSearch.putExtra("key", key)
                 startActivity(inSearch)
             }
             R.id.btnAdvSearch -> {
-                // TODO: adv search
+                startActivityForResult(Intent(this, SearchActivity::class.java), 0)
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != RESULT_OK) {
+            return
+        }
+        val key = data?.getStringExtra("key")
+        if (key != null && key != "") {
+            val inSearch = Intent(this, CardListActivity::class.java)
+            inSearch.putExtra("key", key)
+            startActivity(inSearch)
         }
     }
 

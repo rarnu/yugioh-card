@@ -81,6 +81,28 @@
             </objects>
             <point key="canvasLocation" x="1058" y="934"/>
         </scene>
+        <!--高级搜索-->
+        <scene sceneID="pmA-FP-Aw3">
+            <objects>
+                <viewController storyboardIdentifier="search" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Whq-Vx-XHI" customClass="SearchController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tM7-Km-nMK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rcX-hQ-kk9"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="高级搜索" id="nTn-uv-N2c">
+                        <barButtonItem key="rightBarButtonItem" title="搜索" id="S2R-L4-b3A">
+                            <connections>
+                                <action selector="btnSearchClickedWithSender:" destination="Whq-Vx-XHI" id="k00-GA-OrE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iME-ig-y3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774" y="935"/>
+        </scene>
         <!--YuGiOhCard-->
         <scene sceneID="MoN-RT-UOE">
             <objects>
