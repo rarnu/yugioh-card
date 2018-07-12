@@ -10,7 +10,7 @@ import UIKit
 import YGOAPI
 import sfunctional
 
-class MainController: UIViewController, SearchDelegate, UITextFieldDelegate {
+class MainController: UIViewController, UITextFieldDelegate {
 
     var edtSearch: UITextField?
     var btnSearch: UIButton?
@@ -65,7 +65,6 @@ class MainController: UIViewController, SearchDelegate, UITextFieldDelegate {
     
     @objc func btnAdvSearchClicked(sender: Any?) {
         let c = vc(name: "search") as! SearchController
-        c.delegate = self
         navigationController?.pushViewController(c, animated: true)
     }
     
@@ -77,14 +76,6 @@ class MainController: UIViewController, SearchDelegate, UITextFieldDelegate {
     @IBAction func btnPackClicked(sender: Any?) {
         let c = vc(name: "pack") as! PackController
         navigationController?.pushViewController(c, animated: true)
-    }
-    
-    func onSearchResult(key: String) {
-        if (key != "") {
-            let c = vc(name: "cardlist") as! CardListController
-            c.key = key
-            navigationController?.pushViewController(c, animated: true)
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

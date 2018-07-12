@@ -57,21 +57,7 @@ class MainActivity : Activity(), View.OnClickListener {
                 inSearch.putExtra("key", key)
                 startActivity(inSearch)
             }
-            R.id.btnAdvSearch -> {
-                startActivityForResult(Intent(this, SearchActivity::class.java), 0)
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode != RESULT_OK) {
-            return
-        }
-        val key = data?.getStringExtra("key")
-        if (key != null && key != "") {
-            val inSearch = Intent(this, CardListActivity::class.java)
-            inSearch.putExtra("key", key)
-            startActivity(inSearch)
+            R.id.btnAdvSearch -> startActivity(Intent(this, SearchActivity::class.java))
         }
     }
 
