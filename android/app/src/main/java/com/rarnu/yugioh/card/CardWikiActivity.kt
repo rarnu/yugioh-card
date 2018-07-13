@@ -12,6 +12,8 @@ class CardWikiActivity : Activity() {
         setContentView(R.layout.activity_wiki)
         actionBar.title = resStr(R.string.card_wiki)
         showActionBack()
+
+        // TODO: show wiki
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

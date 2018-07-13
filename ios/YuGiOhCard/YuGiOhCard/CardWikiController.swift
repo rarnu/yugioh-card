@@ -14,7 +14,7 @@ class CardWikiController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // TODO: show wiki
     }
 
     override func didReceiveMemoryWarning() {

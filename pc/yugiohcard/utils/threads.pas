@@ -58,7 +58,181 @@ type
     class procedure threadCardDetail(AHashId: string; ACallback: TCardDetailCallback);
   end;
 
+  TLimitCallback = procedure (Sender: TObject; ALimit: TLimitList) of object;
+
+  { TLimitThread }
+
+  TLimitThread = class(TThread)
+  private
+    FCallback: TLimitCallback;
+    FList: TLimitList;
+    procedure onThreadTerminated(Sender: TObject);
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(ACallback: TLimitCallback);
+    class procedure threadLimit(ACallback: TLimitCallback);
+  end;
+
+  TPackCallback = procedure (Sender: TObject; APack: TPackageList) of object;
+
+  { TPackThread }
+
+  TPackThread = class(TThread)
+  private
+    FCallback: TPackCallback;
+    FList: TPackageList;
+    procedure onThreadTerminated(Sender: TObject);
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(ACallback: TPackCallback);
+    class procedure threadPack(ACallback: TPackCallback);
+  end;
+
+  { TPackDetailThread }
+
+  TPackDetailThread = class(TThread)
+  private
+    FUrl: string;
+    FCallback: TSearchCallback;
+    FList: TSearchResult;
+    procedure onThreadTerminated(Sender: TObject);
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(AUrl: string; ACallback: TSearchCallback);
+    class procedure threadPackDetail(AUrl: string; ACallback: TSearchCallback);
+  end;
+
+
+  THotestCallback = procedure(Sender: TObject; AData: THotest) of object;
+
+  { THotestThread }
+
+  THotestThread = class(TThread)
+  private
+    FHotest: THotest;
+    FCallback: THotestCallback;
+    procedure onThreadTerminated(Sender: TObject);
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(ACallback: THotestCallback);
+    class procedure threadHotest(ACallback: THotestCallback);
+  end;
+
 implementation
+
+{ THotestThread }
+
+procedure THotestThread.onThreadTerminated(Sender: TObject);
+begin
+  if Assigned(FCallback) then begin
+    FCallback(Self, FHotest);
+  end;
+end;
+
+procedure THotestThread.Execute;
+begin
+  FHotest := TYGOData.hostest();
+end;
+
+constructor THotestThread.Create(ACallback: THotestCallback);
+begin
+  inherited Create(True);
+  FCallback:= ACallback;
+  FreeOnTerminate:= True;
+  OnTerminate:=@onThreadTerminated;
+end;
+
+class procedure THotestThread.threadHotest(ACallback: THotestCallback);
+begin
+  with THotestThread.Create(ACallback) do Start;
+end;
+
+{ TPackDetailThread }
+
+procedure TPackDetailThread.onThreadTerminated(Sender: TObject);
+begin
+  if Assigned(FCallback) then begin
+    FCallback(Self, FList);
+  end;
+end;
+
+procedure TPackDetailThread.Execute;
+begin
+  FList := TYGOData.packageDetail(FUrl);
+end;
+
+constructor TPackDetailThread.Create(AUrl: string; ACallback: TSearchCallback);
+begin
+  inherited Create(True);
+  FUrl:= AUrl;
+  FCallback:= ACallback;
+  FreeOnTerminate:= True;
+  OnTerminate:=@onThreadTerminated;
+end;
+
+class procedure TPackDetailThread.threadPackDetail(AUrl: string;
+  ACallback: TSearchCallback);
+begin
+  with TPackDetailThread.Create(AUrl, ACallback) do Start;
+end;
+
+{ TPackThread }
+
+procedure TPackThread.onThreadTerminated(Sender: TObject);
+begin
+  if Assigned(FCallback) then begin
+    FCallback(Self, FList);
+  end;
+end;
+
+procedure TPackThread.Execute;
+begin
+  FList := TYGOData.packageList();
+end;
+
+constructor TPackThread.Create(ACallback: TPackCallback);
+begin
+  inherited Create(True);
+  FCallback:= ACallback;
+  FreeOnTerminate:= True;
+  OnTerminate:=@onThreadTerminated;
+end;
+
+class procedure TPackThread.threadPack(ACallback: TPackCallback);
+begin
+  with TPackThread.Create(ACallback) do Start;
+end;
+
+{ TLimitThread }
+
+procedure TLimitThread.onThreadTerminated(Sender: TObject);
+begin
+  if (Assigned(FCallback)) then begin
+    FCallback(Self, FList);
+  end;
+end;
+
+procedure TLimitThread.Execute;
+begin
+  FList := TYGOData.limit();
+end;
+
+constructor TLimitThread.Create(ACallback: TLimitCallback);
+begin
+  inherited Create(True);
+  FCallback:= ACallback;
+  FreeOnTerminate:= True;
+  OnTerminate:=@onThreadTerminated;
+end;
+
+class procedure TLimitThread.threadLimit(ACallback: TLimitCallback);
+begin
+  with TLimitThread.Create(ACallback) do Start;
+end;
 
 { TCardDetailThread }
 
@@ -117,7 +291,6 @@ begin
         Get(Format(IMG_URL, [FCardId]), FImgPath);
       except
         on E: Exception do begin
-          WriteLn(E.Message);
           DeleteFile(FImgPath);
         end;
 

@@ -15,9 +15,6 @@ type
     procedure FormCreate(Sender: TObject);
   private
     // UI
-    FTabInfo: TD2HudCornerButton;
-    FTabPubPack: TD2HudCornerButton;
-    FTabAdjust: TD2HudCornerButton;
     FTabWiki: TD2HudCornerButton;
 
     FLayInfo: TD2Layout;
@@ -48,9 +45,9 @@ type
     // wiki
 
     // Data
-    FCardId: Integer;
     FCardName: string;
     FHashId: string;
+    procedure onBtnWikiClicked(Sender: TObject);
     procedure onCardDetailCallback(Sender: TObject; ACard: TCardDetail);
     procedure SetCardName(AValue: string);
     procedure SetHashId(AValue: string);
@@ -59,13 +56,12 @@ type
     procedure makeLine(idx: Integer);
     function makeImage(idx: Integer): TD2Image;
     function makeAdjust(idx: Integer; content: string): TD2Text;
-    procedure loadImage();
+    procedure loadImage(ACardId: Integer);
   public
 
   published
     property CardName: string read FCardName write SetCardName;
     property HashId: string read FHashId write SetHashId;
-    property CardId: Integer read FCardId write FCardId;
   end;
 
 var
@@ -81,38 +77,19 @@ uses
 { TFormCardDetail }
 
 procedure TFormCardDetail.FormCreate(Sender: TObject);
-var
-  FLayTab: TD2Layout;
 begin
   inherited;
 
   Width:= 400;
   Height:= 500;
 
-  FLayTab := TD2Layout.Create(Root);
-  FLayTab.Align:= vaTop;
-  FLayTab.Height:= 40;
-  FLayTab.Padding.Top:= 8;
-  FLayTab.Padding.Left:= 8;
-  FLayTab.Padding.Right:= 8;
-  FLayTab.Padding.Bottom:= 8;
-  Root.AddObject(FLayTab);
-
-  FTabInfo:= TD2HudCornerButton.Create(FLayTab);
-  FTabInfo.Text:= '卡片信息';
-  FTabInfo.Align:= vaLeft;
-  FTabInfo.Width:= 75;
-  FTabInfo.Position.X:= 0;
-  FTabInfo.Corners:= [d2CornerTopLeft, d2CornerBottomLeft];
-  FLayTab.AddObject(FTabInfo);
-
-  FTabWiki:= TD2HudCornerButton.Create(FLayTab);
+  FTabWiki := TD2HudCornerButton.Create(Window);
+  FTabWiki.Width:= 50;
+  FTabWiki.Height:= 20;
+  FTabWiki.Position.X:= 330;
+  FTabWiki.Position.Y:= 6;
   FTabWiki.Text:= 'Wiki';
-  FTabWiki.Align:= vaLeft;
-  FTabWiki.Width:= 75;
-  FTabWiki.Position.X:= 226;
-  FTabWiki.Corners:= [d2CornerTopRight, d2CornerBottomRight];
-  FLayTab.AddObject(FTabWiki);
+  Window.AddObject(FTabWiki);
 
   FLayInfo:= TD2Layout.Create(Root);
   FLayInfo.Align:= vaClient;
@@ -149,7 +126,8 @@ begin
   FlblRareValue:= makeText('罕贵度:', 6);
   FlblPackValue:= makeText('所在卡包:', 7);
 
-  // wiki
+  // event
+  FTabWiki.OnClick:=@onBtnWikiClicked;
 
 end;
 
@@ -199,7 +177,7 @@ begin
   FlblEffectValue := makeText('效果:', 13, True, ACard.effect);
   makeLine(14);
   FivCardImg := makeImage(15);
-  loadImage();
+  loadImage(ACard.imageid);
   makeLine(16);
   FlblAdjust := makeAdjust(17, ACard.adjust);
 
@@ -207,6 +185,11 @@ begin
     FSvInfo.HScrollBar.Visible:= False;
   end;
   ACard.Free;
+end;
+
+procedure TFormCardDetail.onBtnWikiClicked(Sender: TObject);
+begin
+  // TODO: show wiki
 end;
 
 procedure TFormCardDetail.SetHashId(AValue: string);
@@ -222,6 +205,7 @@ var
   r: TD2Rect;
   c: TD2Canvas;
 begin
+  if (txt = '') then Exit(0);
   t := TD2Text.Create(Root);
   c := D2Canvas;
   c.Font.Assign(t.Font);
@@ -317,9 +301,9 @@ begin
   FSvInfo.AddObject(Result);
 end;
 
-procedure TFormCardDetail.loadImage();
+procedure TFormCardDetail.loadImage(ACardId: Integer);
 begin
-  TDownloadImageThread.Create(FCardId, FivCardImg);
+  TDownloadImageThread.Create(ACardId, FivCardImg);
 end;
 
 end.

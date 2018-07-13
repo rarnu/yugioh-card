@@ -422,7 +422,6 @@ begin
   strPackage:= strPackage.TrimRight([',']);
 
   ret := Format('{"result":0, "search":[%s], "card":[%s], "pack":[%s]}', [strSearch, strCard, strPackage]);
-  WriteLn(ret);
   Exit(ret);
 end;
 
