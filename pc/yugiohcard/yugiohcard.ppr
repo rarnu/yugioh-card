@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}
   Interfaces,
-  Forms, frmMain, toaster, cardlistitem, threads, frmCardDetail;
+  Forms, frmMain, toaster, cardlistitem, threads, frmCardDetail, frmWiki;
 
 {$R *.res}
 
@@ -15,6 +15,7 @@ begin
   RequireDerivedFormResource:=True;
   Application.Initialize;
   Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TFormWiki, FormWiki);
   Application.Run;
 end.
 

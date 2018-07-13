@@ -10,11 +10,13 @@ import UIKit
 
 class CardWikiController: UIViewController {
 
-    var hashid = ""
+    var wiki = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: show wiki
+        
+        print(wiki)
     }
 
     override func didReceiveMemoryWarning() {

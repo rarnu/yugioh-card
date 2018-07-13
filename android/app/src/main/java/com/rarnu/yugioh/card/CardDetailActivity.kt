@@ -20,6 +20,7 @@ import kotlin.concurrent.thread
 class CardDetailActivity : Activity() {
 
     private var hashid = ""
+    private var wikiForPass = ""
     private val MENUID_WIKI = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +72,7 @@ class CardDetailActivity : Activity() {
                 tvEffectValue.text = ret.effect
                 loadImage(ret.imageid)
                 tvAdjustValue.text = ret.adjust
+                wikiForPass = ret.wiki
             }
         }
 
@@ -108,7 +110,7 @@ class CardDetailActivity : Activity() {
             android.R.id.home -> finish()
             MENUID_WIKI -> {
                 val inWiki = Intent(this, CardWikiActivity::class.java)
-                inWiki.putExtra("hashid", hashid)
+                inWiki.putExtra("wiki", wikiForPass)
                 startActivity(inWiki)
             }
         }

@@ -2,6 +2,7 @@ package com.rarnu.yugioh.card
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.rarnu.kt.android.resStr
 import com.rarnu.kt.android.showActionBack
@@ -14,6 +15,9 @@ class CardWikiActivity : Activity() {
         showActionBack()
 
         // TODO: show wiki
+        val wiki = intent.getStringExtra("wiki")
+        Log.e("WIKI", wiki)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

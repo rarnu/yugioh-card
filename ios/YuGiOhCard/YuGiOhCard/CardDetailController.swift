@@ -17,6 +17,8 @@ class CardDetailController: UIViewController {
     var cardname = ""
     var hashid = ""
     
+    var wikiForPass = ""
+    
     // ui
     var sv: UIScrollView?
     var layMain: TGLinearLayout?
@@ -191,6 +193,7 @@ class CardDetailController: UIViewController {
                     _ = self.makeLine()
                     self.tvAdjust = self.makeAdjust()
                     self.tvAdjust?.text = ret!.adjust
+                    self.wikiForPass = ret!.wiki
                 }
             }
             
@@ -220,7 +223,7 @@ class CardDetailController: UIViewController {
 
     @IBAction func btnWikiClicked(sender: Any?) {
         let c = vc(name: "wiki") as! CardWikiController
-        c.hashid = hashid
+        c.wiki = wikiForPass
         navigationController?.pushViewController(c, animated: true)
     }
 }

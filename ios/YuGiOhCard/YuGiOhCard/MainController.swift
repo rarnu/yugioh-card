@@ -45,6 +45,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         btnAdvSearch?.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControlEvents.touchDown)
         
         // TODO: hotest
+        
     }
 
     override func didReceiveMemoryWarning() {

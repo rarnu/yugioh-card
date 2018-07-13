@@ -47,6 +47,7 @@ type
     // Data
     FCardName: string;
     FHashId: string;
+    FWikiForPass: string;
     procedure onBtnWikiClicked(Sender: TObject);
     procedure onCardDetailCallback(Sender: TObject; ACard: TCardDetail);
     procedure SetCardName(AValue: string);
@@ -70,7 +71,7 @@ var
 implementation
 
 uses
-  threads;
+  threads, frmWiki;
 
 {$R *.frm}
 
@@ -80,6 +81,7 @@ procedure TFormCardDetail.FormCreate(Sender: TObject);
 begin
   inherited;
 
+  FWikiForPass := '';
   Width:= 400;
   Height:= 500;
 
@@ -180,6 +182,7 @@ begin
   loadImage(ACard.imageid);
   makeLine(16);
   FlblAdjust := makeAdjust(17, ACard.adjust);
+  FWikiForPass := ACard.wiki;
 
   if (FSvInfo.HScrollBar <> nil) then begin
     FSvInfo.HScrollBar.Visible:= False;
@@ -189,7 +192,12 @@ end;
 
 procedure TFormCardDetail.onBtnWikiClicked(Sender: TObject);
 begin
-  // TODO: show wiki
+  // show wiki
+  with TFormWiki.Create(nil) do begin
+    Wiki:= FWikiForPass;
+    ShowModal;
+    Free;
+  end;
 end;
 
 procedure TFormCardDetail.SetHashId(AValue: string);
