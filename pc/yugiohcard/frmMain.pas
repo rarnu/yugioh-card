@@ -50,7 +50,6 @@ type
     // data
     FCurrentPage: Integer;
     FPageCount: Integer;
-    FType: Integer;
     FKey: string;
 
     FSeasonList: TStringList;
@@ -91,7 +90,7 @@ var
 implementation
 
 uses
-  toaster, threads, cardlistitem, frmCardDetail;
+  toaster, threads, cardlistitem, frmCardDetail, frmSearch;
 
 {$R *.frm}
 
@@ -105,7 +104,6 @@ begin
   // data
   FCurrentPage := 1;
   FPageCount:= 1;
-  FType:= 0;
   FKey:= '';
 
   FSeasonList:= TStringList.Create;
@@ -357,10 +355,7 @@ begin
     TToast.show(FLayCenter, '不能搜索空关键字');
     Exit;
   end;
-
-  FType:= 0;
   FKey:= key;
-
   TSearchCommonThread.threadSearchCommon(FKey, 1, @onSearchCallback);
 
 end;
@@ -493,7 +488,14 @@ end;
 
 procedure TFormMain.onBtnAdvSearchClicked(Sender: TObject);
 begin
-  // TODO: adv search
+  // adv search
+  with TFormSearch.Create(nil) do begin
+    if (ShowModal = mrOK) then begin
+      FKey:= Key;
+      TSearchCommonThread.threadSearchCommon(FKey, 1, @onSearchCallback);
+    end;
+    Free;
+  end;
 end;
 
 procedure TFormMain.onBtnLastClicked(Sender: TObject);
