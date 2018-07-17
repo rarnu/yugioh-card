@@ -41,6 +41,10 @@
     <string name="tv_publish_pack">发行卡包</string>
     <string name="tv_adjust">事务局调整</string>
 
+    <string name="tv_hot_search">热门搜索</string>
+    <string name="tv_hot_card">热门卡片</string>
+    <string name="tv_hot_pack">热门卡包</string>
+
     <string name="menu_image">Image</string>
     <string name="menu_wiki">Wiki</string>
 

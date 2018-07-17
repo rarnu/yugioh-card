@@ -4,35 +4,62 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.media.ThumbnailUtils
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.LinearLayout
+import android.widget.ListView
+import android.widget.TextView
+import com.rarnu.kt.android.dip2px
 import com.rarnu.kt.android.initUI
 import com.rarnu.kt.android.resStr
 import com.rarnu.kt.android.toast
+import com.rarnu.yugioh.HotCard
+import com.rarnu.yugioh.HotPack
+import com.rarnu.yugioh.YGOData
+import com.rarnu.yugioh.card.adapter.SimpleCardAdapter
+import com.rarnu.yugioh.card.adapter.SimplePackAdapter
+import com.rarnu.yugioh.card.adapter.SimpleSearchAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.concurrent.thread
 
-class MainActivity : Activity(), View.OnClickListener {
+class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {
 
     private val MENUID_LIMIT = 0
     private val MENUID_PACK = 1
+
+    private val listSearch = arrayListOf<String>()
+    private lateinit var adapterSearch: SimpleSearchAdapter
+    private val listCard = arrayListOf<HotCard>()
+    private lateinit var adapterCard: SimpleCardAdapter
+    private val listPack = arrayListOf<HotPack>()
+    private lateinit var adapterPack: SimplePackAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initUI()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         btnSearch.setOnClickListener(this)
         btnAdvSearch.setOnClickListener(this)
-
         if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
+        adapterSearch = SimpleSearchAdapter(this, listSearch)
+        gvSearch.adapter = adapterSearch
+        adapterCard = SimpleCardAdapter(this, listCard)
+        lvHotCard.adapter = adapterCard
+        adapterPack = SimplePackAdapter(this, listPack)
+        lvHotPack.adapter = adapterPack
 
-        // TODO: hotest
+        gvSearch.onItemClickListener = this
+        lvHotCard.onItemClickListener = this
+        lvHotPack.onItemClickListener = this
+        loadHotest()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?) {
@@ -75,5 +102,68 @@ class MainActivity : Activity(), View.OnClickListener {
             MENUID_PACK -> startActivity(Intent(this, PackActivity::class.java))
         }
         return true
+    }
+
+    private fun loadHotest() {
+        thread {
+            val ret = YGOData.hotest()
+            listSearch.clear()
+            listSearch.addAll(ret.search)
+            listCard.clear()
+            listCard.addAll(ret.card)
+            listPack.clear()
+            listPack.addAll(ret.pack)
+            runOnUiThread {
+                adapterSearch.setNewList(listSearch)
+                resetGridHeight()
+                adapterCard.setNewList(listCard)
+                resetListHeight(lvHotCard, listCard.size)
+                adapterPack.setNewList(listPack)
+                resetListHeight(lvHotPack, listPack.size)
+            }
+        }
+    }
+
+    private fun resetGridHeight() {
+        var line = listSearch.size / 5
+        if (listSearch.size % 5 != 0) {
+            line++
+        }
+
+        val lay = gvSearch.layoutParams
+        lay.height = (line * 41).dip2px()
+        gvSearch.layoutParams = lay
+
+    }
+
+    private fun resetListHeight(lv: ListView, lines: Int) {
+        val lay = lv.layoutParams
+        lay.height = (lines * 41).dip2px()
+        lv.layoutParams = lay
+    }
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        when(parent) {
+            gvSearch -> {
+                val inSearch = Intent(this, CardListActivity::class.java)
+                inSearch.putExtra("key", listSearch[position])
+                startActivity(inSearch)
+            }
+            lvHotCard -> {
+                val hashid = listCard[position].hashid
+                val name = listCard[position].name
+                val inDetail = Intent(this, CardDetailActivity::class.java)
+                inDetail.putExtra("name", name)
+                inDetail.putExtra("hashid", hashid)
+                startActivity(inDetail)
+            }
+            lvHotPack -> {
+                val pack = listPack[position]
+                val inDetail = Intent(this, PackDetailActivity::class.java)
+                inDetail.putExtra("url", pack.packid)
+                inDetail.putExtra("name", pack.name)
+                startActivity(inDetail)
+            }
+        }
     }
 }
