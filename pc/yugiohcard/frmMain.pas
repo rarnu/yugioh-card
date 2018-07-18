@@ -46,6 +46,7 @@ type
     FLvLimit: TD2HudListBox;
     FLvSeason: TD2HudListBox;
     FLvPack: TD2HudListBox;
+    FSvHotest: TD2ScrollBox;
 
     // data
     FCurrentPage: Integer;
@@ -71,7 +72,10 @@ type
     procedure onBtnRefreshLimitClicked(Sender: TObject);
     procedure onBtnRefreshPackClicked(Sender: TObject);
     procedure onBtnSearchClicked(Sender: TObject);
+    procedure onHotCardClicked(Sender: TObject);
     procedure onHotestCallback(Sender: TObject; AData: THotest);
+    procedure onHotPackClicked(Sender: TObject);
+    procedure onKeywordClicked(Sender: TObject);
     procedure onLimitCallback(Sender: TObject; ALimit: TLimitList);
     procedure onLvCardClicked(Sender: TObject);
     procedure onLvLimitClicked(Sender: TObject);
@@ -309,6 +313,7 @@ begin
   TLimitThread.threadLimit(@onLimitCallback);
   TPackThread.threadPack(@onPackCallback);
   THotestThread.threadHotest(@onHotestCallback);
+
 end;
 
 procedure TFormMain.FormDestroy(Sender: TObject);
@@ -360,9 +365,172 @@ begin
 
 end;
 
-procedure TFormMain.onHotestCallback(Sender: TObject; AData: THotest);
+procedure TFormMain.onHotCardClicked(Sender: TObject);
 begin
-  // TODO: hotest callback
+  // hot card clicked
+  with TFormCardDetail.Create(nil) do begin
+    CardName:= TD2Text(Sender).Text;
+    HashId:= TD2Text(Sender).Hint;
+    ShowModal;
+    Free;
+  end;
+end;
+
+procedure TFormMain.onHotestCallback(Sender: TObject; AData: THotest);
+var
+  order: Integer = 0;
+  tmpCard: THotCard;
+  tmpPack: THotPack;
+
+  function makeText(txt: string; idx: Integer): TD2Text;
+  var
+    t: TD2Text;
+  begin
+    t := TD2Text.Create(FSvHotest);
+    t.Align:= vaTop;
+    t.Height:= 32;
+    t.Padding.Right:= 20;
+    t.Position.Y:= idx * 40;
+    t.Fill.Color:= vcWhite;
+    t.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
+    t.VertTextAlign:= TD2TextAlign.d2TextAlignCenter;
+    t.Text:= txt;
+    FSvHotest.AddObject(t);
+    Exit(t);
+  end;
+
+  function makeSearch(list: TStringList; order: Integer): Integer;
+  var
+    idx: Integer = 0;
+    remain: Integer;
+    w: Integer = 55;
+    lay: TD2Layout;
+    last: Integer;
+    i: Integer;
+    t: TD2Text;
+  begin
+    remain:= list.Count;
+    while (remain > 0) do begin
+      lay := TD2Layout.Create(FSvHotest);
+      lay.Align:= vaTop;
+      lay.Height:= 28;
+      lay.Padding.Right:= 20;
+      lay.Position.Y:= order * 40;
+      FSvHotest.AddObject(lay);
+      last:= 0;
+      if (remain >= 5) then begin
+        last:= idx + 5;
+      end else begin
+        last:= idx + remain;
+      end;
+
+      for i:= idx to last - 1 do begin
+        t := TD2Text.Create(lay);
+        t.Align:= vaLeft;
+        t.Width:= w;
+        t.Position.X:= (i - idx) * w;
+        t.Fill.Color:= vcSkyblue;
+        t.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
+        t.Text:= list[i];
+        t.OnClick:= @onKeywordClicked;
+        lay.AddObject(t);
+      end;
+      if (remain >= 5) then begin
+        idx += 5;
+        remain -= 5;
+      end else begin
+        idx += remain;
+        remain-= remain;
+      end;
+      Inc(order);
+    end;
+    Exit(order);
+  end;
+
+  function makeLine(idx: Integer): TD2Line;
+  var
+    l: TD2Line;
+  begin
+    l := TD2Line.Create(FSvHotest);
+    l.Align:= vaTop;
+    l.Height:= 1;
+    l.Padding.Right:= 20;
+    l.Position.Y:= idx * 40;
+    l.LineType:= TD2LineType.d2LineHorizontal;
+    l.Stroke.Color:= vcLightgray;
+    FSvHotest.AddObject(l);
+    Exit(l);
+  end;
+
+  function makeLabel(txt: string; addition: string; idx: Integer; onclick: TNotifyEvent): TD2Text;
+  var
+    t: TD2Text;
+  begin
+    t := TD2Text.Create(FSvHotest);
+    t.Align:= vaTop;
+    t.Height:= 28;
+    t.Padding.Right:= 20;
+    t.Position.Y:= idx * 40;
+    t.Fill.Color:= vcSkyblue;
+    t.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
+    t.VertTextAlign:= TD2TextAlign.d2TextAlignCenter;
+    t.Text:= txt;
+    t.Hint:= addition;
+    t.OnClick:= onclick;
+    FSvHotest.AddObject(t);
+    Exit(t);
+  end;
+
+begin
+  // hotest callback
+  if (FSvHotest <> nil) then begin
+    FSvHotest.Free;
+    FSvHotest := nil;
+  end;
+  FSvHotest:= TD2ScrollBox.Create(FLayHotest);
+  FSvHotest.Align:= vaClient;
+  FSvHotest.UseSmallScrollBars:= True;
+  FLayHotest.AddObject(FSvHotest);
+  makeText('热门搜索', order);
+  Inc(order);
+  if (AData.search <> nil) and (AData.search.Count > 0) then begin
+    order := makeSearch(AData.search, order);
+  end;
+  makeLine(order);
+  Inc(order);
+  makeText('热门卡片', order);
+  Inc(order);
+  if (AData.card <> nil) and (AData.card.Count > 0) then begin
+    for tmpCard in AData.card do begin
+      makeLabel(tmpCard.name, tmpCard.hashid, order, @onHotCardClicked);
+      Inc(order);
+    end;
+  end;
+  makeLine(order);
+  Inc(order);
+  makeText('热门卡包', order);
+  Inc(order);
+  if (AData.pack <> nil) and (AData.pack.Count > 0) then begin
+    for tmpPack in AData.pack do begin
+      makeLabel(tmpPack.name, tmpPack.packid, order, @onHotPackClicked);
+      Inc(order);
+    end;
+  end;
+  if (FSvHotest.HScrollBar <> nil) then begin
+    FSvHotest.HScrollBar.Visible:= False;
+  end;
+  AData.Free;
+end;
+
+procedure TFormMain.onHotPackClicked(Sender: TObject);
+begin
+  TPackDetailThread.threadPackDetail(TD2Text(Sender).Hint, @onPackDetailCallback);
+end;
+
+procedure TFormMain.onKeywordClicked(Sender: TObject);
+begin
+  FKey:= TD2Text(Sender).Text;
+  TSearchCommonThread.threadSearchCommon(FKey, 1, @onSearchCallback);
 end;
 
 procedure TFormMain.onLimitCallback(Sender: TObject; ALimit: TLimitList);

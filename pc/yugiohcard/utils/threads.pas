@@ -135,7 +135,11 @@ end;
 
 procedure THotestThread.Execute;
 begin
-  FHotest := TYGOData.hostest();
+  try
+    FHotest := TYGOData.hostest();
+  except
+    FHotest := THotest.Create;
+  end;
 end;
 
 constructor THotestThread.Create(ACallback: THotestCallback);
@@ -293,7 +297,6 @@ begin
         on E: Exception do begin
           DeleteFile(FImgPath);
         end;
-
       end;
       Free;
     end;
