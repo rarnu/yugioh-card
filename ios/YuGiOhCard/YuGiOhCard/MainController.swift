@@ -74,6 +74,15 @@ class MainController: UIViewController, UITextFieldDelegate {
             layMain?.addSubview(v)
         }
         
+        func makeButton(_ txt: String) -> UIButton {
+            let btn = UIButton(type: UIButtonType.system)
+            btn.tg_width.equal(100%)
+            btn.tg_height.equal(32)
+            btn.setTitle(txt, for: UIControlState.normal)
+            layMain?.addSubview(btn)
+            return btn
+        }
+        
         func makeLine() {
             let v = UIView()
             v.tg_width.equal(100%)
@@ -130,8 +139,8 @@ class MainController: UIViewController, UITextFieldDelegate {
         
         thread {
             let ret = YGOData.hostest()
-            if (ret != nil) {
-                self.mainThread {
+            self.mainThread {
+                if (ret != nil) {
                     makeText("热门搜索")
                     makeKeyword(list: ret!.search)
                     makeLine()
@@ -144,12 +153,12 @@ class MainController: UIViewController, UITextFieldDelegate {
                     for p in ret!.pack {
                         makeLabel(txt: p.name, hash: p.packid, sel: #selector(self.btnHotPackClicked(sender:)))
                     }
+                    makeLine()
                 }
+                let btnHelp = makeButton("帮助")
+                btnHelp.addTarget(self, action: #selector(self.btnHelpClicked(sender:)), for: UIControlEvents.touchDown)
             }
-            
         }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -209,6 +218,11 @@ class MainController: UIViewController, UITextFieldDelegate {
         let c = vc(name: "packdetail") as! PackDetailController
         c.name = name!
         c.url = url!
+        navigationController?.pushViewController(c, animated: true)
+    }
+    
+    @objc func btnHelpClicked(sender: UIButton) {
+        let c = vc(name: "help") as! HelpController
         navigationController?.pushViewController(c, animated: true)
     }
 }

@@ -59,6 +59,8 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
         gvSearch.onItemClickListener = this
         lvHotCard.onItemClickListener = this
         lvHotPack.onItemClickListener = this
+
+        btnHelp.setOnClickListener(this)
         loadHotest()
     }
 
@@ -85,6 +87,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
                 startActivity(inSearch)
             }
             R.id.btnAdvSearch -> startActivity(Intent(this, SearchActivity::class.java))
+            R.id.btnHelp -> startActivity(Intent(this, HelpActivity::class.java))
         }
     }
 

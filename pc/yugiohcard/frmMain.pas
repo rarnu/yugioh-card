@@ -15,6 +15,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
+
+    FBtnHelp: TD2HudCornerButton;
+
     FLayTop: TD2Layout;
     FEdtSearch: TD2HudTextBox;
     FBtnSearch: TD2HudCornerButton;
@@ -62,6 +65,7 @@ type
 
     procedure onBtnAdvSearchClicked(Sender: TObject);
     procedure onBtnFirstClicked(Sender: TObject);
+    procedure onBtnHelpClicked(Sender: TObject);
     procedure onBtnHotestClicked(Sender: TObject);
     procedure onBtnLastClicked(Sender: TObject);
     procedure onBtnLimitClicked(Sender: TObject);
@@ -94,7 +98,7 @@ var
 implementation
 
 uses
-  toaster, threads, cardlistitem, frmCardDetail, frmSearch;
+  toaster, threads, cardlistitem, frmCardDetail, frmSearch, frmHelp;
 
 {$R *.frm}
 
@@ -117,6 +121,14 @@ begin
     // ui
   Width:= 800;
   Height:= 600;
+
+  FBtnHelp:= TD2HudCornerButton.Create(Window);
+  FBtnHelp.Width := 50;
+  FBtnHelp.Height := 20;
+  FBtnHelp.Position.X := 730;
+  FBtnHelp.Position.Y := 6;
+  FBtnHelp.Text := '帮助';
+  Window.AddObject(FBtnHelp);
 
   FLayTop := TD2Layout.Create(Root);
   FLayTop.Align:= vaTop;
@@ -292,6 +304,7 @@ begin
   FLayPack.AddObject(FLvPack);
 
   // events
+  FBtnHelp.OnClick:=@onBtnHelpClicked;
   FBtnSearch.OnClick:=@onBtnSearchClicked;
   FBtnAdvSearch.OnClick:=@onBtnAdvSearchClicked;
   FBtnFirst.OnClick:=@onBtnFirstClicked;
@@ -643,6 +656,15 @@ begin
   if (FCurrentPage <> 1) then begin
     FCurrentPage:= 1;
     TSearchCommonThread.threadSearchCommon(FKey, FCurrentPage, @onSearchCallback);
+  end;
+end;
+
+procedure TFormMain.onBtnHelpClicked(Sender: TObject);
+begin
+  // help
+  with TFormHelp.Create(nil) do begin
+    ShowModal;
+    Free;
   end;
 end;
 

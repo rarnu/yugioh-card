@@ -109,6 +109,19 @@
 
             </ListView>
         </LinearLayout>
+        <View android:layout_width="match_parent" android:layout_height="1dip"
+              android:background="@android:color/darker_gray"
+              android:layout_marginLeft="8dip"
+              android:layout_marginRight="8dip"
+              android:layout_marginTop="8dip"
+              android:layout_marginBottom="8dip"
+        />
+        <TextView
+                android:id="@+id/btnHelp"
+                android:layout_width="match_parent" android:layout_height="32dip"
+                android:text="@string/btn_help"
+                android:gravity="center"
+                android:clickable="true"/>
         <View android:layout_width="match_parent" android:layout_height="8dip"/>
 
     </LinearLayout>

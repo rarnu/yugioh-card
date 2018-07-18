@@ -8,6 +8,7 @@
 
     <string name="btn_search">搜索</string>
     <string name="btn_adv_search">高级搜索</string>
+    <string name="btn_help">帮助</string>
 
     <string name="toast_empty_search_key">不能搜索空关键字</string>
 

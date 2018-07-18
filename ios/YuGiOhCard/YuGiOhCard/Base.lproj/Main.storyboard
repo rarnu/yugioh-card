@@ -103,6 +103,22 @@
             </objects>
             <point key="canvasLocation" x="1774" y="935"/>
         </scene>
+        <!--帮助-->
+        <scene sceneID="x0v-95-5sj">
+            <objects>
+                <viewController storyboardIdentifier="help" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E99-RR-4V3" customClass="HelpController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HdG-MA-b83">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="a5Q-GL-mhe"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="帮助" id="U8p-hP-8fR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIf-qb-Z4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2427" y="938"/>
+        </scene>
         <!--YuGiOhCard-->
         <scene sceneID="MoN-RT-UOE">
             <objects>

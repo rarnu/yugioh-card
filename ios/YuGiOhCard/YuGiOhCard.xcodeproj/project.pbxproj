@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		9269239A20F49D20002F4E8E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269239920F49D20002F4E8E /* SearchController.swift */; };
 		9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2C20F35E8A00DC235F /* LimitController.swift */; };
 		9270AC2F20F35F1A00DC235F /* LimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2E20F35F1A00DC235F /* LimitCell.swift */; };
+		92B6077920FF399700562693 /* HelpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6077820FF399700562693 /* HelpController.swift */; };
 		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
 		92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1120F4583E00D4D1F5 /* PackController.swift */; };
 		92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1320F4599600D4D1F5 /* SeasonCell.swift */; };
@@ -61,6 +62,7 @@
 		9269239920F49D20002F4E8E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		9270AC2C20F35E8A00DC235F /* LimitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitController.swift; sourceTree = "<group>"; };
 		9270AC2E20F35F1A00DC235F /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
+		92B6077820FF399700562693 /* HelpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpController.swift; sourceTree = "<group>"; };
 		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
 		92F88B1120F4583E00D4D1F5 /* PackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackController.swift; sourceTree = "<group>"; };
 		92F88B1320F4599600D4D1F5 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				92F88B1120F4583E00D4D1F5 /* PackController.swift */,
 				9269239720F48D1D002F4E8E /* PackDetailController.swift */,
 				9269239920F49D20002F4E8E /* SearchController.swift */,
+				92B6077820FF399700562693 /* HelpController.swift */,
 			);
 			path = YuGiOhCard;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9207E76320E67E8F00735721 /* MainController.swift in Sources */,
+				92B6077920FF399700562693 /* HelpController.swift in Sources */,
 				92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */,
 				92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */,
 				9269239A20F49D20002F4E8E /* SearchController.swift in Sources */,

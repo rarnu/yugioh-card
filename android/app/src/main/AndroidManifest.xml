@@ -41,6 +41,10 @@
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
+        <activity android:name=".HelpActivity"
+                  android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>
