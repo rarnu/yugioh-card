@@ -10,7 +10,7 @@ import UIKit
 import sfunctional
 import YGOAPI
 
-class CardListCell: UITableViewCell {
+class CardListCell: AdapterCell<CardInfo> {
     
     var tvCardName: UILabel?
     var tvCardJapname: UILabel?
@@ -18,22 +18,7 @@ class CardListCell: UITableViewCell {
     var tvCardType: UILabel?
     var ivCardImg: UIImageView?
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        layout()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        layout()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        layout()
-    }
-    
-    private func layout() {
+    override func layout() {
         tvCardName = UILabel(frame: CGRect(x: 8, y: 0, width: screenWidth() - 86, height: 25))
         tvCardName?.textAlignment = NSTextAlignment.left
         self.addSubview(tvCardName!)
@@ -51,27 +36,27 @@ class CardListCell: UITableViewCell {
         self.addSubview(ivCardImg!)
     }
     
-    func setItem(item: CardInfo) {
-        tvCardName?.text = "中文名称: \(item.name!)"
-        tvCardJapname?.text = "日文名称: \(item.japname!)"
-        tvCardEnname?.text = "英文名称: \(item.enname!)"
-        tvCardType?.text = item.cardtype
-        // load image
-        let localfile = documentPath(true) + "\(item.cardid)"
-        if (FileManager.default.fileExists(atPath: localfile)) {
-            ivCardImg?.image = UIImage(contentsOfFile: localfile)
-        } else {
-            download(String(format: RES_URL, item.cardid), localfile) { (state, _, _, _) in
-                if (state == DownloadState.Complete) {
-                    if (FileManager.default.fileExists(atPath: localfile)) {
-                        self.mainThread {
-                           self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
+    override func setItem(item: CardInfo?) {
+        if (item != nil) {
+            tvCardName?.text = "中文名称: \(item!.name!)"
+            tvCardJapname?.text = "日文名称: \(item!.japname!)"
+            tvCardEnname?.text = "英文名称: \(item!.enname!)"
+            tvCardType?.text = item!.cardtype
+            // load image
+            let localfile = documentPath(true) + "\(item!.cardid)"
+            if (FileManager.default.fileExists(atPath: localfile)) {
+                ivCardImg?.image = UIImage(contentsOfFile: localfile)
+            } else {
+                download(String(format: RES_URL, item!.cardid), localfile) { (state, _, _, _) in
+                    if (state == DownloadState.Complete) {
+                        if (FileManager.default.fileExists(atPath: localfile)) {
+                            self.mainThread {
+                                self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
+                            }
                         }
                     }
                 }
             }
         }
-        
     }
-
 }
