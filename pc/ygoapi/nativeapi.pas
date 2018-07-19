@@ -20,7 +20,7 @@ var
 
 procedure load();
 const
-  LIBNAME = 'libyugiohapi.so';
+  LIBNAME = {$IFDEF WINDOWS}'yugiohapi.dll'{$ELSE}{$IFDEF DARWIN}'libyugiohapi.dylib'{$ELSE}'libyugiohapi.so'{$ENDIF}{$ENDIF};
 var
   libPath: string;
 begin

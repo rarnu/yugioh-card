@@ -32,24 +32,32 @@ $ cd ios/YuGiOhCard
 $ xcodebuild -workspace YuGiOhCard.xcworkspace/ -scheme YuGiOhCard -configuration Release
 ```
 
-### Windows
+### Windows (NOT completed)
 
 ```
-
+$ cd native
+$ fpccmd W yugiohapi.ppr
+$ cd pc/yugiohcard
+$ fpccmd W yugiohcard.ppr O
 ```
 
 ### Mac OSX
 
 ```
-
+$ cd native
+$ fpccmd M yugiohapi.ppr
+$ cd pc/yugiohcard
+$ fpccmd M yugiohcard.ppr O
 ```
 
 ### Linux
 
 ```
-
+$ cd native
+$ fpccmd L yugiohapi.ppr
+$ cd pc/yugiohcard
+$ fpccmd L yugiohcard.ppr O
 ```
-
 
 - - -
 

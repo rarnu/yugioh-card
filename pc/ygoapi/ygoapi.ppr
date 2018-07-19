@@ -18,13 +18,17 @@ var
   i: Integer;
 begin
   // d1 := TYGOData.searchCommon('影依', 1);
-  d2 := TYGOData.cardDetail('0zsOYO');
-  WriteLn(d2.ToString);
-  // d3 := TYGOData.limit();
+  // d2 := TYGOData.cardDetail('0zsOYO');
+  // WriteLn(d2.ToString);
+  d3 := TYGOData.limit();
+  for i:= 0 to d3.Count - 1 do begin
+    WriteLn(d3[i].name);
+  end;
+  // WriteLn(d3.ToString);
   // d4 := TYGOData.packageList();
   // d5 := TYGOData.packageDetail('/package/CP18/wwSYE');
-  // d6 := TYGOData.hostest();
-  (*
+  d6 := TYGOData.hostest();
+
   WriteLn('== search ==');
   for i:= 0 to d6.search.Count - 1 do begin
     WriteLn(d6.search[i]);
@@ -37,6 +41,6 @@ begin
   for i:= 0 to d6.pack.Count - 1 do begin
     WriteLn(Format('%s (%s)', [d6.pack[i].name, d6.pack[i].packid]));
   end;
-  *)
+
 end.
 
