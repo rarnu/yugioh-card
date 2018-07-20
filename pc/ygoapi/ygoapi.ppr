@@ -22,7 +22,7 @@ begin
   // WriteLn(d2.ToString);
   d3 := TYGOData.limit();
   for i:= 0 to d3.Count - 1 do begin
-    WriteLn(d3[i].name);
+    WriteLn(Format('%s (%s)', [d3[i].name, d3[i].hashid]));
   end;
   // WriteLn(d3.ToString);
   // d4 := TYGOData.packageList();

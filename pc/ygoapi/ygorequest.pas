@@ -26,6 +26,9 @@ type
 
 implementation
 
+uses
+  LazUTF8;
+
 const
   BASE_URL = 'https://www.ourocg.cn';
 
@@ -34,10 +37,25 @@ const
 class function TYGORequest.request(aurl: string): string;
 var
   ret: string = '';
+  {$IFDEF WINDOWS}
+  ss: TStringStream;
+  sl: TStringList;
+  {$ENDIF}
 begin
   with TFPHTTPClient.Create(nil) do begin
     try
+      {$IFDEF WINDOWS}
+      ss := TStringStream.Create('');
+      sl := TStringList.Create;
+      Get(aurl, ss);
+      ss.Seek(0, soFromBeginning);
+      sl.LoadFromStream(ss);
+      ret := sl.Text;
+      ss.Free;
+      sl.Free;
+      {$ELSE}
       ret := Get(aurl);
+      {$ENDIF}
     except
     end;
     Free;
