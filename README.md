@@ -32,7 +32,7 @@ $ cd ios/YuGiOhCard
 $ xcodebuild -workspace YuGiOhCard.xcworkspace/ -scheme YuGiOhCard -configuration Release
 ```
 
-### Windows (NOT completed)
+### Windows
 
 ```
 $ cd native

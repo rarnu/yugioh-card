@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:src="@drawable/ic_launcher"
+            android:layout_marginLeft="8dip"
+            android:layout_marginTop="8dip"/>
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent" android:layout_height="24dip"
+            android:layout_marginTop="8dip"
+            android:layout_toRightOf="@+id/imgIcon"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:gravity="left|center_vertical"
+            android:text="YuGiOh Card"
+    />
+    <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent" android:layout_height="24dip"
+            android:layout_toRightOf="@+id/imgIcon"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:gravity="left|center_vertical"
+            android:text="5.0.0"
+    />
+
+    <View
+            android:id="@+id/vLine"
+            android:layout_width="match_parent" android:layout_height="1dip"
+            android:layout_below="@+id/imgIcon" android:layout_margin="8dip"
+            android:background="@android:color/darker_gray"
+    />
+
+    <TextView
+            android:id="@+id/tvOurocg"
+            android:layout_width="match_parent"
+            android:layout_height="32dip"
+            android:layout_below="@+id/vLine"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/iostint"
+            android:clickable="true"
+    />
+
+    <TextView
+            android:id="@+id/tvRarnu"
+            android:layout_width="match_parent"
+            android:layout_height="32dip"
+            android:layout_below="@+id/tvOurocg"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/iostint"
+            android:clickable="true"
+    />
+
+    <TextView
+            android:id="@+id/tvThanks"
+            android:layout_width="match_parent"
+            android:layout_height="32dip"
+            android:layout_below="@+id/tvRarnu"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/iostint"
+            android:clickable="true"
+    />
 
 </RelativeLayout>
