@@ -10,7 +10,6 @@ linksyms.fpc
 *.ppu
 *.o
 CardImage/
-yugiohcard
 yugiohcard.exe
 yugiohcard.app/
 api
