@@ -323,10 +323,9 @@ begin
   FBtnRefreshHotest.OnClick:=@onBtnRefreshHotestClicked;
 
   // data
+  THotestThread.threadHotest(@onHotestCallback);
   TLimitThread.threadLimit(@onLimitCallback);
   TPackThread.threadPack(@onPackCallback);
-  THotestThread.threadHotest(@onHotestCallback);
-  TUpdater.checkUpdate();
 end;
 
 procedure TFormMain.FormDestroy(Sender: TObject);
@@ -375,7 +374,6 @@ begin
   end;
   FKey:= key;
   TSearchCommonThread.threadSearchCommon(FKey, 1, @onSearchCallback);
-
 end;
 
 procedure TFormMain.onHotCardClicked(Sender: TObject);

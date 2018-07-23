@@ -234,7 +234,7 @@ end;
 procedure TCardListItem.SetCardId(AValue: integer);
 begin
   FCardId := AValue;
-  TDownloadImageThread.Create(FCardId, FimgCardImg);
+  TDownloadImageThread.download(FCardId, FimgCardImg);
 end;
 
 procedure TCardListItem.SetCardJapName(AValue: string);

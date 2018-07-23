@@ -5,7 +5,7 @@ unit threads;
 interface
 
 uses
-  Classes, SysUtils, ygodata, orca_scene2d, FileUtil, fphttpclient;
+  Classes, SysUtils, ygodata, orca_scene2d, FileUtil, fphttpclient, threadqueue;
 
 type
 
@@ -39,6 +39,7 @@ type
     procedure Execute; override;
   public
     constructor Create(acardid: Integer; acontainer: TD2Image);
+    class procedure download(acardid: Integer; acontainer: TD2Image);
   end;
 
   TCardDetailCallback = procedure(Sender: TObject; ACard: TCardDetail) of object;
@@ -122,6 +123,9 @@ type
     class procedure threadHotest(ACallback: THotestCallback);
   end;
 
+var
+  ygoQueue: TThreadQueue;
+
 implementation
 
 { THotestThread }
@@ -151,8 +155,11 @@ begin
 end;
 
 class procedure THotestThread.threadHotest(ACallback: THotestCallback);
+var
+  t: THotestThread;
 begin
-  with THotestThread.Create(ACallback) do Start;
+  t := THotestThread.Create(ACallback);
+  ygoQueue.AddThread(t);
 end;
 
 { TPackDetailThread }
@@ -180,8 +187,11 @@ end;
 
 class procedure TPackDetailThread.threadPackDetail(AUrl: string;
   ACallback: TSearchCallback);
+var
+  t: TPackDetailThread;
 begin
-  with TPackDetailThread.Create(AUrl, ACallback) do Start;
+  t := TPackDetailThread.Create(AUrl, ACallback);
+  ygoQueue.AddThread(t);
 end;
 
 { TPackThread }
@@ -207,8 +217,11 @@ begin
 end;
 
 class procedure TPackThread.threadPack(ACallback: TPackCallback);
+var
+  t: TPackThread;
 begin
-  with TPackThread.Create(ACallback) do Start;
+  t := TPackThread.Create(ACallback);
+  ygoQueue.AddThread(t);
 end;
 
 { TLimitThread }
@@ -234,8 +247,11 @@ begin
 end;
 
 class procedure TLimitThread.threadLimit(ACallback: TLimitCallback);
+var
+  t: TLimitThread;
 begin
-  with TLimitThread.Create(ACallback) do Start;
+  t := TLimitThread.Create(ACallback);
+  ygoQueue.AddThread(t);
 end;
 
 { TCardDetailThread }
@@ -264,8 +280,11 @@ end;
 
 class procedure TCardDetailThread.threadCardDetail(AHashId: string;
   ACallback: TCardDetailCallback);
+var
+  t: TCardDetailThread;
 begin
-  with TCardDetailThread.Create(AHashId, ACallback) do Start;
+  t := TCardDetailThread.Create(AHashId, ACallback);
+  ygoQueue.AddThread(t);
 end;
 
 { TDownloadImageThread }
@@ -312,6 +331,12 @@ begin
   OnTerminate:=@onThreadTerminated;
 end;
 
+class procedure TDownloadImageThread.download(acardid: Integer;
+  acontainer: TD2Image);
+begin
+  with TDownloadImageThread.Create(acardid, acontainer) do Start;
+end;
+
 { TSearchCommonThread }
 
 procedure TSearchCommonThread.onThreadTerminated(Sender: TObject);
@@ -339,9 +364,18 @@ end;
 
 class procedure TSearchCommonThread.threadSearchCommon(akey: string;
   apage: Integer; acallback: TSearchCallback);
+var
+  t: TSearchCommonThread;
 begin
-  with TSearchCommonThread.Create(akey, apage, acallback) do Start;
+  t := TSearchCommonThread.Create(akey, apage, acallback);
+  ygoQueue.AddThread(t);
 end;
+
+initialization
+  ygoQueue := TThreadQueue.Create;
+
+finalization
+  ygoQueue.Free;
 
 end.
 
