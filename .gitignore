@@ -1,8 +1,6 @@
 .DS_Store
 DerivedData/
-ios/build
-ios/Build
-android/build
+[Bb]uild/
 .gradle/
 lib/
 ppas.sh
@@ -12,7 +10,6 @@ linksyms.fpc
 *.ppu
 *.o
 CardImage/
-# binary
 yugiohcard
 yugiohcard.exe
 yugiohcard.app/
