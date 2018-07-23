@@ -62,6 +62,8 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
 
         btnHelp.setOnClickListener(this)
         loadHotest()
+
+        Updater.checkUpdate(this)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?) {

@@ -48,6 +48,7 @@
             android:gravity="left|center_vertical"
             android:textColor="@color/iostint"
             android:clickable="true"
+            android:text="数据来源: 中国OCG工作室"
     />
 
     <TextView
@@ -60,6 +61,7 @@
             android:gravity="left|center_vertical"
             android:textColor="@color/iostint"
             android:clickable="true"
+            android:text="卡查开源: github.com/rarnu/yugioh-card"
     />
 
     <TextView
@@ -72,6 +74,7 @@
             android:gravity="left|center_vertical"
             android:textColor="@color/iostint"
             android:clickable="true"
+            android:text="特别感谢:"
     />
 
 </RelativeLayout>

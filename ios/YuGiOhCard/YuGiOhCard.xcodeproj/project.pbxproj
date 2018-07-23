@@ -23,6 +23,7 @@
 		9269239A20F49D20002F4E8E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269239920F49D20002F4E8E /* SearchController.swift */; };
 		9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2C20F35E8A00DC235F /* LimitController.swift */; };
 		9270AC2F20F35F1A00DC235F /* LimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2E20F35F1A00DC235F /* LimitCell.swift */; };
+		927C3A4A210578D500EC1FB1 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927C3A49210578D500EC1FB1 /* Updater.swift */; };
 		92B6077920FF399700562693 /* HelpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6077820FF399700562693 /* HelpController.swift */; };
 		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
 		92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1120F4583E00D4D1F5 /* PackController.swift */; };
@@ -62,6 +63,7 @@
 		9269239920F49D20002F4E8E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		9270AC2C20F35E8A00DC235F /* LimitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitController.swift; sourceTree = "<group>"; };
 		9270AC2E20F35F1A00DC235F /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
+		927C3A49210578D500EC1FB1 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		92B6077820FF399700562693 /* HelpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpController.swift; sourceTree = "<group>"; };
 		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
 		92F88B1120F4583E00D4D1F5 /* PackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				9269239720F48D1D002F4E8E /* PackDetailController.swift */,
 				9269239920F49D20002F4E8E /* SearchController.swift */,
 				92B6077820FF399700562693 /* HelpController.swift */,
+				927C3A49210578D500EC1FB1 /* Updater.swift */,
 			);
 			path = YuGiOhCard;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */,
 				9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */,
 				9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */,
+				927C3A4A210578D500EC1FB1 /* Updater.swift in Sources */,
 				92F88B1620F45E5300D4D1F5 /* PackCell.swift in Sources */,
 				92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */,
 			);

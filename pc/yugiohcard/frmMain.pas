@@ -98,7 +98,7 @@ var
 implementation
 
 uses
-  toaster, threads, cardlistitem, frmCardDetail, frmSearch, frmHelp;
+  toaster, threads, cardlistitem, frmCardDetail, frmSearch, frmHelp, updater;
 
 {$R *.frm}
 
@@ -326,7 +326,7 @@ begin
   TLimitThread.threadLimit(@onLimitCallback);
   TPackThread.threadPack(@onPackCallback);
   THotestThread.threadHotest(@onHotestCallback);
-
+  TUpdater.checkUpdate();
 end;
 
 procedure TFormMain.FormDestroy(Sender: TObject);

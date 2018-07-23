@@ -36,19 +36,19 @@ class HelpController: UIViewController {
         let lblOurocg = UIButton(type: UIButtonType.system)
         lblOurocg.frame = CGRect(x: 8, y: 72, width: screenWidth() - 16, height: 32)
         lblOurocg.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-        lblOurocg.setTitle("", for: UIControlState.normal)
+        lblOurocg.setTitle("数据来源: 中国OCG工作室", for: UIControlState.normal)
         sv.addSubview(lblOurocg)
         
         let lblRarnu = UIButton(type: UIButtonType.system)
         lblRarnu.frame = CGRect(x: 8, y: 104, width: screenWidth() - 16, height: 32)
         lblRarnu.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-        lblRarnu.setTitle("", for: UIControlState.normal)
+        lblRarnu.setTitle("卡查开源: github.com/rarnu/yugioh-card", for: UIControlState.normal)
         sv.addSubview(lblRarnu)
         
         let lblThanks = UIButton(type: UIButtonType.system)
         lblThanks.frame = CGRect(x: 8, y: 136, width: screenWidth() - 16, height: 32)
         lblThanks.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-        lblThanks.setTitle("", for: UIControlState.normal)
+        lblThanks.setTitle("特别感谢: ", for: UIControlState.normal)
         sv.addSubview(lblThanks)
         
         // events

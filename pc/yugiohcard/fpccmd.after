@@ -1,0 +1,2 @@
+${M}${UALL} cp ${PATH}/libyugiohapi.dylib ${PATH}/${PROJ}.app/Contents/MacOS/libyugiohapi.dylib
+

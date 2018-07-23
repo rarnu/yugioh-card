@@ -33,7 +33,7 @@
         <PackageName Value="adLCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="13">
       <Unit0>
         <Filename Value="yugiohcard.ppr"/>
         <IsPartOfProject Value="True"/>
@@ -96,6 +96,17 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="utils/updater.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="dlgConfirm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DialogConfirm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -117,7 +128,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="8">
+    <Exceptions Count="11">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -142,6 +153,15 @@
       <Item8>
         <Name Value="EScannerError"/>
       </Item8>
+      <Item9>
+        <Name Value="RunError(216)"/>
+      </Item9>
+      <Item10>
+        <Name Value="EAccessViolation"/>
+      </Item10>
+      <Item11>
+        <Name Value="EHTTPClient"/>
+      </Item11>
     </Exceptions>
   </Debugging>
 </CONFIG>

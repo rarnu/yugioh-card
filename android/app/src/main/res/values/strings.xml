@@ -21,6 +21,11 @@
     <string name="btn_next">&gt;</string>
     <string name="btn_last">&gt;&gt;</string>
 
+    <string name="alert_update">升级</string>
+    <string name="alert_update_message">发现新版本，点击&lt;确定&gt;按钮升级</string>
+    <string name="alert_ok">确定</string>
+    <string name="alert_cancel">取消</string>
+
     <string name="tv_cardname">中文名称:</string>
     <string name="tv_cardjapname">日文名称:</string>
     <string name="tv_cardenname">英文名称:</string>

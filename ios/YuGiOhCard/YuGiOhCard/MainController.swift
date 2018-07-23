@@ -59,6 +59,8 @@ class MainController: UIViewController, UITextFieldDelegate {
         btnSearch?.addTarget(self, action: #selector(btnSearchClicked(sender:)), for: UIControlEvents.touchDown)
         btnAdvSearch?.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControlEvents.touchDown)
         loadHotest()
+        
+        Updater.checkUpdate(vc: self)
     }
     
     private func loadHotest() {
