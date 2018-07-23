@@ -138,7 +138,6 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
         val lay = gvSearch.layoutParams
         lay.height = (line * 41).dip2px()
         gvSearch.layoutParams = lay
-
     }
 
     private fun resetListHeight(lv: ListView, lines: Int) {
