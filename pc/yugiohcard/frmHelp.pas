@@ -19,12 +19,13 @@ type
     FTitle: TD2Text;
     FVersion: TD2Text;
     FLine: TD2Line;
+    FlblAuthor: TD2Text;
     FlblOurocg: TD2Text;
     FlblRarnu: TD2Text;
-    FlblThanks: TD2Text;
+    FLine2: TD2Line;
+    procedure onBtnAuthorClicked(Sender: TObject);
     procedure onBtnOurocgClicked(Sender: TObject);
     procedure onBtnRarnuClicked(Sender: TObject);
-    procedure onBtnThanksClicked(Sender: TObject);
     procedure onBtnUpdateClicked(Sender: TObject);
 
     procedure openUrl(aurl: string);
@@ -97,9 +98,19 @@ begin
   FLine.Stroke.Color:= vcLightgray;
   Root.AddObject(FLine);
 
+  FlblAuthor := TD2Text.Create(Root);
+  FlblAuthor.Position.X:= 8;
+  FlblAuthor.Position.Y:= 72;
+  FlblAuthor.Width:= 280;
+  FlblAuthor.Height:= 32;
+  FlblAuthor.Fill.Color:= vcSkyblue;
+  FlblAuthor.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
+  FlblAuthor.Text:= '软件作者: rarnu';
+  Root.AddObject(FlblAuthor);
+
   FlblOurocg:= TD2Text.Create(Root);
   FlblOurocg.Position.X:= 8;
-  FlblOurocg.Position.Y:= 72;
+  FlblOurocg.Position.Y:= 104;
   FlblOurocg.Width:= 280;
   FlblOurocg.Height:= 32;
   FlblOurocg.Fill.Color:= vcSkyblue;
@@ -109,7 +120,7 @@ begin
 
   FlblRarnu:= TD2Text.Create(Root);
   FlblRarnu.Position.X:= 8;
-  FlblRarnu.Position.Y:= 104;
+  FlblRarnu.Position.Y:= 136;
   FlblRarnu.Width:= 280;
   FlblRarnu.Height:= 32;
   FlblRarnu.Fill.Color:= vcSkyblue;
@@ -117,23 +128,19 @@ begin
   FlblRarnu.Text:= '卡查开源: github.com/rarnu/yugioh-card';
   Root.AddObject(FlblRarnu);
 
-  FlblThanks:= TD2Text.Create(Root);
-  FlblThanks.Position.X:= 8;
-  FlblThanks.Position.Y:= 136;
-  FlblThanks.Width:= 280;
-  FlblThanks.Height:= 32;
-  FlblThanks.Fill.Color:= vcSkyblue;
-  FlblThanks.HorzTextAlign:= TD2TextAlign.d2TextAlignNear;
-  FlblThanks.Text:= '特别感谢: ';
-  Root.AddObject(FlblThanks);
-
+  FLine2:= TD2Line.Create(Root);
+  FLine2.Position.X:= 8;
+  FLine2.Position.Y:= 168;
+  FLine2.Width:= 280;
+  FLine2.Height:= 1;
+  FLine2.Stroke.Color:= vcLightgray;
+  Root.AddObject(FLine2);
 
   // events
   FBtnUpdate.OnClick:=@onBtnUpdateClicked;
+  FlblAuthor.OnClick:=@onBtnAuthorClicked;
   FlblOurocg.OnClick:=@onBtnOurocgClicked;
   FlblRarnu.OnClick:=@onBtnRarnuClicked;
-  FlblThanks.OnClick:=@onBtnThanksClicked;
-
 end;
 
 procedure TFormHelp.onBtnOurocgClicked(Sender: TObject);
@@ -141,15 +148,14 @@ begin
   openUrl('https://www.ourocg.cn');
 end;
 
+procedure TFormHelp.onBtnAuthorClicked(Sender: TObject);
+begin
+  openUrl('http://scarlett.vip/yugioh');
+end;
+
 procedure TFormHelp.onBtnRarnuClicked(Sender: TObject);
 begin
   openUrl('https://github.com/rarnu/yugioh-card');
-end;
-
-procedure TFormHelp.onBtnThanksClicked(Sender: TObject);
-begin
-  // TODO: thanks url
-  openUrl('');
 end;
 
 procedure TFormHelp.onBtnUpdateClicked(Sender: TObject);

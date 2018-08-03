@@ -21,7 +21,7 @@ class HelpActivity: Activity(), View.OnClickListener {
         // help
         tvOurocg.setOnClickListener(this)
         tvRarnu.setOnClickListener(this)
-        tvThanks.setOnClickListener(this)
+        tvAuthor.setOnClickListener(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -35,9 +35,7 @@ class HelpActivity: Activity(), View.OnClickListener {
         when(v.id) {
             R.id.tvOurocg -> openUrl("https://www.ourocg.cn")
             R.id.tvRarnu -> openUrl("https://github.com/rarnu/yugioh-card")
-            R.id.tvThanks -> {
-                // TODO: thanks url
-            }
+            R.id.tvAuthor -> openUrl("http://scarlett.vip/yugioh")
         }
     }
 

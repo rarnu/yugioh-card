@@ -39,10 +39,23 @@
     />
 
     <TextView
-            android:id="@+id/tvOurocg"
+            android:id="@+id/tvAuthor"
             android:layout_width="match_parent"
             android:layout_height="32dip"
             android:layout_below="@+id/vLine"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/iostint"
+            android:clickable="true"
+            android:text="软件作者: rarnu"
+    />
+
+    <TextView
+            android:id="@+id/tvOurocg"
+            android:layout_width="match_parent"
+            android:layout_height="32dip"
+            android:layout_below="@+id/tvAuthor"
             android:layout_marginLeft="8dip"
             android:layout_marginRight="8dip"
             android:gravity="left|center_vertical"
@@ -64,17 +77,12 @@
             android:text="卡查开源: github.com/rarnu/yugioh-card"
     />
 
-    <TextView
-            android:id="@+id/tvThanks"
-            android:layout_width="match_parent"
-            android:layout_height="32dip"
-            android:layout_below="@+id/tvRarnu"
-            android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            android:gravity="left|center_vertical"
-            android:textColor="@color/iostint"
-            android:clickable="true"
-            android:text="特别感谢:"
+    <View
+            android:id="@+id/vLine2"
+            android:layout_width="match_parent" android:layout_height="1dip"
+            android:layout_below="@+id/tvRarnu" android:layout_margin="8dip"
+            android:background="@android:color/darker_gray"
     />
+
 
 </RelativeLayout>
