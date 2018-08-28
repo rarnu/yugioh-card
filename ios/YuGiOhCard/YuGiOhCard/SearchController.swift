@@ -468,8 +468,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         if (isButtonSelected(btnMonTypeReverse)) { key += "反转," }
         if (isButtonSelected(btnMonTypeSS)) { key += "特殊召唤," }
         if (isButtonSelected(btnMonTypeLink)) { key += "连接," }
-        let cs = CharacterSet(charactersIn: ",")
-        key = key.trimmingCharacters(in: cs)
+        key = key.trim(c: [","])
         return key
     }
     
@@ -503,9 +502,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         if (isButtonSelected(btnMonRaceUndead)) { key += "不死," }
         if (isButtonSelected(btnMonRaceDD)) { key += "幻龙," }
         if (isButtonSelected(btnMonRaceCyber)) { key += "电子界," }
-
-        let cs = CharacterSet(charactersIn: ",")
-        key = key.trimmingCharacters(in: cs)
+        key = key.trim(c: [","])
         return key
     }
     
@@ -518,8 +515,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         if (isButtonSelected(btnMonEleEarth)) { key += "地," }
         if (isButtonSelected(btnMonEleWind)) { key += "风," }
         if (isButtonSelected(btnMonEleGod)) { key += "神," }
-        let cs = CharacterSet(charactersIn: ",")
-        key = key.trimmingCharacters(in: cs)
+        key = key.trim(c: [","])
         return key
     }
     
@@ -533,8 +529,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         if (isButtonSelected(btnLink7)) { key += "7," }
         if (isButtonSelected(btnLink8)) { key += "8," }
         if (isButtonSelected(btnLink9)) { key += "9," }
-        let cs = CharacterSet(charactersIn: ",")
-        key = key.trimmingCharacters(in: cs)
+        key = key.trim(c: [","])
         return key
     }
     
@@ -546,8 +541,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         if (isButtonSelected(btnMtCont)) { key += "永续," }
         if (isButtonSelected(btnMtField)) { key += "场地," }
         if (isButtonSelected(btnMtRitual)) { key += "仪式," }
-        let cs = CharacterSet(charactersIn: ",")
-        key = key.trimmingCharacters(in: cs)
+        key = key.trim(c: [","])
         return key
     }
     
@@ -556,8 +550,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         if (isButtonSelected(btnTtNormal)) { key += "通常," }
         if (isButtonSelected(btnTtCont)) { key += "永续," }
         if (isButtonSelected(btnTtCounter)) { key += "反击," }
-        let cs = CharacterSet(charactersIn: ",")
-        key = key.trimmingCharacters(in: cs)
+        key = key.trim(c: [","])
         return key
     }
 

@@ -17,6 +17,105 @@ public extension NSObject {
     }
 }
 
+public extension String {
+    // TODO: string extension
+    mutating func insert(idx: Int, sub: String) -> String {
+        var tmp = self
+        tmp.insert(contentsOf: sub, at: tmp.index(tmp.startIndex, offsetBy: idx))
+        return tmp
+    }
+    
+    mutating func remove(idx: Int, length: Int) -> String {
+        var tmp = self
+        tmp.removeSubrange(tmp.index(tmp.startIndex, offsetBy: idx)..<tmp.index(tmp.startIndex, offsetBy: idx + length))
+        return tmp
+    }
+    
+    mutating func sub(start: Int) -> String {
+        var tmp = self
+        tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)...])
+        return tmp
+    }
+    
+    mutating func sub(start: Int, length: Int) -> String {
+        var tmp = self
+        tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)..<tmp.index(tmp.startIndex, offsetBy: start + length)])
+        return tmp
+    }
+
+    func indexOf(sub: String) -> Int {
+        var i = -1
+        let r = self.range(of: sub)
+        if (r != nil) {
+            i = r!.lowerBound.encodedOffset
+        }
+        return i
+    }
+    
+    func indexOf(sub: String, start: Int) -> Int {
+        var tmp = self
+        tmp = tmp.sub(start: start)
+        var i = -1
+        let idx = tmp.indexOf(sub: sub)
+        if (idx != -1) {
+            i = idx + start
+        }
+        return i
+    }
+    
+    func lastIndexOf(sub: String) -> Int {
+        var i = self.count - sub.count
+        var tmp = self
+        var found = false
+        while (!found) && (i > 0) {
+            if (tmp.sub(start: i, length: sub.count) == sub) {
+                found = true
+                break
+            }
+            i -= 1
+        }
+        if (!found) {
+            i = -1
+        }
+        return i
+        
+    }
+    
+    mutating func trim() -> String {
+        var tmp = self
+        tmp = tmp.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        return tmp
+    }
+    
+    mutating func trim(c: Array<String>) -> String {
+        var tmp = self
+        var s = ""
+        for ch in c {
+            s.append(ch)
+        }
+        tmp = tmp.trimmingCharacters(in: CharacterSet(charactersIn: s))
+        return tmp
+    }
+    
+    func split(by: String) -> Array<String> {
+        var arr = Array<String>()
+        var tmp = self
+        var idx = -1
+        while true {
+            idx = tmp.indexOf(sub: by)
+            if (idx != -1) {
+                let t = tmp.sub(start: 0, length: idx)
+                arr.append(t)
+                tmp = tmp.sub(start: idx + by.count)
+            } else {
+                arr.append(tmp)
+                break
+            }
+        }
+        return arr
+    }
+}
+
 public extension UIColor {
     func parseString(_ colorStr: String) -> UIColor {
         var color = UIColor.red

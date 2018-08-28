@@ -1,5 +1,5 @@
 PODS:
-  - sfunctional (0.1.7)
+  - sfunctional (0.1.8)
   - TangramKit (1.1.6)
 
 DEPENDENCIES:
@@ -7,7 +7,7 @@ DEPENDENCIES:
   - TangramKit
 
 SPEC CHECKSUMS:
-  sfunctional: a0ddcc4cd24ec867b1644ec0b9f01313099f0fb7
+  sfunctional: d80680a0fa9d313f40775c6de6fad9803849bea8
   TangramKit: 461e965b656db4c0bde14e74bb600b750803b3cc
 
 PODFILE CHECKSUM: b73c4092a86e005f2b3b3ec947fdd6bed80aeec9
