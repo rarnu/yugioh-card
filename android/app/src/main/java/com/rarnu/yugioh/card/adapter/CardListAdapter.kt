@@ -7,6 +7,7 @@ import android.view.View
 import com.rarnu.kt.android.BaseAdapter
 import com.rarnu.kt.android.DownloadState
 import com.rarnu.kt.android.downloadAsync
+import com.rarnu.kt.android.resStr
 import com.rarnu.yugioh.CardInfo
 import com.rarnu.yugioh.YGORequest
 import com.rarnu.yugioh.card.PathUtils
@@ -17,9 +18,9 @@ import java.io.File
 class CardListAdapter(ctx: Context, list: MutableList<CardInfo>) : BaseAdapter<CardInfo, CardListAdapter.CardListHolder>(ctx, list) {
 
     override fun fillHolder(baseVew: View, holder: CardListHolder, item: CardInfo, position: Int) {
-        holder.tvCardName.text = context.getString(R.string.item_name, item.name)
-        holder.tvCardJapName.text = context.getString(R.string.item_japname, item.japname)
-        holder.tvCardEnName.text = context.getString(R.string.item_enname, item.enname)
+        holder.tvCardName.text = context.resStr(R.string.item_name, item.name)
+        holder.tvCardJapName.text = context.resStr(R.string.item_japname, item.japname)
+        holder.tvCardEnName.text = context.resStr(R.string.item_enname, item.enname)
         holder.tvCardType.text = item.cardtype
 
         val localImg = File(PathUtils.IMAGE_PATH, item.cardid.toString()).absolutePath

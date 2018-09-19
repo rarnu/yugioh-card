@@ -25,7 +25,7 @@ class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemCli
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cardlist)
-        actionBar.title = resStr(R.string.card_list)
+        actionBar?.title = resStr(R.string.card_list)
         showActionBack()
 
         adapter = CardListAdapter(this, list)

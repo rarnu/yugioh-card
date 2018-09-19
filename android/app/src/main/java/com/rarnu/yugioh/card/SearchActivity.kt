@@ -21,7 +21,7 @@ class SearchActivity: Activity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        actionBar.title = resStr(R.string.btn_adv_search)
+        actionBar?.title = resStr(R.string.btn_adv_search)
         showActionBack()
 
         btnTypeMon.setTextColor(resColor(R.color.iostint))

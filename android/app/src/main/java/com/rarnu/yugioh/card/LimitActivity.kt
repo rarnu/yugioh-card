@@ -23,7 +23,7 @@ class LimitActivity: Activity(), AdapterView.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_limit)
-        actionBar.title = resStr(R.string.card_limit_full)
+        actionBar?.title = resStr(R.string.card_limit_full)
         showActionBack()
 
         adapter = LimitAdapter(this, list)

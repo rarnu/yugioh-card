@@ -28,7 +28,7 @@ class PackActivity: Activity(), AdapterView.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pack)
-        actionBar.title = resStr(R.string.card_pack)
+        actionBar?.title = resStr(R.string.card_pack)
         showActionBack()
 
         adapterSeason = SeasonAdapter(this, listSeason)

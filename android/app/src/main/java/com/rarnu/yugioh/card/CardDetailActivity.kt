@@ -26,7 +26,7 @@ class CardDetailActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carddetail)
-        actionBar.title = intent.getStringExtra("name")
+        actionBar?.title = intent.getStringExtra("name")
         showActionBack()
         hashid = intent.getStringExtra("hashid")
 

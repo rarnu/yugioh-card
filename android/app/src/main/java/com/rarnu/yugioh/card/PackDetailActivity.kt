@@ -22,7 +22,7 @@ class PackDetailActivity : Activity(), AdapterView.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_packdetail)
-        actionBar.title = intent.getStringExtra("name")
+        actionBar?.title = intent.getStringExtra("name")
         showActionBack()
         val url = intent.getStringExtra("url")
         adapter = CardListAdapter(this, list)

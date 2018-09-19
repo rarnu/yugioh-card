@@ -16,7 +16,7 @@ class HelpActivity: Activity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help)
-        actionBar.title = resStr(R.string.btn_help)
+        actionBar?.title = resStr(R.string.btn_help)
         showActionBack()
         // help
         tvOurocg.setOnClickListener(this)

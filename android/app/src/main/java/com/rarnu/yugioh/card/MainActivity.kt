@@ -4,17 +4,12 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
-import android.media.ThumbnailUtils
 import android.os.Bundle
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.LinearLayout
 import android.widget.ListView
-import android.widget.TextView
 import com.rarnu.kt.android.dip2px
 import com.rarnu.kt.android.initUI
 import com.rarnu.kt.android.resStr
