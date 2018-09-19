@@ -37,7 +37,7 @@ public class Toast {
         }else{
             size = CGSize.init(width: fixedValue, height: CGFloat(MAXFLOAT))
         }
-        let resultSize = aText?.boundingRect(with: size, options: (NSStringDrawingOptions(rawValue: NSStringDrawingOptions.usesLineFragmentOrigin.rawValue | NSStringDrawingOptions.usesFontLeading.rawValue | NSStringDrawingOptions.truncatesLastVisibleLine.rawValue)), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: aFont)], context: nil).size
+        let resultSize = aText?.boundingRect(with: size, options: (NSStringDrawingOptions(rawValue: NSStringDrawingOptions.usesLineFragmentOrigin.rawValue | NSStringDrawingOptions.usesFontLeading.rawValue | NSStringDrawingOptions.truncatesLastVisibleLine.rawValue)), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: aFont)], context: nil).size
         if isHeightFixed == true {
             return resultSize!.width + 20
         } else {

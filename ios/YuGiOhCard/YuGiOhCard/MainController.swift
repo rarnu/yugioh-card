@@ -35,18 +35,18 @@ class MainController: UIViewController, UITextFieldDelegate {
         v.tg_height.equal(45)
         layMain?.addSubview(v)
         edtSearch = UITextField(frame: CGRect(x: 0, y: 0, width: screenWidth() - 140, height: 36))
-        edtSearch?.borderStyle = UITextBorderStyle.none
+        edtSearch?.borderStyle = UITextField.BorderStyle.none
         edtSearch?.placeholder = "输入要搜索的关键字"
         edtSearch?.returnKeyType = UIReturnKeyType.done
         edtSearch?.delegate = self
         v.addSubview(edtSearch!)
-        btnSearch = UIButton(type: UIButtonType.system)
+        btnSearch = UIButton(type: UIButton.ButtonType.system)
         btnSearch?.frame = CGRect(x: screenWidth() - 128, y: 0, width: 40, height: 36)
-        btnSearch?.setTitle("搜索", for: UIControlState.normal)
+        btnSearch?.setTitle("搜索", for: UIControl.State.normal)
         v.addSubview(btnSearch!)
-        btnAdvSearch = UIButton(type: UIButtonType.system)
+        btnAdvSearch = UIButton(type: UIButton.ButtonType.system)
         btnAdvSearch?.frame = CGRect(x: screenWidth() - 88, y: 0, width: 80, height: 36)
-        btnAdvSearch?.setTitle("高级搜索", for: UIControlState.normal)
+        btnAdvSearch?.setTitle("高级搜索", for: UIControl.State.normal)
         v.addSubview(btnAdvSearch!)
         let line = UIView(frame: CGRect(x: 0, y: 36, width: screenWidth() - 16, height: 1))
         line.backgroundColor = UIColor.lightGray
@@ -56,8 +56,8 @@ class MainController: UIViewController, UITextFieldDelegate {
         blank.tg_height.equal(8)
         layMain?.addSubview(blank)
         // event
-        btnSearch?.addTarget(self, action: #selector(btnSearchClicked(sender:)), for: UIControlEvents.touchDown)
-        btnAdvSearch?.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControlEvents.touchDown)
+        btnSearch?.addTarget(self, action: #selector(btnSearchClicked(sender:)), for: UIControl.Event.touchDown)
+        btnAdvSearch?.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControl.Event.touchDown)
         loadHotest()
         
         Updater.checkUpdate(vc: self)
@@ -77,10 +77,10 @@ class MainController: UIViewController, UITextFieldDelegate {
         }
         
         func makeButton(_ txt: String) -> UIButton {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_width.equal(100%)
             btn.tg_height.equal(32)
-            btn.setTitle(txt, for: UIControlState.normal)
+            btn.setTitle(txt, for: UIControl.State.normal)
             layMain?.addSubview(btn)
             return btn
         }
@@ -95,13 +95,13 @@ class MainController: UIViewController, UITextFieldDelegate {
         }
         
         func makeLabel(txt: String, hash: String, sel: Selector) {
-            let l = UIButton(type: UIButtonType.system)
+            let l = UIButton(type: UIButton.ButtonType.system)
             l.tg_width.equal(100%)
             l.tg_height.equal(32)
-            l.setTitle(txt, for: UIControlState.normal)
-            l.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+            l.setTitle(txt, for: UIControl.State.normal)
+            l.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
             l.accessibilityValue = hash
-            l.addTarget(self, action: sel, for: UIControlEvents.touchDown)
+            l.addTarget(self, action: sel, for: UIControl.Event.touchDown)
             layMain?.addSubview(l)
         }
         
@@ -120,12 +120,12 @@ class MainController: UIViewController, UITextFieldDelegate {
                     last = idx + remain
                 }
                 for i in idx ..< last {
-                    let v = UIButton(type: UIButtonType.system)
+                    let v = UIButton(type: UIButton.ButtonType.system)
                     v.tg_width.equal(w)
                     v.tg_height.equal(32)
-                    v.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-                    v.setTitle(list[i], for: UIControlState.normal)
-                    v.addTarget(self, action: #selector(btnKeywordClicked(sender:)), for: UIControlEvents.touchDown)
+                    v.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+                    v.setTitle(list[i], for: UIControl.State.normal)
+                    v.addTarget(self, action: #selector(btnKeywordClicked(sender:)), for: UIControl.Event.touchDown)
                     lay.addSubview(v)
                 }
                 if (remain >= 5) {
@@ -158,7 +158,7 @@ class MainController: UIViewController, UITextFieldDelegate {
                     makeLine()
                 }
                 let btnHelp = makeButton("帮助")
-                btnHelp.addTarget(self, action: #selector(self.btnHelpClicked(sender:)), for: UIControlEvents.touchDown)
+                btnHelp.addTarget(self, action: #selector(self.btnHelpClicked(sender:)), for: UIControl.Event.touchDown)
             }
         }
     }

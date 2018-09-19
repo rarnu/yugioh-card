@@ -32,7 +32,7 @@ class CardListCell: AdapterCell<CardInfo> {
         tvCardType?.textAlignment = NSTextAlignment.left
         self.addSubview(tvCardType!)
         ivCardImg = UIImageView(frame: CGRect(x: screenWidth() - 78, y: 4, width: 70, height: 92))
-        ivCardImg?.contentMode = UIViewContentMode.scaleAspectFit
+        ivCardImg?.contentMode = UIView.ContentMode.scaleAspectFit
         self.addSubview(ivCardImg!)
     }
     

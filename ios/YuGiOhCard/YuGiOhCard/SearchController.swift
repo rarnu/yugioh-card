@@ -139,10 +139,10 @@ class SearchController: UIViewController, UITextFieldDelegate {
         layCommon.addSubview(layBtn)
         
         func makeButton(title: String) -> UIButton {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: 60, height: .fill)
-            btn.setTitle(title, for: UIControlState.normal)
-            btn.setTitleColor(UIColor.black, for: UIControlState.normal)
+            btn.setTitle(title, for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
             layBtn.addSubview(btn)
             return btn
         }
@@ -158,7 +158,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         txtEff.text = "卡片效果"
         layEffect.addSubview(txtEff)
         edtEffect = UITextField()
-        edtEffect?.borderStyle = UITextBorderStyle.none
+        edtEffect?.borderStyle = UITextField.BorderStyle.none
         edtEffect?.tg_size(width: 75%, height: 32)
         edtEffect?.placeholder = "输入效果关键字"
         edtEffect?.returnKeyType = UIReturnKeyType.done
@@ -182,17 +182,17 @@ class SearchController: UIViewController, UITextFieldDelegate {
         layMagic = makeLayout(v: TGVisibility.gone)
         layTrap = makeLayout(v: TGVisibility.gone)
         
-        btnTypeMon?.addTarget(self, action: #selector(btnTypeMonClicked(sender:)), for: UIControlEvents.touchDown)
-        btnTypeMagic?.addTarget(self, action: #selector(btnTypeMagicClicked(sender:)), for: UIControlEvents.touchDown)
-        btnTypeTrap?.addTarget(self, action: #selector(btnTypeTrapClicked(sender:)), for: UIControlEvents.touchDown)
+        btnTypeMon?.addTarget(self, action: #selector(btnTypeMonClicked(sender:)), for: UIControl.Event.touchDown)
+        btnTypeMagic?.addTarget(self, action: #selector(btnTypeMagicClicked(sender:)), for: UIControl.Event.touchDown)
+        btnTypeTrap?.addTarget(self, action: #selector(btnTypeTrapClicked(sender:)), for: UIControl.Event.touchDown)
         
     }
     
     @objc func btnTypeMonClicked(sender: Any?) {
         cardtype = "怪兽"
-        btnTypeMon?.setTitleColor(self.view.tintColor, for: UIControlState.normal)
-        btnTypeMagic?.setTitleColor(UIColor.black, for: UIControlState.normal)
-        btnTypeTrap?.setTitleColor(UIColor.black, for: UIControlState.normal)
+        btnTypeMon?.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
+        btnTypeMagic?.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        btnTypeTrap?.setTitleColor(UIColor.black, for: UIControl.State.normal)
         layMonster?.tg_visibility = TGVisibility.visible
         layMagic?.tg_visibility = TGVisibility.gone
         layTrap?.tg_visibility = TGVisibility.gone
@@ -200,9 +200,9 @@ class SearchController: UIViewController, UITextFieldDelegate {
     
     @objc func btnTypeMagicClicked(sender: Any?) {
         cardtype = "魔法"
-        btnTypeMagic?.setTitleColor(self.view.tintColor, for: UIControlState.normal)
-        btnTypeMon?.setTitleColor(UIColor.black, for: UIControlState.normal)
-        btnTypeTrap?.setTitleColor(UIColor.black, for: UIControlState.normal)
+        btnTypeMagic?.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
+        btnTypeMon?.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        btnTypeTrap?.setTitleColor(UIColor.black, for: UIControl.State.normal)
         layMagic?.tg_visibility = TGVisibility.visible
         layMonster?.tg_visibility = TGVisibility.gone
         layTrap?.tg_visibility = TGVisibility.gone
@@ -210,9 +210,9 @@ class SearchController: UIViewController, UITextFieldDelegate {
     
     @objc func btnTypeTrapClicked(sender: Any?) {
         cardtype = "陷阱"
-        btnTypeTrap?.setTitleColor(self.view.tintColor, for: UIControlState.normal)
-        btnTypeMon?.setTitleColor(UIColor.black, for: UIControlState.normal)
-        btnTypeMagic?.setTitleColor(UIColor.black, for: UIControlState.normal)
+        btnTypeTrap?.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
+        btnTypeMon?.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        btnTypeMagic?.setTitleColor(UIColor.black, for: UIControl.State.normal)
         layTrap?.tg_visibility = TGVisibility.visible
         layMonster?.tg_visibility = TGVisibility.gone
         layMagic?.tg_visibility = TGVisibility.gone
@@ -227,11 +227,11 @@ class SearchController: UIViewController, UITextFieldDelegate {
         lay.tg_size(width: 100%, height: 32)
         layTrap?.addSubview(lay)
         func makeButton(title: String) -> UIButton {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: TGWeight.init(1), height: 32)
-            btn.setTitleColor(UIColor.black, for: UIControlState.normal)
-            btn.setTitle(title, for: UIControlState.normal)
-            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControlEvents.touchDown)
+            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitle(title, for: UIControl.State.normal)
+            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             lay.addSubview(btn)
             return btn
         }
@@ -250,11 +250,11 @@ class SearchController: UIViewController, UITextFieldDelegate {
         layMagic?.addSubview(lay)
         
         func makeButton(title: String) -> UIButton {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: TGWeight.init(1), height: 32)
-            btn.setTitleColor(UIColor.black, for: UIControlState.normal)
-            btn.setTitle(title, for: UIControlState.normal)
-            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControlEvents.touchDown)
+            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitle(title, for: UIControl.State.normal)
+            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             lay.addSubview(btn)
             return btn
         }
@@ -277,11 +277,11 @@ class SearchController: UIViewController, UITextFieldDelegate {
         }
         
         func makeButton(_ txt: String, _ layout: TGLinearLayout) -> UIButton {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: TGWeight.init(1), height: 32)
-            btn.setTitleColor(UIColor.black, for: UIControlState.normal)
-            btn.setTitle(txt, for: UIControlState.normal)
-            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControlEvents.touchDown)
+            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitle(txt, for: UIControl.State.normal)
+            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             layout.addSubview(btn)
             return btn
         }
@@ -295,7 +295,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
             t.text = txt
             lay.addSubview(t)
             let edt = UITextField()
-            edt.borderStyle = UITextBorderStyle.none
+            edt.borderStyle = UITextField.BorderStyle.none
             edt.tg_size(width: 75%, height: 32)
             edt.placeholder = placeholder
             edt.returnKeyType = UIReturnKeyType.done
@@ -404,11 +404,11 @@ class SearchController: UIViewController, UITextFieldDelegate {
         layMonster?.addSubview(makeText(txt: "连接方向"))
         
         func makeLinkArrow(_ txt: String, _ layout: TGLinearLayout) -> UIButton {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: 40, height: 40)
-            btn.setTitle(txt, for: UIControlState.normal)
-            btn.setTitleColor(UIColor.black, for: UIControlState.normal)
-            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControlEvents.touchDown)
+            btn.setTitle(txt, for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             layout.addSubview(btn)
             return btn
         }
@@ -447,7 +447,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     private func isButtonSelected(_ btn: UIButton?) -> Bool {
-        let color = btn?.titleColor(for: UIControlState.normal)
+        let color = btn?.titleColor(for: UIControl.State.normal)
         return color != UIColor.black
     }
     
@@ -638,11 +638,11 @@ class SearchController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func btnItemClicked(sender: UIButton) {
-        let c = sender.titleColor(for: UIControlState.normal)
+        let c = sender.titleColor(for: UIControl.State.normal)
         if (c == UIColor.black) {
-            sender.setTitleColor(self.view.tintColor, for: UIControlState.normal)
+            sender.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
         } else {
-            sender.setTitleColor(UIColor.black, for: UIControlState.normal)
+            sender.setTitleColor(UIColor.black, for: UIControl.State.normal)
         }
     }
     

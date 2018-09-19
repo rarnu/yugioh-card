@@ -117,7 +117,7 @@ class CardDetailController: UIViewController {
     }
     
     private func getTextSize(str: String, width: Int, fontSize: CGFloat) -> CGSize {
-        let strSize = (str as NSString).boundingRect(with: CGSize(width: width, height: 0), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size
+        let strSize = (str as NSString).boundingRect(with: CGSize(width: width, height: 0), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size
         return strSize
     }
     

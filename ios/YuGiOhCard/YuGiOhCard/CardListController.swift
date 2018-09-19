@@ -35,32 +35,32 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addSubview(tvCard!)
 
         let w = 40
-        btnFirst = UIButton(type: UIButtonType.system)
+        btnFirst = UIButton(type: UIButton.ButtonType.system)
         btnFirst?.frame = CGRect(x: 0, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnFirst?.setTitle("<<", for: UIControlState.normal)
+        btnFirst?.setTitle("<<", for: UIControl.State.normal)
         self.view.addSubview(btnFirst!)
-        btnPrior = UIButton(type: UIButtonType.system)
+        btnPrior = UIButton(type: UIButton.ButtonType.system)
         btnPrior?.frame = CGRect(x: w, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnPrior?.setTitle("<", for: UIControlState.normal)
+        btnPrior?.setTitle("<", for: UIControl.State.normal)
         self.view.addSubview(btnPrior!)
         
-        btnNext = UIButton(type: UIButtonType.system)
+        btnNext = UIButton(type: UIButton.ButtonType.system)
         tvPage = UILabel(frame: CGRect(x: w * 2, y: Int(screenHeight()) - 36, width: Int(screenWidth()) - w * 4, height: 36))
         tvPage?.textAlignment = NSTextAlignment.center
         self.view.addSubview(tvPage!)
         
         btnNext?.frame = CGRect(x: Int(screenWidth()) - w * 2, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnNext?.setTitle(">", for: UIControlState.normal)
+        btnNext?.setTitle(">", for: UIControl.State.normal)
         self.view.addSubview(btnNext!)
-        btnLast = UIButton(type: UIButtonType.system)
+        btnLast = UIButton(type: UIButton.ButtonType.system)
         btnLast?.frame = CGRect(x: Int(screenWidth()) - w, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnLast?.setTitle(">>", for: UIControlState.normal)
+        btnLast?.setTitle(">>", for: UIControl.State.normal)
         self.view.addSubview(btnLast!)
         
-        btnFirst?.addTarget(self, action: #selector(btnFirstClicked(sender:)), for: UIControlEvents.touchDown)
-        btnPrior?.addTarget(self, action: #selector(btnPriorClicked(sender:)), for: UIControlEvents.touchDown)
-        btnNext?.addTarget(self, action: #selector(btnNextClicked(sender:)), for: UIControlEvents.touchDown)
-        btnLast?.addTarget(self, action: #selector(btnLastClicked(sender:)), for: UIControlEvents.touchDown)
+        btnFirst?.addTarget(self, action: #selector(btnFirstClicked(sender:)), for: UIControl.Event.touchDown)
+        btnPrior?.addTarget(self, action: #selector(btnPriorClicked(sender:)), for: UIControl.Event.touchDown)
+        btnNext?.addTarget(self, action: #selector(btnNextClicked(sender:)), for: UIControl.Event.touchDown)
+        btnLast?.addTarget(self, action: #selector(btnLastClicked(sender:)), for: UIControl.Event.touchDown)
         
         searchCommon(akey: key, apage: 1)
     }

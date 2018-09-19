@@ -40,16 +40,16 @@ public extension UIImage {
     
     func save(_ filename: String, format: String = "PNG") {
         if (format == "PNG") {
-            let d = UIImagePNGRepresentation(self)! as NSData
+            let d = self.pngData()! as NSData // UIImagePNGRepresentation(self)! as NSData
             d.write(toFile: filename, atomically: true)
         } else if (format == "JPG") {
-            let d = UIImageJPEGRepresentation(self, 1.0)! as NSData
+            let d = self.jpegData(compressionQuality: 1.0)! as NSData // UIImageJPEGRepresentation(self, 1.0)! as NSData
             d.write(toFile: filename, atomically: true)
         }
     }
 
     func blackWhite() -> UIImage {
-        let imageData = UIImagePNGRepresentation(self)
+        let imageData = self.pngData() // UIImagePNGRepresentation(self)
         let inputImage = CoreImage.CIImage(data: imageData!)
         let context = CIContext(options:nil)
         let filter = CIFilter(name:"CIPhotoEffectNoir")
@@ -73,29 +73,29 @@ public extension UIImage {
     func rotate90Clockwise() -> UIImage? {
         var ret: UIImage? = nil
         switch (self.imageOrientation) {
-        case UIImageOrientation.up:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.right)
+        case UIImage.Orientation.up:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.right)
             break
-        case UIImageOrientation.down:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.left)
+        case UIImage.Orientation.down:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.left)
             break
-        case UIImageOrientation.left:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
+        case UIImage.Orientation.left:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.up)
             break
-        case UIImageOrientation.right:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.down)
+        case UIImage.Orientation.right:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.down)
             break
-        case UIImageOrientation.upMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+        case UIImage.Orientation.upMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.leftMirrored)
             break
-        case UIImageOrientation.downMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.rightMirrored)
+        case UIImage.Orientation.downMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.rightMirrored)
             break
-        case UIImageOrientation.leftMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.downMirrored)
+        case UIImage.Orientation.leftMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.downMirrored)
             break
-        case UIImageOrientation.rightMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.upMirrored)
+        case UIImage.Orientation.rightMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.upMirrored)
             break
         }
         return ret
@@ -104,29 +104,29 @@ public extension UIImage {
     func rotate90CounterClockwise() -> UIImage? {
         var ret: UIImage? = nil
         switch (self.imageOrientation) {
-        case UIImageOrientation.up:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.left)
+        case UIImage.Orientation.up:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.left)
             break
-        case UIImageOrientation.down:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.right)
+        case UIImage.Orientation.down:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.right)
             break
-        case UIImageOrientation.left:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.down)
+        case UIImage.Orientation.left:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.down)
             break
-        case UIImageOrientation.right:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
+        case UIImage.Orientation.right:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.up)
             break
-        case UIImageOrientation.upMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.rightMirrored)
+        case UIImage.Orientation.upMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.rightMirrored)
             break
-        case UIImageOrientation.downMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+        case UIImage.Orientation.downMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.leftMirrored)
             break
-        case UIImageOrientation.leftMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.upMirrored)
+        case UIImage.Orientation.leftMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.upMirrored)
             break
-        case UIImageOrientation.rightMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.downMirrored)
+        case UIImage.Orientation.rightMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.downMirrored)
             break
         }
         return ret
@@ -135,29 +135,29 @@ public extension UIImage {
     func rotate180() -> UIImage? {
         var ret: UIImage? = nil
         switch (self.imageOrientation) {
-        case UIImageOrientation.up:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.down)
+        case UIImage.Orientation.up:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.down)
             break
-        case UIImageOrientation.down:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
+        case UIImage.Orientation.down:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.up)
             break
-        case UIImageOrientation.left:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.right)
+        case UIImage.Orientation.left:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.right)
             break
-        case UIImageOrientation.right:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.left)
+        case UIImage.Orientation.right:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.left)
             break
-        case UIImageOrientation.upMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.downMirrored)
+        case UIImage.Orientation.upMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.downMirrored)
             break
-        case UIImageOrientation.downMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.upMirrored)
+        case UIImage.Orientation.downMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.upMirrored)
             break
-        case UIImageOrientation.leftMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.rightMirrored)
+        case UIImage.Orientation.leftMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.rightMirrored)
             break
-        case UIImageOrientation.rightMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+        case UIImage.Orientation.rightMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.leftMirrored)
             break
         }
         return ret
@@ -177,29 +177,29 @@ public extension UIImage {
     func flipHorizontal() -> UIImage? {
         var ret: UIImage? = nil
         switch (self.imageOrientation) {
-        case UIImageOrientation.up:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.upMirrored)
+        case UIImage.Orientation.up:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.upMirrored)
             break
-        case UIImageOrientation.down:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.downMirrored)
+        case UIImage.Orientation.down:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.downMirrored)
             break
-        case UIImageOrientation.left:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.rightMirrored)
+        case UIImage.Orientation.left:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.rightMirrored)
             break
-        case UIImageOrientation.right:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+        case UIImage.Orientation.right:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.leftMirrored)
             break
-        case UIImageOrientation.upMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
+        case UIImage.Orientation.upMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.up)
             break
-        case UIImageOrientation.downMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.down)
+        case UIImage.Orientation.downMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.down)
             break
-        case UIImageOrientation.leftMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.right)
+        case UIImage.Orientation.leftMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.right)
             break
-        case UIImageOrientation.rightMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.left)
+        case UIImage.Orientation.rightMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.left)
             break
         }
         return ret
@@ -208,29 +208,29 @@ public extension UIImage {
     func flipVertical() -> UIImage? {
         var ret: UIImage? = nil
         switch (self.imageOrientation) {
-        case UIImageOrientation.up:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.downMirrored)
+        case UIImage.Orientation.up:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.downMirrored)
             break
-        case UIImageOrientation.down:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.upMirrored)
+        case UIImage.Orientation.down:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.upMirrored)
             break
-        case UIImageOrientation.left:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+        case UIImage.Orientation.left:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.leftMirrored)
             break
-        case UIImageOrientation.right:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.rightMirrored)
+        case UIImage.Orientation.right:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.rightMirrored)
             break
-        case UIImageOrientation.upMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.down)
+        case UIImage.Orientation.upMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.down)
             break
-        case UIImageOrientation.downMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
+        case UIImage.Orientation.downMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.up)
             break
-        case UIImageOrientation.leftMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.left)
+        case UIImage.Orientation.leftMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.left)
             break
-        case UIImageOrientation.rightMirrored:
-            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImageOrientation.right)
+        case UIImage.Orientation.rightMirrored:
+            ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.right)
             break
         }
         return ret

@@ -7,88 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000B7E1030EE725296AE2C2F9BEB924D /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 069758EF373460D7AF2DCAB47BF7E91E /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		038E48D580AB53A7D0939EEDEE78E24B /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 606D2975C3ED2E378A3A7F5660C6FB45 /* aescrypt.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		045BA0EC74DD3FFF6E92FD84E4DFA802 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		04A1CA631DD537E9F35412C2F8EDE7DF /* SysEmu.h in Headers */ = {isa = PBXBuildFile; fileRef = 171228CF114C4A993C088AAF9D530641 /* SysEmu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06BFB5179A095978DC5A068DB6A60A94 /* ToastUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757FB6AA08E84AF93B81F9F614095270 /* ToastUtils.swift */; };
-		0D4F673CA0424E7A0EB006803B62AB35 /* TGLinearLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92503D493E8ADA8AD5B4AC950A2CD8D /* TGLinearLayout.swift */; };
-		0FA81D4472E43D552094FD577B78C231 /* DatetimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B682655AE45D38301275BC9586EAE4 /* DatetimeUtils.swift */; };
-		114921CC3EF06E3EDB9E917A5F5903A5 /* SSZipCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 51A5BE48DAC57EF1B6322BB260017880 /* SSZipCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CB8470665FC2C8FD5E6A88D326FA39B /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 8465CD5D6BF40E291F325134545C5645 /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D4785D1C7F6823EAC712F4E5009971F /* TGLayoutPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6A9FBFDDFF72B35CF0ABCA79DFA3 /* TGLayoutPos.swift */; };
-		1DBB52888DFA00C8550CE35070D6CF51 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = EF76C742E9BDB9D1C20083DF6DEF8A5E /* SSZipArchive.m */; };
-		1E996CE98E8034375F93E78186C14669 /* TangramKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BF531381765960E148F2F9E4086774 /* TangramKit.swift */; };
-		23E7C6BBA0BE31403C222BCB54251B43 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = C0E66D086FB81A61F07D07387DACCD79 /* ioapi.c */; };
-		2A3E76A59E5FCA50FF33FEFED9ACB015 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5F23CF32F692178B5919D51BEDA96 /* fileenc.c */; };
-		2CF860134B20832B5897FAD5F4D8BDDE /* SystemUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4E8C2CE3246768ADA8FCB074CB89C1 /* SystemUtils.swift */; };
-		2D7E1D114D49B4B0B43DD7F3CCE11841 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = A37EE1D34BE9CB85BDB7ADE54B83AA85 /* pwd2key.c */; };
-		2EB685F58FAAF726398D65ABF0D33EA7 /* ioapi_buf.h in Headers */ = {isa = PBXBuildFile; fileRef = 860E49CF6B2C9F5D88C3F0F4EACA3DB2 /* ioapi_buf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3504CF568DA574097431C86EEE1E2D58 /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = 70D4496E85717CD20922F5CCE7BEE926 /* pwd2key.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3690C45A1C0223BFF7CAAAD7A534F35F /* DownloadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C58B0E475A9C2A9AC42680CB6A3A7 /* DownloadUtils.swift */; };
-		37EFE284849D9EBD8EA6FA3D1A52CBC4 /* SSZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = C522E72893DCEDDF806AD17805D4D04B /* SSZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C61FB853DBDE6CFF326100C18DB0C9B /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 50670637EA0A35FC5D9777ED7854430A /* ioapi_mem.c */; };
-		41FF65F0C80BF829A99E6883DE120C4B /* aes_ni.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DEC7550BFFF706FF5399FF6E4105352 /* aes_ni.c */; };
-		426D0F4ECE9D2AA462963B9B906A652A /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = D64910471C68C49F331008F8C773D184 /* aescrypt.c */; };
-		4531ACC04D1B88486F6A4E9F49243D8D /* SysEmu.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C7C8C55C05E5088468791A36A9E7BD /* SysEmu.m */; };
-		4850907287AEC9AF56BE758F32A857D3 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 68AB6FBA34ED0E1F6D24870F5A1A59EC /* hmac.c */; };
-		4DD83378A4772B432121CBA88E926125 /* TGFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147530F3A05E003975505873FCFB6F1E /* TGFlowLayout.swift */; };
-		4E9C2F48F2040BE266FA45BCD9D47054 /* TGFloatLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16EB57712B5392525BD8A3105C39005 /* TGFloatLayout.swift */; };
-		4EC417C694717CCE8CCC73D9A5C0A767 /* brg_types.h in Headers */ = {isa = PBXBuildFile; fileRef = A028A385E705B333C59F135BF7C126D9 /* brg_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		505F0F1E2934711F60F493DC8DD44418 /* TGPathLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5AF301CB6995648B4758C80EB33EE /* TGPathLayout.swift */; };
-		52C79864FFA5F0242FD7759D67DFDBD5 /* ioapi_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = AD68A12E1B6BF351886ABA624AC9A2FB /* ioapi_mem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		541707FA5EB4C7E9AEEFAFFDF1E039AE /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC28A1045BAE3A21D5702C894382CC7 /* TableViewAdapter.swift */; };
-		579A0CA0B7B010645FAFB3DEAEDEA6A6 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = AC2CA9CE3983DF5A36B94ED42E8A85BC /* crypt.c */; };
-		57B764846F6E57A5FE85119123747432 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = B25BD511B78711126F8C3F91D8387A59 /* Info.plist */; };
-		5A5D8914A78FFD8DCD667F60E1883BF2 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B47F963A386423E5DEC0E4DB52C8D7F /* aeskey.c */; };
-		602255B1C282677F486D6C2FCCA38676 /* TGBaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4771577484B62DBC2CFF25FC454AF8 /* TGBaseLayout.swift */; };
-		60A05927A73F026B6F34D2F51ED33425 /* ZipUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94F408FE749891F5B7049E13BE1983 /* ZipUtils.swift */; };
-		631BC4716263D78DB2A2BB3FFF5BDD24 /* project.pbxproj in Sources */ = {isa = PBXBuildFile; fileRef = 8C15D493A7D7C89AEBD99A32B9FE0AF3 /* project.pbxproj */; };
-		6325B4BEFAFA53D48A2FD652F51903A2 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 7FC94F16A6BA22A307E365079A7F500C /* aestab.c */; };
-		6396B9EF7F7BE7DE4294D8FFAB943403 /* minishared.c in Sources */ = {isa = PBXBuildFile; fileRef = 0431A526B9D7B977B36BEB8A34737CB5 /* minishared.c */; };
-		63E957558D832ECAD2AA61DDD83F46CB /* sfunctional.podspec in Sources */ = {isa = PBXBuildFile; fileRef = 7AC7B38205E4AC6EA7951024DA91D9D1 /* sfunctional.podspec */; };
-		64AD7487FE6E87D96F4BBE6153B6B683 /* TangramKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B4457E9EFFAA06AF6CE4E4578FA49452 /* TangramKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		656307916A75C3B8C70C7730FB68A4F1 /* BundleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71644E365FF1DC2D26A1A63587989B0 /* BundleUtils.swift */; };
-		65D39E506F8F371D49BAC9DBD5272792 /* sfunctional.h in Headers */ = {isa = PBXBuildFile; fileRef = 8467E3240D78913C3CF8C8933C740906 /* sfunctional.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		67F7B80BEE2E9C3D9B466A28CBFF0B6D /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = FE85F6E745F3A0547343550F102FB33C /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B9141AE45034640DA3DF6C32ABF5E2B /* TGTableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A5A23196D128B4AE4212A3D3731B37 /* TGTableLayout.swift */; };
-		6B9E5942CD82EE189B094C20EF64E730 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74BED9B1605BFAB2279B0A2C945FF2 /* FileUtils.swift */; };
-		6E2560BC01A8DC9FB8A8F3F0788E67C0 /* TGRelativeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BF6BC62E0ED01DBAC69AF6D8662760 /* TGRelativeLayout.swift */; };
+		063A271B0FF3F002C05FDCE89B98BC9B /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 5893916F088870F90FC6779CB76F341D /* pwd2key.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		078AD76B47130AF688CBF0874290F392 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 67C308C46397F0885CFC6D85EE3DE169 /* ioapi.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		096B944074DB9A850A8E14D9A4BF22C0 /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A35CB4346440B55BCC39E70488BF4A1 /* TableViewAdapter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		098F911491865E532D5C20F2B4FBF83E /* TGTableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCDAB8054284123FAE0A0CAA29E6AD /* TGTableLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0EB04A59B459CA5A4F51CE7EA5E77EC4 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = B33C7927FD815EAA762243855563025E /* aestab.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0ECB828B5DE0777018E05524994E2284 /* aestab.h in Headers */ = {isa = PBXBuildFile; fileRef = FA309126883830E3DF58C2C66E31C1A7 /* aestab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		119060810AEE33759E3E1DC191255BD5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E3596E0D383FAC60A9C3880B7B3DA5 /* Extensions.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		11C2F0E06DA302BAA6624E824AC7C747 /* fileenc.h in Headers */ = {isa = PBXBuildFile; fileRef = DC420D64E4BE74511F73E84EBAD7BE97 /* fileenc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14FBCBE4128F5769B706FBC6E8FC3DCE /* ioapi_buf.h in Headers */ = {isa = PBXBuildFile; fileRef = B60D2E95356F02CC520028FEC4EDDF6C /* ioapi_buf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		151CCA094832EAFAAA26F6048F6C411C /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EAA320EC6901FA1B4AD876D14626E68 /* sha1.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		177D30C7D579C2B994FA081BBC4EB29A /* SysEmu.m in Sources */ = {isa = PBXBuildFile; fileRef = 08212C143C7D22717353198D9DDC2DEB /* SysEmu.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1EAFC1D8EA32923B5C86A993FD8E835E /* minishared.h in Headers */ = {isa = PBXBuildFile; fileRef = EC172F8C967AD22AA9DD0EADFA4DDDAD /* minishared.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		21105D4A7AF907FD152687E5228C3938 /* brg_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 5517FF647D3CB6D9AD3B758B433F2FBD /* brg_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		241B5ED3019205E7655DF55A2286C34A /* sfunctional-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD09A2D68A20C0005E924C4CB9E6B7D5 /* sfunctional-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		295DCB2ADFA93FCA739951F2B7277B68 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A73DD005BBD2B81D638FCBF26441BE /* FileUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2A2DD937515C7F186DF6E27002E78CD8 /* ToastUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DCEEDDDB8D67F61640C991EBBB5A8 /* ToastUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2BAD71CBC57F6036E56EAC79A22B28CE /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 145FB6B33215D7D14BB464C6CFD0489D /* prng.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		30D5C2AA8DD03DAAA59A5A325742D702 /* project.pbxproj in Sources */ = {isa = PBXBuildFile; fileRef = 41F15556A8F81C6BA1A649231D757DEC /* project.pbxproj */; };
+		314FF914DFDE4CB8A33167B68B7FD90C /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = E762B79BC21F36947CF52F2D7A60D33E /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C16D6AFC3059EBD30C90AE3AA6567A7 /* RegExUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DA202CA8425909BABDF2CA6066C57 /* RegExUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3FC2D46D1476C8353A7CE2CBE4732580 /* ioapi_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = 755C0663BCCC89F89D7A102EF3C2F960 /* ioapi_mem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		43F2ACF683B4CDE1DCE700E6A55A6960 /* ZipUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9CC4090988CAC2A423099950A461C /* ZipUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		45DE3FEA832B8474B027B63748E75DD7 /* SelectorBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 469E269CAD9A7779E79EDE2688032818 /* SelectorBlock.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4C8FA503A277239FE3345A9CB9CA2F06 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1AC4E79E77EA46B659CC909138E4464E /* zip.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4CFA7BEF28E9D882A7A2A9950A97D1A2 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C4A80655DE537C390D36AC3C4A8D87C3 /* unzip.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4CFCDA07E394895B9C5E25EBCDE7A372 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = 297C0BFCBEA845312AE0CF1198158BB2 /* prng.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5267E37C09622F03F42B7E3F03663511 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = B25F1E3F720F4FD270577629DA105C34 /* aeskey.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		52E28A564CCC7666107B3CC6A062E48E /* TGRelativeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00BB4F0CD0C94A34703C2F4332303EC /* TGRelativeLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		574E64AA734AC235E5E9EF45C68C4130 /* TGLayoutSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAA89D28714D939DD05B5A7B4D69E9 /* TGLayoutSizeClass.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5AD754403574FE7DEE0EF557F3B43451 /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E4E4A33B6829D64F6D404B723FEB2FE /* pwd2key.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CA3D909209E43968E9EA7F47A79A306 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A20BC15FC703772360C98DBBAE5E57 /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E0DF31A67E283706EE28E791F28034C /* SSZipCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 858457351805540D51950256FA103B66 /* SSZipCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5ED08E1844622B30911231FC65A0BAD2 /* DownloadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55805F79F3B12870210327701530408 /* DownloadUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6037AF59A6BE69A3777B886A6303287E /* ContextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A1D42E14C816A87893E4D5E815472 /* ContextUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		638D34ED6659017166BC6929031D583D /* TGLayoutPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1793DB05A55D2E597A1438981B1D25 /* TGLayoutPos.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		639F8F41512C7ACAF926007ED00010D1 /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = A6AAD8D1918DBFFD90894331D28A1241 /* ioapi_mem.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		63E8AA009A29637F9AFD152C64027B97 /* TGLayoutSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F817B9326A6D8F11BDE45EBE9EC65 /* TGLayoutSize.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		64130A2777915D46D79F1C4F007A781A /* aes_ni.c in Sources */ = {isa = PBXBuildFile; fileRef = D1694172BBA61558C68403DED1D52EBA /* aes_ni.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		64AD7487FE6E87D96F4BBE6153B6B683 /* TangramKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07E612729FD456149B302C3895C60C1A /* TangramKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64BAC28E5A67319384852276E5D9DFC7 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6877F971914CABC3E2B7BFEAF5ACD /* PopupViewController.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		65709EFAA259C10DC9F93490FFD79CBE /* IDEWorkspaceChecks.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6371EF82804EC5CA69B6A76B546A44DF /* IDEWorkspaceChecks.plist */; };
+		65C144408DB5EA5B1BF3611B0F96B705 /* SystemUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65DAD0576545770AF00EF872906A72 /* SystemUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6AB23F6DE96D5DF35C3628192B655910 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6CE38543763F9A70FEDC0A10E43FB0DA /* fileenc.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6AB7103E1A2B200D2DA7950D509E61EE /* TGDimeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017B4F9BF922571A61BA724D8FFC920F /* TGDimeAdapter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6C87A12C3315C603F8B020CDEDAFBC4C /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = C576FF3DC62077F15F49270072C245B2 /* crypt.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6EDDFACC4C0CADC2F0970EA236E7C722 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		6F97646795475AA7603ADC26BFDDFE1E /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 92AD335C307923442E3FCD5F1E8EB013 /* sha1.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70F963EA56E91CB398382B6B1ABB483D /* brg_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1A77618C6051A1137B910586CFDBA5 /* brg_endian.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		74EF9DC1D831055F6451CE85A67FE985 /* IDEWorkspaceChecks.plist in Sources */ = {isa = PBXBuildFile; fileRef = AFE11141F1DB15CE3510E039E56903E6 /* IDEWorkspaceChecks.plist */; };
-		7611375A4603BA411A6DD92096E83C89 /* TGDimeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C8B7A869E68847AA4DAED9C88F9495 /* TGDimeAdapter.swift */; };
-		776CEBBD4159556DF7A3F604AAFF1026 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = A0053A68930AC7721C533BC97E31419D /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7A1E88B5A2C21AD701913367C84938A1 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = BE17241C0C01CFA00CEC5A4BBACE70FD /* unzip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74167966ACB9C2D2D3F329DD42CDAE58 /* SSZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = E99730DA492F8D00B6E0D82BA476C0FF /* SSZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AB729E75FA718CAD6E5D841AE9E8B98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		7B0D7FD74CC257503280101A5F6C960F /* aesopt.h in Headers */ = {isa = PBXBuildFile; fileRef = 068E43498AB11BA49971A096B6DDEF6C /* aesopt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D3EB2535CC6BB85C2EA60147F83A176 /* sfunctional-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F20200A7DCC3DE45BBB94C0884C6417 /* sfunctional-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8322D1716D706D7EEC83A6FE56ECE664 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E893985E5196505D78AD3249F26C21B /* zip.c */; };
-		832A8E535173B49AD4B5E945B2FAE58C /* fileenc.h in Headers */ = {isa = PBXBuildFile; fileRef = 46DD1DA1C69E6CA3DA457549DD2DCF03 /* fileenc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8EC6A66D99F7D627B048840D829D2BE9 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 46B2F164D5D88F83FB14E67130A8E92F /* Info.plist */; };
-		902FA43F043508EE942AEC142DE83D03 /* aes_ni.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D15409A64415C938A091071C44D48F6 /* aes_ni.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94B59D20BC89A5DB35CB4A2C04DB7D38 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = F1D4F8B3588E58046EE5A778D84C1ED9 /* aes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E1E699AB5B6E9EDC6049341CFDD9622 /* sfunctional-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A03DC2E0D890601599837D0190B516AF /* sfunctional-dummy.m */; };
-		A4FC737C5074368776C94655E40BBC41 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165F5FD554D604E3F176DE9B7FB95897 /* ImageUtils.swift */; };
-		B46A7DABF2B734E9961862B5D97E3046 /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 8709FC4343A19A9489C9387F999A2310 /* ZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B700D9B2945AADB489A40375F2E8311A /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CC27AF2591C3E066D1853CF92ECC62B /* prng.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCE331812883FB99FE837C9F257D0561 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE7FEE7CAAFD250F832986FE3C7C8CC /* Extensions.swift */; };
-		BDD7F8AC18597D3313F57B0984153B2D /* ContextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261757C4CC52079E63CC23D202F6946A /* ContextUtils.swift */; };
+		7E793EB3FAC481141D46DBB239841D5A /* SysEmu.h in Headers */ = {isa = PBXBuildFile; fileRef = E15153A2962563CDF92774EA81D3B8B1 /* SysEmu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824E71E3A61521F7D41BD191F8B35766 /* TGFrameLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8401FA492702FD9D8FF866D707A5500E /* TGFrameLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		82B46B20BC8933795DE85D17ABABB67B /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = EA9384699A845FCD204026EA029BCBED /* sha1.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		899A0052ED4FD84578E4FBB26ED26D29 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 39FC323DD1C271A8BEC35FAF636F7834 /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C54BD110A63F662B9F0D595992AD339 /* contents.xcworkspacedata in Sources */ = {isa = PBXBuildFile; fileRef = 2066FC63F56C5C89FC5CB49A1DC919A2 /* contents.xcworkspacedata */; };
+		8F70B1C85AF9513410877CC36E6A9F5D /* TGPathLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E66C70C72215E1737A60EA2C56E77C /* TGPathLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8FEA0BA5520BD11F1637C7204B6EC825 /* sfunctional-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6CFC261AC467A1830B3B78BAADB688 /* sfunctional-dummy.m */; };
+		9266E960596D78A837712FACF87889C6 /* aesopt.h in Headers */ = {isa = PBXBuildFile; fileRef = F03E3E47F90A3F3D2877A8A18D7A1D11 /* aesopt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9DC51EB6DEE4373FA421753F9F456988 /* SelectorBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 215FB9769CA87C37D8BF3A30194A0E72 /* SelectorBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A04F462349455760EBC3575273D4DB73 /* DatetimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78C57C69B6F45F28CE117FF9308ED6 /* DatetimeUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A2D0CC0C4A602A6CA010632C521A40C5 /* TangramKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F428A1CF087999E1A78B1B3395B9B81 /* TangramKit.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A2DFEC6807A1565B853702A9BEE4C32B /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = E18E9A333046494ED982C7822D52AC85 /* hmac.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A4CECEDB47310AC6555293FC62785140 /* TGFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EABA9E0B13565E0B7801B3225D6549 /* TGFlowLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A8B2D5AA396F893C5F0891A692693A59 /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 994DE16B73B6F6A858457459750D634B /* ZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1BADF9FB06215B5A17DD191AA780775 /* TGBaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F54377909D911EB412C4A0D7891F8 /* TGBaseLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B46AC3F5F7947DE4006F993437E7BE09 /* aes_ni.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B56AFFF7078E43268247F55D792734 /* aes_ni.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD179597DF5FE5B9895DA9C0AEB1315C /* BundleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2EC40C7FADD43CCA328DB42E43B19 /* BundleUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C72CFE29D982AA867259DBF576C3D411 /* TangramKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA3B2F8501722F05E43DDF4E2282ECA /* TangramKit-dummy.m */; };
 		C83AB7DFA30F5E7676077E9E6D8F3C4D /* Pods-YuGiOhCard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FF85B13C2D3E99147C312FEBA07CF4 /* Pods-YuGiOhCard-dummy.m */; };
-		D1AD23828818D2B7353D45CDCD161E25 /* aestab.h in Headers */ = {isa = PBXBuildFile; fileRef = AD360D75437D78827309BF7D876ECBA8 /* aestab.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2F0BFE97BBE317C4FEA3DA40B10DD19 /* TGFrameLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DEEF4DF9BFCB552366B71572920DC /* TGFrameLayout.swift */; };
-		D4342B2AC34760FC4C098928EC53C809 /* UrlDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C439CC52D3E3C61B9E7F054E11D06B6 /* UrlDecoder.swift */; };
-		D8A65E4D0FAB880B92554A11228EB6AF /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AD78BC1AF1C86A18B7B7427B02667D4 /* unzip.c */; };
-		E28D832FB4751C4EB3AF23BDB1A13D60 /* ioapi_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BF7A614A5E23F94B24E5BB6D2AC18AF /* ioapi_buf.c */; };
-		EC57870E967354EEFB51FE2AFC19A620 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 11C9C271161BC7F5154F7EE97D0AB666 /* sha1.c */; };
-		ED296CBBDA4EF49F2D481DDB36406FA3 /* TGLayoutSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841917E4C9553F94E69674B8D46DDD7 /* TGLayoutSize.swift */; };
-		EF19DEC9AC2DA4B9456967DA9EBDED91 /* TangramKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 027894E46B825FDE8A173E93EBC4E19A /* TangramKit-dummy.m */; };
+		CD425C967EBC7C7D799A7F795A83B7CA /* TGLinearLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BDD025C5E2371B61BAFFE5617CF19F /* TGLinearLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D3657B3240239E3F3ED6BC5629C6C427 /* ioapi_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = E7960728CCFC66DC05FAA26E77C23D28 /* ioapi_buf.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D7AB9206DF50946D5E8CED87FA149FD9 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 99FBBCB9E9D2CC845E2C1B5FD551BD2F /* SSZipArchive.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E108F679A8AA0491C054C3D63706936F /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297955D03D61CB426065A5F529E9724A /* ImageUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E7D27010DFC383FE5EC6777742144DE9 /* UrlDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04112862228F39005ADFD6611BC2DC /* UrlDecoder.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E850883D38F5AF4225F7AC60EBE2D905 /* TGFloatLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD4C2D68CD281C4DCE465BC5DF62600 /* TGFloatLayout.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EFDB2C7DB23A58E31E553A2C14A2268B /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E93CE5A1B8E98459D6184B9C0B88061 /* unzip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0AA546168662640F2ADF1C44A57E7AA /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A6C1336089C5C4BFA12DDE05C0F69A /* aes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0DA80B97B16351D621ED6804E60B318 /* brg_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D34F931E6E062674C49A1975A374AEA /* brg_endian.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1252E52EC2825F5B7D2015616831D5E /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3953453ECB27809C4343068DDBD8EB /* HttpUtils.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F13C361E01177AF4122D90CFDB350603 /* minishared.c in Sources */ = {isa = PBXBuildFile; fileRef = 3CF19788E0E74AA28558A9646E8A1D3B /* minishared.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F3B22CD859F512FC7EDCD820657CAC07 /* Pods-YuGiOhCard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAFBB27EF8C105AC462CAC43B6AE3F1 /* Pods-YuGiOhCard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F551C98552DDE00777C5EB2F16B67DC9 /* TGLayoutSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8DECD714E1E03079D2BBD9816F4E5 /* TGLayoutSizeClass.swift */; };
-		F81275E81ECF7C424F9142F3766870B1 /* contents.xcworkspacedata in Sources */ = {isa = PBXBuildFile; fileRef = 80AB6361E7394DD7B7A8C27FEF02F150 /* contents.xcworkspacedata */; };
-		FA81BBD8B9397F78B1A56FF0E733659E /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 8527327E4E844DFD24EC4F498E246C36 /* prng.c */; };
-		FC7A4A93B40D6F1A7485BFE24C470367 /* minishared.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD7CF80C92F06874CCEF0A73F8A1EBD /* minishared.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FCDD32866DA5F1F700FD35F5E4B627C4 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE90A0C533C1D6688C0497D4B97C06 /* HttpUtils.swift */; };
+		F62E010DCA4D1E14B30908040E6DFE29 /* sfunctional.h in Headers */ = {isa = PBXBuildFile; fileRef = 148380F9FA49278EBE9E026071A09C9C /* sfunctional.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9FB4F74E9A7612E6601F6492105CD06 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = E9461120C0B6F8FDDF731C79B4B86FEC /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD1955F0930A8EAC9404B10FCE94B08A /* sfunctional.podspec in Sources */ = {isa = PBXBuildFile; fileRef = 4D71225195F5BB4C517B00BE78D8C0E5 /* sfunctional.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,105 +111,107 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		027894E46B825FDE8A173E93EBC4E19A /* TangramKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TangramKit-dummy.m"; sourceTree = "<group>"; };
-		0431A526B9D7B977B36BEB8A34737CB5 /* minishared.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = minishared.c; path = sfunctional/sfunctional/SSZipArchive/minizip/minishared.c; sourceTree = "<group>"; };
-		068E43498AB11BA49971A096B6DDEF6C /* aesopt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aesopt.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aesopt.h; sourceTree = "<group>"; };
-		069758EF373460D7AF2DCAB47BF7E91E /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = sfunctional/sfunctional/SSZipArchive/minizip/zip.h; sourceTree = "<group>"; };
-		07F5AF301CB6995648B4758C80EB33EE /* TGPathLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGPathLayout.swift; path = TangramKit/TGPathLayout.swift; sourceTree = "<group>"; };
+		017B4F9BF922571A61BA724D8FFC920F /* TGDimeAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGDimeAdapter.swift; path = TangramKit/TGDimeAdapter.swift; sourceTree = "<group>"; };
+		07E612729FD456149B302C3895C60C1A /* TangramKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TangramKit-umbrella.h"; sourceTree = "<group>"; };
+		08212C143C7D22717353198D9DDC2DEB /* SysEmu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SysEmu.m; path = sfunctional/sfunctional/SysEmu/SysEmu.m; sourceTree = "<group>"; };
 		0B25DED3E4E2FADAC4C766843C6B273D /* Pods-YuGiOhCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YuGiOhCard.release.xcconfig"; sourceTree = "<group>"; };
-		0D15409A64415C938A091071C44D48F6 /* aes_ni.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes_ni.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.h; sourceTree = "<group>"; };
-		11C9C271161BC7F5154F7EE97D0AB666 /* sha1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha1.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.c; sourceTree = "<group>"; };
-		147530F3A05E003975505873FCFB6F1E /* TGFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGFlowLayout.swift; path = TangramKit/TGFlowLayout.swift; sourceTree = "<group>"; };
-		165F5FD554D604E3F176DE9B7FB95897 /* ImageUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageUtils.swift; path = sfunctional/sfunctional/ImageUtils.swift; sourceTree = "<group>"; };
-		171228CF114C4A993C088AAF9D530641 /* SysEmu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SysEmu.h; path = sfunctional/sfunctional/SysEmu/SysEmu.h; sourceTree = "<group>"; };
+		0E93CE5A1B8E98459D6184B9C0B88061 /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = sfunctional/sfunctional/SSZipArchive/minizip/unzip.h; sourceTree = "<group>"; };
+		0F1793DB05A55D2E597A1438981B1D25 /* TGLayoutPos.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLayoutPos.swift; path = TangramKit/TGLayoutPos.swift; sourceTree = "<group>"; };
+		12B9CC4090988CAC2A423099950A461C /* ZipUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZipUtils.swift; path = sfunctional/sfunctional/ZipUtils.swift; sourceTree = "<group>"; };
+		145FB6B33215D7D14BB464C6CFD0489D /* prng.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = prng.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.c; sourceTree = "<group>"; };
+		148380F9FA49278EBE9E026071A09C9C /* sfunctional.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sfunctional.h; path = sfunctional/sfunctional/sfunctional.h; sourceTree = "<group>"; };
+		17EABA9E0B13565E0B7801B3225D6549 /* TGFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGFlowLayout.swift; path = TangramKit/TGFlowLayout.swift; sourceTree = "<group>"; };
+		1AC4E79E77EA46B659CC909138E4464E /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = sfunctional/sfunctional/SSZipArchive/minizip/zip.c; sourceTree = "<group>"; };
+		1CD4C2D68CD281C4DCE465BC5DF62600 /* TGFloatLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGFloatLayout.swift; path = TangramKit/TGFloatLayout.swift; sourceTree = "<group>"; };
+		1E4E4A33B6829D64F6D404B723FEB2FE /* pwd2key.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pwd2key.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.h; sourceTree = "<group>"; };
+		2066FC63F56C5C89FC5CB49A1DC919A2 /* contents.xcworkspacedata */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = contents.xcworkspacedata; path = sfunctional/sfunctional.xcodeproj/project.xcworkspace/contents.xcworkspacedata; sourceTree = "<group>"; };
+		215FB9769CA87C37D8BF3A30194A0E72 /* SelectorBlock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SelectorBlock.h; path = sfunctional/sfunctional/SelBlock/SelectorBlock.h; sourceTree = "<group>"; };
 		235048485EF57D4FC4E8FEF711C10970 /* Pods-YuGiOhCard-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YuGiOhCard-frameworks.sh"; sourceTree = "<group>"; };
-		240DEEF4DF9BFCB552366B71572920DC /* TGFrameLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGFrameLayout.swift; path = TangramKit/TGFrameLayout.swift; sourceTree = "<group>"; };
-		261757C4CC52079E63CC23D202F6946A /* ContextUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContextUtils.swift; path = sfunctional/sfunctional/ContextUtils.swift; sourceTree = "<group>"; };
-		26A5A23196D128B4AE4212A3D3731B37 /* TGTableLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGTableLayout.swift; path = TangramKit/TGTableLayout.swift; sourceTree = "<group>"; };
 		278A89E61F21D25D52BF8ACD834DC7B8 /* Pods-YuGiOhCard-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YuGiOhCard-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2B684FC8D33F4640E44068B3D0477D52 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C6C58B0E475A9C2A9AC42680CB6A3A7 /* DownloadUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownloadUtils.swift; path = sfunctional/sfunctional/DownloadUtils.swift; sourceTree = "<group>"; };
-		2D4771577484B62DBC2CFF25FC454AF8 /* TGBaseLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGBaseLayout.swift; path = TangramKit/TGBaseLayout.swift; sourceTree = "<group>"; };
+		297955D03D61CB426065A5F529E9724A /* ImageUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageUtils.swift; path = sfunctional/sfunctional/ImageUtils.swift; sourceTree = "<group>"; };
+		297C0BFCBEA845312AE0CF1198158BB2 /* prng.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = prng.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.h; sourceTree = "<group>"; };
+		2D34F931E6E062674C49A1975A374AEA /* brg_endian.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_endian.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_endian.h; sourceTree = "<group>"; };
 		32D8EE81E6479FFCF3298367B3D732E8 /* Pods-YuGiOhCard-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YuGiOhCard-resources.sh"; sourceTree = "<group>"; };
 		3441491F9C65AAFBD8B76EEC97523938 /* Pods-YuGiOhCard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-YuGiOhCard.modulemap"; sourceTree = "<group>"; };
-		34C8B7A869E68847AA4DAED9C88F9495 /* TGDimeAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGDimeAdapter.swift; path = TangramKit/TGDimeAdapter.swift; sourceTree = "<group>"; };
-		3E4E8C2CE3246768ADA8FCB074CB89C1 /* SystemUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemUtils.swift; path = sfunctional/sfunctional/SystemUtils.swift; sourceTree = "<group>"; };
-		3F20200A7DCC3DE45BBB94C0884C6417 /* sfunctional-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sfunctional-umbrella.h"; sourceTree = "<group>"; };
-		443C6A9FBFDDFF72B35CF0ABCA79DFA3 /* TGLayoutPos.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLayoutPos.swift; path = TangramKit/TGLayoutPos.swift; sourceTree = "<group>"; };
-		46B2F164D5D88F83FB14E67130A8E92F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = sfunctional/sfunctional/Info.plist; sourceTree = "<group>"; };
-		46DD1DA1C69E6CA3DA457549DD2DCF03 /* fileenc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fileenc.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.h; sourceTree = "<group>"; };
+		39E66C70C72215E1737A60EA2C56E77C /* TGPathLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGPathLayout.swift; path = TangramKit/TGPathLayout.swift; sourceTree = "<group>"; };
+		39FC323DD1C271A8BEC35FAF636F7834 /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.h; sourceTree = "<group>"; };
+		3A35CB4346440B55BCC39E70488BF4A1 /* TableViewAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TableViewAdapter.swift; path = sfunctional/sfunctional/TableViewAdapter.swift; sourceTree = "<group>"; };
+		3CF19788E0E74AA28558A9646E8A1D3B /* minishared.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = minishared.c; path = sfunctional/sfunctional/SSZipArchive/minizip/minishared.c; sourceTree = "<group>"; };
+		3F78C57C69B6F45F28CE117FF9308ED6 /* DatetimeUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DatetimeUtils.swift; path = sfunctional/sfunctional/DatetimeUtils.swift; sourceTree = "<group>"; };
+		419F817B9326A6D8F11BDE45EBE9EC65 /* TGLayoutSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLayoutSize.swift; path = TangramKit/TGLayoutSize.swift; sourceTree = "<group>"; };
+		41F15556A8F81C6BA1A649231D757DEC /* project.pbxproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.pbxproject; name = project.pbxproj; path = sfunctional/sfunctional.xcodeproj/project.pbxproj; sourceTree = "<group>"; };
+		469E269CAD9A7779E79EDE2688032818 /* SelectorBlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SelectorBlock.m; path = sfunctional/sfunctional/SelBlock/SelectorBlock.m; sourceTree = "<group>"; };
+		49A20BC15FC703772360C98DBBAE5E57 /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = sfunctional/sfunctional/SSZipArchive/minizip/zip.h; sourceTree = "<group>"; };
 		4A1068918E739518CCBD6421EA149458 /* Pods-YuGiOhCard-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YuGiOhCard-acknowledgements.plist"; sourceTree = "<group>"; };
 		4CAFBB27EF8C105AC462CAC43B6AE3F1 /* Pods-YuGiOhCard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YuGiOhCard-umbrella.h"; sourceTree = "<group>"; };
-		4EA8DECD714E1E03079D2BBD9816F4E5 /* TGLayoutSizeClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLayoutSizeClass.swift; path = TangramKit/TGLayoutSizeClass.swift; sourceTree = "<group>"; };
-		4ED5F23CF32F692178B5919D51BEDA96 /* fileenc.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = fileenc.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.c; sourceTree = "<group>"; };
-		50670637EA0A35FC5D9777ED7854430A /* ioapi_mem.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi_mem.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.c; sourceTree = "<group>"; };
-		51A5BE48DAC57EF1B6322BB260017880 /* SSZipCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSZipCommon.h; path = sfunctional/sfunctional/SSZipArchive/SSZipCommon.h; sourceTree = "<group>"; };
-		530B3FC08A0F4E9EFD9E220BD7AD53A0 /* TangramKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TangramKit.modulemap; sourceTree = "<group>"; };
-		56BF6BC62E0ED01DBAC69AF6D8662760 /* TGRelativeLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGRelativeLayout.swift; path = TangramKit/TGRelativeLayout.swift; sourceTree = "<group>"; };
-		5B47F963A386423E5DEC0E4DB52C8D7F /* aeskey.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aeskey.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aeskey.c; sourceTree = "<group>"; };
-		5CC27AF2591C3E066D1853CF92ECC62B /* prng.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = prng.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.h; sourceTree = "<group>"; };
-		5D94F408FE749891F5B7049E13BE1983 /* ZipUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZipUtils.swift; path = sfunctional/sfunctional/ZipUtils.swift; sourceTree = "<group>"; };
+		4D71225195F5BB4C517B00BE78D8C0E5 /* sfunctional.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = sfunctional.podspec; path = sfunctional/sfunctional.podspec; sourceTree = "<group>"; };
+		4EAA320EC6901FA1B4AD876D14626E68 /* sha1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.h; sourceTree = "<group>"; };
+		52DF0AA2DAE26F63BA7BF49CCC175FDB /* sfunctional-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sfunctional-prefix.pch"; sourceTree = "<group>"; };
+		53A73DD005BBD2B81D638FCBF26441BE /* FileUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileUtils.swift; path = sfunctional/sfunctional/FileUtils.swift; sourceTree = "<group>"; };
+		53BDD025C5E2371B61BAFFE5617CF19F /* TGLinearLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLinearLayout.swift; path = TangramKit/TGLinearLayout.swift; sourceTree = "<group>"; };
+		5517FF647D3CB6D9AD3B758B433F2FBD /* brg_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_types.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_types.h; sourceTree = "<group>"; };
+		57B56AFFF7078E43268247F55D792734 /* aes_ni.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes_ni.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.h; sourceTree = "<group>"; };
+		5893916F088870F90FC6779CB76F341D /* pwd2key.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = pwd2key.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.c; sourceTree = "<group>"; };
+		5AA3B2F8501722F05E43DDF4E2282ECA /* TangramKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TangramKit-dummy.m"; sourceTree = "<group>"; };
+		5F178D7959B0FA924AD2EACD6158B575 /* sfunctional.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sfunctional.xcconfig; sourceTree = "<group>"; };
+		606D2975C3ED2E378A3A7F5660C6FB45 /* aescrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aescrypt.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aescrypt.c; sourceTree = "<group>"; };
+		61EAA89D28714D939DD05B5A7B4D69E9 /* TGLayoutSizeClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLayoutSizeClass.swift; path = TangramKit/TGLayoutSizeClass.swift; sourceTree = "<group>"; };
+		6371EF82804EC5CA69B6A76B546A44DF /* IDEWorkspaceChecks.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = IDEWorkspaceChecks.plist; path = sfunctional/sfunctional.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist; sourceTree = "<group>"; };
+		63E3596E0D383FAC60A9C3880B7B3DA5 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = sfunctional/sfunctional/Extensions.swift; sourceTree = "<group>"; };
+		655A1D42E14C816A87893E4D5E815472 /* ContextUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContextUtils.swift; path = sfunctional/sfunctional/ContextUtils.swift; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		68AB6FBA34ED0E1F6D24870F5A1A59EC /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = hmac.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.c; sourceTree = "<group>"; };
-		68B682655AE45D38301275BC9586EAE4 /* DatetimeUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DatetimeUtils.swift; path = sfunctional/sfunctional/DatetimeUtils.swift; sourceTree = "<group>"; };
-		6BF7A614A5E23F94B24E5BB6D2AC18AF /* ioapi_buf.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi_buf.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.c; sourceTree = "<group>"; };
+		67C308C46397F0885CFC6D85EE3DE169 /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi.c; sourceTree = "<group>"; };
+		6CE38543763F9A70FEDC0A10E43FB0DA /* fileenc.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = fileenc.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.c; sourceTree = "<group>"; };
 		6CEF9AA9C863402C4D643FFF8E19B3EB /* Pods_YuGiOhCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YuGiOhCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70D4496E85717CD20922F5CCE7BEE926 /* pwd2key.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pwd2key.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.h; sourceTree = "<group>"; };
-		72BF531381765960E148F2F9E4086774 /* TangramKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TangramKit.swift; path = TangramKit/TangramKit.swift; sourceTree = "<group>"; };
+		6D3953453ECB27809C4343068DDBD8EB /* HttpUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpUtils.swift; path = sfunctional/sfunctional/HttpUtils.swift; sourceTree = "<group>"; };
+		6D3F54377909D911EB412C4A0D7891F8 /* TGBaseLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGBaseLayout.swift; path = TangramKit/TGBaseLayout.swift; sourceTree = "<group>"; };
 		74FF85B13C2D3E99147C312FEBA07CF4 /* Pods-YuGiOhCard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YuGiOhCard-dummy.m"; sourceTree = "<group>"; };
-		757FB6AA08E84AF93B81F9F614095270 /* ToastUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToastUtils.swift; path = sfunctional/sfunctional/ToastUtils.swift; sourceTree = "<group>"; };
-		77C7C8C55C05E5088468791A36A9E7BD /* SysEmu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SysEmu.m; path = sfunctional/sfunctional/SysEmu/SysEmu.m; sourceTree = "<group>"; };
-		7AC7B38205E4AC6EA7951024DA91D9D1 /* sfunctional.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = sfunctional.podspec; path = sfunctional/sfunctional.podspec; sourceTree = "<group>"; };
-		7FC94F16A6BA22A307E365079A7F500C /* aestab.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aestab.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.c; sourceTree = "<group>"; };
-		80AB6361E7394DD7B7A8C27FEF02F150 /* contents.xcworkspacedata */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = contents.xcworkspacedata; path = sfunctional/sfunctional.xcodeproj/project.xcworkspace/contents.xcworkspacedata; sourceTree = "<group>"; };
-		82614251181A0CA30179C212F7A541D5 /* sfunctional.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sfunctional.xcconfig; sourceTree = "<group>"; };
-		8465CD5D6BF40E291F325134545C5645 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = sfunctional/sfunctional/SSZipArchive/minizip/crypt.h; sourceTree = "<group>"; };
-		8467E3240D78913C3CF8C8933C740906 /* sfunctional.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sfunctional.h; path = sfunctional/sfunctional/sfunctional.h; sourceTree = "<group>"; };
-		8527327E4E844DFD24EC4F498E246C36 /* prng.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = prng.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.c; sourceTree = "<group>"; };
-		860E49CF6B2C9F5D88C3F0F4EACA3DB2 /* ioapi_buf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi_buf.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.h; sourceTree = "<group>"; };
-		8709FC4343A19A9489C9387F999A2310 /* ZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = sfunctional/sfunctional/SSZipArchive/ZipArchive.h; sourceTree = "<group>"; };
-		8C15D493A7D7C89AEBD99A32B9FE0AF3 /* project.pbxproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.pbxproject; name = project.pbxproj; path = sfunctional/sfunctional.xcodeproj/project.pbxproj; sourceTree = "<group>"; };
-		8C439CC52D3E3C61B9E7F054E11D06B6 /* UrlDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UrlDecoder.swift; path = sfunctional/sfunctional/UrlDecoder.swift; sourceTree = "<group>"; };
-		8DEC7550BFFF706FF5399FF6E4105352 /* aes_ni.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aes_ni.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.c; sourceTree = "<group>"; };
-		8E893985E5196505D78AD3249F26C21B /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = sfunctional/sfunctional/SSZipArchive/minizip/zip.c; sourceTree = "<group>"; };
-		92AD335C307923442E3FCD5F1E8EB013 /* sha1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.h; sourceTree = "<group>"; };
+		755C0663BCCC89F89D7A102EF3C2F960 /* ioapi_mem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi_mem.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.h; sourceTree = "<group>"; };
+		7B6DA202CA8425909BABDF2CA6066C57 /* RegExUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegExUtils.swift; path = sfunctional/sfunctional/RegExUtils.swift; sourceTree = "<group>"; };
+		7F428A1CF087999E1A78B1B3395B9B81 /* TangramKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TangramKit.swift; path = TangramKit/TangramKit.swift; sourceTree = "<group>"; };
+		83A2EC40C7FADD43CCA328DB42E43B19 /* BundleUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BundleUtils.swift; path = sfunctional/sfunctional/BundleUtils.swift; sourceTree = "<group>"; };
+		8401FA492702FD9D8FF866D707A5500E /* TGFrameLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGFrameLayout.swift; path = TangramKit/TGFrameLayout.swift; sourceTree = "<group>"; };
+		858457351805540D51950256FA103B66 /* SSZipCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSZipCommon.h; path = sfunctional/sfunctional/SSZipArchive/SSZipCommon.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9645B42F5340CEC20299BE2199BD8777 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		994DE16B73B6F6A858457459750D634B /* ZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = sfunctional/sfunctional/SSZipArchive/ZipArchive.h; sourceTree = "<group>"; };
+		99FBBCB9E9D2CC845E2C1B5FD551BD2F /* SSZipArchive.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSZipArchive.m; path = sfunctional/sfunctional/SSZipArchive/SSZipArchive.m; sourceTree = "<group>"; };
 		9ACA08F7161F6036201DD4421A020A91 /* sfunctional.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = sfunctional.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AD78BC1AF1C86A18B7B7427B02667D4 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = sfunctional/sfunctional/SSZipArchive/minizip/unzip.c; sourceTree = "<group>"; };
-		9C1A77618C6051A1137B910586CFDBA5 /* brg_endian.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_endian.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_endian.h; sourceTree = "<group>"; };
-		9C74BED9B1605BFAB2279B0A2C945FF2 /* FileUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileUtils.swift; path = sfunctional/sfunctional/FileUtils.swift; sourceTree = "<group>"; };
-		9D6DB3FDEF1028DB261EDF93961C58EE /* sfunctional.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = sfunctional.modulemap; sourceTree = "<group>"; };
-		A0053A68930AC7721C533BC97E31419D /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.h; sourceTree = "<group>"; };
-		A028A385E705B333C59F135BF7C126D9 /* brg_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_types.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_types.h; sourceTree = "<group>"; };
-		A03DC2E0D890601599837D0190B516AF /* sfunctional-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "sfunctional-dummy.m"; sourceTree = "<group>"; };
-		A16EB57712B5392525BD8A3105C39005 /* TGFloatLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGFloatLayout.swift; path = TangramKit/TGFloatLayout.swift; sourceTree = "<group>"; };
-		A37EE1D34BE9CB85BDB7ADE54B83AA85 /* pwd2key.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = pwd2key.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.c; sourceTree = "<group>"; };
-		A92503D493E8ADA8AD5B4AC950A2CD8D /* TGLinearLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLinearLayout.swift; path = TangramKit/TGLinearLayout.swift; sourceTree = "<group>"; };
-		AC2CA9CE3983DF5A36B94ED42E8A85BC /* crypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = crypt.c; path = sfunctional/sfunctional/SSZipArchive/minizip/crypt.c; sourceTree = "<group>"; };
-		AD360D75437D78827309BF7D876ECBA8 /* aestab.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aestab.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.h; sourceTree = "<group>"; };
-		AD68A12E1B6BF351886ABA624AC9A2FB /* ioapi_mem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi_mem.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.h; sourceTree = "<group>"; };
-		ADBFAA26E1CA444210B9FE2213FB108B /* TangramKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TangramKit.xcconfig; sourceTree = "<group>"; };
-		AFE11141F1DB15CE3510E039E56903E6 /* IDEWorkspaceChecks.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = IDEWorkspaceChecks.plist; path = sfunctional/sfunctional.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist; sourceTree = "<group>"; };
+		A09DCEEDDDB8D67F61640C991EBBB5A8 /* ToastUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToastUtils.swift; path = sfunctional/sfunctional/ToastUtils.swift; sourceTree = "<group>"; };
+		A5875A8CCBE728D6098DF6900D9B209D /* TangramKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TangramKit.xcconfig; sourceTree = "<group>"; };
+		A6AAD8D1918DBFFD90894331D28A1241 /* ioapi_mem.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi_mem.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.c; sourceTree = "<group>"; };
+		A8A1B05BB2DD840350699F2F914B39CE /* TangramKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TangramKit.modulemap; sourceTree = "<group>"; };
 		B02CA87838D3C9C28C4703ECABA684E5 /* Pods-YuGiOhCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YuGiOhCard.debug.xcconfig"; sourceTree = "<group>"; };
-		B25BD511B78711126F8C3F91D8387A59 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = sfunctional/sfunctional/SSZipArchive/Info.plist; sourceTree = "<group>"; };
-		B4457E9EFFAA06AF6CE4E4578FA49452 /* TangramKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TangramKit-umbrella.h"; sourceTree = "<group>"; };
-		BBBE90A0C533C1D6688C0497D4B97C06 /* HttpUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpUtils.swift; path = sfunctional/sfunctional/HttpUtils.swift; sourceTree = "<group>"; };
-		BBE7FEE7CAAFD250F832986FE3C7C8CC /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = sfunctional/sfunctional/Extensions.swift; sourceTree = "<group>"; };
-		BE17241C0C01CFA00CEC5A4BBACE70FD /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = sfunctional/sfunctional/SSZipArchive/minizip/unzip.h; sourceTree = "<group>"; };
-		C0E66D086FB81A61F07D07387DACCD79 /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi.c; sourceTree = "<group>"; };
-		C522E72893DCEDDF806AD17805D4D04B /* SSZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSZipArchive.h; path = sfunctional/sfunctional/SSZipArchive/SSZipArchive.h; sourceTree = "<group>"; };
-		C561C8299AF6489986F17DE55859C0BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C71644E365FF1DC2D26A1A63587989B0 /* BundleUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BundleUtils.swift; path = sfunctional/sfunctional/BundleUtils.swift; sourceTree = "<group>"; };
-		C841917E4C9553F94E69674B8D46DDD7 /* TGLayoutSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGLayoutSize.swift; path = TangramKit/TGLayoutSize.swift; sourceTree = "<group>"; };
-		CCD7CF80C92F06874CCEF0A73F8A1EBD /* minishared.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = minishared.h; path = sfunctional/sfunctional/SSZipArchive/minizip/minishared.h; sourceTree = "<group>"; };
-		D64910471C68C49F331008F8C773D184 /* aescrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aescrypt.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aescrypt.c; sourceTree = "<group>"; };
-		DBAF692667F06CA1EE136863CA71D844 /* TangramKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TangramKit-prefix.pch"; sourceTree = "<group>"; };
-		DE23BFD81243DA0555B75377CC6EB734 /* sfunctional-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sfunctional-prefix.pch"; sourceTree = "<group>"; };
-		EAC28A1045BAE3A21D5702C894382CC7 /* TableViewAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TableViewAdapter.swift; path = sfunctional/sfunctional/TableViewAdapter.swift; sourceTree = "<group>"; };
-		EF76C742E9BDB9D1C20083DF6DEF8A5E /* SSZipArchive.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSZipArchive.m; path = sfunctional/sfunctional/SSZipArchive/SSZipArchive.m; sourceTree = "<group>"; };
-		F1D4F8B3588E58046EE5A778D84C1ED9 /* aes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes.h; sourceTree = "<group>"; };
-		FE85F6E745F3A0547343550F102FB33C /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi.h; sourceTree = "<group>"; };
+		B25F1E3F720F4FD270577629DA105C34 /* aeskey.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aeskey.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aeskey.c; sourceTree = "<group>"; };
+		B33C7927FD815EAA762243855563025E /* aestab.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aestab.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.c; sourceTree = "<group>"; };
+		B60D2E95356F02CC520028FEC4EDDF6C /* ioapi_buf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi_buf.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.h; sourceTree = "<group>"; };
+		BB21CF5075B86680053103A1B0412296 /* sfunctional.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = sfunctional.modulemap; sourceTree = "<group>"; };
+		BC6CFC261AC467A1830B3B78BAADB688 /* sfunctional-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "sfunctional-dummy.m"; sourceTree = "<group>"; };
+		C4A80655DE537C390D36AC3C4A8D87C3 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = sfunctional/sfunctional/SSZipArchive/minizip/unzip.c; sourceTree = "<group>"; };
+		C576FF3DC62077F15F49270072C245B2 /* crypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = crypt.c; path = sfunctional/sfunctional/SSZipArchive/minizip/crypt.c; sourceTree = "<group>"; };
+		CBBCDAB8054284123FAE0A0CAA29E6AD /* TGTableLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGTableLayout.swift; path = TangramKit/TGTableLayout.swift; sourceTree = "<group>"; };
+		D00BB4F0CD0C94A34703C2F4332303EC /* TGRelativeLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGRelativeLayout.swift; path = TangramKit/TGRelativeLayout.swift; sourceTree = "<group>"; };
+		D1694172BBA61558C68403DED1D52EBA /* aes_ni.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aes_ni.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.c; sourceTree = "<group>"; };
+		D3A6C1336089C5C4BFA12DDE05C0F69A /* aes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aes.h; sourceTree = "<group>"; };
+		D6F8D3D04AA44B500C86CFDBA006C6ED /* TangramKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TangramKit-prefix.pch"; sourceTree = "<group>"; };
+		DC420D64E4BE74511F73E84EBAD7BE97 /* fileenc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fileenc.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.h; sourceTree = "<group>"; };
+		DD4E2C64FEC3D7F6AD8D90308ED535A2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDD6877F971914CABC3E2B7BFEAF5ACD /* PopupViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupViewController.swift; path = sfunctional/sfunctional/PopupViewController.swift; sourceTree = "<group>"; };
+		E15153A2962563CDF92774EA81D3B8B1 /* SysEmu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SysEmu.h; path = sfunctional/sfunctional/SysEmu/SysEmu.h; sourceTree = "<group>"; };
+		E18E9A333046494ED982C7822D52AC85 /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = hmac.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.c; sourceTree = "<group>"; };
+		E55805F79F3B12870210327701530408 /* DownloadUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DownloadUtils.swift; path = sfunctional/sfunctional/DownloadUtils.swift; sourceTree = "<group>"; };
+		E762B79BC21F36947CF52F2D7A60D33E /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = sfunctional/sfunctional/SSZipArchive/minizip/crypt.h; sourceTree = "<group>"; };
+		E7960728CCFC66DC05FAA26E77C23D28 /* ioapi_buf.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi_buf.c; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.c; sourceTree = "<group>"; };
+		E9461120C0B6F8FDDF731C79B4B86FEC /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = sfunctional/sfunctional/SSZipArchive/minizip/ioapi.h; sourceTree = "<group>"; };
+		E99730DA492F8D00B6E0D82BA476C0FF /* SSZipArchive.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSZipArchive.h; path = sfunctional/sfunctional/SSZipArchive/SSZipArchive.h; sourceTree = "<group>"; };
+		EA9384699A845FCD204026EA029BCBED /* sha1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha1.c; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.c; sourceTree = "<group>"; };
+		EC172F8C967AD22AA9DD0EADFA4DDDAD /* minishared.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = minishared.h; path = sfunctional/sfunctional/SSZipArchive/minizip/minishared.h; sourceTree = "<group>"; };
+		F03E3E47F90A3F3D2877A8A18D7A1D11 /* aesopt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aesopt.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aesopt.h; sourceTree = "<group>"; };
+		F79FBDDDDAF55BB22C481AF00A00598B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA04112862228F39005ADFD6611BC2DC /* UrlDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UrlDecoder.swift; path = sfunctional/sfunctional/UrlDecoder.swift; sourceTree = "<group>"; };
+		FA309126883830E3DF58C2C66E31C1A7 /* aestab.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aestab.h; path = sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.h; sourceTree = "<group>"; };
+		FD09A2D68A20C0005E924C4CB9E6B7D5 /* sfunctional-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sfunctional-umbrella.h"; sourceTree = "<group>"; };
+		FF65DAD0576545770AF00EF872906A72 /* SystemUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemUtils.swift; path = sfunctional/sfunctional/SystemUtils.swift; sourceTree = "<group>"; };
 		FF779DDADBA619ACED824DC6E34737F5 /* TangramKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TangramKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -239,48 +243,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FB1EF9DC09DD9FE0CDA60DD796923E1 /* Support Files */ = {
+		093502D0E512D4E3621DCB61DD6D295E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2B684FC8D33F4640E44068B3D0477D52 /* Info.plist */,
-				9D6DB3FDEF1028DB261EDF93961C58EE /* sfunctional.modulemap */,
-				82614251181A0CA30179C212F7A541D5 /* sfunctional.xcconfig */,
-				A03DC2E0D890601599837D0190B516AF /* sfunctional-dummy.m */,
-				DE23BFD81243DA0555B75377CC6EB734 /* sfunctional-prefix.pch */,
-				3F20200A7DCC3DE45BBB94C0884C6417 /* sfunctional-umbrella.h */,
+				DD4E2C64FEC3D7F6AD8D90308ED535A2 /* Info.plist */,
+				BB21CF5075B86680053103A1B0412296 /* sfunctional.modulemap */,
+				5F178D7959B0FA924AD2EACD6158B575 /* sfunctional.xcconfig */,
+				BC6CFC261AC467A1830B3B78BAADB688 /* sfunctional-dummy.m */,
+				52DF0AA2DAE26F63BA7BF49CCC175FDB /* sfunctional-prefix.pch */,
+				FD09A2D68A20C0005E924C4CB9E6B7D5 /* sfunctional-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/sfunctional";
 			sourceTree = "<group>";
 		};
-		275FAB71A6164363A04D987E8D6FB4B5 /* Pods */ = {
+		2B267B32C6FBE5A18E090469484C07E7 /* TangramKit */ = {
 			isa = PBXGroup;
 			children = (
-				962E5543BB7395A6685548922AAF2D7E /* sfunctional */,
-				39608B100E70B8A59AD6ACCC84C4CDC3 /* TangramKit */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		39608B100E70B8A59AD6ACCC84C4CDC3 /* TangramKit */ = {
-			isa = PBXGroup;
-			children = (
-				72BF531381765960E148F2F9E4086774 /* TangramKit.swift */,
-				2D4771577484B62DBC2CFF25FC454AF8 /* TGBaseLayout.swift */,
-				34C8B7A869E68847AA4DAED9C88F9495 /* TGDimeAdapter.swift */,
-				A16EB57712B5392525BD8A3105C39005 /* TGFloatLayout.swift */,
-				147530F3A05E003975505873FCFB6F1E /* TGFlowLayout.swift */,
-				240DEEF4DF9BFCB552366B71572920DC /* TGFrameLayout.swift */,
-				443C6A9FBFDDFF72B35CF0ABCA79DFA3 /* TGLayoutPos.swift */,
-				C841917E4C9553F94E69674B8D46DDD7 /* TGLayoutSize.swift */,
-				4EA8DECD714E1E03079D2BBD9816F4E5 /* TGLayoutSizeClass.swift */,
-				A92503D493E8ADA8AD5B4AC950A2CD8D /* TGLinearLayout.swift */,
-				07F5AF301CB6995648B4758C80EB33EE /* TGPathLayout.swift */,
-				56BF6BC62E0ED01DBAC69AF6D8662760 /* TGRelativeLayout.swift */,
-				26A5A23196D128B4AE4212A3D3731B37 /* TGTableLayout.swift */,
-				D288A2EBB8A8F7AF1F23DE6F6781795E /* Support Files */,
+				7F428A1CF087999E1A78B1B3395B9B81 /* TangramKit.swift */,
+				6D3F54377909D911EB412C4A0D7891F8 /* TGBaseLayout.swift */,
+				017B4F9BF922571A61BA724D8FFC920F /* TGDimeAdapter.swift */,
+				1CD4C2D68CD281C4DCE465BC5DF62600 /* TGFloatLayout.swift */,
+				17EABA9E0B13565E0B7801B3225D6549 /* TGFlowLayout.swift */,
+				8401FA492702FD9D8FF866D707A5500E /* TGFrameLayout.swift */,
+				0F1793DB05A55D2E597A1438981B1D25 /* TGLayoutPos.swift */,
+				419F817B9326A6D8F11BDE45EBE9EC65 /* TGLayoutSize.swift */,
+				61EAA89D28714D939DD05B5A7B4D69E9 /* TGLayoutSizeClass.swift */,
+				53BDD025C5E2371B61BAFFE5617CF19F /* TGLinearLayout.swift */,
+				39E66C70C72215E1737A60EA2C56E77C /* TGPathLayout.swift */,
+				D00BB4F0CD0C94A34703C2F4332303EC /* TGRelativeLayout.swift */,
+				CBBCDAB8054284123FAE0A0CAA29E6AD /* TGTableLayout.swift */,
+				54D8B39C325FC20656CF8F174069F918 /* Support Files */,
 			);
 			path = TangramKit;
+			sourceTree = "<group>";
+		};
+		54D8B39C325FC20656CF8F174069F918 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F79FBDDDDAF55BB22C481AF00A00598B /* Info.plist */,
+				A8A1B05BB2DD840350699F2F914B39CE /* TangramKit.modulemap */,
+				A5875A8CCBE728D6098DF6900D9B209D /* TangramKit.xcconfig */,
+				5AA3B2F8501722F05E43DDF4E2282ECA /* TangramKit-dummy.m */,
+				D6F8D3D04AA44B500C86CFDBA006C6ED /* TangramKit-prefix.pch */,
+				07E612729FD456149B302C3895C60C1A /* TangramKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TangramKit";
+			sourceTree = "<group>";
+		};
+		73791A79E24422A75615A9907C6B1DD5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AF4A374B5FE33FF2395AF77C189E3E07 /* sfunctional */,
+				2B267B32C6FBE5A18E090469484C07E7 /* TangramKit */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		77A9A4D5D616B3355CB00144AED2CD84 /* Pods-YuGiOhCard */ = {
@@ -306,76 +324,78 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				275FAB71A6164363A04D987E8D6FB4B5 /* Pods */,
+				73791A79E24422A75615A9907C6B1DD5 /* Pods */,
 				BD72B1DE8128D4039DE3421DE16AEAB5 /* Products */,
 				B9FD839F8B1BA35A19D0174E9BA06001 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		962E5543BB7395A6685548922AAF2D7E /* sfunctional */ = {
+		AF4A374B5FE33FF2395AF77C189E3E07 /* sfunctional */ = {
 			isa = PBXGroup;
 			children = (
-				F1D4F8B3588E58046EE5A778D84C1ED9 /* aes.h */,
-				8DEC7550BFFF706FF5399FF6E4105352 /* aes_ni.c */,
-				0D15409A64415C938A091071C44D48F6 /* aes_ni.h */,
-				D64910471C68C49F331008F8C773D184 /* aescrypt.c */,
-				5B47F963A386423E5DEC0E4DB52C8D7F /* aeskey.c */,
-				068E43498AB11BA49971A096B6DDEF6C /* aesopt.h */,
-				7FC94F16A6BA22A307E365079A7F500C /* aestab.c */,
-				AD360D75437D78827309BF7D876ECBA8 /* aestab.h */,
-				9C1A77618C6051A1137B910586CFDBA5 /* brg_endian.h */,
-				A028A385E705B333C59F135BF7C126D9 /* brg_types.h */,
-				C71644E365FF1DC2D26A1A63587989B0 /* BundleUtils.swift */,
-				80AB6361E7394DD7B7A8C27FEF02F150 /* contents.xcworkspacedata */,
-				261757C4CC52079E63CC23D202F6946A /* ContextUtils.swift */,
-				AC2CA9CE3983DF5A36B94ED42E8A85BC /* crypt.c */,
-				8465CD5D6BF40E291F325134545C5645 /* crypt.h */,
-				68B682655AE45D38301275BC9586EAE4 /* DatetimeUtils.swift */,
-				2C6C58B0E475A9C2A9AC42680CB6A3A7 /* DownloadUtils.swift */,
-				BBE7FEE7CAAFD250F832986FE3C7C8CC /* Extensions.swift */,
-				4ED5F23CF32F692178B5919D51BEDA96 /* fileenc.c */,
-				46DD1DA1C69E6CA3DA457549DD2DCF03 /* fileenc.h */,
-				9C74BED9B1605BFAB2279B0A2C945FF2 /* FileUtils.swift */,
-				68AB6FBA34ED0E1F6D24870F5A1A59EC /* hmac.c */,
-				A0053A68930AC7721C533BC97E31419D /* hmac.h */,
-				BBBE90A0C533C1D6688C0497D4B97C06 /* HttpUtils.swift */,
-				AFE11141F1DB15CE3510E039E56903E6 /* IDEWorkspaceChecks.plist */,
-				165F5FD554D604E3F176DE9B7FB95897 /* ImageUtils.swift */,
-				B25BD511B78711126F8C3F91D8387A59 /* Info.plist */,
-				46B2F164D5D88F83FB14E67130A8E92F /* Info.plist */,
-				C0E66D086FB81A61F07D07387DACCD79 /* ioapi.c */,
-				FE85F6E745F3A0547343550F102FB33C /* ioapi.h */,
-				6BF7A614A5E23F94B24E5BB6D2AC18AF /* ioapi_buf.c */,
-				860E49CF6B2C9F5D88C3F0F4EACA3DB2 /* ioapi_buf.h */,
-				50670637EA0A35FC5D9777ED7854430A /* ioapi_mem.c */,
-				AD68A12E1B6BF351886ABA624AC9A2FB /* ioapi_mem.h */,
-				0431A526B9D7B977B36BEB8A34737CB5 /* minishared.c */,
-				CCD7CF80C92F06874CCEF0A73F8A1EBD /* minishared.h */,
-				8527327E4E844DFD24EC4F498E246C36 /* prng.c */,
-				5CC27AF2591C3E066D1853CF92ECC62B /* prng.h */,
-				8C15D493A7D7C89AEBD99A32B9FE0AF3 /* project.pbxproj */,
-				A37EE1D34BE9CB85BDB7ADE54B83AA85 /* pwd2key.c */,
-				70D4496E85717CD20922F5CCE7BEE926 /* pwd2key.h */,
-				8467E3240D78913C3CF8C8933C740906 /* sfunctional.h */,
-				7AC7B38205E4AC6EA7951024DA91D9D1 /* sfunctional.podspec */,
-				11C9C271161BC7F5154F7EE97D0AB666 /* sha1.c */,
-				92AD335C307923442E3FCD5F1E8EB013 /* sha1.h */,
-				C522E72893DCEDDF806AD17805D4D04B /* SSZipArchive.h */,
-				EF76C742E9BDB9D1C20083DF6DEF8A5E /* SSZipArchive.m */,
-				51A5BE48DAC57EF1B6322BB260017880 /* SSZipCommon.h */,
-				171228CF114C4A993C088AAF9D530641 /* SysEmu.h */,
-				77C7C8C55C05E5088468791A36A9E7BD /* SysEmu.m */,
-				3E4E8C2CE3246768ADA8FCB074CB89C1 /* SystemUtils.swift */,
-				EAC28A1045BAE3A21D5702C894382CC7 /* TableViewAdapter.swift */,
-				757FB6AA08E84AF93B81F9F614095270 /* ToastUtils.swift */,
-				9AD78BC1AF1C86A18B7B7427B02667D4 /* unzip.c */,
-				BE17241C0C01CFA00CEC5A4BBACE70FD /* unzip.h */,
-				8C439CC52D3E3C61B9E7F054E11D06B6 /* UrlDecoder.swift */,
-				8E893985E5196505D78AD3249F26C21B /* zip.c */,
-				069758EF373460D7AF2DCAB47BF7E91E /* zip.h */,
-				8709FC4343A19A9489C9387F999A2310 /* ZipArchive.h */,
-				5D94F408FE749891F5B7049E13BE1983 /* ZipUtils.swift */,
-				0FB1EF9DC09DD9FE0CDA60DD796923E1 /* Support Files */,
+				D3A6C1336089C5C4BFA12DDE05C0F69A /* aes.h */,
+				D1694172BBA61558C68403DED1D52EBA /* aes_ni.c */,
+				57B56AFFF7078E43268247F55D792734 /* aes_ni.h */,
+				606D2975C3ED2E378A3A7F5660C6FB45 /* aescrypt.c */,
+				B25F1E3F720F4FD270577629DA105C34 /* aeskey.c */,
+				F03E3E47F90A3F3D2877A8A18D7A1D11 /* aesopt.h */,
+				B33C7927FD815EAA762243855563025E /* aestab.c */,
+				FA309126883830E3DF58C2C66E31C1A7 /* aestab.h */,
+				2D34F931E6E062674C49A1975A374AEA /* brg_endian.h */,
+				5517FF647D3CB6D9AD3B758B433F2FBD /* brg_types.h */,
+				83A2EC40C7FADD43CCA328DB42E43B19 /* BundleUtils.swift */,
+				2066FC63F56C5C89FC5CB49A1DC919A2 /* contents.xcworkspacedata */,
+				655A1D42E14C816A87893E4D5E815472 /* ContextUtils.swift */,
+				C576FF3DC62077F15F49270072C245B2 /* crypt.c */,
+				E762B79BC21F36947CF52F2D7A60D33E /* crypt.h */,
+				3F78C57C69B6F45F28CE117FF9308ED6 /* DatetimeUtils.swift */,
+				E55805F79F3B12870210327701530408 /* DownloadUtils.swift */,
+				63E3596E0D383FAC60A9C3880B7B3DA5 /* Extensions.swift */,
+				6CE38543763F9A70FEDC0A10E43FB0DA /* fileenc.c */,
+				DC420D64E4BE74511F73E84EBAD7BE97 /* fileenc.h */,
+				53A73DD005BBD2B81D638FCBF26441BE /* FileUtils.swift */,
+				E18E9A333046494ED982C7822D52AC85 /* hmac.c */,
+				39FC323DD1C271A8BEC35FAF636F7834 /* hmac.h */,
+				6D3953453ECB27809C4343068DDBD8EB /* HttpUtils.swift */,
+				6371EF82804EC5CA69B6A76B546A44DF /* IDEWorkspaceChecks.plist */,
+				297955D03D61CB426065A5F529E9724A /* ImageUtils.swift */,
+				67C308C46397F0885CFC6D85EE3DE169 /* ioapi.c */,
+				E9461120C0B6F8FDDF731C79B4B86FEC /* ioapi.h */,
+				E7960728CCFC66DC05FAA26E77C23D28 /* ioapi_buf.c */,
+				B60D2E95356F02CC520028FEC4EDDF6C /* ioapi_buf.h */,
+				A6AAD8D1918DBFFD90894331D28A1241 /* ioapi_mem.c */,
+				755C0663BCCC89F89D7A102EF3C2F960 /* ioapi_mem.h */,
+				3CF19788E0E74AA28558A9646E8A1D3B /* minishared.c */,
+				EC172F8C967AD22AA9DD0EADFA4DDDAD /* minishared.h */,
+				DDD6877F971914CABC3E2B7BFEAF5ACD /* PopupViewController.swift */,
+				145FB6B33215D7D14BB464C6CFD0489D /* prng.c */,
+				297C0BFCBEA845312AE0CF1198158BB2 /* prng.h */,
+				41F15556A8F81C6BA1A649231D757DEC /* project.pbxproj */,
+				5893916F088870F90FC6779CB76F341D /* pwd2key.c */,
+				1E4E4A33B6829D64F6D404B723FEB2FE /* pwd2key.h */,
+				7B6DA202CA8425909BABDF2CA6066C57 /* RegExUtils.swift */,
+				215FB9769CA87C37D8BF3A30194A0E72 /* SelectorBlock.h */,
+				469E269CAD9A7779E79EDE2688032818 /* SelectorBlock.m */,
+				148380F9FA49278EBE9E026071A09C9C /* sfunctional.h */,
+				4D71225195F5BB4C517B00BE78D8C0E5 /* sfunctional.podspec */,
+				EA9384699A845FCD204026EA029BCBED /* sha1.c */,
+				4EAA320EC6901FA1B4AD876D14626E68 /* sha1.h */,
+				E99730DA492F8D00B6E0D82BA476C0FF /* SSZipArchive.h */,
+				99FBBCB9E9D2CC845E2C1B5FD551BD2F /* SSZipArchive.m */,
+				858457351805540D51950256FA103B66 /* SSZipCommon.h */,
+				E15153A2962563CDF92774EA81D3B8B1 /* SysEmu.h */,
+				08212C143C7D22717353198D9DDC2DEB /* SysEmu.m */,
+				FF65DAD0576545770AF00EF872906A72 /* SystemUtils.swift */,
+				3A35CB4346440B55BCC39E70488BF4A1 /* TableViewAdapter.swift */,
+				A09DCEEDDDB8D67F61640C991EBBB5A8 /* ToastUtils.swift */,
+				C4A80655DE537C390D36AC3C4A8D87C3 /* unzip.c */,
+				0E93CE5A1B8E98459D6184B9C0B88061 /* unzip.h */,
+				FA04112862228F39005ADFD6611BC2DC /* UrlDecoder.swift */,
+				1AC4E79E77EA46B659CC909138E4464E /* zip.c */,
+				49A20BC15FC703772360C98DBBAE5E57 /* zip.h */,
+				994DE16B73B6F6A858457459750D634B /* ZipArchive.h */,
+				12B9CC4090988CAC2A423099950A461C /* ZipUtils.swift */,
+				093502D0E512D4E3621DCB61DD6D295E /* Support Files */,
 			);
 			path = sfunctional;
 			sourceTree = "<group>";
@@ -406,20 +426,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D288A2EBB8A8F7AF1F23DE6F6781795E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C561C8299AF6489986F17DE55859C0BF /* Info.plist */,
-				530B3FC08A0F4E9EFD9E220BD7AD53A0 /* TangramKit.modulemap */,
-				ADBFAA26E1CA444210B9FE2213FB108B /* TangramKit.xcconfig */,
-				027894E46B825FDE8A173E93EBC4E19A /* TangramKit-dummy.m */,
-				DBAF692667F06CA1EE136863CA71D844 /* TangramKit-prefix.pch */,
-				B4457E9EFFAA06AF6CE4E4578FA49452 /* TangramKit-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/TangramKit";
-			sourceTree = "<group>";
-		};
 		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +437,38 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3BDB6EF7E2247C73CE972F9DE7B85A77 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0AA546168662640F2ADF1C44A57E7AA /* aes.h in Headers */,
+				B46AC3F5F7947DE4006F993437E7BE09 /* aes_ni.h in Headers */,
+				9266E960596D78A837712FACF87889C6 /* aesopt.h in Headers */,
+				0ECB828B5DE0777018E05524994E2284 /* aestab.h in Headers */,
+				F0DA80B97B16351D621ED6804E60B318 /* brg_endian.h in Headers */,
+				21105D4A7AF907FD152687E5228C3938 /* brg_types.h in Headers */,
+				314FF914DFDE4CB8A33167B68B7FD90C /* crypt.h in Headers */,
+				11C2F0E06DA302BAA6624E824AC7C747 /* fileenc.h in Headers */,
+				899A0052ED4FD84578E4FBB26ED26D29 /* hmac.h in Headers */,
+				F9FB4F74E9A7612E6601F6492105CD06 /* ioapi.h in Headers */,
+				14FBCBE4128F5769B706FBC6E8FC3DCE /* ioapi_buf.h in Headers */,
+				3FC2D46D1476C8353A7CE2CBE4732580 /* ioapi_mem.h in Headers */,
+				1EAFC1D8EA32923B5C86A993FD8E835E /* minishared.h in Headers */,
+				4CFCDA07E394895B9C5E25EBCDE7A372 /* prng.h in Headers */,
+				5AD754403574FE7DEE0EF557F3B43451 /* pwd2key.h in Headers */,
+				9DC51EB6DEE4373FA421753F9F456988 /* SelectorBlock.h in Headers */,
+				241B5ED3019205E7655DF55A2286C34A /* sfunctional-umbrella.h in Headers */,
+				F62E010DCA4D1E14B30908040E6DFE29 /* sfunctional.h in Headers */,
+				151CCA094832EAFAAA26F6048F6C411C /* sha1.h in Headers */,
+				74167966ACB9C2D2D3F329DD42CDAE58 /* SSZipArchive.h in Headers */,
+				5E0DF31A67E283706EE28E791F28034C /* SSZipCommon.h in Headers */,
+				7E793EB3FAC481141D46DBB239841D5A /* SysEmu.h in Headers */,
+				EFDB2C7DB23A58E31E553A2C14A2268B /* unzip.h in Headers */,
+				5CA3D909209E43968E9EA7F47A79A306 /* zip.h in Headers */,
+				A8B2D5AA396F893C5F0891A692693A59 /* ZipArchive.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5194923C139B4D6F354590DE857D3199 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -444,37 +482,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3B22CD859F512FC7EDCD820657CAC07 /* Pods-YuGiOhCard-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BDE8535CE3E7C3550182316E48EC9F50 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				94B59D20BC89A5DB35CB4A2C04DB7D38 /* aes.h in Headers */,
-				902FA43F043508EE942AEC142DE83D03 /* aes_ni.h in Headers */,
-				7B0D7FD74CC257503280101A5F6C960F /* aesopt.h in Headers */,
-				D1AD23828818D2B7353D45CDCD161E25 /* aestab.h in Headers */,
-				70F963EA56E91CB398382B6B1ABB483D /* brg_endian.h in Headers */,
-				4EC417C694717CCE8CCC73D9A5C0A767 /* brg_types.h in Headers */,
-				1CB8470665FC2C8FD5E6A88D326FA39B /* crypt.h in Headers */,
-				832A8E535173B49AD4B5E945B2FAE58C /* fileenc.h in Headers */,
-				776CEBBD4159556DF7A3F604AAFF1026 /* hmac.h in Headers */,
-				67F7B80BEE2E9C3D9B466A28CBFF0B6D /* ioapi.h in Headers */,
-				2EB685F58FAAF726398D65ABF0D33EA7 /* ioapi_buf.h in Headers */,
-				52C79864FFA5F0242FD7759D67DFDBD5 /* ioapi_mem.h in Headers */,
-				FC7A4A93B40D6F1A7485BFE24C470367 /* minishared.h in Headers */,
-				B700D9B2945AADB489A40375F2E8311A /* prng.h in Headers */,
-				3504CF568DA574097431C86EEE1E2D58 /* pwd2key.h in Headers */,
-				7D3EB2535CC6BB85C2EA60147F83A176 /* sfunctional-umbrella.h in Headers */,
-				65D39E506F8F371D49BAC9DBD5272792 /* sfunctional.h in Headers */,
-				6F97646795475AA7603ADC26BFDDFE1E /* sha1.h in Headers */,
-				37EFE284849D9EBD8EA6FA3D1A52CBC4 /* SSZipArchive.h in Headers */,
-				114921CC3EF06E3EDB9E917A5F5903A5 /* SSZipCommon.h in Headers */,
-				04A1CA631DD537E9F35412C2F8EDE7DF /* SysEmu.h in Headers */,
-				7A1E88B5A2C21AD701913367C84938A1 /* unzip.h in Headers */,
-				000B7E1030EE725296AE2C2F9BEB924D /* zip.h in Headers */,
-				B46A7DABF2B734E9961862B5D97E3046 /* ZipArchive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,9 +511,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFFA1904012F80A89858D6991A43EFB5 /* Build configuration list for PBXNativeTarget "sfunctional" */;
 			buildPhases = (
-				DA21983D63E1B93730612FC8177F2356 /* Sources */,
+				BB62FF10C8FE7529A7AA1A710114098F /* Sources */,
 				5698949301A1EC61244A5975F350F38D /* Frameworks */,
-				BDE8535CE3E7C3550182316E48EC9F50 /* Headers */,
+				3BDB6EF7E2247C73CE972F9DE7B85A77 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -521,7 +528,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 010439BD6400FD8F1526EA3AA81C61DA /* Build configuration list for PBXNativeTarget "TangramKit" */;
 			buildPhases = (
-				DE34F0396F58CEC458C90D0C03D80F2E /* Sources */,
+				6F9B15F16ABAB30161C5CC9F39A8111A /* Sources */,
 				07BC20E42611207BB8DB01483E1C7535 /* Frameworks */,
 				5194923C139B4D6F354590DE857D3199 /* Headers */,
 			);
@@ -541,7 +548,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -563,77 +570,78 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6F9B15F16ABAB30161C5CC9F39A8111A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C72CFE29D982AA867259DBF576C3D411 /* TangramKit-dummy.m in Sources */,
+				A2D0CC0C4A602A6CA010632C521A40C5 /* TangramKit.swift in Sources */,
+				B1BADF9FB06215B5A17DD191AA780775 /* TGBaseLayout.swift in Sources */,
+				6AB7103E1A2B200D2DA7950D509E61EE /* TGDimeAdapter.swift in Sources */,
+				E850883D38F5AF4225F7AC60EBE2D905 /* TGFloatLayout.swift in Sources */,
+				A4CECEDB47310AC6555293FC62785140 /* TGFlowLayout.swift in Sources */,
+				824E71E3A61521F7D41BD191F8B35766 /* TGFrameLayout.swift in Sources */,
+				638D34ED6659017166BC6929031D583D /* TGLayoutPos.swift in Sources */,
+				63E8AA009A29637F9AFD152C64027B97 /* TGLayoutSize.swift in Sources */,
+				574E64AA734AC235E5E9EF45C68C4130 /* TGLayoutSizeClass.swift in Sources */,
+				CD425C967EBC7C7D799A7F795A83B7CA /* TGLinearLayout.swift in Sources */,
+				8F70B1C85AF9513410877CC36E6A9F5D /* TGPathLayout.swift in Sources */,
+				52E28A564CCC7666107B3CC6A062E48E /* TGRelativeLayout.swift in Sources */,
+				098F911491865E532D5C20F2B4FBF83E /* TGTableLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB62FF10C8FE7529A7AA1A710114098F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64130A2777915D46D79F1C4F007A781A /* aes_ni.c in Sources */,
+				038E48D580AB53A7D0939EEDEE78E24B /* aescrypt.c in Sources */,
+				5267E37C09622F03F42B7E3F03663511 /* aeskey.c in Sources */,
+				0EB04A59B459CA5A4F51CE7EA5E77EC4 /* aestab.c in Sources */,
+				BD179597DF5FE5B9895DA9C0AEB1315C /* BundleUtils.swift in Sources */,
+				8C54BD110A63F662B9F0D595992AD339 /* contents.xcworkspacedata in Sources */,
+				6037AF59A6BE69A3777B886A6303287E /* ContextUtils.swift in Sources */,
+				6C87A12C3315C603F8B020CDEDAFBC4C /* crypt.c in Sources */,
+				A04F462349455760EBC3575273D4DB73 /* DatetimeUtils.swift in Sources */,
+				5ED08E1844622B30911231FC65A0BAD2 /* DownloadUtils.swift in Sources */,
+				119060810AEE33759E3E1DC191255BD5 /* Extensions.swift in Sources */,
+				6AB23F6DE96D5DF35C3628192B655910 /* fileenc.c in Sources */,
+				295DCB2ADFA93FCA739951F2B7277B68 /* FileUtils.swift in Sources */,
+				A2DFEC6807A1565B853702A9BEE4C32B /* hmac.c in Sources */,
+				F1252E52EC2825F5B7D2015616831D5E /* HttpUtils.swift in Sources */,
+				65709EFAA259C10DC9F93490FFD79CBE /* IDEWorkspaceChecks.plist in Sources */,
+				E108F679A8AA0491C054C3D63706936F /* ImageUtils.swift in Sources */,
+				078AD76B47130AF688CBF0874290F392 /* ioapi.c in Sources */,
+				D3657B3240239E3F3ED6BC5629C6C427 /* ioapi_buf.c in Sources */,
+				639F8F41512C7ACAF926007ED00010D1 /* ioapi_mem.c in Sources */,
+				F13C361E01177AF4122D90CFDB350603 /* minishared.c in Sources */,
+				64BAC28E5A67319384852276E5D9DFC7 /* PopupViewController.swift in Sources */,
+				2BAD71CBC57F6036E56EAC79A22B28CE /* prng.c in Sources */,
+				30D5C2AA8DD03DAAA59A5A325742D702 /* project.pbxproj in Sources */,
+				063A271B0FF3F002C05FDCE89B98BC9B /* pwd2key.c in Sources */,
+				3C16D6AFC3059EBD30C90AE3AA6567A7 /* RegExUtils.swift in Sources */,
+				45DE3FEA832B8474B027B63748E75DD7 /* SelectorBlock.m in Sources */,
+				8FEA0BA5520BD11F1637C7204B6EC825 /* sfunctional-dummy.m in Sources */,
+				FD1955F0930A8EAC9404B10FCE94B08A /* sfunctional.podspec in Sources */,
+				82B46B20BC8933795DE85D17ABABB67B /* sha1.c in Sources */,
+				D7AB9206DF50946D5E8CED87FA149FD9 /* SSZipArchive.m in Sources */,
+				177D30C7D579C2B994FA081BBC4EB29A /* SysEmu.m in Sources */,
+				65C144408DB5EA5B1BF3611B0F96B705 /* SystemUtils.swift in Sources */,
+				096B944074DB9A850A8E14D9A4BF22C0 /* TableViewAdapter.swift in Sources */,
+				2A2DD937515C7F186DF6E27002E78CD8 /* ToastUtils.swift in Sources */,
+				4CFA7BEF28E9D882A7A2A9950A97D1A2 /* unzip.c in Sources */,
+				E7D27010DFC383FE5EC6777742144DE9 /* UrlDecoder.swift in Sources */,
+				4C8FA503A277239FE3345A9CB9CA2F06 /* zip.c in Sources */,
+				43F2ACF683B4CDE1DCE700E6A55A6960 /* ZipUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBED726C42046E3712EFBE88B1249433 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C83AB7DFA30F5E7676077E9E6D8F3C4D /* Pods-YuGiOhCard-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA21983D63E1B93730612FC8177F2356 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				41FF65F0C80BF829A99E6883DE120C4B /* aes_ni.c in Sources */,
-				426D0F4ECE9D2AA462963B9B906A652A /* aescrypt.c in Sources */,
-				5A5D8914A78FFD8DCD667F60E1883BF2 /* aeskey.c in Sources */,
-				6325B4BEFAFA53D48A2FD652F51903A2 /* aestab.c in Sources */,
-				656307916A75C3B8C70C7730FB68A4F1 /* BundleUtils.swift in Sources */,
-				F81275E81ECF7C424F9142F3766870B1 /* contents.xcworkspacedata in Sources */,
-				BDD7F8AC18597D3313F57B0984153B2D /* ContextUtils.swift in Sources */,
-				579A0CA0B7B010645FAFB3DEAEDEA6A6 /* crypt.c in Sources */,
-				0FA81D4472E43D552094FD577B78C231 /* DatetimeUtils.swift in Sources */,
-				3690C45A1C0223BFF7CAAAD7A534F35F /* DownloadUtils.swift in Sources */,
-				BCE331812883FB99FE837C9F257D0561 /* Extensions.swift in Sources */,
-				2A3E76A59E5FCA50FF33FEFED9ACB015 /* fileenc.c in Sources */,
-				6B9E5942CD82EE189B094C20EF64E730 /* FileUtils.swift in Sources */,
-				4850907287AEC9AF56BE758F32A857D3 /* hmac.c in Sources */,
-				FCDD32866DA5F1F700FD35F5E4B627C4 /* HttpUtils.swift in Sources */,
-				74EF9DC1D831055F6451CE85A67FE985 /* IDEWorkspaceChecks.plist in Sources */,
-				A4FC737C5074368776C94655E40BBC41 /* ImageUtils.swift in Sources */,
-				8EC6A66D99F7D627B048840D829D2BE9 /* Info.plist in Sources */,
-				57B764846F6E57A5FE85119123747432 /* Info.plist in Sources */,
-				23E7C6BBA0BE31403C222BCB54251B43 /* ioapi.c in Sources */,
-				E28D832FB4751C4EB3AF23BDB1A13D60 /* ioapi_buf.c in Sources */,
-				3C61FB853DBDE6CFF326100C18DB0C9B /* ioapi_mem.c in Sources */,
-				6396B9EF7F7BE7DE4294D8FFAB943403 /* minishared.c in Sources */,
-				FA81BBD8B9397F78B1A56FF0E733659E /* prng.c in Sources */,
-				631BC4716263D78DB2A2BB3FFF5BDD24 /* project.pbxproj in Sources */,
-				2D7E1D114D49B4B0B43DD7F3CCE11841 /* pwd2key.c in Sources */,
-				9E1E699AB5B6E9EDC6049341CFDD9622 /* sfunctional-dummy.m in Sources */,
-				63E957558D832ECAD2AA61DDD83F46CB /* sfunctional.podspec in Sources */,
-				EC57870E967354EEFB51FE2AFC19A620 /* sha1.c in Sources */,
-				1DBB52888DFA00C8550CE35070D6CF51 /* SSZipArchive.m in Sources */,
-				4531ACC04D1B88486F6A4E9F49243D8D /* SysEmu.m in Sources */,
-				2CF860134B20832B5897FAD5F4D8BDDE /* SystemUtils.swift in Sources */,
-				541707FA5EB4C7E9AEEFAFFDF1E039AE /* TableViewAdapter.swift in Sources */,
-				06BFB5179A095978DC5A068DB6A60A94 /* ToastUtils.swift in Sources */,
-				D8A65E4D0FAB880B92554A11228EB6AF /* unzip.c in Sources */,
-				D4342B2AC34760FC4C098928EC53C809 /* UrlDecoder.swift in Sources */,
-				8322D1716D706D7EEC83A6FE56ECE664 /* zip.c in Sources */,
-				60A05927A73F026B6F34D2F51ED33425 /* ZipUtils.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE34F0396F58CEC458C90D0C03D80F2E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EF19DEC9AC2DA4B9456967DA9EBDED91 /* TangramKit-dummy.m in Sources */,
-				1E996CE98E8034375F93E78186C14669 /* TangramKit.swift in Sources */,
-				602255B1C282677F486D6C2FCCA38676 /* TGBaseLayout.swift in Sources */,
-				7611375A4603BA411A6DD92096E83C89 /* TGDimeAdapter.swift in Sources */,
-				4E9C2F48F2040BE266FA45BCD9D47054 /* TGFloatLayout.swift in Sources */,
-				4DD83378A4772B432121CBA88E926125 /* TGFlowLayout.swift in Sources */,
-				D2F0BFE97BBE317C4FEA3DA40B10DD19 /* TGFrameLayout.swift in Sources */,
-				1D4785D1C7F6823EAC712F4E5009971F /* TGLayoutPos.swift in Sources */,
-				ED296CBBDA4EF49F2D481DDB36406FA3 /* TGLayoutSize.swift in Sources */,
-				F551C98552DDE00777C5EB2F16B67DC9 /* TGLayoutSizeClass.swift in Sources */,
-				0D4F673CA0424E7A0EB006803B62AB35 /* TGLinearLayout.swift in Sources */,
-				505F0F1E2934711F60F493DC8DD44418 /* TGPathLayout.swift in Sources */,
-				6E2560BC01A8DC9FB8A8F3F0788E67C0 /* TGRelativeLayout.swift in Sources */,
-				6B9141AE45034640DA3DF6C32ABF5E2B /* TGTableLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,9 +697,9 @@
 			};
 			name = Debug;
 		};
-		6991B58B73C2739E3BA339FC6335C3B2 /* Debug */ = {
+		59EA800D2597E4962BB9C5DB089CF014 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADBFAA26E1CA444210B9FE2213FB108B /* TangramKit.xcconfig */;
+			baseConfigurationReference = A5875A8CCBE728D6098DF6900D9B209D /* TangramKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -720,9 +728,9 @@
 			};
 			name = Debug;
 		};
-		73B88C8428366F73247B4E9EBBA72225 /* Release */ = {
+		6D00E0C0055A768353B1A0F93346831C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADBFAA26E1CA444210B9FE2213FB108B /* TangramKit.xcconfig */;
+			baseConfigurationReference = 5F178D7959B0FA924AD2EACD6158B575 /* sfunctional.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -733,18 +741,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TangramKit/TangramKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TangramKit/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/sfunctional/sfunctional-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/sfunctional/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TangramKit/TangramKit.modulemap";
-				PRODUCT_NAME = TangramKit;
+				MODULEMAP_FILE = "Target Support Files/sfunctional/sfunctional.modulemap";
+				PRODUCT_NAME = sfunctional;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -766,7 +774,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -774,7 +781,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -814,6 +820,37 @@
 			};
 			name = Debug;
 		};
+		8E08FA4005845C485CF1FBDF312DC681 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F178D7959B0FA924AD2EACD6158B575 /* sfunctional.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/sfunctional/sfunctional-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/sfunctional/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/sfunctional/sfunctional.modulemap";
+				PRODUCT_NAME = sfunctional;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		98F29E7567052F62660DDD7069ADF73C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -828,7 +865,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -836,7 +872,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -871,9 +906,9 @@
 			};
 			name = Release;
 		};
-		CA700528DB834C2B3FA03384D0C66484 /* Debug */ = {
+		E728894B0BBC9F72588DEB3A5334C185 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82614251181A0CA30179C212F7A541D5 /* sfunctional.xcconfig */;
+			baseConfigurationReference = A5875A8CCBE728D6098DF6900D9B209D /* TangramKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -884,49 +919,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/sfunctional/sfunctional-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/sfunctional/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/TangramKit/TangramKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TangramKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/sfunctional/sfunctional.modulemap";
-				PRODUCT_NAME = sfunctional;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D5799961C84A79045B7C94E8C43EE594 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82614251181A0CA30179C212F7A541D5 /* sfunctional.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/sfunctional/sfunctional-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/sfunctional/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/sfunctional/sfunctional.modulemap";
-				PRODUCT_NAME = sfunctional;
+				MODULEMAP_FILE = "Target Support Files/TangramKit/TangramKit.modulemap";
+				PRODUCT_NAME = TangramKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.1;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -974,8 +978,8 @@
 		010439BD6400FD8F1526EA3AA81C61DA /* Build configuration list for PBXNativeTarget "TangramKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6991B58B73C2739E3BA339FC6335C3B2 /* Debug */,
-				73B88C8428366F73247B4E9EBBA72225 /* Release */,
+				59EA800D2597E4962BB9C5DB089CF014 /* Debug */,
+				E728894B0BBC9F72588DEB3A5334C185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1001,8 +1005,8 @@
 		FFFA1904012F80A89858D6991A43EFB5 /* Build configuration list for PBXNativeTarget "sfunctional" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CA700528DB834C2B3FA03384D0C66484 /* Debug */,
-				D5799961C84A79045B7C94E8C43EE594 /* Release */,
+				8E08FA4005845C485CF1FBDF312DC681 /* Debug */,
+				6D00E0C0055A768353B1A0F93346831C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

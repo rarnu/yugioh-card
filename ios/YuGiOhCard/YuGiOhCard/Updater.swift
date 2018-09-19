@@ -23,7 +23,12 @@ class Updater: NSObject {
                         vc.mainThread {
                             vc.alert(title: "升级", message: "发现新版本，点击<确定>访问最新源码", btn1: "确定", btn2: "取消") { (which) in
                                 let u = URL(string: "https://github.com/rarnu/yugioh-card")
-                                UIApplication.shared.open(u!, options:[:], completionHandler: nil)
+                                if #available(iOS 10, *) {
+                                    UIApplication.shared.open(u!, options:[:], completionHandler: nil)
+                                } else {
+                                    UIApplication.shared.openURL(u!)
+                                }
+                                
                             }
                         }
                     }

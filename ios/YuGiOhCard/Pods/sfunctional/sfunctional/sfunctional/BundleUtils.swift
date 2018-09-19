@@ -18,6 +18,16 @@ public func bundleIO(filename: String, dest: Any, isDestText: Bool = false, _ re
     BundleOperations.bundleIO(filename: filename, dest: dest, isDestText: isDestText, result)
 }
 
+public func bundleReadText(filename: String) -> String {
+    var ret = ""
+    bundleIO(filename: filename, dest: "", isDestText: true) { (succ, text, _) in
+        if (succ) {
+            ret = text! as! String
+        }
+    }
+    return ret
+}
+
 private class BundleOperations {
     
     static let BUNDLE_ERROR = "Bundle file not found"

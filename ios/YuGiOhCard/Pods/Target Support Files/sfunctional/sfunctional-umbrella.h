@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "SelectorBlock.h"
 #import "sfunctional.h"
 #import "aes.h"
 #import "aesopt.h"

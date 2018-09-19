@@ -409,7 +409,7 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
             }
             
             if ([fileManager fileExistsAtPath:fullPath] && !isDirectory && !overwrite) {
-                //FIXME: couldBe CRC Check?
+                //couldBe CRC Check?
                 unzCloseCurrentFile(zip);
                 ret = unzGoToNextFile(zip);
                 continue;
@@ -660,6 +660,9 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
     BOOL success = [zipArchive open];
     if (success) {
         for (NSString *filePath in paths) {
+            if ([filePath containsString:@"/.tmp/"]) {
+                continue;
+            }
             success &= [zipArchive writeFile:filePath withPassword:password];
         }
         success &= [zipArchive close];
@@ -709,6 +712,9 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
         for (fileName in allObjects) {
             BOOL isDir;
             NSString *fullFilePath = [directoryPath stringByAppendingPathComponent:fileName];
+            if ([fullFilePath containsString:@"/.tmp/"]) {
+                continue;
+            }
             [fileManager fileExistsAtPath:fullFilePath isDirectory:&isDir];
             
             if (keepParentDirectory)

@@ -8,3 +8,4 @@
 #import <Foundation/Foundation.h>
 #import <sfunctional/SSZipArchive.h>
 #import <sfunctional/SysEmu.h>
+#import <sfunctional/SelectorBlock.h>
