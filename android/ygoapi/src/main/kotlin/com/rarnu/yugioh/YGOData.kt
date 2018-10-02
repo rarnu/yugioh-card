@@ -85,6 +85,7 @@ object YGOData {
         var s = str
         s = s.replace("&quot;", "\"")
         s = s.replace("&#039;", "'")
+        s = s.replace("&amp;", "&")
         s = s.replace("<br />", "\n")
         s = s.replace("　", "")
         return s

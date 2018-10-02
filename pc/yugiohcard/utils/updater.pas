@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, fphttpclient, jsonparser, fpjson, jsonscanner, LCLIntf;
 
 const
-  VERSIONCODE = 1;
+  VERSIONCODE = 2;
   UPDATE_URL = 'https://github.com/rarnu/yugioh-card/raw/master/update/update.json';
 
 type

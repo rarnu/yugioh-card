@@ -11,7 +11,7 @@ import org.json.JSONObject
 
 object Updater {
 
-    private const val VERSIONCODE = 1
+    private const val VERSIONCODE = 2
     private const val UPDATE_URL = "https://github.com/rarnu/yugioh-card/raw/master/update/update.json"
 
     fun checkUpdate(activity: Activity) = with(activity) {

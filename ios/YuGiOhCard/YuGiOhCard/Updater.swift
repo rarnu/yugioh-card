@@ -10,7 +10,7 @@ import UIKit
 import sfunctional
 
 class Updater: NSObject {
-    private static let VERSIONCODE = 1
+    private static let VERSIONCODE = 2
     private static let UPDATE_URL = "https://github.com/rarnu/yugioh-card/raw/master/update/update.json"
     
     class func checkUpdate(vc: UIViewController) {
