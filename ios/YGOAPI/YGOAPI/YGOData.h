@@ -86,6 +86,7 @@
 @end
 
 @interface YGOData : NSObject
+
 +(SearchResult*) searchCommon:(NSString*) key page:(NSInteger)page;
 +(SearchResult*) searchComplex:(NSString*) name japname:(NSString*)japname enname:(NSString*) enname race:(NSString*) race element:(NSString*) element atk:(NSString*) atk def:(NSString*) def level:(NSString*) level pendulum:(NSString*) pendulum link:(NSString*) link linkArrow:(NSString*) linkArrow cardType:(NSString*) cardType cardType2:(NSString*) cardType2 effect:(NSString*) effect page:(NSInteger)page;
 +(CardDetail*) cardDetail:(NSString*) hashid;
@@ -93,6 +94,5 @@
 +(NSArray<PackageInfo*>*) packageList;
 +(SearchResult*) packageDetail:(NSString*) url;
 +(Hotest*) hostest;
-
 
 @end

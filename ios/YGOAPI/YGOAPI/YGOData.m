@@ -11,22 +11,152 @@
 #import "YGOCAPI.h"
 
 @implementation PackageInfo
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.season = @"";
+        self.url = @"";
+        self.name = @"";
+        self.abbr = @"";
+    }
+    return self;
+}
+
 @end
+
 @implementation LimitInfo
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.limit = 0;
+        self.color = @"";
+        self.hashid = @"";
+        self.name = @"";
+    }
+    return self;
+}
+
 @end
+
 @implementation CardPackInfo
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.url = @"";
+        self.name = @"";
+        self.date = @"";
+        self.abbr = @"";
+        self.rare = @"";
+    }
+    return self;
+}
+
 @end
+
 @implementation CardDetail
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.name = @"";
+        self.japname = @"";
+        self.enname = @"";
+        self.cardtype = @"";
+        self.password = @"";
+        self.limit = @"";
+        self.belongs = @"";
+        self.rare = @"";
+        self.pack = @"";
+        self.effect = @"";
+        self.race = @"";
+        self.element = @"";
+        self.level = @"";
+        self.atk = @"";
+        self.def = @"";
+        self.link = @"";
+        self.linkarrow = @"";
+        self.packs = nil;
+        self.adjust = @"";
+        self.wiki = @"";
+        self.imageId = -1;
+    }
+    return self;
+}
+
 @end
+
 @implementation CardInfo
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.cardid = 0;
+        self.hashid = @"";
+        self.name = @"";
+        self.japname = @"";
+        self.enname = @"";
+        self.cardtype = @"";
+    }
+    return self;
+}
+
 @end
+
 @implementation SearchResult
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.data = nil;
+        self.page = 0;
+        self.pageCount = 0;
+    }
+    return self;
+}
+
 @end
+
 @implementation HotCard
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.hashid = @"";
+        self.name = @"";
+    }
+    return self;
+}
+
 @end
+
 @implementation HotPack
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.packid = @"";
+        self.name = @"";
+    }
+    return self;
+}
+
 @end
+
 @implementation Hotest
+
+-(id) init {
+    self = [super init];
+    if (self) {
+        self.search = nil;
+        self.card = nil;
+        self.pack = nil;
+    }
+    return self;
+}
+
 @end
 
 @implementation YGOData

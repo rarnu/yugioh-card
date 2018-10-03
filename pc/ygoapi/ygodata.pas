@@ -8,13 +8,20 @@ uses
   Classes, SysUtils, fpjson, jsonparser, jsonscanner, fgl, nativeapi, ygorequest;
 
 type
+
+  { TPackageInfo }
+
   TPackageInfo = class
   public
     season: string;
     url: string;
     name: string;
     abbr: string;
+  public
+    constructor Create;
   end;
+
+  { TLimitInfo }
 
   TLimitInfo = class
   public
@@ -22,7 +29,11 @@ type
     color: string;
     hashid: string;
     name: string;
+  public
+    constructor Create;
   end;
+
+  { TCardPackInfo }
 
   TCardPackInfo = class
   public
@@ -31,6 +42,8 @@ type
     date: string;
     abbr: string;
     rare: string;
+  public
+    constructor Create;
   end;
 
   TCardPackInfoList = specialize TFPGList<TCardPackInfo>;
@@ -64,6 +77,8 @@ type
     destructor Destroy; override;
   end;
 
+  { TCardInfo }
+
   TCardInfo = class
   public
     cardid: integer;
@@ -72,6 +87,8 @@ type
     japname: string;
     enname: string;
     cardtype: string;
+  public
+    constructor Create;
   end;
 
   TCardInfoList = specialize TFPGList<TCardInfo>;
@@ -88,16 +105,24 @@ type
     destructor Destroy; override;
   end;
 
+  { THotCard }
+
   THotCard = class
   public
     hashid: string;
     name: string;
+  public
+    constructor Create;
   end;
+
+  { THotPack }
 
   THotPack = class
   public
     packid: string;
     name: string;
+  public
+    constructor Create;
   end;
 
   THotCardList = specialize TFPGList<THotCard>;
@@ -138,6 +163,65 @@ type
 
 
 implementation
+
+{ THotPack }
+
+constructor THotPack.Create;
+begin
+  packid:= '';
+  name:= '';
+end;
+
+{ THotCard }
+
+constructor THotCard.Create;
+begin
+  hashid:= '';
+  name:= '';
+end;
+
+{ TCardInfo }
+
+constructor TCardInfo.Create;
+begin
+  cardid:= 0;
+  hashid:= '';
+  name:= '';
+  japname:= '';
+  enname:= '';
+  cardtype:= '';
+end;
+
+{ TCardPackInfo }
+
+constructor TCardPackInfo.Create;
+begin
+  url:= '';
+  name:= '';
+  date:= '';
+  abbr:= '';
+  rare:= '';
+end;
+
+{ TLimitInfo }
+
+constructor TLimitInfo.Create;
+begin
+  limit:= 0;
+  color:= '';
+  hashid:= '';
+  name:= '';
+end;
+
+{ TPackageInfo }
+
+constructor TPackageInfo.Create;
+begin
+  season:= '';
+  url:= '';
+  name:= '';
+  abbr:= '';
+end;
 
 { THotest }
 
@@ -501,6 +585,26 @@ end;
 
 constructor TCardDetail.Create;
 begin
+  name:= '';
+  japname:= '';
+  enname:= '';
+  cardtype:= '';
+  password:= '';
+  limit:= '';
+  belongs:= '';
+  rare:= '';
+  pack:= '';
+  effect:= '';
+  race:= '';
+  element:= '';
+  level:= '';
+  atk:= '';
+  def:= '';
+  link:= '';
+  linkArrow:= '';
+  adjust:= '';
+  wiki:= '';
+  imageid:= -1;
   packs := TCardPackInfoList.Create;
 end;
 
