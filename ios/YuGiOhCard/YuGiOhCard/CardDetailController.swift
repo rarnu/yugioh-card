@@ -55,18 +55,18 @@ class CardDetailController: UIViewController {
         return lbl
     }
     
-    private func makeLabel(_ txt: String, _ multiLine: Bool = false, _ h: CGFloat = 32) -> UILabel {
+    private func makeLabel(_ txt: String, _ multiLine: Bool = false, _ h: CGFloat = 24) -> UILabel {
         let laySub = TGLinearLayout(.horz)
         laySub.tg_width.equal(100%)
         laySub.tg_height.equal(.wrap)
         layMain?.addSubview(laySub)
         let lbl = UILabel()
         lbl.tg_width.equal(25%)
-        lbl.tg_height.equal(32)
+        lbl.tg_height.equal(24)
         lbl.text = txt
         laySub.addSubview(lbl)
         let lblValue = UILabel()
-        if (h > 32) {
+        if (h > 24) {
             lblValue.tg_width.equal(100%)
             lblValue.tg_height.equal(.wrap)
             let lblSub = TGLinearLayout(.vert)
@@ -74,7 +74,7 @@ class CardDetailController: UIViewController {
             lblSub.tg_height.equal(.wrap)
             let lblFill = UILabel()
             lblFill.tg_width.equal(100%)
-            lblFill.tg_height.equal(8)
+            lblFill.tg_height.equal(4)
             lblSub.addSubview(lblFill)
             lblSub.addSubview(lblValue)
             laySub.addSubview(lblSub)

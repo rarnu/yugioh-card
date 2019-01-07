@@ -1,5 +1,8 @@
 package com.rarnu.yugioh
 
+import android.text.Html
+import android.util.Log
+import com.rarnu.kt.android.fileWriteText
 import org.json.JSONObject
 
 class PackageInfo {
@@ -188,6 +191,8 @@ object YGOData {
         if (wikiHtml != "") {
             wiki = NativeAPI.parse(wikiHtml, 3)
         }
+
+        fileWriteText("/sdcard/ygodata.txt", "card => $parsed, adj => $adjust, wiki => $wiki")
 
         val result = CardDetail()
         try {

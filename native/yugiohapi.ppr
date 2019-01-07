@@ -9,7 +9,7 @@ library yugiohapi;
 {$mode objfpc}{$H+}
 
 uses
-  Classes, sysutils, JNI2, android, htmlparser;
+  Classes, sysutils, jni2, android, htmlparser;
 
 {$IFNDEF DEBUG}
 
@@ -119,11 +119,25 @@ exports
 
 {$IFDEF DEBUG}
 var
-  ret: string;
+  ret1, ret2, ret3: string;
 {$ENDIF}
 begin
   {$IFDEF DEBUG}
 
+  with TStringList.Create do begin
+    LoadFromFile('ygohtml.txt');
+    ret1 := THtmlParser.getArticle(Text);
+    ret2 := THtmlParser.getAdjust(Text);
+    ret3 := THtmlParser.getWiki(Text);
+    Free
+  end;
+
+  WriteLn('==================================================');
+  WriteLn(ret1);
+  WriteLn('==================================================');
+  WriteLn(ret2);
+  WriteLn('==================================================');
+  WriteLn(ret3);
 
   {$ENDIF}
 

@@ -14,6 +14,7 @@ type
   THtmlParser = class
   private
     class function getPackList(ahtml: string): string;
+    class function parseTextVersion(astr: string): string;
   public
     // json data
     class function getStoredJson(ahtml: string): string;
@@ -130,6 +131,15 @@ begin
   Exit(ret);
 end;
 
+class function THtmlParser.parseTextVersion(astr: string): string;
+begin
+  if (astr.Contains('<span')) then begin
+    astr := astr.Substring(astr.IndexOf('<span'));
+    astr := astr.Replace('<span v-if="text_version == ''''">', '').Replace('</span>', '').Trim;
+  end;
+  Exit(astr);
+end;
+
 class function THtmlParser.getStoredJson(ahtml: string): string;
 const
   STORE_BEGIN = 'window.__STORE__ =';
@@ -204,6 +214,7 @@ begin
     cimgid:= ret.Substring(0, ret.IndexOf('.')).Trim;
     ret := ret.Substring(ret.IndexOf(H1) + H1.Length);
     cname:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
+    cname:= parseTextVersion(cname);
     ret := ret.Substring(ret.IndexOf(H1) + H1.Length);
     cjapname:= ret.Substring(0, ret.IndexOf(HDIV)).Trim;
     ret := ret.Substring(ret.IndexOf(H1) + H1.Length);
@@ -266,6 +277,7 @@ begin
     if (cpack.Contains('>')) then cpack:= '';
     ret := ret.Substring(ret.IndexOf(H5) + H5.Length).Replace(HDIVLINE, ESPLIT).Replace(HDIVLINE2, ESPLIT).Replace('<br>', '');
     ceffect:= ret.Substring(0, ret.IndexOf(HDIV)).Trim.Replace(#13, '').Replace(#10, '');
+    ceffect:= parseTextVersion(ceffect);
 
     // parse packs list
     ret := ret.Substring(ret.IndexOf(H6) + H6.Length);

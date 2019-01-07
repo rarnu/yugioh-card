@@ -12,7 +12,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -32,7 +32,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -52,7 +52,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -72,7 +72,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -92,7 +92,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -112,7 +112,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -132,7 +132,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -152,7 +152,7 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4">
             <TextView
@@ -173,7 +173,7 @@
         <LinearLayout
                 android:id="@+id/layMonRace"
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4"
                 android:visibility="gone">
@@ -194,7 +194,7 @@
         <LinearLayout
                 android:id="@+id/layMonElement"
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4"
                 android:visibility="gone">
@@ -216,7 +216,7 @@
         <LinearLayout
                 android:id="@+id/layMonLevel"
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4"
                 android:visibility="gone">
@@ -239,7 +239,7 @@
         <LinearLayout
                 android:id="@+id/layMonAtk"
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4"
                 android:visibility="gone">
@@ -260,7 +260,7 @@
         <LinearLayout
                 android:id="@+id/layMonDef"
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4"
                 android:visibility="gone">
@@ -282,7 +282,7 @@
         <LinearLayout
                 android:id="@+id/layMonLink"
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4"
                 android:visibility="gone">
@@ -304,7 +304,7 @@
         <LinearLayout
                 android:id="@+id/layMonLinkArrow"
                 android:layout_width="match_parent"
-                android:layout_height="32dip"
+                android:layout_height="24dip"
                 android:orientation="horizontal"
                 android:weightSum="4"
                 android:visibility="gone">
@@ -328,7 +328,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="4"
-                android:layout_marginTop="8dip">
+                android:layout_marginTop="4dip">
             <TextView
                     android:layout_width="0px"
                     android:layout_height="match_parent"
