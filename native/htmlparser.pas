@@ -133,9 +133,11 @@ end;
 
 class function THtmlParser.parseTextVersion(astr: string): string;
 begin
-  if (astr.Contains('<span')) then begin
-    astr := astr.Substring(astr.IndexOf('<span'));
-    astr := astr.Replace('<span v-if="text_version == ''''">', '').Replace('</span>', '').Trim;
+  if (astr.Contains('<template')) then begin
+    astr := astr.Substring(astr.IndexOf('<template'));
+    astr := astr.Replace('<template v-if="text_version == ''cn''" >', '');
+    astr := astr.Replace('<template v-if="text_version == ''cn''">', '');
+    astr:= astr.Substring(0, astr.IndexOf('</template>')).Trim;
   end;
   Exit(astr);
 end;

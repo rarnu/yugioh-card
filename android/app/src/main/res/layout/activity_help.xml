@@ -28,7 +28,7 @@
             android:layout_marginLeft="8dip"
             android:layout_marginRight="8dip"
             android:gravity="left|center_vertical"
-            android:text="5.0.0"
+            android:text="5.0.1"
     />
 
     <View
