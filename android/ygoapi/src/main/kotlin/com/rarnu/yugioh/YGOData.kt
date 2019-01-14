@@ -179,8 +179,16 @@ object YGOData {
     }
 
     fun cardDetail(hashid: String): CardDetail {
-        val ahtml = YGORequest.cardDetail(hashid)
-        val wikiHtml = YGORequest.cardWiki(hashid)
+        var ahtml = YGOCache.loadCache(hashid, 0)
+        if (ahtml == null) {
+            ahtml = YGORequest.cardDetail(hashid)
+            YGOCache.saveCache(hashid, 0, ahtml)
+        }
+        var wikiHtml = YGOCache.loadCache(hashid, 1)
+        if (wikiHtml == null) {
+            wikiHtml = YGORequest.cardWiki(hashid)
+            YGOCache.saveCache(hashid, 1, wikiHtml)
+        }
         var parsed = ""
         var adjust = ""
         if (ahtml != "") {
@@ -191,9 +199,6 @@ object YGOData {
         if (wikiHtml != "") {
             wiki = NativeAPI.parse(wikiHtml, 3)
         }
-
-        fileWriteText("/sdcard/ygodata.txt", "card => $parsed, adj => $adjust, wiki => $wiki")
-
         val result = CardDetail()
         try {
             val json = JSONObject(parsed)
