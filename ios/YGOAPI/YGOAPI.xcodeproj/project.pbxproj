@@ -12,6 +12,8 @@
 		9207E77820E752A900735721 /* YGOData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9207E77620E752A900735721 /* YGOData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9207E77920E752A900735721 /* YGOData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9207E77720E752A900735721 /* YGOData.m */; };
 		9207E77F20E757CA00735721 /* libyugiohapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9207E77E20E757CA00735721 /* libyugiohapi.a */; };
+		921034F821EC7B7B009AF387 /* YGOCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 921034F621EC7B7B009AF387 /* YGOCache.h */; };
+		921034F921EC7B7B009AF387 /* YGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 921034F721EC7B7B009AF387 /* YGOCache.m */; };
 		92D9735620E67E6200154225 /* YGOAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D9735420E67E6200154225 /* YGOAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -22,6 +24,8 @@
 		9207E77720E752A900735721 /* YGOData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YGOData.m; sourceTree = "<group>"; };
 		9207E77E20E757CA00735721 /* libyugiohapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libyugiohapi.a; sourceTree = "<group>"; };
 		9207E78020E757DA00735721 /* YGOCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YGOCAPI.h; sourceTree = "<group>"; };
+		921034F621EC7B7B009AF387 /* YGOCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YGOCache.h; sourceTree = "<group>"; };
+		921034F721EC7B7B009AF387 /* YGOCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YGOCache.m; sourceTree = "<group>"; };
 		92D9735120E67E6200154225 /* YGOAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YGOAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D9735420E67E6200154225 /* YGOAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YGOAPI.h; sourceTree = "<group>"; };
 		92D9735520E67E6200154225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				9207E77620E752A900735721 /* YGOData.h */,
 				9207E77720E752A900735721 /* YGOData.m */,
 				9207E78020E757DA00735721 /* YGOCAPI.h */,
+				921034F621EC7B7B009AF387 /* YGOCache.h */,
+				921034F721EC7B7B009AF387 /* YGOCache.m */,
 			);
 			path = YGOAPI;
 			sourceTree = "<group>";
@@ -80,6 +86,7 @@
 				9207E77820E752A900735721 /* YGOData.h in Headers */,
 				9207E77420E7523A00735721 /* YGORequest.h in Headers */,
 				92D9735620E67E6200154225 /* YGOAPI.h in Headers */,
+				921034F821EC7B7B009AF387 /* YGOCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +159,7 @@
 			files = (
 				9207E77520E7523A00735721 /* YGORequest.m in Sources */,
 				9207E77920E752A900735721 /* YGOData.m in Sources */,
+				921034F921EC7B7B009AF387 /* YGOCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "YGOData.h"
 #import "YGORequest.h"
 #import "YGOCAPI.h"
+#import "YGOCache.h"
 
 @implementation PackageInfo
 
@@ -275,8 +276,17 @@
 }
 
 +(CardDetail*) cardDetail:(NSString*) hashid {
-    NSString* data = [YGORequest cardDetail:hashid];
-    NSString* wikidata = [YGORequest cardWiki:hashid];
+    NSString* data = [YGOCache loadCache:hashid type:0];
+    if (!data) {
+        data = [YGORequest cardDetail:hashid];
+        [YGOCache saveCache:hashid type:0 text:data];
+    }
+    NSString* wikidata = [YGOCache loadCache:hashid type:1];
+    if (!wikidata) {
+        wikidata = [YGORequest cardWiki:hashid];
+        [YGOCache saveCache:hashid type:1 text:wikidata];
+    }
+    
     NSString* parsed = @"";
     NSString* adjust = @"";
     if (![data isEqualToString:@""]) {
