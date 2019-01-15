@@ -27,7 +27,7 @@ class HelpController: UIViewController {
         tvTitle.text = "YuGiOh Card"
         sv.addSubview(tvTitle)
         let tvVersion = UILabel(frame: CGRect(x: 64, y: 32, width: screenWidth() - 72, height: 32))
-        tvVersion.text = "5.0.0"
+        tvVersion.text = "5.0.1"
         sv.addSubview(tvVersion)
         let vLine = UIView(frame: CGRect(x: 8, y: 64, width: screenWidth() - 16, height: 1))
         vLine.backgroundColor = UIColor.lightGray

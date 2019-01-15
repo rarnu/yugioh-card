@@ -54,6 +54,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
         gvSearch.onItemClickListener = this
         lvHotCard.onItemClickListener = this
         lvHotPack.onItemClickListener = this
+        tvChangeHotCard.setOnClickListener { loadHotest() }
 
         btnHelp.setOnClickListener(this)
         loadHotest()
@@ -72,7 +73,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     }
 
     override fun onClick(v: View) {
-        when(v.id) {
+        when (v.id) {
             R.id.btnSearch -> {
                 val key = edtSearch.text.toString()
                 if (key == "") {
@@ -97,32 +98,31 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             MENUID_LIMIT -> startActivity(Intent(this, LimitActivity::class.java))
             MENUID_PACK -> startActivity(Intent(this, PackActivity::class.java))
         }
         return true
     }
 
-    private fun loadHotest() {
-        thread {
-            val ret = YGOData.hotest()
-            listSearch.clear()
-            listSearch.addAll(ret.search)
-            listCard.clear()
-            listCard.addAll(ret.card)
-            listPack.clear()
-            listPack.addAll(ret.pack)
-            runOnUiThread {
-                adapterSearch.setNewList(listSearch)
-                resetGridHeight()
-                adapterCard.setNewList(listCard)
-                resetListHeight(lvHotCard, listCard.size)
-                adapterPack.setNewList(listPack)
-                resetListHeight(lvHotPack, listPack.size)
-            }
+    private fun loadHotest() = thread {
+        val ret = YGOData.hotest()
+        listSearch.clear()
+        listSearch.addAll(ret.search)
+        listCard.clear()
+        listCard.addAll(ret.card)
+        listPack.clear()
+        listPack.addAll(ret.pack)
+        runOnUiThread {
+            adapterSearch.setNewList(listSearch)
+            resetGridHeight()
+            adapterCard.setNewList(listCard)
+            resetListHeight(lvHotCard, listCard.size)
+            adapterPack.setNewList(listPack)
+            resetListHeight(lvHotPack, listPack.size)
         }
     }
+
 
     private fun resetGridHeight() {
         var line = listSearch.size / 5
@@ -142,7 +142,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        when(parent) {
+        when (parent) {
             gvSearch -> {
                 val inSearch = Intent(this, CardListActivity::class.java)
                 inSearch.putExtra("key", listSearch[position])

@@ -17,6 +17,9 @@ class MainController: UIViewController, UITextFieldDelegate {
     var edtSearch: UITextField?
     var btnSearch: UIButton?
     var btnAdvSearch: UIButton?
+    var laySearchKeyword: TGLinearLayout?
+    var layHotCard: TGLinearLayout?
+    var layLastPack: TGLinearLayout?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,109 +61,151 @@ class MainController: UIViewController, UITextFieldDelegate {
         // event
         btnSearch?.addTarget(self, action: #selector(btnSearchClicked(sender:)), for: UIControl.Event.touchDown)
         btnAdvSearch?.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControl.Event.touchDown)
+        
+        //
+        makeText("热门搜索")
+        laySearchKeyword = makeLayout()
+        makeLine()
+        makeHotText("热门卡片")
+        layHotCard = makeLayout()
+        makeLine()
+        makeText("热门卡包")
+        layLastPack = makeLayout()
+        makeLine()
+        let btnHelp = makeButton("帮助")
+        btnHelp.addTarget(self, action: #selector(self.btnHelpClicked(sender:)), for: UIControl.Event.touchDown)
+        
         loadHotest()
         
         Updater.checkUpdate(vc: self)
     }
     
-    private func loadHotest() {
-        func makeText(_ txt: String) {
-            let lbl = UILabel()
-            lbl.tg_width.equal(100%)
-            lbl.tg_height.equal(.wrap)
-            lbl.text = txt
-            layMain?.addSubview(lbl)
-            let v = UIView()
-            v.tg_width.equal(100%)
-            v.tg_height.equal(4)
-            layMain?.addSubview(v)
-        }
+    func makeLayout() -> TGLinearLayout {
+        let lay = TGLinearLayout(.vert)
+        lay.tg_vspace = 0
+        lay.tg_width.equal(100%)
+        lay.tg_height.equal(.wrap)
+        layMain?.addSubview(lay)
+        return lay
+    }
+    
+    func makeText(_ txt: String) {
+        let lbl = UILabel()
+        lbl.tg_width.equal(100%)
+        lbl.tg_height.equal(.wrap)
+        lbl.text = txt
+        layMain?.addSubview(lbl)
+        let v = UIView()
+        v.tg_width.equal(100%)
+        v.tg_height.equal(4)
+        layMain?.addSubview(v)
+    }
+    
+    func makeHotText(_ txt: String) {
+        let lay = UIView()
+        lay.tg_width.equal(100%)
+        lay.tg_height.equal(30)
+        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
+        lbl.text = txt
+        lay.addSubview(lbl)
+        let change = UIButton(type: UIButton.ButtonType.system)
+        change.setTitle("<换一批>", for: UIControl.State.normal)
+        change.frame = CGRect(x: screenWidth() - 100, y: 0, width: 100, height: 30)
+        change.addTarget(self, action: #selector(btnChangeHotClicked(sender:)), for: UIControl.Event.touchDown)
+        lay.addSubview(change)
         
-        func makeButton(_ txt: String) -> UIButton {
-            let btn = UIButton(type: UIButton.ButtonType.system)
-            btn.tg_width.equal(100%)
-            btn.tg_height.equal(32)
-            btn.setTitle(txt, for: UIControl.State.normal)
-            layMain?.addSubview(btn)
-            return btn
-        }
-        
-        func makeLine() {
-            let v = UIView()
-            v.tg_width.equal(100%)
-            v.tg_height.equal(1)
-            v.tg_vertMargin(8.0)
-            v.backgroundColor = UIColor.lightGray
-            layMain?.addSubview(v)
-        }
-        
-        func makeLabel(txt: String, hash: String, sel: Selector) {
-            let l = UIButton(type: UIButton.ButtonType.system)
-            l.tg_width.equal(100%)
-            l.tg_height.equal(32)
-            l.setTitle(txt, for: UIControl.State.normal)
-            l.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-            l.accessibilityValue = hash
-            l.addTarget(self, action: sel, for: UIControl.Event.touchDown)
-            layMain?.addSubview(l)
-        }
-        
-        func makeKeyword(list: Array<String>) {
-            var idx = 0
-            var remain = list.count
-            let w = (screenWidth() - 16) / 5
-            while remain > 0 {
-                let lay = TGLinearLayout(.horz)
-                lay.tg_width.equal(100%)
-                lay.tg_height.equal(32)
-                var last = 0
-                if (remain >= 5) {
-                    last = idx + 5
-                } else {
-                    last = idx + remain
-                }
-                for i in idx ..< last {
-                    let v = UIButton(type: UIButton.ButtonType.system)
-                    v.tg_width.equal(w)
-                    v.tg_height.equal(32)
-                    v.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-                    v.setTitle(list[i], for: UIControl.State.normal)
-                    v.addTarget(self, action: #selector(btnKeywordClicked(sender:)), for: UIControl.Event.touchDown)
-                    lay.addSubview(v)
-                }
-                if (remain >= 5) {
-                    idx += 5
-                    remain -= 5
-                } else {
-                    idx += remain
-                    remain -= remain
-                }
-                layMain?.addSubview(lay)
+        layMain?.addSubview(lay)
+        let v = UIView()
+        v.tg_width.equal(100%)
+        v.tg_height.equal(4)
+        layMain?.addSubview(v)
+    }
+    
+    func makeButton(_ txt: String) -> UIButton {
+        let btn = UIButton(type: UIButton.ButtonType.system)
+        btn.tg_width.equal(100%)
+        btn.tg_height.equal(32)
+        btn.setTitle(txt, for: UIControl.State.normal)
+        layMain?.addSubview(btn)
+        return btn
+    }
+    
+    func makeLine() {
+        let v = UIView()
+        v.tg_width.equal(100%)
+        v.tg_height.equal(1)
+        v.tg_vertMargin(8.0)
+        v.backgroundColor = UIColor.lightGray
+        layMain?.addSubview(v)
+    }
+    
+    func makeLabel(lay: TGLinearLayout?, txt: String, hash: String, sel: Selector) {
+        let l = UIButton(type: UIButton.ButtonType.system)
+        l.tg_width.equal(100%)
+        l.tg_height.equal(32)
+        l.setTitle(txt, for: UIControl.State.normal)
+        l.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        l.accessibilityValue = hash
+        l.addTarget(self, action: sel, for: UIControl.Event.touchDown)
+        lay?.addSubview(l)
+    }
+    
+    func makeKeyword(list: Array<String>) {
+        var idx = 0
+        var remain = list.count
+        let w = (screenWidth() - 16) / 5
+        while remain > 0 {
+            let lay = TGLinearLayout(.horz)
+            lay.tg_width.equal(100%)
+            lay.tg_height.equal(32)
+            var last = 0
+            if (remain >= 5) {
+                last = idx + 5
+            } else {
+                last = idx + remain
             }
+            for i in idx ..< last {
+                let v = UIButton(type: UIButton.ButtonType.system)
+                v.tg_width.equal(w)
+                v.tg_height.equal(32)
+                v.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+                v.setTitle(list[i], for: UIControl.State.normal)
+                v.addTarget(self, action: #selector(btnKeywordClicked(sender:)), for: UIControl.Event.touchDown)
+                lay.addSubview(v)
+            }
+            if (remain >= 5) {
+                idx += 5
+                remain -= 5
+            } else {
+                idx += remain
+                remain -= remain
+            }
+            laySearchKeyword?.addSubview(lay)
         }
-        
+    }
+    
+    private func loadHotest() {
+        laySearchKeyword?.tg_removeAllSubviews()
+        layHotCard?.tg_removeAllSubviews()
+        layLastPack?.tg_removeAllSubviews()
         thread {
             let ret = YGOData.hostest()
             self.mainThread {
                 if (ret != nil) {
-                    makeText("热门搜索")
-                    makeKeyword(list: ret!.search)
-                    makeLine()
-                    makeText("热门卡片")
+                    self.makeKeyword(list: ret!.search)
                     for c in ret!.card {
-                        makeLabel(txt: c.name, hash: c.hashid, sel: #selector(self.btnHotCardClicked(sender:)))
+                        self.makeLabel(lay: self.layHotCard, txt: c.name, hash: c.hashid, sel: #selector(self.btnHotCardClicked(sender:)))
                     }
-                    makeLine()
-                    makeText("热门卡包")
                     for p in ret!.pack {
-                        makeLabel(txt: p.name, hash: p.packid, sel: #selector(self.btnHotPackClicked(sender:)))
+                        self.makeLabel(lay: self.layLastPack, txt: p.name, hash: p.packid, sel: #selector(self.btnHotPackClicked(sender:)))
                     }
-                    makeLine()
                 }
-                let btnHelp = makeButton("帮助")
-                btnHelp.addTarget(self, action: #selector(self.btnHelpClicked(sender:)), for: UIControl.Event.touchDown)
             }
         }
+    }
+    
+    @objc func btnChangeHotClicked(sender: Any?) {
+        loadHotest()
     }
 
     override func didReceiveMemoryWarning() {

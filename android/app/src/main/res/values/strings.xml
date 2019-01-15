@@ -49,6 +49,7 @@
 
     <string name="tv_hot_search">热门搜索</string>
     <string name="tv_hot_card">热门卡片</string>
+    <string name="tv_change_hot_card">&lt;换一批&gt;</string>
     <string name="tv_hot_pack">热门卡包</string>
 
     <string name="menu_image">Image</string>

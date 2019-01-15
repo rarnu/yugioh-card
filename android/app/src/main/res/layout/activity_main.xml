@@ -72,9 +72,20 @@
                 android:layout_marginTop="8dip"
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip">
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@string/tv_hot_card"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@string/tv_hot_card"
+                        android:layout_toLeftOf="@+id/tvChangeHotCard"
+                />
+                <TextView
+                        android:id="@+id/tvChangeHotCard"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/tv_change_hot_card"
+                        android:clickable="true"
+                        android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
             <ListView
                     android:id="@+id/lvHotCard"
                     android:layout_width="match_parent"
