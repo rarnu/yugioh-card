@@ -289,12 +289,12 @@
     
     NSString* parsed = @"";
     NSString* adjust = @"";
-    if (![data isEqualToString:@""]) {
+    if (data) {
         parsed = [NSString stringWithUTF8String:parse([data UTF8String], 1)];
         adjust = [NSString stringWithUTF8String:parse([data UTF8String], 2)];
     }
     NSString* wikiparsed = @"";
-    if (![wikidata isEqualToString:@""]) {
+    if (wikidata) {
         wikiparsed = [NSString stringWithUTF8String:parse([wikidata UTF8String], 3)];
     }
     

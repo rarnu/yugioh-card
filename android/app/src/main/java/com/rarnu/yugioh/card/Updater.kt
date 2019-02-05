@@ -16,6 +16,7 @@ object Updater {
 
     fun checkUpdate(activity: Activity) = with(activity) {
         httpAsync {
+
             url = UPDATE_URL
             method = HttpMethod.GET
             onSuccess { code, text, _ ->

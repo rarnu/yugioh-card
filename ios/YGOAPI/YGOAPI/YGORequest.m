@@ -13,14 +13,20 @@
 
 
 +(NSString*) request:(NSString*) url {
-    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL * u = [NSURL URLWithString:url];
-    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:u cachePolicy:0 timeoutInterval:2.0f];
-    NSHTTPURLResponse * resp;
-    NSData * retData =[NSURLConnection sendSynchronousRequest:req returningResponse:&resp error:nil];
     NSString* ret = @"";
-    if (resp.statusCode == 200) {
-        ret = [[NSString alloc] initWithData:retData encoding:NSUTF8StringEncoding];
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    @try {
+        NSURL * u = [NSURL URLWithString:url];
+        NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:u cachePolicy:0 timeoutInterval:2.0f];
+        NSHTTPURLResponse * resp;
+        NSData * retData =[NSURLConnection sendSynchronousRequest:req returningResponse:&resp error:nil];
+        if (resp.statusCode == 200) {
+            ret = [[NSString alloc] initWithData:retData encoding:NSUTF8StringEncoding];
+        }
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
     return ret;
 }

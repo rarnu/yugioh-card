@@ -5,8 +5,6 @@
 
 - - -
 
-软件发布页：[游戏王卡片查询器](http://scarlett.vip/yugioh)
-
 跟随『中国OCG工作室』更新
 
 - - -
