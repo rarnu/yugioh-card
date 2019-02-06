@@ -1,20 +1,18 @@
 package com.rarnu.yugioh.card
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
+import com.rarnu.kt.android.BackActivity
 import com.rarnu.kt.android.resStr
-import com.rarnu.kt.android.showActionBack
 import com.rarnu.yugioh.CardInfo
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.card.adapter.CardListAdapter
 import kotlinx.android.synthetic.main.activity_cardlist.*
 import kotlin.concurrent.thread
 
-class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {
+class CardListActivity : BackActivity(), View.OnClickListener, AdapterView.OnItemClickListener {
 
     private var key = ""
     private var currentPage = 1
@@ -26,7 +24,6 @@ class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemCli
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cardlist)
         actionBar?.title = resStr(R.string.card_list)
-        showActionBack()
 
         adapter = CardListAdapter(this, list)
         lvCard.adapter = adapter
@@ -50,13 +47,6 @@ class CardListActivity : Activity(), View.OnClickListener, AdapterView.OnItemCli
             adapter.setNewList(list)
             tvPage.text = "$currentPage / $pageCount"
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> finish()
-        }
-        return true
     }
 
     override fun onClick(v: View) {

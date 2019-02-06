@@ -15,6 +15,6 @@ android {
 
 dependencies {
     // implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.github.rarnu:ktfunctional:0.7.7"
+    implementation "com.github.rarnu:ktfunctional:0.8.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

@@ -1,23 +1,22 @@
 package com.rarnu.yugioh.card
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.rarnu.kt.android.BackActivity
 import com.rarnu.kt.android.DownloadState
 import com.rarnu.kt.android.downloadAsync
 import com.rarnu.kt.android.resStr
-import com.rarnu.kt.android.showActionBack
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.YGORequest
 import kotlinx.android.synthetic.main.activity_carddetail.*
 import java.io.File
 import kotlin.concurrent.thread
 
-class CardDetailActivity : Activity() {
+class CardDetailActivity : BackActivity() {
 
     private var hashid = ""
     private var wikiForPass = ""
@@ -27,7 +26,6 @@ class CardDetailActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carddetail)
         actionBar?.title = intent.getStringExtra("name")
-        showActionBack()
         hashid = intent.getStringExtra("hashid")
 
         thread {
@@ -107,13 +105,12 @@ class CardDetailActivity : Activity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> finish()
             MENUID_WIKI -> {
                 val inWiki = Intent(this, CardWikiActivity::class.java)
                 inWiki.putExtra("wiki", wikiForPass)
                 startActivity(inWiki)
             }
         }
-        return true
+        return super.onOptionsItemSelected(item)
     }
 }

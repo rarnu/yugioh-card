@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
+import com.rarnu.kt.android.BackActivity
 import com.rarnu.kt.android.showActionBack
 import com.rarnu.yugioh.CardInfo
 import com.rarnu.yugioh.YGOData
@@ -13,7 +14,7 @@ import com.rarnu.yugioh.card.adapter.CardListAdapter
 import kotlinx.android.synthetic.main.activity_packdetail.*
 import kotlin.concurrent.thread
 
-class PackDetailActivity : Activity(), AdapterView.OnItemClickListener {
+class PackDetailActivity : BackActivity(), AdapterView.OnItemClickListener {
 
 
     private val list = arrayListOf<CardInfo>()
@@ -23,7 +24,6 @@ class PackDetailActivity : Activity(), AdapterView.OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_packdetail)
         actionBar?.title = intent.getStringExtra("name")
-        showActionBack()
         val url = intent.getStringExtra("url")
         adapter = CardListAdapter(this, list)
         lvPackCard.adapter = adapter
@@ -46,12 +46,5 @@ class PackDetailActivity : Activity(), AdapterView.OnItemClickListener {
         inDetail.putExtra("name", name)
         inDetail.putExtra("hashid", hashid)
         startActivity(inDetail)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> finish()
-        }
-        return true
     }
 }

@@ -18,9 +18,9 @@ import java.io.File
 class CardListAdapter(ctx: Context, list: MutableList<CardInfo>) : BaseAdapter<CardInfo, CardListAdapter.CardListHolder>(ctx, list) {
 
     override fun fillHolder(baseVew: View, holder: CardListHolder, item: CardInfo, position: Int) {
-        holder.tvCardName.text = context.resStr(R.string.item_name, item.name)
-        holder.tvCardJapName.text = context.resStr(R.string.item_japname, item.japname)
-        holder.tvCardEnName.text = context.resStr(R.string.item_enname, item.enname)
+        holder.tvCardName.text = resStr(R.string.item_name, item.name)
+        holder.tvCardJapName.text = resStr(R.string.item_japname, item.japname)
+        holder.tvCardEnName.text = resStr(R.string.item_enname, item.enname)
         holder.tvCardType.text = item.cardtype
 
         val localImg = File(PathUtils.IMAGE_PATH, item.cardid.toString()).absolutePath

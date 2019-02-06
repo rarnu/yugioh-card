@@ -15,15 +15,15 @@ class LimitAdapter(ctx: Context, list: MutableList<LimitInfo>) : BaseAdapter<Lim
         holder.tvLimitName.text = item.name
         when(item.limit) {
             0 -> {
-                holder.tvLimitDesc.text = context.resStr(R.string.limit_0)
+                holder.tvLimitDesc.text = resStr(R.string.limit_0)
                 holder.tvLimitDesc.setTextColor(Color.RED)
             }
             1 -> {
-                holder.tvLimitDesc.text = context.resStr(R.string.limit_1)
+                holder.tvLimitDesc.text = resStr(R.string.limit_1)
                 holder.tvLimitDesc.setTextColor(Color.parseColor("#FFA500"))
             }
             else -> {
-                holder.tvLimitDesc.text = context.resStr(R.string.limit_2)
+                holder.tvLimitDesc.text = resStr(R.string.limit_2)
                 holder.tvLimitDesc.setTextColor(Color.GREEN)
             }
         }

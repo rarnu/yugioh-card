@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
+import com.rarnu.kt.android.BackActivity
 import com.rarnu.kt.android.resStr
 import com.rarnu.kt.android.showActionBack
 import com.rarnu.yugioh.PackageInfo
@@ -15,7 +16,7 @@ import com.rarnu.yugioh.card.adapter.SeasonAdapter
 import kotlinx.android.synthetic.main.activity_pack.*
 import kotlin.concurrent.thread
 
-class PackActivity: Activity(), AdapterView.OnItemClickListener {
+class PackActivity: BackActivity(), AdapterView.OnItemClickListener {
 
 
     private val listSeason = arrayListOf<String>()
@@ -29,7 +30,6 @@ class PackActivity: Activity(), AdapterView.OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pack)
         actionBar?.title = resStr(R.string.card_pack)
-        showActionBack()
 
         adapterSeason = SeasonAdapter(this, listSeason)
         lvSeason.adapter = adapterSeason
@@ -86,13 +86,6 @@ class PackActivity: Activity(), AdapterView.OnItemClickListener {
             inDetail.putExtra("name", pack.abbr)
             startActivity(inDetail)
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> finish()
-        }
-        return true
     }
 }
 

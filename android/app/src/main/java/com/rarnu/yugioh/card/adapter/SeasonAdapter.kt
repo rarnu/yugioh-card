@@ -19,7 +19,7 @@ class SeasonAdapter(ctx: Context, list: MutableList<String>) : BaseAdapter<Strin
 
     override fun fillHolder(baseVew: View, holder: SeasonHolder, item: String, position: Int) {
         holder.tvSeasonName.text = item
-        holder.tvSeasonName.setTextColor(if (hightlight == position) context.resColor(R.color.iostint) else Color.BLACK)
+        holder.tvSeasonName.setTextColor(if (hightlight == position) resColor(R.color.iostint) else Color.BLACK)
     }
 
     override fun getAdapterLayout() = R.layout.item_seasonlist

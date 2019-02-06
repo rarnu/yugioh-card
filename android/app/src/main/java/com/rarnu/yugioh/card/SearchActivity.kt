@@ -8,12 +8,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import com.rarnu.kt.android.BackActivity
 import com.rarnu.kt.android.resColor
 import com.rarnu.kt.android.resStr
 import com.rarnu.kt.android.showActionBack
 import kotlinx.android.synthetic.main.activity_search.*
 
-class SearchActivity: Activity(), View.OnClickListener {
+class SearchActivity: BackActivity(), View.OnClickListener {
 
     private val MENUID_SEARCH = 1
     private var cardtype = "怪兽"
@@ -22,7 +23,6 @@ class SearchActivity: Activity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         actionBar?.title = resStr(R.string.btn_adv_search)
-        showActionBack()
 
         btnTypeMon.setTextColor(resColor(R.color.iostint))
 
@@ -113,10 +113,9 @@ class SearchActivity: Activity(), View.OnClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            android.R.id.home -> finish()
             MENUID_SEARCH -> doSearch()
         }
-        return true
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(v: View) {
