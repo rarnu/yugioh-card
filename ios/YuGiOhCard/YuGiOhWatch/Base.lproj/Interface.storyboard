@@ -72,14 +72,93 @@
             <objects>
                 <controller title="禁限卡表" id="DBi-vm-Der" customClass="LimitInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
                     <items>
-                        <table alignment="left" id="PyJ-CO-e0Y"/>
+                        <table alignment="left" id="PyJ-CO-e0Y">
+                            <items>
+                                <tableRow identifier="Cell" id="G9A-9t-Kwl" customClass="CardRowController" customModule="YuGiOhWatch" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="28" alignment="left" id="Vz7-G6-EcJ">
+                                        <items>
+                                            <label width="100" height="1" alignment="left" verticalAlignment="center" textAlignment="left" minimumScaleFactor="0.5" id="bpp-EW-ATh">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
+                                            <label alignment="right" verticalAlignment="center" text="▊" id="6ps-mp-W5u"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="lblName" destination="bpp-EW-ATh" id="Bfk-Sy-3PD"/>
+                                        <outlet property="lblType" destination="6ps-mp-W5u" id="s3f-7h-5QG"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <label width="1" height="1" alignment="center" verticalAlignment="center" text="正在加载，请稍候..." textAlignment="center" id="b2J-IO-T2Y">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
                     </items>
                     <connections>
+                        <outlet property="lblLoading" destination="b2J-IO-T2Y" id="cSw-JY-iFO"/>
                         <outlet property="tvLimit" destination="PyJ-CO-e0Y" id="45k-cB-9E4"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="192" y="240"/>
+        </scene>
+        <!--卡片详情-->
+        <scene sceneID="4Mm-iD-6hW">
+            <objects>
+                <controller identifier="CardDetailInterfaceController" title="卡片详情" id="AeY-ah-V24" customClass="CardDetailInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
+                    <items>
+                        <label width="1" height="1" alignment="center" verticalAlignment="center" text="正在加载，请稍候..." textAlignment="center" minimumScaleFactor="0.5" id="ZbZ-VG-H7h">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" minimumScaleFactor="0.5" id="tln-Y4-chP">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" minimumScaleFactor="0.5" id="ss7-Sd-RtU">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" minimumScaleFactor="0.5" id="xAs-xz-nyM">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" minimumScaleFactor="0.5" id="hxz-yo-sk9">
+                            <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" minimumScaleFactor="0.5" id="dUW-Ei-mCB">
+                            <color key="textColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" minimumScaleFactor="0.5" id="8RA-vJ-FhT">
+                            <color key="textColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" minimumScaleFactor="0.5" id="FHd-ef-owF">
+                            <color key="textColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" textAlignment="left" numberOfLines="1000" minimumScaleFactor="0.5" id="cK9-fb-AgI">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="center" hidden="YES" text="正在加载图片..." textAlignment="center" minimumScaleFactor="0.5" id="hEZ-no-0xY">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <imageView width="134" height="193" alignment="center" hidden="YES" contentMode="scaleAspectFit" id="2Ba-lJ-ctr"/>
+                    </items>
+                    <connections>
+                        <outlet property="ivCardFace" destination="2Ba-lJ-ctr" id="kYE-gK-dyK"/>
+                        <outlet property="lblCardType" destination="hxz-yo-sk9" id="r5b-qm-qPq"/>
+                        <outlet property="lblEffect" destination="cK9-fb-AgI" id="fig-D8-i75"/>
+                        <outlet property="lblLoading" destination="ZbZ-VG-H7h" id="EbO-ti-WF0"/>
+                        <outlet property="lblLoadingImage" destination="hEZ-no-0xY" id="juQ-Xb-Kny"/>
+                        <outlet property="lblMonsterLRAD" destination="8RA-vJ-FhT" id="UzE-b8-4cK"/>
+                        <outlet property="lblMonsterLink" destination="FHd-ef-owF" id="WxZ-ea-HJB"/>
+                        <outlet property="lblMonsterRA" destination="dUW-Ei-mCB" id="5UX-kX-glC"/>
+                        <outlet property="lblNameCn" destination="tln-Y4-chP" id="Hqf-Ld-Nfz"/>
+                        <outlet property="lblNameEn" destination="xAs-xz-nyM" id="xak-vH-B0p"/>
+                        <outlet property="lblNameJp" destination="ss7-Sd-RtU" id="R6l-BI-53l"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="481" y="226"/>
         </scene>
     </scenes>
 </document>

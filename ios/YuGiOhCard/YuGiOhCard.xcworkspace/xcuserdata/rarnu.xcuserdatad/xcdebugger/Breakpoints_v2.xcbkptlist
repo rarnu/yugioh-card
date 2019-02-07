@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.5997241"
+            timestampString = "571250129.648111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.600243"
+            timestampString = "571250129.648187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.6005549"
+            timestampString = "571250129.6482331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.600857"
+            timestampString = "571250129.6482739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.601186"
+            timestampString = "571250129.6483231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.601577"
+            timestampString = "571250129.648373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.601977"
+            timestampString = "571250129.648422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.602356"
+            timestampString = "571250129.64847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "569078722.602792"
+            timestampString = "571250129.64858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
@@ -448,6 +448,70 @@
             startingLineNumber = "21"
             endingLineNumber = "21"
             landmarkName = "+getCachePath"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhWatch Extension/CardDetailInterfaceController.swift"
+            timestampString = "571252382.599543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "queryCardImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in YuGiOhWatch_Extension.CardDetailInterfaceController.(queryCardImage in _1D599A9A0717B14CF01F28048896F874)() -&gt; ()"
+                  moduleName = "YuGiOhWatch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rarnu/Code/github/yugioh-card/ios/YuGiOhCard/YuGiOhWatch%20Extension/CardDetailInterfaceController.swift"
+                  timestampString = "571252382.680941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "1028">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in YuGiOhWatch_Extension.CardDetailInterfaceController.(queryCardImage in _1D599A9A0717B14CF01F28048896F874)() -&gt; ()"
+                  moduleName = "YuGiOhWatch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rarnu/Code/github/yugioh-card/ios/YuGiOhCard/YuGiOhWatch%20Extension/CardDetailInterfaceController.swift"
+                  timestampString = "571252382.682934"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "59">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhWatch Extension/CardDetailInterfaceController.swift"
+            timestampString = "571252382.599602"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "queryCardImage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

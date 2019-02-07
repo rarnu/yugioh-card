@@ -25,6 +25,8 @@
 		92A17A21220C6B4F00BDA4F1 /* LimitInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A20220C6B4F00BDA4F1 /* LimitInterfaceController.swift */; };
 		92A17A23220C6BBD00BDA4F1 /* PackInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A22220C6BBD00BDA4F1 /* PackInterfaceController.swift */; };
 		92A17A25220C704A00BDA4F1 /* GithubInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A24220C704A00BDA4F1 /* GithubInterfaceController.swift */; };
+		92A17A27220C7C6100BDA4F1 /* CardDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A26220C7C6100BDA4F1 /* CardDetailInterfaceController.swift */; };
+		92A17A29220C7F6800BDA4F1 /* UIColor+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A28220C7F6800BDA4F1 /* UIColor+Parser.swift */; };
 		92B6077920FF399700562693 /* HelpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6077820FF399700562693 /* HelpController.swift */; };
 		92C24E81220C4EE8007F16EF /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E7F220C4EE8007F16EF /* Interface.storyboard */; };
 		92C24E83220C4EE9007F16EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E82220C4EE9007F16EF /* Assets.xcassets */; };
@@ -117,6 +119,8 @@
 		92A17A20220C6B4F00BDA4F1 /* LimitInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitInterfaceController.swift; sourceTree = "<group>"; };
 		92A17A22220C6BBD00BDA4F1 /* PackInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackInterfaceController.swift; sourceTree = "<group>"; };
 		92A17A24220C704A00BDA4F1 /* GithubInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubInterfaceController.swift; sourceTree = "<group>"; };
+		92A17A26220C7C6100BDA4F1 /* CardDetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailInterfaceController.swift; sourceTree = "<group>"; };
+		92A17A28220C7F6800BDA4F1 /* UIColor+Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Parser.swift"; sourceTree = "<group>"; };
 		92B6077820FF399700562693 /* HelpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpController.swift; sourceTree = "<group>"; };
 		92C24E7D220C4EE8007F16EF /* YuGiOhWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuGiOhWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C24E80220C4EE8007F16EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 				92A17A20220C6B4F00BDA4F1 /* LimitInterfaceController.swift */,
 				92A17A22220C6BBD00BDA4F1 /* PackInterfaceController.swift */,
 				92A17A24220C704A00BDA4F1 /* GithubInterfaceController.swift */,
+				92A17A26220C7C6100BDA4F1 /* CardDetailInterfaceController.swift */,
+				92A17A28220C7F6800BDA4F1 /* UIColor+Parser.swift */,
 			);
 			path = "YuGiOhWatch Extension";
 			sourceTree = "<group>";
@@ -491,7 +497,9 @@
 			files = (
 				92C24E91220C4EE9007F16EF /* ExtensionDelegate.swift in Sources */,
 				92A17A21220C6B4F00BDA4F1 /* LimitInterfaceController.swift in Sources */,
+				92A17A27220C7C6100BDA4F1 /* CardDetailInterfaceController.swift in Sources */,
 				92C24E8F220C4EE9007F16EF /* InterfaceController.swift in Sources */,
+				92A17A29220C7F6800BDA4F1 /* UIColor+Parser.swift in Sources */,
 				92A17A23220C6BBD00BDA4F1 /* PackInterfaceController.swift in Sources */,
 				92A17A25220C704A00BDA4F1 /* GithubInterfaceController.swift in Sources */,
 				92F97BF8220C64F1008DEEC6 /* YGOData.m in Sources */,

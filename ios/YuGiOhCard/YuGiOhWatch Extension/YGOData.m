@@ -180,8 +180,7 @@
 +(CardDetail*) cardDetail:(NSString*) ahtml {
     
     NSString* parsed = [NSString stringWithUTF8String:parse([ahtml UTF8String], 1)];
-    NSString* adjust = [NSString stringWithUTF8String:parse([ahtml UTF8String], 2)];
-    
+
     CardDetail* result = [[CardDetail alloc] init];
     @try {
         NSJSONSerialization* json = [NSJSONSerialization JSONObjectWithData:[parsed dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
@@ -218,7 +217,7 @@
                 [pk addObject:info];
             }
             result.packs = pk;
-            result.adjust = [YGOData replaceChars:adjust];
+            result.adjust = @"";
             result.wiki = @"";
             result.imageId = [[obj valueForKey:@"imageid"] integerValue];
         }
