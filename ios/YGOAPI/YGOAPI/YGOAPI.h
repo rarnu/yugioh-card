@@ -6,7 +6,6 @@
 //  Copyright © 2018 rarnu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <YGOAPI/YGORequest.h>
 #import <YGOAPI/YGOData.h>
 

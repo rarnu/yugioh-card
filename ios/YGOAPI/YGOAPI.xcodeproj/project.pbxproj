@@ -43,11 +43,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92C24EBB220C5747007F16EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		92D9734720E67E6200154225 = {
 			isa = PBXGroup;
 			children = (
 				92D9735320E67E6200154225 /* YGOAPI */,
 				92D9735220E67E6200154225 /* Products */,
+				92C24EBB220C5747007F16EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

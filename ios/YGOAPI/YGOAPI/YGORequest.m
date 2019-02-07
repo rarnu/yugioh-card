@@ -10,8 +10,6 @@
 
 @implementation YGORequest
 
-
-
 +(NSString*) request:(NSString*) url {
     NSString* ret = @"";
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -32,7 +30,7 @@
 }
 
 +(NSString*) search:(NSString*) key page:(NSInteger)page {
-    NSString* urlStr =[BASE_URL stringByAppendingFormat:@"/search/%@/%ld", key, page];
+    NSString* urlStr =[BASE_URL stringByAppendingFormat:@"/search/%@/%d", key, page];
     return [YGORequest request:urlStr];
 }
 

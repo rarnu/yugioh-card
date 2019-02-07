@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
+    </dependencies>
+    <scenes>
+        <!--YGOWatch-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller title="YGOWatch" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="left" title="禁止限制卡表" id="jok-FV-CeP">
+                            <connections>
+                                <segue destination="DBi-vm-Der" kind="push" id="Qw0-LK-tOp"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="卡包列表" id="wuA-jk-8SC">
+                            <connections>
+                                <segue destination="bjD-au-CHu" kind="push" id="x7e-Hd-7p2"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Rarnu Github" id="Ros-vv-3rW">
+                            <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="Taz-29-NK7" kind="push" id="gya-A7-9Zt"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-114" y="533"/>
+        </scene>
+        <!--Github-->
+        <scene sceneID="yr8-5X-mDv">
+            <objects>
+                <controller title="Github" id="Taz-29-NK7" customClass="GithubInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
+                    <items>
+                        <label width="1" alignment="left" text="YGOLite for Watch" id="D9L-kh-Hba">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label width="1" alignment="left" text="version 1.0" id="mk5-3v-oq4">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label alignment="left" text="Open Source on Github" minimumScaleFactor="0.5" id="Nya-0p-3EN">
+                            <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <label alignment="left" text="github/rarnu/yugioh-card" minimumScaleFactor="0.5" id="Cfo-r5-OWO">
+                            <color key="textColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <imageView width="1" height="64" alignment="left" verticalAlignment="bottom" image="Icon" contentMode="scaleAspectFit" id="JWa-7b-S17"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="192" y="948"/>
+        </scene>
+        <!--卡包-->
+        <scene sceneID="sZw-Sx-ryq">
+            <objects>
+                <controller title="卡包" id="bjD-au-CHu" customClass="PackInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="192" y="561"/>
+        </scene>
+        <!--禁限卡表-->
+        <scene sceneID="030-JK-J31">
+            <objects>
+                <controller title="禁限卡表" id="DBi-vm-Der" customClass="LimitInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="PyJ-CO-e0Y"/>
+                    </items>
+                    <connections>
+                        <outlet property="tvLimit" destination="PyJ-CO-e0Y" id="45k-cB-9E4"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="192" y="240"/>
+        </scene>
+    </scenes>
+</document>
