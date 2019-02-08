@@ -61,3 +61,10 @@ $ fpccmd L yugiohcard.ppr O
 
 软件截图：
 
+**for WatchOS**
+
+![](https://raw.githubusercontent.com/rarnu/yugioh-card/master/screenshot/watchapp.gif)
+
+**for iOS**
+
+![](https://raw.githubusercontent.com/rarnu/yugioh-card/master/screenshot/iosapp.png)
