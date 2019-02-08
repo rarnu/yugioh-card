@@ -1,0 +1,851 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18BFA818D5169E1E681B3591 /* Pods_YuGiOhCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */; };
+		9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207E76020E67E8F00735721 /* AppDelegate.swift */; };
+		9207E76320E67E8F00735721 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207E76220E67E8F00735721 /* MainController.swift */; };
+		9207E76620E67E8F00735721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9207E76420E67E8F00735721 /* Main.storyboard */; };
+		9207E76820E67E9000735721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9207E76720E67E9000735721 /* Assets.xcassets */; };
+		9207E76B20E67E9000735721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9207E76920E67E9000735721 /* LaunchScreen.storyboard */; };
+		9208BEE120EB651600F795EA /* CardListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208BEE020EB651600F795EA /* CardListController.swift */; };
+		9214BEC220F66760001F65E4 /* UIScrollView+UITouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214BEC120F66760001F65E4 /* UIScrollView+UITouch.swift */; };
+		9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3B20EDF0BA00839678 /* CardDetailController.swift */; };
+		9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3D20EE1A8500839678 /* CardWikiController.swift */; };
+		9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269239720F48D1D002F4E8E /* PackDetailController.swift */; };
+		9269239A20F49D20002F4E8E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269239920F49D20002F4E8E /* SearchController.swift */; };
+		926FDFFF220DA6F200DEEBB4 /* YGOAPI2Watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926FDFFE220DA6F200DEEBB4 /* YGOAPI2Watch.framework */; };
+		926FE000220DA6F200DEEBB4 /* YGOAPI2Watch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 926FDFFE220DA6F200DEEBB4 /* YGOAPI2Watch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2C20F35E8A00DC235F /* LimitController.swift */; };
+		9270AC2F20F35F1A00DC235F /* LimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2E20F35F1A00DC235F /* LimitCell.swift */; };
+		927C3A4A210578D500EC1FB1 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927C3A49210578D500EC1FB1 /* Updater.swift */; };
+		9285B666220D9E14002D4B80 /* YGOAPI2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9285B665220D9E14002D4B80 /* YGOAPI2.framework */; };
+		9285B667220D9E14002D4B80 /* YGOAPI2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9285B665220D9E14002D4B80 /* YGOAPI2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92A17A21220C6B4F00BDA4F1 /* LimitInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A20220C6B4F00BDA4F1 /* LimitInterfaceController.swift */; };
+		92A17A23220C6BBD00BDA4F1 /* PackInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A22220C6BBD00BDA4F1 /* PackInterfaceController.swift */; };
+		92A17A25220C704A00BDA4F1 /* GithubInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A24220C704A00BDA4F1 /* GithubInterfaceController.swift */; };
+		92A17A27220C7C6100BDA4F1 /* CardDetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A26220C7C6100BDA4F1 /* CardDetailInterfaceController.swift */; };
+		92A17A29220C7F6800BDA4F1 /* UIColor+Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A17A28220C7F6800BDA4F1 /* UIColor+Parser.swift */; };
+		92B6077920FF399700562693 /* HelpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6077820FF399700562693 /* HelpController.swift */; };
+		92C24E81220C4EE8007F16EF /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E7F220C4EE8007F16EF /* Interface.storyboard */; };
+		92C24E83220C4EE9007F16EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E82220C4EE9007F16EF /* Assets.xcassets */; };
+		92C24E8A220C4EE9007F16EF /* YuGiOhWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 92C24E89220C4EE9007F16EF /* YuGiOhWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		92C24E8F220C4EE9007F16EF /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C24E8E220C4EE9007F16EF /* InterfaceController.swift */; };
+		92C24E91220C4EE9007F16EF /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C24E90220C4EE9007F16EF /* ExtensionDelegate.swift */; };
+		92C24E95220C4EE9007F16EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E94220C4EE9007F16EF /* Assets.xcassets */; };
+		92C24E9A220C4EE9007F16EF /* YuGiOhWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 92C24E7D220C4EE8007F16EF /* YuGiOhWatch.app */; };
+		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
+		92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1120F4583E00D4D1F5 /* PackController.swift */; };
+		92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1320F4599600D4D1F5 /* SeasonCell.swift */; };
+		92F88B1620F45E5300D4D1F5 /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1520F45E5300D4D1F5 /* PackCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		92C24E8B220C4EE9007F16EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9207E75520E67E8F00735721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92C24E88220C4EE9007F16EF;
+			remoteInfo = "YuGiOhWatch Extension";
+		};
+		92C24E98220C4EE9007F16EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9207E75520E67E8F00735721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92C24E7C220C4EE8007F16EF;
+			remoteInfo = YuGiOhWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9207E77D20E755AB00735721 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9285B667220D9E14002D4B80 /* YGOAPI2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		926FE001220DA6F200DEEBB4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				926FE000220DA6F200DEEBB4 /* YGOAPI2Watch.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92C24EA0220C4EE9007F16EF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				92C24E8A220C4EE9007F16EF /* YuGiOhWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92C24EA2220C4EE9007F16EF /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				92C24E9A220C4EE9007F16EF /* YuGiOhWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YuGiOhCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9207E75D20E67E8F00735721 /* YuGiOhCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuGiOhCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9207E76020E67E8F00735721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9207E76220E67E8F00735721 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		9207E76520E67E8F00735721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9207E76720E67E9000735721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9207E76A20E67E9000735721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9207E76C20E67E9000735721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9208BEE020EB651600F795EA /* CardListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListController.swift; sourceTree = "<group>"; };
+		9214BEC120F66760001F65E4 /* UIScrollView+UITouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+UITouch.swift"; sourceTree = "<group>"; };
+		9246AD3B20EDF0BA00839678 /* CardDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailController.swift; sourceTree = "<group>"; };
+		9246AD3D20EE1A8500839678 /* CardWikiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWikiController.swift; sourceTree = "<group>"; };
+		9269239720F48D1D002F4E8E /* PackDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackDetailController.swift; sourceTree = "<group>"; };
+		9269239920F49D20002F4E8E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		926FDFFE220DA6F200DEEBB4 /* YGOAPI2Watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YGOAPI2Watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9270AC2C20F35E8A00DC235F /* LimitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitController.swift; sourceTree = "<group>"; };
+		9270AC2E20F35F1A00DC235F /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
+		927C3A49210578D500EC1FB1 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
+		9285B665220D9E14002D4B80 /* YGOAPI2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YGOAPI2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92A17A20220C6B4F00BDA4F1 /* LimitInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitInterfaceController.swift; sourceTree = "<group>"; };
+		92A17A22220C6BBD00BDA4F1 /* PackInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackInterfaceController.swift; sourceTree = "<group>"; };
+		92A17A24220C704A00BDA4F1 /* GithubInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubInterfaceController.swift; sourceTree = "<group>"; };
+		92A17A26220C7C6100BDA4F1 /* CardDetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailInterfaceController.swift; sourceTree = "<group>"; };
+		92A17A28220C7F6800BDA4F1 /* UIColor+Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Parser.swift"; sourceTree = "<group>"; };
+		92B6077820FF399700562693 /* HelpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpController.swift; sourceTree = "<group>"; };
+		92C24E7D220C4EE8007F16EF /* YuGiOhWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuGiOhWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92C24E80220C4EE8007F16EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		92C24E82220C4EE9007F16EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92C24E84220C4EE9007F16EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92C24E89220C4EE9007F16EF /* YuGiOhWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "YuGiOhWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		92C24E8E220C4EE9007F16EF /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		92C24E90220C4EE9007F16EF /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		92C24E94220C4EE9007F16EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92C24E96220C4EE9007F16EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
+		92F88B1120F4583E00D4D1F5 /* PackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackController.swift; sourceTree = "<group>"; };
+		92F88B1320F4599600D4D1F5 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
+		92F88B1520F45E5300D4D1F5 /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
+		A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.release.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.release.xcconfig"; sourceTree = "<group>"; };
+		AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YuGiOhCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9207E75A20E67E8F00735721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9285B666220D9E14002D4B80 /* YGOAPI2.framework in Frameworks */,
+				18BFA818D5169E1E681B3591 /* Pods_YuGiOhCard.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92C24E86220C4EE9007F16EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				926FDFFF220DA6F200DEEBB4 /* YGOAPI2Watch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79F2E88925E6611F06FB7D9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9207E75420E67E8F00735721 = {
+			isa = PBXGroup;
+			children = (
+				926FDFFE220DA6F200DEEBB4 /* YGOAPI2Watch.framework */,
+				9285B665220D9E14002D4B80 /* YGOAPI2.framework */,
+				9207E75F20E67E8F00735721 /* YuGiOhCard */,
+				92C24E7E220C4EE8007F16EF /* YuGiOhWatch */,
+				92C24E8D220C4EE9007F16EF /* YuGiOhWatch Extension */,
+				9207E75E20E67E8F00735721 /* Products */,
+				BCC9CFABF60A7CBC51A72B2F /* Pods */,
+				79F2E88925E6611F06FB7D9E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9207E75E20E67E8F00735721 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9207E75D20E67E8F00735721 /* YuGiOhCard.app */,
+				92C24E7D220C4EE8007F16EF /* YuGiOhWatch.app */,
+				92C24E89220C4EE9007F16EF /* YuGiOhWatch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9207E75F20E67E8F00735721 /* YuGiOhCard */ = {
+			isa = PBXGroup;
+			children = (
+				9214BEC020F66746001F65E4 /* Extension */,
+				92E7F6F520EB6BD00078574B /* Cell */,
+				9207E76020E67E8F00735721 /* AppDelegate.swift */,
+				9207E76220E67E8F00735721 /* MainController.swift */,
+				9207E76420E67E8F00735721 /* Main.storyboard */,
+				9207E76720E67E9000735721 /* Assets.xcassets */,
+				9207E76920E67E9000735721 /* LaunchScreen.storyboard */,
+				9207E76C20E67E9000735721 /* Info.plist */,
+				9208BEE020EB651600F795EA /* CardListController.swift */,
+				9246AD3B20EDF0BA00839678 /* CardDetailController.swift */,
+				9246AD3D20EE1A8500839678 /* CardWikiController.swift */,
+				9270AC2C20F35E8A00DC235F /* LimitController.swift */,
+				92F88B1120F4583E00D4D1F5 /* PackController.swift */,
+				9269239720F48D1D002F4E8E /* PackDetailController.swift */,
+				9269239920F49D20002F4E8E /* SearchController.swift */,
+				92B6077820FF399700562693 /* HelpController.swift */,
+				927C3A49210578D500EC1FB1 /* Updater.swift */,
+			);
+			path = YuGiOhCard;
+			sourceTree = "<group>";
+		};
+		9214BEC020F66746001F65E4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9214BEC120F66760001F65E4 /* UIScrollView+UITouch.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		92C24E7E220C4EE8007F16EF /* YuGiOhWatch */ = {
+			isa = PBXGroup;
+			children = (
+				92C24E7F220C4EE8007F16EF /* Interface.storyboard */,
+				92C24E82220C4EE9007F16EF /* Assets.xcassets */,
+				92C24E84220C4EE9007F16EF /* Info.plist */,
+			);
+			path = YuGiOhWatch;
+			sourceTree = "<group>";
+		};
+		92C24E8D220C4EE9007F16EF /* YuGiOhWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				92C24E8E220C4EE9007F16EF /* InterfaceController.swift */,
+				92C24E90220C4EE9007F16EF /* ExtensionDelegate.swift */,
+				92C24E94220C4EE9007F16EF /* Assets.xcassets */,
+				92C24E96220C4EE9007F16EF /* Info.plist */,
+				92A17A20220C6B4F00BDA4F1 /* LimitInterfaceController.swift */,
+				92A17A22220C6BBD00BDA4F1 /* PackInterfaceController.swift */,
+				92A17A24220C704A00BDA4F1 /* GithubInterfaceController.swift */,
+				92A17A26220C7C6100BDA4F1 /* CardDetailInterfaceController.swift */,
+				92A17A28220C7F6800BDA4F1 /* UIColor+Parser.swift */,
+			);
+			path = "YuGiOhWatch Extension";
+			sourceTree = "<group>";
+		};
+		92E7F6F520EB6BD00078574B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				92E7F6F620EB6BE70078574B /* CardListCell.swift */,
+				9270AC2E20F35F1A00DC235F /* LimitCell.swift */,
+				92F88B1320F4599600D4D1F5 /* SeasonCell.swift */,
+				92F88B1520F45E5300D4D1F5 /* PackCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BCC9CFABF60A7CBC51A72B2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */,
+				A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9207E75C20E67E8F00735721 /* YuGiOhCard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9207E76F20E67E9000735721 /* Build configuration list for PBXNativeTarget "YuGiOhCard" */;
+			buildPhases = (
+				94479CF5CDF56D721320D00E /* [CP] Check Pods Manifest.lock */,
+				9207E75920E67E8F00735721 /* Sources */,
+				9207E75A20E67E8F00735721 /* Frameworks */,
+				9207E75B20E67E8F00735721 /* Resources */,
+				9207E77D20E755AB00735721 /* Embed Frameworks */,
+				8172EE999E847F28F6FB6619 /* [CP] Embed Pods Frameworks */,
+				977D948B96075F3FD85C5CF7 /* [CP] Copy Pods Resources */,
+				92C24EA2220C4EE9007F16EF /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92C24E99220C4EE9007F16EF /* PBXTargetDependency */,
+			);
+			name = YuGiOhCard;
+			productName = YuGiOhCard;
+			productReference = 9207E75D20E67E8F00735721 /* YuGiOhCard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		92C24E7C220C4EE8007F16EF /* YuGiOhWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92C24EA1220C4EE9007F16EF /* Build configuration list for PBXNativeTarget "YuGiOhWatch" */;
+			buildPhases = (
+				92C24E7B220C4EE8007F16EF /* Resources */,
+				92C24EA0220C4EE9007F16EF /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92C24E8C220C4EE9007F16EF /* PBXTargetDependency */,
+			);
+			name = YuGiOhWatch;
+			productName = YuGiOhWatch;
+			productReference = 92C24E7D220C4EE8007F16EF /* YuGiOhWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		92C24E88220C4EE9007F16EF /* YuGiOhWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92C24E9F220C4EE9007F16EF /* Build configuration list for PBXNativeTarget "YuGiOhWatch Extension" */;
+			buildPhases = (
+				92C24E85220C4EE9007F16EF /* Sources */,
+				92C24E86220C4EE9007F16EF /* Frameworks */,
+				92C24E87220C4EE9007F16EF /* Resources */,
+				926FE001220DA6F200DEEBB4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YuGiOhWatch Extension";
+			productName = "YuGiOhWatch Extension";
+			productReference = 92C24E89220C4EE9007F16EF /* YuGiOhWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9207E75520E67E8F00735721 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = rarnu;
+				TargetAttributes = {
+					9207E75C20E67E8F00735721 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					92C24E7C220C4EE8007F16EF = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					92C24E88220C4EE9007F16EF = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 9207E75820E67E8F00735721 /* Build configuration list for PBXProject "YuGiOhCard" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9207E75420E67E8F00735721;
+			productRefGroup = 9207E75E20E67E8F00735721 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9207E75C20E67E8F00735721 /* YuGiOhCard */,
+				92C24E7C220C4EE8007F16EF /* YuGiOhWatch */,
+				92C24E88220C4EE9007F16EF /* YuGiOhWatch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9207E75B20E67E8F00735721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9207E76B20E67E9000735721 /* LaunchScreen.storyboard in Resources */,
+				9207E76820E67E9000735721 /* Assets.xcassets in Resources */,
+				9207E76620E67E8F00735721 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92C24E7B220C4EE8007F16EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92C24E83220C4EE9007F16EF /* Assets.xcassets in Resources */,
+				92C24E81220C4EE8007F16EF /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92C24E87220C4EE9007F16EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92C24E95220C4EE9007F16EF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8172EE999E847F28F6FB6619 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TangramKit/TangramKit.framework",
+				"${BUILT_PRODUCTS_DIR}/sfunctional/sfunctional.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TangramKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sfunctional.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94479CF5CDF56D721320D00E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YuGiOhCard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		977D948B96075F3FD85C5CF7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9207E75920E67E8F00735721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9207E76320E67E8F00735721 /* MainController.swift in Sources */,
+				92B6077920FF399700562693 /* HelpController.swift in Sources */,
+				92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */,
+				92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */,
+				9269239A20F49D20002F4E8E /* SearchController.swift in Sources */,
+				9270AC2F20F35F1A00DC235F /* LimitCell.swift in Sources */,
+				9214BEC220F66760001F65E4 /* UIScrollView+UITouch.swift in Sources */,
+				9208BEE120EB651600F795EA /* CardListController.swift in Sources */,
+				9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */,
+				9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */,
+				9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */,
+				9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */,
+				9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */,
+				927C3A4A210578D500EC1FB1 /* Updater.swift in Sources */,
+				92F88B1620F45E5300D4D1F5 /* PackCell.swift in Sources */,
+				92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92C24E85220C4EE9007F16EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92C24E91220C4EE9007F16EF /* ExtensionDelegate.swift in Sources */,
+				92A17A21220C6B4F00BDA4F1 /* LimitInterfaceController.swift in Sources */,
+				92A17A27220C7C6100BDA4F1 /* CardDetailInterfaceController.swift in Sources */,
+				92C24E8F220C4EE9007F16EF /* InterfaceController.swift in Sources */,
+				92A17A29220C7F6800BDA4F1 /* UIColor+Parser.swift in Sources */,
+				92A17A23220C6BBD00BDA4F1 /* PackInterfaceController.swift in Sources */,
+				92A17A25220C704A00BDA4F1 /* GithubInterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92C24E8C220C4EE9007F16EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92C24E88220C4EE9007F16EF /* YuGiOhWatch Extension */;
+			targetProxy = 92C24E8B220C4EE9007F16EF /* PBXContainerItemProxy */;
+		};
+		92C24E99220C4EE9007F16EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92C24E7C220C4EE8007F16EF /* YuGiOhWatch */;
+			targetProxy = 92C24E98220C4EE9007F16EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9207E76420E67E8F00735721 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9207E76520E67E8F00735721 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9207E76920E67E9000735721 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9207E76A20E67E9000735721 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		92C24E7F220C4EE8007F16EF /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92C24E80220C4EE8007F16EF /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9207E76D20E67E9000735721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9207E76E20E67E9000735721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9207E77020E67E9000735721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD03418D3CF58EC6BE2A3B5B /* Pods-YuGiOhCard.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN3HDD448D;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = YuGiOhCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9207E77120E67E9000735721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A26EDC89A6994EDCF26B4C67 /* Pods-YuGiOhCard.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN3HDD448D;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = YuGiOhCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		92C24E9B220C4EE9007F16EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN3HDD448D;
+				IBSC_MODULE = YuGiOhWatch_Extension;
+				INFOPLIST_FILE = YuGiOhWatch/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		92C24E9C220C4EE9007F16EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN3HDD448D;
+				IBSC_MODULE = YuGiOhWatch_Extension;
+				INFOPLIST_FILE = YuGiOhWatch/Info.plist;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		92C24E9D220C4EE9007F16EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN3HDD448D;
+				INFOPLIST_FILE = "YuGiOhWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YuGiOhWatch\\ Extension",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		92C24E9E220C4EE9007F16EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN3HDD448D;
+				INFOPLIST_FILE = "YuGiOhWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YuGiOhWatch\\ Extension",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9207E75820E67E8F00735721 /* Build configuration list for PBXProject "YuGiOhCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9207E76D20E67E9000735721 /* Debug */,
+				9207E76E20E67E9000735721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9207E76F20E67E9000735721 /* Build configuration list for PBXNativeTarget "YuGiOhCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9207E77020E67E9000735721 /* Debug */,
+				9207E77120E67E9000735721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92C24E9F220C4EE9007F16EF /* Build configuration list for PBXNativeTarget "YuGiOhWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92C24E9D220C4EE9007F16EF /* Debug */,
+				92C24E9E220C4EE9007F16EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92C24EA1220C4EE9007F16EF /* Build configuration list for PBXNativeTarget "YuGiOhWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92C24E9B220C4EE9007F16EF /* Debug */,
+				92C24E9C220C4EE9007F16EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9207E75520E67E8F00735721 /* Project object */;
+}
