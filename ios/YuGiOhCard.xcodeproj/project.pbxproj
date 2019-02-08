@@ -19,6 +19,8 @@
 		9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246AD3D20EE1A8500839678 /* CardWikiController.swift */; };
 		9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269239720F48D1D002F4E8E /* PackDetailController.swift */; };
 		9269239A20F49D20002F4E8E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269239920F49D20002F4E8E /* SearchController.swift */; };
+		926AFC86220DDAAB00D3FEC5 /* SPackageInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926AFC85220DDAAB00D3FEC5 /* SPackageInterfaceController.swift */; };
+		926AFC88220DDDE100D3FEC5 /* PackCardsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926AFC87220DDDE100D3FEC5 /* PackCardsInterfaceController.swift */; };
 		926FDFFF220DA6F200DEEBB4 /* YGOAPI2Watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926FDFFE220DA6F200DEEBB4 /* YGOAPI2Watch.framework */; };
 		926FE000220DA6F200DEEBB4 /* YGOAPI2Watch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 926FDFFE220DA6F200DEEBB4 /* YGOAPI2Watch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270AC2C20F35E8A00DC235F /* LimitController.swift */; };
@@ -124,6 +126,8 @@
 		9246AD3D20EE1A8500839678 /* CardWikiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWikiController.swift; sourceTree = "<group>"; };
 		9269239720F48D1D002F4E8E /* PackDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackDetailController.swift; sourceTree = "<group>"; };
 		9269239920F49D20002F4E8E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		926AFC85220DDAAB00D3FEC5 /* SPackageInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPackageInterfaceController.swift; sourceTree = "<group>"; };
+		926AFC87220DDDE100D3FEC5 /* PackCardsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCardsInterfaceController.swift; sourceTree = "<group>"; };
 		926FDFFE220DA6F200DEEBB4 /* YGOAPI2Watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YGOAPI2Watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9270AC2C20F35E8A00DC235F /* LimitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitController.swift; sourceTree = "<group>"; };
 		9270AC2E20F35F1A00DC235F /* LimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitCell.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				92A17A24220C704A00BDA4F1 /* GithubInterfaceController.swift */,
 				92A17A26220C7C6100BDA4F1 /* CardDetailInterfaceController.swift */,
 				92A17A28220C7F6800BDA4F1 /* UIColor+Parser.swift */,
+				926AFC85220DDAAB00D3FEC5 /* SPackageInterfaceController.swift */,
+				926AFC87220DDDE100D3FEC5 /* PackCardsInterfaceController.swift */,
 			);
 			path = "YuGiOhWatch Extension";
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926AFC86220DDAAB00D3FEC5 /* SPackageInterfaceController.swift in Sources */,
 				92C24E91220C4EE9007F16EF /* ExtensionDelegate.swift in Sources */,
 				92A17A21220C6B4F00BDA4F1 /* LimitInterfaceController.swift in Sources */,
 				92A17A27220C7C6100BDA4F1 /* CardDetailInterfaceController.swift in Sources */,
@@ -506,6 +513,7 @@
 				92A17A29220C7F6800BDA4F1 /* UIColor+Parser.swift in Sources */,
 				92A17A23220C6BBD00BDA4F1 /* PackInterfaceController.swift in Sources */,
 				92A17A25220C704A00BDA4F1 /* GithubInterfaceController.swift in Sources */,
+				926AFC88220DDDE100D3FEC5 /* PackCardsInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

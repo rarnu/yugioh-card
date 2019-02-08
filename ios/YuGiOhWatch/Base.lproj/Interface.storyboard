@@ -60,12 +60,67 @@
             </objects>
             <point key="canvasLocation" x="192" y="948"/>
         </scene>
-        <!--卡包-->
+        <!--推出季-->
         <scene sceneID="sZw-Sx-ryq">
             <objects>
-                <controller title="卡包" id="bjD-au-CHu" customClass="PackInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target"/>
+                <controller title="推出季" id="bjD-au-CHu" customClass="PackInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="Dj7-MW-d2X">
+                            <items>
+                                <tableRow identifier="Cell" id="DP9-Td-FHf" customClass="SeasonRowController" customModule="YuGiOhWatch" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="28" alignment="left" id="GCI-mJ-Lka">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" verticalAlignment="center" textAlignment="left" minimumScaleFactor="0.5" id="EZV-aj-H8d">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="lblName" destination="EZV-aj-H8d" id="eVw-f0-wGr"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <label width="1" height="1" alignment="center" verticalAlignment="center" text="正在加载，请稍候..." textAlignment="center" minimumScaleFactor="0.5" id="5o6-Lo-Jza">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="lblLoading" destination="5o6-Lo-Jza" id="c4p-6h-IeS"/>
+                        <outlet property="tvSeason" destination="Dj7-MW-d2X" id="rl7-lW-Ez6"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="192" y="561"/>
+        </scene>
+        <!--卡包-->
+        <scene sceneID="p7W-5L-UwF">
+            <objects>
+                <controller identifier="SPackageInterfaceController" title="卡包" id="hle-Is-bic" customClass="SPackageInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="VAo-y3-A6Q">
+                            <items>
+                                <tableRow identifier="Cell" id="QOI-01-uZD" customClass="PackageRowController" customModule="YuGiOhWatch" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="28" alignment="left" id="8Zn-vY-NMH">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" verticalAlignment="center" textAlignment="left" minimumScaleFactor="0.5" id="o3k-eT-CNh">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="lblName" destination="o3k-eT-CNh" id="PEF-4Z-4uM"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tvPackage" destination="VAo-y3-A6Q" id="e2T-Np-YJ5"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="561"/>
         </scene>
         <!--禁限卡表-->
         <scene sceneID="030-JK-J31">
@@ -90,7 +145,7 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <label width="1" height="1" alignment="center" verticalAlignment="center" text="正在加载，请稍候..." textAlignment="center" id="b2J-IO-T2Y">
+                        <label width="1" height="1" alignment="center" verticalAlignment="center" text="正在加载，请稍候..." textAlignment="center" minimumScaleFactor="0.5" id="b2J-IO-T2Y">
                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                         </label>
                     </items>
@@ -159,6 +214,39 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="481" y="226"/>
+        </scene>
+        <!--卡片列表-->
+        <scene sceneID="QvY-a8-4mq">
+            <objects>
+                <controller identifier="PackCardsInterfaceController" title="卡片列表" id="W4o-rl-A4A" customClass="PackCardsInterfaceController" customModule="YuGiOhWatch" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="L3d-D7-hBs">
+                            <items>
+                                <tableRow identifier="Cell" id="Lbz-uo-1PV" customClass="PackCardRowController" customModule="YuGiOhWatch" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="28" alignment="left" id="pFC-yk-oIE">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" verticalAlignment="center" textAlignment="left" minimumScaleFactor="0.5" id="fw9-B7-HDS">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="lblName" destination="fw9-B7-HDS" id="RTZ-Ok-RgU"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <label width="1" height="1" alignment="center" verticalAlignment="center" text="正在加载，请稍候..." textAlignment="center" minimumScaleFactor="0.5" id="vOu-Gs-I4n">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="lblLoading" destination="vOu-Gs-I4n" id="Ds6-Yr-S8w"/>
+                        <outlet property="tvPackCards" destination="L3d-D7-hBs" id="hWe-pX-GSz"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="716" y="561"/>
         </scene>
     </scenes>
 </document>

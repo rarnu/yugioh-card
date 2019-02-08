@@ -142,56 +142,58 @@ class CardDetailController: UIViewController {
         tvRareValue = makeLabel("罕贵度:")
         tvPackValue = makeLabel("所在卡包:")
         
-        YGOData2.cardDetail(self.hashid) { c in
-            self.mainThread {
-                self.tvCardNameValue?.text = c.name
-                self.tvCardJapNameValue?.text = c.japname
-                self.tvCardEnNameValue?.text = c.enname
-                self.tvCardTypeValue?.text = c.cardtype
-                self.tvPasswordValue?.text = c.password
-                self.tvLimitValue?.text = c.limit
-                self.tvRareValue?.text = c.rare
-                self.tvPackValue?.text = c.pack
-                
-                if (c.cardtype.contains("怪兽")) {
-                    self.tvMonRace = self.makeLabel("怪兽种族:")
-                    self.tvMonRace?.text = c.race
-                    self.tvMonElement = self.makeLabel("怪兽属性:")
-                    self.tvMonElement?.text = c.element
+        thread {
+            YGOData2.cardDetail(self.hashid) { c in
+                self.mainThread {
+                    self.tvCardNameValue?.text = c.name
+                    self.tvCardJapNameValue?.text = c.japname
+                    self.tvCardEnNameValue?.text = c.enname
+                    self.tvCardTypeValue?.text = c.cardtype
+                    self.tvPasswordValue?.text = c.password
+                    self.tvLimitValue?.text = c.limit
+                    self.tvRareValue?.text = c.rare
+                    self.tvPackValue?.text = c.pack
                     
-                    if (c.cardtype.contains("连接")) {
-                        // link monster
-                        self.tvMonAtk = self.makeLabel("攻击力:")
-                        self.tvMonAtk?.text = c.atk
-                        self.tvMonLink = self.makeLabel("连接数:")
-                        self.tvMonLink?.text = c.link
-                        self.tvMonLinkArrow = self.makeLabel("连接方向:")
-                        self.tvMonLinkArrow?.text = c.linkarrow
+                    if (c.cardtype.contains("怪兽")) {
+                        self.tvMonRace = self.makeLabel("怪兽种族:")
+                        self.tvMonRace?.text = c.race
+                        self.tvMonElement = self.makeLabel("怪兽属性:")
+                        self.tvMonElement?.text = c.element
                         
-                    } else {
-                        if (c.cardtype.contains("XYZ")) {
-                            self.tvMonLevel = self.makeLabel("怪兽阶级:")
+                        if (c.cardtype.contains("连接")) {
+                            // link monster
+                            self.tvMonAtk = self.makeLabel("攻击力:")
+                            self.tvMonAtk?.text = c.atk
+                            self.tvMonLink = self.makeLabel("连接数:")
+                            self.tvMonLink?.text = c.link
+                            self.tvMonLinkArrow = self.makeLabel("连接方向:")
+                            self.tvMonLinkArrow?.text = c.linkarrow
+                            
                         } else {
-                            self.tvMonLevel = self.makeLabel("怪兽星级:")
+                            if (c.cardtype.contains("XYZ")) {
+                                self.tvMonLevel = self.makeLabel("怪兽阶级:")
+                            } else {
+                                self.tvMonLevel = self.makeLabel("怪兽星级:")
+                            }
+                            self.tvMonLevel?.text = c.level
+                            self.tvMonAtk = self.makeLabel("攻击力:")
+                            self.tvMonAtk?.text = c.atk
+                            self.tvMonDef = self.makeLabel("守备力:")
+                            self.tvMonDef?.text = c.def
                         }
-                        self.tvMonLevel?.text = c.level
-                        self.tvMonAtk = self.makeLabel("攻击力:")
-                        self.tvMonAtk?.text = c.atk
-                        self.tvMonDef = self.makeLabel("守备力:")
-                        self.tvMonDef?.text = c.def
                     }
+                    
+                    let size = self.getTextSize(str: c.effect, width:Int(screenWidth() - 16 - 80 - 8), fontSize: 17)
+                    self.tvEffectValue = self.makeLabel("效果:", true, size.height)
+                    self.tvEffectValue?.text = c.effect
+                    _ = self.makeLine()
+                    self.ivCardImg = self.makeImage()
+                    self.loadImage(cardid: c.imageId)
+                    _ = self.makeLine()
+                    self.tvAdjust = self.makeAdjust()
+                    self.tvAdjust?.text = c.adjust
+                    self.wikiForPass = c.wiki
                 }
-                
-                let size = self.getTextSize(str: c.effect, width:Int(screenWidth() - 16 - 80 - 8), fontSize: 17)
-                self.tvEffectValue = self.makeLabel("效果:", true, size.height)
-                self.tvEffectValue?.text = c.effect
-                _ = self.makeLine()
-                self.ivCardImg = self.makeImage()
-                self.loadImage(cardid: c.imageId)
-                _ = self.makeLine()
-                self.tvAdjust = self.makeAdjust()
-                self.tvAdjust?.text = c.adjust
-                self.wikiForPass = c.wiki
             }
         }
     }

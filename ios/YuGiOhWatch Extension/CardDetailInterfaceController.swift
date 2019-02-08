@@ -44,10 +44,12 @@ class CardDetailInterfaceController: WKInterfaceController {
     }
 
     private func queryCardDetail() {
-        YGOData2.cardDetail(hashid) { c in
-            self.info = c
-            self.lblLoading.setHidden(true)
-            self.buildCardDetail()
+        Thread.detachNewThread {
+            YGOData2.cardDetail(self.hashid) { c in
+                self.info = c
+                self.lblLoading.setHidden(true)
+                self.buildCardDetail()
+            }
         }
     }
     

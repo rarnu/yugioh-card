@@ -187,7 +187,14 @@ public class YGOData2: NSObject {
                     
                     result.adjust = replaceChars(adjust)
                     result.wiki = replaceChars(wikiparsed)
-                    result.imageId = (obj["imageid"] as! NSString).integerValue
+                    let _typ = type(of: obj["imageid"]!)
+                    var imgid = 0
+                    if ("\(_typ)".contains("String")) {
+                        imgid = (obj["imageid"] as! NSString).integerValue
+                    } else {
+                        imgid = obj["imageid"] as! Int
+                    }
+                    result.imageId = imgid
                 }
                 
             } catch {

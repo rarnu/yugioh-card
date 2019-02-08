@@ -445,7 +445,14 @@ class SearchResult: NSObject {
                 let acnname = (obj["name"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
                 let ajapname = obj["name_ja"] is NSNull ? "" : (obj["name_ja"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
                 let aenname = obj["name_en"] is NSNull ? "" : (obj["name_en"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
-                ret += "{\"id\":\((obj["id"] as! NSString).integerValue),\"hashid\":\"\(obj["hash_id"] as! String)\",\"name\":\"\(acnname)\",\"japname\":\"\(ajapname)\",\"enname\":\"\(aenname)\",\"cardtype\":\"\(obj["type_st"] as! String)\"},"
+                let _typ = type(of: obj["id"]!)
+                var cid = ""
+                if ("\(_typ)".contains("String")) {
+                    cid = obj["id"] as! String
+                } else {
+                    cid = "\(obj["id"] as! Int)"
+                }
+                ret += "{\"id\":\(cid),\"hashid\":\"\(obj["hash_id"] as! String)\",\"name\":\"\(acnname)\",\"japname\":\"\(ajapname)\",\"enname\":\"\(aenname)\",\"cardtype\":\"\(obj["type_st"] as! String)\"},"
             }
             
         } catch {
