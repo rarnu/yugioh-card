@@ -184,17 +184,9 @@ public class YGOData2: NSObject {
                         info.rare = pkinfo["rare"]!
                         result.packs.append(info)
                     }
-                    
                     result.adjust = replaceChars(adjust)
                     result.wiki = replaceChars(wikiparsed)
-                    let _typ = type(of: obj["imageid"]!)
-                    var imgid = 0
-                    if ("\(_typ)".contains("String")) {
-                        imgid = (obj["imageid"] as! NSString).integerValue
-                    } else {
-                        imgid = obj["imageid"] as! Int
-                    }
-                    result.imageId = imgid
+                    result.imageId = obj.int("imageid")
                 }
                 
             } catch {
