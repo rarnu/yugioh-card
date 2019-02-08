@@ -10,6 +10,9 @@ import UIKit
 
 extension String {
     func sub(start: Int) -> String {
+        if (self == "") {
+            return ""
+        }
         if (start == -1) {
             return ""
         }
@@ -19,6 +22,9 @@ extension String {
     }
     
     func sub(start: Int, length: Int) -> String {
+        if (self == "") {
+            return ""
+        }
         if (start == -1 || length == -1) {
             return ""
         }
@@ -113,7 +119,7 @@ class HtmlParser: NSObject {
         
         let HLINKON = "mark-linkmarker_%d_on"
         let HDIVLINE = "<div class=\"line\"></div>"
-        let HDIVLINE2 = "<div class='line'></div>"
+        // let HDIVLINE2 = "<div class='line'></div>"
         
         let ESPLIT = "- - - - - -"
         
@@ -437,9 +443,9 @@ class SearchResult: NSObject {
             let jarr = json["cards"] as! Array<Dictionary<String, Any>>
             for obj in jarr {
                 let acnname = (obj["name"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
-                let ajapname = obj["name_ja"] == nil ? "" : (obj["name_ja"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
-                let aenname = obj["name_en"] == nil ? "" : (obj["name_en"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
-                ret += "{\"id\":\(obj["id"] as! Int),\"hashid\":\"\(obj["hash_id"] as! String)\",\"name\":\"\(acnname)\",\"japname\":\"\(ajapname)\",\"enname\":\"\(aenname)\",\"cardtype\":\"\(obj["type_st"] as! String)\"},"
+                let ajapname = obj["name_ja"] is NSNull ? "" : (obj["name_ja"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
+                let aenname = obj["name_en"] is NSNull ? "" : (obj["name_en"] as! String).replacingOccurrences(of: "\"", with: "\\\"")
+                ret += "{\"id\":\((obj["id"] as! NSString).integerValue),\"hashid\":\"\(obj["hash_id"] as! String)\",\"name\":\"\(acnname)\",\"japname\":\"\(ajapname)\",\"enname\":\"\(aenname)\",\"cardtype\":\"\(obj["type_st"] as! String)\"},"
             }
             
         } catch {
