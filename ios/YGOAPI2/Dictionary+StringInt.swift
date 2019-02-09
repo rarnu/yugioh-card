@@ -19,7 +19,10 @@ extension Dictionary {
     func int(_ key: Key) -> Int {
         let v = self[key]
         let s = "\(v!)"
-        let ret = Int(s)!
+        var ret = 0
+        if (s != "") {
+            ret = Int(s)!
+        }
         return ret
     }
 }

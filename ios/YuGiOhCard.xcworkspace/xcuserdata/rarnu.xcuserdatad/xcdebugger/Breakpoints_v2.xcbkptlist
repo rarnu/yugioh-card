@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/Dictionary+StringInt.swift"
-            timestampString = "571339488.4913321"
+            timestampString = "571378818.202089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "int(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -825,13 +825,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YGOAPI2/Dictionary+StringInt.swift"
-            timestampString = "571339488.491697"
+            filePath = "YGOAPI2/YGOData2.swift"
+            timestampString = "571378853.744174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "int(_:)"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "cardDetail(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
