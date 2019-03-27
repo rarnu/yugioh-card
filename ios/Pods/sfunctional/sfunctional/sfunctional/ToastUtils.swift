@@ -8,6 +8,10 @@
 
 import UIKit
 
+public func toast(msg: String) {
+    Toast.showToast(message: msg as NSString?)
+}
+
 let mainWidth = UIScreen.main.bounds.size.width
 let mainHeight = UIScreen.main.bounds.size.height
 

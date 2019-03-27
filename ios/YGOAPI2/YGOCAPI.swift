@@ -37,7 +37,7 @@ extension String {
         var i = -1
         let r = self.range(of: sub)
         if (r != nil) {
-            i = r!.lowerBound.encodedOffset
+            i = r!.lowerBound.utf16Offset(in: sub)
         }
         return i
     }

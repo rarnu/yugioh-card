@@ -51,7 +51,7 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if (lastSeason == "") {
                     lastSeason = p.season
                 }
-                if (self.listSeason.index(of: p.season) == nil) {
+                if (self.listSeason.firstIndex(of: p.season) == nil) {
                     self.listSeason.append(p.season)
                 }
                 if (p.season == lastSeason) {

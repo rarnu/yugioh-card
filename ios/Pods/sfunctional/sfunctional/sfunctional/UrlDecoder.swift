@@ -21,7 +21,7 @@ public func decodeUrl(_ url: String) -> UrlInfo {
     let info = UrlInfo()
     if (innerUrl.contains("://")) {
         // find protocol
-        let idx = innerUrl.index(of: ":")!
+        let idx = innerUrl.firstIndex(of: ":")!
         let p = String(innerUrl[..<idx])
         info.proto = p
         if (p == "http") {
@@ -34,11 +34,11 @@ public func decodeUrl(_ url: String) -> UrlInfo {
     
     if (innerUrl.contains("/")) {
         // find uri or params
-        let idx = innerUrl.index(of: "/")!
+        let idx = innerUrl.firstIndex(of: "/")!
         var sub = String(innerUrl[idx...].dropFirst())
         if (sub.contains("?")) {
             // find params
-            let idxParam = sub.index(of: "?")!
+            let idxParam = sub.firstIndex(of: "?")!
             let paramStr = String(sub[idxParam...].dropFirst())
             let ps = paramStr.split(separator: "&")
             for s in ps {
@@ -59,7 +59,7 @@ public func decodeUrl(_ url: String) -> UrlInfo {
     
     if (innerUrl.contains(":")) {
         // find port
-        let idx = innerUrl.index(of: ":")!
+        let idx = innerUrl.firstIndex(of: ":")!
         let p = String(innerUrl[idx...].dropFirst())
         info.port = Int(p)!
         innerUrl = String(innerUrl[..<idx])

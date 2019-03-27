@@ -23,27 +23,33 @@ public extension NSObject {
 
 public extension String {
 
-    mutating func insert(idx: Int, sub: String) -> String {
+    func insert(idx: Int, sub: String) -> String {
         var tmp = self
         tmp.insert(contentsOf: sub, at: tmp.index(tmp.startIndex, offsetBy: idx))
         return tmp
     }
     
-    mutating func remove(idx: Int, length: Int) -> String {
+    func remove(idx: Int, length: Int) -> String {
         var tmp = self
         tmp.removeSubrange(tmp.index(tmp.startIndex, offsetBy: idx)..<tmp.index(tmp.startIndex, offsetBy: idx + length))
         return tmp
     }
     
-    mutating func sub(start: Int) -> String {
+    func sub(start: Int) -> String {
         var tmp = self
         tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)...])
         return tmp
     }
     
-    mutating func sub(start: Int, length: Int) -> String {
+    func sub(start: Int, length: Int) -> String {
         var tmp = self
         tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)..<tmp.index(tmp.startIndex, offsetBy: start + length)])
+        return tmp
+    }
+    
+    func charAt(index: Int) -> String {
+        var tmp = self
+        tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: index)..<tmp.index(tmp.startIndex, offsetBy: index + 1)])
         return tmp
     }
 
@@ -51,7 +57,7 @@ public extension String {
         var i = -1
         let r = self.range(of: sub)
         if (r != nil) {
-            i = r!.lowerBound.encodedOffset
+            i = r!.lowerBound.utf16Offset(in: sub)
         }
         return i
     }
@@ -69,7 +75,7 @@ public extension String {
     
     func lastIndexOf(sub: String) -> Int {
         var i = self.count - sub.count
-        var tmp = self
+        let tmp = self
         var found = false
         while (!found) && (i > 0) {
             if (tmp.sub(start: i, length: sub.count) == sub) {
@@ -82,7 +88,6 @@ public extension String {
             i = -1
         }
         return i
-        
     }
     
     mutating func trim() -> String {
@@ -121,7 +126,10 @@ public extension String {
 }
 
 public extension UIColor {
-    func parseString(_ colorStr: String) -> UIColor {
+    
+    static let darkThemeColor = UIColor.parseString("#3B3F41")
+    
+    static func parseString(_ colorStr: String) -> UIColor {
         var color = UIColor.red
         var cStr : String = colorStr.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         if cStr.hasPrefix("#") {
@@ -147,9 +155,6 @@ public extension UIColor {
 }
 
 public extension UIView {
-    func toast(msg: String) {
-        Toast.showToast(message: msg as NSString?)
-    }
     
     func viewController() -> UIViewController? {
         var result: UIViewController? = nil
@@ -175,6 +180,7 @@ public extension UIView {
 }
 
 public extension UIViewController {
+    
     func navigationbarHeight() -> CGFloat {
         let h = navigationController?.navigationBar.frame.size.height
         return (h == nil) ? 0 : h!
@@ -184,16 +190,50 @@ public extension UIViewController {
         return self.storyboard?.instantiateViewController(withIdentifier:name)
     }
     
-    func alert(title: String, message: String, btn: String, callback:@escaping () -> Void) {
+    func alert(title: String, message: String, btn: String, isDark: Bool = false, callback:@escaping () -> Void) {
         let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        if (isDark) {
+            let sub = a.view.subviews.first! as UIView
+            let acv = sub.subviews.first! as UIView
+            for v in acv.subviews {
+                v.backgroundColor = UIColor.darkThemeColor
+            }
+            acv.backgroundColor = UIColor.darkThemeColor
+            acv.layer.cornerRadius = 15
+            acv.tintColor = UIColor.white
+            let aStr = NSMutableAttributedString(string: title)
+            aStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: title.count))
+            aStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: NSRange(location: 0, length: title.count))
+            a.setValue(aStr, forKey: "attributedTitle")
+            let mStr = NSMutableAttributedString(string: message)
+            mStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: message.count))
+            a.setValue(mStr, forKey: "attributedMessage")
+        }
         a.addAction(UIAlertAction(title: btn, style: UIAlertAction.Style.default, handler: { _ in
             callback()
         }))
         present(a, animated: true, completion: nil)
     }
     
-    func alert(title: String, message: String, btn1: String, btn2: String, callback:@escaping (_ which: Int) -> Void) {
+    func alert(title: String, message: String, btn1: String, btn2: String, isDark: Bool = false, callback:@escaping (_ which: Int) -> Void) {
         let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        if (isDark) {
+            let sub = a.view.subviews.first! as UIView
+            let acv = sub.subviews.first! as UIView
+            for v in acv.subviews {
+                v.backgroundColor = UIColor.darkThemeColor
+            }
+            acv.backgroundColor = UIColor.darkThemeColor
+            acv.layer.cornerRadius = 15
+            acv.tintColor = UIColor.white
+            let aStr = NSMutableAttributedString(string: title)
+            aStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: title.count))
+            aStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: NSRange(location: 0, length: title.count))
+            a.setValue(aStr, forKey: "attributedTitle")
+            let mStr = NSMutableAttributedString(string: message)
+            mStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: message.count))
+            a.setValue(mStr, forKey: "attributedMessage")
+        }
         a.addAction(UIAlertAction(title: btn1, style: UIAlertAction.Style.default, handler: { _ in
             callback(0)
         }))
@@ -203,8 +243,25 @@ public extension UIViewController {
         present(a, animated: true, completion: nil)
     }
     
-    func alert(title: String, message: String, btn1: String, btn2: String, btn3: String, callback: @escaping (_ which: Int) -> Void) {
+    func alert(title: String, message: String, btn1: String, btn2: String, btn3: String, isDark: Bool = false, callback: @escaping (_ which: Int) -> Void) {
         let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        if (isDark) {
+            let sub = a.view.subviews.first! as UIView
+            let acv = sub.subviews.first! as UIView
+            for v in acv.subviews {
+                v.backgroundColor = UIColor.darkThemeColor
+            }
+            acv.backgroundColor = UIColor.darkThemeColor
+            acv.layer.cornerRadius = 15
+            acv.tintColor = UIColor.white
+            let aStr = NSMutableAttributedString(string: title)
+            aStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: title.count))
+            aStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: NSRange(location: 0, length: title.count))
+            a.setValue(aStr, forKey: "attributedTitle")
+            let mStr = NSMutableAttributedString(string: message)
+            mStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: message.count))
+            a.setValue(mStr, forKey: "attributedMessage")
+        }
         a.addAction(UIAlertAction(title: btn1, style: UIAlertAction.Style.default, handler: { _ in
             callback(0)
         }))
@@ -217,8 +274,25 @@ public extension UIViewController {
         present(a, animated: true, completion: nil)
     }
     
-    func alert(title: String, message: String, btn1: String, btn2: String, placeholder: String, initText: String, callback: @escaping (_ which: Int, _ text: String?) -> Void) {
+    func alert(title: String, message: String, btn1: String, btn2: String, placeholder: String, initText: String, isDark: Bool = false, callback: @escaping (_ which: Int, _ text: String?) -> Void) {
         let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        if (isDark) {
+            let sub = a.view.subviews.first! as UIView
+            let acv = sub.subviews.first! as UIView
+            for v in acv.subviews {
+                v.backgroundColor = UIColor.darkThemeColor
+            }
+            acv.backgroundColor = UIColor.darkThemeColor
+            acv.layer.cornerRadius = 15
+            acv.tintColor = UIColor.white
+            let aStr = NSMutableAttributedString(string: title)
+            aStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: title.count))
+            aStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: NSRange(location: 0, length: title.count))
+            a.setValue(aStr, forKey: "attributedTitle")
+            let mStr = NSMutableAttributedString(string: message)
+            mStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: message.count))
+            a.setValue(mStr, forKey: "attributedMessage")
+        }
         a.addTextField(configurationHandler: { tf in
             tf.placeholder = placeholder
             tf.text = initText
@@ -229,18 +303,62 @@ public extension UIViewController {
         a.addAction(UIAlertAction(title: btn2, style: UIAlertAction.Style.cancel, handler: { _ in
             callback(1, a.textFields![0].text)
         }))
-        present(a, animated: true, completion: nil)
+        present(a, animated: true, completion: {
+            if (isDark) {
+                for tf in a.textFields! {
+                    let c = tf.superview
+                    let ev = c?.superview?.subviews[0]
+                    
+                    if (ev != nil && ev is UIVisualEffectView) {
+                        c?.backgroundColor = UIColor.darkGray
+                        ev?.removeFromSuperview()
+                    }
+                    tf.backgroundColor = UIColor.darkGray
+                    let phStr = NSMutableAttributedString(string: placeholder)
+                    phStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: placeholder.count))
+                    tf.attributedPlaceholder = phStr
+                    tf.textColor = UIColor.white
+                }
+            }
+        })
     }
     
-    func alert(title: String, message: String, btn1: String, btn2: String, placeholder1: String, placeholder2: String, initText1: String, initText2: String, callback: @escaping (_ which: Int, _ text1: String?, _ text2: String?) -> Void) {
+    func alert(title: String, message: String, btn1: String, btn2: String, placeholder1: String, placeholder2: String, initText1: String, initText2: String, isDark: Bool = false, callback: @escaping (_ which: Int, _ text1: String?, _ text2: String?) -> Void) {
         let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        if (isDark) {
+            let sub = a.view.subviews.first! as UIView
+            let acv = sub.subviews.first! as UIView
+            for v in acv.subviews {
+                v.backgroundColor = UIColor.darkThemeColor
+            }
+            acv.backgroundColor = UIColor.darkThemeColor
+            acv.layer.cornerRadius = 15
+            acv.tintColor = UIColor.white
+            let aStr = NSMutableAttributedString(string: title)
+            aStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: title.count))
+            aStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: NSRange(location: 0, length: title.count))
+            a.setValue(aStr, forKey: "attributedTitle")
+            let mStr = NSMutableAttributedString(string: message)
+            mStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: message.count))
+            a.setValue(mStr, forKey: "attributedMessage")
+        }
         a.addTextField(configurationHandler: { tf in
             tf.placeholder = placeholder1
             tf.text = initText1
+            if (isDark) {
+                let phStr = NSMutableAttributedString(string: placeholder1)
+                phStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: placeholder1.count))
+                tf.attributedPlaceholder = phStr
+            }
         })
         a.addTextField(configurationHandler: { tf in
             tf.placeholder = placeholder2
             tf.text = initText2
+            if (isDark) {
+                let phStr = NSMutableAttributedString(string: placeholder2)
+                phStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: placeholder2.count))
+                tf.attributedPlaceholder = phStr
+            }
         })
         a.addAction(UIAlertAction(title: btn1, style: UIAlertAction.Style.default, handler: { _ in
             callback(0, a.textFields![0].text, a.textFields![1].text)
@@ -248,6 +366,20 @@ public extension UIViewController {
         a.addAction(UIAlertAction(title: btn2, style: UIAlertAction.Style.cancel, handler: { _ in
             callback(1, a.textFields![0].text, a.textFields![1].text)
         }))
-        present(a, animated: true, completion: nil)
+        present(a, animated: true, completion: {
+            if (isDark) {
+                for tf in a.textFields! {
+                    let c = tf.superview
+                    let ev = c?.superview?.subviews[0]
+                    
+                    if (ev != nil && ev is UIVisualEffectView) {
+                        c?.backgroundColor = UIColor.darkGray
+                        ev?.removeFromSuperview()
+                    }
+                    tf.backgroundColor = UIColor.darkGray
+                    tf.textColor = UIColor.white
+                }
+            }
+        })
     }
 }

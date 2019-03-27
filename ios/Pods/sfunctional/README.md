@@ -12,6 +12,8 @@ use_frameworks!
 pod 'sfunctional'
 ```
 
+for ```swift 4```, use version ```0.5.4``` and version ```0.8.0``` is for ```swift 4.2```.
+
 #### Try this
 
 ```

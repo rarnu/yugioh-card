@@ -97,6 +97,8 @@ public extension UIImage {
         case UIImage.Orientation.rightMirrored:
             ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.upMirrored)
             break
+        default:
+            break
         }
         return ret
     }
@@ -128,6 +130,8 @@ public extension UIImage {
         case UIImage.Orientation.rightMirrored:
             ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.downMirrored)
             break
+        default:
+            break
         }
         return ret
     }
@@ -158,6 +162,8 @@ public extension UIImage {
             break
         case UIImage.Orientation.rightMirrored:
             ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.leftMirrored)
+            break
+        default:
             break
         }
         return ret
@@ -201,6 +207,8 @@ public extension UIImage {
         case UIImage.Orientation.rightMirrored:
             ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.left)
             break
+        default:
+            break
         }
         return ret
     }
@@ -231,6 +239,8 @@ public extension UIImage {
             break
         case UIImage.Orientation.rightMirrored:
             ret = UIImage(cgImage: self.cgImage!, scale: 1.0, orientation: UIImage.Orientation.right)
+            break
+        default:
             break
         }
         return ret

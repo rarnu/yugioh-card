@@ -14,7 +14,7 @@ import YGOAPI2
 class MainController: UIViewController, UITextFieldDelegate {
 
     var layMain: TGLinearLayout?
-    var edtSearch: UITextField?
+    var edtSearch: UITextField!
     var btnSearch: UIButton?
     var btnAdvSearch: UIButton?
     var laySearchKeyword: TGLinearLayout?
@@ -38,7 +38,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         v.tg_height.equal(45)
         layMain?.addSubview(v)
         edtSearch = UITextField(frame: CGRect(x: 0, y: 0, width: screenWidth() - 140, height: 36))
-        edtSearch?.borderStyle = UITextField.BorderStyle.none
+        edtSearch.borderStyle = UITextField.BorderStyle.none
         edtSearch?.placeholder = "输入要搜索的关键字"
         edtSearch?.returnKeyType = UIReturnKeyType.done
         edtSearch?.delegate = self
@@ -215,7 +215,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         // search clicked
         let key = edtSearch?.text
         if (key == nil || key == "") {
-            self.view.toast(msg: "不能搜索空关键字")
+            toast(msg: "不能搜索空关键字")
             return
         }
         let c = vc(name: "cardlist") as! CardListController

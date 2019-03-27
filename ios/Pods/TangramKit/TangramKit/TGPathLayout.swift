@@ -256,7 +256,7 @@ open class TGPathLayout : TGBaseLayout,TGPathLayoutViewSizeClass {
      */
     public func tg_argumentFrom(subview:UIView)->CGFloat?{
         
-        guard let index = subviews.index(of: subview) else {
+        guard let index = subviews.firstIndex(of: subview) else {
             return nil
         }
         
@@ -385,12 +385,24 @@ open class TGPathLayout : TGBaseLayout,TGPathLayoutViewSizeClass {
         }
     }
     
+    #if swift(>=4.2)
+    
+    open override func sendSubviewToBack(_ view: UIView) {
+        if tg_originView == view {
+            return
+        }
+        super.sendSubviewToBack(view)
+    }
+    
+    #else
+    
     open override func sendSubview(toBack view: UIView) {
         if tg_originView == view {
             return
         }
         super.sendSubview(toBack: view)
     }
+    #endif
     
     open override func willRemoveSubview(_ subview: UIView) {
         super.willRemoveSubview(subview)

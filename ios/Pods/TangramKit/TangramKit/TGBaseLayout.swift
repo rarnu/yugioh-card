@@ -624,11 +624,11 @@ extension UIView
             let srcSizeClass = tgFrame.sizeClasses.object(forKey: srcTypeInt) as? TGViewSizeClassImpl
             if srcSizeClass == nil
             {
-                sizeClass = self.tgCreateInstance() as! TGViewSizeClass
+                sizeClass = (self.tgCreateInstance() as! TGViewSizeClass)
             }
             else
             {
-                sizeClass = srcSizeClass!.copy() as! TGViewSizeClass
+                sizeClass = (srcSizeClass!.copy() as! TGViewSizeClass)
             }
             
             tgFrame.sizeClasses.setObject(sizeClass!, forKey: typeInt as NSCopying)
@@ -1384,7 +1384,8 @@ open class TGBaseLayout: UIView,TGLayoutViewSizeClass {
     ///   - target: 事件的处理对象，如果设置为nil则表示取消事件。
     ///   - action: 事件的处理动作，格式为：func handleAction(sender:TGBaseLayout)
     ///   - controlEvents: 支持的事件类型，目前只支持：touchDown、touchUpInside、touchCancel这三个事件。
-    public func tg_setTarget(_ target: NSObjectProtocol?, action: Selector?, for controlEvents: UIControlEvents)
+    #if swift(>=4.2)
+    public func tg_setTarget(_ target: NSObjectProtocol?, action: Selector?, for controlEvents: UIControl.Event)
     {
         if _tgTouchEventDelegate == nil
         {
@@ -1393,6 +1394,19 @@ open class TGBaseLayout: UIView,TGLayoutViewSizeClass {
         
         _tgTouchEventDelegate?.setTarget(target, action: action, for: controlEvents)
     }
+    #else
+    public func tg_setTarget(_ target: NSObjectProtocol?, action: Selector?, for controlEvents: UIControlEvents)
+    {
+    
+    
+        if _tgTouchEventDelegate == nil
+        {
+            _tgTouchEventDelegate = TGTouchEventDelegate(self)
+        }
+        
+        _tgTouchEventDelegate?.setTarget(target, action: action, for: controlEvents)
+    }
+    #endif
     
     /**
      设置布局按下时背景的高亮的颜色。只有设置了tg_setTarget方法后此属性才生效。
@@ -2018,13 +2032,13 @@ open class TGBaseLayout: UIView,TGLayoutViewSizeClass {
                 if let t = lsc.width.sizeVal
                 {
                     //约束冲突：宽度依赖的视图不是父视图
-                    assert(t.view == newSuperview, "Constraint exception!! \(self)width dependent on:\(t.view) is not superview")
+                    assert(t.view == newSuperview, "Constraint exception!! \(self)width dependent on:\(t.view!) is not superview")
                 }
                 
                 if let t = lsc.height.sizeVal
                 {
                     //约束冲突：高度依赖的视图不是父视图
-                    assert(t.view == newSuperview, "Constraint exception!! \(self)height dependent on:\(t.view) is not superview")
+                    assert(t.view == newSuperview, "Constraint exception!! \(self)height dependent on:\(t.view!) is not superview")
                 }
                 
             #endif
@@ -2982,7 +2996,7 @@ extension TGBaseLayout
             sbv.isKind(of: UITextView.self) ||
             sbv.isKind(of: UIButton.self)
         {
-            sbvFont = sbv.value(forKey: "font") as! UIFont
+            sbvFont = (sbv.value(forKey: "font") as! UIFont)
         }
         
         return sbvFont;
@@ -3452,11 +3466,11 @@ extension TGBaseLayout
             }
             
             let devori = UIDevice.current.orientation
-            if UIDeviceOrientationIsPortrait(devori)
+            if devori.isPortrait
             {
                 sizeClassScreenType = TGSizeClassType.Screen.portrait
             }
-            else if UIDeviceOrientationIsLandscape(devori)
+            else if devori.isLandscape
             {
                 sizeClassScreenType = TGSizeClassType.Screen.landscape
             }
@@ -3574,6 +3588,31 @@ private class TGTouchEventDelegate
         TGTouchEventDelegate._CurrentLayout = nil
     }
     
+    #if swift(>=4.2)
+    
+    func setTarget(_ target: NSObjectProtocol?, action: Selector?, for controlEvents: UIControl.Event)
+    {
+        //just only support these events
+        switch controlEvents {
+        case UIControl.Event.touchDown:
+            _touchDownTarget = target
+            _touchDownAction = action
+            break
+        case UIControl.Event.touchUpInside:
+            _touchUpTarget = target
+            _touchUpAction = action
+            break
+        case UIControl.Event.touchCancel:
+            _touchCancelTarget = target
+            _touchCancelAction = action
+            break
+        default:
+            return
+        }
+
+    }
+    #else
+    
     func setTarget(_ target: NSObjectProtocol?, action: Selector?, for controlEvents: UIControlEvents)
     {
         //just only support these events
@@ -3591,10 +3630,11 @@ private class TGTouchEventDelegate
             _touchCancelAction = action
             break
         default:
-            return
+        return
         }
-
     }
+    
+    #endif
     
     func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
@@ -3625,7 +3665,7 @@ private class TGTouchEventDelegate
                 let touch:UITouch = (touches as NSSet).anyObject() as! UITouch
                 
                 let pt:CGPoint = touch.location(in: _layout)
-                if fabs(pt.x - _beginPoint.x) > 2 || fabs(pt.y - _beginPoint.y) > 2
+                if abs(pt.x - _beginPoint.x) > 2 || abs(pt.y - _beginPoint.y) > 2
                 {
                     _canCallAction = false
                     
@@ -4139,7 +4179,7 @@ extension UIView
     
     internal var tgFrame:TGFrame
     {
-        var obj:AnyObject! = objc_getAssociatedObject(self, &ASSOCIATEDOBJECT_KEY_TANGRAMKIT_FRAME) as AnyObject!
+        var obj:Any? = objc_getAssociatedObject(self, &ASSOCIATEDOBJECT_KEY_TANGRAMKIT_FRAME)
         if obj == nil
         {
             obj = TGFrame()
@@ -4354,7 +4394,7 @@ extension UIView
         sizeClass = tgFrame.sizeClasses.object(forKey: searchTypeInt) as? TGViewSizeClass
         if (sizeClass == nil)
         {
-            sizeClass = self.tgCreateInstance() as! TGViewSizeClass
+            sizeClass = (self.tgCreateInstance() as! TGViewSizeClass)
             tgFrame.sizeClasses.setObject(sizeClass!, forKey: searchTypeInt as NSCopying)
         }
         

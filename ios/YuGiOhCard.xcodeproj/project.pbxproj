@@ -174,6 +174,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5388BE97CA5E10FE97265B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -302,7 +309,6 @@
 				9207E75B20E67E8F00735721 /* Resources */,
 				9207E77D20E755AB00735721 /* Embed Frameworks */,
 				8172EE999E847F28F6FB6619 /* [CP] Embed Pods Frameworks */,
-				977D948B96075F3FD85C5CF7 /* [CP] Copy Pods Resources */,
 				92C24EA2220C4EE9007F16EF /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -321,6 +327,7 @@
 			buildPhases = (
 				92C24E7B220C4EE8007F16EF /* Resources */,
 				92C24EA0220C4EE9007F16EF /* Embed App Extensions */,
+				A5388BE97CA5E10FE97265B7 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -362,12 +369,14 @@
 				TargetAttributes = {
 					9207E75C20E67E8F00735721 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 					};
 					92C24E7C220C4EE8007F16EF = {
 						CreatedOnToolsVersion = 10.1;
 					};
 					92C24E88220C4EE9007F16EF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -458,21 +467,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		977D948B96075F3FD85C5CF7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -680,7 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN3HDD448D;
+				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -688,9 +682,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.card;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -701,7 +695,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN3HDD448D;
+				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -709,9 +703,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.card;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -722,12 +716,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN3HDD448D;
+				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				IBSC_MODULE = YuGiOhWatch_Extension;
 				INFOPLIST_FILE = YuGiOhWatch/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.card.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -743,11 +737,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN3HDD448D;
+				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				IBSC_MODULE = YuGiOhWatch_Extension;
 				INFOPLIST_FILE = YuGiOhWatch/Info.plist;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.card.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -762,7 +756,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN3HDD448D;
+				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				INFOPLIST_FILE = "YuGiOhWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -775,12 +769,12 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.card.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 5.0;
 			};
@@ -791,7 +785,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN3HDD448D;
+				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				INFOPLIST_FILE = "YuGiOhWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -803,12 +797,12 @@
 					"$(PROJECT_DIR)/YuGiOhWatch\\ Extension",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.yugioh.YuGiOhCard.iOS.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.card.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 5.0;
 			};

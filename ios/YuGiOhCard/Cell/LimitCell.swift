@@ -28,7 +28,7 @@ class LimitCell: AdapterCell<LimitInfo2> {
     
     override func setItem(item: LimitInfo2?) {
         if (item != nil) {
-            lblType?.backgroundColor = UIColor().parseString(item!.color)
+            lblType?.backgroundColor = UIColor.parseString(item!.color)
             lblName?.text = item!.name
             switch item!.limit {
             case 0:

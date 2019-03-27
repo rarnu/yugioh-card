@@ -12,14 +12,16 @@ open class PopupViewController: UIViewController {
 
     private var baseView: UIView?
     private var vAlpha: CGFloat = 0.5
-    private var vRadius: CGFloat = 25.0
+    private var vRadius: CGFloat = 15.0
     private var vWidth: CGFloat = 0.0
     private var vHeight: CGFloat = 0.0
+    private var vWhite: CGFloat = 1.0
     
-    public init(width: CGFloat, height: CGFloat, alpha: CGFloat = 0.5, radius: CGFloat = 25.0) {
+    public init(width: CGFloat, height: CGFloat, white: CGFloat = 1.0, alpha: CGFloat = 0.5, radius: CGFloat = 15.0) {
         super.init(nibName: nil, bundle: nil)
         vWidth = width
         vHeight = height
+        vWhite = white
         vAlpha = alpha
         vRadius = radius
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -31,7 +33,7 @@ open class PopupViewController: UIViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(white: 1, alpha: vAlpha)
+        self.view.backgroundColor = UIColor(white: vWhite, alpha: vAlpha)
         self.baseView = UIView(frame: CGRect(x: 0, y: 0, width: vWidth, height: vHeight))
         self.baseView?.backgroundColor = UIColor.white
         self.baseView?.layer.cornerRadius = vRadius
