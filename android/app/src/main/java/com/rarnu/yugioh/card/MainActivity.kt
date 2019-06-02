@@ -10,10 +10,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
-import com.rarnu.kt.android.dip2px
-import com.rarnu.kt.android.initUI
-import com.rarnu.kt.android.resStr
-import com.rarnu.kt.android.toast
+import com.rarnu.android.dip2px
+import com.rarnu.android.initUI
+import com.rarnu.android.resStr
+import com.rarnu.android.toast
 import com.rarnu.yugioh.HotCard
 import com.rarnu.yugioh.HotPack
 import com.rarnu.yugioh.YGOData

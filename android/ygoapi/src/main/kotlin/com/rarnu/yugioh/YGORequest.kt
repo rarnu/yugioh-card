@@ -1,17 +1,13 @@
 package com.rarnu.yugioh
 
-import com.rarnu.kt.android.HttpMethod
-import com.rarnu.kt.android.http
+import com.rarnu.common.blockingHttpGet
 
 object YGORequest {
 
     const val BASE_URL = "https://www.ourocg.cn"
     const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
-    private fun request(aurl: String) = http {
-        url = aurl
-        method = HttpMethod.GET
-    }
+    private fun request(aurl: String) = blockingHttpGet(aurl)
 
     fun search(akey: String, apage: Int) = request("$BASE_URL/search/$akey/$apage")
 

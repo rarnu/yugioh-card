@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import com.rarnu.kt.android.BackActivity
-import com.rarnu.kt.android.resStr
+import com.rarnu.android.BackActivity
+import com.rarnu.android.resStr
 import com.rarnu.yugioh.CardInfo
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.card.adapter.CardListAdapter

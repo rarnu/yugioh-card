@@ -4,8 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import com.rarnu.kt.android.BackActivity
-import com.rarnu.kt.android.resStr
+import com.rarnu.android.BackActivity
+import com.rarnu.android.resStr
 import kotlinx.android.synthetic.main.activity_help.*
 
 class HelpActivity: BackActivity(), View.OnClickListener {

@@ -8,7 +8,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="YGODATA" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -16,7 +15,17 @@
   <component name="ChangeListManager">
     <list default="true" id="1e532e62-69f1-4ce3-8186-901f9a1a396a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_rarnu_ktfunctional_0_7_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_rarnu_ktfunctional_0_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_8_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_13_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_io_commons_io_2_6_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_compress_1_16_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_lang3_3_7_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_2_70_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_2_70_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_objenesis_objenesis_2_6_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
@@ -26,14 +35,27 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardWikiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardWikiActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/Updater.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/Updater.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/LimitAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/LimitAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/PackAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/PackAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ygoapi/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOCache.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ygoapi/ygoapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/ygoapi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,6 +63,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -56,6 +83,9 @@
     <expand />
     <select />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -64,125 +94,36 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/ygoapi">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="android" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardListActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-229">
-              <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-              <folding>
-                <element signature="e#31#428#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardWikiActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#31#210#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PathUtils.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-              <folding>
-                <element signature="e#31#80#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="117" column="48" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
-              <folding>
-                <element signature="e#31#422#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/Updater.kt">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="30" column="83" selection-start-line="30" selection-start-column="83" selection-end-line="30" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#31#263#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-              <folding>
-                <element signature="e#31#423#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="140" column="29" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
-              <folding>
-                <element signature="e#31#810#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
-              <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-              <folding>
-                <element signature="e#1051#1069#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-              <folding>
-                <element signature="e#31#454#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -229,39 +170,39 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_limit.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_packlist.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_seasonlist.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/PackAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_packdetail.xml" />
-        <option value="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_cardlist.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_wiki.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_simple.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PathUtils.kt" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_carddetail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" />
-        <option value="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOCache.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" />
+        <option value="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" />
+        <option value="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOCache.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardDetailActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardWikiActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/PackAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/Updater.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/LimitAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardListActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt" />
         <option value="$PROJECT_DIR$/ygoapi/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/LimitAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardDetailActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardListActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardWikiActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt" />
       </list>
     </option>
   </component>
@@ -278,6 +219,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -319,24 +261,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="card" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="card" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="android" type="b2602c69:ProjectViewProjectNode" />
@@ -397,6 +321,15 @@
               <item name="ygoapi" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="jniLibs" type="462c0819:PsiDirectoryNode" />
+              <item name="x86" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="ygoapi" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="kotlin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -416,7 +349,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -425,6 +357,7 @@
     <property name="DEBUGGABLE_DEVICE" value="Pixel_API_25 [emulator-5554]" />
     <property name="DEBUGGABLE_PROCESS" value="com.rarnu.yugioh.card" />
     <property name="DEBUGGER_ID" value="Java" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Develop/android-sdk" />
@@ -433,6 +366,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -473,8 +407,11 @@
     <configuration name="app" type="AndroidRunConfigurationType" singleton="true">
       <module name="app" />
       <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -488,6 +425,8 @@
       <Java />
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -600,11 +539,17 @@
       <workItem from="1549442435201" duration="1688000" />
       <workItem from="1549445343429" duration="170000" />
       <workItem from="1549464546280" duration="533000" />
+      <workItem from="1559452045177" duration="209000" />
+      <workItem from="1559452275106" duration="452000" />
+      <workItem from="1559452734356" duration="1350000" />
+      <workItem from="1559454936067" duration="1424000" />
+      <workItem from="1559457237344" duration="296000" />
+      <workItem from="1559459730421" duration="95000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121823000" />
+    <option name="totallyTimeSpent" value="125649000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -618,13 +563,13 @@
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1112" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16187434" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26677316" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Captures" order="6" />
+      <window_info id="Captures" order="6" side_tool="true" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -634,13 +579,13 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32419196" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.32843137" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.32768923" />
       <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Logcat" order="10" weight="0.32908913" />
+      <window_info anchor="bottom" id="Logcat" order="10" weight="0.51195216" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32908913" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.25196078" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.46613547" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24973376" />
@@ -650,7 +595,7 @@
       <window_info anchor="right" id="Preview" order="5" weight="0.32960597" />
       <window_info anchor="right" id="Device File Explorer" order="6" side_tool="true" weight="0.32960597" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="right" id="Gradle" order="8" />
+      <window_info anchor="right" id="Gradle" order="8" visible="true" weight="0.32960597" />
       <window_info anchor="right" id="Database" order="9" weight="0.32960597" />
       <window_info anchor="right" id="Palette&#9;" order="10" />
       <window_info anchor="right" id="Theme Preview" order="11" />
@@ -666,8 +611,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_image.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardImageActivity.kt" />
     <entry file="file://$USER_HOME$/Develop/android-sdk/sources/android-26/android/graphics/Color.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -676,12 +619,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_seasonlist.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$USER_HOME$/Develop/android-sdk/sources/android-26/android/widget/AdapterView.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -691,12 +634,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pack.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$USER_HOME$/Develop/android-sdk/sources/android-26/android/widget/ListView.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -713,20 +656,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_packdetail.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_cardlist.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/color.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -743,96 +686,90 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_wiki.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="835">
           <caret line="723" column="50" lean-forward="true" selection-start-line="723" selection-start-column="50" selection-end-line="723" selection-end-column="51" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_limit.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_cardlist.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_limitlist.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_packlist.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_simple.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="jar://$USER_HOME$/Develop/gradle/caches/modules-2/files-2.1/com.github.rarnu/ktfunctional/0.2.2/a712e4ab0b46afc08a164dcce84272f416027214/ktfunctional-0.2.2-sources.jar!/com/rarnu/kt/android/HttpUtils.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_carddetail.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="4965">
           <caret line="331" column="21" selection-start-line="331" selection-start-column="21" selection-end-line="331" selection-end-column="21" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="jar://$USER_HOME$/Develop/gradle-4.4/caches/modules-2/files-2.1/com.github.rarnu/ktfunctional/0.7.3/ad4a44391b96a61942be5ef6f975f0b444ed112c/ktfunctional-0.7.3-sources.jar!/com/rarnu/kt/android/FileUtils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2130">
-          <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/Develop/gradle-4.4/caches/modules-2/files-2.1/com.github.rarnu/ktfunctional/0.7.3/ad4a44391b96a61942be5ef6f975f0b444ed112c/ktfunctional-0.7.3-sources.jar!/com/rarnu/kt/android/FileUtils.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -845,6 +782,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="81" column="56" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="56" />
@@ -854,178 +792,10 @@
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ygoapi/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/NativeAPI.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOCache.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1249">
-          <caret line="220" column="49" lean-forward="true" selection-start-line="220" selection-start-column="49" selection-end-line="220" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="52" column="41" lean-forward="true" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/LimitAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/PackAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardDetailActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#31#541#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardListActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-          <folding>
-            <element signature="e#31#428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardWikiActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#31#210#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#31#263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-          <folding>
-            <element signature="e#31#423#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="140" column="29" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
-          <folding>
-            <element signature="e#31#810#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-          <folding>
-            <element signature="e#1051#1069#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-          <folding>
-            <element signature="e#31#454#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PathUtils.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="192">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
             <element signature="e#31#80#0" expanded="true" />
@@ -1033,20 +803,204 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/NativeAPI.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5344">
+          <caret line="334" column="32" selection-start-line="334" selection-start-column="32" selection-end-line="334" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOCache.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardDetailActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="90" column="47" selection-start-line="90" selection-start-column="47" selection-end-line="90" selection-end-column="47" />
+          <folding>
+            <element signature="e#31#522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardWikiActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding>
+            <element signature="e#31#210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="117" column="48" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
+        <state relative-caret-position="158">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
           <folding>
-            <element signature="e#31#422#0" expanded="true" />
+            <element signature="e#31#383#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <element signature="e#31#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-548">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/Updater.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="30" column="83" selection-start-line="30" selection-start-column="83" selection-end-line="30" selection-end-column="83" />
+        <state relative-caret-position="112">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="e#921#942#1" expanded="true" />
+            <element signature="e#952#981#1" expanded="true" />
+            <element signature="e#991#1008#1" expanded="true" />
+            <element signature="e#1018#1039#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="e#31#292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-84">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardListActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-932">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="21" column="83" selection-start-line="21" selection-start-column="83" selection-end-line="21" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.rarnu/android-jvm/0.0.4/305d54fc2f81b58576f5efcbb836f32e331fee52/android-jvm-0.0.4-sources.jar!/com/rarnu/android/AdapterUtil.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="30" column="60" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.rarnu/android-jvm/0.0.4/305d54fc2f81b58576f5efcbb836f32e331fee52/android-jvm-0.0.4-sources.jar!/com/rarnu/android/ContextExtension.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="65" column="85" selection-start-line="65" selection-start-column="85" selection-end-line="65" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/LimitAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="e#39#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ygoapi/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#39#253#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/PackAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding>
+            <element signature="e#39#257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>

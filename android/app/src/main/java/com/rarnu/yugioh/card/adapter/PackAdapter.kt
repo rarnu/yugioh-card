@@ -2,7 +2,7 @@ package com.rarnu.yugioh.card.adapter
 
 import android.content.Context
 import android.view.View
-import com.rarnu.kt.android.BaseAdapter
+import com.rarnu.android.BaseAdapter
 import com.rarnu.yugioh.PackageInfo
 import com.rarnu.yugioh.card.R
 import kotlinx.android.synthetic.main.item_packlist.view.*

@@ -3,8 +3,7 @@ package com.rarnu.yugioh.card.adapter
 import android.content.Context
 import android.graphics.Color
 import android.view.View
-import com.rarnu.kt.android.BaseAdapter
-import com.rarnu.kt.android.resStr
+import com.rarnu.android.BaseAdapter
 import com.rarnu.yugioh.LimitInfo
 import com.rarnu.yugioh.card.R
 import kotlinx.android.synthetic.main.item_limitlist.view.*

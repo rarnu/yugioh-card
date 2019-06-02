@@ -2,7 +2,7 @@ package com.rarnu.yugioh.card.adapter
 
 import android.content.Context
 import android.view.View
-import com.rarnu.kt.android.BaseAdapter
+import com.rarnu.android.BaseAdapter
 import com.rarnu.yugioh.HotCard
 import com.rarnu.yugioh.HotPack
 import com.rarnu.yugioh.card.R

@@ -9,11 +9,22 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/kotlinx-io.kotlin_module'
+        exclude 'META-INF/atomicfu.kotlin_module'
+        exclude 'META-INF/kotlinx-coroutines-io.kotlin_module'
+        exclude 'META-INF/kotlinx-coroutines-core.kotlin_module'
+    }
 }
 
 dependencies {
-    // implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.31"
+    implementation "com.rarnu:android-jvm:0.1.0"
     implementation project(':ygoapi')
-    implementation "com.github.rarnu:ktfunctional:0.8.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

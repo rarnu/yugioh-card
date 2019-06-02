@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.rarnu:android-jvm:0.1.0@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.rarnu/android-jvm/0.1.0/1dc78fc5a7554e144581299f9f1a2db68ac815d/android-jvm-0.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.rarnu/android-jvm/0.1.0/c49c5c9ddb5521dac24b3f8c0187fee850f6fcdb/android-jvm-0.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

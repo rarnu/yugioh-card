@@ -1,6 +1,5 @@
 package com.rarnu.yugioh.card
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -8,10 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import com.rarnu.kt.android.BackActivity
-import com.rarnu.kt.android.resColor
-import com.rarnu.kt.android.resStr
-import com.rarnu.kt.android.showActionBack
+import com.rarnu.android.BackActivity
+import com.rarnu.android.resColor
+import com.rarnu.android.resStr
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity: BackActivity(), View.OnClickListener {

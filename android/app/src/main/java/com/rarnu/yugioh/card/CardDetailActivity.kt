@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.rarnu.kt.android.BackActivity
-import com.rarnu.kt.android.DownloadState
-import com.rarnu.kt.android.downloadAsync
-import com.rarnu.kt.android.resStr
+import com.rarnu.android.BackActivity
+import com.rarnu.android.resStr
+import com.rarnu.common.DownloadState
+import com.rarnu.common.download
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.YGORequest
 import kotlinx.android.synthetic.main.activity_carddetail.*
@@ -81,14 +81,16 @@ class CardDetailActivity : BackActivity() {
         if (File(localImg).exists()) {
             ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localImg))
         } else {
-            downloadAsync {
-                url = String.format(YGORequest.RES_URL, cardid)
-                localFile = localImg
-                progress { state, _, _, _ ->
-                    if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {
-                        if (File(localFile).exists()) {
-                            runOnUiThread {
-                                ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localFile))
+            thread {
+                download {
+                    url = String.format(YGORequest.RES_URL, cardid)
+                    localFile = localImg
+                    progress { state, _, _, _ ->
+                        if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {
+                            if (File(localFile).exists()) {
+                                runOnUiThread {
+                                    ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localFile))
+                                }
                             }
                         }
                     }

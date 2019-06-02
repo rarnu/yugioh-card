@@ -2,8 +2,8 @@ package com.rarnu.yugioh.card
 
 import android.os.Bundle
 import android.text.Html
-import com.rarnu.kt.android.BackActivity
-import com.rarnu.kt.android.resStr
+import com.rarnu.android.BackActivity
+import com.rarnu.android.resStr
 import kotlinx.android.synthetic.main.activity_wiki.*
 
 class CardWikiActivity : BackActivity() {

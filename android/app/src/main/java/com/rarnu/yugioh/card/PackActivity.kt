@@ -1,14 +1,11 @@
 package com.rarnu.yugioh.card
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import com.rarnu.kt.android.BackActivity
-import com.rarnu.kt.android.resStr
-import com.rarnu.kt.android.showActionBack
+import com.rarnu.android.BackActivity
+import com.rarnu.android.resStr
 import com.rarnu.yugioh.PackageInfo
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.card.adapter.PackAdapter

@@ -1,9 +1,8 @@
 package com.rarnu.yugioh
 
 import android.os.Environment
-import com.rarnu.kt.android.fileDelete
-import com.rarnu.kt.android.fileReadText
-import com.rarnu.kt.android.fileWriteText
+import com.rarnu.common.asFileReadText
+import com.rarnu.common.asFileWriteText
 import java.io.File
 
 object YGOCache {
@@ -21,7 +20,7 @@ object YGOCache {
     fun loadCache(hashid: String, type: Int): String? {
         val path = "${getCachePath()}${hashid}_$type.data"
         return if (File(path).exists()) {
-            fileReadText(path)
+            path.asFileReadText()
         } else {
             null
         }
@@ -30,12 +29,10 @@ object YGOCache {
     fun saveCache(hashid: String, type: Int, text: String?) {
         val path = "${getCachePath()}${hashid}_$type.data"
         if (text != null) {
-            fileWriteText(path, text)
+            path.asFileWriteText(text)
         }
     }
 
-    fun cleanCache() = fileDelete {
-        src = getCachePath()
-    }
+    fun cleanCache() = File(getCachePath()).deleteRecursively()
 
 }
