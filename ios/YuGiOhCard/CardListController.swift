@@ -42,25 +42,27 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
         let w: CGFloat = 48.0
         btnFirst = UIButton(type: UIButton.ButtonType.system)
         btnFirst.frame = CGRect(x: 0, y: screenHeight() - controlHeight, width: w, height: controlHeight)
-        btnFirst.setTitle("<<", for: UIControl.State.normal)
+        btnFirst.setImage(UIImage.init(systemName: "backward.fill"), for: UIControl.State.normal)
+        
         self.view.addSubview(btnFirst)
         btnPrior = UIButton(type: UIButton.ButtonType.system)
         btnPrior.frame = CGRect(x: w, y: screenHeight() - controlHeight, width: w, height: controlHeight)
-        btnPrior.setTitle("<", for: UIControl.State.normal)
+        btnPrior.setImage(UIImage.init(systemName: "arrowtriangle.left.fill"), for: UIControl.State.normal)
         self.view.addSubview(btnPrior)
         
-        btnNext = UIButton(type: UIButton.ButtonType.system)
         tvPage = UILabel(frame: CGRect(x: w * 2, y: screenHeight() - controlHeight, width: screenWidth() - w * 4, height: controlHeight))
         tvPage.textAlignment = NSTextAlignment.center
+        tvPage.textColor = UIColor.white
         self.view.addSubview(tvPage)
         
-        // btnNext.setImage(UIImage.init(systemName: ), for: UIControl.State.normal)
+        btnNext = UIButton(type: UIButton.ButtonType.system)
         btnNext.frame = CGRect(x: screenWidth() - w * 2, y: screenHeight() - controlHeight, width: w, height: controlHeight)
-        btnNext.setTitle(">", for: UIControl.State.normal)
+        btnNext.setImage(UIImage.init(systemName: "arrowtriangle.right.fill"), for: UIControl.State.normal)
         self.view.addSubview(btnNext)
+        
         btnLast = UIButton(type: UIButton.ButtonType.system)
         btnLast.frame = CGRect(x: screenWidth() - w, y: screenHeight() - controlHeight, width: w, height: controlHeight)
-        btnLast.setTitle(">>", for: UIControl.State.normal)
+        btnLast.setImage(UIImage.init(systemName: "forward.fill"), for: UIControl.State.normal)
         self.view.addSubview(btnLast)
         
         btnFirst.addTarget(self, action: #selector(btnFirstClicked(sender:)), for: UIControl.Event.touchDown)

@@ -32,8 +32,7 @@ class CardWikiController: UIViewController {
         tvWiki.isEditable = false
         tvWiki.tg_width.equal(100%)
         tvWiki.tg_height.equal(.wrap)
-        // tvWiki.lineBreakMode = NSLineBreakMode.byWordWrapping
-        // tvWiki.numberOfLines = 0
+        tvWiki.isUserInteractionEnabled = false
         layMain.addSubview(tvWiki)
         
         //wiki = wiki.replacingOccurrences(of: "<a href", with: "<a style=\"color: rgb(255,0,0)\" href")
