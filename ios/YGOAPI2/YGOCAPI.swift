@@ -35,9 +35,10 @@ extension String {
     
     func indexOf(sub: String) -> Int {
         var i = -1
+        
         let r = self.range(of: sub)
         if (r != nil) {
-            i = r!.lowerBound.utf16Offset(in: sub)
+            i = r!.lowerBound.utf16Offset(in: self) //.utf16Offset(in: sub)
         }
         return i
     }

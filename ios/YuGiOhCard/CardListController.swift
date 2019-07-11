@@ -17,50 +17,56 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
     var pageCount = 1
     var list = Array<CardInfo2>()
     
-    var tvCard: UITableView?
-    var btnFirst: UIButton?
-    var btnPrior: UIButton?
-    var btnNext: UIButton?
-    var btnLast: UIButton?
-    var tvPage: UILabel?
-    
+    var tvCard: UITableView!
+    var btnFirst: UIButton!
+    var btnPrior: UIButton!
+    var btnNext: UIButton!
+    var btnLast: UIButton!
+    var tvPage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tvCard = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight() - 36))
-        tvCard?.tableFooterView = UIView(frame: CGRect.zero)
-        tvCard?.register(CardListCell.classForCoder(), forCellReuseIdentifier: "Cell")
-        tvCard?.delegate = self
-        tvCard?.dataSource = self
-        self.view.addSubview(tvCard!)
-
-        let w = 40
+        
+        let controlHeight: CGFloat = 48.0
+        
+        tvCard = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight() - controlHeight))
+        tvCard.tableFooterView = UIView(frame: CGRect.zero)
+        tvCard.register(CardListCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        tvCard.delegate = self
+        tvCard.dataSource = self
+        tvCard.backgroundColor = UIColor.black
+        tvCard.separatorColor = UIColor.darkGray
+        tvCard.separatorInset = UIEdgeInsets.zero
+        self.view.addSubview(tvCard)
+        
+        let w: CGFloat = 48.0
         btnFirst = UIButton(type: UIButton.ButtonType.system)
-        btnFirst?.frame = CGRect(x: 0, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnFirst?.setTitle("<<", for: UIControl.State.normal)
-        self.view.addSubview(btnFirst!)
+        btnFirst.frame = CGRect(x: 0, y: screenHeight() - controlHeight, width: w, height: controlHeight)
+        btnFirst.setTitle("<<", for: UIControl.State.normal)
+        self.view.addSubview(btnFirst)
         btnPrior = UIButton(type: UIButton.ButtonType.system)
-        btnPrior?.frame = CGRect(x: w, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnPrior?.setTitle("<", for: UIControl.State.normal)
-        self.view.addSubview(btnPrior!)
+        btnPrior.frame = CGRect(x: w, y: screenHeight() - controlHeight, width: w, height: controlHeight)
+        btnPrior.setTitle("<", for: UIControl.State.normal)
+        self.view.addSubview(btnPrior)
         
         btnNext = UIButton(type: UIButton.ButtonType.system)
-        tvPage = UILabel(frame: CGRect(x: w * 2, y: Int(screenHeight()) - 36, width: Int(screenWidth()) - w * 4, height: 36))
-        tvPage?.textAlignment = NSTextAlignment.center
-        self.view.addSubview(tvPage!)
+        tvPage = UILabel(frame: CGRect(x: w * 2, y: screenHeight() - controlHeight, width: screenWidth() - w * 4, height: controlHeight))
+        tvPage.textAlignment = NSTextAlignment.center
+        self.view.addSubview(tvPage)
         
-        btnNext?.frame = CGRect(x: Int(screenWidth()) - w * 2, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnNext?.setTitle(">", for: UIControl.State.normal)
-        self.view.addSubview(btnNext!)
+        // btnNext.setImage(UIImage.init(systemName: ), for: UIControl.State.normal)
+        btnNext.frame = CGRect(x: screenWidth() - w * 2, y: screenHeight() - controlHeight, width: w, height: controlHeight)
+        btnNext.setTitle(">", for: UIControl.State.normal)
+        self.view.addSubview(btnNext)
         btnLast = UIButton(type: UIButton.ButtonType.system)
-        btnLast?.frame = CGRect(x: Int(screenWidth()) - w, y: Int(screenHeight()) - 36, width: w, height: 36)
-        btnLast?.setTitle(">>", for: UIControl.State.normal)
-        self.view.addSubview(btnLast!)
+        btnLast.frame = CGRect(x: screenWidth() - w, y: screenHeight() - controlHeight, width: w, height: controlHeight)
+        btnLast.setTitle(">>", for: UIControl.State.normal)
+        self.view.addSubview(btnLast)
         
-        btnFirst?.addTarget(self, action: #selector(btnFirstClicked(sender:)), for: UIControl.Event.touchDown)
-        btnPrior?.addTarget(self, action: #selector(btnPriorClicked(sender:)), for: UIControl.Event.touchDown)
-        btnNext?.addTarget(self, action: #selector(btnNextClicked(sender:)), for: UIControl.Event.touchDown)
-        btnLast?.addTarget(self, action: #selector(btnLastClicked(sender:)), for: UIControl.Event.touchDown)
+        btnFirst.addTarget(self, action: #selector(btnFirstClicked(sender:)), for: UIControl.Event.touchDown)
+        btnPrior.addTarget(self, action: #selector(btnPriorClicked(sender:)), for: UIControl.Event.touchDown)
+        btnNext.addTarget(self, action: #selector(btnNextClicked(sender:)), for: UIControl.Event.touchDown)
+        btnLast.addTarget(self, action: #selector(btnLastClicked(sender:)), for: UIControl.Event.touchDown)
         
         searchCommon(akey: key, apage: 1)
     }
@@ -74,8 +80,8 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
                 self.list.append(ci)
             }
             self.mainThread {
-                self.tvCard?.reloadData()
-                self.tvPage?.text = "\(self.currentPage) / \(self.pageCount)"
+                self.tvCard.reloadData()
+                self.tvPage.text = "\(self.currentPage) / \(self.pageCount)"
             }
         }
     }

@@ -27,6 +27,8 @@
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>com.rarnu.card</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

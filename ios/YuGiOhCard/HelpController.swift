@@ -25,9 +25,11 @@ class HelpController: UIViewController {
         sv.addSubview(imgIcon)
         let tvTitle = UILabel(frame: CGRect(x: 64, y: 8, width: screenWidth() - 72, height: 24))
         tvTitle.text = "YuGiOh Card"
+        tvTitle.textColor = UIColor.white
         sv.addSubview(tvTitle)
         let tvVersion = UILabel(frame: CGRect(x: 64, y: 32, width: screenWidth() - 72, height: 32))
         tvVersion.text = "5.0.1"
+        tvVersion.textColor = UIColor.white
         sv.addSubview(tvVersion)
         let vLine = UIView(frame: CGRect(x: 8, y: 64, width: screenWidth() - 16, height: 1))
         vLine.backgroundColor = UIColor.lightGray
@@ -66,15 +68,15 @@ class HelpController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func btnAuthorClicked(sender: Any?) {
+    @objc func btnAuthorClicked(sender: UIButton) {
         openUrl("http://scarlett.vip/yugioh")
     }
     
-    @objc func btnOurocgClicked(sender: Any?) {
+    @objc func btnOurocgClicked(sender: UIButton) {
         openUrl("https://www.ourocg.cn")
     }
 
-    @objc func btnRarnuClicked(sender: Any?) {
+    @objc func btnRarnuClicked(sender: UIButton) {
         openUrl("https://github.com/rarnu/yugioh-card")
     }
     

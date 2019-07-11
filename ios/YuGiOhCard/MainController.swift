@@ -13,13 +13,18 @@ import YGOAPI2
 
 class MainController: UIViewController, UITextFieldDelegate {
 
-    var layMain: TGLinearLayout?
+    var layMain: TGLinearLayout!
     var edtSearch: UITextField!
-    var btnSearch: UIButton?
-    var btnAdvSearch: UIButton?
-    var laySearchKeyword: TGLinearLayout?
-    var layHotCard: TGLinearLayout?
-    var layLastPack: TGLinearLayout?
+    var btnSearch: UIButton!
+    var btnAdvSearch: UIButton!
+    var laySearchKeyword: TGLinearLayout!
+    var layHotCard: TGLinearLayout!
+    var layLastPack: TGLinearLayout!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        super.viewWillAppear(animated)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,42 +32,43 @@ class MainController: UIViewController, UITextFieldDelegate {
         let sv = UIScrollView(frame: CGRect(x: 8, y: 8, width: screenWidth() - 16, height: screenHeight() - 16))
         sv.showsVerticalScrollIndicator = false
         sv.showsHorizontalScrollIndicator = false
+        // self.view.tintColor = UIColor.white
         self.view.addSubview(sv)
         layMain = TGLinearLayout(.vert)
-        layMain?.tg_vspace = 0
-        layMain?.tg_width.equal(100%)
-        layMain?.tg_height.equal(.wrap).min(sv.tg_height, increment: 0)
-        sv.addSubview(layMain!)
+        layMain.tg_vspace = 0
+        layMain.tg_width.equal(100%)
+        layMain.tg_height.equal(.wrap).min(sv.tg_height, increment: 0)
+        sv.addSubview(layMain)
         let v = UIView()
         v.tg_width.equal(100%)
         v.tg_height.equal(45)
-        layMain?.addSubview(v)
+        layMain.addSubview(v)
         edtSearch = UITextField(frame: CGRect(x: 0, y: 0, width: screenWidth() - 140, height: 36))
+        edtSearch.textColor = UIColor.white
         edtSearch.borderStyle = UITextField.BorderStyle.none
-        edtSearch?.placeholder = "输入要搜索的关键字"
-        edtSearch?.returnKeyType = UIReturnKeyType.done
-        edtSearch?.delegate = self
-        v.addSubview(edtSearch!)
+        edtSearch.attributedPlaceholder = NSAttributedString(string: "输入要搜索的关键字", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        edtSearch.returnKeyType = UIReturnKeyType.done
+        edtSearch.delegate = self
+        v.addSubview(edtSearch)
         btnSearch = UIButton(type: UIButton.ButtonType.system)
-        btnSearch?.frame = CGRect(x: screenWidth() - 128, y: 0, width: 40, height: 36)
-        btnSearch?.setTitle("搜索", for: UIControl.State.normal)
-        v.addSubview(btnSearch!)
+        btnSearch.frame = CGRect(x: screenWidth() - 128, y: 0, width: 40, height: 36)
+        btnSearch.setTitle("搜索", for: UIControl.State.normal)
+        v.addSubview(btnSearch)
         btnAdvSearch = UIButton(type: UIButton.ButtonType.system)
-        btnAdvSearch?.frame = CGRect(x: screenWidth() - 88, y: 0, width: 80, height: 36)
-        btnAdvSearch?.setTitle("高级搜索", for: UIControl.State.normal)
-        v.addSubview(btnAdvSearch!)
+        btnAdvSearch.frame = CGRect(x: screenWidth() - 88, y: 0, width: 80, height: 36)
+        btnAdvSearch.setTitle("高级搜索", for: UIControl.State.normal)
+        v.addSubview(btnAdvSearch)
         let line = UIView(frame: CGRect(x: 0, y: 36, width: screenWidth() - 16, height: 1))
-        line.backgroundColor = UIColor.lightGray
+        line.backgroundColor = UIColor.darkGray
         v.addSubview(line)
         let blank = UIView()
         blank.tg_width.equal(100%)
         blank.tg_height.equal(8)
-        layMain?.addSubview(blank)
+        layMain.addSubview(blank)
         // event
-        btnSearch?.addTarget(self, action: #selector(btnSearchClicked(sender:)), for: UIControl.Event.touchDown)
-        btnAdvSearch?.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControl.Event.touchDown)
+        btnSearch.addTarget(self, action: #selector(btnSearchClicked(sender:)), for: UIControl.Event.touchDown)
+        btnAdvSearch.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControl.Event.touchDown)
         
-        //
         makeText("热门搜索")
         laySearchKeyword = makeLayout()
         makeLine()
@@ -85,7 +91,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         lay.tg_vspace = 0
         lay.tg_width.equal(100%)
         lay.tg_height.equal(.wrap)
-        layMain?.addSubview(lay)
+        layMain.addSubview(lay)
         return lay
     }
     
@@ -93,12 +99,14 @@ class MainController: UIViewController, UITextFieldDelegate {
         let lbl = UILabel()
         lbl.tg_width.equal(100%)
         lbl.tg_height.equal(.wrap)
-        lbl.text = txt
-        layMain?.addSubview(lbl)
+        lbl.attributedText = NSAttributedString(string: txt, attributes: [
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
+        layMain.addSubview(lbl)
         let v = UIView()
         v.tg_width.equal(100%)
         v.tg_height.equal(4)
-        layMain?.addSubview(v)
+        layMain.addSubview(v)
     }
     
     func makeHotText(_ txt: String) {
@@ -106,19 +114,21 @@ class MainController: UIViewController, UITextFieldDelegate {
         lay.tg_width.equal(100%)
         lay.tg_height.equal(30)
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
-        lbl.text = txt
+        lbl.attributedText = NSAttributedString(string: txt, attributes: [
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
         lay.addSubview(lbl)
         let change = UIButton(type: UIButton.ButtonType.system)
-        change.setTitle("<换一批>", for: UIControl.State.normal)
+        change.setAttributedTitle(NSAttributedString(string: "<换一批>", attributes: [NSAttributedString.Key.underlineStyle : true]), for: UIControl.State.normal)
         change.frame = CGRect(x: screenWidth() - 100, y: 0, width: 100, height: 30)
         change.addTarget(self, action: #selector(btnChangeHotClicked(sender:)), for: UIControl.Event.touchDown)
         lay.addSubview(change)
         
-        layMain?.addSubview(lay)
+        layMain.addSubview(lay)
         let v = UIView()
         v.tg_width.equal(100%)
         v.tg_height.equal(4)
-        layMain?.addSubview(v)
+        layMain.addSubview(v)
     }
     
     func makeButton(_ txt: String) -> UIButton {
@@ -126,7 +136,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         btn.tg_width.equal(100%)
         btn.tg_height.equal(32)
         btn.setTitle(txt, for: UIControl.State.normal)
-        layMain?.addSubview(btn)
+        layMain.addSubview(btn)
         return btn
     }
     
@@ -135,11 +145,11 @@ class MainController: UIViewController, UITextFieldDelegate {
         v.tg_width.equal(100%)
         v.tg_height.equal(1)
         v.tg_vertMargin(8.0)
-        v.backgroundColor = UIColor.lightGray
-        layMain?.addSubview(v)
+        v.backgroundColor = UIColor.darkGray
+        layMain.addSubview(v)
     }
     
-    func makeLabel(lay: TGLinearLayout?, txt: String, hash: String, sel: Selector) {
+    func makeLabel(lay: TGLinearLayout, txt: String, hash: String, sel: Selector) {
         let l = UIButton(type: UIButton.ButtonType.system)
         l.tg_width.equal(100%)
         l.tg_height.equal(32)
@@ -147,7 +157,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         l.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         l.accessibilityValue = hash
         l.addTarget(self, action: sel, for: UIControl.Event.touchDown)
-        lay?.addSubview(l)
+        lay.addSubview(l)
     }
     
     func makeKeyword(list: Array<String>) {
@@ -180,14 +190,14 @@ class MainController: UIViewController, UITextFieldDelegate {
                 idx += remain
                 remain -= remain
             }
-            laySearchKeyword?.addSubview(lay)
+            laySearchKeyword.addSubview(lay)
         }
     }
     
     private func loadHotest() {
-        laySearchKeyword?.tg_removeAllSubviews()
-        layHotCard?.tg_removeAllSubviews()
-        layLastPack?.tg_removeAllSubviews()
+        laySearchKeyword.tg_removeAllSubviews()
+        layHotCard.tg_removeAllSubviews()
+        layLastPack.tg_removeAllSubviews()
         
         YGOData2.hostest() { h in
             self.mainThread {
@@ -203,7 +213,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @objc func btnChangeHotClicked(sender: Any?) {
+    @objc func btnChangeHotClicked(sender: Any) {
         loadHotest()
     }
 
@@ -211,9 +221,9 @@ class MainController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func btnSearchClicked(sender: Any?) {
+    @objc func btnSearchClicked(sender: Any) {
         // search clicked
-        let key = edtSearch?.text
+        let key = edtSearch.text
         if (key == nil || key == "") {
             toast(msg: "不能搜索空关键字")
             return
@@ -223,17 +233,17 @@ class MainController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(c, animated: true)
     }
     
-    @objc func btnAdvSearchClicked(sender: Any?) {
+    @objc func btnAdvSearchClicked(sender: Any) {
         let c = vc(name: "search") as! SearchController
         navigationController?.pushViewController(c, animated: true)
     }
     
-    @IBAction func btnLimitClicked(sender: Any?) {
+    @IBAction func btnLimitClicked(sender: Any) {
         let c = vc(name: "limit") as! LimitController
         navigationController?.pushViewController(c, animated: true)
     }
     
-    @IBAction func btnPackClicked(sender: Any?) {
+    @IBAction func btnPackClicked(sender: Any) {
         let c = vc(name: "pack") as! PackController
         navigationController?.pushViewController(c, animated: true)
     }

@@ -11,20 +11,22 @@ import sfunctional
 
 class SeasonCell: AdapterCell<String> {
 
-    var lblName: UILabel?
+    var lblName: UILabel!
 
     override func layout() {
+        self.backgroundColor = UIColor.black
         lblName = UILabel(frame: CGRect(x: 8, y: 0, width: 80, height: 40))
-        lblName?.font = UIFont.systemFont(ofSize: 12)
+        lblName.font = UIFont.systemFont(ofSize: 12)
+        lblName.textColor = UIColor.white
         self.addSubview(lblName!)
     }
     
     override func setItem(item: String?) {
-        lblName?.text = item
+        lblName.text = item
     }
     
     func setHighlight(h: Bool) {
-        lblName?.textColor = h ? self.tintColor : UIColor.black
+        lblName.textColor = h ? self.tintColor : UIColor.lightGray
     }
     
 

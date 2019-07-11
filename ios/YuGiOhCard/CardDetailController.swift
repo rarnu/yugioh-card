@@ -16,42 +16,42 @@ class CardDetailController: UIViewController {
 
     var cardname = ""
     var hashid = ""
-    
     var wikiForPass = ""
     
     // ui
-    var sv: UIScrollView?
-    var layMain: TGLinearLayout?
+    var sv: UIScrollView!
+    var layMain: TGLinearLayout!
     
-    var tvCardNameValue: UILabel?
-    var tvCardJapNameValue: UILabel?
-    var tvCardEnNameValue: UILabel?
-    var tvCardTypeValue: UILabel?
-    var tvPasswordValue: UILabel?
-    var tvLimitValue: UILabel?
-    var tvRareValue: UILabel?
-    var tvPackValue: UILabel?
-    var tvEffectValue: UILabel?
+    var tvCardNameValue: UILabel!
+    var tvCardJapNameValue: UILabel!
+    var tvCardEnNameValue: UILabel!
+    var tvCardTypeValue: UILabel!
+    var tvPasswordValue: UILabel!
+    var tvLimitValue: UILabel!
+    var tvRareValue: UILabel!
+    var tvPackValue: UILabel!
+    var tvEffectValue: UILabel!
     // monster
-    var tvMonRace: UILabel?
-    var tvMonElement: UILabel?
-    var tvMonLevel: UILabel?
-    var tvMonAtk: UILabel?
-    var tvMonDef: UILabel?
-    var tvMonLink: UILabel?
-    var tvMonLinkArrow: UILabel?
+    var tvMonRace: UILabel!
+    var tvMonElement: UILabel!
+    var tvMonLevel: UILabel!
+    var tvMonAtk: UILabel!
+    var tvMonDef: UILabel!
+    var tvMonLink: UILabel!
+    var tvMonLinkArrow: UILabel!
     
     // image
-    var ivCardImg: UIImageView?
+    var ivCardImg: UIImageView!
     // adjust
-    var tvAdjust: UILabel?
+    var tvAdjust: UILabel!
     
     private func makeAdjust() -> UILabel {
         let lbl = UILabel()
         lbl.tg_width.equal(100%)
         lbl.tg_height.equal(.wrap)
         lbl.font = UIFont.systemFont(ofSize: 15)
-        layMain?.addSubview(lbl)
+        lbl.textColor = UIColor.white
+        layMain.addSubview(lbl)
         return lbl
     }
     
@@ -63,24 +63,28 @@ class CardDetailController: UIViewController {
         let lbl = UILabel()
         lbl.tg_width.equal(25%)
         lbl.tg_height.equal(24)
+        lbl.textColor = UIColor.white
         lbl.text = txt
         laySub.addSubview(lbl)
         let lblValue = UILabel()
         if (h > 24) {
             lblValue.tg_width.equal(100%)
             lblValue.tg_height.equal(.wrap)
+            lblValue.textColor = UIColor.white
             let lblSub = TGLinearLayout(.vert)
             lblSub.tg_width.equal(75%)
             lblSub.tg_height.equal(.wrap)
             let lblFill = UILabel()
             lblFill.tg_width.equal(100%)
             lblFill.tg_height.equal(4)
+            lblFill.textColor = UIColor.white
             lblSub.addSubview(lblFill)
             lblSub.addSubview(lblValue)
             laySub.addSubview(lblSub)
         } else {
             lblValue.tg_width.equal(75%)
             lblValue.tg_height.equal(h)
+            lblValue.textColor = UIColor.white
             laySub.addSubview(lblValue)
         }
         if (multiLine) {
@@ -97,8 +101,8 @@ class CardDetailController: UIViewController {
         v.tg_width.equal(100%)
         v.tg_height.equal(1)
         v.tg_vertMargin(16)
-        v.backgroundColor = UIColor.lightGray
-        layMain?.addSubview(v)
+        v.backgroundColor = UIColor.darkGray
+        layMain.addSubview(v)
         return v
     }
     
@@ -112,7 +116,7 @@ class CardDetailController: UIViewController {
         img.tg_centerX.equal(0)
         img.tg_centerY.equal(0)
         lay.addSubview(img)
-        layMain?.addSubview(lay)
+        layMain.addSubview(lay)
         return img
     }
     
@@ -125,14 +129,14 @@ class CardDetailController: UIViewController {
         super.viewDidLoad()
         self.title = cardname
         sv = UIScrollView(frame: CGRect(x: 8, y: 8, width: screenWidth() - 16, height: screenHeight() - 16))
-        sv?.showsVerticalScrollIndicator = false
-        sv?.showsHorizontalScrollIndicator = false
+        sv.showsVerticalScrollIndicator = false
+        sv.showsHorizontalScrollIndicator = false
         self.view.addSubview(sv!)
         layMain = TGLinearLayout(.vert)
-        layMain?.tg_vspace = 0
-        layMain?.tg_width.equal(100%)
-        layMain?.tg_height.equal(.wrap).min(sv!.tg_height, increment: 0)
-        sv?.addSubview(layMain!)
+        layMain.tg_vspace = 0
+        layMain.tg_width.equal(100%)
+        layMain.tg_height.equal(.wrap).min(sv.tg_height, increment: 0)
+        sv.addSubview(layMain)
         tvCardNameValue = makeLabel("中文名称:")
         tvCardJapNameValue = makeLabel("日文名称:")
         tvCardEnNameValue = makeLabel("英文名称:")
@@ -145,29 +149,29 @@ class CardDetailController: UIViewController {
         thread {
             YGOData2.cardDetail(self.hashid) { c in
                 self.mainThread {
-                    self.tvCardNameValue?.text = c.name
-                    self.tvCardJapNameValue?.text = c.japname
-                    self.tvCardEnNameValue?.text = c.enname
-                    self.tvCardTypeValue?.text = c.cardtype
-                    self.tvPasswordValue?.text = c.password
-                    self.tvLimitValue?.text = c.limit
-                    self.tvRareValue?.text = c.rare
-                    self.tvPackValue?.text = c.pack
+                    self.tvCardNameValue.text = c.name
+                    self.tvCardJapNameValue.text = c.japname
+                    self.tvCardEnNameValue.text = c.enname
+                    self.tvCardTypeValue.text = c.cardtype
+                    self.tvPasswordValue.text = c.password
+                    self.tvLimitValue.text = c.limit
+                    self.tvRareValue.text = c.rare
+                    self.tvPackValue.text = c.pack
                     
                     if (c.cardtype.contains("怪兽")) {
                         self.tvMonRace = self.makeLabel("怪兽种族:")
-                        self.tvMonRace?.text = c.race
+                        self.tvMonRace.text = c.race
                         self.tvMonElement = self.makeLabel("怪兽属性:")
-                        self.tvMonElement?.text = c.element
+                        self.tvMonElement.text = c.element
                         
                         if (c.cardtype.contains("连接")) {
                             // link monster
                             self.tvMonAtk = self.makeLabel("攻击力:")
-                            self.tvMonAtk?.text = c.atk
+                            self.tvMonAtk.text = c.atk
                             self.tvMonLink = self.makeLabel("连接数:")
-                            self.tvMonLink?.text = c.link
+                            self.tvMonLink.text = c.link
                             self.tvMonLinkArrow = self.makeLabel("连接方向:")
-                            self.tvMonLinkArrow?.text = c.linkarrow
+                            self.tvMonLinkArrow.text = c.linkarrow
                             
                         } else {
                             if (c.cardtype.contains("XYZ")) {
@@ -175,23 +179,23 @@ class CardDetailController: UIViewController {
                             } else {
                                 self.tvMonLevel = self.makeLabel("怪兽星级:")
                             }
-                            self.tvMonLevel?.text = c.level
+                            self.tvMonLevel.text = c.level
                             self.tvMonAtk = self.makeLabel("攻击力:")
-                            self.tvMonAtk?.text = c.atk
+                            self.tvMonAtk.text = c.atk
                             self.tvMonDef = self.makeLabel("守备力:")
-                            self.tvMonDef?.text = c.def
+                            self.tvMonDef.text = c.def
                         }
                     }
                     
                     let size = self.getTextSize(str: c.effect, width:Int(screenWidth() - 16 - 80 - 8), fontSize: 17)
                     self.tvEffectValue = self.makeLabel("效果:", true, size.height)
-                    self.tvEffectValue?.text = c.effect
+                    self.tvEffectValue.text = c.effect
                     _ = self.makeLine()
                     self.ivCardImg = self.makeImage()
                     self.loadImage(cardid: c.imageId)
                     _ = self.makeLine()
                     self.tvAdjust = self.makeAdjust()
-                    self.tvAdjust?.text = c.adjust
+                    self.tvAdjust.text = c.adjust
                     self.wikiForPass = c.wiki
                 }
             }
@@ -201,13 +205,13 @@ class CardDetailController: UIViewController {
     private func loadImage(cardid: Int) {
         let localfile = documentPath(true) + "\(cardid)"
         if (FileManager.default.fileExists(atPath: localfile)) {
-            self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
+            self.ivCardImg.image = UIImage(contentsOfFile: localfile)
         } else {
             download(String(format: RES_URL, cardid), localfile) { (state, _, _, _) in
                 if (state == DownloadState.Complete) {
                     if (FileManager.default.fileExists(atPath: localfile)) {
                         self.mainThread {
-                            self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
+                            self.ivCardImg.image = UIImage(contentsOfFile: localfile)
                         }
                     }
                 }

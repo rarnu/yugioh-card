@@ -17,7 +17,9 @@ class LimitController: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(LimitCell.classForCoder(), forCellReuseIdentifier: "Cell")
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-        
+        self.tableView.backgroundColor = UIColor.black
+        self.tableView.separatorColor = UIColor.darkGray
+        self.tableView.separatorInset = UIEdgeInsets.zero
         YGOData2.limit() { l in
             self.list = l
             self.mainThread {

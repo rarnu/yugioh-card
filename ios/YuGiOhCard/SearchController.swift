@@ -14,125 +14,126 @@ class SearchController: UIViewController, UITextFieldDelegate {
 
     var cardtype = ""
     
-    var sv: UIScrollView?
-    var layMain: TGLinearLayout?
+    var sv: UIScrollView!
+    var layMain: TGLinearLayout!
     
-    var btnTypeMon: UIButton?
-    var btnTypeMagic: UIButton?
-    var btnTypeTrap: UIButton?
-    var edtEffect: UITextField?
+    var btnTypeMon: UIButton!
+    var btnTypeMagic: UIButton!
+    var btnTypeTrap: UIButton!
+    var edtEffect: UITextField!
     
-    var layMonster: TGLinearLayout?
-    var layMagic: TGLinearLayout?
-    var layTrap: TGLinearLayout?
+    var layMonster: TGLinearLayout!
+    var layMagic: TGLinearLayout!
+    var layTrap: TGLinearLayout!
     
-    var btnMtNormal: UIButton?
-    var btnMtEquip: UIButton?
-    var btnMtQuick: UIButton?
-    var btnMtCont: UIButton?
-    var btnMtField: UIButton?
-    var btnMtRitual: UIButton?
+    var btnMtNormal: UIButton!
+    var btnMtEquip: UIButton!
+    var btnMtQuick: UIButton!
+    var btnMtCont: UIButton!
+    var btnMtField: UIButton!
+    var btnMtRitual: UIButton!
     
-    var btnTtNormal: UIButton?
-    var btnTtCont: UIButton?
-    var btnTtCounter: UIButton?
+    var btnTtNormal: UIButton!
+    var btnTtCont: UIButton!
+    var btnTtCounter: UIButton!
     
-    var btnMonEleLight: UIButton?
-    var btnMonEleDark: UIButton?
-    var btnMonEleFire: UIButton?
-    var btnMonEleWater: UIButton?
-    var btnMonEleEarth: UIButton?
-    var btnMonEleWind: UIButton?
-    var btnMonEleGod: UIButton?
+    var btnMonEleLight: UIButton!
+    var btnMonEleDark: UIButton!
+    var btnMonEleFire: UIButton!
+    var btnMonEleWater: UIButton!
+    var btnMonEleEarth: UIButton!
+    var btnMonEleWind: UIButton!
+    var btnMonEleGod: UIButton!
     
-    var btnMonTypeNormal: UIButton?
-    var btnMonTypeEffect: UIButton?
-    var btnMonTypeRitual: UIButton?
-    var btnMonTypeFusion: UIButton?
-    var btnMonTypeSync: UIButton?
-    var btnMonTypeXyz: UIButton?
-    var btnMonTypeToon: UIButton?
-    var btnMonTypeUnion: UIButton?
-    var btnMonTypeSpirit: UIButton?
-    var btnMonTypeTuner: UIButton?
-    var btnMonTypeDouble: UIButton?
-    var btnMonTypePendulum: UIButton?
-    var btnMonTypeReverse: UIButton?
-    var btnMonTypeSS: UIButton?
-    var btnMonTypeLink: UIButton?
+    var btnMonTypeNormal: UIButton!
+    var btnMonTypeEffect: UIButton!
+    var btnMonTypeRitual: UIButton!
+    var btnMonTypeFusion: UIButton!
+    var btnMonTypeSync: UIButton!
+    var btnMonTypeXyz: UIButton!
+    var btnMonTypeToon: UIButton!
+    var btnMonTypeUnion: UIButton!
+    var btnMonTypeSpirit: UIButton!
+    var btnMonTypeTuner: UIButton!
+    var btnMonTypeDouble: UIButton!
+    var btnMonTypePendulum: UIButton!
+    var btnMonTypeReverse: UIButton!
+    var btnMonTypeSS: UIButton!
+    var btnMonTypeLink: UIButton!
     
-    var btnMonRaceWater: UIButton?
-    var btnMonRaceBeast: UIButton?
-    var btnMonRaceBW: UIButton?
-    var btnMonRaceCreation: UIButton?
-    var btnMonRaceDino: UIButton?
-    var btnMonRaceGod: UIButton?
-    var btnMonRaceDragon: UIButton?
+    var btnMonRaceWater: UIButton!
+    var btnMonRaceBeast: UIButton!
+    var btnMonRaceBW: UIButton!
+    var btnMonRaceCreation: UIButton!
+    var btnMonRaceDino: UIButton!
+    var btnMonRaceGod: UIButton!
+    var btnMonRaceDragon: UIButton!
+
+    var btnMonRaceAngel: UIButton!
+    var btnMonRaceDemon: UIButton!
+    var btnMonRaceFish: UIButton!
+    var btnMonRaceInsect: UIButton!
+    var btnMonRaceMachine: UIButton!
+    var btnMonRacePlant: UIButton!
+    var btnMonRaceCy: UIButton!
     
-    var btnMonRaceAngel: UIButton?
-    var btnMonRaceDemon: UIButton?
-    var btnMonRaceFish: UIButton?
-    var btnMonRaceInsect: UIButton?
-    var btnMonRaceMachine: UIButton?
-    var btnMonRacePlant: UIButton?
-    var btnMonRaceCy: UIButton?
+    var btnMonRaceFire: UIButton!
+    var btnMonRaceClaim: UIButton!
+    var btnMonRaceRock: UIButton!
+    var btnMonRaceSD: UIButton!
+    var btnMonRaceMagician: UIButton!
+    var btnMonRaceThunder: UIButton!
+    var btnMonRaceWarrior: UIButton!
     
-    var btnMonRaceFire: UIButton?
-    var btnMonRaceClaim: UIButton?
-    var btnMonRaceRock: UIButton?
-    var btnMonRaceSD: UIButton?
-    var btnMonRaceMagician: UIButton?
-    var btnMonRaceThunder: UIButton?
-    var btnMonRaceWarrior: UIButton?
+    var btnMonRaceWB: UIButton!
+    var btnMonRaceUndead: UIButton!
+    var btnMonRaceDD: UIButton!
+    var btnMonRaceCyber: UIButton!
     
-    var btnMonRaceWB: UIButton?
-    var btnMonRaceUndead: UIButton?
-    var btnMonRaceDD: UIButton?
-    var btnMonRaceCyber: UIButton?
+    var edtLevel: UITextField!
+    var edtScale: UITextField!
+    var edtAtk: UITextField!
+    var edtDef: UITextField!
+    var edtLink: UITextField!
     
-    var edtLevel: UITextField?
-    var edtScale: UITextField?
-    var edtAtk: UITextField?
-    var edtDef: UITextField?
-    var edtLink: UITextField?
-    
-    var btnLink7: UIButton?
-    var btnLink8: UIButton?
-    var btnLink9: UIButton?
-    var btnLink4: UIButton?
-    var btnLink5: UIButton?
-    var btnLink6: UIButton?
-    var btnLink1: UIButton?
-    var btnLink2: UIButton?
-    var btnLink3: UIButton?
+    var btnLink7: UIButton!
+    var btnLink8: UIButton!
+    var btnLink9: UIButton!
+    var btnLink4: UIButton!
+    var btnLink5: UIButton!
+    var btnLink6: UIButton!
+    var btnLink1: UIButton!
+    var btnLink2: UIButton!
+    var btnLink3: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sv = UIScrollView(frame: CGRect(x: 8, y: 8, width: screenWidth() - 16, height: screenHeight() - 16))
-        sv?.showsVerticalScrollIndicator = false
-        sv?.showsHorizontalScrollIndicator = false
-        self.view.addSubview(sv!)
+        sv.showsVerticalScrollIndicator = false
+        sv.showsHorizontalScrollIndicator = false
+        self.view.addSubview(sv)
         layMain = TGLinearLayout(.vert)
-        layMain?.tg_vspace = 0
-        layMain?.tg_width.equal(100%)
-        layMain?.tg_height.equal(.wrap).min(sv!.tg_height, increment: 0)
-        sv?.addSubview(layMain!)
+        layMain.tg_vspace = 0
+        layMain.tg_width.equal(100%)
+        layMain.tg_height.equal(.wrap).min(sv!.tg_height, increment: 0)
+        sv.addSubview(layMain!)
         uiCommon()
         uiMagic()
         uiTrap()
         uiMonster()
-        btnTypeMonClicked(sender: nil)
+        btnTypeMonClicked(sender: btnTypeMon)
     }
     
     private func uiCommon() {
         let layCommon = TGLinearLayout(.horz)
         layCommon.tg_width.equal(100%)
         layCommon.tg_height.equal(32)
-        layMain?.addSubview(layCommon)
+        layMain.addSubview(layCommon)
         let txt = UILabel()
         txt.tg_size(width: 25%, height: .fill)
         txt.text = "卡片种类"
+        txt.textColor = UIColor.white
         layCommon.addSubview(txt)
         let layBtn = TGLinearLayout(.horz)
         layBtn.tg_size(width: 75%, height: .fill)
@@ -142,7 +143,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
             let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: 60, height: .fill)
             btn.setTitle(title, for: UIControl.State.normal)
-            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
             layBtn.addSubview(btn)
             return btn
         }
@@ -152,29 +153,30 @@ class SearchController: UIViewController, UITextFieldDelegate {
         btnTypeTrap = makeButton(title: "陷阱")
         let layEffect = TGLinearLayout(.horz)
         layEffect.tg_size(width: 100%, height: 32)
-        layMain?.addSubview(layEffect)
+        layMain.addSubview(layEffect)
         let txtEff = UILabel()
         txtEff.tg_size(width: 25%, height: .fill)
         txtEff.text = "卡片效果"
+        txtEff.textColor = UIColor.white
         layEffect.addSubview(txtEff)
         edtEffect = UITextField()
-        edtEffect?.borderStyle = UITextField.BorderStyle.none
-        edtEffect?.tg_size(width: 75%, height: 32)
-        edtEffect?.placeholder = "输入效果关键字"
-        edtEffect?.returnKeyType = UIReturnKeyType.done
-        edtEffect?.delegate = self
-        layEffect.addSubview(edtEffect!)
+        edtEffect.borderStyle = UITextField.BorderStyle.none
+        edtEffect.tg_size(width: 75%, height: 32)
+        edtEffect.placeholder = "输入效果关键字"
+        edtEffect.returnKeyType = UIReturnKeyType.done
+        edtEffect.delegate = self
+        layEffect.addSubview(edtEffect)
         
         let v = UIView()
         v.tg_size(width: 100%, height: 1)
-        v.backgroundColor = UIColor.lightGray
-        layMain?.addSubview(v)
+        v.backgroundColor = UIColor.darkGray
+        layMain.addSubview(v)
         
         func makeLayout(v: TGVisibility) -> TGLinearLayout {
             let lay = TGLinearLayout(.vert)
             lay.tg_size(width: 100%, height: .wrap)
             lay.tg_visibility = v
-            layMain?.addSubview(lay)
+            layMain.addSubview(lay)
             return lay
         }
         
@@ -182,54 +184,55 @@ class SearchController: UIViewController, UITextFieldDelegate {
         layMagic = makeLayout(v: TGVisibility.gone)
         layTrap = makeLayout(v: TGVisibility.gone)
         
-        btnTypeMon?.addTarget(self, action: #selector(btnTypeMonClicked(sender:)), for: UIControl.Event.touchDown)
-        btnTypeMagic?.addTarget(self, action: #selector(btnTypeMagicClicked(sender:)), for: UIControl.Event.touchDown)
-        btnTypeTrap?.addTarget(self, action: #selector(btnTypeTrapClicked(sender:)), for: UIControl.Event.touchDown)
+        btnTypeMon.addTarget(self, action: #selector(btnTypeMonClicked(sender:)), for: UIControl.Event.touchDown)
+        btnTypeMagic.addTarget(self, action: #selector(btnTypeMagicClicked(sender:)), for: UIControl.Event.touchDown)
+        btnTypeTrap.addTarget(self, action: #selector(btnTypeTrapClicked(sender:)), for: UIControl.Event.touchDown)
         
     }
     
-    @objc func btnTypeMonClicked(sender: Any?) {
+    @objc func btnTypeMonClicked(sender: UIButton) {
         cardtype = "怪兽"
-        btnTypeMon?.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
-        btnTypeMagic?.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        btnTypeTrap?.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        layMonster?.tg_visibility = TGVisibility.visible
-        layMagic?.tg_visibility = TGVisibility.gone
-        layTrap?.tg_visibility = TGVisibility.gone
+        btnTypeMon.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
+        btnTypeMagic.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
+        btnTypeTrap.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
+        layMonster.tg_visibility = TGVisibility.visible
+        layMagic.tg_visibility = TGVisibility.gone
+        layTrap.tg_visibility = TGVisibility.gone
     }
     
-    @objc func btnTypeMagicClicked(sender: Any?) {
+    @objc func btnTypeMagicClicked(sender: UIButton) {
         cardtype = "魔法"
-        btnTypeMagic?.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
-        btnTypeMon?.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        btnTypeTrap?.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        layMagic?.tg_visibility = TGVisibility.visible
-        layMonster?.tg_visibility = TGVisibility.gone
-        layTrap?.tg_visibility = TGVisibility.gone
+        btnTypeMagic.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
+        btnTypeMon.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
+        btnTypeTrap.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
+        layMagic.tg_visibility = TGVisibility.visible
+        layMonster.tg_visibility = TGVisibility.gone
+        layTrap.tg_visibility = TGVisibility.gone
     }
     
-    @objc func btnTypeTrapClicked(sender: Any?) {
+    @objc func btnTypeTrapClicked(sender: UIButton) {
         cardtype = "陷阱"
-        btnTypeTrap?.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
-        btnTypeMon?.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        btnTypeMagic?.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        layTrap?.tg_visibility = TGVisibility.visible
-        layMonster?.tg_visibility = TGVisibility.gone
-        layMagic?.tg_visibility = TGVisibility.gone
+        btnTypeTrap.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
+        btnTypeMon.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
+        btnTypeMagic.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
+        layTrap.tg_visibility = TGVisibility.visible
+        layMonster.tg_visibility = TGVisibility.gone
+        layMagic.tg_visibility = TGVisibility.gone
     }
     
     private func uiMagic() {
         let txt = UILabel()
         txt.tg_size(width: 100%, height: 32)
         txt.text = "陷阱种类"
-        layTrap?.addSubview(txt)
+        txt.textColor = UIColor.white
+        layTrap.addSubview(txt)
         let lay = TGLinearLayout(.horz)
         lay.tg_size(width: 100%, height: 32)
-        layTrap?.addSubview(lay)
+        layTrap.addSubview(lay)
         func makeButton(title: String) -> UIButton {
             let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: TGWeight.init(1), height: 32)
-            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
             btn.setTitle(title, for: UIControl.State.normal)
             btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             lay.addSubview(btn)
@@ -244,15 +247,16 @@ class SearchController: UIViewController, UITextFieldDelegate {
         let txt = UILabel()
         txt.tg_size(width: 100%, height: 32)
         txt.text = "魔法种类"
-        layMagic?.addSubview(txt)
+        txt.textColor = UIColor.white
+        layMagic.addSubview(txt)
         let lay = TGLinearLayout(.horz)
         lay.tg_size(width: 100%, height: 32)
-        layMagic?.addSubview(lay)
+        layMagic.addSubview(lay)
         
         func makeButton(title: String) -> UIButton {
             let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: TGWeight.init(1), height: 32)
-            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
             btn.setTitle(title, for: UIControl.State.normal)
             btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             lay.addSubview(btn)
@@ -273,13 +277,14 @@ class SearchController: UIViewController, UITextFieldDelegate {
             let t = UILabel()
             t.tg_size(width: 100%, height: 32)
             t.text = txt
+            t.textColor = UIColor.white
             return t
         }
         
         func makeButton(_ txt: String, _ layout: TGLinearLayout) -> UIButton {
             let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: TGWeight.init(1), height: 32)
-            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
             btn.setTitle(txt, for: UIControl.State.normal)
             btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             layout.addSubview(btn)
@@ -289,29 +294,31 @@ class SearchController: UIViewController, UITextFieldDelegate {
         func makeEditor(_ txt: String, _ placeholder: String) -> UITextField {
             let lay = TGLinearLayout(.horz)
             lay.tg_size(width: 100%, height: 32)
-            layMonster?.addSubview(lay)
+            layMonster.addSubview(lay)
             let t = UILabel()
             t.tg_size(width: 25%, height: 32)
             t.text = txt
+            t.textColor = UIColor.white
             lay.addSubview(t)
             let edt = UITextField()
             edt.borderStyle = UITextField.BorderStyle.none
             edt.tg_size(width: 75%, height: 32)
-            edt.placeholder = placeholder
+            edt.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+            // edt.placeholder =  placeholder
             edt.returnKeyType = UIReturnKeyType.done
             edt.delegate = self
             lay.addSubview(edt)
             let v = UIView()
             v.tg_size(width: 100%, height: 1)
-            v.backgroundColor = UIColor.lightGray
-            layMonster?.addSubview(v)
+            v.backgroundColor = UIColor.darkGray
+            layMonster.addSubview(v)
             return edt
         }
         
-        layMonster?.addSubview(makeText(txt: "怪兽属性"))
+        layMonster.addSubview(makeText(txt: "怪兽属性"))
         let layElement = TGLinearLayout(.horz)
         layElement.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layElement)
+        layMonster.addSubview(layElement)
         btnMonEleLight = makeButton("光", layElement)
         btnMonEleDark = makeButton("暗", layElement)
         btnMonEleFire = makeButton("炎", layElement)
@@ -319,10 +326,10 @@ class SearchController: UIViewController, UITextFieldDelegate {
         btnMonEleEarth = makeButton("地", layElement)
         btnMonEleWind = makeButton("风", layElement)
         btnMonEleGod = makeButton("神", layElement)
-        layMonster?.addSubview(makeText(txt: "怪兽种类"))
+        layMonster.addSubview(makeText(txt: "怪兽种类"))
         let layMonType1 = TGLinearLayout(.horz)
         layMonType1.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layMonType1)
+        layMonster.addSubview(layMonType1)
         btnMonTypeNormal = makeButton("通常", layMonType1)
         btnMonTypeEffect = makeButton("效果", layMonType1)
         btnMonTypeRitual = makeButton("仪式", layMonType1)
@@ -332,7 +339,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         btnMonTypeToon = makeButton("卡通", layMonType1)
         let layMonType2 = TGLinearLayout(.horz)
         layMonType2.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layMonType2)
+        layMonster.addSubview(layMonType2)
         btnMonTypeUnion = makeButton("同盟", layMonType2)
         btnMonTypeSpirit = makeButton("灵魂", layMonType2)
         btnMonTypeTuner = makeButton("调整", layMonType2)
@@ -340,10 +347,10 @@ class SearchController: UIViewController, UITextFieldDelegate {
         btnMonTypePendulum = makeButton("灵摆", layMonType2)
         btnMonTypeReverse = makeButton("反转", layMonType2)
         btnMonTypeSS = makeButton("特殊召唤", layMonType2)
-        btnMonTypeSS?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        btnMonTypeSS.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         let layMonType3 = TGLinearLayout(.horz)
         layMonType3.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layMonType3)
+        layMonster.addSubview(layMonType3)
         btnMonTypeLink = makeButton("连接", layMonType3)
         // fill blank
         _ = makeButton("", layMonType3)
@@ -354,10 +361,10 @@ class SearchController: UIViewController, UITextFieldDelegate {
         _ = makeButton("", layMonType3)
         
         // race
-        layMonster?.addSubview(makeText(txt: "怪兽种族"))
+        layMonster.addSubview(makeText(txt: "怪兽种族"))
         let layMonRace1 = TGLinearLayout(.horz)
         layMonRace1.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layMonRace1)
+        layMonster.addSubview(layMonRace1)
         btnMonRaceWater = makeButton("水", layMonRace1)
         btnMonRaceBeast = makeButton("兽", layMonRace1)
         btnMonRaceBW = makeButton("兽战士", layMonRace1)
@@ -367,7 +374,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         btnMonRaceDragon = makeButton("龙", layMonRace1)
         let layMonRace2 = TGLinearLayout(.horz)
         layMonRace2.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layMonRace2)
+        layMonster.addSubview(layMonRace2)
         btnMonRaceAngel = makeButton("天使", layMonRace2)
         btnMonRaceDemon = makeButton("恶魔", layMonRace2)
         btnMonRaceFish = makeButton("鱼", layMonRace2)
@@ -377,7 +384,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         btnMonRaceCy = makeButton("念动力", layMonRace2)
         let layMonRace3 = TGLinearLayout(.horz)
         layMonRace3.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layMonRace3)
+        layMonster.addSubview(layMonRace3)
         btnMonRaceFire = makeButton("炎", layMonRace3)
         btnMonRaceClaim = makeButton("爬虫类", layMonRace3)
         btnMonRaceRock = makeButton("岩石", layMonRace3)
@@ -387,7 +394,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         btnMonRaceWarrior = makeButton("战士", layMonRace3)
         let layMonRace4 = TGLinearLayout(.horz)
         layMonRace4.tg_size(width: 100%, height: 32)
-        layMonster?.addSubview(layMonRace4)
+        layMonster.addSubview(layMonRace4)
         btnMonRaceWB = makeButton("鸟兽", layMonRace4)
         btnMonRaceUndead = makeButton("不死", layMonRace4)
         btnMonRaceDD = makeButton("幻龙", layMonRace4)
@@ -401,13 +408,13 @@ class SearchController: UIViewController, UITextFieldDelegate {
         edtAtk = makeEditor("攻击力", "可以是范围，如 1500-2000")
         edtDef = makeEditor("守备力", "可以是范围，如 1500-2000")
         edtLink = makeEditor("连接值", "可以是范围，如 1-3")
-        layMonster?.addSubview(makeText(txt: "连接方向"))
+        layMonster.addSubview(makeText(txt: "连接方向"))
         
         func makeLinkArrow(_ txt: String, _ layout: TGLinearLayout) -> UIButton {
             let btn = UIButton(type: UIButton.ButtonType.system)
             btn.tg_size(width: 40, height: 40)
             btn.setTitle(txt, for: UIControl.State.normal)
-            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
             btn.addTarget(self, action: #selector(btnItemClicked(sender:)), for: UIControl.Event.touchDown)
             layout.addSubview(btn)
             return btn
@@ -416,7 +423,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
         let layArrow = TGLinearLayout(.vert)
         layArrow.tg_size(width: .wrap, height: 120)
         layArrow.tg_centerX.equal(0)
-        layMonster?.addSubview(layArrow)
+        layMonster.addSubview(layArrow)
         let layArrowSub1 = TGLinearLayout(.horz)
         layArrowSub1.tg_size(width: .wrap, height: 32)
         layArrow.addSubview(layArrowSub1)
@@ -442,13 +449,13 @@ class SearchController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func btnSearchClicked(sender: Any?) {
+    @IBAction func btnSearchClicked(sender: Any) {
         doSearch()
     }
     
-    private func isButtonSelected(_ btn: UIButton?) -> Bool {
-        let color = btn?.titleColor(for: UIControl.State.normal)
-        return color != UIColor.black
+    private func isButtonSelected(_ btn: UIButton) -> Bool {
+        let color = btn.titleColor(for: UIControl.State.normal)
+        return color != UIColor.lightGray
     }
     
     private func buildMonsterCardType() -> String {
@@ -639,10 +646,10 @@ class SearchController: UIViewController, UITextFieldDelegate {
     
     @objc func btnItemClicked(sender: UIButton) {
         let c = sender.titleColor(for: UIControl.State.normal)
-        if (c == UIColor.black) {
+        if (c == UIColor.lightGray) {
             sender.setTitleColor(self.view.tintColor, for: UIControl.State.normal)
         } else {
-            sender.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            sender.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
         }
     }
     

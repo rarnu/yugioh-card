@@ -14,7 +14,6 @@ class PackDetailController: UITableViewController {
 
     var name = ""
     var url = ""
-    
     var list = Array<CardInfo2>()
     
     override func viewDidLoad() {
@@ -22,6 +21,9 @@ class PackDetailController: UITableViewController {
         self.title = name
         self.tableView.register(CardListCell.classForCoder(), forCellReuseIdentifier: "Cell")
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.tableView.backgroundColor = UIColor.black
+        self.tableView.separatorColor = UIColor.darkGray
+        self.tableView.separatorInset = UIEdgeInsets.zero
         
         YGOData2.packageDetail(self.url) { r in
             self.list.removeAll()
@@ -65,7 +67,5 @@ class PackDetailController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    
 
 }

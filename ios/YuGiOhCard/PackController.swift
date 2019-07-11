@@ -16,8 +16,8 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var listPack = Array<PackageInfo2>()
     var listOrigin = Array<PackageInfo2>()
     
-    var lvPack: UITableView?
-    var lvSeason: UITableView?
+    var lvPack: UITableView!
+    var lvSeason: UITableView!
     
     private var highlight = 0
     
@@ -25,22 +25,28 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
 
         lvSeason = UITableView(frame: CGRect(x: 0, y: 0, width: 80, height: screenHeight()))
-        lvSeason?.register(SeasonCell.classForCoder(), forCellReuseIdentifier: "Cell")
-        lvSeason?.tableFooterView = UIView(frame: CGRect.zero)
-        lvSeason?.delegate = self
-        lvSeason?.dataSource = self
-        self.view.addSubview(lvSeason!)
+        lvSeason.register(SeasonCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        lvSeason.tableFooterView = UIView(frame: CGRect.zero)
+        lvSeason.delegate = self
+        lvSeason.dataSource = self
+        lvSeason.backgroundColor = UIColor.black
+        lvSeason.separatorColor = UIColor.darkGray
+        lvSeason.separatorInset = UIEdgeInsets.zero
+        self.view.addSubview(lvSeason)
         
-        let v = UIView(frame: CGRect(x: 80, y: 0, width: 1, height: screenHeight()))
-        v.backgroundColor = UIColor.lightGray
+        let v = UIView(frame: CGRect(x: 80, y: statusbarSize().height + navigationbarHeight(), width: 1, height: screenHeight()))
+        v.backgroundColor = UIColor.darkGray
         self.view.addSubview(v)
         
         lvPack = UITableView(frame: CGRect(x: 81, y: 0, width: screenWidth() - 81, height: screenHeight()))
-        lvPack?.register(PackCell.classForCoder(), forCellReuseIdentifier: "Cell")
-        lvPack?.tableFooterView = UIView(frame: CGRect.zero)
-        lvPack?.delegate = self
-        lvPack?.dataSource = self
-        self.view.addSubview(lvPack!)
+        lvPack.register(PackCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        lvPack.tableFooterView = UIView(frame: CGRect.zero)
+        lvPack.delegate = self
+        lvPack.dataSource = self
+        lvPack.backgroundColor = UIColor.black
+        lvPack.separatorColor = UIColor.darkGray
+        lvPack.separatorInset = UIEdgeInsets.zero
+        self.view.addSubview(lvPack)
         
         YGOData2.packageList() { l in
             self.listOrigin = l
@@ -60,8 +66,8 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
             self.mainThread {
-                self.lvSeason?.reloadData()
-                self.lvPack?.reloadData()
+                self.lvSeason.reloadData()
+                self.lvPack.reloadData()
             }
         }
     }
@@ -111,8 +117,8 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 }
                 self.mainThread {
-                    self.lvPack?.reloadData()
-                    self.lvSeason?.reloadData()
+                    self.lvPack.reloadData()
+                    self.lvSeason.reloadData()
                 }
             }
         } else {

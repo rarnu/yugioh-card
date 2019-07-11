@@ -12,17 +12,19 @@ import YGOAPI2
 
 class PackCell: AdapterCell<PackageInfo2> {
 
-    var lblName: UILabel?
+    var lblName: UILabel!
     
     override func layout() {
+        self.backgroundColor = UIColor.black
         lblName = UILabel(frame: CGRect(x: 8, y: 0, width: screenWidth() - 81, height: 40))
         lblName?.font = UIFont.systemFont(ofSize: 12)
-        self.addSubview(lblName!)
+        lblName.textColor = UIColor.white
+        self.addSubview(lblName)
     }
     
     override func setItem(item: PackageInfo2?) {
         if (item != nil) {
-            lblName?.text = item!.name
+            lblName.text = item!.name
         }
     }
 }

@@ -36,11 +36,12 @@
 		92B6077920FF399700562693 /* HelpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B6077820FF399700562693 /* HelpController.swift */; };
 		92C24E81220C4EE8007F16EF /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E7F220C4EE8007F16EF /* Interface.storyboard */; };
 		92C24E83220C4EE9007F16EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E82220C4EE9007F16EF /* Assets.xcassets */; };
-		92C24E8A220C4EE9007F16EF /* YuGiOhWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 92C24E89220C4EE9007F16EF /* YuGiOhWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		92C24E8F220C4EE9007F16EF /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C24E8E220C4EE9007F16EF /* InterfaceController.swift */; };
 		92C24E91220C4EE9007F16EF /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C24E90220C4EE9007F16EF /* ExtensionDelegate.swift */; };
 		92C24E95220C4EE9007F16EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C24E94220C4EE9007F16EF /* Assets.xcassets */; };
 		92C24E9A220C4EE9007F16EF /* YuGiOhWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 92C24E7D220C4EE8007F16EF /* YuGiOhWatch.app */; };
+		92CE6B6522D724CC00A5769A /* YuGiOhWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 92C24E89220C4EE9007F16EF /* YuGiOhWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		92CE6B6A22D7259800A5769A /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CE6B6922D7259800A5769A /* MainNavController.swift */; };
 		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
 		92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1120F4583E00D4D1F5 /* PackController.swift */; };
 		92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1320F4599600D4D1F5 /* SeasonCell.swift */; };
@@ -48,19 +49,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		92C24E8B220C4EE9007F16EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9207E75520E67E8F00735721 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92C24E88220C4EE9007F16EF;
-			remoteInfo = "YuGiOhWatch Extension";
-		};
 		92C24E98220C4EE9007F16EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9207E75520E67E8F00735721 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 92C24E7C220C4EE8007F16EF;
 			remoteInfo = YuGiOhWatch;
+		};
+		92CE6B6622D724CC00A5769A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9207E75520E67E8F00735721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92C24E88220C4EE9007F16EF;
+			remoteInfo = "YuGiOhWatch Extension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -87,17 +88,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92C24EA0220C4EE9007F16EF /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				92C24E8A220C4EE9007F16EF /* YuGiOhWatch Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92C24EA2220C4EE9007F16EF /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,6 +97,17 @@
 				92C24E9A220C4EE9007F16EF /* YuGiOhWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92CE6B6822D724CC00A5769A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				92CE6B6522D724CC00A5769A /* YuGiOhWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -148,6 +149,7 @@
 		92C24E90220C4EE9007F16EF /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		92C24E94220C4EE9007F16EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92C24E96220C4EE9007F16EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92CE6B6922D7259800A5769A /* MainNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
 		92F88B1120F4583E00D4D1F5 /* PackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackController.swift; sourceTree = "<group>"; };
 		92F88B1320F4599600D4D1F5 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				9269239920F49D20002F4E8E /* SearchController.swift */,
 				92B6077820FF399700562693 /* HelpController.swift */,
 				927C3A49210578D500EC1FB1 /* Updater.swift */,
+				92CE6B6922D7259800A5769A /* MainNavController.swift */,
 			);
 			path = YuGiOhCard;
 			sourceTree = "<group>";
@@ -326,13 +329,13 @@
 			buildConfigurationList = 92C24EA1220C4EE9007F16EF /* Build configuration list for PBXNativeTarget "YuGiOhWatch" */;
 			buildPhases = (
 				92C24E7B220C4EE8007F16EF /* Resources */,
-				92C24EA0220C4EE9007F16EF /* Embed App Extensions */,
 				A5388BE97CA5E10FE97265B7 /* Frameworks */,
+				92CE6B6822D724CC00A5769A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				92C24E8C220C4EE9007F16EF /* PBXTargetDependency */,
+				92CE6B6722D724CC00A5769A /* PBXTargetDependency */,
 			);
 			name = YuGiOhWatch;
 			productName = YuGiOhWatch;
@@ -486,6 +489,7 @@
 				9208BEE120EB651600F795EA /* CardListController.swift in Sources */,
 				9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */,
 				9270AC2D20F35E8A00DC235F /* LimitController.swift in Sources */,
+				92CE6B6A22D7259800A5769A /* MainNavController.swift in Sources */,
 				9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */,
 				9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */,
 				9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */,
@@ -514,15 +518,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		92C24E8C220C4EE9007F16EF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 92C24E88220C4EE9007F16EF /* YuGiOhWatch Extension */;
-			targetProxy = 92C24E8B220C4EE9007F16EF /* PBXContainerItemProxy */;
-		};
 		92C24E99220C4EE9007F16EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 92C24E7C220C4EE8007F16EF /* YuGiOhWatch */;
 			targetProxy = 92C24E98220C4EE9007F16EF /* PBXContainerItemProxy */;
+		};
+		92CE6B6722D724CC00A5769A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92C24E88220C4EE9007F16EF /* YuGiOhWatch Extension */;
+			targetProxy = 92CE6B6622D724CC00A5769A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -677,7 +681,7 @@
 				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,7 +702,7 @@
 				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = YuGiOhCard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -713,7 +717,6 @@
 		92C24E9B220C4EE9007F16EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
@@ -727,14 +730,13 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
 		92C24E9C220C4EE9007F16EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4S5ZWGJSPN;
@@ -747,7 +749,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -776,7 +778,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -804,7 +806,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
