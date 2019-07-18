@@ -1,5 +1,7 @@
 package com.rarnu.yugioh
 
+import com.rarnu.common.forEach
+import com.rarnu.common.forEachString
 import org.json.JSONObject
 
 class PackageInfo {
@@ -112,8 +114,7 @@ object YGOData {
                 result.page = json.getInt("page")
                 result.pageCount = json.getInt("pagecount")
                 val jarr = json.getJSONArray("data")
-                (0 until jarr.length()).forEach {
-                    val obj = jarr.getJSONObject(it)
+                jarr.forEach { _, obj ->
                     val info = CardInfo()
                     info.cardid = obj.getInt("id")
                     info.hashid = obj.getString("hashid")
@@ -219,8 +220,7 @@ object YGOData {
                 result.link = obj.getString("link")
                 result.linkarrow = replaceLinkArrow(obj.getString("linkarrow"))
                 val jarr = obj.getJSONArray("packs")
-                (0 until jarr.length()).forEach {
-                    val pkinfo = jarr.getJSONObject(it)
+                jarr.forEach { _, pkinfo ->
                     val info = CardPackInfo()
                     info.url = pkinfo.getString("url")
                     info.name = replaceChars(pkinfo.getString("name"))
@@ -251,8 +251,7 @@ object YGOData {
             val json = JSONObject(parsed)
             if (json.getInt("result") == 0) {
                 val jarr = json.getJSONArray("data")
-                (0 until jarr.length()).forEach {
-                    val obj = jarr.getJSONObject(it)
+                jarr.forEach { _, obj ->
                     val info = LimitInfo()
                     info.limit = obj.getInt("limit")
                     info.color = obj.getString("color")
@@ -278,8 +277,7 @@ object YGOData {
             val json = JSONObject(parsed)
             if (json.getInt("result") == 0) {
                 val jarr = json.getJSONArray("data")
-                (0 until jarr.length()).forEach {
-                    val obj = jarr.getJSONObject(it)
+                jarr.forEach { _, obj ->
                     val info = PackageInfo()
                     info.season = obj.getString("season")
                     info.url = obj.getString("url")
@@ -314,21 +312,21 @@ object YGOData {
             val json = JSONObject(parsed)
             if (json.getInt("result") == 0) {
                 val arrSearch = json.getJSONArray("search")
-                (0 until arrSearch.length()).forEach {
-                    result.search.add(arrSearch.getString(it))
+                arrSearch.forEachString { _, s ->
+                    result.search.add(s)
                 }
                 val arrCard = json.getJSONArray("card")
-                (0 until arrCard.length()).forEach {
+                arrCard.forEach { _, obj ->
                     val ci = HotCard()
-                    ci.hashid = arrCard.getJSONObject(it).getString("hashid")
-                    ci.name = replaceChars(arrCard.getJSONObject(it).getString("name"))
+                    ci.hashid = obj.getString("hashid")
+                    ci.name = replaceChars(obj.getString("name"))
                     result.card.add(ci)
                 }
                 val arrPack = json.getJSONArray("pack")
-                (0 until arrPack.length()).forEach {
+                arrPack.forEach { _, obj ->
                     val pi = HotPack()
-                    pi.name = replaceChars(arrPack.getJSONObject(it).getString("name"))
-                    pi.packid = arrPack.getJSONObject(it).getString("packid")
+                    pi.name = replaceChars(obj.getString("name"))
+                    pi.packid = obj.getString("packid")
                     result.pack.add(pi)
                 }
             }

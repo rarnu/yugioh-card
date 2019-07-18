@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import com.rarnu.android.BackActivity
 import com.rarnu.android.resStr
+import com.rarnu.android.runOnMainThread
 import com.rarnu.common.DownloadState
 import com.rarnu.common.download
 import com.rarnu.yugioh.YGOData
@@ -30,7 +31,7 @@ class CardDetailActivity : BackActivity() {
 
         thread {
             val ret = YGOData.cardDetail(hashid)
-            runOnUiThread {
+            runOnMainThread {
                 tvCardNameValue.text = ret.name
                 tvCardJapNameValue.text = ret.japname
                 tvCardEnNameValue.text = ret.enname
@@ -88,7 +89,7 @@ class CardDetailActivity : BackActivity() {
                     progress { state, _, _, _ ->
                         if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {
                             if (File(localFile).exists()) {
-                                runOnUiThread {
+                                runOnMainThread {
                                     ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localFile))
                                 }
                             }

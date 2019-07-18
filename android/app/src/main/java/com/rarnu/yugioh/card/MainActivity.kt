@@ -10,10 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
-import com.rarnu.android.dip2px
-import com.rarnu.android.initUI
-import com.rarnu.android.resStr
-import com.rarnu.android.toast
+import com.rarnu.android.*
 import com.rarnu.yugioh.HotCard
 import com.rarnu.yugioh.HotPack
 import com.rarnu.yugioh.YGOData
@@ -113,7 +110,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
         listCard.addAll(ret.card)
         listPack.clear()
         listPack.addAll(ret.pack)
-        runOnUiThread {
+        runOnMainThread {
             adapterSearch.setNewList(listSearch)
             resetGridHeight()
             adapterCard.setNewList(listCard)

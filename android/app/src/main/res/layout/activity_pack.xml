@@ -12,7 +12,7 @@
             android:scrollbars="none">
 
     </ListView>
-    <View android:layout_width="1dip" android:layout_height="match_parent"
+    <View android:layout_width="1px" android:layout_height="match_parent"
           android:background="@android:color/darker_gray"/>
 
     <ListView

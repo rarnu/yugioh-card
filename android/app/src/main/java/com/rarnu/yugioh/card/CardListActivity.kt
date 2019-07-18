@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.rarnu.android.BackActivity
 import com.rarnu.android.resStr
+import com.rarnu.android.runOnMainThread
 import com.rarnu.yugioh.CardInfo
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.card.adapter.CardListAdapter
@@ -43,7 +44,7 @@ class CardListActivity : BackActivity(), View.OnClickListener, AdapterView.OnIte
         pageCount = ret.pageCount
         list.clear()
         list.addAll(ret.data)
-        runOnUiThread {
+        runOnMainThread {
             adapter.setNewList(list)
             tvPage.text = "$currentPage / $pageCount"
         }

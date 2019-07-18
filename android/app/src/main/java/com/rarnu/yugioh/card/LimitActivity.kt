@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.rarnu.android.BackActivity
 import com.rarnu.android.resStr
+import com.rarnu.android.runOnMainThread
 import com.rarnu.yugioh.LimitInfo
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.card.adapter.LimitAdapter
@@ -30,7 +31,7 @@ class LimitActivity : BackActivity(), AdapterView.OnItemClickListener {
             val ret = YGOData.limit()
             list.clear()
             list.addAll(ret)
-            runOnUiThread {
+            runOnMainThread {
                 adapter.setNewList(list)
             }
         }

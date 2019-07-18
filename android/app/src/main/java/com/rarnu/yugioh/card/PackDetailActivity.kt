@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import com.rarnu.android.BackActivity
+import com.rarnu.android.runOnMainThread
 import com.rarnu.yugioh.CardInfo
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.card.adapter.CardListAdapter
@@ -30,7 +31,7 @@ class PackDetailActivity : BackActivity(), AdapterView.OnItemClickListener {
             val tmp = YGOData.packageDetail(url)
             list.clear()
             list.addAll(tmp.data)
-            runOnUiThread {
+            runOnMainThread {
                 adapter.setNewList(list)
             }
         }

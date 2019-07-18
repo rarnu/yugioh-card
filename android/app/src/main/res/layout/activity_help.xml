@@ -33,7 +33,7 @@
 
     <View
             android:id="@+id/vLine"
-            android:layout_width="match_parent" android:layout_height="1dip"
+            android:layout_width="match_parent" android:layout_height="1px"
             android:layout_below="@+id/imgIcon" android:layout_margin="8dip"
             android:background="@android:color/darker_gray"
     />
@@ -46,7 +46,7 @@
             android:layout_marginLeft="8dip"
             android:layout_marginRight="8dip"
             android:gravity="left|center_vertical"
-            android:textColor="@color/iostint"
+            android:textColor="@android:color/white"
             android:clickable="true"
             android:text="软件作者: rarnu"
     />
@@ -59,7 +59,7 @@
             android:layout_marginLeft="8dip"
             android:layout_marginRight="8dip"
             android:gravity="left|center_vertical"
-            android:textColor="@color/iostint"
+            android:textColor="@android:color/white"
             android:clickable="true"
             android:text="数据来源: 中国OCG工作室"
     />
@@ -72,14 +72,14 @@
             android:layout_marginLeft="8dip"
             android:layout_marginRight="8dip"
             android:gravity="left|center_vertical"
-            android:textColor="@color/iostint"
+            android:textColor="@android:color/white"
             android:clickable="true"
             android:text="卡查开源: github.com/rarnu/yugioh-card"
     />
 
     <View
             android:id="@+id/vLine2"
-            android:layout_width="match_parent" android:layout_height="1dip"
+            android:layout_width="match_parent" android:layout_height="1px"
             android:layout_below="@+id/tvRarnu" android:layout_margin="8dip"
             android:background="@android:color/darker_gray"
     />

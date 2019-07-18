@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.rarnu.android.BackActivity
 import com.rarnu.android.resStr
+import com.rarnu.android.runOnMainThread
 import com.rarnu.yugioh.PackageInfo
 import com.rarnu.yugioh.YGOData
 import com.rarnu.yugioh.card.adapter.PackAdapter
@@ -54,7 +55,7 @@ class PackActivity: BackActivity(), AdapterView.OnItemClickListener {
                     listPack.add(p)
                 }
             }
-            runOnUiThread {
+            runOnMainThread {
                 adapterSeason.setNewList(listSeason)
                 adapterPack.setNewList(listPack)
             }
@@ -71,7 +72,7 @@ class PackActivity: BackActivity(), AdapterView.OnItemClickListener {
                         listPack.add(p)
                     }
                 }
-                runOnUiThread {
+                runOnMainThread {
                     adapterPack.setNewList(listPack)
                     adapterSeason.setHighlight(position)
                 }

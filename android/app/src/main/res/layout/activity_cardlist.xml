@@ -22,7 +22,7 @@
                 android:layout_width="40dip"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:text="@string/btn_first"/>
         <Button
                 android:id="@+id/btnPrior"
@@ -30,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/btnFirst"
                 android:background="@null"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:text="@string/btn_prior"/>
         <TextView
                 android:id="@+id/tvPage"
@@ -45,7 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_toLeftOf="@+id/btnLast"
                 android:background="@null"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:text="@string/btn_next"/>
         <Button
                 android:id="@+id/btnLast"
@@ -53,7 +53,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:background="@null"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:text="@string/btn_last"/>
     </RelativeLayout>
 </RelativeLayout>

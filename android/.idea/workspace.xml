@@ -15,121 +15,31 @@
   <component name="ChangeListManager">
     <list default="true" id="1e532e62-69f1-4ce3-8186-901f9a1a396a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_rarnu_android_jvm_0_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_rarnu_common_jvm_0_1_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ygoapi/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/CardListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/PackDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/SearchActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/Updater.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/Updater.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/CardListAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SeasonAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_carddetail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_carddetail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_cardlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_cardlist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pack.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pack.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_simple.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_simple.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/color.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/color.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ygoapi/ygoapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/ygoapi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Manifest.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Manifest.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/xcuserdata/rarnu.xcuserdatad/xcschemes/Pods-YuGiOhCard.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/xcuserdata/rarnu.xcuserdatad/xcschemes/Pods-YuGiOhCard.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/xcuserdata/rarnu.xcuserdatad/xcschemes/TangramKit.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/xcuserdata/rarnu.xcuserdatad/xcschemes/TangramKit.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/xcuserdata/rarnu.xcuserdatad/xcschemes/sfunctional.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/xcuserdata/rarnu.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Pods.xcodeproj/xcuserdata/rarnu.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TGBaseLayout.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TGBaseLayout.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TGPathLayout.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TGPathLayout.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TGRelativeLayout.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TGRelativeLayout.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TangramKit.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/TangramKit/TangramKit/TangramKit.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-acknowledgements.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-acknowledgements.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-acknowledgements.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-acknowledgements.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard.release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/TangramKit/TangramKit.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Pods/Target Support Files/TangramKit/TangramKit.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/sfunctional/Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/sfunctional/sfunctional-dummy.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/sfunctional/sfunctional-prefix.pch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/sfunctional/sfunctional-umbrella.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/sfunctional/sfunctional.modulemap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/Target Support Files/sfunctional/sfunctional.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional.xcodeproj/project.pbxproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/BundleUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/ContextUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/DatetimeUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/DownloadUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/Extensions.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/FileUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/HttpUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/ImageUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/PopupViewController.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/RegExUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/SSZipArchive.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/SSZipArchive.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/SSZipCommon.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/ZipArchive.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aes.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aes_ni.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aescrypt.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aeskey.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aesopt.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/aestab.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_endian.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/brg_types.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/fileenc.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/hmac.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/prng.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/pwd2key.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/aes/sha1.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/crypt.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/crypt.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/ioapi.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/ioapi.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/ioapi_buf.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/ioapi_mem.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/minishared.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/minishared.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/unzip.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/unzip.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/zip.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SSZipArchive/minizip/zip.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SelBlock/SelectorBlock.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SelBlock/SelectorBlock.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SysEmu/SysEmu.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SysEmu/SysEmu.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/SystemUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/TableViewAdapter.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/ToastUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/UrlDecoder.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/ZipUtils.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Pods/sfunctional/sfunctional/sfunctional/sfunctional.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/CardDetailController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/CardDetailController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/CardListController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/CardListController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/CardWikiController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/CardWikiController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/CardListCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/CardListCell.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/LimitCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/LimitCell.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/PackCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/PackCell.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/SeasonCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/Cell/SeasonCell.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/HelpController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/HelpController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/LimitController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/LimitController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/MainController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/MainController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/PackController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/PackController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/PackDetailController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/PackDetailController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/SearchController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/SearchController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/Updater.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/Updater.swift" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -198,13 +108,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>ktfunctional</find>
-      <find>Button</find>
-      <find>runOnUiThread</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -224,10 +127,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.recentlyUsedThemes" value="android:Theme.Material" />
     <property name="android.sdk.path" value="$USER_HOME$/Develop/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549465046151" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
@@ -410,7 +320,8 @@
       <workItem from="1559454936067" duration="1424000" />
       <workItem from="1559457237344" duration="296000" />
       <workItem from="1559459730421" duration="95000" />
-      <workItem from="1563438276061" duration="1167000" />
+      <workItem from="1563438276061" duration="4738000" />
+      <workItem from="1563443608348" duration="3802000" />
     </task>
     <servers />
   </component>
@@ -431,7 +342,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

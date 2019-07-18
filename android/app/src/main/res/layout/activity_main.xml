@@ -24,17 +24,17 @@
                     android:text="@string/btn_search"
                     android:layout_toLeftOf="@+id/btnAdvSearch"
                     android:background="@null"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/white"/>
             <Button
                     android:id="@+id/btnAdvSearch"
                     android:layout_width="80dip" android:layout_height="40dip"
                     android:text="@string/btn_adv_search"
                     android:layout_alignParentRight="true"
                     android:background="@null"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/white"/>
         </RelativeLayout>
 
-        <View android:layout_width="match_parent" android:layout_height="1dip"
+        <View android:layout_width="match_parent" android:layout_height="1px"
               android:background="@android:color/darker_gray"
               android:layout_marginLeft="8dip"
               android:layout_marginRight="8dip"
@@ -59,7 +59,7 @@
                     android:horizontalSpacing="0px"
                     android:scrollbars="none"/>
         </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1dip"
+        <View android:layout_width="match_parent" android:layout_height="1px"
               android:background="@android:color/darker_gray"
               android:layout_marginLeft="8dip"
               android:layout_marginRight="8dip"
@@ -91,11 +91,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
+                    android:divider="@null"
                     android:dividerHeight="0px">
 
             </ListView>
         </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1dip"
+        <View android:layout_width="match_parent" android:layout_height="1px"
               android:background="@android:color/darker_gray"
               android:layout_marginLeft="8dip"
               android:layout_marginRight="8dip"
@@ -116,11 +117,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
+                    android:divider="@null"
                     android:dividerHeight="0px">
 
             </ListView>
         </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1dip"
+        <View android:layout_width="match_parent" android:layout_height="1px"
               android:background="@android:color/darker_gray"
               android:layout_marginLeft="8dip"
               android:layout_marginRight="8dip"

@@ -344,7 +344,7 @@
 
         </LinearLayout>
 
-        <View android:layout_width="match_parent" android:layout_height="1dip"
+        <View android:layout_width="match_parent" android:layout_height="1px"
               android:background="@android:color/darker_gray"
               android:layout_marginTop="8dip"
               android:layout_marginBottom="8dip"/>
@@ -360,7 +360,7 @@
 
         <View
                 android:id="@+id/vAdjustLine"
-                android:layout_width="match_parent" android:layout_height="1dip"
+                android:layout_width="match_parent" android:layout_height="1px"
                 android:background="@android:color/darker_gray"
                 android:layout_marginTop="8dip"
                 android:layout_marginBottom="8dip"/>

@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.View
 import com.rarnu.android.BaseAdapter
+import com.rarnu.android.runOnMainThread
 import com.rarnu.common.DownloadState
 import com.rarnu.common.download
 import com.rarnu.yugioh.CardInfo
@@ -36,7 +37,7 @@ class CardListAdapter(ctx: Context, list: MutableList<CardInfo>) : BaseAdapter<C
                     progress { state, _, _, _ ->
                         if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {
                             if (File(localFile).exists()) {
-                                (context as Activity).runOnUiThread {
+                                runOnMainThread {
                                     holder.ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localFile))
                                 }
                             }

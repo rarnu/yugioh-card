@@ -21,7 +21,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dkgray"
                         android:text="@string/search_ct_mon"/>
                 <Button
                         android:id="@+id/btnTypeMagic"
@@ -29,7 +29,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dkgray"
                         android:text="@string/search_ct_magic"/>
                 <Button
                         android:id="@+id/btnTypeTrap"
@@ -37,7 +37,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dkgray"
                         android:text="@string/search_ct_trap"/>
             </LinearLayout>
 
@@ -51,7 +51,7 @@
                     android:layout_width="0px" android:layout_height="match_parent" android:layout_weight="3"
                     android:background="@null" android:hint="@string/hint_effect"/>
         </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1dip"
+        <View android:layout_width="match_parent" android:layout_height="1px"
               android:background="@android:color/darker_gray"/>
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_mt_normal"
                             android:background="@null"/>
                     <Button
@@ -82,7 +82,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_mt_equip"
                             android:background="@null"/>
                     <Button
@@ -90,7 +90,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_mt_quick"
                             android:background="@null"/>
                     <Button
@@ -98,7 +98,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_mt_cont"
                             android:background="@null"/>
                     <Button
@@ -106,7 +106,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_mt_field"
                             android:background="@null"/>
 
@@ -115,7 +115,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_mt_ritual"
                             android:background="@null"/>
                 </LinearLayout>
@@ -137,7 +137,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_tt_normal"
                             android:background="@null"/>
 
@@ -146,7 +146,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_tt_cont"
                             android:background="@null"/>
                     <Button
@@ -154,7 +154,7 @@
                             android:layout_width="0px"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dkgray"
                             android:text="@string/search_tt_counter"
                             android:background="@null"/>
                 </LinearLayout>
@@ -178,7 +178,7 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/dkgray"
                                 android:text="@string/search_mon_ele_light"
                                 android:background="@null"/>
                         <Button
@@ -186,7 +186,7 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/dkgray"
                                 android:text="@string/search_mon_ele_dark"
                                 android:background="@null"/>
                         <Button
@@ -194,7 +194,7 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/dkgray"
                                 android:text="@string/search_mon_ele_fire"
                                 android:background="@null"/>
                         <Button
@@ -202,7 +202,7 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/dkgray"
                                 android:text="@string/search_mon_ele_water"
                                 android:background="@null"/>
                         <Button
@@ -210,7 +210,7 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/dkgray"
                                 android:text="@string/search_mon_ele_earth"
                                 android:background="@null"/>
                         <Button
@@ -218,7 +218,7 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/dkgray"
                                 android:text="@string/search_mon_ele_wind"
                                 android:background="@null"/>
                         <Button
@@ -226,7 +226,7 @@
                                 android:layout_width="0px"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/dkgray"
                                 android:text="@string/search_mon_ele_god"
                                 android:background="@null"/>
                     </LinearLayout>
@@ -244,7 +244,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_normal"
                                     android:background="@null"/>
                             <Button
@@ -252,7 +252,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_effect"
                                     android:background="@null"/>
                             <Button
@@ -260,7 +260,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_ritual"
                                     android:background="@null"/>
                             <Button
@@ -268,7 +268,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_fusion"
                                     android:background="@null"/>
                             <Button
@@ -276,7 +276,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_sync"
                                     android:background="@null"/>
                             <Button
@@ -284,7 +284,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_xyz"
                                     android:background="@null"/>
                             <Button
@@ -292,7 +292,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_toon"
                                     android:background="@null"/>
                         </LinearLayout>
@@ -303,7 +303,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_union"
                                     android:background="@null"/>
                             <Button
@@ -311,7 +311,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_spirit"
                                     android:background="@null"/>
                             <Button
@@ -319,7 +319,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_tuner"
                                     android:background="@null"/>
                             <Button
@@ -327,7 +327,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_double"
                                     android:background="@null"/>
                             <Button
@@ -335,7 +335,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_pendulum"
                                     android:background="@null"/>
                             <Button
@@ -343,7 +343,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_reverse"
                                     android:background="@null"/>
                             <Button
@@ -351,7 +351,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:textSize="12sp"
                                     android:text="@string/search_monct_ss"
                                     android:background="@null"/>
@@ -364,7 +364,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monct_link"
                                     android:background="@null"/>
                         </LinearLayout>
@@ -383,7 +383,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_water"
                                     android:background="@null"/>
                             <Button
@@ -391,7 +391,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_beast"
                                     android:background="@null"/>
                             <Button
@@ -399,7 +399,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_bw"
                                     android:background="@null"/>
                             <Button
@@ -407,7 +407,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_creation"
                                     android:background="@null"/>
                             <Button
@@ -415,7 +415,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_dino"
                                     android:background="@null"/>
                             <Button
@@ -423,7 +423,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_god"
                                     android:background="@null"/>
                             <Button
@@ -431,7 +431,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_dragon"
                                     android:background="@null"/>
 
@@ -443,7 +443,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_angel"
                                     android:background="@null"/>
                             <Button
@@ -451,7 +451,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_demon"
                                     android:background="@null"/>
                             <Button
@@ -459,7 +459,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_fish"
                                     android:background="@null"/>
                             <Button
@@ -467,7 +467,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_insect"
                                     android:background="@null"/>
                             <Button
@@ -475,7 +475,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_machine"
                                     android:background="@null"/>
                             <Button
@@ -483,7 +483,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_plant"
                                     android:background="@null"/>
                             <Button
@@ -491,7 +491,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_cy"
                                     android:background="@null"/>
                         </LinearLayout>
@@ -503,7 +503,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_fire"
                                     android:background="@null"/>
                             <Button
@@ -511,7 +511,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_claim"
                                     android:background="@null"/>
                             <Button
@@ -519,7 +519,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_rock"
                                     android:background="@null"/>
                             <Button
@@ -527,7 +527,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_sd"
                                     android:background="@null"/>
                             <Button
@@ -535,7 +535,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_magician"
                                     android:background="@null"/>
                             <Button
@@ -543,7 +543,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_thunder"
                                     android:background="@null"/>
                             <Button
@@ -551,7 +551,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_warrior"
                                     android:background="@null"/>
                         </LinearLayout>
@@ -563,7 +563,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_wb"
                                     android:background="@null"/>
                             <Button
@@ -571,7 +571,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_undead"
                                     android:background="@null"/>
                             <Button
@@ -579,7 +579,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_dd"
                                     android:background="@null"/>
                             <Button
@@ -587,7 +587,7 @@
                                     android:layout_width="0px"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/dkgray"
                                     android:text="@string/search_monrace_cyber"
                                     android:background="@null"/>
                         </LinearLayout>
@@ -604,7 +604,7 @@
                                 android:background="@null" android:hint="@string/hint_level"/>
                     </LinearLayout>
 
-                    <View android:layout_width="match_parent" android:layout_height="1dip"
+                    <View android:layout_width="match_parent" android:layout_height="1px"
                           android:background="@android:color/darker_gray"/>
                     <LinearLayout android:layout_width="match_parent" android:layout_height="32dip"
                                   android:orientation="horizontal"
@@ -616,7 +616,7 @@
                                 android:layout_width="0px" android:layout_height="32dip" android:layout_weight="3"
                                 android:background="@null" android:hint="@string/hint_scale"/>
                     </LinearLayout>
-                    <View android:layout_width="match_parent" android:layout_height="1dip"
+                    <View android:layout_width="match_parent" android:layout_height="1px"
                           android:background="@android:color/darker_gray"/>
 
                     <LinearLayout android:layout_width="match_parent" android:layout_height="32dip"
@@ -629,7 +629,7 @@
                                 android:layout_width="0px" android:layout_height="32dip" android:layout_weight="3"
                                 android:background="@null" android:hint="@string/hint_atk"/>
                     </LinearLayout>
-                    <View android:layout_width="match_parent" android:layout_height="1dip"
+                    <View android:layout_width="match_parent" android:layout_height="1px"
                           android:background="@android:color/darker_gray"/>
 
                     <LinearLayout android:layout_width="match_parent" android:layout_height="32dip"
@@ -642,7 +642,7 @@
                                 android:layout_width="0px" android:layout_height="32dip" android:layout_weight="3"
                                 android:background="@null" android:hint="@string/hint_def"/>
                     </LinearLayout>
-                    <View android:layout_width="match_parent" android:layout_height="1dip"
+                    <View android:layout_width="match_parent" android:layout_height="1px"
                           android:background="@android:color/darker_gray"/>
 
                     <LinearLayout android:layout_width="match_parent" android:layout_height="32dip"
@@ -655,7 +655,7 @@
                                 android:layout_width="0px" android:layout_height="32dip" android:layout_weight="3"
                                 android:background="@null" android:hint="@string/hint_link"/>
                     </LinearLayout>
-                    <View android:layout_width="match_parent" android:layout_height="1dip"
+                    <View android:layout_width="match_parent" android:layout_height="1px"
                           android:background="@android:color/darker_gray"/>
 
                     <TextView android:layout_width="match_parent" android:layout_height="32dip"
@@ -670,59 +670,59 @@
                                     android:id="@+id/btnLA7"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:text="↖" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA8"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_toRightOf="@+id/btnLA7"
                                     android:text="↑" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA9"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_toRightOf="@+id/btnLA8"
                                     android:text="↗" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA4"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_below="@+id/btnLA7"
                                     android:text="←" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA5"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_below="@+id/btnLA7"
                                     android:layout_toRightOf="@+id/btnLA4"
                                     android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA6"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_below="@+id/btnLA7"
                                     android:layout_toRightOf="@+id/btnLA5"
                                     android:text="→" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA1"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_below="@+id/btnLA4"
                                     android:text="↙" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA2"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_below="@+id/btnLA4"
                                     android:layout_toRightOf="@+id/btnLA1"
                                     android:text="↓" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
                             <Button
                                     android:id="@+id/btnLA3"
                                     android:layout_width="40dip" android:layout_height="40dip"
                                     android:layout_below="@+id/btnLA4"
                                     android:layout_toRightOf="@+id/btnLA2"
                                     android:text="↘" android:background="@null"
-                                    android:textColor="@android:color/black"/>
+                                    android:textColor="@color/dkgray"/>
 
 
                         </RelativeLayout>

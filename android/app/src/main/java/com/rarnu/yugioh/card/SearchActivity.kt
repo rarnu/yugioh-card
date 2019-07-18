@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import com.rarnu.android.BackActivity
-import com.rarnu.android.resColor
 import com.rarnu.android.resStr
 import kotlinx.android.synthetic.main.activity_search.*
 
@@ -22,7 +21,7 @@ class SearchActivity: BackActivity(), View.OnClickListener {
         setContentView(R.layout.activity_search)
         actionBar?.title = resStr(R.string.btn_adv_search)
 
-        btnTypeMon.setTextColor(resColor(R.color.iostint))
+        btnTypeMon.setTextColor(Color.WHITE)
 
         btnTypeMon.setOnClickListener(this)
         btnTypeMagic.setOnClickListener(this)
@@ -120,37 +119,37 @@ class SearchActivity: BackActivity(), View.OnClickListener {
         when(v.id) {
             R.id.btnTypeMon -> {
                 cardtype = "怪兽"
-                btnTypeMon.setTextColor(resColor(R.color.iostint))
-                btnTypeMagic.setTextColor(Color.BLACK)
-                btnTypeTrap.setTextColor(Color.BLACK)
+                btnTypeMon.setTextColor(Color.WHITE)
+                btnTypeMagic.setTextColor(Color.DKGRAY)
+                btnTypeTrap.setTextColor(Color.DKGRAY)
                 layMonster.visibility = View.VISIBLE
                 layMagic.visibility = View.GONE
                 layTrap.visibility = View.GONE
             }
             R.id.btnTypeMagic -> {
                 cardtype = "魔法"
-                btnTypeMagic.setTextColor(resColor(R.color.iostint))
-                btnTypeMon.setTextColor(Color.BLACK)
-                btnTypeTrap.setTextColor(Color.BLACK)
+                btnTypeMagic.setTextColor(Color.WHITE)
+                btnTypeMon.setTextColor(Color.DKGRAY)
+                btnTypeTrap.setTextColor(Color.DKGRAY)
                 layMagic.visibility = View.VISIBLE
                 layMonster.visibility = View.GONE
                 layTrap.visibility = View.GONE
             }
             R.id.btnTypeTrap -> {
                 cardtype = "陷阱"
-                btnTypeTrap.setTextColor(resColor(R.color.iostint))
-                btnTypeMon.setTextColor(Color.BLACK)
-                btnTypeMagic.setTextColor(Color.BLACK)
+                btnTypeTrap.setTextColor(Color.WHITE)
+                btnTypeMon.setTextColor(Color.DKGRAY)
+                btnTypeMagic.setTextColor(Color.DKGRAY)
                 layTrap.visibility = View.VISIBLE
                 layMagic.visibility = View.GONE
                 layMonster.visibility = View.GONE
             }
             else -> {
                 val c = (v as Button).currentTextColor
-                if (c == Color.BLACK) {
-                    v.setTextColor(resColor(R.color.iostint))
+                if (c == Color.DKGRAY) {
+                    v.setTextColor(Color.WHITE)
                 } else {
-                    v.setTextColor(Color.BLACK)
+                    v.setTextColor(Color.DKGRAY)
                 }
             }
         }
@@ -158,7 +157,7 @@ class SearchActivity: BackActivity(), View.OnClickListener {
 
     private fun isButtonSelected(btn: Button): Boolean {
         val color = btn.currentTextColor
-        return color != Color.BLACK
+        return color != Color.DKGRAY
     }
 
     private fun buildMonsterCardType(): String {

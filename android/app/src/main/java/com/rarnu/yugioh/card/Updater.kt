@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import com.rarnu.android.alert
 import com.rarnu.android.resStr
+import com.rarnu.android.runOnMainThread
 import com.rarnu.common.HttpMethod
 import com.rarnu.common.blockingHttp
 import org.json.JSONObject
@@ -27,7 +28,7 @@ object Updater {
                             val json = JSONObject(text)
                             val jobj = json.getJSONObject("android")
                             if (jobj.getInt("code") > VERSIONCODE) {
-                                runOnUiThread {
+                                runOnMainThread {
                                     alert(resStr(R.string.alert_update), resStr(R.string.alert_update_message), resStr(R.string.alert_ok), resStr(R.string.alert_cancel)) { which ->
                                         if (which == 0) {
                                             val inDownload = Intent(Intent.ACTION_VIEW)
