@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 import YGOAPI2
 
 class PackController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -65,7 +65,7 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
             
-            self.mainThread {
+            mainThread {
                 self.lvSeason.reloadData()
                 self.lvPack.reloadData()
             }
@@ -116,7 +116,7 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.listPack.append(p)
                     }
                 }
-                self.mainThread {
+                mainThread {
                     self.lvPack.reloadData()
                     self.lvSeason.reloadData()
                 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 
 class SeasonCell: AdapterCell<String> {
 

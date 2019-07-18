@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 import YGOAPI2
 
 class LimitCell: AdapterCell<LimitInfo2> {

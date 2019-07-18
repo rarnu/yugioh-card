@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 import TangramKit
 
 class SearchController: UIViewController, UITextFieldDelegate {

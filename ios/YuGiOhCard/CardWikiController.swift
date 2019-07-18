@@ -8,7 +8,7 @@
 
 import UIKit
 import TangramKit
-import sfunctional
+import commonios
 
 class CardWikiController: UIViewController {
 

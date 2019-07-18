@@ -8,6 +8,7 @@
 
 import UIKit
 import YGOAPI2
+import commonios
 
 class LimitController: UITableViewController {
 
@@ -22,7 +23,7 @@ class LimitController: UITableViewController {
         self.tableView.separatorInset = UIEdgeInsets.zero
         YGOData2.limit() { l in
             self.list = l
-            self.mainThread {
+            mainThread {
                 self.tableView.reloadData()
             }
         }

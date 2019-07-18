@@ -15,10 +15,11 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'http://119.3.22.119:8081/repository/maven-releases' }
         google()
         jcenter()
         mavenCentral()
-        maven { url 'http://119.3.22.119:8081/repository/maven-releases' }
+
     }
 }
 

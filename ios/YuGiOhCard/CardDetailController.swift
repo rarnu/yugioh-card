@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import sfunctional
+import commonios
 import TangramKit
 import YGOAPI2
 
@@ -148,7 +148,7 @@ class CardDetailController: UIViewController {
         
         thread {
             YGOData2.cardDetail(self.hashid) { c in
-                self.mainThread {
+                mainThread {
                     self.tvCardNameValue.text = c.name
                     self.tvCardJapNameValue.text = c.japname
                     self.tvCardEnNameValue.text = c.enname
@@ -210,7 +210,7 @@ class CardDetailController: UIViewController {
             download(String(format: RES_URL, cardid), localfile) { (state, _, _, _) in
                 if (state == DownloadState.Complete) {
                     if (FileManager.default.fileExists(atPath: localfile)) {
-                        self.mainThread {
+                        mainThread {
                             self.ivCardImg.image = UIImage(contentsOfFile: localfile)
                         }
                     }

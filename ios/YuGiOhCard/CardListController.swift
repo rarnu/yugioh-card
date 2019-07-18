@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 import YGOAPI2
 
 class CardListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -81,7 +81,7 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
             for ci in r.data {
                 self.list.append(ci)
             }
-            self.mainThread {
+            mainThread {
                 self.tvCard.reloadData()
                 self.tvPage.text = "\(self.currentPage) / \(self.pageCount)"
             }

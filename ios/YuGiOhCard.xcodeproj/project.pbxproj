@@ -439,19 +439,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/TangramKit/TangramKit.framework",
-				"${BUILT_PRODUCTS_DIR}/sfunctional/sfunctional.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TangramKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sfunctional.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YuGiOhCard/Pods-YuGiOhCard-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		94479CF5CDF56D721320D00E /* [CP] Check Pods Manifest.lock */ = {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 import YGOAPI2
 
 class PackDetailController: UITableViewController {
@@ -30,7 +30,7 @@ class PackDetailController: UITableViewController {
             for ci in r.data {
                 self.list.append(ci)
             }
-            self.mainThread {
+            mainThread {
                 self.tableView.reloadData()
             }
         }

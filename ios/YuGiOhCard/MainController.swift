@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 import TangramKit
 import YGOAPI2
 
@@ -200,7 +200,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         layLastPack.tg_removeAllSubviews()
         
         YGOData2.hostest() { h in
-            self.mainThread {
+            mainThread {
                 self.makeKeyword(list: h.search)
                 for c in h.card {
                     self.makeLabel(lay: self.layHotCard, txt: c.name, hash: c.hashid, sel: #selector(self.btnHotCardClicked(sender:)))

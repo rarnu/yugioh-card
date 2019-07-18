@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import sfunctional
+import commonios
 import YGOAPI2
 
 class CardListCell: AdapterCell<CardInfo2> {
@@ -56,7 +56,7 @@ class CardListCell: AdapterCell<CardInfo2> {
                 download(String(format: RES_URL, item!.cardid), localfile) { (state, _, _, _) in
                     if (state == DownloadState.Complete) {
                         if (FileManager.default.fileExists(atPath: localfile)) {
-                            self.mainThread {
+                            mainThread {
                                 self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
                             }
                         }

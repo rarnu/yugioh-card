@@ -1,6 +1,0 @@
-framework module sfunctional {
-  umbrella header "sfunctional-umbrella.h"
-
-  export *
-  module * { export * }
-}

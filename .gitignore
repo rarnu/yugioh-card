@@ -2,6 +2,7 @@
 DerivedData/
 [Bb]uild/
 .gradle/
+.idea/
 lib/
 ppas.sh
 link.res
