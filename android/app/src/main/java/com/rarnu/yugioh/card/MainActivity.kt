@@ -18,6 +18,7 @@ import com.rarnu.yugioh.card.adapter.SimpleCardAdapter
 import com.rarnu.yugioh.card.adapter.SimplePackAdapter
 import com.rarnu.yugioh.card.adapter.SimpleSearchAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 import kotlin.concurrent.thread
 
 class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {
@@ -33,6 +34,10 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     private lateinit var adapterPack: SimplePackAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
         initUI()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
