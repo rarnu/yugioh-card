@@ -1,0 +1,207 @@
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class='main-page'>
+    <div class='search-bar'>
+      <input type='text' class='input-search' enterkeytype='search' onchange='searchChanged' placeholder='输入要搜索的关键字' />
+      <input type='button' value='搜索' class='button-search' onclick='routeList'/>
+      <input type='button' value='高级' class='button-search' onclick='routeAdvanced'/>
+    </div>
+
+    <div class="div-split"></div>
+
+    <div class="div-type"><text class="txt-light">热门搜索</text></div>
+    <div class="div-hotword">
+      <list class="list-hotword">
+        <list-item type="listItem" class="list-item" for="{{hotwords}}" onclick="routeHotword($item)">
+          <text>{{$item}}</text>
+        </list-item>
+      </list>
+    </div>
+
+    <div class="div-split"></div>
+    <div class="div-hot2"><text class="txt-light" style="width: 80%;">热门卡片</text><text class="txt-light" style="width: 20%;" onclick="reloadHotest()">&lt;换一批&gt;</text></div>
+    <div class="div-hotcard">
+      <list class="list-hotcard">
+        <list-item type="listItem" class="list-item" for="{{hotcards}}" onclick="routeCardDetail($item.hashid)">
+          <text>{{$item.name}}</text>
+        </list-item>
+      </list>
+    </div>
+    <div class="div-split"></div>
+    <div class="div-type"><text class="txt-light">热门卡包</text></div>
+    <div class="div-hotpack">
+    	<list class="list-hotcard">
+        <list-item type="listItem" class="list-item" for="{{hotpacks}}" onclick="routePackDetail($item.packid)">
+          <text class="txt-pack">{{$item.name}}</text>
+        </list-item>
+      </list>
+    </div>
+    <div class="div-split"></div>
+
+    <block if="{{$app.$data.debug}}">
+    <div>
+      <input type="button" value='Limit' onclick='routeLimit'/>
+      <input type="button" value='Pack' onclick='routePack'/>
+      <input type="button" value='About' onclick='routeAbout'/>
+    </div>
+    </block>
+    
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+const fetch = require('@system.fetch')
+const prompt = require('@system.prompt')
+
+export default {
+  public: {
+    keyword: '',
+    hotwords: [],
+    hotcards: [],
+    hotpacks: []
+  },
+  searchChanged(e) {
+    this.keyword = e.value
+  },
+  routeList() {
+    if (this.keyword === '') {
+      prompt.showToast({
+        message: '关键字不能为空'
+      })
+      return
+    }
+    
+    router.push ({
+      uri: '/CardList',
+      params: { keyword: this.keyword }
+    })
+  },
+  routeHotword(h) {
+    router.push ({
+      uri: '/CardList',
+      params: { keyword: h }
+    })
+  },
+  routeCardDetail(h) {
+    router.push ({
+      uri: '/CardDetail',
+      params: { cardhash: h }
+    })
+  },
+  routePackDetail(h) {
+    router.push({
+      uri: '/PackDetail',
+      params: { url: h }
+    })
+  },
+  routeAdvanced () {
+    router.push ({
+      uri: '/CardSearchAdv'
+    })
+  },
+  routeLimit() {
+    router.push({uri: '/Limit'})
+  },
+  routePack() {
+    router.push({uri: '/Pack'})
+  },
+  routeAbout() {
+    router.push({uri: '/About'})
+  },
+  onMenuPress() {
+    this.$app.$def.showMenu()
+  },
+  getHotestData() {
+    let that = this
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/hotest`,
+      responseType: 'json',
+      success: function (response) {
+        that.hotwords = response.data.search
+        that.hotcards = response.data.card
+        that.hotpacks = response.data.pack
+      }
+    })
+  },
+  reloadHotest() {
+    this.getHotestData()
+  },
+  onInit() {
+    this.getHotestData()  
+  },
+}
+</script>
+
+<style>
+  .input-search {
+      width: 75%;
+      height: 86px;
+  }
+  .button-search {
+    margin-left: 8px;
+    width: 12%;
+    height: 86px;
+    border-radius: 43px;
+    background-color: #fefefe;
+    font-size: 30px;
+    color: #000000;
+  }
+
+  .main-page {
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 8px 8px 8px;
+  }
+
+  .search-bar {
+    padding: 8px 8px 8px 8px;
+  }
+  .div-hotword {
+    height: 240px;
+  }
+  .list-hotword {
+    columns: 5;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .list-item {
+  height: 80px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.div-hotcard {
+  height: 640px;
+}
+.list-hotcard {
+  padding-left: 8px;
+    padding-right: 8px;
+}
+.div-hotpack {
+  height: 480px;
+}
+.div-type {
+    width: 100%;
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .div-hot2 {
+    width: 100%;
+    margin-top: 16px;
+  }
+  .txt-light {
+    color: #a9a9a9;
+  }
+  .div-split {
+    background-color: #d3d3d3;
+    width: 100%;
+    height: 1px;
+  }
+
+.txt-pack {
+  lines: 1;
+  width: 100%;
+  font-size: 24px;
+}
+</style>

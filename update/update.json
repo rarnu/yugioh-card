@@ -1,7 +1,0 @@
-{
-    "ios":{"code":1,"url":""},
-    "android":{"code":1, "url":"yugiohcard1.0.apk"},
-    "windows":{"code":1, "url":"yugiohcard1.0_win.zip"},
-    "macosx":{"code":1, "url":"yugiohcard1.0_mac.zip"},
-    "linux":{"code":1, "url":"yugiohcard1.0_lin.zip"}
-}

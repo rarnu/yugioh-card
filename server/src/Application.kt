@@ -3,6 +3,8 @@ package com.rarnu.ygo.server
 import com.rarnu.ktor.installPlugin
 import com.rarnu.ygo.server.database.cardTable
 import com.rarnu.ygo.server.database.limitTable
+import com.rarnu.ygo.server.database.packDetailTable
+import com.rarnu.ygo.server.database.packTable
 import io.ktor.application.Application
 import io.ktor.http.content.defaultResource
 import io.ktor.http.content.resources
@@ -18,6 +20,8 @@ fun Application.module() {
     // load cache
     cardTable.loadCache()
     limitTable.loadCache()
+    packTable.loadCache()
+    packDetailTable.loadCache()
 
     routing {
         resources("web")

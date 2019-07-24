@@ -10,23 +10,17 @@
 		921C0B7C220DEB030041CEDA /* Dictionary+StringInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921C0B7B220DEB030041CEDA /* Dictionary+StringInt.swift */; };
 		921C0B7D220DEB690041CEDA /* Dictionary+StringInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921C0B7B220DEB030041CEDA /* Dictionary+StringInt.swift */; };
 		92386DC3220D4748001FD288 /* YGOData2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC2220D4748001FD288 /* YGOData2.swift */; };
-		92386DC5220D4EF6001FD288 /* YGOCache2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC4220D4EF6001FD288 /* YGOCache2.swift */; };
 		92386DC7220D53E1001FD288 /* YGORequest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC6220D53E1001FD288 /* YGORequest2.swift */; };
-		92386DC9220D589C001FD288 /* YGOCAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC8220D589C001FD288 /* YGOCAPI.swift */; };
 		926FDFFA220DA6D600DEEBB4 /* YGOAPI2Watch.h in Headers */ = {isa = PBXBuildFile; fileRef = 926FDFF8220DA6D600DEEBB4 /* YGOAPI2Watch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		926FE002220DA77300DEEBB4 /* YGOData2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC2220D4748001FD288 /* YGOData2.swift */; };
-		926FE003220DA77300DEEBB4 /* YGOCache2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC4220D4EF6001FD288 /* YGOCache2.swift */; };
 		926FE004220DA77300DEEBB4 /* YGORequest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC6220D53E1001FD288 /* YGORequest2.swift */; };
-		926FE005220DA77300DEEBB4 /* YGOCAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386DC8220D589C001FD288 /* YGOCAPI.swift */; };
 		92A17A39220D447300BDA4F1 /* YGOAPI2.h in Headers */ = {isa = PBXBuildFile; fileRef = 92A17A37220D447300BDA4F1 /* YGOAPI2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		921C0B7B220DEB030041CEDA /* Dictionary+StringInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+StringInt.swift"; sourceTree = "<group>"; };
 		92386DC2220D4748001FD288 /* YGOData2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YGOData2.swift; sourceTree = "<group>"; };
-		92386DC4220D4EF6001FD288 /* YGOCache2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YGOCache2.swift; sourceTree = "<group>"; };
 		92386DC6220D53E1001FD288 /* YGORequest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YGORequest2.swift; sourceTree = "<group>"; };
-		92386DC8220D589C001FD288 /* YGOCAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YGOCAPI.swift; sourceTree = "<group>"; };
 		926FDFF6220DA6D600DEEBB4 /* YGOAPI2Watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YGOAPI2Watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		926FDFF8220DA6D600DEEBB4 /* YGOAPI2Watch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YGOAPI2Watch.h; sourceTree = "<group>"; };
 		926FDFF9220DA6D600DEEBB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,9 +80,7 @@
 				92A17A37220D447300BDA4F1 /* YGOAPI2.h */,
 				92A17A38220D447300BDA4F1 /* Info.plist */,
 				92386DC2220D4748001FD288 /* YGOData2.swift */,
-				92386DC4220D4EF6001FD288 /* YGOCache2.swift */,
 				92386DC6220D53E1001FD288 /* YGORequest2.swift */,
-				92386DC8220D589C001FD288 /* YGOCAPI.swift */,
 				921C0B7B220DEB030041CEDA /* Dictionary+StringInt.swift */,
 			);
 			path = YGOAPI2;
@@ -214,9 +206,7 @@
 			files = (
 				921C0B7D220DEB690041CEDA /* Dictionary+StringInt.swift in Sources */,
 				926FE002220DA77300DEEBB4 /* YGOData2.swift in Sources */,
-				926FE003220DA77300DEEBB4 /* YGOCache2.swift in Sources */,
 				926FE004220DA77300DEEBB4 /* YGORequest2.swift in Sources */,
-				926FE005220DA77300DEEBB4 /* YGOCAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,9 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92386DC9220D589C001FD288 /* YGOCAPI.swift in Sources */,
 				92386DC3220D4748001FD288 /* YGOData2.swift in Sources */,
-				92386DC5220D4EF6001FD288 /* YGOCache2.swift in Sources */,
 				921C0B7C220DEB030041CEDA /* Dictionary+StringInt.swift in Sources */,
 				92386DC7220D53E1001FD288 /* YGORequest2.swift in Sources */,
 			);

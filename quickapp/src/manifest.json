@@ -1,0 +1,122 @@
+{
+  "package": "com.rarnu.card",
+  "name": "YuGiOh Card",
+  "versionName": "1.0.0",
+  "versionCode": "1",
+  "minPlatformVersion": "1020",
+  "icon": "/Common/logo.png",
+  "features": [
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.shortcut"
+    },
+    { 
+      "name": "system.fetch" 
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {
+    "logLevel": "debug",
+    "data": {
+      "baseurl": "http://119.3.22.119",
+      "debug": false
+    }
+  },
+  "router": {
+    "entry": "CardMain",
+    "pages": {
+      "CardMain": {
+        "component": "index"
+      },
+      "CardList": {
+        "component": "index"
+      },
+      "CardDetail": {
+        "component": "index"
+      },
+      "CardWiki": {
+        "component": "index"
+      },
+      "Limit": {
+        "component": "index"
+      },
+      "Pack": {
+        "component": "index"
+      },
+      "PackDetail": {
+        "component": "index"
+      },
+      "CardSearchAdv": {
+        "component": "index"
+      },
+      "About": {
+        "component": "index"
+      }
+    },
+    "widgets": {
+      "Card": {
+        "name": "Card",
+        "description": "快应用卡片展示",
+        "component": "index",
+        "path": "/Card",
+        "targetManufactorys": [
+          "oppo",
+          "vivo",
+          "xiaomi"
+        ],
+        "features": []
+      }
+    }
+  },
+  "display": {
+    "titleBarBackgroundColor": "#FFFFFF",
+    "titleBarTextColor": "#000000",
+    "menu": true,
+    "pages":{
+      "CardMain": {
+        "titleBarText": "YuGiOh Cards"
+      },
+      "CardList": {
+        "titleBarText": "Search",
+        "menu": false
+      },
+      "CardDetail": {
+        "titleBarText": "Card",
+        "menu": true
+      },
+      "CardWiki": {
+        "titleBarText": "Wiki",
+        "menu": false
+      },
+      "Limit": {
+        "titleBarText": "Limit",
+        "menu": false
+      },
+      "Pack": {
+        "titleBarText": "Pack",
+        "menu": false
+      },
+      "PackDetail": {
+        "titleBarText": "In Pack Cards",
+        "menu": false
+      },
+      "CardSearchAdv": {
+        "titleBarText": "Search",
+        "menu": true
+      },
+      "About": {
+        "titleBarText": "About",
+        "menu": false
+      }
+    }
+  }
+}

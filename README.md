@@ -11,50 +11,54 @@
 
 编译方法：
 
-### Android
+### Android 原生
 
 ```
-$ cd native
-$ fpccmd AA yugiohapi.ppr
-$ fpccmd AI yugiohapi.ppr
 $ cd android
 $ gradle build
 ```
 
-### iOS
+### iOS 原生
 
 ```
-$ cd native
-$ fpccmd I yugiohapi.ppr
-$ cd ios/YuGiOhCard
+$ cd ios
 $ xcodebuild -workspace YuGiOhCard.xcworkspace/ -scheme YuGiOhCard -configuration Release
 ```
 
-### Windows
+
+
+### 快应用版本
 
 ```
-$ cd native
-$ fpccmd W yugiohapi.ppr
-$ cd pc/yugiohcard
-$ fpccmd W yugiohcard.ppr O
+$ cd quickapp
+$ npm run release
 ```
 
-### Mac OSX
+### Flutter 版本
 
 ```
-$ cd native
-$ fpccmd M yugiohapi.ppr
-$ cd pc/yugiohcard
-$ fpccmd M yugiohcard.ppr O
+准备中...
 ```
 
-### Linux
+### PC 版本
 
 ```
-$ cd native
-$ fpccmd L yugiohapi.ppr
-$ cd pc/yugiohcard
-$ fpccmd L yugiohcard.ppr O
+准备中...
+```
+
+### 服务端(API提供)
+
+```
+$ cd server
+$ gradle build
+```
+
+- - -
+
+### API
+
+```
+准备中...
 ```
 
 - - -

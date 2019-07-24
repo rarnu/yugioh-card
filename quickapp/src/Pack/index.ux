@@ -1,0 +1,121 @@
+<template>
+  <div class='main-page'>
+    <div class="div-season">
+    	<list>
+        <list-item type="listItem" class="list-item" for="{{seasondata}}" onclick="hitSeason($item)">
+          <text style="color: {{seasonColor($item)}}">{{$item}}</text>
+        </list-item>
+      </list>
+    </div>
+    <div class="div-vert-line"></div>
+    <div class="div-pack">
+    <list>
+      <list-item type="listItem" class="list-item" for="{{currentPack}}" onclick="hitPack($item.url)">
+        <text class="txt-pack">[{{$item.abbr}}] {{$item.name}}</text>
+      </list-item>
+    </list>
+    </div>
+  </div>
+</template>
+
+<script>
+const fetch = require('@system.fetch')
+import router from '@system.router'
+
+export default {
+  public: {
+    cardhash: '',
+    currentSeason: '',
+    packdata: [],
+    seasondata: [],
+    currentPack: []
+  },
+  getCardPackData() {
+    let that = this
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/packlist`,
+      responseType: 'json',
+      success: function (response) {
+        that.packdata = response.data.data
+        that.seasondata = []
+        that.packdata.forEach(item => {
+          if (that.currentSeason === '') {
+            that.currentSeason = item.season
+          }
+          if (that.seasondata.indexOf(item.season) == -1) {
+            that.seasondata.push(item.season)
+          }
+        })
+        that.getCurrentSeasonPacks()
+      }
+    })
+  },
+  hitSeason(s) {
+    this.currentSeason = s
+    this.getCurrentSeasonPacks()
+  },
+  getCurrentSeasonPacks() {
+    this.currentPack = []
+    this.packdata.forEach(item => {
+      if (item.season === this.currentSeason) {
+        this.currentPack.push({abbr: item.abbr, name: item.name, url: item.url})
+      }
+    })
+  },
+  seasonColor(s) {
+    if (s === this.currentSeason) {
+      return '#000000'
+    } else {
+      return '#7F7F7F'
+    }
+  },
+  hitPack(u) {
+    router.push({
+      uri: '/PackDetail',
+      params: { url: u }
+    })
+  },
+  onInit() {
+    this.getCardPackData()
+  }
+}
+</script>
+
+<style>
+  
+  .main-page {
+    flex-direction: row;
+    height: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .div-season {
+    width: 30%;
+    height: 100%;
+  }
+  .div-pack {
+    width: 69%;
+    height: 100%;
+    
+  }
+  .div-vert-line {
+    height: 100%;
+    background-color: #d3d3d3;
+    width: 1px;
+  }
+
+  .list-item {
+  height: 86px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom-width: 1px;
+  border-bottom-color: #d3d3d3;
+}
+.txt-pack {
+  lines: 1;
+  height: 100%;
+  font-size: 20px;
+  width: 100%;
+}
+
+</style>

@@ -3,6 +3,8 @@ package com.rarnu.ygo.server.card
 import com.rarnu.common.httpGet
 import com.rarnu.ygo.server.database.cardTable
 import com.rarnu.ygo.server.database.limitTable
+import com.rarnu.ygo.server.database.packDetailTable
+import com.rarnu.ygo.server.database.packTable
 import io.ktor.application.Application
 
 const val BASE_URL = "https://www.ourocg.cn"
@@ -59,4 +61,34 @@ object Request2 {
             callback(txt)
         }
     }
+
+    suspend fun packlist(app: Application, callback: suspend (String) -> Unit) {
+        val txt = cachePack.text
+        val time = cachePack.timeinfo
+        val current = System.currentTimeMillis()
+        if (txt == "" || differentDaysByMillisecond(current, time) > 1) {
+            val pack = (httpGet("$BASE_URL/package") ?: "").parse5()
+            cachePack.timeinfo = current
+            cachePack.text = pack
+            app.packTable.save(current, pack)
+            callback(pack)
+        } else {
+            callback(txt)
+        }
+    }
+
+    suspend fun packdetail(app: Application, url: String, callback: suspend (String) -> Unit) {
+        val txt = cachePackDetail[url]
+        if (txt == null || txt == "") {
+            val detail = (httpGet("$BASE_URL$url") ?: "").parse0()
+            cachePackDetail[url] = detail
+            app.packDetailTable.save(url, detail)
+            callback(detail)
+        } else {
+            callback(txt)
+        }
+    }
+
+    suspend fun hotest(callback: suspend (String) -> Unit) = callback((httpGet(BASE_URL) ?: "").parse6())
+
 }

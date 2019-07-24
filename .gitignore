@@ -1,6 +1,8 @@
 .DS_Store
 DerivedData/
 [Bb]uild/
+dist/
+tomcat.8080/
 .gradle/
 .idea/
 lib/

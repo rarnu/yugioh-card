@@ -18,8 +18,22 @@
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/jniLibs/arm64-v8a/libyugiohapi.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/jniLibs/armeabi-v7a/libyugiohapi.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/jniLibs/armeabi/libyugiohapi.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/jniLibs/x86/libyugiohapi.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/NativeAPI.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOCache.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/SearchController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/SearchController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/Routing.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/card/Cache2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/card/Cache2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/card/Request2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/card/Request2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/database/CardTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/database/CardTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../update/update.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -304,6 +318,7 @@
       <workItem from="1563443608348" duration="3802000" />
       <workItem from="1563523619486" duration="140000" />
       <workItem from="1563777204531" duration="965000" />
+      <workItem from="1563956458629" duration="2741000" />
     </task>
     <servers />
   </component>

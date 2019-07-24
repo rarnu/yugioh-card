@@ -1,0 +1,111 @@
+<template>
+  <div class='main-page'>
+    <list>
+      <list-item type="listItem" class="list-item" for="{{listData}}" onclick='showCardDetail($item.hash_id)'>
+        
+          <div class="item-dev">
+            <text class="item-txt">中文名称: {{$item.name}}</text>
+            <text class="item-txt">日文名称: {{parseName($item.name_ja)}}</text>
+            <text class="item-txt">英文名称: {{parseName($item.name_en)}}</text>
+            <text class="item-txt">卡片类型: {{$item.type_st}}</text>
+          </div>
+          <div class='item-img'>
+            <image src="{{$item.img_url}}"></image>
+          </div>
+        
+      </list-item>
+    </list>
+  </div>
+</template>
+
+<script>
+
+import router from '@system.router'
+const fetch = require('@system.fetch')
+
+export default {
+  public: {
+    url: '',
+    listData: []
+  },
+  getCardListData() {
+    let that = this
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/packdetail?url=${that.url}`,
+      responseType: 'json',
+      success: function (response) {
+        that.listData = response.data.cards
+      }
+    })
+  },
+  onInit () {
+    this.getCardListData()
+  },
+  parseName(n) {
+    if (!n || n === 'null') {
+      n ='-'
+    }
+    return n
+  },
+  showCardDetail(hash) {
+    router.push ({
+      uri: '/CardDetail',
+      params: { cardhash: hash }
+    })
+  }
+}
+</script>
+
+<style>
+.main-page {
+    flex-direction: column;
+    align-items: center;
+  }
+.card-list {
+    background-color: #ffffff;
+}
+.bottom-div {
+  width: 100%;
+  height: 86px;
+  margin-right: 8px; 
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+.button-nav {
+    margin-left: 8px;
+    width: 12%;
+    height: 86px;
+    border-radius: 43px;
+    background-color: #09ba07;
+    font-size: 30px;
+    color: #ffffff;
+  }
+.text-nav {
+  width: 50%;
+  text-align: center;
+}
+.list-item {
+  height: 186px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom-width: 1px;
+  border-bottom-color: #d3d3d3;
+}
+.item-dev {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.item-img {
+  width: 20%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.item-txt {
+  font-size: 28px;
+  width: 100%;
+  height: 61px;
+  margin-top: 4px;
+  lines: 1;
+}
+</style>

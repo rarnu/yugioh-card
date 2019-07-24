@@ -72,4 +72,27 @@ fun Routing.serverRouting() {
         }
     }
 
+    get("/packlist") {
+        Request2.packlist(application) {
+            call.respondText { it }
+        }
+    }
+
+    get("/packdetail") {
+        val p = call.requestParameters()
+        val u = p["url"] ?: ""
+        if (u == "") {
+            call.respondText { "{\"result\":1}" }
+        } else {
+            Request2.packdetail(application, u) {
+                call.respondText { it }
+            }
+        }
+    }
+
+    get("/hotest") {
+        Request2.hotest {
+            call.respondText { it }
+        }
+    }
 }

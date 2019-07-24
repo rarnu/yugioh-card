@@ -1,0 +1,147 @@
+<template>
+  
+  <div class="main-page">
+    <div class="div-line"><div class="div-name"><text>中文名称:</text></div><div><text>{{carddata.name}}</text></div></div>
+    <div class="div-line"><div class="div-name"><text>日文名称:</text></div><div><text>{{carddata.japname}}</text></div></div>
+    <div class="div-line"><div class="div-name"><text>英文名称:</text></div><div><text>{{carddata.enname}}</text></div></div>
+    <div class="div-line"><div class="div-name"><text>卡片种类:</text></div><div><text>{{carddata.cardtype}}</text></div></div>
+    <div class="div-line"><div class="div-name"><text>卡片密码:</text></div><div><text>{{carddata.password}}</text></div></div>
+    <div class="div-line"><div class="div-name"><text>使用限制:</text></div><div><text>{{carddata.limit}}</text></div></div>
+    <div class="div-line"><div class="div-name"><text>罕贵度:</text></div><div><text>{{carddata.rare}}</text></div></div>
+    <div class="div-line"><div class="div-name"><text>所在卡包:</text></div><div><text>{{carddata.pack}}</text></div></div>
+    <block if="{{isMonster()}}">
+      <div class="div-line"><div class="div-name"><text>怪兽种族:</text></div><div><text>{{carddata.race}}</text></div></div>
+      <div class="div-line"><div class="div-name"><text>怪兽属性:</text></div><div><text>{{carddata.element}}</text></div></div>
+      <block if="{{isLinkMonster()}}">
+        <div class="div-line"><div class="div-name"><text>攻击力:</text></div><div><text>{{carddata.atk}}</text></div></div>
+        <div class="div-line"><div class="div-name"><text>连接数:</text></div><div><text>{{carddata.link}}</text></div></div>
+        <div class="div-line"><div class="div-name"><text>连接方向:</text></div><div><text>{{replaceLinkArrow()}}</text></div></div>
+      </block>
+      <block else>
+        <block if="{{isXYZMonster()}}">
+          <div class="div-line"><div class="div-name"><text>怪兽阶级:</text></div><div><text>{{carddata.level}}</text></div></div>
+        </block>
+        <block else>
+          <div class="div-line"><div class="div-name"><text>怪兽星级:</text></div><div><text>{{carddata.level}}</text></div></div>
+        </block>
+        <div class="div-line"><div class="div-name"><text>攻击力:</text></div><div><text>{{carddata.atk}}</text></div></div>
+        <div class="div-line"><div class="div-name"><text>守备力:</text></div><div><text>{{carddata.def}}</text></div></div>
+      </block>
+    </block>
+    <div class="div-line"><div class="div-name"><text class="txt-effect">效果:</text></div><div class="txt-effect-detail"><text>{{replaceEffect(carddata.effect)}}</text></div></div>
+    <div class="div-hr"></div>
+    <div class="div-img">
+    <image class="img-class" src="http://ocg.resource.m2v.cn/{{getCardImage()}}.jpg"></image>
+    </div>
+    <div class="div-hr"></div>
+    <div><text>{{cardadjust}}</text></div>
+    <div class="div-hr"></div>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+const fetch = require('@system.fetch')
+
+export default {
+  public: {
+    cardhash: '',
+    carddata: {},
+    cardadjust: ''
+  },
+  getCardDetailData() {
+    let that = this
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/carddetail?hash=${that.cardhash}`,
+      responseType: 'json',
+      success: function (response1) {
+        that.carddata = response1.data.data
+        
+      }
+    })
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/cardadjust?hash=${that.cardhash}`,
+      responseType: 'text',
+      success: function(response2) {
+        that.cardadjust = response2.data
+      }
+    })
+  },
+  onInit() {
+    this.getCardDetailData()
+  },
+  isMonster() {
+    return this.carddata.cardtype && this.carddata.cardtype.indexOf('怪兽') != -1
+  },
+  isLinkMonster() {
+    return this.carddata.cardtype && this.carddata.cardtype.indexOf('连接') != -1
+  },
+  isXYZMonster() {
+    return this.carddata.cardtype && this.carddata.cardtype.indexOf('XYZ') != -1
+  },
+  getCardImage() {
+    return this.carddata.imageid ? this.carddata.imageid : '0'
+  },
+  replaceLinkArrow() {
+    let str = this.carddata.linkarrow
+    str = str.replace('1', '↙')
+    str = str.replace('2', '↓')
+    str = str.replace('3', '↘')
+    str = str.replace('4', '←')
+    str = str.replace('6', '→')
+    str = str.replace('7', '↖')
+    str = str.replace('8', '↑')
+    str = str.replace('9', '↗')
+    return str
+  },
+  replaceEffect(e) {
+    let tmp = e
+    if (tmp) {
+      tmp = tmp.replace(/<br \/>/g, '\n')
+    }
+    return tmp
+  },
+  onMenuPress() {    
+    router.push({
+      uri: '/CardWiki',
+      params: { cardhash: this.cardhash }
+    })
+  }
+}
+</script>
+
+<style>
+  .main-page {
+    flex-direction: column;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .div-line {
+    width: 100%;
+  }
+  .div-name {
+    width: 20%;
+    align-items: flex-start;
+  }
+  .txt-effect-detail {
+    width: 80%;
+  }
+  .div-hr {
+    width: 100%;
+    height: 1px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: #d3d3d3;
+  }
+  .div-img {
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .img-class {
+    width: 280px;
+    height: 410px;
+    resize-mode:stretch;
+
+  }
+</style>

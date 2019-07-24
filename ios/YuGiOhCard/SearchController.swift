@@ -575,7 +575,7 @@ class SearchController: UIViewController, UITextFieldDelegate {
             }
             let def = edtDef!.text!
             if (def != "") {
-                key += " +(atk:\(def))"
+                key += " +(def:\(def))"
             }
             let lvl = edtLevel!.text!
             if (lvl != "") {

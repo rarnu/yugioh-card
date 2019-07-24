@@ -1,0 +1,528 @@
+<template>
+  <div class='main-page'>
+    <div class="div-line"><div class="div-name"><text class="txt-light">卡片种类</text></div><div class="div-cardtype"><text class="txt-cardtype" style="color: {{cardTypeColor(0)}}" onclick="cardTypeClicked(0)">怪兽</text><text class="txt-cardtype" style="color: {{cardTypeColor(1)}}" onclick="cardTypeClicked(1)">魔法</text><text style="color: {{cardTypeColor(2)}}" onclick="cardTypeClicked(2)">陷阱</text></div></div>
+    <div class="div-line"><div class="div-name"><text class="txt-light">卡片效果</text></div><div class="div-cont"><input type="text" class="input-effect" placeholder="输入效果关键字" onchange="effectChanged"/></div></div>
+    <div class="div-split"></div>
+    <block if="{{cardType === 0}}">
+      <div class="div-type"><text class="txt-light">怪兽属性</text></div>
+      <div class="div-selection">
+        <text class="txt-monster-type" style="color: {{attrColor(0)}}" onclick="attrToggle(0)">光</text>
+        <text class="txt-monster-type" style="color: {{attrColor(1)}}" onclick="attrToggle(1)">暗</text>
+        <text class="txt-monster-type" style="color: {{attrColor(2)}}" onclick="attrToggle(2)">炎</text>
+        <text class="txt-monster-type" style="color: {{attrColor(3)}}" onclick="attrToggle(3)">水</text>
+        <text class="txt-monster-type" style="color: {{attrColor(4)}}" onclick="attrToggle(4)">地</text>
+        <text class="txt-monster-type" style="color: {{attrColor(5)}}" onclick="attrToggle(5)">风</text>
+        <text class="txt-monster-type" style="color: {{attrColor(6)}}" onclick="attrToggle(6)">神</text>
+      </div>
+      <div class="div-type"><text class="txt-light">怪兽种类</text></div>
+      <div class="div-selection">
+        <text class="txt-monster-type" style="color: {{subTypeColor(0)}}" onclick="subTypeToggle(0)">通常</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(1)}}" onclick="subTypeToggle(1)">效果</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(2)}}" onclick="subTypeToggle(2)">仪式</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(3)}}" onclick="subTypeToggle(3)">融合</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(4)}}" onclick="subTypeToggle(4)">同调</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(5)}}" onclick="subTypeToggle(5)">XYZ</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(6)}}" onclick="subTypeToggle(6)">卡通</text>
+      </div>
+      <div class="div-selection">
+        <text class="txt-monster-type" style="color: {{subTypeColor(7)}}" onclick="subTypeToggle(7)">同盟</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(8)}}" onclick="subTypeToggle(8)">灵魂</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(9)}}" onclick="subTypeToggle(9)">调整</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(10)}}" onclick="subTypeToggle(10)">二重</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(11)}}" onclick="subTypeToggle(11)">灵摆</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(12)}}" onclick="subTypeToggle(12)">反转</text>
+        <text class="txt-monster-type" style="color: {{subTypeColor(13)}}" onclick="subTypeToggle(13)">特召</text>
+      </div>
+      <div class="div-selection">
+        <text class="txt-monster-type" style="color: {{subTypeColor(14)}}" onclick="subTypeToggle(14)">连接</text>
+        <text class="txt-monster-type"></text>
+        <text class="txt-monster-type"></text>
+        <text class="txt-monster-type"></text>
+        <text class="txt-monster-type"></text>
+        <text class="txt-monster-type"></text>
+        <text class="txt-monster-type"></text>
+      </div>
+
+      <div class="div-type"><text class="txt-light">怪兽种族</text></div>
+      <div class="div-selection">
+        <text class="txt-monster-race" style="color: {{raceColor(0)}}" onclick="raceToggle(0)">水</text>
+        <text class="txt-monster-race" style="color: {{raceColor(1)}}" onclick="raceToggle(1)">兽</text>
+        <text class="txt-monster-race" style="color: {{raceColor(2)}}" onclick="raceToggle(2)">兽战士</text>
+        <text class="txt-monster-race" style="color: {{raceColor(3)}}" onclick="raceToggle(3)">创造神</text>
+        <text class="txt-monster-race" style="color: {{raceColor(4)}}" onclick="raceToggle(4)">恐龙</text>
+        <text class="txt-monster-race" style="color: {{raceColor(5)}}" onclick="raceToggle(5)">幻神兽</text>
+        <text class="txt-monster-race" style="color: {{raceColor(6)}}" onclick="raceToggle(6)">龙</text>
+      </div>
+
+      <div class="div-selection">
+        <text class="txt-monster-race" style="color: {{raceColor(7)}}" onclick="raceToggle(7)">天使</text>
+        <text class="txt-monster-race" style="color: {{raceColor(8)}}" onclick="raceToggle(8)">恶魔</text>
+        <text class="txt-monster-race" style="color: {{raceColor(9)}}" onclick="raceToggle(9)">鱼</text>
+        <text class="txt-monster-race" style="color: {{raceColor(10)}}" onclick="raceToggle(10)">昆虫</text>
+        <text class="txt-monster-race" style="color: {{raceColor(11)}}" onclick="raceToggle(11)">机械</text>
+        <text class="txt-monster-race" style="color: {{raceColor(12)}}" onclick="raceToggle(12)">植物</text>
+        <text class="txt-monster-race" style="color: {{raceColor(13)}}" onclick="raceToggle(13)">念动力</text>
+      </div>
+
+      <div class="div-selection">
+        <text class="txt-monster-race" style="color: {{raceColor(14)}}" onclick="raceToggle(14)">炎</text>
+        <text class="txt-monster-race" style="color: {{raceColor(15)}}" onclick="raceToggle(15)">爬虫类</text>
+        <text class="txt-monster-race" style="color: {{raceColor(16)}}" onclick="raceToggle(16)">岩石</text>
+        <text class="txt-monster-race" style="color: {{raceColor(17)}}" onclick="raceToggle(17)">海龙</text>
+        <text class="txt-monster-race" style="color: {{raceColor(18)}}" onclick="raceToggle(18)">魔法师</text>
+        <text class="txt-monster-race" style="color: {{raceColor(19)}}" onclick="raceToggle(19)">雷</text>
+        <text class="txt-monster-race" style="color: {{raceColor(20)}}" onclick="raceToggle(20)">战士</text>
+      </div>
+
+      <div class="div-selection">
+        <text class="txt-monster-race" style="color: {{raceColor(21)}}" onclick="raceToggle(21)">鸟兽</text>
+        <text class="txt-monster-race" style="color: {{raceColor(22)}}" onclick="raceToggle(22)">不死</text>
+        <text class="txt-monster-race" style="color: {{raceColor(23)}}" onclick="raceToggle(23)">幻龙</text>
+        <text class="txt-monster-race" style="color: {{raceColor(24)}}" onclick="raceToggle(24)">电子界</text>
+        <text class="txt-monster-race"></text>
+        <text class="txt-monster-race"></text>
+        <text class="txt-monster-race"></text>
+      </div>
+
+      <div class="div-line"><div class="div-name"><text class="txt-light">星数阶级</text></div><div class="div-cont"><input type="text" class="input-effect" placeholder="可以是范围，如 1-4" onchange="levelChanged"/></div></div>
+      <div class="div-split"></div>
+      <div class="div-line"><div class="div-name"><text class="txt-light">灵摆刻度</text></div><div class="div-cont"><input type="text" class="input-effect" placeholder="可以是范围，如 1-4" onchange="scaleChanged"/></div></div>
+      <div class="div-split"></div>
+      <div class="div-line"><div class="div-name"><text class="txt-light">攻击力</text></div><div class="div-cont"><input type="text" class="input-effect" placeholder="可以是范围，如 1500-2000" onchange="atkChanged"/></div></div>
+      <div class="div-split"></div>
+      <div class="div-line"><div class="div-name"><text class="txt-light">守备力</text></div><div class="div-cont"><input type="text" class="input-effect" placeholder="可以是范围，如 1500-2000" onchange="defChanged"/></div></div>
+      <div class="div-split"></div>
+      <div class="div-line"><div class="div-name"><text class="txt-light">连接值</text></div><div class="div-cont"><input type="text" class="input-effect" placeholder="可以是范围，如 1-3" onchange="linkChanged"/></div></div>
+      <div class="div-split"></div>
+      <div class="div-type"><text class="txt-light">连接方向</text></div>
+      <div class="div-link-direction">
+        <div class="div-link-arrow">
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(7)}}" onclick="linkArrowToggle(7)">↖</text>
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(8)}}" onclick="linkArrowToggle(8)">↑</text>
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(9)}}" onclick="linkArrowToggle(9)">↗</text>
+        </div>
+        <div class="div-link-arrow">
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(4)}}" onclick="linkArrowToggle(4)">←</text>
+          <text class="txt-link-arrow"></text>
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(6)}}" onclick="linkArrowToggle(6)">→</text>
+        </div>
+        <div class="div-link-arrow">
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(1)}}" onclick="linkArrowToggle(1)">↙</text>
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(2)}}" onclick="linkArrowToggle(2)">↓</text>
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(3)}}" onclick="linkArrowToggle(3)">↘</text>
+        </div>
+      </div>
+    </block>
+    <block elif="{{cardType === 1}}">
+      <div class="div-type"><text class="txt-light">魔法种类</text></div>
+      <div class="div-selection">
+        <text class="txt-magic-type" style="color: {{magicTypeColor(0)}}" onclick="magicTypeToggle(0)">通常</text>
+        <text class="txt-magic-type" style="color: {{magicTypeColor(1)}}" onclick="magicTypeToggle(1)">装备</text>
+        <text class="txt-magic-type" style="color: {{magicTypeColor(2)}}" onclick="magicTypeToggle(2)">速攻</text>
+        <text class="txt-magic-type" style="color: {{magicTypeColor(3)}}" onclick="magicTypeToggle(3)">永续</text>
+        <text class="txt-magic-type" style="color: {{magicTypeColor(4)}}" onclick="magicTypeToggle(4)">场地</text>
+        <text class="txt-magic-type" style="color: {{magicTypeColor(5)}}" onclick="magicTypeToggle(5)">仪式</text>
+      </div>
+    </block>
+    <block else>
+      <div class="div-type"><text class="txt-light">陷阱种类</text></div>
+      <div class="div-selection">
+        <text class="txt-trap-type" style="color: {{trapTypeColor(0)}}" onclick="trapTypeToggle(0)">通常</text>
+        <text class="txt-trap-type" style="color: {{trapTypeColor(3)}}" onclick="trapTypeToggle(3)">永续</text>
+        <text class="txt-trap-type" style="color: {{trapTypeColor(4)}}" onclick="trapTypeToggle(4)">反击</text>
+      </div>
+    </block>
+  </div>
+</template>
+
+<script>
+
+import router from '@system.router'
+
+export default {
+  private: {
+    cardType: 0,
+    magicType: [],
+    trapType: [],
+    mAttrs: [],
+    mSubType: [],
+    mRace: [],
+    mLinkArrow: [],
+    effect: '',
+    atk: '',
+    def: '',
+    level: '',
+    scale: '',
+    link: ''
+  },
+  public: {
+    
+  },
+  onInit() {
+    
+  },
+  effectChanged(e) {
+    this.effect = e.value    
+  },
+  levelChanged(e) {
+    this.level = e.value
+  },
+  scaleChanged(e) {
+    this.scale = e.value
+  },
+  atkChanged(e) {
+    this.atk = e.value
+  },
+  defChanged(e) {
+    this.def = e.value
+  },
+  linkChanged(e) {
+    this.link = e.value
+  },
+  cardTypeColor(c) {
+    if (c === this.cardType) {
+      return '#007AFF'
+    } else {
+      return '#7F7F7F'
+    }
+  },
+  cardTypeClicked(c) {
+    this.cardType = c
+  },
+  magicTypeColor(c) {
+    if (this.magicType.indexOf(c) == -1) {
+      return '#7F7F7F'
+    } else {
+      return '#007AFF'
+    }
+  },
+  trapTypeColor(c) {
+    if (this.trapType.indexOf(c) == -1) {
+      return '#7F7F7F'
+    } else {
+      return '#007AFF'
+    }
+  },
+  magicTypeToggle(c) {
+    let idx = this.magicType.indexOf(c)
+    if (idx == -1) {
+      this.magicType.push(c)
+    } else {
+      this.magicType.splice(idx, 1)
+    }
+  },
+  trapTypeToggle(c) {
+    let idx = this.trapType.indexOf(c)
+    if (idx == -1) {
+      this.trapType.push(c)
+    } else {
+      this.trapType.splice(idx, 1)
+    }
+  },
+  attrColor(c) {
+    if (this.mAttrs.indexOf(c) == -1) {
+      return '#7F7F7F'
+    } else {
+      return '#007AFF'
+    }
+  },
+  attrToggle(c) {
+    let idx = this.mAttrs.indexOf(c)
+    if (idx == -1) {
+      this.mAttrs.push(c)
+    } else {
+      this.mAttrs.splice(idx, 1)
+    }
+  },
+  subTypeColor(c) {
+    if (this.mSubType.indexOf(c) == -1) {
+      return '#7F7F7F'
+    } else {
+      return '#007AFF'
+    }
+  },
+  subTypeToggle(c) {
+    let idx = this.mSubType.indexOf(c)
+    if (idx == -1) {
+      this.mSubType.push(c)
+    } else {
+      this.mSubType.splice(idx, 1)
+    }
+  },
+  raceColor(c) {
+    if (this.mRace.indexOf(c) == -1) {
+      return '#7F7F7F'
+    } else {
+      return '#007AFF'
+    }
+  },
+  raceToggle(c) {
+    let idx = this.mRace.indexOf(c)
+    if (idx == -1) {
+      this.mRace.push(c)
+    } else {
+      this.mRace.splice(idx, 1)
+    }
+  },
+  linkArrowColor(c) {
+    if (this.mLinkArrow.indexOf(c) == -1) {
+      return '#7F7F7F'
+    } else {
+      return '#007AFF'
+    }
+  },
+  linkArrowToggle(c) {
+    let idx = this.mLinkArrow.indexOf(c)
+    if (idx == -1) {
+      this.mLinkArrow.push(c)
+    } else {
+      this.mLinkArrow.splice(idx, 1)
+    }
+  },
+  parseCardType() {
+    if (this.cardType === 1) {
+      return '魔法'
+    } else if (this.cardType === 2) {
+      return '陷阱'
+    } else {
+      return '怪兽'
+    }
+  },
+  buildMagicCardType() {
+    let k = ''
+    if (this.magicType.indexOf(0) != -1) { k += '通常,' }
+    if (this.magicType.indexOf(1) != -1) { k += '装备,' }
+    if (this.magicType.indexOf(2) != -1) { k += '速攻,' }
+    if (this.magicType.indexOf(3) != -1) { k += '永续,' }
+    if (this.magicType.indexOf(4) != -1) { k += '场地,' }
+    if (this.magicType.indexOf(5) != -1) { k += '仪式,' }
+    k = k.replace(/,$/gi, '')
+    return k
+  },
+  buildTrapCardType() {
+    let k = ''
+    if (this.magicType.indexOf(0) != -1) { k += '通常,' }
+    if (this.magicType.indexOf(1) != -1) { k += '永续,' }
+    if (this.magicType.indexOf(2) != -1) { k += '反击,' }
+    k = k.replace(/,$/gi, '')
+    return k
+  },
+  buildMonsterCardType() {
+    let k = ''
+    if (this.mSubType.indexOf(0) != -1) { k += '通常,' }
+    if (this.mSubType.indexOf(1) != -1) { k += '效果,' }
+    if (this.mSubType.indexOf(2) != -1) { k += '仪式,' }
+    if (this.mSubType.indexOf(3) != -1) { k += '融合,' }
+    if (this.mSubType.indexOf(4) != -1) { k += '同调,' }
+    if (this.mSubType.indexOf(5) != -1) { k += 'XYZ,' }
+    if (this.mSubType.indexOf(6) != -1) { k += '卡通,' }
+    if (this.mSubType.indexOf(7) != -1) { k += '同盟,' }
+    if (this.mSubType.indexOf(8) != -1) { k += '灵魂,' }
+    if (this.mSubType.indexOf(9) != -1) { k += '调整,' }
+    if (this.mSubType.indexOf(10) != -1) { k += '二重,' }
+    if (this.mSubType.indexOf(11) != -1) { k += '灵摆,' }
+    if (this.mSubType.indexOf(12) != -1) { k += '反转,' }
+    if (this.mSubType.indexOf(13) != -1) { k += '特殊召唤,' }
+    if (this.mSubType.indexOf(14) != -1) { k += '连接,' }
+    k = k.replace(/,$/gi, '')
+    return k
+  },
+  buildMonsterRace() {
+    let k = ''
+    if (this.mRace.indexOf(0) != -1) { k+= '水,' }
+    if (this.mRace.indexOf(1) != -1) { k+= '兽,' }
+    if (this.mRace.indexOf(2) != -1) { k+= '兽战士,' }
+    if (this.mRace.indexOf(3) != -1) { k+= '创造神,' }
+    if (this.mRace.indexOf(4) != -1) { k+= '恐龙,' }
+    if (this.mRace.indexOf(5) != -1) { k+= '幻神兽,' }
+    if (this.mRace.indexOf(6) != -1) { k+= '龙,' }
+    if (this.mRace.indexOf(7) != -1) { k+= '天使,' }
+    if (this.mRace.indexOf(8) != -1) { k+= '恶魔,' }
+    if (this.mRace.indexOf(9) != -1) { k+= '鱼,' }
+    if (this.mRace.indexOf(10) != -1) { k+= '昆虫,' }
+    if (this.mRace.indexOf(11) != -1) { k+= '机械,' }
+    if (this.mRace.indexOf(12) != -1) { k+= '植物,' }
+    if (this.mRace.indexOf(13) != -1) { k+= '念动力,' }
+    if (this.mRace.indexOf(14) != -1) { k+= '炎,' }
+    if (this.mRace.indexOf(15) != -1) { k+= '爬虫类,' }
+    if (this.mRace.indexOf(16) != -1) { k+= '岩石,' }
+    if (this.mRace.indexOf(17) != -1) { k+= '海龙,' }
+    if (this.mRace.indexOf(18) != -1) { k+= '魔法师,' }
+    if (this.mRace.indexOf(19) != -1) { k+= '雷,' }
+    if (this.mRace.indexOf(20) != -1) { k+= '战士,' }
+    if (this.mRace.indexOf(21) != -1) { k+= '鸟兽,' }
+    if (this.mRace.indexOf(22) != -1) { k+= '不死,' }
+    if (this.mRace.indexOf(23) != -1) { k+= '幻龙,' }
+    if (this.mRace.indexOf(24) != -1) { k+= '电子界,' }
+    k = k.replace(/,$/gi, '')
+    return k
+  },
+  buildMonsterElement() {
+    let k = ''
+    if (this.mAttrs.indexOf(0) != -1) { k += '光,' }
+    if (this.mAttrs.indexOf(1) != -1) { k += '暗,' }
+    if (this.mAttrs.indexOf(2) != -1) { k += '炎,' }
+    if (this.mAttrs.indexOf(3) != -1) { k += '水,' }
+    if (this.mAttrs.indexOf(4) != -1) { k += '地,' }
+    if (this.mAttrs.indexOf(5) != -1) { k += '风,' }
+    if (this.mAttrs.indexOf(6) != -1) { k += '神,' }
+    k = k.replace(/,$/gi, '')
+    return k
+  },
+  buildMonsterLinkArrow() {
+    let k = ''
+    if (this.mLinkArrow.indexOf(1) != -1) { k += '1,' }
+    if (this.mLinkArrow.indexOf(2) != -1) { k += '2,' }
+    if (this.mLinkArrow.indexOf(3) != -1) { k += '3,' }
+    if (this.mLinkArrow.indexOf(4) != -1) { k += '4,' }
+    if (this.mLinkArrow.indexOf(6) != -1) { k += '6,' }
+    if (this.mLinkArrow.indexOf(7) != -1) { k += '7,' }
+    if (this.mLinkArrow.indexOf(8) != -1) { k += '8,' }
+    if (this.mLinkArrow.indexOf(9) != -1) { k += '9,' }
+    k = k.replace(/,$/gi, '')
+    return k
+  },
+  onMenuPress() {    
+    let key = ` +(类:${this.parseCardType()})`
+    if (this.effect !== '') {
+      key += ` +(效果:${this.effect})`
+    }
+
+    if (this.cardType === 1) {
+      let ct2 = this.buildMagicCardType()
+      if (ct2 !== '') {
+        key += ` +(类:${ct2})`
+      }
+    } else if (this.cardType === 2) {
+      let ct2 = this.buildTrapCardType()
+      if (ct2 !== '') {
+        key += ` +(类:${ct2})`
+      }
+    } else {
+      if (this.atk !== '') {
+        key += ` +(atk:${this.atk})`
+      }
+      if (this.def !== '') {
+        key += ` +(def:${this.def})`
+      }
+      if (this.level !== '') {
+        key += ` +(level:${this.level})`
+      }
+      if (this.scale !== '') {
+        key += ` +(刻度:${this.scale})`
+      }
+      if (this.link !== '') {
+        key += ` +(link:${this.link})`
+      }
+      let ct2 = this.buildMonsterCardType()
+      if (ct2 !== '') {
+        key += ` +(类:${ct2})`
+      }
+      let race = this.buildMonsterRace()
+      if (race !== '') {
+        key += ` +(族:${race})`
+      }
+      let ele = this.buildMonsterElement()
+      if (ele !== '') {
+        key += ` +(属性:${ele})`
+      }
+      let la = this.buildMonsterLinkArrow()
+      if (la !== '') {
+        key += ` +(linkArrow:${la})`
+      }
+    }
+
+    console.log(key)
+
+    router.push ({
+      uri: '/CardList',
+      params: { keyword: key }
+    })
+
+  }
+}
+</script>
+
+<style>
+
+  .main-page {
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 8px 8px 8px;
+  }
+  .div-line {
+    width: 100%;
+    height: 86px;
+    align-items: center;
+  }
+  .div-name {
+    width: 20%;
+    height: 86px;
+    
+  }
+  .div-cont {
+    width: 80%;
+    height: 86px;
+  }
+  .div-cardtype {
+    width: 80%;
+    align-items: center;
+  }
+  .input-effect {
+    height: 86px;
+    width: 100%;
+    font-size: 28px;
+  }
+  .txt-light {
+    color: #a9a9a9;
+  }
+  .div-split {
+    width: 100%;
+    height: 1px;
+    background-color: #d3d3d3;
+  }
+  .txt-cardtype {
+    margin-right: 24px;
+  }
+  .txt-monster-type {
+    margin-right: 36px;
+    width: 60px;
+    text-align: center;
+  }
+  .txt-monster-race {
+    font-size: 26px;
+    margin-right: 16px;
+    width: 80px;
+    text-align: center;
+  }
+  .txt-magic-type {
+    margin-right: 36px;
+  }
+  .txt-trap-type {
+    margin-right: 72px;
+  }
+  .div-type {
+    width: 100%;
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .div-selection {
+    margin-top: 16px;
+  }
+  .div-link-direction {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  .div-link-arrow {
+    height: 86px;
+  }
+  .txt-link-arrow {
+    width: 86px;
+    height: 86px;
+    text-align: center;
+    align-content: center;
+  }
+
+</style>

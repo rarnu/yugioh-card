@@ -1,5 +1,6 @@
 package com.rarnu.yugioh
 
+import android.util.Log
 import com.rarnu.common.forEach
 import com.rarnu.common.forEachString
 import org.json.JSONObject
@@ -107,39 +108,31 @@ object YGOData {
     }
 
     private fun parseSearchResult(jsonString: String): SearchResult {
+        Log.e("YGO", jsonString)
         val result = SearchResult()
         try {
             val json = JSONObject(jsonString)
-            if (json.getInt("result") == 0) {
-                result.page = json.getInt("page")
-                result.pageCount = json.getInt("pagecount")
-                val jarr = json.getJSONArray("data")
-                jarr.forEach { _, obj ->
-                    val info = CardInfo()
-                    info.cardid = obj.getInt("id")
-                    info.hashid = obj.getString("hashid")
-                    info.name = replaceChars(obj.getString("name"))
-                    info.japname = replaceChars(obj.getString("japname"))
-                    info.enname = replaceChars(obj.getString("enname"))
-                    info.cardtype = obj.getString("cardtype")
-                    result.data.add(info)
-                }
+            result.page = json.getJSONObject("meta").getInt("cur_page")
+            result.pageCount = json.getJSONObject("meta").getInt("total_page")
+            val jarr = json.getJSONArray("cards")
+            jarr.forEach { _, obj ->
+                val info = CardInfo()
+                info.cardid = obj.getInt("id")
+                info.hashid = obj.getString("hash_id")
+                info.name = replaceChars(obj.getString("name"))
+                info.japname = replaceChars(obj.getString("name_ja"))
+                info.enname = replaceChars(obj.getString("name_en"))
+                info.cardtype = obj.getString("type_st")
+                result.data.add(info)
             }
         } catch (e: Exception) {
-
+            Log.e("YGO", "parse error => $e")
         }
 
         return result
     }
 
-    fun searchCommon(akey: String, apage: Int): SearchResult {
-        val ahtml = YGORequest.search(akey, apage)
-        var parsed = ""
-        if (ahtml != "") {
-            parsed = NativeAPI.parse(ahtml, 0)
-        }
-        return parseSearchResult(parsed)
-    }
+    fun searchCommon(akey: String, apage: Int) = parseSearchResult(YGORequest.search(akey, apage) ?: "")
 
     fun searchComplex(
             aname: String,
@@ -177,29 +170,12 @@ object YGOData {
     }
 
     fun cardDetail(hashid: String): CardDetail {
-        var ahtml = YGOCache.loadCache(hashid, 0)
-        if (ahtml == null) {
-            ahtml = YGORequest.cardDetail(hashid)
-            YGOCache.saveCache(hashid, 0, ahtml)
-        }
-        var wikiHtml = YGOCache.loadCache(hashid, 1)
-        if (wikiHtml == null) {
-            wikiHtml = YGORequest.cardWiki(hashid)
-            YGOCache.saveCache(hashid, 1, wikiHtml)
-        }
-        var parsed = ""
-        var adjust = ""
-        if (ahtml != "") {
-            parsed = NativeAPI.parse(ahtml, 1)
-            adjust = NativeAPI.parse(ahtml, 2)
-        }
-        var wiki = ""
-        if (wikiHtml != "") {
-            wiki = NativeAPI.parse(wikiHtml, 3)
-        }
+        val data = YGORequest.cardDetail(hashid) ?: ""
+        val adjust = YGORequest.cardAdjust(hashid) ?: ""
+        val wiki = YGORequest.cardWiki(hashid) ?: ""
         val result = CardDetail()
         try {
-            val json = JSONObject(parsed)
+            val json = JSONObject(data)
             if (json.getInt("result") == 0) {
                 val obj = json.getJSONObject("data")
                 result.name = replaceChars(obj.getString("name"))
@@ -241,14 +217,9 @@ object YGOData {
 
     fun limit(): List<LimitInfo> {
         val ahtml = YGORequest.limit()
-        var parsed = ""
-        if (ahtml != "") {
-            parsed = NativeAPI.parse(ahtml, 4)
-        }
-
         val result = arrayListOf<LimitInfo>()
         try {
-            val json = JSONObject(parsed)
+            val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
                 val jarr = json.getJSONArray("data")
                 jarr.forEach { _, obj ->
@@ -268,13 +239,9 @@ object YGOData {
 
     fun packageList(): List<PackageInfo> {
         val ahtml = YGORequest.packageList()
-        var parsed = ""
-        if (ahtml != "") {
-            parsed = NativeAPI.parse(ahtml, 5)
-        }
         val result = arrayListOf<PackageInfo>()
         try {
-            val json = JSONObject(parsed)
+            val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
                 val jarr = json.getJSONArray("data")
                 jarr.forEach { _, obj ->
@@ -292,24 +259,13 @@ object YGOData {
         return result
     }
 
-    fun packageDetail(aurl: String): SearchResult {
-        val ahtml = YGORequest.packageDetail(aurl)
-        var parsed = ""
-        if (ahtml != "") {
-            parsed = NativeAPI.parse(ahtml, 0)
-        }
-        return parseSearchResult(parsed)
-    }
+    fun packageDetail(aurl: String) = parseSearchResult(YGORequest.packageDetail(aurl) ?: "")
 
     fun hotest(): Hotest {
         val ahtml = YGORequest.hotest()
-        var parsed = ""
-        if (ahtml != "") {
-            parsed = NativeAPI.parse(ahtml, 6)
-        }
         val result = Hotest()
         try {
-            val json = JSONObject(parsed)
+            val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
                 val arrSearch = json.getJSONArray("search")
                 arrSearch.forEachString { _, s ->

@@ -89,12 +89,7 @@ public class YGOData2: NSObject {
 
     public class func searchCommon(_ key: String, _ page: Int, _ callback:@escaping (SearchResult2) -> Void) {
         YGORequest2.search(key, page) { data in
-            var parsed = ""
-            if (data != "") {
-                parsed = YGOCAPI.parse(data, 0)
-            }
-            let result = parseSearchResult(parsed)
-            callback(result)
+            callback(parseSearchResult(data))
         }
     }
     
@@ -147,13 +142,10 @@ public class YGOData2: NSObject {
     
     public class func cardDetail(_ hashid: String, _ callback:@escaping (CardDetail2) -> Void)  {
         
-        func parseDetail(_ data: String, _ wiki: String) -> CardDetail2 {
-            let parsed = YGOCAPI.parse(data, 1)
-            let adjust = YGOCAPI.parse(data, 2)
-            let wikiparsed = YGOCAPI.parse(wiki, 3)
+        func parseDetail(_ data: String, _ adjust: String, _ wiki: String) -> CardDetail2 {
             let result = CardDetail2()
             do {
-                let json = try JSONSerialization.jsonObject(with: parsed.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
                 if ((json["result"] as! Int) == 0) {
                     let obj = json["data"] as! Dictionary<String, Any>
                     result.name = replaceChars(obj["name"] as! String)
@@ -185,7 +177,7 @@ public class YGOData2: NSObject {
                         result.packs.append(info)
                     }
                     result.adjust = replaceChars(adjust)
-                    result.wiki = replaceChars(wikiparsed)
+                    result.wiki = replaceChars(wiki)
                     result.imageId = obj.int("imageid")
                 }
                 
@@ -195,30 +187,18 @@ public class YGOData2: NSObject {
             return result
         }
         
-        var dataData = YGOCache2.loadCache(hashid, 0)
-        var wikiData = YGOCache2.loadCache(hashid, 1)
-        if (dataData == "" || wikiData == "") {
-            YGORequest2.cardDetailWiki(hashid) { str1, str2 in
-                dataData = str1
-                wikiData = str2
-                YGOCache2.saveCache(hashid, 0, dataData)
-                YGOCache2.saveCache(hashid, 1, wikiData)
-                callback(parseDetail(dataData, wikiData))
-            }
-        } else {
-            callback(parseDetail(dataData, wikiData))
+        
+        YGORequest2.cardDetailWiki(hashid) { data, adjust, wiki in
+            callback(parseDetail(data, adjust, wiki))
         }
+        
     }
     
     public class func limit(_ callback:@escaping (Array<LimitInfo2>) -> Void) {
         YGORequest2.limit() { data in
-            var parsed = ""
-            if (data != "") {
-                parsed = YGOCAPI.parse(data, 4)
-            }
             var result = Array<LimitInfo2>()
             do {
-                let json = try JSONSerialization.jsonObject(with: parsed.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
                 if ((json["result"] as! Int) == 0) {
                     let jarr = json["data"] as! Array<Dictionary<String, Any>>
                     for obj in jarr {
@@ -239,13 +219,9 @@ public class YGOData2: NSObject {
     
     public class func packageList(_ callback:@escaping (Array<PackageInfo2>) -> Void) {
         YGORequest2.packageList() { data in
-            var parsed = ""
-            if (data != "") {
-                parsed = YGOCAPI.parse(data, 5)
-            }
             var result = Array<PackageInfo2>()
             do {
-                let json = try JSONSerialization.jsonObject(with: parsed.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
                 if ((json["result"] as! Int) == 0) {
                     let jarr = json["data"] as! Array<Dictionary<String, String>>
                     for obj in jarr {
@@ -267,24 +243,15 @@ public class YGOData2: NSObject {
     
     public class func packageDetail(_ url: String, _ callback:@escaping (SearchResult2) -> Void) {
         YGORequest2.packageDetail(url) { data in
-            var parsed = ""
-            if (data != "") {
-                parsed = YGOCAPI.parse(data, 0)
-            }
-            let result = parseSearchResult(parsed)
-            callback(result)
+            callback(parseSearchResult(data))
         }
     }
     
     public class func hostest(_ callback:@escaping (Hotest2) -> Void) {
         YGORequest2.hotest() { data in
-            var parsed = ""
-            if (data != "") {
-                parsed = YGOCAPI.parse(data, 6)
-            }
             let result = Hotest2()
             do {
-                let json = try JSONSerialization.jsonObject(with: parsed.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
                 if ((json["result"] as! Int) == 0) {
                     let arrSearch = json["search"] as! Array<String>
                     for obj in arrSearch {
@@ -343,21 +310,22 @@ public class YGOData2: NSObject {
         let result = SearchResult2()
         do {
             let json = try JSONSerialization.jsonObject(with: jsonString.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
-            if ((json["result"] as! Int) == 0) {
-                result.page = json["page"] as! Int
-                result.pageCount = json["pagecount"] as! Int
-                let jarr = json["data"] as! Array<Dictionary<String, Any>>
-                for obj in jarr {
-                    let info = CardInfo2()
-                    info.cardid = obj["id"] as! Int
-                    info.hashid = obj["hashid"] as! String
-                    info.name = replaceChars(obj["name"] as! String)
-                    info.japname = replaceChars(obj["japname"] as! String)
-                    info.enname = replaceChars(obj["enname"] as! String)
-                    info.cardtype = obj["cardtype"] as! String
-                    result.data.append(info)
-                }
+            
+            result.page = (json["meta"] as! Dictionary<String, Any>)["cur_page"] as! Int
+            result.pageCount = (json["meta"] as! Dictionary<String, Any>)["total_page"] as! Int
+            let jarr = json["cards"] as! Array<Dictionary<String, Any>>
+            for obj in jarr {
+                let info = CardInfo2()
+                
+                info.cardid = obj.int("id")
+                info.hashid = obj["hash_id"] as! String
+                info.name = replaceChars(obj["name"] as! String)
+                info.japname = replaceChars(obj["name_ja"] as! String)
+                info.enname = replaceChars(obj["name_en"] as! String)
+                info.cardtype = obj["type_st"] as! String
+                result.data.append(info)
             }
+        
         } catch {
             
         }
