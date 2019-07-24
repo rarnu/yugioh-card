@@ -18,7 +18,6 @@ import com.rarnu.yugioh.card.adapter.SimpleCardAdapter
 import com.rarnu.yugioh.card.adapter.SimplePackAdapter
 import com.rarnu.yugioh.card.adapter.SimpleSearchAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
 import kotlin.concurrent.thread
 
 class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {
@@ -34,9 +33,6 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     private lateinit var adapterPack: SimplePackAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
 
         initUI()
         super.onCreate(savedInstanceState)
@@ -60,8 +56,6 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
 
         btnHelp.setOnClickListener(this)
         loadHotest()
-
-        Updater.checkUpdate(this)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?) {
@@ -82,9 +76,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
                     toast(resStr(R.string.toast_empty_search_key))
                     return
                 }
-                val inSearch = Intent(this, CardListActivity::class.java)
-                inSearch.putExtra("key", key)
-                startActivity(inSearch)
+                startActivity(Intent(this, CardListActivity::class.java).apply { putExtra("key", key) })
             }
             R.id.btnAdvSearch -> startActivity(Intent(this, SearchActivity::class.java))
             R.id.btnHelp -> startActivity(Intent(this, HelpActivity::class.java))
@@ -92,10 +84,8 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val mLimit = menu.add(0, MENUID_LIMIT, 0, R.string.card_limit)
-        mLimit.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-        val mPack = menu.add(0, MENUID_PACK, 1, R.string.card_pack)
-        mPack.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        menu.add(0, MENUID_LIMIT, 0, R.string.card_limit).apply { setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS) }
+        menu.add(0, MENUID_PACK, 1, R.string.card_pack).apply { setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS) }
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -131,40 +121,26 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
         if (listSearch.size % 5 != 0) {
             line++
         }
-
         val lay = gvSearch.layoutParams
         lay.height = (line * 41).dip2px()
         gvSearch.layoutParams = lay
     }
 
     private fun resetListHeight(lv: ListView, lines: Int) {
-        val lay = lv.layoutParams
-        lay.height = (lines * 41).dip2px()
-        lv.layoutParams = lay
+        lv.layoutParams = lv.layoutParams.apply { height = (lines * 41).dip2px() }
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when (parent) {
-            gvSearch -> {
-                val inSearch = Intent(this, CardListActivity::class.java)
-                inSearch.putExtra("key", listSearch[position])
-                startActivity(inSearch)
-            }
-            lvHotCard -> {
-                val hashid = listCard[position].hashid
-                val name = listCard[position].name
-                val inDetail = Intent(this, CardDetailActivity::class.java)
-                inDetail.putExtra("name", name)
-                inDetail.putExtra("hashid", hashid)
-                startActivity(inDetail)
-            }
-            lvHotPack -> {
-                val pack = listPack[position]
-                val inDetail = Intent(this, PackDetailActivity::class.java)
-                inDetail.putExtra("url", pack.packid)
-                inDetail.putExtra("name", pack.name)
-                startActivity(inDetail)
-            }
+            gvSearch -> startActivity(Intent(this, CardListActivity::class.java).apply { putExtra("key", listSearch[position]) })
+            lvHotCard -> startActivity(Intent(this, CardDetailActivity::class.java).apply {
+                putExtra("name", listCard[position].name)
+                putExtra("hashid", listCard[position].hashid)
+            })
+            lvHotPack -> startActivity(Intent(this, PackDetailActivity::class.java).apply {
+                putExtra("url", listPack[position].packid)
+                putExtra("name", listPack[position].name)
+            })
         }
     }
 }

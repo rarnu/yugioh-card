@@ -103,8 +103,7 @@ class SearchActivity: BackActivity(), View.OnClickListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val mSearch = menu.add(0, MENUID_SEARCH, 0, R.string.btn_search)
-        mSearch.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        menu.add(0, MENUID_SEARCH, 0, R.string.btn_search).apply { setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS) }
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -144,21 +143,11 @@ class SearchActivity: BackActivity(), View.OnClickListener {
                 layMagic.visibility = View.GONE
                 layMonster.visibility = View.GONE
             }
-            else -> {
-                val c = (v as Button).currentTextColor
-                if (c == Color.DKGRAY) {
-                    v.setTextColor(Color.WHITE)
-                } else {
-                    v.setTextColor(Color.DKGRAY)
-                }
-            }
+            else -> (v as Button).setTextColor(if (v.currentTextColor == Color.DKGRAY) Color.WHITE else Color.DKGRAY)
         }
     }
 
-    private fun isButtonSelected(btn: Button): Boolean {
-        val color = btn.currentTextColor
-        return color != Color.DKGRAY
-    }
+    private fun isButtonSelected(btn: Button) = btn.currentTextColor != Color.DKGRAY
 
     private fun buildMonsterCardType(): String {
         var key = ""
@@ -266,9 +255,9 @@ class SearchActivity: BackActivity(), View.OnClickListener {
 
     private fun doSearch() {
         // do search
-        var key = " +(类:$cardtype)"
+        var key = " +(cardType:$cardtype)"
         val eff = edtEffect.text.toString()
-        if (eff != "") key += " +(效果:$eff)"
+        if (eff != "") key += " +(effect:$eff)"
         if (cardtype == "怪兽") {
             val atk = edtAtk.text.toString()
             if (atk != "") key += " +(atk:$atk)"
@@ -277,27 +266,24 @@ class SearchActivity: BackActivity(), View.OnClickListener {
             val lvl = edtLevel.text.toString()
             if (lvl != "") key += " +(level:$lvl)"
             val scale = edtScale.text.toString()
-            if (scale != "") key += " +(刻度:$scale)"
+            if (scale != "") key += " +(pendulumL:$scale)"
             val link = edtLink.text.toString()
             if (link != "") key += " +(link:$link)"
             val ct2 = buildMonsterCardType()
-            if (ct2 != "") key += " +(类:$ct2)"
+            if (ct2 != "") key += " +(cardType:$ct2)"
             val race = buildMonsterRace()
-            if (race != "") key += " +(族:$race)"
+            if (race != "") key += " +(race:$race)"
             val ele = buildMonsterElement()
-            if (ele != "") key += " +(属性:$ele)"
+            if (ele != "") key += " +(element:$ele)"
             val la = buildMonsterLinkArrow()
             if (la != "") key += " +(linkArrow:$la)"
         } else if (cardtype == "魔法") {
             val ct2 = buildMagicCardType()
-            if (ct2 != "") key += " +(类:$ct2)"
+            if (ct2 != "") key += " +(cardType:$ct2)"
         } else if (cardtype == "陷阱") {
             val ct2 = buildTrapCardType()
-            if (ct2 != "") key += " +(类:$ct2)"
+            if (ct2 != "") key += " +(cardType:$ct2)"
         }
-
-        val inSearch = Intent(this, CardListActivity::class.java)
-        inSearch.putExtra("key", key)
-        startActivity(inSearch)
+        startActivity(Intent(this, CardListActivity::class.java).apply { putExtra("key", key) })
     }
 }

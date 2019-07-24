@@ -38,11 +38,9 @@ class LimitActivity : BackActivity(), AdapterView.OnItemClickListener {
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val hashid = list[position].hashid
-        val name = list[position].name
-        val inDetail = Intent(this, CardDetailActivity::class.java)
-        inDetail.putExtra("name", name)
-        inDetail.putExtra("hashid", hashid)
-        startActivity(inDetail)
+        startActivity(Intent(this, CardDetailActivity::class.java).apply {
+            putExtra("name", list[position].name)
+            putExtra("hashid", list[position].hashid)
+        })
     }
 }

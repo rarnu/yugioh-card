@@ -1,9 +1,7 @@
 package com.rarnu.yugioh.card.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.View
 import com.rarnu.android.BaseAdapter
 import com.rarnu.android.runOnMainThread
@@ -20,7 +18,6 @@ import kotlin.concurrent.thread
 class CardListAdapter(ctx: Context, list: MutableList<CardInfo>) : BaseAdapter<CardInfo, CardListAdapter.CardListHolder>(ctx, list) {
 
     override fun fillHolder(baseVew: View, holder: CardListHolder, item: CardInfo, position: Int) {
-        Log.e("CardListAdapter", "name => ${item.name}, jpname => ${item.japname}")
         holder.tvCardName.text = resStr(R.string.item_name, item.name)
         holder.tvCardJapName.text = resStr(R.string.item_japname, item.japname)
         holder.tvCardEnName.text = resStr(R.string.item_enname, item.enname)
@@ -32,7 +29,7 @@ class CardListAdapter(ctx: Context, list: MutableList<CardInfo>) : BaseAdapter<C
         } else {
             thread {
                 download {
-                    url = String.format(YGORequest.RES_URL, item.cardid)
+                    url = YGORequest.RES_URL.format(item.cardid)
                     localFile = localImg
                     progress { state, _, _, _ ->
                         if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {

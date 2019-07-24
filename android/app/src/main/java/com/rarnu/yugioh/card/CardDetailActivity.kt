@@ -101,18 +101,13 @@ class CardDetailActivity : BackActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val mWiki = menu.add(0, MENUID_WIKI, 1, R.string.menu_wiki)
-        mWiki.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        menu.add(0, MENUID_WIKI, 1, R.string.menu_wiki).apply { setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS) }
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            MENUID_WIKI -> {
-                val inWiki = Intent(this, CardWikiActivity::class.java)
-                inWiki.putExtra("wiki", wikiForPass)
-                startActivity(inWiki)
-            }
+            MENUID_WIKI -> startActivity(Intent(this, CardWikiActivity::class.java).apply { putExtra("wiki", wikiForPass) })
         }
         return super.onOptionsItemSelected(item)
     }

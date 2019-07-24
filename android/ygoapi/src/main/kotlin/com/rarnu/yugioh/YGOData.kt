@@ -84,38 +84,17 @@ class Hotest {
 
 object YGOData {
 
-    private fun replaceChars(str: String): String {
-        var s = str
-        s = s.replace("&quot;", "\"")
-        s = s.replace("&#039;", "'")
-        s = s.replace("&amp;", "&")
-        s = s.replace("<br />", "\n")
-        s = s.replace("　", "")
-        return s
-    }
+    private fun replaceChars(str: String) = str.replace("&quot;", "\"").replace("&#039;", "'").replace("&amp;", "&").replace("<br />", "\n").replace("　", "")
 
-    private fun replaceLinkArrow(str: String): String {
-        var s = str
-        s = s.replace("1", "↙")
-        s = s.replace("2", "↓")
-        s = s.replace("3", "↘")
-        s = s.replace("4", "←")
-        s = s.replace("6", "→")
-        s = s.replace("7", "↖")
-        s = s.replace("8", "↑")
-        s = s.replace("9", "↗")
-        return s
-    }
+    private fun replaceLinkArrow(str: String) = str.replace("1", "↙").replace("2", "↓").replace("3", "↘").replace("4", "←").replace("6", "→").replace("7", "↖").replace("8", "↑").replace("9", "↗")
 
     private fun parseSearchResult(jsonString: String): SearchResult {
-        Log.e("YGO", jsonString)
         val result = SearchResult()
         try {
             val json = JSONObject(jsonString)
             result.page = json.getJSONObject("meta").getInt("cur_page")
             result.pageCount = json.getJSONObject("meta").getInt("total_page")
-            val jarr = json.getJSONArray("cards")
-            jarr.forEach { _, obj ->
+            json.getJSONArray("cards").forEach { _, obj ->
                 val info = CardInfo()
                 info.cardid = obj.getInt("id")
                 info.hashid = obj.getString("hash_id")
@@ -126,7 +105,7 @@ object YGOData {
                 result.data.add(info)
             }
         } catch (e: Exception) {
-            Log.e("YGO", "parse error => $e")
+
         }
 
         return result
@@ -195,8 +174,7 @@ object YGOData {
                 result.def = obj.getString("def")
                 result.link = obj.getString("link")
                 result.linkarrow = replaceLinkArrow(obj.getString("linkarrow"))
-                val jarr = obj.getJSONArray("packs")
-                jarr.forEach { _, pkinfo ->
+                obj.getJSONArray("packs").forEach { _, pkinfo ->
                     val info = CardPackInfo()
                     info.url = pkinfo.getString("url")
                     info.name = replaceChars(pkinfo.getString("name"))
@@ -221,8 +199,7 @@ object YGOData {
         try {
             val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
-                val jarr = json.getJSONArray("data")
-                jarr.forEach { _, obj ->
+                json.getJSONArray("data").forEach { _, obj ->
                     val info = LimitInfo()
                     info.limit = obj.getInt("limit")
                     info.color = obj.getString("color")
@@ -243,8 +220,7 @@ object YGOData {
         try {
             val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
-                val jarr = json.getJSONArray("data")
-                jarr.forEach { _, obj ->
+                json.getJSONArray("data").forEach { _, obj ->
                     val info = PackageInfo()
                     info.season = obj.getString("season")
                     info.url = obj.getString("url")
@@ -267,19 +243,16 @@ object YGOData {
         try {
             val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
-                val arrSearch = json.getJSONArray("search")
-                arrSearch.forEachString { _, s ->
+                json.getJSONArray("search").forEachString { _, s ->
                     result.search.add(s)
                 }
-                val arrCard = json.getJSONArray("card")
-                arrCard.forEach { _, obj ->
+                json.getJSONArray("card").forEach { _, obj ->
                     val ci = HotCard()
                     ci.hashid = obj.getString("hashid")
                     ci.name = replaceChars(obj.getString("name"))
                     result.card.add(ci)
                 }
-                val arrPack = json.getJSONArray("pack")
-                arrPack.forEach { _, obj ->
+                json.getJSONArray("pack").forEach { _, obj ->
                     val pi = HotPack()
                     pi.name = replaceChars(obj.getString("name"))
                     pi.packid = obj.getString("packid")

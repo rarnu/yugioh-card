@@ -78,11 +78,10 @@ class PackActivity: BackActivity(), AdapterView.OnItemClickListener {
                 }
             }
         } else {
-            val pack = listPack[position]
-            val inDetail = Intent(this, PackDetailActivity::class.java)
-            inDetail.putExtra("url", pack.url)
-            inDetail.putExtra("name", pack.abbr)
-            startActivity(inDetail)
+            startActivity(Intent(this, PackDetailActivity::class.java).apply {
+                putExtra("url", listPack[position].url)
+                putExtra("name", listPack[position].abbr)
+            })
         }
     }
 }

@@ -14,7 +14,6 @@ import kotlin.concurrent.thread
 
 class PackDetailActivity : BackActivity(), AdapterView.OnItemClickListener {
 
-
     private val list = arrayListOf<CardInfo>()
     private lateinit var adapter: CardListAdapter
 
@@ -26,7 +25,6 @@ class PackDetailActivity : BackActivity(), AdapterView.OnItemClickListener {
         adapter = CardListAdapter(this, list)
         lvPackCard.adapter = adapter
         lvPackCard.onItemClickListener = this
-
         thread {
             val tmp = YGOData.packageDetail(url)
             list.clear()
@@ -38,11 +36,9 @@ class PackDetailActivity : BackActivity(), AdapterView.OnItemClickListener {
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val hashid = list[position].hashid
-        val name = list[position].name
-        val inDetail = Intent(this, CardDetailActivity::class.java)
-        inDetail.putExtra("name", name)
-        inDetail.putExtra("hashid", hashid)
-        startActivity(inDetail)
+        startActivity(Intent(this, CardDetailActivity::class.java).apply {
+            putExtra("name", list[position].name)
+            putExtra("hashid", list[position].hashid)
+        })
     }
 }

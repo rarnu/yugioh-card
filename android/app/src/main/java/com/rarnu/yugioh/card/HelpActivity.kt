@@ -29,9 +29,6 @@ class HelpActivity: BackActivity(), View.OnClickListener {
         }
     }
 
-    private fun openUrl(aurl: String) {
-        val inWeb = Intent(Intent.ACTION_VIEW)
-        inWeb.data = Uri.parse(aurl)
-        startActivity(inWeb)
-    }
+    private fun openUrl(aurl: String) = startActivity(Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(aurl) })
+
 }

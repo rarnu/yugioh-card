@@ -11,8 +11,7 @@ class CardWikiActivity : BackActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wiki)
         actionBar?.title = resStr(R.string.card_wiki)
-        val wiki = intent.getStringExtra("wiki")
-        tvWiki.text = Html.fromHtml(wiki, 0)
+        tvWiki.text = Html.fromHtml(intent.getStringExtra("wiki"), 0)
     }
 
 }
