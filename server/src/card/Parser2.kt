@@ -148,7 +148,7 @@ private fun getArticle(ahtml: String): String {
             cpack = ""
         }
         tmp = tmp.substring(tmp.indexOf(H5) + H5.length).replace(HDIVLINE, ESPLIT).replace("<br>", "")
-        ceffect = tmp.substring(0, tmp.indexOf(HDIV)).trim().replace("\n", "").replace("\r", "")
+        ceffect = tmp.substring(0, tmp.indexOf("</template>"/*HDIV*/)).trim().replace("\n", "").replace("\r", "")
         ceffect = parseTextVersion(ceffect)
         tmp = tmp.substring(tmp.indexOf(H6) + H6.length)
         tmp = tmp.substring(0, tmp.indexOf(HTABLE)).trim()
@@ -164,7 +164,11 @@ private fun parseTextVersion(astr: String): String {
         ret = ret.substring(ret.indexOf("<template"))
         ret = ret.replace("<template v-if=\"text_version == 'cn'\" >", "")
         ret = ret.replace("<template v-if=\"text_version == 'cn'\">", "")
-        ret = ret.substring(0, ret.indexOf("</template>")).trim()
+        if (ret.contains("</template>")) {
+            ret = ret.substring(0, ret.indexOf("</template>"))
+        }
+        ret = ret.replace("<div class='line'></div>", "- - - - - -")
+        ret = ret.trim()
     }
     return ret
 }

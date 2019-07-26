@@ -1,32 +1,29 @@
 package com.rarnu.ygo.server.card
 
-import com.rarnu.common.httpGet
-import com.rarnu.ygo.server.database.cardTable
-import com.rarnu.ygo.server.database.limitTable
-import com.rarnu.ygo.server.database.packDetailTable
-import com.rarnu.ygo.server.database.packTable
+import com.rarnu.common.http
+import com.rarnu.ygo.server.database.*
 import io.ktor.application.Application
 
 const val BASE_URL = "https://www.ourocg.cn"
 const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
 object Request2 {
-    suspend fun search(key: String, page: Int, callback: suspend (String) -> Unit) = callback((httpGet("$BASE_URL/search/$key/$page") ?: "").parse0())
+    suspend fun search(app: Application, key: String, page: Int, callback: suspend (String) -> Unit) =
+        callback((req(app, "$BASE_URL/search/$key/$page") ?: "").parse0())
 
-    private suspend fun innerRequest(hashid: String, callback: suspend (String, String, String) -> Unit) {
-        val detail = httpGet("$BASE_URL/card/$hashid") ?: ""
-        val wiki = httpGet("$BASE_URL/card/$hashid/wiki") ?: ""
-        val d = detail.parse1()
-        val a = detail.parse2()
-        val w = wiki.parse3()
-        callback(d, a, w)
-    }
-
-    private fun differentDaysByMillisecond(date1: Long, date2: Long): Long {
-        return (date2 - date1) / (1000 * 3600 * 24)
-    }
+    private fun differentDaysByMillisecond(date1: Long, date2: Long) = (date2 - date1) / (1000 * 3600 * 24)
 
     suspend fun cardDetailWiki(app: Application, hashid: String, callback: suspend (String, String, String) -> Unit) {
+
+        suspend fun innerRequest(hashid: String, callback: suspend (String, String, String) -> Unit) {
+            val detail = req(app, "$BASE_URL/card/$hashid") ?: ""
+            val wiki = req(app, "$BASE_URL/card/$hashid/wiki") ?: ""
+            val d = detail.parse1()
+            val a = detail.parse2()
+            val w = wiki.parse3()
+            callback(d, a, w)
+        }
+
         val c = cacheMap[hashid]
         if (c == null) {
             innerRequest(hashid) { d, a, w ->
@@ -52,7 +49,7 @@ object Request2 {
         val time = cacheLimit.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 1) {
-            val limit = (httpGet("$BASE_URL/Limit-Latest") ?: "").parse4()
+            val limit = (req(app, "$BASE_URL/Limit-Latest") ?: "").parse4()
             cacheLimit.timeinfo = current
             cacheLimit.text = limit
             app.limitTable.save(current, limit)
@@ -67,7 +64,7 @@ object Request2 {
         val time = cachePack.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 1) {
-            val pack = (httpGet("$BASE_URL/package") ?: "").parse5()
+            val pack = (req(app, "$BASE_URL/package") ?: "").parse5()
             cachePack.timeinfo = current
             cachePack.text = pack
             app.packTable.save(current, pack)
@@ -80,7 +77,7 @@ object Request2 {
     suspend fun packdetail(app: Application, url: String, callback: suspend (String) -> Unit) {
         val txt = cachePackDetail[url]
         if (txt == null || txt == "") {
-            val detail = (httpGet("$BASE_URL$url") ?: "").parse0()
+            val detail = (req(app, "$BASE_URL$url") ?: "").parse0()
             cachePackDetail[url] = detail
             app.packDetailTable.save(url, detail)
             callback(detail)
@@ -89,6 +86,21 @@ object Request2 {
         }
     }
 
-    suspend fun hotest(callback: suspend (String) -> Unit) = callback((httpGet(BASE_URL) ?: "").parse6())
+    suspend fun hotest(app: Application, callback: suspend (String) -> Unit) = callback((req(app, BASE_URL) ?: "").parse6())
+
+    private suspend fun req(app: Application, u: String): String? {
+        val startTime = System.currentTimeMillis()
+        return http {
+            url = u
+            onSuccess { _, _, _ ->
+                val endTime = System.currentTimeMillis()
+                app.reqlog.log(u, 0, endTime - startTime, "")
+            }
+            onFail {
+                val endTime = System.currentTimeMillis()
+                app.reqlog.log(u, 1, endTime - startTime, "$it")
+            }
+        }
+    }
 
 }

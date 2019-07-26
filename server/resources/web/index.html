@@ -1,8 +1,26 @@
 <html>
 <head>
-    <script src='static/js/ktor.js'></script>
+    <script src="../static/js/ktor.js"></script>
+    <script src="../static/js/jquery-2.0.0.min.js"></script>
+
+    <script type="text/javascript">
+        function search() {
+            var key = $("#etSQL")[0].value;
+            searchLog(key, function(data) {
+               $("#divResult")[0].innerHTML = data;
+            });
+        }
+    </script>
 </head>
-<body>Hello
-<button onclick='sayHello();'>say Hello</button>
+<body>
+    <div style="width: 100%; height: 40px;">
+        <input type="text" name="etSQL" id="etSQL" style="width: 80%; height: 100%;">
+        <input type="button" value="GO" style="width: 10%; height: 100%" onclick="search();">
+    </div>
+
+    <div id="divResult" name="divResult">
+
+    </div>
+
 </body>
 </html>

@@ -116,7 +116,24 @@ class CardPackDetail(private val app: Application) {
 
 }
 
+class ReqLog(private val app: Application) {
+    fun log(req: String, ret: Int, waste: Long, reason: String) {
+        val stmt = app.conn.prepareStatement("insert into Log(timeinfo, req, result, waste, reason) values(?, ?, ?, ?, ?)")
+        stmt.setLong(1, System.currentTimeMillis())
+        stmt.setString(2, req)
+        stmt.setInt(3, ret)
+        stmt.setLong(4, waste)
+        stmt.setString(5, reason)
+        try {
+            stmt.executeUpdate()
+        } catch (th: Throwable) {
+
+        }
+    }
+}
+
 val Application.cardTable: CardTable get() = CardTable(this)
 val Application.limitTable: CardLimit get() = CardLimit(this)
 val Application.packTable: CardPack get() = CardPack(this)
 val Application.packDetailTable: CardPackDetail get() = CardPackDetail(this)
+val Application.reqlog: ReqLog get() = ReqLog(this)
