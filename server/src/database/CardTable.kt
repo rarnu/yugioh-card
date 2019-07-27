@@ -120,7 +120,7 @@ class ReqLog(private val app: Application) {
     fun log(req: String, ret: Int, waste: Long, reason: String) {
         val stmt = app.conn.prepareStatement("insert into Log(timeinfo, req, result, waste, reason) values(?, ?, ?, ?, ?)")
         stmt.setLong(1, System.currentTimeMillis())
-        stmt.setString(2, req)
+        stmt.setString(2, req.replace(BASE_URL, ""))
         stmt.setInt(3, ret)
         stmt.setLong(4, waste)
         stmt.setString(5, reason)
