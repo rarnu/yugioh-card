@@ -1,0 +1,25 @@
+name: yugiohcard
+description: YuGiOh Card
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ktflutter: ^1.0.2
+  cupertino_icons: ^0.1.2
+  flutter_html: ^0.10.4
+  url_launcher: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.png
