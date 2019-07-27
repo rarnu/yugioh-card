@@ -104,7 +104,7 @@
         <div class="div-link-arrow">
           <text class="txt-link-arrow" style="color: {{linkArrowColor(4)}}" onclick="linkArrowToggle(4)">←</text>
           <text class="txt-link-arrow"></text>
-          <text class="txt-link-arrow" style="color: {{linkArrowColor(6)}}" onclick="linkArrowToggle(6)">→</text>
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(6)}}" onclick="linkArrowToggle(6)"> </text>
         </div>
         <div class="div-link-arrow">
           <text class="txt-link-arrow" style="color: {{linkArrowColor(1)}}" onclick="linkArrowToggle(1)">↙</text>
@@ -301,9 +301,9 @@ export default {
   },
   buildTrapCardType() {
     let k = ''
-    if (this.magicType.indexOf(0) != -1) { k += '通常,' }
-    if (this.magicType.indexOf(1) != -1) { k += '永续,' }
-    if (this.magicType.indexOf(2) != -1) { k += '反击,' }
+    if (this.trapType.indexOf(0) != -1) { k += '通常,' }
+    if (this.trapType.indexOf(1) != -1) { k += '永续,' }
+    if (this.trapType.indexOf(2) != -1) { k += '反击,' }
     k = k.replace(/,$/gi, '')
     return k
   },
