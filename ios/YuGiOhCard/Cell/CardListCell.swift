@@ -21,24 +21,39 @@ class CardListCell: AdapterCell<CardInfo2> {
     override func layout() {
         self.backgroundColor = UIColor.black
         self.tintColor = UIColor.white
-        tvCardName = UILabel(frame: CGRect(x: 8, y: 0, width: screenWidth() - 86, height: 25))
-        tvCardName.textAlignment = NSTextAlignment.left
-        tvCardName.textColor = UIColor.white
+        tvCardName = UILabel() ~>> {
+            $0.frame = CGRect(x: 8, y: 0, width: screenWidth() - 86, height: 25)
+            $0.textAlignment = NSTextAlignment.left
+            $0.textColor = UIColor.white
+            return $0
+        }
+        tvCardJapname = UILabel() ~>> {
+            $0.frame = CGRect(x: 8, y: 25, width: screenWidth() - 86, height: 25)
+            $0.textAlignment = NSTextAlignment.left
+            $0.textColor = UIColor.white
+            return $0
+        }
+        tvCardEnname = UILabel() ~>> {
+            $0.frame = CGRect(x: 8, y: 50, width: screenWidth() - 86, height: 25)
+            $0.textAlignment = NSTextAlignment.left
+            $0.textColor = UIColor.white
+            return $0
+        }
+        tvCardType = UILabel() ~>> {
+            $0.frame = CGRect(x: 8, y: 75, width: screenWidth() - 86, height: 25)
+            $0.textAlignment = NSTextAlignment.left
+            $0.textColor = UIColor.white
+            return $0
+        }
+        ivCardImg = UIImageView() ~>> {
+            $0.frame = CGRect(x: screenWidth() - 78, y: 4, width: 70, height: 92)
+            $0.contentMode = UIView.ContentMode.scaleAspectFit
+            return $0
+        }
         self.addSubview(tvCardName)
-        tvCardJapname = UILabel(frame: CGRect(x: 8, y: 25, width: screenWidth() - 86, height: 25))
-        tvCardJapname.textAlignment = NSTextAlignment.left
-        tvCardJapname.textColor = UIColor.white
         self.addSubview(tvCardJapname)
-        tvCardEnname = UILabel(frame: CGRect(x: 8, y: 50, width: screenWidth() - 86, height: 25))
-        tvCardEnname.textAlignment = NSTextAlignment.left
-        tvCardEnname.textColor = UIColor.white
         self.addSubview(tvCardEnname)
-        tvCardType = UILabel(frame: CGRect(x: 8, y: 75, width: screenWidth() - 86, height: 25))
-        tvCardType.textAlignment = NSTextAlignment.left
-        tvCardType.textColor = UIColor.white
         self.addSubview(tvCardType)
-        ivCardImg = UIImageView(frame: CGRect(x: screenWidth() - 78, y: 4, width: 70, height: 92))
-        ivCardImg.contentMode = UIView.ContentMode.scaleAspectFit
         self.addSubview(ivCardImg)
     }
     

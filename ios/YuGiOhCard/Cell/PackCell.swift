@@ -16,9 +16,13 @@ class PackCell: AdapterCell<PackageInfo2> {
     
     override func layout() {
         self.backgroundColor = UIColor.black
-        lblName = UILabel(frame: CGRect(x: 8, y: 0, width: screenWidth() - 81, height: 40))
-        lblName?.font = UIFont.systemFont(ofSize: 12)
-        lblName.textColor = UIColor.white
+        lblName = UILabel() ~>> {
+            $0.frame = CGRect(x: 8, y: 0, width: screenWidth() - 81, height: 40)
+            $0.font = UIFont.systemFont(ofSize: 12)
+            $0.textColor = UIColor.white
+            return $0
+        }
+        
         self.addSubview(lblName)
     }
     

@@ -14,8 +14,7 @@ public let RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 public class YGORequest2: NSObject {
     
     public class func search(_ key: String, _ page: Int, _ callback:@escaping (String) -> Void) {
-        let url = BASE_URL + "/search?key=\(key)&page=\(page)"
-        request(url, callback)
+        request(BASE_URL + "/search?key=\(key)&page=\(page)", callback)
     }
     
     public class func cardDetailWiki(_ hashid: String, _ callback:@escaping (String, String, String) -> Void) {
@@ -42,29 +41,16 @@ public class YGORequest2: NSObject {
         callback(dataData, dataAdjust, dataWiki)
      }
     
-//    public class func cardDetail(_ hashid: String, _ callback:@escaping (String) -> Void) {
-//        let url = BASE_URL + "/card/\(hashid)"
-//        request(url, callback)
-//    }
-//
-//    public class func cardWiki(_ hashid: String, _ callback:@escaping (String) -> Void) {
-//        let url = BASE_URL + "/card/\(hashid)/wiki"
-//        request(url, callback)
-//    }
-    
     public class func limit(_ callback:@escaping (String) -> Void) {
-        let url = BASE_URL + "/limit"
-        request(url, callback)
+        request(BASE_URL + "/limit", callback)
     }
     
     public class func packageList(_ callback:@escaping (String) -> Void) {
-        let url = BASE_URL + "/packlist"
-        request(url, callback)
+        request(BASE_URL + "/packlist", callback)
     }
     
     public class func packageDetail(_ url: String, _ callback:@escaping (String) -> Void) {
-        let url2 = BASE_URL + "/packdetail?url=\(url)"
-        request(url2, callback)
+        request(BASE_URL + "/packdetail?url=\(url)", callback)
     }
     
     public class func hotest(_ callback:@escaping (String) -> Void) {

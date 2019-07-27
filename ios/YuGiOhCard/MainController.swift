@@ -28,16 +28,16 @@ class MainController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let sv = UIScrollView(frame: CGRect(x: 8, y: 8, width: screenWidth() - 16, height: screenHeight() - 16))
         sv.showsVerticalScrollIndicator = false
         sv.showsHorizontalScrollIndicator = false
-        // self.view.tintColor = UIColor.white
         self.view.addSubview(sv)
-        layMain = TGLinearLayout(.vert)
-        layMain.tg_vspace = 0
-        layMain.tg_width.equal(100%)
-        layMain.tg_height.equal(.wrap).min(sv.tg_height, increment: 0)
+        layMain = TGLinearLayout(.vert) ~>> {
+            $0.tg_vspace = 0
+            $0.tg_width.equal(100%)
+            $0.tg_height.equal(.wrap).min(sv.tg_height, increment: 0)
+            return $0
+        }
         sv.addSubview(layMain)
         let v = UIView()
         v.tg_width.equal(100%)

@@ -146,34 +146,33 @@ public class YGOData2: NSObject {
             let result = CardDetail2()
             do {
                 let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
-                if ((json["result"] as! Int) == 0) {
-                    let obj = json["data"] as! Dictionary<String, Any>
-                    result.name = replaceChars(obj["name"] as! String)
-                    result.japname = replaceChars(obj["japname"] as! String)
-                    result.enname = replaceChars(obj["enname"] as! String)
-                    result.cardtype = obj["cardtype"] as! String
-                    result.password = obj["password"] as! String
-                    result.limit = obj["limit"] as! String
-                    result.belongs = obj["belongs"] as! String
-                    result.rare = obj["rare"] as! String
-                    result.pack = replaceChars(obj["pack"] as! String)
-                    result.effect = replaceChars(obj["effect"] as! String)
-                    result.race = obj["race"] as! String
-                    result.element = obj["element"] as! String
-                    result.level = obj["level"] as! String
-                    result.atk = obj["atk"] as! String
-                    result.def = obj["def"] as! String
-                    result.link = obj["link"] as! String
-                    result.linkarrow = replaceLinkArrow(obj["linkarrow"] as! String)
+                if (json.int("result") == 0) {
+                    let obj = json["data"]!>~<
+                    result.name = replaceChars(obj.string("name"))
+                    result.japname = replaceChars(obj.string("japname"))
+                    result.enname = replaceChars(obj.string("enname"))
+                    result.cardtype = obj.string("cardtype")
+                    result.password = obj.string("password")
+                    result.limit = obj.string("limit")
+                    result.belongs = obj.string("belongs")
+                    result.rare = obj.string("rare")
+                    result.pack = replaceChars(obj.string("pack"))
+                    result.effect = replaceChars(obj.string("effect"))
+                    result.race = obj.string("race")
+                    result.element = obj.string("element")
+                    result.level = obj.string("level")
+                    result.atk = obj.string("atk")
+                    result.def = obj.string("def")
+                    result.link = obj.string("link")
+                    result.linkarrow = replaceLinkArrow(obj.string("linkarrow"))
                     
-                    let jarr = obj["packs"] as! Array<Dictionary<String, String>>
-                    for pkinfo in jarr {
+                    for pkinfo in obj["packs"]!>|< {
                         let info = CardPackInfo2()
-                        info.url = pkinfo["url"]!
-                        info.name = replaceChars(pkinfo["name"]!)
-                        info.date = pkinfo["date"]!
-                        info.abbr = pkinfo["abbr"]!
-                        info.rare = pkinfo["rare"]!
+                        info.url = pkinfo.string("url")
+                        info.name = replaceChars(pkinfo.string("name"))
+                        info.date = pkinfo.string("date")
+                        info.abbr = pkinfo.string("abbr")
+                        info.rare = pkinfo.string("rare")
                         result.packs.append(info)
                     }
                     result.adjust = replaceChars(adjust)
@@ -187,7 +186,6 @@ public class YGOData2: NSObject {
             return result
         }
         
-        
         YGORequest2.cardDetailWiki(hashid) { data, adjust, wiki in
             callback(parseDetail(data, adjust, wiki))
         }
@@ -199,14 +197,13 @@ public class YGOData2: NSObject {
             var result = Array<LimitInfo2>()
             do {
                 let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
-                if ((json["result"] as! Int) == 0) {
-                    let jarr = json["data"] as! Array<Dictionary<String, Any>>
-                    for obj in jarr {
+                if (json.int("result") == 0) {
+                    for obj in json["data"]!>|< {
                         let info = LimitInfo2()
-                        info.limit = obj["limit"] as! Int
-                        info.color = obj["color"] as! String
-                        info.hashid = obj["hashid"] as! String
-                        info.name = replaceChars(obj["name"] as! String)
+                        info.limit = obj.int("limit")
+                        info.color = obj.string("color")
+                        info.hashid = obj.string("hashid")
+                        info.name = replaceChars(obj.string("name"))
                         result.append(info)
                     }
                 }
@@ -222,14 +219,13 @@ public class YGOData2: NSObject {
             var result = Array<PackageInfo2>()
             do {
                 let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
-                if ((json["result"] as! Int) == 0) {
-                    let jarr = json["data"] as! Array<Dictionary<String, String>>
-                    for obj in jarr {
+                if (json.int("result") == 0) {
+                    for obj in json["data"]!>|< {
                         let info = PackageInfo2()
-                        info.season = obj["season"]!
-                        info.url = obj["url"]!
-                        info.name = replaceChars(obj["name"]!)
-                        info.abbr = obj["abbr"]!
+                        info.season = obj.string("season")
+                        info.url = obj.string("url")
+                        info.name = replaceChars(obj.string("name"))
+                        info.abbr = obj.string("abbr")
                         result.append(info)
                     }
                 }
@@ -252,23 +248,20 @@ public class YGOData2: NSObject {
             let result = Hotest2()
             do {
                 let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
-                if ((json["result"] as! Int) == 0) {
-                    let arrSearch = json["search"] as! Array<String>
-                    for obj in arrSearch {
+                if (json.int("result") == 0) {
+                    for obj in json["search"]!>^< {
                         result.search.append(obj)
                     }
-                    let arrCard = json["card"] as! Array<Dictionary<String, String>>
-                    for obj in arrCard {
+                    for obj in json["card"]!>|< {
                         let ci = HotCard2()
-                        ci.name = replaceChars(obj["name"]!)
-                        ci.hashid = obj["hashid"]!
+                        ci.name = replaceChars(obj.string("name"))
+                        ci.hashid = obj.string("hashid")
                         result.card.append(ci)
                     }
-                    let arrPack = json["pack"] as! Array<Dictionary<String, String>>
-                    for obj in arrPack {
+                    for obj in json["pack"]!>|< {
                         let pi = HotPack2()
-                        pi.name = replaceChars(obj["name"]!)
-                        pi.packid = obj["packid"]!
+                        pi.name = replaceChars(obj.string("name"))
+                        pi.packid = obj.string("packid")
                         result.pack.append(pi)
                     }
                 }
@@ -310,19 +303,16 @@ public class YGOData2: NSObject {
         let result = SearchResult2()
         do {
             let json = try JSONSerialization.jsonObject(with: jsonString.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
-            
-            result.page = (json["meta"] as! Dictionary<String, Any>)["cur_page"] as! Int
-            result.pageCount = (json["meta"] as! Dictionary<String, Any>)["total_page"] as! Int
-            let jarr = json["cards"] as! Array<Dictionary<String, Any>>
-            for obj in jarr {
+            result.page = json["meta"]!>~<.int("cur_page")
+            result.pageCount = json["meta"]!>~<.int("total_page")
+            for obj in json["cards"]!>|< {
                 let info = CardInfo2()
-                
                 info.cardid = obj.int("id")
-                info.hashid = obj["hash_id"] as! String
-                info.name = replaceChars(obj["name"] as! String)
-                info.japname = replaceChars(obj["name_ja"] as! String)
-                info.enname = replaceChars(obj["name_en"] as! String)
-                info.cardtype = obj["type_st"] as! String
+                info.hashid = obj.string("hash_id")
+                info.name = replaceChars(obj.string("name"))
+                info.japname = replaceChars(obj.string("name_ja"))
+                info.enname = replaceChars(obj.string("name_en"))
+                info.cardtype = obj.string("type_st")
                 result.data.append(info)
             }
         

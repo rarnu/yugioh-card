@@ -18,13 +18,23 @@ class LimitCell: AdapterCell<LimitInfo2> {
     
     override func layout() {
         self.backgroundColor = UIColor.black
-        lblType = UILabel(frame: CGRect(x: 8, y: 4, width: 22, height: 32))
-        lblType.textColor = UIColor.white
-        lblName = UILabel(frame: CGRect(x: 38, y: 0, width: screenWidth() - 128, height: 40))
-        lblName.textColor = UIColor.white
-        lblLimit = UILabel(frame: CGRect(x: screenWidth() - 80, y: 0, width: 72, height: 40))
-        lblLimit.textColor = UIColor.white
-        lblLimit.textAlignment = NSTextAlignment.right
+        lblType = UILabel() ~>> {
+            $0.frame = CGRect(x: 8, y: 4, width: 22, height: 32)
+            $0.textColor = UIColor.white
+            return $0
+        }
+        lblName = UILabel() ~>> {
+            $0.frame = CGRect(x: 38, y: 0, width: screenWidth() - 128, height: 40)
+            $0.textColor = UIColor.white
+            return $0
+        }
+        lblLimit = UILabel() ~>> {
+            $0.frame = CGRect(x: screenWidth() - 80, y: 0, width: 72, height: 40)
+            $0.textColor = UIColor.white
+            $0.textAlignment = NSTextAlignment.right
+            return $0
+        }
+        
         self.addSubview(lblType)
         self.addSubview(lblName)
         self.addSubview(lblLimit)

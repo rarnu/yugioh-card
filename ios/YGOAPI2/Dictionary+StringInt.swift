@@ -8,6 +8,21 @@
 
 import Foundation
 
+postfix operator >~<
+postfix func >~< (_ input: Any) -> Dictionary<String, Any> {
+    return input as! Dictionary<String, Any>
+}
+
+postfix operator >|<
+postfix func >|< (_ input: Any) -> Array<Dictionary<String, Any>> {
+    return input as! Array<Dictionary<String, Any>>
+}
+
+postfix operator >^<
+postfix func >^< (_ input: Any) -> Array<String> {
+    return input as! Array<String>
+}
+
 extension Dictionary {
     
     func string(_ key: Key) -> String {
