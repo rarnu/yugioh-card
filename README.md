@@ -25,8 +25,6 @@ $ cd ios
 $ xcodebuild -workspace YuGiOhCard.xcworkspace/ -scheme YuGiOhCard -configuration Release
 ```
 
-
-
 ### 快应用版本
 
 ```
@@ -37,7 +35,8 @@ $ npm run release
 ### Flutter 版本
 
 ```
-准备中...
+$ cd flutter
+$ flutter run
 ```
 
 ### PC 版本
