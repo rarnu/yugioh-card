@@ -39,17 +39,17 @@ $ cd flutter
 $ flutter run
 ```
 
+### 服务端(API及页面)
+
+```
+$ cd server
+$ gradle run
+```
+
 ### PC 版本
 
 ```
 准备中...
-```
-
-### 服务端(API提供)
-
-```
-$ cd server
-$ gradle build
 ```
 
 - - -
@@ -57,7 +57,29 @@ $ gradle build
 ### API
 
 ```
-准备中...
+搜索卡片
+/search?key=<keyword>&page=<page>
+
+卡片明细
+/carddetail?hash=<hashid>
+
+卡片调整
+/cardadjust?hash=<hashid>
+
+卡片wiki
+/cardwiki?hash=<hashid>
+
+禁限卡表
+/limit
+
+卡包列表
+/packlist
+
+卡包内容明细
+/packdetail?url=<packurl>
+
+热门数据
+/hotest
 ```
 
 - - -
