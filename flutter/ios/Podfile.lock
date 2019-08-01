@@ -6,13 +6,13 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios-release`)
+  - Flutter (from `.symlinks/flutter/ios`)
   - ktflutter (from `.symlinks/plugins/ktflutter/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios-release"
+    :path: ".symlinks/flutter/ios"
   ktflutter:
     :path: ".symlinks/plugins/ktflutter/ios"
   url_launcher:

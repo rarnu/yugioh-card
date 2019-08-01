@@ -5,7 +5,6 @@ dist/
 tomcat.8080/
 .gradle/
 .idea/
-lib/
 ppas.sh
 link.res
 linksyms.fpc
@@ -15,5 +14,4 @@ linksyms.fpc
 CardImage/
 yugiohcard.exe
 yugiohcard.app/
-api
 Pods/
