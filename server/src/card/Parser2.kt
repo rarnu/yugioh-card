@@ -151,8 +151,10 @@ private fun getArticle(ahtml: String): String {
         ceffect = tmp.substring(0, tmp.indexOf("</template>"/*HDIV*/)).trim().replace("\n", "").replace("\r", "")
         ceffect = parseTextVersion(ceffect)
         tmp = tmp.substring(tmp.indexOf(H6) + H6.length)
-        tmp = tmp.substring(0, tmp.indexOf(HTABLE)).trim()
-        cpacklist = getPackList(tmp)
+        if (tmp.indexOf(HTABLE) != -1) {
+            tmp = tmp.substring(0, tmp.indexOf(HTABLE)).trim()
+            cpacklist = getPackList(tmp)
+        }
     }
     val ret = "{\"result\":0, \"data\":{\"name\":\"$cname\",\"japname\":\"$cjapname\",\"enname\":\"$cenname\",\"cardtype\":\"$ccardtype\",\"password\":\"$cpassword\",\"limit\":\"$climit\",\"belongs\":\"$cbelongs\",\"rare\":\"$crare\",\"pack\":\"$cpack\",\"effect\":\"$ceffect\",\"race\":\"$crace\",\"element\":\"$celement\",\"level\":\"$clevel\",\"atk\":\"$catk\",\"def\":\"$cdef\",\"link\":\"$clink\",\"linkarrow\":\"$clinkarrow\",\"imageid\":\"$cimgid\",\"packs\":[$cpacklist]}}"
     return ret

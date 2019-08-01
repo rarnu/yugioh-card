@@ -1,0 +1,116 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/ygo.css">
+    <script src="../static/js/jquery-2.0.0.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/js.cookie.min.js"></script>
+    <script src="../static/ygo.js"></script>
+
+    <script type="text/javascript">
+        function getCardDetail(hash) {
+            $.ajax({
+                url: `/carddetail?hash=${hash}`,
+                dataType: 'json',
+                success: function (response) {
+                    let str = '';
+                    let imageid = '0';
+                    if (response.result === 0) {
+                        let data = response.data;
+                        str += `<div class="detailrow"> <div class="name">中文名称:</div> <div class="value">${data.name}</div></div>`;
+                        str += `<div class="detailrow"> <div class="name">日文名称:</div> <div class="value">${data.japname}</div></div>`;
+                        str += `<div class="detailrow"> <div class="name">英文名称:</div> <div class="value">${data.enname}</div></div>`;
+                        str += `<div class="detailrow"> <div class="name">卡片种类:</div> <div class="value">${data.cardtype}</div></div>`;
+                        str += `<div class="detailrow"> <div class="name">卡片密码:</div> <div class="value">${data.password}</div></div>`;
+                        str += `<div class="detailrow"> <div class="name">使用限制:</div> <div class="value">${data.limit}</div></div>`;
+                        str += `<div class="detailrow"> <div class="name">罕贵度:</div> <div class="value">${data.rare}</div></div>`;
+                        str += `<div class="detailrow"> <div class="name">所在卡包:</div> <div class="value">${data.pack}</div></div>`;
+
+                        if (data.cardtype.indexOf('怪兽') !== -1) {
+                            str += `<div class="detailrow"> <div class="name">怪兽种族:</div> <div class="value">${data.race}</div></div>`;
+                            str += `<div class="detailrow"> <div class="name">怪兽属性:</div> <div class="value">${data.element}</div></div>`;
+                            if (data.cardtype.indexOf('连接') !== -1) {
+                                str += `<div class="detailrow"> <div class="name">攻击力:</div> <div class="value">${data.atk}</div></div>`;
+                                str += `<div class="detailrow"> <div class="name">连接数:</div> <div class="value">${data.link}</div></div>`;
+                                str += `<div class="detailrow"> <div class="name">连接方向:</div> <div class="value">${replaceLinkArrow(data.linkarrow)}</div></div>`;
+                            } else {
+                                if (data.cardtype.indexOf('XYZ') !== -1) {
+                                    str += `<div class="detailrow"> <div class="name">怪兽阶级:</div> <div class="value">${data.level}</div></div>`;
+                                } else {
+                                    str += `<div class="detailrow"> <div class="name">怪兽星级:</div> <div class="value">${data.level}</div></div>`;
+                                }
+                                str += `<div class="detailrow"> <div class="name">攻击力:</div> <div class="value">${data.atk}</div></div>`;
+                                str += `<div class="detailrow"> <div class="name">守备力:</div> <div class="value">${data.def}</div></div>`;
+                            }
+                        }
+                        str += `<table class="effectrow"><tr><td class="effectname">效果:</td><td class="effectvalue">${data.effect}</td></tr></table>`;
+                        imageid = data.imageid;
+                    }
+                    $('#carddetail')[0].innerHTML = str;
+                    $('#cardimage')[0].innerHTML = `<img id="cardpic" src="http://ocg.resource.m2v.cn/${imageid}.jpg">`;
+                }
+            });
+
+            $.ajax({
+                url: `/cardadjust?hash=${hash}`,
+                dataType: 'text',
+                success: function (response) {
+                    $('#cardadjust')[0].innerHTML = response.replace(/\n/g, '<br />');
+                }
+            });
+
+            $.ajax({
+                url: `/cardwiki?hash=${hash}`,
+                dataType: 'text',
+                success: function (response) {
+                    let html = response;
+                    html = html.replace(/<a\ href/g, '<u href').replace(/<\/a>/g, '</u>');
+                    $('#cardwiki')[0].innerHTML = html;
+                }
+            });
+        }
+
+        function replaceLinkArrow(arr) {
+            let str = arr;
+            str = str.replace('1', '↙');
+            str = str.replace('2', '↓');
+            str = str.replace('3', '↘');
+            str = str.replace('4', '←');
+            str = str.replace('6', '→');
+            str = str.replace('7', '↖');
+            str = str.replace('8', '↑');
+            str = str.replace('9', '↗');
+            return str;
+        }
+    </script>
+</head>
+<body>
+<div id="subtitle">
+    <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
+    <span id="title">卡片信息</span>
+</div>
+
+<div id="carddetail"></div>
+<div class="line"></div>
+<div class="blank"></div>
+<div id="cardimage"></div>
+<div class="line"></div>
+<div class="blank"></div>
+<div id="cardadjust"></div>
+<div class="line"></div>
+<div class="blank"></div>
+<div id="cardwiki"></div>
+
+<script type="text/javascript">
+    let h = Cookies.get('hashid');
+    if (h !== null) {
+        getCardDetail(h);
+    } else {
+        location.href = '/index.html';
+    }
+</script>
+
+</body>
+</html>

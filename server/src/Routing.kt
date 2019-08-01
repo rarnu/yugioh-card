@@ -6,16 +6,11 @@ import com.rarnu.ktor.requestParameters
 import com.rarnu.ygo.server.card.Request2
 import io.ktor.application.application
 import io.ktor.application.call
-import io.ktor.response.respond
 import io.ktor.response.respondText
 import io.ktor.routing.Routing
 import io.ktor.routing.get
 
 fun Routing.serverRouting() {
-
-    get("/hello") {
-        call.respond("<html><head><script src='static/js/ktor.js'></script></head><body>Hello <button onclick='sayHello();'>say Hello</button></body></html>".toByteArray())
-    }
 
     get("/search") {
         val p = call.requestParameters()

@@ -29,6 +29,5 @@ fun Application.module() {
         static("/static") { resources("static") }
         static { defaultResource("index.html", "web") }
         serverRouting()
-        sqlRouting()
     }
 }

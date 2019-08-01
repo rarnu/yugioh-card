@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/ygo.css">
+    <script src="../static/js/jquery-2.0.0.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/js.cookie.min.js"></script>
+    <script src="../static/ygo.js"></script>
+
+    <script type="text/javascript">
+        function getCardList(u) {
+            $.ajax({
+                url: `/packdetail?url=${u}`,
+                dataType: 'json',
+                success: function(response) {
+                    let str = '';
+                    $.each(response.cards, function(idx, item) {
+                        str += `<div class="searchitem" onclick="cardClicked('${item.hash_id}');">`;
+                        str += `<div class="texts">中文名称: ${item.name}<br>日文名称: ${item.name_ja}<br>英文名称: ${item.name_en}<br>卡片种类: ${item.type_st}</div>`;
+                        str += `<img class="image" src="${item.img_url}"/>`;
+                        str += '</div>';
+                    });
+                    $('#cardlist')[0].innerHTML = str;
+                }
+            });
+        }
+
+        function cardClicked(hash) {
+            Cookies.set('hashid', hash);
+            location.href = '/carddetail.html';
+        }
+    </script>
+</head>
+<body>
+
+<div id="subtitle">
+    <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
+    <span id="title">包内卡片</span>
+</div>
+
+<div id="cardlist"></div>
+
+<script type="text/javascript">
+    url = Cookies.get('packurl');
+    if (url !== null) {
+        getCardList(url);
+    } else {
+        location.href = '/index.html';
+    }
+</script>
+</body>
+</html>

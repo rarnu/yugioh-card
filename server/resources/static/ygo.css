@@ -1,0 +1,460 @@
+body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#title {
+    width: 40%;
+    height: 200px;
+    min-width: 150px;
+    background-color: black;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#title #logo {
+    margin-top: 36px;
+    width: 96px;
+    height: 96px;
+}
+
+#title #text {
+    font-size: 1.5em;
+    color: white;
+    height: 32px;
+}
+
+#searchbar {
+    padding-top: 16px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: center;
+}
+
+#limitbar {
+    padding-top: 16px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: center;
+}
+
+.btnlimit {
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1em;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-right: 16px;
+}
+
+.line {
+    padding-top: 32px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    height: 1px;
+    border-bottom: 1px solid lightgray;
+}
+
+.blank {
+    padding-top: 32px;
+}
+
+#subtitle {
+    width: 40%;
+    height: 30px;
+    min-width: 150px;
+    background-color: black;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#subtitle #backlink {
+    width: 20%;
+    min-width: 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    padding-left: 4px;
+}
+
+#subtitle #title {
+    width: 80%;
+    min-width: 120px;
+    height: 30px;
+    text-align: center;
+    padding-top: 2px;
+    color: white;
+    font-size: 1em;
+}
+
+#cardnavbar {
+    width: 40%;
+    min-width: 150px;
+    height: 48px;
+    margin: auto;
+    border-bottom: 1px solid lightgray;
+    padding: 4px 4px 4px 4px;
+}
+
+#cardnavbar #first {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    float: left;
+}
+
+#cardnavbar #prior {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    float: left;
+}
+
+#cardnavbar #last {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    float: right;
+}
+
+#cardnavbar #next {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    float: right;
+}
+
+#cardnavbar #pages {
+    height: 100%;
+    padding-top: 6px;
+    display: inline-block;
+}
+
+#cardlist {
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+}
+
+#cardlist .searchitem {
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid lightgray;
+}
+
+#cardlist .searchitem .texts {
+    float: left;
+    padding-left: 4px;
+    text-align: left;
+}
+
+#cardlist .searchitem .image {
+    height: 92px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    float: right;
+}
+
+.limititem {
+    width: 100%;
+    height: 36px;
+    float: left;
+    border-bottom: 1px solid lightgray;
+}
+
+.limititem .card {
+    margin-top: 4px;
+    margin-left: 4px;
+    width: 20px;
+    height: 28px;
+    float: left;
+    border: 1px solid lightgray;
+}
+
+.limititem .text {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 4px;
+    float: left;
+}
+
+.limititem .limit-ban {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: red;
+    float: right;
+    margin-right: 4px;
+}
+
+.limititem .limit-l1 {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: orange;
+    float: right;
+    margin-right: 4px;
+}
+
+.limititem .limit-l2 {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: lime;
+    float: right;
+    margin-right: 4px;
+}
+
+#carddetail {
+    margin: auto;
+    height: auto;
+    padding-top: 16px;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+}
+
+#carddetail .detailrow {
+    width: 100%;
+    height: 30px;
+
+}
+
+#carddetail .detailrow .name {
+    width: 30%;
+    float: left;
+    height: 30px;
+}
+
+#carddetail .detailrow .value {
+    float: left;
+    height: 30px;
+}
+
+#carddetail .effectrow {
+    width: 100%;
+    border: none;
+}
+
+#carddetail .effectrow .effectname {
+    width: 30%;
+    vertical-align: top;
+}
+
+#carddetail .effectrow .effectvalue {
+    width: 70%;
+    vertical-align: top;
+}
+
+#cardadjust {
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+}
+
+#cardwiki {
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+}
+
+
+#cardpic {
+    width: 280px;
+    height: 410px;
+    resize: both;
+}
+
+#packs {
+    width: 40%;
+    min-width: 150px;
+    margin: auto;
+}
+
+#packs #seasons {
+    width: 20%;
+    float: left;
+    text-align: left;
+    padding-left: 2px;
+}
+
+#packs #packlist {
+    width: 80%;
+    border-left: 1px solid lightgray;
+    float: left;
+    text-align: left;
+    padding-left: 2px;
+}
+
+#packs #seasons .seasonitem {
+    border-bottom: 1px solid lightgray;
+    height: 40px;
+    padding-top: 6px;
+}
+
+#packs #packlist .packitem {
+    border-bottom: 1px solid lightgray;
+    height: 40px;
+    padding-top: 8px;
+    font-size: 0.8em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#adv {
+    width: 100%;
+    text-align: left;
+}
+
+.advcontent {
+    width: 100%;
+}
+
+.advrow {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.advname {
+    float: left;
+    width: 25%;
+}
+
+.advcardtype {
+    float: left;
+    margin-right: 32px;
+}
+
+.adveffect {
+    width: 75%;
+    height: 30px;
+    border: none;
+    outline: none;
+}
+
+.advline {
+    width: 100%;
+    margin-top: 8px;
+    height: 1px;
+    background-color: lightgray;
+}
+
+.advrowcenter {
+    width: 100%;
+    text-align: center;
+}
+
+.advoptionrow {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 8px;
+    text-align: center;
+    align-content: center;
+}
+
+.advoption {
+    float: left;
+    width: 14%;
+    text-align: center;
+}
+
+.advlink {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.linkitem {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    vert-align: middle;
+    text-align: center;
+}
+
+.tablelink {
+    width: 120px;
+    height: 120px;
+    margin-left: 35%;
+    border: none;
+}
+
+.hottitle {
+    padding-top: 16px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+    color: lightgray;
+}
+
+#hotwords {
+    padding-top: 16px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+    height: auto;
+}
+
+#hotwords .item {
+    width: 20%;
+    float: left;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+#hotcards {
+    padding-top: 16px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+    height: auto;
+}
+
+#hotcards .item {
+    width: 100%;
+    margin-bottom: 4px;
+    text-align: left;
+    padding-left: 16px;
+}
+
+#hotpacks {
+    padding-top: 16px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+    height: auto;
+}
+
+#hotpacks .item {
+    width: 100%;
+    margin-bottom: 4px;
+    text-align: left;
+    padding-left: 16px;
+}

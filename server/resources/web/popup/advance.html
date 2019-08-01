@@ -1,0 +1,477 @@
+<script type="text/javascript">
+    let cardtype = 0;
+    let selectedMagicType = [];
+    let selectedTrapType = [];
+    let selectedAttrs = [];
+    let selectedSubType = [];
+    let selectedRace = [];
+    let selectedLinkArrow = [];
+    let effect = '';
+    let atk = '';
+    let def = '';
+    let level = '';
+    let scale = '';
+    let link =  '';
+
+    function makeCardTypeUI() {
+        let str = '<div class="advname">卡片种类</div>';
+        str += `<div class="advcardtype" style="color: ${cardtype === 0 ? '#007AFF' : '#7F7F7F'}" onclick="cardtypeClicked(0);">怪兽</div>`;
+        str += `<div class="advcardtype" style="color: ${cardtype === 1 ? '#007AFF' : '#7F7F7F'}" onclick="cardtypeClicked(1);">魔法</div>`;
+        str += `<div class="advcardtype" style="color: ${cardtype === 2 ? '#007AFF' : '#7F7F7F'}" onclick="cardtypeClicked(2);">陷阱</div>`;
+        $('#a-cardtype')[0].innerHTML = str;
+    }
+
+    function magicTypeClicked(i) {
+        let idx = selectedMagicType.indexOf(i);
+        if (idx === -1) {
+            selectedMagicType.push(i);
+        } else {
+            selectedMagicType.splice(idx, 1);
+        }
+        makeMagicUI();
+    }
+
+    function trapTypeClicked(i) {
+        let idx = selectedTrapType.indexOf(i);
+        if (idx === -1) {
+            selectedTrapType.push(i);
+        } else {
+            selectedTrapType.splice(idx, 1);
+        }
+        makeTrapUI();
+    }
+    
+    function makeMagicUI() {
+        let str = '<div class="advrow">';
+        str += '<div class="advname">魔法种类</div>';
+        str += '</div><br />';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 0; i < magicType.length; i++) {
+            str += `<div class="advoption" style="color: ${selectedMagicType.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="magicTypeClicked(${i});">${magicType[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div>';
+        $('#a-content')[0].innerHTML = str;
+    }
+    
+    function makeTrapUI() {
+        let str = '<div class="advrow">';
+        str += '<div class="advname">陷阱种类</div>';
+        str += '</div><br />';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 0; i < trapType.length; i++) {
+            str += `<div class="advoption" style="color: ${selectedTrapType.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="trapTypeClicked(${i});">${trapType[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div>';
+        $('#a-content')[0].innerHTML = str;
+    }
+
+    function monsterAttrClicked(i) {
+        let idx = selectedAttrs.indexOf(i);
+        if (idx === -1) {
+            selectedAttrs.push(i);
+        } else {
+            selectedAttrs.splice(idx, 1);
+        }
+        makeMonsterUI();
+    }
+
+    function monsterTypeClicked(i) {
+        let idx = selectedSubType.indexOf(i);
+        if (idx === -1) {
+            selectedSubType.push(i);
+        } else {
+            selectedSubType.splice(idx, 1);
+        }
+        makeMonsterUI();
+    }
+
+    function monsterRaceClicked(i) {
+        let idx = selectedRace.indexOf(i);
+        if (idx === -1) {
+            selectedRace.push(i);
+        } else {
+            selectedRace.splice(idx, 1);
+        }
+        makeMonsterUI();
+    }
+
+    function levelChanged() {
+        level = $('#edtLevel')[0].value;
+    }
+
+    function scaleChanged() {
+        scale = $('#edtScale')[0].value;
+    }
+
+    function atkChanged() {
+        atk = $('#edtAtk')[0].value;
+    }
+
+    function defChanged() {
+        def = $('#edtDef')[0].value;
+    }
+
+    function linkChanged() {
+        link = $('#edtLink')[0].value;
+    }
+
+    function effectChanged() {
+        effect = $('#edtEffect')[0].value;
+    }
+
+    function makeMonsterUI() {
+        // attr
+        let str = '<div class="advrow">';
+        str += '<div class="advname">怪兽属性</div>';
+        str += '</div><br />';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 0; i < monsterAttr.length; i++) {
+            str += `<div class="advoption" style="color: ${selectedAttrs.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterAttrClicked(${i});">${monsterAttr[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+        // subtype
+        str += '<div class="advrow">';
+        str += '<div class="advname">怪兽种类</div>';
+        str += '</div><br />';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 0; i < 7; i++) {
+            str += `<div class="advoption" style="color: ${selectedSubType.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterTypeClicked(${i});">${monsterType[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 7; i < 14; i++) {
+            str += `<div class="advoption" style="color: ${selectedSubType.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterTypeClicked(${i});">${monsterType[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 14; i < 15; i++) {
+            str += `<div class="advoption" style="color: ${selectedSubType.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterTypeClicked(${i});">${monsterType[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+
+        // race
+        str += '<div class="advrow">';
+        str += '<div class="advname">怪兽种族</div>';
+        str += '</div><br />';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 0; i < 7; i++) {
+            str += `<div class="advoption" style="color: ${selectedRace.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterRaceClicked(${i});">${monsterRace[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 7; i < 14; i++) {
+            str += `<div class="advoption" style="color: ${selectedRace.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterRaceClicked(${i});">${monsterRace[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 14; i < 21; i++) {
+            str += `<div class="advoption" style="color: ${selectedRace.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterRaceClicked(${i});">${monsterRace[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+        str += '<div class="advrowcenter">';
+        str += '<div class="advoptionrow">';
+        for (let i = 21; i < 25; i++) {
+            str += `<div class="advoption" style="color: ${selectedRace.indexOf(i) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="monsterRaceClicked(${i});">${monsterRace[i]}</div>`;
+        }
+        str += '</div>';
+        str += '</div><br/>';
+
+        // inputs
+        str += '<div class="advrow">';
+        str += '<div class="advname">星数阶级</div>';
+        str += `<div><input id="edtLevel" class="adveffect" placeholder="可以是范围，如 1-4" value="${level}" onchange="levelChanged();"></div>`;
+        str += '</div>';
+        str += '<div class="advline"></div>';
+
+        str += '<div class="advrow">';
+        str += '<div class="advname">灵摆刻度</div>';
+        str += `<div><input id="edtScale" class="adveffect" placeholder="可以是范围，如 1-4" value="${scale}" onchange="scaleChanged();"></div>`;
+        str += '</div>';
+        str += '<div class="advline"></div>';
+
+        str += '<div class="advrow">';
+        str += '<div class="advname">攻击力</div>';
+        str += `<div><input id="edtAtk" class="adveffect" placeholder="可以是范围，如 1500-2000" value="${atk}" onchange="atkChanged();"></div>`;
+        str += '</div>';
+        str += '<div class="advline"></div>';
+
+        str += '<div class="advrow">';
+        str += '<div class="advname">守备力</div>';
+        str += `<div><input id="edtDef" class="adveffect" placeholder="可以是范围，如 1500-2000" value="${def}" onchange="defChanged();"></div>`;
+        str += '</div>';
+        str += '<div class="advline"></div>';
+
+        str += '<div class="advrow">';
+        str += '<div class="advname">连接值</div>';
+        str += `<div><input id="edtLink" class="adveffect" placeholder="可以是范围，如 1-3" value="${link}" onchange="linkChanged();"></div>`;
+        str += '</div>';
+        str += '<div class="advline"></div>';
+
+        // link arrow
+        str += '<div class="advrow">';
+        str += '<div class="advname">连接方向</div>';
+        str += '</div><br />';
+        str += '<div class="advlink">';
+        str += makeLinkArrow();
+        str += '</div>';
+
+        $('#a-content')[0].innerHTML = str;
+    }
+
+    function linkArrowClicked(i) {
+        let idx = selectedLinkArrow.indexOf(i);
+        if (idx === -1) {
+            selectedLinkArrow.push(i);
+        } else {
+            selectedLinkArrow.splice(idx, 1);
+        }
+        makeMonsterUI();
+    }
+
+    function makeLinkArrow() {
+        let str = '<table class="tablelink"><tr>';
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(7) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(7);">↖</td>`;
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(8) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(8);">↑</td>`;
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(9) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(9);">↗</td>`;
+        str += '</tr><tr>'
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(4) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(4);">←</td>`;
+        str += `<td class="linkitem"></td>`;
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(6) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(6);">→</td>`;
+        str += '</tr><tr>';
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(1) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(1);">↙</td>`;
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(2) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(2);">↓</td>`;
+        str += `<td class="linkitem" style="color: ${selectedLinkArrow.indexOf(3) !== -1 ? '#007AFF' : '#7F7F7F'}" onclick="linkArrowClicked(3);">↘</td>`;
+        str += '</tr></table>';
+        return str;
+    }
+    
+    function cardtypeClicked(c) {
+        cardtype = c;
+        makeCardTypeUI();
+        if (cardtype === 1) {
+            makeMagicUI();
+        } else if (cardtype === 2) {
+            makeTrapUI();
+        } else {
+            makeMonsterUI();
+        }
+    }
+
+
+    function parseCardType() {
+        if (cardtype === 1) {
+            return '魔法';
+        } else if (cardtype === 2) {
+            return '陷阱';
+        } else {
+            return '怪兽';
+        }
+    }
+
+    function buildMagicCardType() {
+        let k = '';
+        if (selectedMagicType.indexOf(0) !== -1) { k += '通常,'; }
+        if (selectedMagicType.indexOf(1) !== -1) { k += '装备,'; }
+        if (selectedMagicType.indexOf(2) !== -1) { k += '速攻,'; }
+        if (selectedMagicType.indexOf(3) !== -1) { k += '永续,'; }
+        if (selectedMagicType.indexOf(4) !== -1) { k += '场地,'; }
+        if (selectedMagicType.indexOf(5) !== -1) { k += '仪式,'; }
+        k = k.replace(/,$/gi, '');
+        return k;
+    }
+
+    function buildTrapCardType() {
+        let k = '';
+        if (selectedTrapType.indexOf(0) !== -1) { k += '通常,'; }
+        if (selectedTrapType.indexOf(1) !== -1) { k += '永续,'; }
+        if (selectedTrapType.indexOf(2) !== -1) { k += '反击,'; }
+        k = k.replace(/,$/gi, '');
+        return k;
+    }
+
+    function buildMonsterCardType() {
+        let k = '';
+        if (selectedSubType.indexOf(0) !== -1) { k += '通常,'; }
+        if (selectedSubType.indexOf(1) !== -1) { k += '效果,'; }
+        if (selectedSubType.indexOf(2) !== -1) { k += '仪式,'; }
+        if (selectedSubType.indexOf(3) !== -1) { k += '融合,'; }
+        if (selectedSubType.indexOf(4) !== -1) { k += '同调,'; }
+        if (selectedSubType.indexOf(5) !== -1) { k += 'XYZ,'; }
+        if (selectedSubType.indexOf(6) !== -1) { k += '卡通,'; }
+        if (selectedSubType.indexOf(7) !== -1) { k += '同盟,'; }
+        if (selectedSubType.indexOf(8) !== -1) { k += '灵魂,'; }
+        if (selectedSubType.indexOf(9) !== -1) { k += '调整,'; }
+        if (selectedSubType.indexOf(10) !== -1) { k += '二重,'; }
+        if (selectedSubType.indexOf(11) !== -1) { k += '灵摆,'; }
+        if (selectedSubType.indexOf(12) !== -1) { k += '反转,'; }
+        if (selectedSubType.indexOf(13) !== -1) { k += '特殊召唤,'; }
+        if (selectedSubType.indexOf(14) !== -1) { k += '连接,'; }
+        k = k.replace(/,$/gi, '');
+        return k;
+    }
+
+    function buildMonsterRace() {
+        let k = '';
+        if (selectedRace.indexOf(0) !== -1) { k+= '水,'; }
+        if (selectedRace.indexOf(1) !== -1) { k+= '兽,'; }
+        if (selectedRace.indexOf(2) !== -1) { k+= '兽战士,'; }
+        if (selectedRace.indexOf(3) !== -1) { k+= '创造神,'; }
+        if (selectedRace.indexOf(4) !== -1) { k+= '恐龙,'; }
+        if (selectedRace.indexOf(5) !== -1) { k+= '幻神兽,'; }
+        if (selectedRace.indexOf(6) !== -1) { k+= '龙,'; }
+        if (selectedRace.indexOf(7) !== -1) { k+= '天使,'; }
+        if (selectedRace.indexOf(8) !== -1) { k+= '恶魔,'; }
+        if (selectedRace.indexOf(9) !== -1) { k+= '鱼,'; }
+        if (selectedRace.indexOf(10) !== -1) { k+= '昆虫,'; }
+        if (selectedRace.indexOf(11) !== -1) { k+= '机械,'; }
+        if (selectedRace.indexOf(12) !== -1) { k+= '植物,'; }
+        if (selectedRace.indexOf(13) !== -1) { k+= '念动力,'; }
+        if (selectedRace.indexOf(14) !== -1) { k+= '炎,'; }
+        if (selectedRace.indexOf(15) !== -1) { k+= '爬虫类,'; }
+        if (selectedRace.indexOf(16) !== -1) { k+= '岩石,'; }
+        if (selectedRace.indexOf(17) !== -1) { k+= '海龙,'; }
+        if (selectedRace.indexOf(18) !== -1) { k+= '魔法师,'; }
+        if (selectedRace.indexOf(19) !== -1) { k+= '雷,'; }
+        if (selectedRace.indexOf(20) !== -1) { k+= '战士,'; }
+        if (selectedRace.indexOf(21) !== -1) { k+= '鸟兽,'; }
+        if (selectedRace.indexOf(22) !== -1) { k+= '不死,'; }
+        if (selectedRace.indexOf(23) !== -1) { k+= '幻龙,'; }
+        if (selectedRace.indexOf(24) !== -1) { k+= '电子界,'; }
+        k = k.replace(/,$/gi, '');
+        return k;
+    }
+
+    function buildMonsterElement() {
+        let k = '';
+        if (selectedAttrs.indexOf(0) !== -1) { k += '光,'; }
+        if (selectedAttrs.indexOf(1) !== -1) { k += '暗,'; }
+        if (selectedAttrs.indexOf(2) !== -1) { k += '炎,'; }
+        if (selectedAttrs.indexOf(3) !== -1) { k += '水,'; }
+        if (selectedAttrs.indexOf(4) !== -1) { k += '地,'; }
+        if (selectedAttrs.indexOf(5) !== -1) { k += '风,'; }
+        if (selectedAttrs.indexOf(6) !== -1) { k += '神,'; }
+        k = k.replace(/,$/gi, '');
+        return k;
+    }
+
+    function buildMonsterLinkArrow() {
+        let k = '';
+        if (selectedLinkArrow.indexOf(1) !== -1) { k += '1,'; }
+        if (selectedLinkArrow.indexOf(2) !== -1) { k += '2,'; }
+        if (selectedLinkArrow.indexOf(3) !== -1) { k += '3,'; }
+        if (selectedLinkArrow.indexOf(4) !== -1) { k += '4,'; }
+        if (selectedLinkArrow.indexOf(6) !== -1) { k += '6,'; }
+        if (selectedLinkArrow.indexOf(7) !== -1) { k += '7,'; }
+        if (selectedLinkArrow.indexOf(8) !== -1) { k += '8,'; }
+        if (selectedLinkArrow.indexOf(9) !== -1) { k += '9,'; }
+        k = k.replace(/,$/gi, '');
+        return k;
+    }
+
+    function doAdvancedSearch() {
+        let key = ` +(类:${parseCardType()})`;
+        if (effect !== '') {
+            key += ` +(效果:${effect})`;
+        }
+        if (cardtype === 1) {
+            let ct2 = buildMagicCardType();
+            if (ct2 !== '') {
+                key += ` +(类:${ct2})`;
+            }
+        } else if (cardtype === 2) {
+            let ct2 = buildTrapCardType();
+            if (ct2 !== '') {
+                key += ` +(类:${ct2})`;
+            }
+        } else {
+            if (atk !== '') {
+                key += ` +(atk:${atk})`;
+            }
+            if (def !== '') {
+                key += ` +(def:${def})`;
+            }
+            if (level !== '') {
+                key += ` +(level:${level})`;
+            }
+            if (scale !== '') {
+                key += ` +(刻度:${scale})`;
+            }
+            if (link !== '') {
+                key += ` +(link:${link})`;
+            }
+            let ct2 = buildMonsterCardType();
+            if (ct2 !== '') {
+                key += ` +(类:${ct2})`;
+            }
+            let race = buildMonsterRace();
+            if (race !== '') {
+                key += ` +(族:${race})`;
+            }
+            let ele = buildMonsterElement();
+            if (ele !== '') {
+                key += ` +(属性:${ele})`;
+            }
+            let la = buildMonsterLinkArrow();
+            if (la !== '') {
+                key += ` +(linkArrow:${la})`;
+            }
+        }
+
+        Cookies.set('keyword', key);
+        location.href = '/cardlist.html';
+
+    }
+
+</script>
+
+<div id="advdialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Advanced Search</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="adv">
+                    <div id="a-cardtype" class="advrow"></div><br/>
+                    <div class="advrow">
+                        <div class="advname">卡片效果</div>
+                        <div><input id="edtEffect" class="adveffect" placeholder="输入要查询的效果关键字" onchange="effectChanged();"></div>
+                    </div>
+                    <div class="advline"></div>
+                    <div id="a-content" class="advcontent">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="doAdvancedSearch();">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    makeCardTypeUI();
+    makeMonsterUI();
+</script>

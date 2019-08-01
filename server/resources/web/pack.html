@@ -1,0 +1,98 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/ygo.css">
+    <script src="../static/js/jquery-2.0.0.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/js.cookie.min.js"></script>
+    <script src="../static/ygo.js"></script>
+
+    <script type="text/javascript">
+
+        let packs = [];
+        let seasondata = [];
+        let currentPack = [];
+        let currentSeason = '';
+
+        function getPacks() {
+            $.ajax({
+                url: '/packlist',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.result === 0) {
+                        packs = response.data;
+                        seasondata = [];
+                        packs.forEach(item => {
+                            if (currentSeason === '') {
+                                currentSeason = item.season;
+                            }
+                            if (seasondata.indexOf(item.season) === -1) {
+                                seasondata.push(item.season);
+                            }
+                        });
+                        getCurrentSeasonPacks();
+                        makeSeasonUI();
+                        makePacksUI();
+                    }
+                }
+            });
+        }
+
+        function packClicked(s) {
+            Cookies.set('packurl', s);
+            location.href = '/packcards.html';
+        }
+
+        function seasonClicked(s) {
+            currentSeason = s;
+            getCurrentSeasonPacks();
+            makeSeasonUI();
+            makePacksUI();
+        }
+
+        function makeSeasonUI() {
+            let str = '';
+            seasondata.forEach(item => {
+                str += `<div class="seasonitem" style="color: ${item === currentSeason ? "#000000": "#7F7F7F"}" onclick="seasonClicked('${item}');">${item}</div>`;
+            });
+            $('#seasons')[0].innerHTML = str;
+        }
+
+        function makePacksUI() {
+            let str = '';
+            currentPack.forEach(item => {
+                str += `<div class="packitem" onclick="packClicked('${item.url}');">${item.name}</div>`;
+            });
+            $('#packlist')[0].innerHTML = str;
+        }
+
+        function getCurrentSeasonPacks() {
+            currentPack = [];
+            packs.forEach(item => {
+                if (item.season === currentSeason) {
+                    currentPack.push(item);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<div id="subtitle">
+    <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
+    <span id="title">卡包列表</span>
+</div>
+
+<div id="packs">
+    <div id="seasons"></div>
+    <div id="packlist"></div>
+</div>
+
+<script type="text/javascript">
+    getPacks();
+</script>
+</body>
+</html>
