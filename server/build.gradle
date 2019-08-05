@@ -14,7 +14,7 @@ apply plugin: 'kotlin'
 apply plugin: 'application'
 
 group 'server'
-version '1.0.0'
+version '1.0.2'
 mainClassName = "io.ktor.server.tomcat.EngineMain"
 
 sourceSets {
@@ -39,7 +39,7 @@ dependencies {
     compile "io.ktor:ktor-server-host-common:$ktor_version"
     compile "io.ktor:ktor-server-sessions:$ktor_version"
     compile "mysql:mysql-connector-java:8.0.15"
-    compile "com.rarnu:ktor-jvm:0.2.0"
+    compile "com.rarnu:ktor-jvm:0.3.0"
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
 }
 

@@ -19,7 +19,7 @@
                     $.each(response.cards, function(idx, item) {
                         str += `<div class="searchitem" onclick="cardClicked('${item.hash_id}');">`;
                         str += `<div class="texts">中文名称: ${item.name}<br>日文名称: ${item.name_ja}<br>英文名称: ${item.name_en}<br>卡片种类: ${item.type_st}</div>`;
-                        str += `<img class="image" src="${item.img_url}"/>`;
+                        str += `<img class="image" src="${item.img_url}"  onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';"/>`;
                         str += '</div>';
                     });
                     $('#cardlist')[0].innerHTML = str;

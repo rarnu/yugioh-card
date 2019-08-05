@@ -49,7 +49,7 @@
                         imageid = data.imageid;
                     }
                     $('#carddetail')[0].innerHTML = str;
-                    $('#cardimage')[0].innerHTML = `<img id="cardpic" src="http://ocg.resource.m2v.cn/${imageid}.jpg">`;
+                    $('#cardimage')[0].innerHTML = `<img id="cardpic" src="http://ocg.resource.m2v.cn/${imageid}.jpg" onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';">`;
                 }
             });
 
