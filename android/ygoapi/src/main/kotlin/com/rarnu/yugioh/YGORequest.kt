@@ -1,7 +1,6 @@
 package com.rarnu.yugioh
 
 import com.rarnu.common.blockingHttp
-import com.rarnu.common.blockingHttpGet
 
 object YGORequest {
 

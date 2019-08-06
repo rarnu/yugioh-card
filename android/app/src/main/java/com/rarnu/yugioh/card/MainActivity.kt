@@ -5,12 +5,15 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
 import com.rarnu.android.*
+import com.rarnu.common.coroutine
+import com.rarnu.common.http
 import com.rarnu.yugioh.HotCard
 import com.rarnu.yugioh.HotPack
 import com.rarnu.yugioh.YGOData

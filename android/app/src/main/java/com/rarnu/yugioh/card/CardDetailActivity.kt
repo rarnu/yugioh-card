@@ -88,9 +88,11 @@ class CardDetailActivity : BackActivity() {
                     localFile = localImg
                     progress { state, _, _, _ ->
                         if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {
-                            if (File(localFile).exists()) {
-                                runOnMainThread {
+                            runOnMainThread {
+                                if (File(localFile).exists()) {
                                     ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localFile))
+                                } else {
+                                    ivCardImg.setImageResource(R.drawable.img0)
                                 }
                             }
                         }

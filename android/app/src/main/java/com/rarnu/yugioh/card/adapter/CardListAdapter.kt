@@ -33,9 +33,11 @@ class CardListAdapter(ctx: Context, list: MutableList<CardInfo>) : BaseAdapter<C
                     localFile = localImg
                     progress { state, _, _, _ ->
                         if (state == DownloadState.WHAT_DOWNLOAD_FINISH) {
-                            if (File(localFile).exists()) {
-                                runOnMainThread {
+                            runOnMainThread {
+                                if (File(localFile).exists()) {
                                     holder.ivCardImg.setImageBitmap(BitmapFactory.decodeFile(localFile))
+                                } else {
+                                    holder.ivCardImg.setImageResource(R.drawable.img0)
                                 }
                             }
                         }
