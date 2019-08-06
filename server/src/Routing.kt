@@ -86,6 +86,7 @@ fun Routing.serverRouting() {
     }
 
     get("/hotest") {
+
         Request2.hotest(application) {
             call.respondText { it }
         }

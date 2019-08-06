@@ -3,6 +3,7 @@ package com.rarnu.ygo.server.card
 import com.rarnu.common.http
 import com.rarnu.ygo.server.database.*
 import io.ktor.application.Application
+import kotlin.collections.set
 
 const val BASE_URL = "https://www.ourocg.cn"
 const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
@@ -90,6 +91,7 @@ object Request2 {
 
     private suspend fun req(app: Application, u: String): String? {
         val startTime = System.currentTimeMillis()
+
         return http {
             url = u
             onSuccess { _, _, _ ->
@@ -101,6 +103,7 @@ object Request2 {
                 app.reqlog.log(u, 1, endTime - startTime, "$it")
             }
         }
+
     }
 
 }
