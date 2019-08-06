@@ -73,8 +73,9 @@ class _PackDetailState extends State<PackDetailPage> {
                                   expend(sized(Text('卡片类型:  ' + detail[index]['type_st']), height: 20)),
                                 ],
                               )),
-                              Image.network(
-                                  detail[index]['img_url']
+                              FadeInImage.assetNetwork(
+                                  placeholder: 'assets/img0.png',
+                                  image: detail[index]['img_url']
                               ),
                             ],
                           ),

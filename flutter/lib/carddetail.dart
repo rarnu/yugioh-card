@@ -225,7 +225,10 @@ class _CardDetailState extends State<CardDetailPage> {
             ),
             Divider(),
             sizedw(Column(children: <Widget>[
-              Image.network('http://ocg.resource.m2v.cn/${parseImage(data['imageid'])}.jpg'),
+              FadeInImage.assetNetwork(
+                  placeholder: 'assets/img0.png',
+                  image: 'http://ocg.resource.m2v.cn/${parseImage(data['imageid'])}.jpg'
+              ),
             ],)),
             Divider(),
             sizedw(Column(children: <Widget>[

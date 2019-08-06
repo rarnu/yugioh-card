@@ -76,8 +76,9 @@ class _CardListState extends State<CardListPage> {
                                   expend(sized(Text('卡片类型:  ' + entries[index]['type_st']), height: 20)),
                                 ],
                               )),
-                              Image.network(
-                                  entries[index]['img_url']
+                              FadeInImage.assetNetwork(
+                                  placeholder: 'assets/img0.png',
+                                  image: entries[index]['img_url']
                               ),
                             ],
                           ),
