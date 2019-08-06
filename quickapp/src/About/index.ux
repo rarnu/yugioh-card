@@ -1,6 +1,6 @@
 <template>
   <div class="demo-page">
-    <image id="icon" src="{{icon}}"></image>
+    <image id="icon" src="/Common/logo.png"></image>
     <text id="name">{{name}}</text>
 
     <div id="tags">

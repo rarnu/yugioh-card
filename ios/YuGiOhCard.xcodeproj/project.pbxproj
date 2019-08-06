@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		18BFA818D5169E1E681B3591 /* Pods_YuGiOhCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */; };
+		9207026E22F9C43100DB7B9F /* img0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9207026D22F9C43100DB7B9F /* img0.png */; };
+		9207027022F9CA4B00DB7B9F /* img0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9207026F22F9CA4B00DB7B9F /* img0.png */; };
 		9207E76120E67E8F00735721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207E76020E67E8F00735721 /* AppDelegate.swift */; };
 		9207E76320E67E8F00735721 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207E76220E67E8F00735721 /* MainController.swift */; };
 		9207E76620E67E8F00735721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9207E76420E67E8F00735721 /* Main.storyboard */; };
@@ -114,6 +116,8 @@
 
 /* Begin PBXFileReference section */
 		67B3E122E16125385D64FBF3 /* Pods_YuGiOhCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YuGiOhCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9207026D22F9C43100DB7B9F /* img0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img0.png; sourceTree = "<group>"; };
+		9207026F22F9CA4B00DB7B9F /* img0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img0.png; sourceTree = "<group>"; };
 		9207E75D20E67E8F00735721 /* YuGiOhCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuGiOhCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9207E76020E67E8F00735721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9207E76220E67E8F00735721 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 		9207E75F20E67E8F00735721 /* YuGiOhCard */ = {
 			isa = PBXGroup;
 			children = (
+				9207026D22F9C43100DB7B9F /* img0.png */,
 				9214BEC020F66746001F65E4 /* Extension */,
 				92E7F6F520EB6BD00078574B /* Cell */,
 				9207E76020E67E8F00735721 /* AppDelegate.swift */,
@@ -264,6 +269,7 @@
 		92C24E8D220C4EE9007F16EF /* YuGiOhWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9207026F22F9CA4B00DB7B9F /* img0.png */,
 				92C24E8E220C4EE9007F16EF /* InterfaceController.swift */,
 				92C24E90220C4EE9007F16EF /* ExtensionDelegate.swift */,
 				92C24E94220C4EE9007F16EF /* Assets.xcassets */,
@@ -408,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9207026E22F9C43100DB7B9F /* img0.png in Resources */,
 				9207E76B20E67E9000735721 /* LaunchScreen.storyboard in Resources */,
 				9207E76820E67E9000735721 /* Assets.xcassets in Resources */,
 				9207E76620E67E8F00735721 /* Main.storyboard in Resources */,
@@ -427,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9207027022F9CA4B00DB7B9F /* img0.png in Resources */,
 				92C24E95220C4EE9007F16EF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

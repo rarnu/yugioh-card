@@ -64,15 +64,20 @@ class CardListCell: AdapterCell<CardInfo2> {
             tvCardEnname.text = "英文名称: \(item!.enname)"
             tvCardType.text = item!.cardtype
             // load image
-            let localfile = documentPath(true) + "\(item!.cardid)"
-            if (FileManager.default.fileExists(atPath: localfile)) {
-                ivCardImg.image = UIImage(contentsOfFile: localfile)
+            let localfile = File("\(item!.cardid)")
+            if (localfile.exists()) {
+                ivCardImg.image = UIImage(contentsOfFile: localfile.absolutePath)
             } else {
-                download(String(format: RES_URL, item!.cardid), localfile) { (state, _, _, _) in
+                download(String(format: RES_URL, item!.cardid), localfile.absolutePath) { (state, _, _, _) in
                     if (state == DownloadState.Complete) {
-                        if (FileManager.default.fileExists(atPath: localfile)) {
-                            mainThread {
-                                self.ivCardImg?.image = UIImage(contentsOfFile: localfile)
+                        if (localfile.exists() && localfile.readText().contains("<Error>")) {
+                            localfile.delete()
+                        }
+                        mainThread {
+                            if (localfile.exists()) {
+                                self.ivCardImg.image = UIImage(contentsOfFile: localfile.absolutePath)
+                            } else {
+                                self.ivCardImg.image = UIImage(contentsOfFile: Bundle.main.path(forResource: "img0", ofType: "png")!)
                             }
                         }
                     }

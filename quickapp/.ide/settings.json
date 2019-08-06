@@ -1,3 +1,4 @@
 {
-    "hap.extractHapTypes": false
+    "hap.extractHapTypes": false,
+    "hap-debugger.autoCompile": true
 }

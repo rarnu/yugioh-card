@@ -17,8 +17,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "didReceiveMemoryWarning()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,8 +34,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
             endingLineNumber = "94"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "CardListController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -51,8 +51,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "CardListController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -155,23 +155,38 @@
             endingLineNumber = "210"
             landmarkName = "loadImage(cardid:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B9056B59-5095-4F8A-AD94-4121D5946056"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YuGiOhCard/CardDetailController.swift"
-            timestampString = "571335618.675402"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "loadImage(cardid:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F3B7D202-71DA-410A-90A0-C814FFCDDA78 - 418f3225fccc5ffd"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YuGiOhCard.CardDetailController.(loadImage in _AF0FD4D44F59878092100C4EA28E4289)(cardid: Swift.Int) -&gt; ()"
+                  moduleName = "YuGiOhCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rarnu/code/github/yugioh-card/ios/YuGiOhCard/CardDetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "1193">
+               </Location>
+               <Location
+                  uuid = "F3B7D202-71DA-410A-90A0-C814FFCDDA78 - f943f3d92e458474"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (commonios.DownloadState, Swift.Int64, Swift.Int64, Swift.Optional&lt;Swift.String&gt;) -&gt; () in YuGiOhCard.CardDetailController.(loadImage in _AF0FD4D44F59878092100C4EA28E4289)(cardid: Swift.Int) -&gt; ()"
+                  moduleName = "YuGiOhCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rarnu/code/github/yugioh-card/ios/YuGiOhCard/CardDetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "200">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -189,40 +204,6 @@
             endingLineNumber = "209"
             landmarkName = "loadImage(cardid:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "119CD46F-6DC0-4EF8-A873-DFFD9D549EE5 - bc7517c70d8a3e0a"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "YuGiOhCard.CardDetailController.(loadImage in _AF0FD4D44F59878092100C4EA28E4289)(cardid: Swift.String) -&gt; ()"
-                  moduleName = "YuGiOhCard"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rarnu/Code/github/yugioh-card/ios/YuGiOhCard/YuGiOhCard/CardDetailController.swift"
-                  timestampString = "552822344.180788"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205"
-                  offsetFromSymbolStart = "922">
-               </Location>
-               <Location
-                  uuid = "119CD46F-6DC0-4EF8-A873-DFFD9D549EE5 - 665af9bf1ebf1dc1"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (sfunctional.DownloadState, Swift.Int64, Swift.Int64, Swift.Optional&lt;Swift.String&gt;) -&gt; () in YuGiOhCard.CardDetailController.(loadImage in _AF0FD4D44F59878092100C4EA28E4289)(cardid: Swift.String) -&gt; ()"
-                  moduleName = "YuGiOhCard"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rarnu/Code/github/yugioh-card/ios/YuGiOhCard/YuGiOhCard/CardDetailController.swift"
-                  timestampString = "552822344.184315"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "206"
-                  endingLineNumber = "206"
-                  offsetFromSymbolStart = "107">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -574,23 +555,6 @@
             timestampString = "571335618.677093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "downloadImage(_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8DAD7EBD-E9C6-421E-BD0A-C616ECC4B813"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YuGiOhWatch Extension/CardDetailInterfaceController.swift"
-            timestampString = "571335618.677137"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
             landmarkName = "downloadImage(_:_:)"
@@ -622,6 +586,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/YGOCAPI.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -638,6 +603,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/YGOCAPI.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -654,6 +620,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/YGOCAPI.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -670,6 +637,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/YGOData2.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "312"
@@ -686,6 +654,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/YGORequest2.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -702,6 +671,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/YGOData2.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "316"
@@ -718,11 +688,236 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YGOAPI2/YGOData2.swift"
+            timestampString = "0"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "317"
             endingLineNumber = "317"
             landmarkName = "parseSearchResult(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "25A2C74A-75F9-43F8-A2D3-8F5CBF3218ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/Cell/CardListCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "setItem(item:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F59E1C2-C6AB-48F0-8D97-25296A431BBF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/Cell/CardListCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "setItem(item:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B01370D0-515C-4BE2-AA90-8AA7E0CD3560"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/Cell/CardListCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "setItem(item:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98CB32B4-5D42-488B-AEBA-A1A8F2D60766"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "loadImage(cardid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA6F7EC8-FF52-46D7-80FF-F083A2F70B86"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "loadImage(cardid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFF70112-01EF-4C7C-947A-129933613690"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/Cell/CardListCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "setItem(item:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "336C2864-7F91-4DA9-9D28-FAA41D3FA111"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "loadImage(cardid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E829030F-D2AF-408D-BCE6-9C88C778D804"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "loadImage(cardid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "937D881A-8363-4088-8259-1467632241C7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "loadImage(cardid:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "937D881A-8363-4088-8259-1467632241C7 - f943f3d92e458474"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (commonios.DownloadState, Swift.Int64, Swift.Int64, Swift.Optional&lt;Swift.String&gt;) -&gt; () in YuGiOhCard.CardDetailController.(loadImage in _AF0FD4D44F59878092100C4EA28E4289)(cardid: Swift.Int) -&gt; ()"
+                  moduleName = "YuGiOhCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rarnu/code/github/yugioh-card/ios/YuGiOhCard/CardDetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "1789">
+               </Location>
+               <Location
+                  uuid = "937D881A-8363-4088-8259-1467632241C7 - 5837aaa73889cc13"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (commonios.DownloadState, Swift.Int64, Swift.Int64, Swift.Optional&lt;Swift.String&gt;) -&gt; () in YuGiOhCard.CardDetailController.(loadImage in _AF0FD4D44F59878092100C4EA28E4289)(cardid: Swift.Int) -&gt; ()"
+                  moduleName = "YuGiOhCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rarnu/code/github/yugioh-card/ios/YuGiOhCard/CardDetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "221"
+                  endingLineNumber = "221"
+                  offsetFromSymbolStart = "95">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C2D4FF9-FE16-4953-AB71-D03F136DFB9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "loadImage(cardid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1DB9913D-8C8C-46A8-87CA-5CD02301C1D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "loadImage(cardid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3193D8D5-4E84-4A3B-909B-1F116A93E962"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YuGiOhCard/CardDetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "loadImage(cardid:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

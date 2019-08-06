@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14854.2" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
-        <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14640.1"/>
     </dependencies>
     <scenes>
         <!--YGOWatch-->
@@ -43,7 +40,7 @@
                         <label width="1" alignment="left" text="YGOLite for Watch" id="D9L-kh-Hba">
                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                         </label>
-                        <label width="1" alignment="left" text="version 1.0" id="mk5-3v-oq4">
+                        <label width="1" alignment="left" text="version 2.0" id="mk5-3v-oq4">
                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                         </label>
                         <label alignment="left" text="Open Source on Github" minimumScaleFactor="0.5" id="Nya-0p-3EN">
@@ -197,9 +194,13 @@
                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                         </label>
                         <imageView width="134" height="193" alignment="center" hidden="YES" contentMode="scaleAspectFit" id="2Ba-lJ-ctr"/>
+                        <label width="1" alignment="left" textAlignment="left" numberOfLines="1000" minimumScaleFactor="0.5" id="HUN-qV-6cy">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
                     </items>
                     <connections>
                         <outlet property="ivCardFace" destination="2Ba-lJ-ctr" id="kYE-gK-dyK"/>
+                        <outlet property="lblAdjust" destination="HUN-qV-6cy" id="a6U-fg-FUA"/>
                         <outlet property="lblCardType" destination="hxz-yo-sk9" id="r5b-qm-qPq"/>
                         <outlet property="lblEffect" destination="cK9-fb-AgI" id="fig-D8-i75"/>
                         <outlet property="lblLoading" destination="ZbZ-VG-H7h" id="EbO-ti-WF0"/>
@@ -249,4 +250,7 @@
             <point key="canvasLocation" x="716" y="561"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon" width="44" height="44"/>
+    </resources>
 </document>

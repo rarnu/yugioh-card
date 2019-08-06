@@ -23,6 +23,7 @@ class CardDetailInterfaceController: WKInterfaceController {
     @IBOutlet var lblMonsterLink: WKInterfaceLabel! // link / arrow
     @IBOutlet var lblEffect: WKInterfaceLabel!
     @IBOutlet var ivCardFace: WKInterfaceImage!
+    @IBOutlet var lblAdjust: WKInterfaceLabel!
     
     private var hashid = ""
     private var info: CardDetail2?
@@ -72,6 +73,7 @@ class CardDetailInterfaceController: WKInterfaceController {
             lblEffect.setText(info?.effect)
             lblLoadingImage.setHidden(false)
             queryCardImage()
+            lblAdjust.setText(info!.adjust)
         }
     }
     
@@ -92,18 +94,26 @@ class CardDetailInterfaceController: WKInterfaceController {
         let task = URLSession.shared.dataTask(with: req) { data, resp, err in
             self.lblLoadingImage.setHidden(true)
             if (err == nil && data != nil) {
-                (data! as NSData).write(toFile: localfile, atomically: true)
-                self.loadLocalImage(localfile)
-            } else if (err != nil) {
-                print("download image error => \(err!)")
+                let str = String(data: data!, encoding: .utf8)
+                if (str == nil) {
+                    (data! as NSData).write(toFile: localfile, atomically: true)
+                }
             }
+            self.loadLocalImage(localfile)
         }
         task.resume()
     }
     
     private func loadLocalImage(_ path: String) {
         do {
-            let imgData = try NSData(contentsOfFile: path) as Data
+            var imgData: Data!
+            if (FileManager.default.fileExists(atPath: path)) {
+                imgData = try NSData(contentsOfFile: path) as Data
+                ivCardFace.setImageData(imgData)
+            } else {
+                let img0 = Bundle.main.path(forResource: "img0", ofType: "png")!
+                imgData = try NSData(contentsOfFile: img0) as Data
+            }
             ivCardFace.setImageData(imgData)
             ivCardFace.setHidden(false)
         } catch {

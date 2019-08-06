@@ -203,15 +203,20 @@ class CardDetailController: UIViewController {
     }
     
     private func loadImage(cardid: Int) {
-        let localfile = documentPath(true) + "\(cardid)"
-        if (FileManager.default.fileExists(atPath: localfile)) {
-            self.ivCardImg.image = UIImage(contentsOfFile: localfile)
+        let localfile = File("\(cardid)")
+        if (localfile.exists()) {
+            self.ivCardImg.image = UIImage(contentsOfFile: localfile.absolutePath)
         } else {
-            download(String(format: RES_URL, cardid), localfile) { (state, _, _, _) in
+            download(String(format: RES_URL, cardid), localfile.absolutePath) { (state, _, _, _) in
                 if (state == DownloadState.Complete) {
-                    if (FileManager.default.fileExists(atPath: localfile)) {
-                        mainThread {
-                            self.ivCardImg.image = UIImage(contentsOfFile: localfile)
+                    if (localfile.exists() && localfile.readText().contains("<Error>")) {
+                        localfile.delete()
+                    }
+                    mainThread {
+                        if (localfile.exists()) {
+                            self.ivCardImg.image = UIImage(contentsOfFile: localfile.absolutePath)
+                        } else {
+                            self.ivCardImg.image = UIImage(contentsOfFile: Bundle.main.path(forResource: "img0", ofType: "png")!)
                         }
                     }
                 }
