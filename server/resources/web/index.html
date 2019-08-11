@@ -10,13 +10,16 @@
     <script src="../static/ygo.js"></script>
 
     <script type="text/javascript">
-        function search(e) {
+        function search() {
             let key = $('#etKeyword')[0].value;
             Cookies.set('keyword', key);
             location.href = '/cardlist.html';
         }
         function advanced() {
             $('#advdialog').modal('toggle');
+        }
+        function deck() {
+            location.href = "/deck.html";
         }
 
         function getHotest() {
@@ -86,6 +89,7 @@
         <div class="input-group-append">
             <span class="input-group-text" onclick='search()' >Go</span>
             <span class="input-group-text" onclick="advanced()">Adv</span>
+            <span class="input-group-text" onclick="deck()">Deck</span>
         </div>
     </div>
 </div>
@@ -109,6 +113,12 @@
 
 <script type="text/javascript">
     $("#advsearch").load("popup/advance.html");
+
+    $('#etKeyword').bind('keypress', function (event) {
+        if (event.keyCode === 13) {
+            search();
+        }
+    });
     getHotest();
 </script>
 </body>

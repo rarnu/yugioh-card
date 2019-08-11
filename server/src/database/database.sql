@@ -4,13 +4,14 @@
 
 create database YGOData character set utf8mb4;
 
+-- card
+
 create table Card(
     hash varchar(16) primary key,
     data LONGTEXT,
     adjust LONGTEXT,
     wiki LONGTEXT
 ) character set utf8mb4;
-
 
 create table CardLimit(
     timeinfo bigint,
@@ -26,6 +27,32 @@ create table CardPackDetail(
     url varchar(128) primary key ,
     info LONGTEXT
 ) character set utf8mb4;
+
+-- deck
+
+create table DeckTheme(
+    timeinfo bigint,
+    info LONGTEXT
+) character set utf8mb4;
+
+create table DeckCategory(
+    timeinfo bigint,
+    info LONGTEXT
+) character set utf8mb4;
+
+create table DeckInCategory(
+    hash varchar (128) primary key,
+    timeinfo bigint,
+    info LONGTEXT
+) character set utf8mb4;
+
+create table Deck(
+    code varchar(64) primary key,
+    timeinfo bigint,
+    info LONGTEXT
+) character set utf8mb4;
+
+-- log
 
 create table Log(
     id bigint primary key auto_increment,

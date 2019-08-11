@@ -10,14 +10,14 @@ import io.ktor.response.respondText
 import io.ktor.routing.Routing
 import io.ktor.routing.get
 
-fun Routing.serverRouting() {
+fun Routing.cardRouting() {
 
     get("/search") {
         val p = call.requestParameters()
         val key = p["key"] ?: ""
         val page = (p["page"] ?: "1").toInt()
         if (key == "") {
-            call.respondText { "{\"cards\":[],,\"meta\":{\"keyword\":\"\",\"count\":0,\"total_page\":0,\"cur_page\":1}}" }
+            call.respondText { "{\"cards\":[],\"meta\":{\"keyword\":\"\",\"count\":0,\"total_page\":0,\"cur_page\":1}}" }
         } else {
             Request2.search(application, key, page) { str ->
                 call.respondText { str }

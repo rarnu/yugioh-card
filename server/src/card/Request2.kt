@@ -1,18 +1,20 @@
 package com.rarnu.ygo.server.card
 
-import com.rarnu.common.http
-import com.rarnu.ygo.server.database.*
+import com.rarnu.ygo.server.database.cardTable
+import com.rarnu.ygo.server.database.limitTable
+import com.rarnu.ygo.server.database.packDetailTable
+import com.rarnu.ygo.server.database.packTable
+import com.rarnu.ygo.server.request.differentDaysByMillisecond
+import com.rarnu.ygo.server.request.req
 import io.ktor.application.Application
 import kotlin.collections.set
 
-const val BASE_URL = "https://www.ourocg.cn"
-const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
+private const val BASE_URL = "https://www.ourocg.cn"
+// private const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
 object Request2 {
     suspend fun search(app: Application, key: String, page: Int, callback: suspend (String) -> Unit) =
         callback((req(app, "$BASE_URL/search/$key/$page") ?: "").parse0())
-
-    private fun differentDaysByMillisecond(date1: Long, date2: Long) = (date2 - date1) / (1000 * 3600 * 24)
 
     suspend fun cardDetailWiki(app: Application, hashid: String, callback: suspend (String, String, String) -> Unit) {
 
@@ -88,22 +90,5 @@ object Request2 {
     }
 
     suspend fun hotest(app: Application, callback: suspend (String) -> Unit) = callback((req(app, BASE_URL) ?: "").parse6())
-
-    private suspend fun req(app: Application, u: String): String? {
-        val startTime = System.currentTimeMillis()
-
-        return http {
-            url = u
-            onSuccess { _, _, _ ->
-                val endTime = System.currentTimeMillis()
-                app.reqlog.log(u, 0, endTime - startTime, "")
-            }
-            onFail {
-                val endTime = System.currentTimeMillis()
-                app.reqlog.log(u, 1, endTime - startTime, "$it")
-            }
-        }
-
-    }
 
 }

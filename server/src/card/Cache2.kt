@@ -16,7 +16,10 @@ data class CardPack2(
     var text: String
 )
 
+
+
 val cacheMap = mutableMapOf<String, CardCache2>()
 val cacheLimit = CardLimit2(0, "")
 val cachePack = CardPack2(0, "")
 val cachePackDetail = mutableMapOf<String, String>()
+
