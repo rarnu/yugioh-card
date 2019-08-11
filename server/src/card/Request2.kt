@@ -13,14 +13,14 @@ private const val BASE_URL = "https://www.ourocg.cn"
 // private const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
 object Request2 {
-    suspend fun search(app: Application, key: String, page: Int, callback: suspend (String) -> Unit) =
-        callback((req(app, "$BASE_URL/search/$key/$page") ?: "").parse0())
+    suspend fun search(key: String, page: Int, callback: suspend (String) -> Unit) =
+        callback(req("$BASE_URL/search/$key/$page").parse0())
 
     suspend fun cardDetailWiki(app: Application, hashid: String, callback: suspend (String, String, String) -> Unit) {
 
         suspend fun innerRequest(hashid: String, callback: suspend (String, String, String) -> Unit) {
-            val detail = req(app, "$BASE_URL/card/$hashid") ?: ""
-            val wiki = req(app, "$BASE_URL/card/$hashid/wiki") ?: ""
+            val detail = req("$BASE_URL/card/$hashid")
+            val wiki = req("$BASE_URL/card/$hashid/wiki")
             val d = detail.parse1()
             val a = detail.parse2()
             val w = wiki.parse3()
@@ -52,7 +52,7 @@ object Request2 {
         val time = cacheLimit.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 1) {
-            val limit = (req(app, "$BASE_URL/Limit-Latest") ?: "").parse4()
+            val limit = req("$BASE_URL/Limit-Latest").parse4()
             cacheLimit.timeinfo = current
             cacheLimit.text = limit
             app.limitTable.save(current, limit)
@@ -67,7 +67,7 @@ object Request2 {
         val time = cachePack.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 1) {
-            val pack = (req(app, "$BASE_URL/package") ?: "").parse5()
+            val pack = req("$BASE_URL/package").parse5()
             cachePack.timeinfo = current
             cachePack.text = pack
             app.packTable.save(current, pack)
@@ -80,7 +80,7 @@ object Request2 {
     suspend fun packdetail(app: Application, url: String, callback: suspend (String) -> Unit) {
         val txt = cachePackDetail[url]
         if (txt == null || txt == "") {
-            val detail = (req(app, "$BASE_URL$url") ?: "").parse0()
+            val detail = req("$BASE_URL$url").parse0()
             cachePackDetail[url] = detail
             app.packDetailTable.save(url, detail)
             callback(detail)
@@ -89,6 +89,6 @@ object Request2 {
         }
     }
 
-    suspend fun hotest(app: Application, callback: suspend (String) -> Unit) = callback((req(app, BASE_URL) ?: "").parse6())
+    suspend fun hotest(callback: suspend (String) -> Unit) = callback(req(BASE_URL).parse6())
 
 }

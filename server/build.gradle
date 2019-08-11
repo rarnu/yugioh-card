@@ -14,7 +14,7 @@ apply plugin: 'kotlin'
 apply plugin: 'application'
 
 group 'server'
-version '1.0.5'
+version '1.0.6'
 mainClassName = "io.ktor.server.tomcat.EngineMain"
 
 sourceSets {

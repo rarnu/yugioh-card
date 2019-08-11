@@ -19,7 +19,7 @@ fun Routing.cardRouting() {
         if (key == "") {
             call.respondText { "{\"cards\":[],\"meta\":{\"keyword\":\"\",\"count\":0,\"total_page\":0,\"cur_page\":1}}" }
         } else {
-            Request2.search(application, key, page) { str ->
+            Request2.search(key, page) { str ->
                 call.respondText { str }
             }
         }
@@ -87,7 +87,7 @@ fun Routing.cardRouting() {
 
     get("/hotest") {
 
-        Request2.hotest(application) {
+        Request2.hotest {
             call.respondText { it }
         }
     }
