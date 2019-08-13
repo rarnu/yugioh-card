@@ -28,22 +28,15 @@ object Request2 {
         }
 
         val c = cacheMap[hashid]
-        if (c == null) {
+        val curr = System.currentTimeMillis()
+        if (c == null || differentDaysByMillisecond(curr, c.timeinfo) > 30) {
             innerRequest(hashid) { d, a, w ->
-                cacheMap[hashid] = CardCache2(d, a, w)
-                app.cardTable.save(hashid, d, a, w)
+                cacheMap[hashid] = CardCache2(d, a, w, curr)
+                app.cardTable.save(hashid, curr, d, a, w)
                 callback(d, a, w)
             }
         } else {
-            if (c.data == "" || c.adjust == "" || c.wiki == "") {
-                innerRequest(hashid) { d, a, w ->
-                    cacheMap[hashid] = CardCache2(d, a, w)
-                    app.cardTable.update(hashid, d, a, w)
-                    callback(d, a, w)
-                }
-            } else {
-                callback(c.data, c.adjust, c.wiki)
-            }
+            callback(c.data, c.adjust, c.wiki)
         }
     }
 
@@ -51,7 +44,7 @@ object Request2 {
         val txt = cacheLimit.text
         val time = cacheLimit.timeinfo
         val current = System.currentTimeMillis()
-        if (txt == "" || differentDaysByMillisecond(current, time) > 1) {
+        if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
             val limit = req("$BASE_URL/Limit-Latest").parse4()
             cacheLimit.timeinfo = current
             cacheLimit.text = limit
@@ -66,7 +59,7 @@ object Request2 {
         val txt = cachePack.text
         val time = cachePack.timeinfo
         val current = System.currentTimeMillis()
-        if (txt == "" || differentDaysByMillisecond(current, time) > 1) {
+        if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
             val pack = req("$BASE_URL/package").parse5()
             cachePack.timeinfo = current
             cachePack.text = pack
@@ -78,14 +71,15 @@ object Request2 {
     }
 
     suspend fun packdetail(app: Application, url: String, callback: suspend (String) -> Unit) {
-        val txt = cachePackDetail[url]
-        if (txt == null || txt == "") {
-            val detail = req("$BASE_URL$url").parse0()
-            cachePackDetail[url] = detail
-            app.packDetailTable.save(url, detail)
-            callback(detail)
-        } else {
+        val detail = cachePackDetail[url]
+        val current = System.currentTimeMillis()
+        if (detail == null || differentDaysByMillisecond(current, detail.timeinfo) > 30) {
+            val txt = req("$BASE_URL$url").parse0()
+            cachePackDetail[url] = CardDetail2(current, txt)
+            app.packDetailTable.save(url, current, txt)
             callback(txt)
+        } else {
+            callback(detail.text)
         }
     }
 

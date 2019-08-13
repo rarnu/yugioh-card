@@ -23,14 +23,18 @@ class _CardDetailState extends State<CardDetailPage> {
   String hash;
   dynamic data = {};
   String adjust = '';
+  String wiki = '';
   _CardDetailState(this.hash) : super() {
     getCardDetail();
   }
 
   getCardDetail() async {
     try {
-      var json = JsonCodec().decode((await httpGet('$BASEURL/carddetail?hash=$hash')).body);
-      adjust = (await httpGet('$BASEURL/cardadjust?hash=$hash')).body;
+      var responseText = (await httpGet('$BASEURL/carddetail?hash=$hash')).body;
+      var sarr = responseText.split('\\\\\\\\');
+      adjust = sarr[1];
+      wiki = sarr[2];
+      var json = JsonCodec().decode(sarr[0]);
       if (json['result'] == 0) {
         data = json['data'];
         setState(() {});
@@ -157,7 +161,7 @@ class _CardDetailState extends State<CardDetailPage> {
           ),
           actions: <Widget>[
             sized(FlatButton(child: Text('WIKI'), onPressed: () {
-              Navigator.push(context, CardWikiRoute(hash));
+              Navigator.push(context, CardWikiRoute(hash, wiki));
             },), width: 65),
           ],
         ),

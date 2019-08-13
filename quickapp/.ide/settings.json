@@ -1,4 +1,5 @@
 {
     "hap.extractHapTypes": false,
-    "hap-debugger.autoCompile": true
+    "hap-debugger.autoCompile": true,
+    "hap.typesVersion": "1050"
 }

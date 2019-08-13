@@ -8,6 +8,7 @@ create database YGOData character set utf8mb4;
 
 create table Card(
     hash varchar(16) primary key,
+    timeinfo bigint,
     data LONGTEXT,
     adjust LONGTEXT,
     wiki LONGTEXT
@@ -24,7 +25,8 @@ create table CardPack(
 ) character set utf8mb4;
 
 create table CardPackDetail(
-    url varchar(128) primary key ,
+    url varchar(128) primary key,
+    timeinfo bigint,
     info LONGTEXT
 ) character set utf8mb4;
 

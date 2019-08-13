@@ -6,27 +6,13 @@
 </template>
 
 <script>
-const fetch = require('@system.fetch')
 export default {
-  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
   public: {
     cardhash: '',
     wikidata: ''
   },
-  getCardWikiData() {
-    let that = this
-    fetch.fetch({
-      url: `${that.$app.$data.baseurl}/cardwiki?hash=${that.cardhash}`,
-      responseType: 'text',
-      success: function (response1) {
-        let html = response1.data
-        html = html.replace(/<a\ href/g, '<u href').replace(/<\/a>/g, '</u>')
-        that.wikidata = html
-      }
-    })
-  },
   onInit() {
-    this.getCardWikiData()
+    this.wikidata = this.wikidata.replace(/<a\ href/g, '<u href').replace(/<\/a>/g, '</u>')
   }
 }
 </script>

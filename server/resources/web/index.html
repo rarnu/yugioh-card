@@ -18,9 +18,6 @@
         function advanced() {
             $('#advdialog').modal('toggle');
         }
-        function deck() {
-            location.href = "/deck.html";
-        }
 
         function getHotest() {
             $.ajax({
@@ -89,13 +86,13 @@
         <div class="input-group-append">
             <span class="input-group-text" onclick='search()' >Go</span>
             <span class="input-group-text" onclick="advanced()">Adv</span>
-            <span class="input-group-text" onclick="deck()">Deck</span>
         </div>
     </div>
 </div>
 <div id="limitbar">
     <a href="limit.html"><span class="btnlimit">禁限卡表</span></a>
     <a href="pack.html"><span class="btnlimit">卡包列表</span></a>
+    <a href="deck.html"><span class="btnlimit">卡组查询</span></a>
 </div>
 
 <div class="line"></div>

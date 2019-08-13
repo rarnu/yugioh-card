@@ -17,7 +17,10 @@ fun main(args: Array<String>): Unit = io.ktor.server.tomcat.EngineMain.main(args
 
 @Suppress("unused")
 fun Application.module() {
-    installPlugin<ServerSession>(sessionIdentifier = "ServerSession", headers = mapOf("X-Engine" to "Ktor")) { }
+    installPlugin<ServerSession>(
+        useCompress = true,
+        sessionIdentifier = "ServerSession",
+        headers = mapOf("X-Engine" to "Ktor")) { }
 
     // load cache
     cardTable.loadCache()

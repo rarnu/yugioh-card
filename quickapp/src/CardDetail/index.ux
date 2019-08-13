@@ -47,23 +47,24 @@ export default {
   public: {
     cardhash: '',
     carddata: {},
-    cardadjust: ''
+    cardadjust: '',
+    cardwiki: ''
   },
   getCardDetailData() {
     let that = this
     fetch.fetch({
       url: `${that.$app.$data.baseurl}/carddetail?hash=${that.cardhash}`,
-      responseType: 'json',
-      success: function (response1) {
-        that.carddata = response1.data.data
-        
-      }
-    })
-    fetch.fetch({
-      url: `${that.$app.$data.baseurl}/cardadjust?hash=${that.cardhash}`,
       responseType: 'text',
-      success: function(response2) {
-        that.cardadjust = response2.data
+      success: function (response) {
+        let data = response.data
+        let sarr = data.split('\\\\\\\\')
+        let json = JSON.parse(sarr[0])
+        if (json['result'] === 0) {
+          that.carddata = json['data']
+        }
+        // console.log(that.carddata)
+        that.cardadjust = sarr[1]
+        that.cardwiki = sarr[2]
       }
     })
   },
@@ -104,7 +105,7 @@ export default {
   onMenuPress() {    
     router.push({
       uri: '/CardWiki',
-      params: { cardhash: this.cardhash }
+      params: { cardhash: this.cardhash, wikidata: this.cardwiki }
     })
   }
 }

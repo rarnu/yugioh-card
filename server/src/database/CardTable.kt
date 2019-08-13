@@ -12,20 +12,21 @@ import io.ktor.application.Application
 
 class CardTable(private val app: Application) {
     fun loadCache() {
-        val stmt = app.conn.prepareStatement("select hash, data, adjust, wiki from Card")
+        val stmt = app.conn.prepareStatement("select hash, timeinfo, data, adjust, wiki from Card")
         val rs = stmt.executeQuery()
         rs.forEach {
-            cacheMap[it.string("hash")] = CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"))
+            cacheMap[it.string("hash")] = CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"), it.long("timeinfo"))
         }
         rs.close()
     }
 
-    fun save(h: String, d: String, a: String, w: String) {
-        val stmt = app.conn.prepareStatement("insert into Card(hash, data, adjust, wiki) values (?, ?, ?, ?)")
+    fun save(h: String, t: Long, d: String, a: String, w: String) {
+        val stmt = app.conn.prepareStatement("insert into Card(hash, timeinfo, data, adjust, wiki) values (?, ?, ?, ?, ?)")
         stmt.setString(1, h)
-        stmt.setString(2, d)
-        stmt.setString(3, a)
-        stmt.setString(4, w)
+        stmt.setLong(2, t)
+        stmt.setString(3, d)
+        stmt.setString(4, a)
+        stmt.setString(5, w)
         try {
             stmt.executeUpdate()
         } catch (e: Throwable) {
@@ -33,16 +34,16 @@ class CardTable(private val app: Application) {
         }
     }
 
-    fun update(h: String, d: String, a: String, w: String) {
-        val stmt = app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ? where hash = ?")
+    fun update(h: String, t: Long, d: String, a: String, w: String) {
+        val stmt = app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ?, timeinfo = ? where hash = ?")
         stmt.setString(1, d)
         stmt.setString(2, a)
         stmt.setString(3, w)
-        stmt.setString(4, h)
+        stmt.setLong(4, t)
+        stmt.setString(5, h)
         stmt.executeUpdate()
     }
 }
-
 
 class CardLimit(private val app: Application) {
     fun loadCache() {
@@ -94,22 +95,24 @@ class CardPack(private val app: Application) {
 
 class CardPackDetail(private val app: Application) {
     fun loadCache() {
-        val stmt = app.conn.prepareStatement("select url, info from CardPackDetail")
+        val stmt = app.conn.prepareStatement("select url, info, timeinfo from CardPackDetail")
         val rs = stmt.executeQuery()
         rs.forEach {
-            cachePackDetail[it.string("url")] = it.string("info")
+            cachePackDetail[it.string("url")] = CardDetail2(it.long("timeinfo"), it.string("info"))
         }
         rs.close()
     }
 
-    fun save(u: String, i: String) {
-        val stmt = app.conn.prepareStatement("update CardPackDetail set info = ? where url = ?")
+    fun save(u: String, t: Long, i: String) {
+        val stmt = app.conn.prepareStatement("update CardPackDetail set info = ?, timeinfo = ? where url = ?")
         stmt.setString(1, i)
-        stmt.setString(2, u)
+        stmt.setLong(2, t)
+        stmt.setString(3, u)
         if (stmt.executeUpdate() != 1) {
-            val stmtIns = app.conn.prepareStatement("insert into CardPackDetail(url, info) values(?, ?)")
+            val stmtIns = app.conn.prepareStatement("insert into CardPackDetail(url, info, timeinfo) values(?, ?, ?)")
             stmtIns.setString(1, u)
             stmtIns.setString(2, i)
+            stmtIns.setLong(3, t)
             stmtIns.executeUpdate()
         }
     }

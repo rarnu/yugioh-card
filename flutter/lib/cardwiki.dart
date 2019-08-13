@@ -8,32 +8,21 @@ import 'package:yugiohcard/util/widgetutil.dart';
 import 'global.dart';
 
 class CardWikiRoute extends MaterialPageRoute {
-  CardWikiRoute(String hash) : super(builder: (context) => CardWikiPage(hash));
+  CardWikiRoute(String hash, String wiki) : super(builder: (context) => CardWikiPage(hash, wiki));
 }
 
 class CardWikiPage extends StatefulWidget {
   String hash;
-  CardWikiPage(this.hash): super();
-  _CardWikiState createState() => _CardWikiState(hash);
+  String wiki;
+  CardWikiPage(this.hash, this.wiki): super();
+  _CardWikiState createState() => _CardWikiState(hash, wiki);
 }
 
 class _CardWikiState extends State<CardWikiPage> {
 
   String hash;
-  String wiki = '';
-  
-  _CardWikiState(this.hash) : super() {
-    getCardWiki();
-  }
-
-  getCardWiki() async {
-    try {
-      wiki = (await httpGet('$BASEURL/cardwiki?hash=$hash')).body;
-      setState(() {});
-    } catch(e) {
-
-    }
-  }
+  String wiki;
+  _CardWikiState(this.hash, this.wiki) : super();
 
   Widget build(BuildContext context) {
 

@@ -13,12 +13,15 @@
         function getCardDetail(hash) {
             $.ajax({
                 url: `/carddetail?hash=${hash}`,
-                dataType: 'json',
+                dataType: 'text',
                 success: function (response) {
+                    let sarr = response.split('\\\\\\\\');
                     let str = '';
                     let imageid = '0';
-                    if (response.result === 0) {
-                        let data = response.data;
+                    let json = JSON.parse(sarr[0]);
+
+                    if (json.result === 0) {
+                        let data = json.data;
                         str += `<div class="detailrow"> <div class="name">中文名称:</div> <div class="value">${data.name}</div></div>`;
                         str += `<div class="detailrow"> <div class="name">日文名称:</div> <div class="value">${data.japname}</div></div>`;
                         str += `<div class="detailrow"> <div class="name">英文名称:</div> <div class="value">${data.enname}</div></div>`;
@@ -50,24 +53,9 @@
                     }
                     $('#carddetail')[0].innerHTML = str;
                     $('#cardimage')[0].innerHTML = `<img id="cardpic" src="http://ocg.resource.m2v.cn/${imageid}.jpg" onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';">`;
-                }
-            });
 
-            $.ajax({
-                url: `/cardadjust?hash=${hash}`,
-                dataType: 'text',
-                success: function (response) {
-                    $('#cardadjust')[0].innerHTML = response.replace(/\n/g, '<br />');
-                }
-            });
-
-            $.ajax({
-                url: `/cardwiki?hash=${hash}`,
-                dataType: 'text',
-                success: function (response) {
-                    let html = response;
-                    html = html.replace(/<a\ href/g, '<u href').replace(/<\/a>/g, '</u>');
-                    $('#cardwiki')[0].innerHTML = html;
+                    $('#cardadjust')[0].innerHTML = sarr[1].replace(/\n/g, '<br />');
+                    $('#cardwiki')[0].innerHTML = sarr[2].replace(/<a\ href/g, '<u href').replace(/<\/a>/g, '</u>');
                 }
             });
         }

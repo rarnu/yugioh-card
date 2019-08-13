@@ -1,4 +1,4 @@
-const BASEURL = 'http://119.3.22.119';
+const BASEURL = 'http://122.112.175.64';
 
 
 const List<String> magicType = ['通常', '装备', '速攻', '永续', '场地', '仪式'];

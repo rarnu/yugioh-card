@@ -1,9 +1,10 @@
 package com.rarnu.ygo.server.card
 
 data class CardCache2(
-    val data: String,
-    val adjust: String,
-    val wiki: String
+    var data: String,
+    var adjust: String,
+    var wiki: String,
+    var timeinfo: Long
 )
 
 data class CardLimit2(
@@ -16,10 +17,13 @@ data class CardPack2(
     var text: String
 )
 
-
+data class CardDetail2(
+    var timeinfo: Long,
+    var text: String
+)
 
 val cacheMap = mutableMapOf<String, CardCache2>()
 val cacheLimit = CardLimit2(0, "")
 val cachePack = CardPack2(0, "")
-val cachePackDetail = mutableMapOf<String, String>()
+val cachePackDetail = mutableMapOf<String, CardDetail2>()
 

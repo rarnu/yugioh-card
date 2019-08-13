@@ -75,7 +75,15 @@ class _MainHomePageState extends State<MainHomePage> {
                   Navigator.push(context, PackRoute());
                 },
               ),
-              width: 60)
+              width: 60),
+          sized(
+            FlatButton(
+              child: Text('卡组'),
+              onPressed: () {
+                // TODO: deck pressed
+              },
+            ), width: 60
+          ),
         ],
       ),
       body: Container(

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public let BASE_URL = "http://119.3.22.119"
+public let BASE_URL = "http://122.112.175.64"
 public let RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
 public class YGORequest2: NSObject {
@@ -18,27 +18,10 @@ public class YGORequest2: NSObject {
     }
     
     public class func cardDetailWiki(_ hashid: String, _ callback:@escaping (String, String, String) -> Void) {
-        var callbackcount = 0
-        var dataData = ""
-        var dataAdjust = ""
-        var dataWiki = ""
-        let urlData = BASE_URL + "/carddetail?hash=\(hashid)"
-        let urlAdjust = BASE_URL + "/cardadjust?hash=\(hashid)"
-        let urlWiki = BASE_URL + "/cardwiki?hash=\(hashid)"
-        request(urlData) { str in
-            dataData = str
-            callbackcount += 1
+        request(BASE_URL + "/carddetail?hash=\(hashid)") { str in
+            let sarr = str.split(by: "\\\\\\\\")
+            callback(sarr[0], sarr[1], sarr[2])
         }
-        request(urlAdjust) { str in
-            dataAdjust = str
-            callbackcount += 1
-        }
-        request(urlWiki) { str in
-            dataWiki = str
-            callbackcount += 1
-        }
-        while callbackcount != 3 { }
-        callback(dataData, dataAdjust, dataWiki)
      }
     
     public class func limit(_ callback:@escaping (String) -> Void) {
@@ -68,5 +51,46 @@ public class YGORequest2: NSObject {
             callback(retstr)
         }
         task.resume()
+    }
+}
+
+extension String {
+    func indexOf(sub: String) -> Int {
+        var i = -1
+        let r = self.range(of: sub)
+        if (r != nil) {
+            i = r!.lowerBound.utf16Offset(in: self)
+        }
+        return i
+    }
+    
+    func sub(start: Int) -> String {
+        var tmp = self
+        tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)...])
+        return tmp
+    }
+    
+    func sub(start: Int, length: Int) -> String {
+        var tmp = self
+        tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)..<tmp.index(tmp.startIndex, offsetBy: start + length)])
+        return tmp
+    }
+    
+    func split(by: String) -> [String] {
+        var arr = [String]()
+        var tmp = self
+        var idx = -1
+        while true {
+            idx = tmp.indexOf(sub: by)
+            if (idx != -1) {
+                let t = tmp.sub(start: 0, length: idx)
+                arr.append(t)
+                tmp = tmp.sub(start: idx + by.count)
+            } else {
+                arr.append(tmp)
+                break
+            }
+        }
+        return arr
     }
 }

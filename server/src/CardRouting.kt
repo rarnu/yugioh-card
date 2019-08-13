@@ -31,32 +31,8 @@ fun Routing.cardRouting() {
         if (hash == "") {
             call.respondText { "{\"result\":1}" }
         } else {
-            Request2.cardDetailWiki(application, hash) { data, _, _ ->
-                call.respondText { data }
-            }
-        }
-    }
-
-    get("/cardadjust") {
-        val p = call.requestParameters()
-        val hash = p["hash"] ?: ""
-        if (hash == "") {
-            call.respondText { "{\"result\":1}" }
-        } else {
-            Request2.cardDetailWiki(application, hash) { _, adjust, _ ->
-                call.respondText { adjust }
-            }
-        }
-    }
-
-    get("/cardwiki") {
-        val p = call.requestParameters()
-        val hash = p["hash"] ?: ""
-        if (hash == "") {
-            call.respondText { "{\"result\":1}" }
-        } else {
-            Request2.cardDetailWiki(application, hash) { _, _, wiki ->
-                call.respondText { wiki }
+            Request2.cardDetailWiki(application, hash) { data, adjust, wiki ->
+                call.respondText { "$data\\\\\\\\$adjust\\\\\\\\$wiki" }
             }
         }
     }

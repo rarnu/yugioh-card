@@ -1,6 +1,5 @@
 package com.rarnu.yugioh
 
-import android.util.Log
 import com.rarnu.common.forEach
 import com.rarnu.common.forEachString
 import org.json.JSONObject
@@ -150,11 +149,10 @@ object YGOData {
 
     fun cardDetail(hashid: String): CardDetail {
         val data = YGORequest.cardDetail(hashid) ?: ""
-        val adjust = YGORequest.cardAdjust(hashid) ?: ""
-        val wiki = YGORequest.cardWiki(hashid) ?: ""
+        val sarr = data.split("\\\\\\\\")
         val result = CardDetail()
         try {
-            val json = JSONObject(data)
+            val json = JSONObject(sarr[0])
             if (json.getInt("result") == 0) {
                 val obj = json.getJSONObject("data")
                 result.name = replaceChars(obj.getString("name"))
@@ -183,8 +181,8 @@ object YGOData {
                     info.rare = pkinfo.getString("rare")
                     result.packs.add(info)
                 }
-                result.adjust = replaceChars(adjust)
-                result.wiki = replaceChars(wiki)
+                result.adjust = replaceChars(sarr[1])
+                result.wiki = replaceChars(sarr[2])
                 result.imageid = obj.getInt("imageid")
             }
         } catch (e: Exception) {

@@ -21,10 +21,6 @@ object YGORequest {
 
     fun cardDetail(hashid: String) = request("$BASE_URL/carddetail", "hash=$hashid")
 
-    fun cardAdjust(hashid: String) = request("$BASE_URL/cardadjust", "hash=$hashid")
-
-    fun cardWiki(hashid: String) = request("$BASE_URL/cardwiki", "hash=$hashid")
-
     fun limit() = request("$BASE_URL/limit")
 
     fun packageList() = request("$BASE_URL/packlist")
