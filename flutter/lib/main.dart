@@ -6,6 +6,7 @@ import 'package:ktflutter/toast_extension.dart';
 import 'package:yugiohcard/about.dart';
 import 'package:yugiohcard/carddetail.dart';
 import 'package:yugiohcard/cardlist.dart';
+import 'package:yugiohcard/decklist.dart';
 import 'package:yugiohcard/packdetail.dart';
 import 'package:yugiohcard/searchadv.dart';
 import 'global.dart';
@@ -80,7 +81,7 @@ class _MainHomePageState extends State<MainHomePage> {
             FlatButton(
               child: Text('卡组'),
               onPressed: () {
-                // TODO: deck pressed
+                Navigator.push(context, DeckListRoute());
               },
             ), width: 60
           ),
