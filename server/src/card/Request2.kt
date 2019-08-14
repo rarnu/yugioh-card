@@ -5,7 +5,7 @@ import com.rarnu.ygo.server.database.limitTable
 import com.rarnu.ygo.server.database.packDetailTable
 import com.rarnu.ygo.server.database.packTable
 import com.rarnu.ygo.server.request.differentDaysByMillisecond
-import com.rarnu.ygo.server.request.req
+import com.rarnu.ygo.server.request.oGetRequest
 import io.ktor.application.Application
 import kotlin.collections.set
 
@@ -14,13 +14,13 @@ private const val BASE_URL = "https://www.ourocg.cn"
 
 object Request2 {
     suspend fun search(key: String, page: Int, callback: suspend (String) -> Unit) =
-        callback(req("$BASE_URL/search/$key/$page").parse0())
+        callback(oGetRequest("$BASE_URL/search/$key/$page").parse0())
 
     suspend fun cardDetailWiki(app: Application, hashid: String, callback: suspend (String, String, String) -> Unit) {
 
         suspend fun innerRequest(hashid: String, callback: suspend (String, String, String) -> Unit) {
-            val detail = req("$BASE_URL/card/$hashid")
-            val wiki = req("$BASE_URL/card/$hashid/wiki")
+            val detail = oGetRequest("$BASE_URL/card/$hashid")
+            val wiki = oGetRequest("$BASE_URL/card/$hashid/wiki")
             val d = detail.parse1()
             val a = detail.parse2()
             val w = wiki.parse3()
@@ -45,7 +45,7 @@ object Request2 {
         val time = cacheLimit.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
-            val limit = req("$BASE_URL/Limit-Latest").parse4()
+            val limit = oGetRequest("$BASE_URL/Limit-Latest").parse4()
             cacheLimit.timeinfo = current
             cacheLimit.text = limit
             app.limitTable.save(current, limit)
@@ -60,7 +60,7 @@ object Request2 {
         val time = cachePack.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
-            val pack = req("$BASE_URL/package").parse5()
+            val pack = oGetRequest("$BASE_URL/package").parse5()
             cachePack.timeinfo = current
             cachePack.text = pack
             app.packTable.save(current, pack)
@@ -74,7 +74,7 @@ object Request2 {
         val detail = cachePackDetail[url]
         val current = System.currentTimeMillis()
         if (detail == null || differentDaysByMillisecond(current, detail.timeinfo) > 30) {
-            val txt = req("$BASE_URL$url").parse0()
+            val txt = oGetRequest("$BASE_URL$url").parse0()
             cachePackDetail[url] = CardDetail2(current, txt)
             app.packDetailTable.save(url, current, txt)
             callback(txt)
@@ -83,6 +83,6 @@ object Request2 {
         }
     }
 
-    suspend fun hotest(callback: suspend (String) -> Unit) = callback(req(BASE_URL).parse6())
+    suspend fun hotest(callback: suspend (String) -> Unit) = callback(oGetRequest(BASE_URL).parse6())
 
 }

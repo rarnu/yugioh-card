@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/ygo.css">
+    <script src="../static/js/jquery-2.0.0.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/js.cookie.min.js"></script>
+    <script src="../static/ygo.js"></script>
+
+    <script type="text/javascript">
+        function getDeckDetail(code) {
+            $.ajax({
+                url: `/deck?code=${code}`,
+                dataType: 'json',
+                success: function (data) {
+                    let str = "";
+                    $.each(data, function (idx, item) {
+                        str += `<div class="deckname"><h3>${item.name}</h3></div>`;
+                        str += "<div class=\"decktable\"><table><tr>";
+                        str += "<td><b>怪兽卡</b><br/>";
+                        $.each(item.monster, function (midx, mitem) {
+                            str += `${mitem.count} ${mitem.name}<br/>`;
+                        });
+                        str += "</td><td><b>魔法陷阱卡</b><br/>";
+                        $.each(item.magictrap, function (midx, mitem) {
+                            str += `${mitem.count} ${mitem.name}<br/>`;
+                        });
+                        str += "</td><td><b>额外卡组</b><br/>";
+                        $.each(item.extra, function (midx, mitem) {
+                            str += `${mitem.count} ${mitem.name}<br/>`;
+                        });
+                        str += "</td></tr><tr><td colspan='3' class='tdimg'>";
+                        str += `<img src="https://www.ygo-sem.cn/${item.image}"/>`;
+                        str += "</td></tr></table></div><div class='blank'></div>";
+                    });
+                    $('#deckdetial')[0].innerHTML = str;
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<div id="subtitle">
+    <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
+    <span id="title"></span>
+</div>
+
+<div id="deckdetial" class="decklist">
+
+</div>
+
+<script type="text/javascript">
+    let code = Cookies.get("deckcode");
+    let name = Cookies.get("deckname");
+    $('#title')[0].innerHTML = name;
+    getDeckDetail(code);
+</script>
+</body>
+</html>

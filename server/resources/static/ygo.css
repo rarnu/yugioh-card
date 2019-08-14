@@ -64,6 +64,16 @@ body {
     border-bottom: 1px solid lightgray;
 }
 
+.subline {
+    padding-top: 32px;
+    width: 92%;
+    min-width: 150px;
+    height: 1px;
+    border-bottom: 1px solid lightgray;
+    margin-left: 4%;
+    margin-bottom: 32px;
+}
+
 .blank {
     padding-top: 32px;
 }
@@ -457,4 +467,59 @@ body {
     margin-bottom: 4px;
     text-align: left;
     padding-left: 16px;
+}
+
+.decklist {
+    padding-top: 16px;
+    margin: auto;
+    width: 40%;
+    min-width: 150px;
+    text-align: left;
+    height: auto;
+}
+
+.decklist .item {
+    width: 25%;
+    float: left;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.decklist .deckname {
+    width: 100%;
+    text-align: left;
+    padding-left: 4%;
+
+}
+
+.decklist .imgcontainer {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.decklist .imgcontainer img {
+    width: 600px;
+}
+
+.decklist .decktable {
+    width: 92%;
+    text-align: left;
+    margin-left: 4%;
+}
+
+.decklist .decktable table {
+    border: 1px solid lightgray;
+    width: 100%;
+}
+
+.decklist .decktable table td {
+    border: 1px solid lightgray;
+    padding: 8px 8px 8px 8px;
+    width: 33%;
+    vertical-align: top;
+}
+
+.decklist .decktable table .tdimg {
+    text-align: center;
 }

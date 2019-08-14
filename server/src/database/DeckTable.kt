@@ -37,8 +37,8 @@ class DeckCategory(private val app: Application) {
         val stmt = app.conn.prepareStatement("select timeinfo, info from DeckCategory")
         val rs = stmt.executeQuery()
         rs.firstRecord {
-            cacheDeckTheme.timeinfo = it.long("timeinfo")
-            cacheDeckTheme.text = it.string("info")
+            cacheDeckCategory.timeinfo = it.long("timeinfo")
+            cacheDeckCategory.text = it.string("info")
         }
         rs.close()
     }

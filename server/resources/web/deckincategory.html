@@ -10,46 +10,23 @@
     <script src="../static/ygo.js"></script>
 
     <script type="text/javascript">
-        function getDeckCategory() {
+        function getDeckInCategory(guid) {
             $.ajax({
-                url: '/deckcategory',
+                url: `/deckincategory?hash=${guid}`,
                 dataType: 'json',
-                success: function (response) {
+                success: function(response) {
                     let str = '';
-                    $.each(response, function (idx, item) {
-                        str += `<div class="item" onclick="categoryClicked('${item.guid}', '${item.name}');">${item.name}</div>`;
-                        if (idx % 4 === 3) {
-                            str += '<br/>';
-                        }
-                    });
-                    str += '<br/><br/><p></p>';
-                    console.log(str);
-                    $('#deckcategory')[0].innerHTML = str;
-                }
-            });
-            $.ajax({
-                url: '/decktheme',
-                dataType: 'json',
-                success: function (response) {
-                    let str = '';
-                    $.each(response, function (idx, item) {
+                    $.each(response, function(idx, item) {
                         str += `<div class="item" onclick="deckClicked('${item.code}', '${item.name}');">${item.name}</div>`;
                         if (idx % 4 === 3) {
                             str += '<br/>';
                         }
                     });
                     str += '<br/>';
-                    $('#decktheme')[0].innerHTML = str;
+                    $('#decks')[0].innerHTML = str;
                 }
             });
         }
-
-        function categoryClicked(guid, name) {
-            Cookies.set('deckcategory', guid);
-            Cookies.set('categoryname', name);
-            location.href = '/deckincategory.html';
-        }
-
         function deckClicked(code, name) {
             Cookies.set("deckcode", code);
             Cookies.set("deckname", name);
@@ -61,20 +38,18 @@
 
 <div id="subtitle">
     <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
-    <span id="title">卡组查询</span>
+    <span id="title"></span>
 </div>
 
-<div id="deckcategory" class="decklist">
-</div>
-
-<div class="line"></div>
-
-<div id="decktheme" class="decklist">
+<div id="decks" class="decklist">
 
 </div>
 
 <script type="text/javascript">
-    getDeckCategory();
+    let guid = Cookies.get('deckcategory');
+    let name = Cookies.get('categoryname');
+    $('#title')[0].innerHTML = name;
+    getDeckInCategory(guid);
 </script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.rarnu.ygo.server
 
 import com.rarnu.ktor.installPlugin
 import com.rarnu.ygo.server.database.*
+import com.rarnu.ygo.server.request.loadNetworkCommand
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.http.content.default
@@ -21,7 +22,7 @@ fun Application.module() {
         useCompress = true,
         sessionIdentifier = "ServerSession",
         headers = mapOf("X-Engine" to "Ktor")) { }
-
+    loadNetworkCommand()
     // load cache
     cardTable.loadCache()
     limitTable.loadCache()
