@@ -4,6 +4,7 @@ package com.rarnu.ygo.server
 
 import com.rarnu.ktor.requestParameters
 import com.rarnu.ygo.server.card.Request2
+import com.rarnu.ygo.server.database.reqlog
 import io.ktor.application.application
 import io.ktor.application.call
 import io.ktor.response.respondText
@@ -19,8 +20,12 @@ fun Routing.cardRouting() {
         if (key == "") {
             call.respondText { "{\"cards\":[],\"meta\":{\"keyword\":\"\",\"count\":0,\"total_page\":0,\"cur_page\":1}}" }
         } else {
-            Request2.search(key, page) { str ->
-                call.respondText { str }
+            try {
+                Request2.search(application, key, page) { str ->
+                    call.respondText { str }
+                }
+            } catch (th: Throwable) {
+                application.reqlog.log("/search", 1, 0, "$th")
             }
         }
     }
@@ -31,9 +36,14 @@ fun Routing.cardRouting() {
         if (hash == "") {
             call.respondText { "{\"result\":1}" }
         } else {
-            Request2.cardDetailWiki(application, hash) { data, adjust, wiki ->
-                call.respondText { "$data\\\\\\\\$adjust\\\\\\\\$wiki" }
+            try {
+                Request2.cardDetailWiki(application, hash) { data, adjust, wiki ->
+                    call.respondText { "$data\\\\\\\\$adjust\\\\\\\\$wiki" }
+                }
+            } catch (th: Throwable) {
+                application.reqlog.log("/carddetail?hash=$hash", 1, 0, "$th")
             }
+
         }
     }
 
@@ -55,15 +65,19 @@ fun Routing.cardRouting() {
         if (u == "") {
             call.respondText { "{\"result\":1}" }
         } else {
-            Request2.packdetail(application, u) {
-                call.respondText { it }
+            try {
+                Request2.packdetail(application, u) {
+                    call.respondText { it }
+                }
+            } catch (th: Throwable) {
+                application.reqlog.log("/packdetail?url=$u", 1, 0, "$th")
             }
+
         }
     }
 
     get("/hotest") {
-
-        Request2.hotest {
+        Request2.hotest(application) {
             call.respondText { it }
         }
     }

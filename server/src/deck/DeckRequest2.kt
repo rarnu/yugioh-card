@@ -19,7 +19,7 @@ object DeckRequest2 {
         val time = cacheDeckTheme.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
-            val theme = dGetRequest("$BASE_URL/server.ashx?action=get_convention_books2").parseTheme()
+            val theme = dGetRequest(app, "$BASE_URL/server.ashx?action=get_convention_books2").parseTheme()
             cacheDeckTheme.timeinfo = current
             cacheDeckTheme.text = theme
             app.deckTheme.save(current, theme)
@@ -34,7 +34,7 @@ object DeckRequest2 {
         val time = cacheDeckCategory.timeinfo
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
-            val category = dGetRequest("$BASE_URL/server.ashx?action=convention_tree").parseCategory()
+            val category = dGetRequest(app, "$BASE_URL/server.ashx?action=convention_tree").parseCategory()
             cacheDeckCategory.timeinfo = current
             cacheDeckCategory.text = category
             app.deckCategory.save(current, category)
@@ -48,7 +48,7 @@ object DeckRequest2 {
         val decks = cacheDeckInCategory[hash]
         val current = System.currentTimeMillis()
         if (decks == null || differentDaysByMillisecond(current, decks.timeinfo) > 30) {
-            val incat = dPostRequest("$BASE_URL/convention_content3.aspx?f=f", mapOf("id" to hash, "langue" to "chs")).parseInCategory()
+            val incat = dPostRequest(app, "$BASE_URL/convention_content3.aspx?f=f", mapOf("id" to hash, "langue" to "chs")).parseInCategory()
             cacheDeckInCategory[hash] = DeckInCategory2(current, incat)
             app.deckInCategory.save(hash, current, incat)
             callback(incat)
@@ -61,7 +61,7 @@ object DeckRequest2 {
         val deck = cacheDeck[code]
         val current = System.currentTimeMillis()
         if (deck == null || differentDaysByMillisecond(current, deck.timeinfo) > 30) {
-            val d = dGetRequest(BASE_DECK_URL.format(code)).parseDeck()
+            val d = dGetRequest(app, BASE_DECK_URL.format(code)).parseDeck()
             cacheDeck[code] = Deck2(current, d)
             app.deckTable.save(code, current, d)
             callback(d)
