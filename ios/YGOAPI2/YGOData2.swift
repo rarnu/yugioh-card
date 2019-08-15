@@ -85,6 +85,32 @@ public class Hotest2: NSObject {
     public var pack = Array<HotPack2>()
 }
 
+public class DeckTheme: Comparable {
+    public static func < (lhs: DeckTheme, rhs: DeckTheme) -> Bool {
+        return false
+    }
+    
+    public static func == (lhs: DeckTheme, rhs: DeckTheme) -> Bool {
+        return lhs.code == rhs.code && lhs.name == rhs.name
+    }
+    
+    public var code = ""
+    public var name = ""
+}
+
+public class DeckCategory: Comparable {
+    public static func < (lhs: DeckCategory, rhs: DeckCategory) -> Bool {
+        return false
+    }
+    
+    public static func == (lhs: DeckCategory, rhs: DeckCategory) -> Bool {
+        return lhs.guid == rhs.guid && lhs.name == rhs.name
+    }
+    
+    public var guid = ""
+    public var name = ""
+}
+
 public class YGOData2: NSObject {
 
     public class func searchCommon(_ key: String, _ page: Int, _ callback:@escaping (SearchResult2) -> Void) {
@@ -322,4 +348,55 @@ public class YGOData2: NSObject {
         return result
     }
     
+    public class func deckTheme(_ callback: @escaping([DeckTheme]) -> Void) {
+        YGORequest2.deckTheme() { data in
+            var result = [DeckTheme]()
+            do {
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [Any]
+                for obj in json>|< {
+                    let info = DeckTheme()
+                    info.code = obj.string("code")
+                    info.name = obj.string("name")
+                    result.append(info)
+                }
+            } catch {
+            }
+            callback(result)
+        }
+    }
+    public class func deckCategory(_ callback: @escaping([DeckCategory]) -> Void) {
+        YGORequest2.deckCategory() { data in
+            var result = [DeckCategory]()
+            do {
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [Any]
+                for obj in json>|< {
+                    let info = DeckCategory()
+                    info.guid = obj.string("guid")
+                    info.name = obj.string("name")
+                    result.append(info)
+                }
+            } catch {
+            }
+            callback(result)
+        }
+    }
+    
+    public class func deckInCategory(_ deckhash: String, _ callback: @escaping([DeckTheme]) -> Void) {
+        YGORequest2.deckInCategory(deckhash) { data in
+            var result = [DeckTheme]()
+            do {
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [Any]
+                for obj in json>|< {
+                    let info = DeckTheme()
+                    info.code = obj.string("code")
+                    info.name = obj.string("name")
+                    result.append(info)
+                }
+            } catch {
+                
+            }
+            callback(result)
+        }
+        
+    }
 }

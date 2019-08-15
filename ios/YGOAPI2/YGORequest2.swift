@@ -40,6 +40,22 @@ public class YGORequest2: NSObject {
         request(BASE_URL + "/hotest", callback)
     }
     
+    public class func deckTheme(_ callback:@escaping (String) -> Void) {
+        request(BASE_URL + "/decktheme", callback)
+    }
+    
+    public class func deckCategory(_ callback:@escaping (String) -> Void) {
+        request(BASE_URL + "/deckcategory", callback)
+    }
+    
+    public class func deckInCategory(_ hash: String, _ callback: @escaping (String) -> Void) {
+        request(BASE_URL + "/deckincategory?hash=\(hash)", callback)
+    }
+    
+    public class func deck(_ code: String, _ callback:@escaping (String) -> Void) {
+        request(BASE_URL + "/deck?code=\(code)", callback)
+    }
+    
     private class func request(_ url: String, _ callback:@escaping (String) -> Void) {
         let url2 = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let req = URLRequest(url: URL(string: url2)!)

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KqA-Mc-dBS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KqA-Mc-dBS">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -129,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="2427" y="938"/>
         </scene>
-        <!--YuGiOhCard-->
+        <!--YuGiOh-->
         <scene sceneID="MoN-RT-UOE">
             <objects>
                 <viewController id="x9G-W6-ygQ" customClass="MainController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,8 +139,13 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R8A-Xy-A2U"/>
                     </view>
-                    <navigationItem key="navigationItem" title="YuGiOhCard" id="mCp-EV-cju">
+                    <navigationItem key="navigationItem" title="YuGiOh" id="mCp-EV-cju">
                         <rightBarButtonItems>
+                            <barButtonItem title="卡组" id="DAu-cs-pqm">
+                                <connections>
+                                    <action selector="btnDeckClickedWithSender:" destination="x9G-W6-ygQ" id="4CA-XC-KeR"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="卡包" id="cBb-0Y-Coc">
                                 <connections>
                                     <action selector="btnPackClickedWithSender:" destination="x9G-W6-ygQ" id="3y0-UQ-EvL"/>
@@ -158,6 +162,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jz-gm-8OB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="333.60000000000002" y="163.26836581709148"/>
+        </scene>
+        <!--Deck List-->
+        <scene sceneID="3US-e1-lIv">
+            <objects>
+                <viewController storyboardIdentifier="decklist" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bFa-rC-iAZ" customClass="DeckListController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MTK-HB-rZ1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EVv-G6-oNs"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Deck List" id="S2r-D1-pKz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LV5-br-xj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047" y="-554"/>
+        </scene>
+        <!--Deck in Category-->
+        <scene sceneID="PAd-Bp-ngO">
+            <objects>
+                <viewController storyboardIdentifier="deckincategory" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ugx-1M-14N" customClass="DeckInCategoryController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xgn-6Q-gMs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="k4R-35-cj4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Deck in Category" id="id4-Ab-Yt9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H59-SP-2yM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1736" y="-558"/>
+        </scene>
+        <!--Deck-->
+        <scene sceneID="YfP-C8-oqD">
+            <objects>
+                <viewController storyboardIdentifier="deckdetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K4g-ge-eV4" customClass="DeckController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q0Z-9Q-YTP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QQh-fe-hLE"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Deck" id="HvX-AX-ngl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IiL-vr-3OU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2409" y="-556"/>
         </scene>
         <!--卡片列表-->
         <scene sceneID="3MR-c4-R8B">

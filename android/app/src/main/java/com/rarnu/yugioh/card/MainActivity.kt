@@ -24,6 +24,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
 
     private val MENUID_LIMIT = 0
     private val MENUID_PACK = 1
+    private val MENUID_DECK = 2
 
     private val listSearch = arrayListOf<String>()
     private lateinit var adapterSearch: SimpleSearchAdapter
@@ -86,6 +87,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menu.add(0, MENUID_LIMIT, 0, R.string.card_limit).apply { setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS) }
         menu.add(0, MENUID_PACK, 1, R.string.card_pack).apply { setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS) }
+        menu.add(0, MENUID_DECK, 2, R.string.card_deck).apply { setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS) }
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -93,6 +95,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
         when (item.itemId) {
             MENUID_LIMIT -> startActivity(Intent(this, LimitActivity::class.java))
             MENUID_PACK -> startActivity(Intent(this, PackActivity::class.java))
+            MENUID_DECK -> startActivity(Intent(this, DeckListActivity::class.java))
         }
         return true
     }

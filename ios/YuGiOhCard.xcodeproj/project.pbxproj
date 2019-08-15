@@ -45,6 +45,9 @@
 		92CE6B6522D724CC00A5769A /* YuGiOhWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 92C24E89220C4EE9007F16EF /* YuGiOhWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		92CE6B6A22D7259800A5769A /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CE6B6922D7259800A5769A /* MainNavController.swift */; };
 		92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E7F6F620EB6BE70078574B /* CardListCell.swift */; };
+		92ECC20F23054041008CF6FE /* DeckListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECC20E23054041008CF6FE /* DeckListController.swift */; };
+		92ECC21123054FC2008CF6FE /* DeckInCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECC21023054FC2008CF6FE /* DeckInCategoryController.swift */; };
+		92ECC2132305538E008CF6FE /* DeckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ECC2122305538E008CF6FE /* DeckController.swift */; };
 		92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1120F4583E00D4D1F5 /* PackController.swift */; };
 		92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1320F4599600D4D1F5 /* SeasonCell.swift */; };
 		92F88B1620F45E5300D4D1F5 /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88B1520F45E5300D4D1F5 /* PackCell.swift */; };
@@ -155,6 +158,9 @@
 		92C24E96220C4EE9007F16EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92CE6B6922D7259800A5769A /* MainNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		92E7F6F620EB6BE70078574B /* CardListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCell.swift; sourceTree = "<group>"; };
+		92ECC20E23054041008CF6FE /* DeckListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListController.swift; sourceTree = "<group>"; };
+		92ECC21023054FC2008CF6FE /* DeckInCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInCategoryController.swift; sourceTree = "<group>"; };
+		92ECC2122305538E008CF6FE /* DeckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckController.swift; sourceTree = "<group>"; };
 		92F88B1120F4583E00D4D1F5 /* PackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackController.swift; sourceTree = "<group>"; };
 		92F88B1320F4599600D4D1F5 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
 		92F88B1520F45E5300D4D1F5 /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
@@ -244,6 +250,9 @@
 				92B6077820FF399700562693 /* HelpController.swift */,
 				927C3A49210578D500EC1FB1 /* Updater.swift */,
 				92CE6B6922D7259800A5769A /* MainNavController.swift */,
+				92ECC20E23054041008CF6FE /* DeckListController.swift */,
+				92ECC21023054FC2008CF6FE /* DeckInCategoryController.swift */,
+				92ECC2122305538E008CF6FE /* DeckController.swift */,
 			);
 			path = YuGiOhCard;
 			sourceTree = "<group>";
@@ -486,6 +495,7 @@
 			files = (
 				9207E76320E67E8F00735721 /* MainController.swift in Sources */,
 				92B6077920FF399700562693 /* HelpController.swift in Sources */,
+				92ECC20F23054041008CF6FE /* DeckListController.swift in Sources */,
 				92F88B1220F4583E00D4D1F5 /* PackController.swift in Sources */,
 				92F88B1420F4599600D4D1F5 /* SeasonCell.swift in Sources */,
 				9269239A20F49D20002F4E8E /* SearchController.swift in Sources */,
@@ -497,8 +507,10 @@
 				92CE6B6A22D7259800A5769A /* MainNavController.swift in Sources */,
 				9269239820F48D1D002F4E8E /* PackDetailController.swift in Sources */,
 				9246AD3E20EE1A8500839678 /* CardWikiController.swift in Sources */,
+				92ECC2132305538E008CF6FE /* DeckController.swift in Sources */,
 				9246AD3C20EDF0BA00839678 /* CardDetailController.swift in Sources */,
 				927C3A4A210578D500EC1FB1 /* Updater.swift in Sources */,
+				92ECC21123054FC2008CF6FE /* DeckInCategoryController.swift in Sources */,
 				92F88B1620F45E5300D4D1F5 /* PackCell.swift in Sources */,
 				92E7F6F720EB6BE70078574B /* CardListCell.swift in Sources */,
 			);

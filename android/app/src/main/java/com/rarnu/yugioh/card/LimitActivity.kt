@@ -16,7 +16,7 @@ import kotlin.concurrent.thread
 class LimitActivity : BackActivity(), AdapterView.OnItemClickListener {
 
 
-    private val list = arrayListOf<LimitInfo>()
+    private val list = mutableListOf<LimitInfo>()
     private lateinit var adapter: LimitAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

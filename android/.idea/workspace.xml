@@ -15,29 +15,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e532e62-69f1-4ce3-8186-901f9a1a396a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/DeckController.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/DeckInCategoryController.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/DeckListController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/LimitActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/adapter/SimpleAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGOData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/lib/carddetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/carddetail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/lib/cardwiki.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/cardwiki.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/lib/global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flutter/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flutter/lib/decklist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/lib/decklist.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/YGOAPI2/YGOData2.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YGOAPI2/YGOData2.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/YGOAPI2/YGORequest2.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YGOAPI2/YGORequest2.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/resources/web/carddetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/resources/web/carddetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/resources/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/resources/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/Application.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/CardRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/CardRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/card/Cache2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/card/Cache2.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/card/Request2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/card/Request2.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/database/CardTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/database/CardTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/database/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/database/database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/MainController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/MainController.swift" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,10 +96,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Kotlin File" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
         <option value="Kotlin Object" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -124,7 +121,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Develop/android-sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549465046151" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -142,14 +139,14 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-    </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.rarnu.yugioh.card.adapter" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -327,6 +324,7 @@
       <workItem from="1565230769649" duration="1106000" />
       <workItem from="1565408255184" duration="441000" />
       <workItem from="1565677787828" duration="1306000" />
+      <workItem from="1565859422827" duration="4532000" />
     </task>
     <servers />
   </component>

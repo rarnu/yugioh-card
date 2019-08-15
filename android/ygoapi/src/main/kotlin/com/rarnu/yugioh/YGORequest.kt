@@ -28,4 +28,13 @@ object YGORequest {
     fun packageDetail(aurl: String) = request("$BASE_URL/packdetail", "url=$aurl")
 
     fun hotest() = request("$BASE_URL/hotest")
+
+    fun deckTheme() = request("$BASE_URL/decktheme")
+
+    fun deckCategory() = request("$BASE_URL/deckcategory")
+
+    fun deckInCategory(hash: String) = request("$BASE_URL/deckincategory?hash=$hash")
+
+    fun deck(code: String) = request("$BASE_URL/deck?code=$code")
+
 }

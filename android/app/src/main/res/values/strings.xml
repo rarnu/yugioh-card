@@ -5,6 +5,7 @@
     <string name="card_limit">限制</string>
     <string name="card_limit_full">禁止限制卡表</string>
     <string name="card_pack">卡包</string>
+    <string name="card_deck">卡组</string>
 
     <string name="btn_search">搜索</string>
     <string name="btn_adv_search">高级搜索</string>

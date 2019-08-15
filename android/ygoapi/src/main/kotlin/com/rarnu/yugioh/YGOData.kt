@@ -2,6 +2,7 @@ package com.rarnu.yugioh
 
 import com.rarnu.common.forEach
 import com.rarnu.common.forEachString
+import org.json.JSONArray
 import org.json.JSONObject
 
 class PackageInfo {
@@ -44,7 +45,7 @@ class CardDetail {
     var def = ""
     var link = ""
     var linkarrow = ""
-    val packs = arrayListOf<CardPackInfo>()
+    val packs = mutableListOf<CardPackInfo>()
     var adjust = ""
     var wiki = ""
     var imageid = -1
@@ -60,7 +61,7 @@ class CardInfo {
 }
 
 class SearchResult {
-    val data = arrayListOf<CardInfo>()
+    val data = mutableListOf<CardInfo>()
     var page = -1
     var pageCount = -1
 }
@@ -76,9 +77,19 @@ class HotPack {
 }
 
 class Hotest {
-    val search = arrayListOf<String>()
-    val card = arrayListOf<HotCard>()
-    val pack = arrayListOf<HotPack>()
+    val search = mutableListOf<String>()
+    val card = mutableListOf<HotCard>()
+    val pack = mutableListOf<HotPack>()
+}
+
+class DeckTheme {
+    var code = ""
+    var name = ""
+}
+
+class DeckCategory {
+    var guid = ""
+    var name = ""
 }
 
 object YGOData {
@@ -94,14 +105,14 @@ object YGOData {
             result.page = json.getJSONObject("meta").getInt("cur_page")
             result.pageCount = json.getJSONObject("meta").getInt("total_page")
             json.getJSONArray("cards").forEach { _, obj ->
-                val info = CardInfo()
-                info.cardid = obj.getInt("id")
-                info.hashid = obj.getString("hash_id")
-                info.name = replaceChars(obj.getString("name"))
-                info.japname = replaceChars(obj.getString("name_ja"))
-                info.enname = replaceChars(obj.getString("name_en"))
-                info.cardtype = obj.getString("type_st")
-                result.data.add(info)
+                result.data.add(CardInfo().apply {
+                    cardid = obj.getInt("id")
+                    hashid = obj.getString("hash_id")
+                    name = replaceChars(obj.getString("name"))
+                    japname = replaceChars(obj.getString("name_ja"))
+                    enname = replaceChars(obj.getString("name_en"))
+                    cardtype = obj.getString("type_st")
+                })
             }
         } catch (e: Exception) {
 
@@ -155,35 +166,37 @@ object YGOData {
             val json = JSONObject(sarr[0])
             if (json.getInt("result") == 0) {
                 val obj = json.getJSONObject("data")
-                result.name = replaceChars(obj.getString("name"))
-                result.japname = replaceChars(obj.getString("japname"))
-                result.enname = replaceChars(obj.getString("enname"))
-                result.cardtype = obj.getString("cardtype")
-                result.password = obj.getString("password")
-                result.limit = obj.getString("limit")
-                result.belongs = obj.getString("belongs")
-                result.rare = obj.getString("rare")
-                result.pack = replaceChars(obj.getString("pack"))
-                result.effect = replaceChars(obj.getString("effect"))
-                result.race = obj.getString("race")
-                result.element = obj.getString("element")
-                result.level = obj.getString("level")
-                result.atk = obj.getString("atk")
-                result.def = obj.getString("def")
-                result.link = obj.getString("link")
-                result.linkarrow = replaceLinkArrow(obj.getString("linkarrow"))
-                obj.getJSONArray("packs").forEach { _, pkinfo ->
-                    val info = CardPackInfo()
-                    info.url = pkinfo.getString("url")
-                    info.name = replaceChars(pkinfo.getString("name"))
-                    info.date = pkinfo.getString("date")
-                    info.abbr = pkinfo.getString("abbr")
-                    info.rare = pkinfo.getString("rare")
-                    result.packs.add(info)
+                result.apply {
+                    name = replaceChars(obj.getString("name"))
+                    japname = replaceChars(obj.getString("japname"))
+                    enname = replaceChars(obj.getString("enname"))
+                    cardtype = obj.getString("cardtype")
+                    password = obj.getString("password")
+                    limit = obj.getString("limit")
+                    belongs = obj.getString("belongs")
+                    rare = obj.getString("rare")
+                    pack = replaceChars(obj.getString("pack"))
+                    effect = replaceChars(obj.getString("effect"))
+                    race = obj.getString("race")
+                    element = obj.getString("element")
+                    level = obj.getString("level")
+                    atk = obj.getString("atk")
+                    def = obj.getString("def")
+                    link = obj.getString("link")
+                    linkarrow = replaceLinkArrow(obj.getString("linkarrow"))
+                    adjust = replaceChars(sarr[1])
+                    wiki = replaceChars(sarr[2])
+                    imageid = obj.getInt("imageid")
                 }
-                result.adjust = replaceChars(sarr[1])
-                result.wiki = replaceChars(sarr[2])
-                result.imageid = obj.getInt("imageid")
+                obj.getJSONArray("packs").forEach { _, pkinfo ->
+                    result.packs.add(CardPackInfo().apply {
+                        url = pkinfo.getString("url")
+                        name = replaceChars(pkinfo.getString("name"))
+                        date = pkinfo.getString("date")
+                        abbr = pkinfo.getString("abbr")
+                        rare = pkinfo.getString("rare")
+                    })
+                }
             }
         } catch (e: Exception) {
 
@@ -193,17 +206,17 @@ object YGOData {
 
     fun limit(): List<LimitInfo> {
         val ahtml = YGORequest.limit()
-        val result = arrayListOf<LimitInfo>()
+        val result = mutableListOf<LimitInfo>()
         try {
             val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
                 json.getJSONArray("data").forEach { _, obj ->
-                    val info = LimitInfo()
-                    info.limit = obj.getInt("limit")
-                    info.color = obj.getString("color")
-                    info.hashid = obj.getString("hashid")
-                    info.name = replaceChars(obj.getString("name"))
-                    result.add(info)
+                    result.add(LimitInfo().apply {
+                        limit = obj.getInt("limit")
+                        color = obj.getString("color")
+                        hashid = obj.getString("hashid")
+                        name = replaceChars(obj.getString("name"))
+                    })
                 }
             }
         } catch (e: Exception) {
@@ -214,17 +227,17 @@ object YGOData {
 
     fun packageList(): List<PackageInfo> {
         val ahtml = YGORequest.packageList()
-        val result = arrayListOf<PackageInfo>()
+        val result = mutableListOf<PackageInfo>()
         try {
             val json = JSONObject(ahtml)
             if (json.getInt("result") == 0) {
                 json.getJSONArray("data").forEach { _, obj ->
-                    val info = PackageInfo()
-                    info.season = obj.getString("season")
-                    info.url = obj.getString("url")
-                    info.name = replaceChars(obj.getString("name"))
-                    info.abbr = obj.getString("abbr")
-                    result.add(info)
+                    result.add(PackageInfo().apply {
+                        season = obj.getString("season")
+                        url = obj.getString("url")
+                        name = replaceChars(obj.getString("name"))
+                        abbr = obj.getString("abbr")
+                    })
                 }
             }
         } catch (e: Exception) {
@@ -245,16 +258,16 @@ object YGOData {
                     result.search.add(s)
                 }
                 json.getJSONArray("card").forEach { _, obj ->
-                    val ci = HotCard()
-                    ci.hashid = obj.getString("hashid")
-                    ci.name = replaceChars(obj.getString("name"))
-                    result.card.add(ci)
+                    result.card.add(HotCard().apply {
+                        hashid = obj.getString("hashid")
+                        name = replaceChars(obj.getString("name"))
+                    })
                 }
                 json.getJSONArray("pack").forEach { _, obj ->
-                    val pi = HotPack()
-                    pi.name = replaceChars(obj.getString("name"))
-                    pi.packid = obj.getString("packid")
-                    result.pack.add(pi)
+                    result.pack.add(HotPack().apply {
+                        name = replaceChars(obj.getString("name"))
+                        packid = obj.getString("packid")
+                    })
                 }
             }
         } catch (e: Exception) {
@@ -263,5 +276,56 @@ object YGOData {
         return result
     }
 
+    fun deckTheme(): List<DeckTheme> {
+        val result = mutableListOf<DeckTheme>()
+        try {
+            val data = YGORequest.deckTheme()
+            val jarr = JSONArray(data)
+            jarr.forEach { _, obj ->
+                result.add(DeckTheme().apply {
+                    code = obj.getString("code")
+                    name = obj.getString("name")
+                })
+            }
+        } catch (th: Throwable) {
 
+        }
+
+        return result
+
+    }
+
+    fun deckCategory(): List<DeckCategory> {
+        val result = mutableListOf<DeckCategory>()
+        try {
+            val data = YGORequest.deckCategory()
+            val jarr = JSONArray(data)
+            jarr.forEach { _, obj ->
+                result.add(DeckCategory().apply {
+                    guid = obj.getString("guid")
+                    name = obj.getString("name")
+                })
+            }
+        } catch (th: Throwable) {
+
+        }
+        return result
+    }
+
+    fun deckInCategory(deckhash: String): List<DeckTheme> {
+        val result = mutableListOf<DeckTheme>()
+        try {
+            val data = YGORequest.deckInCategory(deckhash)
+            val jarr = JSONArray(data)
+            jarr.forEach { _, obj ->
+                result.add(DeckTheme().apply {
+                    code = obj.getString("code")
+                    name = obj.getString("name")
+                })
+            }
+        } catch (th: Throwable) {
+
+        }
+        return result
+    }
 }

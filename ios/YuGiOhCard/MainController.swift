@@ -248,6 +248,11 @@ class MainController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(c, animated: true)
     }
     
+    @IBAction func btnDeckClicked(sender: Any) {
+        let c = vc(name: "decklist") as! DeckListController
+        navigationController?.pushViewController(c, animated: true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

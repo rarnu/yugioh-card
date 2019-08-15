@@ -25,8 +25,8 @@ class _DeckListState extends State<DeckListPage> {
     try {
       var categoryJson = JsonCodec().decode((await httpGet('$BASEURL/deckcategory')).body);
       var themeJson = JsonCodec().decode((await httpGet('$BASEURL/decktheme')).body);
-      cardTheme.addAll(categoryJson);
-      cardCategory.addAll(themeJson);
+      cardCategory.addAll(categoryJson);
+      cardTheme.addAll(themeJson);
       setState(() {});
     } catch(e) {
     }
@@ -52,7 +52,7 @@ class _DeckListState extends State<DeckListPage> {
             GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: cardTheme.length,
+                itemCount: cardCategory.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 3.0,
                   crossAxisCount: 3,
@@ -60,9 +60,9 @@ class _DeckListState extends State<DeckListPage> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(context, DeckInCategoryRoute(cardTheme[index]['guid']));
+                      Navigator.push(context, DeckInCategoryRoute(cardCategory[index]['guid']));
                     },
-                    child: sizedh(Text(cardTheme[index]['name']), height: 40),
+                    child: sizedh(Text(cardCategory[index]['name']), height: 40),
                   );
                 }),
             Padding(
@@ -72,7 +72,7 @@ class _DeckListState extends State<DeckListPage> {
             GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: cardCategory.length,
+                itemCount: cardTheme.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 3.0,
                   crossAxisCount: 3,
@@ -80,9 +80,9 @@ class _DeckListState extends State<DeckListPage> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(context, DeckRoute(cardCategory[index]['code']));
+                      Navigator.push(context, DeckRoute(cardTheme[index]['code']));
                     },
-                    child: sizedh(Text(cardCategory[index]['name']), height: 40),
+                    child: sizedh(Text(cardTheme[index]['name']), height: 40),
                   );
                 }),
           ],

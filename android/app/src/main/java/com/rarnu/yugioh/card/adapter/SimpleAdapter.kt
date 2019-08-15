@@ -3,6 +3,8 @@ package com.rarnu.yugioh.card.adapter
 import android.content.Context
 import android.view.View
 import com.rarnu.android.BaseAdapter
+import com.rarnu.yugioh.DeckCategory
+import com.rarnu.yugioh.DeckTheme
 import com.rarnu.yugioh.HotCard
 import com.rarnu.yugioh.HotPack
 import com.rarnu.yugioh.card.R
@@ -56,6 +58,44 @@ class SimplePackAdapter(ctx: Context, list: MutableList<HotPack>) : BaseAdapter<
     inner class HotPackHolder(v: View) {
         internal val tvName = v.tvName
 
+        init {
+            tvName.textSize = 12F
+        }
+    }
+}
+
+class SimpleDeckCategoryAdapter(ctx: Context, list: MutableList<DeckCategory>) : BaseAdapter<DeckCategory, SimpleDeckCategoryAdapter.DeckCategoryHolder>(ctx, list) {
+    override fun fillHolder(baseVew: View, holder: DeckCategoryHolder, item: DeckCategory, position: Int) {
+        holder.tvName.text = item.name
+    }
+
+    override fun getAdapterLayout() = R.layout.item_simple
+
+    override fun getValueText(item: DeckCategory) = ""
+
+    override fun newHolder(baseView: View) = DeckCategoryHolder(baseView)
+
+    inner class DeckCategoryHolder(v: View) {
+        internal var tvName = v.tvName
+        init {
+            tvName.textSize = 12F
+        }
+    }
+}
+
+class SimpleDeckThemeAdapter(ctx: Context, list: MutableList<DeckTheme>) : BaseAdapter<DeckTheme, SimpleDeckThemeAdapter.DeckThemeHolder>(ctx, list) {
+    override fun fillHolder(baseVew: View, holder: DeckThemeHolder, item: DeckTheme, position: Int) {
+        holder.tvName.text = item.name
+    }
+
+    override fun getAdapterLayout() = R.layout.item_simple
+
+    override fun getValueText(item: DeckTheme) = ""
+
+    override fun newHolder(baseView: View) = DeckThemeHolder(baseView)
+
+    inner class DeckThemeHolder(v: View) {
+        internal var tvName = v.tvName
         init {
             tvName.textSize = 12F
         }
