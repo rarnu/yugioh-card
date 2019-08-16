@@ -18,7 +18,7 @@ class CardListActivity : BackActivity(), View.OnClickListener, AdapterView.OnIte
     private var key = ""
     private var currentPage = 1
     private var pageCount = 1
-    private val list = arrayListOf<CardInfo>()
+    private val list = mutableListOf<CardInfo>()
     private lateinit var adapter: CardListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

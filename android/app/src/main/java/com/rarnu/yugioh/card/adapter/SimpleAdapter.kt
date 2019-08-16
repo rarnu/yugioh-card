@@ -77,9 +77,6 @@ class SimpleDeckCategoryAdapter(ctx: Context, list: MutableList<DeckCategory>) :
 
     inner class DeckCategoryHolder(v: View) {
         internal var tvName = v.tvName
-        init {
-            tvName.textSize = 12F
-        }
     }
 }
 
@@ -96,8 +93,5 @@ class SimpleDeckThemeAdapter(ctx: Context, list: MutableList<DeckTheme>) : BaseA
 
     inner class DeckThemeHolder(v: View) {
         internal var tvName = v.tvName
-        init {
-            tvName.textSize = 12F
-        }
     }
 }

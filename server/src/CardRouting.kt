@@ -20,12 +20,8 @@ fun Routing.cardRouting() {
         if (key == "") {
             call.respondText { "{\"cards\":[],\"meta\":{\"keyword\":\"\",\"count\":0,\"total_page\":0,\"cur_page\":1}}" }
         } else {
-            try {
-                Request2.search(application, key, page) { str ->
-                    call.respondText { str }
-                }
-            } catch (th: Throwable) {
-                application.reqlog.log("/search", 1, 0, "$th")
+            Request2.search(application, key, page) { str ->
+                call.respondText { str }
             }
         }
     }
@@ -36,14 +32,9 @@ fun Routing.cardRouting() {
         if (hash == "") {
             call.respondText { "{\"result\":1}" }
         } else {
-            try {
-                Request2.cardDetailWiki(application, hash) { data, adjust, wiki ->
-                    call.respondText { "$data\\\\\\\\$adjust\\\\\\\\$wiki" }
-                }
-            } catch (th: Throwable) {
-                application.reqlog.log("/carddetail?hash=$hash", 1, 0, "$th")
+            Request2.cardDetailWiki(application, hash) { data, adjust, wiki ->
+                call.respondText { "$data\\\\\\\\$adjust\\\\\\\\$wiki" }
             }
-
         }
     }
 
@@ -65,14 +56,9 @@ fun Routing.cardRouting() {
         if (u == "") {
             call.respondText { "{\"result\":1}" }
         } else {
-            try {
-                Request2.packdetail(application, u) {
-                    call.respondText { it }
-                }
-            } catch (th: Throwable) {
-                application.reqlog.log("/packdetail?url=$u", 1, 0, "$th")
+            Request2.packdetail(application, u) {
+                call.respondText { it }
             }
-
         }
     }
 

@@ -17,9 +17,9 @@ import kotlin.concurrent.thread
 class PackActivity: BackActivity(), AdapterView.OnItemClickListener {
 
 
-    private val listSeason = arrayListOf<String>()
-    private val listPack = arrayListOf<PackageInfo>()
-    private val listOrigin = arrayListOf<PackageInfo>()
+    private val listSeason = mutableListOf<String>()
+    private val listPack = mutableListOf<PackageInfo>()
+    private val listOrigin = mutableListOf<PackageInfo>()
 
     private lateinit var adapterSeason: SeasonAdapter
     private lateinit var adapterPack: PackAdapter

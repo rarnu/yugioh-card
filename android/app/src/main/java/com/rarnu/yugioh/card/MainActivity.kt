@@ -26,11 +26,11 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
     private val MENUID_PACK = 1
     private val MENUID_DECK = 2
 
-    private val listSearch = arrayListOf<String>()
+    private val listSearch = mutableListOf<String>()
     private lateinit var adapterSearch: SimpleSearchAdapter
-    private val listCard = arrayListOf<HotCard>()
+    private val listCard = mutableListOf<HotCard>()
     private lateinit var adapterCard: SimpleCardAdapter
-    private val listPack = arrayListOf<HotPack>()
+    private val listPack = mutableListOf<HotPack>()
     private lateinit var adapterPack: SimplePackAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

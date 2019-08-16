@@ -111,6 +111,23 @@ public class DeckCategory: Comparable {
     public var name = ""
 }
 
+public class DeckCard: NSObject {
+    public var count = 0
+    public var name = ""
+    public init(_ c: Int, _ n: String) {
+        self.count = c
+        self.name = n
+    }
+}
+
+public class DeckDetail: NSObject {
+    public var name = ""
+    public var monster = [DeckCard]()
+    public var magictrap = [DeckCard]()
+    public var extra = [DeckCard]()
+    public var image = ""
+}
+
 public class YGOData2: NSObject {
 
     public class func searchCommon(_ key: String, _ page: Int, _ callback:@escaping (SearchResult2) -> Void) {
@@ -397,6 +414,32 @@ public class YGOData2: NSObject {
             }
             callback(result)
         }
-        
+    }
+    
+    public class func deckDetail(_ code: String, _ callback: @escaping ([DeckDetail]) -> Void) {
+        YGORequest2.deck(code) { data in
+            var result = [DeckDetail]()
+            do {
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [Any]
+                for obj in json>|< {
+                    let info = DeckDetail()
+                    info.name = obj.string("name")
+                    info.image = obj.string("image")
+                    for m in obj["monster"]!>|< {
+                        info.monster.append(DeckCard(m.int("count"), m.string("name")))
+                    }
+                    for mt in obj["magictrap"]!>|< {
+                        info.magictrap.append(DeckCard(mt.int("count"), mt.string("name")))
+                    }
+                    for e in obj["extra"]!>|< {
+                        info.extra.append(DeckCard(e.int("count"), e.string("name")))
+                    }
+                    result.append(info)
+                }
+            } catch {
+                
+            }
+            callback(result)
+        }
     }
 }

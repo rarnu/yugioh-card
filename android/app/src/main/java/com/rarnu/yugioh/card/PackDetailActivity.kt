@@ -14,7 +14,7 @@ import kotlin.concurrent.thread
 
 class PackDetailActivity : BackActivity(), AdapterView.OnItemClickListener {
 
-    private val list = arrayListOf<CardInfo>()
+    private val list = mutableListOf<CardInfo>()
     private lateinit var adapter: CardListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

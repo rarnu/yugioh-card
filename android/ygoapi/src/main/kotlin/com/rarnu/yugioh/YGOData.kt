@@ -92,6 +92,16 @@ class DeckCategory {
     var name = ""
 }
 
+data class DeckCard(val count: Int, val name: String)
+
+class DeckDetail {
+    var name = ""
+    val monster = mutableListOf<DeckCard>()
+    val magictrap = mutableListOf<DeckCard>()
+    val extra = mutableListOf<DeckCard>()
+    var image = ""
+}
+
 object YGOData {
 
     private fun replaceChars(str: String) = str.replace("&quot;", "\"").replace("&#039;", "'").replace("&amp;", "&").replace("<br />", "\n").replace("　", "")
@@ -328,4 +338,28 @@ object YGOData {
         }
         return result
     }
+
+    fun deck(code: String): List<DeckDetail> {
+        fun JSONArray.map() = mutableListOf<DeckCard>().apply {
+            forEach { _, m -> add(DeckCard(m.getInt("count"), m.getString("name"))) }
+        }
+        val result = mutableListOf<DeckDetail>()
+        try {
+            val data = YGORequest.deck(code)
+            val jarr = JSONArray(data)
+            jarr.forEach { _, obj ->
+                result.add(DeckDetail().apply {
+                    name = obj.getString("name")
+                    image = obj.getString("image")
+                    monster.addAll(obj.getJSONArray("monster").map())
+                    magictrap.addAll(obj.getJSONArray("magictrap").map())
+                    extra.addAll(obj.getJSONArray("extra").map())
+                })
+            }
+        } catch (th: Throwable) {
+
+        }
+        return result
+    }
+
 }
