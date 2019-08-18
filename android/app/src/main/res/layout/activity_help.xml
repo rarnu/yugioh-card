@@ -3,86 +3,121 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <ImageView
-            android:id="@+id/imgIcon"
-            android:layout_width="48dip"
-            android:layout_height="48dip"
-            android:src="@drawable/ic_launcher"
-            android:layout_marginLeft="8dip"
-            android:layout_marginTop="8dip"/>
-    <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent" android:layout_height="24dip"
-            android:layout_marginTop="8dip"
-            android:layout_toRightOf="@+id/imgIcon"
-            android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            android:gravity="left|center_vertical"
-            android:text="YuGiOh Card"
-    />
-    <TextView
-            android:id="@+id/tvVersion"
-            android:layout_width="match_parent" android:layout_height="24dip"
-            android:layout_toRightOf="@+id/imgIcon"
-            android:layout_below="@+id/tvTitle"
-            android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            android:gravity="left|center_vertical"
-            android:text="5.0.1"
-    />
 
-    <View
-            android:id="@+id/vLine"
-            android:layout_width="match_parent" android:layout_height="1px"
-            android:layout_below="@+id/imgIcon" android:layout_margin="8dip"
-            android:background="@android:color/darker_gray"
-    />
+    <LinearLayout
+            android:id="@+id/layInfo"
+            android:layout_marginTop="24dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal">
+        <ImageView
+                android:layout_width="64dip"
+                android:layout_height="64dip"
+                android:src="@drawable/ic_launcher"
+                android:layout_marginTop="8dip"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dip"
+                android:layout_marginTop="8dip"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="YuGiOh Card"
+        />
 
-    <TextView
-            android:id="@+id/tvAuthor"
-            android:layout_width="match_parent"
-            android:layout_height="32dip"
-            android:layout_below="@+id/vLine"
-            android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            android:gravity="left|center_vertical"
-            android:textColor="@android:color/white"
-            android:clickable="true"
-            android:text="软件作者: rarnu"
-    />
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dip"
+        >
+            <TextView android:layout_width="wrap_content" android:layout_height="16dip"
+                      android:text="Android 原生应用"
+                      android:textSize="12sp"
+                      android:textColor="@android:color/holo_green_light"/>
+            <View android:layout_width="1px"
+                  android:layout_height="16dip"
+                  android:layout_marginLeft="8dip"
+                  android:layout_marginRight="8dip"
+                  android:background="@android:color/darker_gray"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="16dip"
+                      android:text="独立平台"
+                      android:textSize="12sp"
+                      android:textColor="@android:color/holo_green_light"/>
+            <View android:layout_width="1px"
+                  android:layout_height="16dip"
+                  android:layout_marginLeft="8dip"
+                  android:layout_marginRight="8dip"
+                  android:background="@android:color/darker_gray"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="16dip"
+                      android:text="完全开源"
+                      android:textSize="12sp"
+                      android:textColor="@android:color/holo_green_light"/>
+        </LinearLayout>
 
-    <TextView
-            android:id="@+id/tvOurocg"
-            android:layout_width="match_parent"
-            android:layout_height="32dip"
-            android:layout_below="@+id/tvAuthor"
-            android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            android:gravity="left|center_vertical"
-            android:textColor="@android:color/white"
-            android:clickable="true"
-            android:text="数据来源: 中国OCG工作室"
-    />
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="24dip"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:layout_marginTop="8dip"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"
+                android:text="游戏王卡片查询器，数据来源 ourocg.cn"/>
+    </LinearLayout>
 
-    <TextView
-            android:id="@+id/tvRarnu"
-            android:layout_width="match_parent"
-            android:layout_height="32dip"
-            android:layout_below="@+id/tvOurocg"
-            android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            android:gravity="left|center_vertical"
-            android:textColor="@android:color/white"
-            android:clickable="true"
-            android:text="卡查开源: github.com/rarnu/yugioh-card"
-    />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_below="@+id/layInfo"
+                  android:layout_marginLeft="16dip"
+                  android:layout_marginRight="16dip">
 
-    <View
-            android:id="@+id/vLine2"
-            android:layout_width="match_parent" android:layout_height="1px"
-            android:layout_below="@+id/tvRarnu" android:layout_margin="8dip"
-            android:background="@android:color/darker_gray"
-    />
+        <View android:layout_width="match_parent"
+              android:layout_height="1px"
+              android:layout_marginTop="16dip"
+              android:layout_marginBottom="16dip"
+              android:background="@android:color/darker_gray"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="5">
+            <TextView android:layout_width="0px" android:layout_height="wrap_content"
+                      android:text="服务类型" android:layout_weight="1"
+                      android:textColor="@android:color/white"
+                      android:textSize="12sp"
+            />
+            <TextView android:layout_width="0px" android:layout_height="wrap_content"
+                      android:text="游戏工具类" android:layout_weight="4"
+                      android:textColor="@android:color/darker_gray"
+                      android:textSize="12sp"/>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent"
+              android:layout_height="1px"
+              android:layout_marginTop="16dip"
+              android:layout_marginBottom="16dip"
+              android:background="@android:color/darker_gray"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="5">
+            <TextView android:layout_width="0px" android:layout_height="wrap_content"
+                      android:text="开源信息" android:layout_weight="1"
+                      android:textSize="12sp"
+                      android:textColor="@android:color/white"
+            />
+            <TextView
+                    android:id="@+id/tvGithub"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="0px" android:layout_height="wrap_content"
+                    android:text="github.com/rarnu/yugioh-card" android:layout_weight="4"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12sp"/>
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1px"
+              android:layout_marginTop="16dip"
+              android:layout_marginBottom="16dip"
+              android:background="@android:color/darker_gray"/>
+    </LinearLayout>
 
 
 </RelativeLayout>

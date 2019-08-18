@@ -14,16 +14,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e532e62-69f1-4ce3-8186-901f9a1a396a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/DeckActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/DeckActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_deckdetail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_deckdetail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_decklist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_decklist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ygoapi/src/main/kotlin/com/rarnu/yugioh/YGORequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rarnu/yugioh/card/HelpActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flutter/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flutter/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/../flutter/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard.xcworkspace/xcuserdata/rarnu.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/YuGiOhCard/MainController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/YuGiOhCard/MainController.swift" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -320,6 +319,8 @@
       <workItem from="1566040629323" duration="1871000" />
       <workItem from="1566105675900" duration="1610000" />
       <workItem from="1566107295692" duration="21000" />
+      <workItem from="1566117035991" duration="1247000" />
+      <workItem from="1566133680753" duration="5040000" />
     </task>
     <servers />
   </component>

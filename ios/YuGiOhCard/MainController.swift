@@ -78,7 +78,7 @@ class MainController: UIViewController, UITextFieldDelegate {
         makeText("热门卡包")
         layLastPack = makeLayout()
         makeLine()
-        let btnHelp = makeButton("帮助")
+        let btnHelp = makeButton("关于")
         btnHelp.addTarget(self, action: #selector(self.btnHelpClicked(sender:)), for: UIControl.Event.touchDown)
         
         loadHotest()
