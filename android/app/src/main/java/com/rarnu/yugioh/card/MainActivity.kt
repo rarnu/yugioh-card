@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -18,6 +19,9 @@ import com.rarnu.yugioh.card.adapter.SimpleCardAdapter
 import com.rarnu.yugioh.card.adapter.SimplePackAdapter
 import com.rarnu.yugioh.card.adapter.SimpleSearchAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import java.security.KeyStore
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManagerFactory
 import kotlin.concurrent.thread
 
 class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {

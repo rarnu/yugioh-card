@@ -8,6 +8,7 @@ object YGORequest {
     // const val BASE_URL = "http://119.3.22.119"
     const val BASE_URL = "http://122.112.175.64"
     const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
+    const val DECK_URL = "https://www.ygo-sem.cn/"
 
     private fun request(aurl: String, param: String = "") = try { http {
         url = aurl
