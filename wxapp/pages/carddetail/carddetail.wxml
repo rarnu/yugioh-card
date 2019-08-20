@@ -1,0 +1,97 @@
+<!--pages/carddetail.wxml-->
+<view class="container">
+  <view class="item">
+    <text class="itemname">中文名称:</text>
+    <text class="itemvalue" decode="true">{{carddata.name}}</text>
+  </view>
+  <view class="item">
+    <text class="itemname">日文名称:</text>
+    <text class="itemvalue" decode="true">{{carddata.japname}}</text>
+  </view>
+  <view class="item">
+    <text class="itemname">英文名称:</text>
+    <text class="itemvalue" decode="true">{{carddata.enname}}</text>
+  </view>
+  <view class="item">
+    <text class="itemname">卡片种类:</text>
+    <text class="itemvalue">{{carddata.cardtype}}</text>
+  </view>
+  <view class="item">
+    <text class="itemname">卡片密码:</text>
+    <text class="itemvalue">{{carddata.password}}</text>
+  </view>
+  <view class="item">
+    <text class="itemname">使用限制:</text>
+    <text class="itemvalue">{{carddata.limit}}</text>
+  </view>
+  <view class="item">
+    <text class="itemname">罕贵度:</text>
+    <text class="itemvalue">{{carddata.rare}}</text>
+  </view>
+  <view class="item">
+    <text class="itemname">所在卡包:</text>
+    <text class="itemvalue">{{carddata.pack}}</text>
+  </view>
+  <block wx:if="{{isMonster}}">
+    <view class="item">
+      <text class="itemname">怪兽种族:</text>
+      <text class="itemvalue">{{carddata.race}}</text>
+    </view>
+    <view class="item">
+      <text class="itemname">怪兽属性:</text>
+      <text class="itemvalue">{{carddata.element}}</text>
+    </view>
+    <block wx:if="{{isLinkMonster}}">
+      <view class="item">
+        <text class="itemname">攻击力:</text>
+        <text class="itemvalue">{{carddata.atk}}</text>
+      </view>
+      <view class="item">
+        <text class="itemname">连接数:</text>
+        <text class="itemvalue">{{carddata.link}}</text>
+      </view>
+      <view class="item">
+        <text class="itemname">连接方向:</text>
+        <text class="itemvalue">{{linkArrows}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <block wx:if="{{isXYZMonster}}">
+        <view class="item">
+          <text class="itemname">怪兽阶级:</text>
+          <text class="itemvalue">{{carddata.level}}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="item">
+          <text class="itemname">怪兽星级:</text>
+          <text class="itemvalue">{{carddata.level}}</text>
+        </view>
+      </block>
+      <view class="item">
+        <text class="itemname">攻击力:</text>
+        <text class="itemvalue">{{carddata.atk}}</text>
+      </view>
+      <view class="item">
+        <text class="itemname">守备力:</text>
+        <text class="itemvalue">{{carddata.def}}</text>
+      </view>
+    </block>
+  </block>
+
+  <view class="effectitem">
+    <text class="itemname">效果:</text>
+    <text class="effectvalue">{{effect}}</text>
+  </view>
+
+  <view class="imgcontainer">
+    <image class="img" src="http://ocg.resource.m2v.cn/{{carddata.imageid}}.jpg" binderror="imgError"></image>
+  </view>
+
+  <view>
+    <text class="adjust">{{cardadjust}}</text>
+  </view>
+
+  <button class="wiki" bindtap="bindWikiTap">WIKI</button>
+</view>
+

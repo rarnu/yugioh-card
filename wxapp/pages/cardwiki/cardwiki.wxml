@@ -1,0 +1,6 @@
+<!--pages/cardwiki/cardwiki.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+
+<view class="container">
+<template is="wxParse" data="{{wxParseData:wikidata.nodes}}"/>
+</view>

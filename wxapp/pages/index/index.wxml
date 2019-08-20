@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="searchbar">
+    <input class="input" bindinput="bindKeywordInput" bindconfirm="bindSearchConfirm" confirm-type="search" placeholder="输入要搜索的关键字" />
+    <button class="btnsearch" bindtap="btnSearchTap">搜索</button>
+    <button class="btnsearch" bindtap="bindAdvTap">高级</button>
+  </view>
+  <view class="buttonbar">
+    <button class="btnjump">禁限卡表</button>
+    <button class="btnjump">卡包列表</button>
+    <button class="btnjump">卡组列表</button>
+  </view>
+</view>

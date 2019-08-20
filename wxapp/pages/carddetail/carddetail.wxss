@@ -1,0 +1,80 @@
+/* pages/carddetail.wxss */
+.item {
+  display: flex;
+  width: 100%;
+  height: 48rpx;
+  font-size: 0.9em;
+}
+
+.itemvalue {
+  font-size: 0.9em;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+.itemname {
+  width: 20%;
+}
+
+.effectitem {
+  height: auto;
+  width: 100%;
+  display: flex;
+  font-size: 0.9em;
+}
+
+.effectvalue {
+  width: 80%;
+  font-size: 0.9em;
+}
+
+.line {
+  width: 100%;
+  height: 1rpx;
+  margin-top: 16rpx;
+  margin-bottom: 16rpx;
+  background-color: lightgray;
+}
+
+.space {
+  height: 24rpx;
+}
+
+.adjust {
+  width: 100%;
+  height: auto;
+  font-size: 0.9em;
+}
+
+.imgcontainer {
+  width: 100%;
+  height: auto;
+  border-top: 1rpx solid lightgray;
+  border-bottom: 1rpx solid lightgray;
+  margin-top: 24rpx;
+  margin-bottom: 24rpx;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  width: 336rpx;
+  height: 492rpx;
+}
+
+.wiki {
+  width: 100%;
+  height: 80rpx;
+  margin: 0;
+  padding: 0;
+  border: 1rpx solid lightgray;
+  border-radius: 40rpx;
+  background-color: #fefefe;
+  color: #000000;
+  font-size: 30rpx;
+  margin-top: 24rpx;
+}

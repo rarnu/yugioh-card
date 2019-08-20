@@ -1,0 +1,52 @@
+/**index.wxss**/
+.input {
+    margin-right: 8rpx;
+    width: 510rpx;
+    height: 60rpx;
+    border: solid 1px lightgray;
+    border-radius: 40rpx;
+    padding: 4px 4px 4px 4px;
+}
+
+.searchbar {
+    width: 100%;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnsearch {
+    margin: 0;
+    padding: 0;
+    width: 80rpx;
+    height: 80rpx;
+    border: 1rpx solid lightgray;
+    outline: none;
+    border-radius: 40rpx;
+    background-color: #fefefe;
+    color: #000000;
+    font-size: 30rpx;
+    
+}
+
+.buttonbar {
+  width: 70%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28rpx;
+  margin-left: 15%;
+}
+
+.btnjump {
+  margin: 0;
+  padding: 0;
+  width: 160rpx;
+  height: 80rpx;
+  border: 1rpx solid lightgray;
+  outline: none;
+  border-radius: 40rpx;
+  background-color: #fefefe;
+  color: #000000;
+  font-size: 30rpx;
+}
