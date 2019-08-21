@@ -104,7 +104,7 @@
         <div class="div-link-arrow">
           <text class="txt-link-arrow" style="color: {{linkArrowColor(4)}}" onclick="linkArrowToggle(4)">←</text>
           <text class="txt-link-arrow"></text>
-          <text class="txt-link-arrow" style="color: {{linkArrowColor(6)}}" onclick="linkArrowToggle(6)"> </text>
+          <text class="txt-link-arrow" style="color: {{linkArrowColor(6)}}" onclick="linkArrowToggle(6)">→</text>
         </div>
         <div class="div-link-arrow">
           <text class="txt-link-arrow" style="color: {{linkArrowColor(1)}}" onclick="linkArrowToggle(1)">↙</text>
