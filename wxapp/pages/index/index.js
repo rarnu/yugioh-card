@@ -32,6 +32,24 @@ Page({
     }
   },
   bindAdvTap: function(e) {
-    console.log('advance tapped')
+    wx.navigateTo({
+      url: '../advsearch/advsearch',
+    })
+  },
+  bindLimitTap: function(e) {
+    wx.navigateTo({
+      url: '../limit/limit',
+    })
+  },
+  bindPackTap: function(e) {
+    wx.navigateTo({
+      url: '../pack/pack',
+    })
+  },
+  bindDeckTap: function(e) {
+    console.log('goto deck')
+    wx.navigateTo({
+      url: '../decklist/decklist',
+    })
   }
 })

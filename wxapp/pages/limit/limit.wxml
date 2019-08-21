@@ -1,0 +1,12 @@
+<!--pages/limit/limit.wxml-->
+<view class="container">
+  <block class="list" wx:for="{{limidata}}" wx:key="card">
+    <view class="listitem" data-item="{{item}}" data-id="{{item.hashid}}" bindtap="bindCardItemTap">
+      <view class="block" style="background-color: {{item.color}}"></view>
+      <text class="textitem">{{item.name}}</text>
+      <text wx:if="{{item.limit == 0}}" class="limititem" style="color: red">禁止</text>
+      <text wx:if="{{item.limit == 1}}" class="limititem" style="color: orange">限制</text>
+      <text wx:if="{{item.limit == 2}}" class="limititem" style="color: green">准限</text>
+    </view>
+  </block>
+</view>

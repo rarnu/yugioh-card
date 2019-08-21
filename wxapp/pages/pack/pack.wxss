@@ -1,0 +1,42 @@
+/* pages/pack/pack.wxss */
+
+.season {
+  height: 100%;
+  width: 20%;
+  padding-left: 4rpx;
+
+}
+
+.pack {
+  width: 80%;
+  height: 100%;
+  border-left: 1rpx solid lightgray;
+  padding-left: 4rpx;
+}
+
+.listitem {
+  height: 80rpx;
+  display: flex;
+  border-bottom: 1rpx solid lightgray;
+}
+
+.textitem {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 0.7em;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+.unselecteditem {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 0.7em;
+  color: lightgray;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}

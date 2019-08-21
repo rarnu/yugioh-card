@@ -4,7 +4,13 @@
     "pages/logs/logs",
     "pages/cardlist/cardlist",
     "pages/carddetail/carddetail",
-    "pages/cardwiki/cardwiki"
+    "pages/cardwiki/cardwiki",
+    "pages/limit/limit",
+    "pages/pack/pack",
+    "pages/packdetail/packdetail",
+    "pages/decklist/decklist",
+    "pages/deckincategory/deckincategory",
+    "pages/advsearch/advsearch"
   ],
   "window": {
     "backgroundTextStyle": "light",

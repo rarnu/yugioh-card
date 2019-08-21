@@ -1,0 +1,20 @@
+/* pages/deckincategory/deckincategory.wxss */
+.gridview {
+    position: relative;
+    overflow: hidden;
+}
+
+.gridview-item {
+    position: relative;
+    float: left;
+    width:33.33%;
+    box-sizing: border-box;
+}
+
+.textitem {
+  height: 80rpx;
+  width: 100%;  
+  display:flex;
+  align-items:center;
+  font-size: 0.8em;
+}

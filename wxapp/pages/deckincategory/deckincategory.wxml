@@ -1,0 +1,10 @@
+<!--pages/deckincategory/deckincategory.wxml-->
+<view class="container">
+  <view class="gridview">
+    <view class="gridview-item" wx:for="{{listdata}}" wx:key="deck">
+      <view class='textitem' data-item="{{item}}" data-id="{{item.code}}" bindtap="bindDeckTap">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

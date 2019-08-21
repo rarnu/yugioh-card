@@ -63,7 +63,6 @@ Page({
     }
   },
   imgError: function(e) {
-    console.log(e)
     var index = e.currentTarget.dataset.index
     var img = 'listData[' + index + '].img_url'
     this.setData({

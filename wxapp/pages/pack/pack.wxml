@@ -1,0 +1,18 @@
+<!--pages/pack/pack.wxml-->
+<view class="packcontainer">
+
+  <view class="season">
+    <block wx:for="{{seasondata}}" wx:key="season">
+      <view class="listitem" data-item="{{item}}" data-id="{{item.name}}" bindtap="bindSeasonTap">
+        <text class="textitem" style="color: {{item.color}}">{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="pack">
+    <block wx:for="{{currentPack}}" wx:key="pack">
+      <view class="listitem" data-item="{{item}}" data-id="{{item.url}}" bindtap="bindPackTap">
+        <text class="textitem">{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+</view>

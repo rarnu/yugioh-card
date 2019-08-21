@@ -25,8 +25,7 @@
     border-radius: 40rpx;
     background-color: #fefefe;
     color: #000000;
-    font-size: 30rpx;
-    
+    font-size: 30rpx;   
 }
 
 .buttonbar {

@@ -1,0 +1,37 @@
+/* pages/limit/limit.wxss */
+.list {
+  width: 100%;
+}
+
+.listitem {
+  
+  height: 80rpx;
+  display: flex;
+  border-bottom: 1rpx solid lightgray;
+}
+
+.textitem {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+.limititem {
+  margin-right: 16rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  position: absolute;
+  right: 0;
+}
+
+.block {
+  margin-top: 8rpx;
+  margin-right: 8rpx;
+  height: 64rpx;
+  width: 50rpx;
+}

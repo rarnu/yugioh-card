@@ -6,8 +6,8 @@
     <button class="btnsearch" bindtap="bindAdvTap">高级</button>
   </view>
   <view class="buttonbar">
-    <button class="btnjump">禁限卡表</button>
-    <button class="btnjump">卡包列表</button>
-    <button class="btnjump">卡组列表</button>
+    <button class="btnjump" bindtap="bindLimitTap">禁限卡表</button>
+    <button class="btnjump" bindtap="bindPackTap">卡包列表</button>
+    <button class="btnjump" bindtap="bindDeckTap">卡组列表</button>
   </view>
 </view>

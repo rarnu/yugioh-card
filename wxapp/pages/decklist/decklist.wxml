@@ -1,0 +1,18 @@
+<!--pages/decklist/decklist.wxml-->
+<view class="container">
+  <view class="gridview">
+    <view class="gridview-item" wx:for="{{categoryList}}" wx:key="category">
+      <view class='textitem' data-item="{{item}}" data-id="{{item.guid}}" bindtap="bindCategoryTap">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="gridview">
+    <view class="gridview-item" wx:for="{{themeList}}" wx:key="theme">
+      <view class='textitem' data-item="{{item}}" data-id="{{item.code}}" bindtap="bindThemeTap">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

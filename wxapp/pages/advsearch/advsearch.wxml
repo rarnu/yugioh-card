@@ -1,0 +1,152 @@
+<!--pages/advsearch/advsearch.wxml-->
+<view class="container">
+  <view class="searchitem">
+    <text class="name">卡片种类</text>
+    <text class="option" style="color: {{cardtype == 0 ? cSelected : cNormal}}" bindtap="cMonsterTap">怪兽</text>
+    <text class="option" style="color: {{cardtype == 1 ? cSelected : cNormal}}" bindtap="cMagicTap">魔法</text>
+    <text class="option" style="color: {{cardtype == 2 ? cSelected : cNormal}}" bindtap="cTrapTap">陷阱</text>
+    <button class="btnsearch" bindtap="bindSearch">搜索</button>
+  </view>
+  <view class="searchitem">
+    <text class="name">卡片效果</text>
+    <input class="keyword" placeholder="输入效果关键字" bindinput="bindEffectInput"></input>
+  </view>
+  <view class="line"></view>
+  <block wx:if="{{cardtype == 0}}">
+    <text class="namefull">怪兽属性</text>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterAttr[0] == 1 ? cSelected : cNormal}}" bindtap="cMonsterAttrTap" data-id="0">光</text>
+      <text class="option13" style="color: {{selectedMonsterAttr[1] == 1 ? cSelected : cNormal}}" bindtap="cMonsterAttrTap" data-id="1">暗</text>
+      <text class="option13" style="color: {{selectedMonsterAttr[2] == 1 ? cSelected : cNormal}}" bindtap="cMonsterAttrTap" data-id="2">炎</text>
+      <text class="option13" style="color: {{selectedMonsterAttr[3] == 1 ? cSelected : cNormal}}" bindtap="cMonsterAttrTap" data-id="3">水</text>
+      <text class="option13" style="color: {{selectedMonsterAttr[4] == 1 ? cSelected : cNormal}}" bindtap="cMonsterAttrTap" data-id="4">地</text>
+      <text class="option13" style="color: {{selectedMonsterAttr[5] == 1 ? cSelected : cNormal}}" bindtap="cMonsterAttrTap" data-id="5">风</text>
+      <text class="option13" style="color: {{selectedMonsterAttr[6] == 1 ? cSelected : cNormal}}" bindtap="cMonsterAttrTap" data-id="6">神</text>
+    </view>
+    <text class="namefull">怪兽种类</text>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterSubType[0] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="0">通常</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[1] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="1">效果</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[2] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="2">仪式</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[3] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="3">融合</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[4] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="4">同调</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[5] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="5">XYZ</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[6] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="6">卡通</text>
+    </view>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterSubType[7] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="7">同盟</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[8] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="8">灵魂</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[9] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="9">调整</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[10] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="10">二重</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[11] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="11">灵摆</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[12] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="12">反转</text>
+      <text class="option13" style="color: {{selectedMonsterSubType[13] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="13">特召</text>
+    </view>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterSubType[14] == 1 ? cSelected : cNormal}}" bindtap="cMonsterSubTypeTap" data-id="14">连接</text>
+      <text class="option13"></text>
+      <text class="option13"></text>
+      <text class="option13"></text>
+      <text class="option13"></text>
+      <text class="option13"></text>
+      <text class="option13"></text>
+    </view>
+    <text class="namefull">怪兽种族</text>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterRace[0] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="0">水</text>
+      <text class="option13" style="color: {{selectedMonsterRace[1] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="1">兽</text>
+      <text class="option13" style="color: {{selectedMonsterRace[2] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="2">兽战士</text>
+      <text class="option13" style="color: {{selectedMonsterRace[3] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="3">创造神</text>
+      <text class="option13" style="color: {{selectedMonsterRace[4] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="4">恐龙</text>
+      <text class="option13" style="color: {{selectedMonsterRace[5] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="5">幻神兽</text>
+      <text class="option13" style="color: {{selectedMonsterRace[6] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="6">龙</text>
+    </view>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterRace[7] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="7">天使</text>
+      <text class="option13" style="color: {{selectedMonsterRace[8] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="8">恶魔</text>
+      <text class="option13" style="color: {{selectedMonsterRace[9] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="9">鱼</text>
+      <text class="option13" style="color: {{selectedMonsterRace[10] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="10">昆虫</text>
+      <text class="option13" style="color: {{selectedMonsterRace[11] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="11">机械</text>
+      <text class="option13" style="color: {{selectedMonsterRace[12] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="12">植物</text>
+      <text class="option13" style="color: {{selectedMonsterRace[13] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="13">念动力</text>
+    </view>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterRace[14] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="14">炎</text>
+      <text class="option13" style="color: {{selectedMonsterRace[15] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="15">爬虫类</text>
+      <text class="option13" style="color: {{selectedMonsterRace[16] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="16">岩石</text>
+      <text class="option13" style="color: {{selectedMonsterRace[17] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="17">海龙</text>
+      <text class="option13" style="color: {{selectedMonsterRace[18] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="18">魔法师</text>
+      <text class="option13" style="color: {{selectedMonsterRace[19] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="19">雷</text>
+      <text class="option13" style="color: {{selectedMonsterRace[20] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="20">战士</text>
+    </view>
+    <view class="optionline100">
+      <text class="option13" style="color: {{selectedMonsterRace[21] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="21">鸟兽</text>
+      <text class="option13" style="color: {{selectedMonsterRace[22] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="22">不死</text>
+      <text class="option13" style="color: {{selectedMonsterRace[23] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="23">幻龙</text>
+      <text class="option13" style="color: {{selectedMonsterRace[24] == 1 ? cSelected : cNormal}}" bindtap="cMonsterRaceTap" data-id="24">电子界</text>
+      <text class="option13"></text>
+      <text class="option13"></text>
+      <text class="option13"></text>
+    </view>
+
+    <view class="searchitem2">
+      <text class="name">星数阶级</text>
+      <input class="keyword" placeholder="可以是范围，如 1-4" bindinput="bindLevelInput"></input>
+    </view>
+    <view class="searchitem2">
+      <text class="name">灵摆刻度</text>
+      <input class="keyword" placeholder="可以是范围，如 1-4" bindinput="bindScaleInput"></input>
+    </view>
+    <view class="searchitem2">
+      <text class="name">攻击力</text>
+      <input class="keyword" placeholder="可以是范围，如 1500-2000" bindinput="bindAtkInput"></input>
+    </view>
+    <view class="searchitem2">
+      <text class="name">守备力</text>
+      <input class="keyword" placeholder="可以是范围，如 1500-2000" bindinput="bindDefInput"></input>
+    </view>
+    <view class="searchitem2">
+      <text class="name">连接值</text>
+      <input class="keyword" placeholder="可以是范围，如 1-3" bindinput="bindLinkInput"></input>
+    </view>
+
+    <text class="namefull">连接方向</text>
+    <view class="optionline30">
+      <text class="optionlink" style="color: {{selectedLink[7] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="7">↖</text>
+      <text class="optionlink" style="color: {{selectedLink[8] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="8">↑</text>
+      <text class="optionlink" style="color: {{selectedLink[9] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="9">↗</text>
+    </view>
+    <view class="optionline30">
+      <text class="optionlink" style="color: {{selectedLink[4] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="4">←</text>
+      <text class="optionlink"></text>
+      <text class="optionlink" style="color: {{selectedLink[6] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="6">→</text>
+    </view>
+    <view class="optionline30">
+      <text class="optionlink" style="color: {{selectedLink[1] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="1">↙</text>
+      <text class="optionlink" style="color: {{selectedLink[2] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="2">↓</text>
+      <text class="optionlink" style="color: {{selectedLink[3] == 1 ? cSelected : cNormal}}" bindtap="cLinkArrowTap" data-id="3">↘</text>
+    </view>
+
+    <view class="space"></view>
+  </block>
+
+  <block wx:if="{{cardtype == 1}}">
+    <text class="namefull">魔法种类</text>
+    <view class="optionline80">
+      <text class="option15" style="color: {{selectedMagicType[0] == 1 ? cSelected : cNormal}}" bindtap="cMagicTypeTap" data-id="0">通常</text>
+      <text class="option15" style="color: {{selectedMagicType[1] == 1 ? cSelected : cNormal}}" bindtap="cMagicTypeTap" data-id="1">装备</text>
+      <text class="option15" style="color: {{selectedMagicType[2] == 1 ? cSelected : cNormal}}" bindtap="cMagicTypeTap" data-id="2">速攻</text>
+      <text class="option15" style="color: {{selectedMagicType[3] == 1 ? cSelected : cNormal}}" bindtap="cMagicTypeTap" data-id="3">永续</text>
+      <text class="option15" style="color: {{selectedMagicType[4] == 1 ? cSelected : cNormal}}" bindtap="cMagicTypeTap" data-id="4">场地</text>
+      <text class="option15" style="color: {{selectedMagicType[5] == 1 ? cSelected : cNormal}}" bindtap="cMagicTypeTap" data-id="5">仪式</text>
+    </view>
+  </block>
+  <block wx:if="{{cardtype == 2}}">
+    <text class="namefull">陷阱种类</text>
+    <view class="optionline60">
+      <text class="option15" style="color: {{selectedTrapType[0] == 1 ? cSelected : cNormal}}" bindtap="cTrapTypeTap" data-id="0">通常</text>
+      <text class="option15" style="color: {{selectedTrapType[1] == 1 ? cSelected : cNormal}}" bindtap="cTrapTypeTap" data-id="1">永续</text>
+      <text class="option15" style="color: {{selectedTrapType[2] == 1 ? cSelected : cNormal}}" bindtap="cTrapTypeTap" data-id="2">反击</text>
+    </view>
+  </block>
+</view>

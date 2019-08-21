@@ -9,3 +9,10 @@
     justify-content: space-between;
     box-sizing: border-box;
 }
+
+.packcontainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 8px 8px 8px 8px;
+}

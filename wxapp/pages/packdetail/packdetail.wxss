@@ -1,0 +1,32 @@
+/* pages/packdetail/packdetail.wxss */
+
+
+.vitem {
+  flex-direction: column;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.textitem {
+  height: 32rpx;
+  font-size: 28rpx;
+  margin-top: 8rpx;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+.listitem {
+  height: 170rpx;
+  display: flex;
+  border-bottom: 1rpx solid lightgray;
+}
+
+.vimg {
+  position: absolute;
+  right: 0;
+  height: 154rpx;
+  width: 105rpx;
+  margin-top: 8rpx;
+}
