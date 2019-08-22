@@ -3,11 +3,30 @@ const app = getApp()
 
 Page({
   data: {
-    keyword: ''
+    // private
+    change: '<换一批>',
+
+    keyword: '',
+    hotwords: [],
+    hotcards: [],
+    hotpacks: []
   },
-  onLoad: () => {
-    // TODO: load hotest
-    console.log(app.globalData.baseUrl)
+  getHotestData: function() {
+    var that = this
+    var cmd = `${app.globalData.baseUrl}/hotest`
+    wx.request({
+      url: cmd,
+      success: res => {
+        that.setData({
+          hotwords: res.data.search,
+          hotcards: res.data.card,
+          hotpacks: res.data.pack
+        })
+      }
+    })
+  },
+  onLoad: function() {
+    this.getHotestData()
   },
   bindKeywordInput: function(e) {
       this.data.keyword = e.detail.value
@@ -47,9 +66,33 @@ Page({
     })
   },
   bindDeckTap: function(e) {
-    console.log('goto deck')
     wx.navigateTo({
       url: '../decklist/decklist',
     })
+  },
+  bindHotwordTap: function(e) {
+    var key = e.currentTarget.dataset.id
+    this.data.keyword = key
+    this.jumpToCardList()
+  },
+  bindHotcardTap: function(e) {
+    var hash = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../carddetail/carddetail?hash=${hash}`
+    })
+  },
+  bindHotdeckTap: function(e) {
+    var url = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../packdetail/packdetail?url=${url}`,
+    })
+  },
+  bindAboutTap: function(e) {
+    wx.navigateTo({
+      url: '../about/about',
+    })
+  },
+  bindChangeTap: function(e) {
+    this.getHotestData()
   }
 })

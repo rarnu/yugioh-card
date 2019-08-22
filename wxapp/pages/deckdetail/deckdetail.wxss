@@ -1,0 +1,43 @@
+/* pages/deckdetail/deckdetail.wxss */
+.deckname {
+  width: 100%;
+  height: 80rpx;
+  font-size: 1em;
+}
+
+.listitem {
+  width: 100%;
+  height: auto;
+}
+
+.deckcards {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  margin-top: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.card {
+  width: 33.33%;
+  height: auto;
+  font-size: 0.6em;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.deckimg {
+  width: 100%;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: lightgray;
+  margin-top: 24rpx;
+  margin-bottom: 24rpx;
+}

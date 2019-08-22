@@ -17,7 +17,6 @@ Page({
             limidata: res.data.data
           })
         }
-        console.log(res)
       }
     })
   },

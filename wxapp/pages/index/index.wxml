@@ -10,4 +10,43 @@
     <button class="btnjump" bindtap="bindPackTap">卡包列表</button>
     <button class="btnjump" bindtap="bindDeckTap">卡组列表</button>
   </view>
+  <view class="line"></view>
+
+  <text class="title">热门搜索</text>
+
+  <view class="gridview">
+    <view class="gridview-item" wx:for="{{hotwords}}" wx:key="hotword">
+      <view class='textitem' data-item="{{item}}" data-id="{{item}}" bindtap="bindHotwordTap">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="line"></view>
+
+  <view class="hotcard">
+    <text>热门卡片</text>
+    <text class="change" bindtap="bindChangeTap">{{change}}</text>
+  </view>
+
+  <block wx:for="{{hotcards}}" wx:key="hotcard">
+    <view class="textitem" data-item="{{item}}" data-id="{{item.hashid}}" bindtap="bindHotcardTap">
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+
+  <view class="line"></view>
+
+  <text class="title">热门卡包</text>
+
+  <block wx:for="{{hotpacks}}" wx:key="hotpack">
+    <view class="deckitem" data-item="{{item}}" data-id="{{item.packid}}" bindtap="bindHotdeckTap">
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+
+  <view class="line"></view>
+
+  <text class="about" bindtap="bindAboutTap">关于</text>
+
 </view>

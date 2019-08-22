@@ -15,7 +15,6 @@ Page({
     wx.request({
       url: cmdCategory,
       success: res => {
-        console.log(res)
         that.setData({
           categoryList: res.data
         })
@@ -41,8 +40,9 @@ Page({
   },
   bindThemeTap: function(e) {
     var code = e.currentTarget.dataset.id
-    console.log(code)
-    // TODO: to deck view
+    wx.navigateTo({
+      url: `../deckdetail/deckdetail?code=${code}`,
+    })
   }
 
 })

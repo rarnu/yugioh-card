@@ -1,0 +1,17 @@
+<!--pages/deckdetail/deckdetail.wxml-->
+<view class="container">
+  <block wx:for="{{deckshow}}" wx:key="deck">
+    <view class="listitem" data-item="{{item}}">
+      <text class="deckname">{{item.name}}</text>
+      <view class="deckcards">
+        <view class="card"><text decode="true">{{item.monster}}</text></view>
+        <view class="card"><text decode="true">{{item.magictrap}}</text></view>
+        <view class="card"><text decode="true">{{item.extra}}</text></view>
+      </view>
+      <view class="image">
+        <image class="deckimg" mode="widthFix" src="{{item.image}}"></image>
+      </view>
+      <view class="line"></view>
+    </view>
+  </block>
+</view>

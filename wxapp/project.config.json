@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -22,7 +22,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.0",
-	"appid": "wx3ee6e6774e3f9247",
+	"appid": "wx181c5705c212bc78",
 	"projectname": "yugiohcard",
 	"debugOptions": {
 		"hidedInDevtools": []

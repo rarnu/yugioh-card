@@ -93,5 +93,6 @@
   </view>
 
   <button class="wiki" bindtap="bindWikiTap">WIKI</button>
+  <view class="space"></view>
 </view>
 

@@ -10,7 +10,9 @@
     "pages/packdetail/packdetail",
     "pages/decklist/decklist",
     "pages/deckincategory/deckincategory",
-    "pages/advsearch/advsearch"
+    "pages/advsearch/advsearch",
+    "pages/deckdetail/deckdetail",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -28,8 +28,9 @@ Page({
     this.getDeckInCategory()
   },
   bindDeckTap: function(e) {
-    var code = e.currentTarget.dataset.id
-    console.log(code)
-    // TODO: to deck view
+    var code = e.currentTarget.dataset.id 
+    wx.navigateTo({
+      url: `../deckdetail/deckdetail?code=${code}`,
+    })
   }
 })

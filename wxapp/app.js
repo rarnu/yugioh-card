@@ -8,7 +8,7 @@ App({
 
   },
   globalData: {
-    baseUrl: 'http://122.112.175.64',
+    baseUrl: 'https://helaoshi.libaoheng.com',
     debug: true
   }
 })

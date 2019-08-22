@@ -1,0 +1,24 @@
+<!--pages/about/about.wxml-->
+<view class="aboutcontainer">
+  <view class="logoview"><image class="logo" src="../../images/logo.png" ></image></view>
+  <text class="title">YuGiOh Card</text>
+  <view class="subtitle">
+    <text class="subtext">微信小程序</text>
+    <view class="spl"></view>
+    <text class="subtext">无需安装</text>
+    <view class="spl"></view>
+    <text class="subtext">完全开源</text>
+  </view>
+  <view class="space"></view>
+  <view class="line"></view>
+  <view class="infoline">
+    <text class="infoname">服务类型</text>
+    <text class="infovalue">游戏工具类</text>
+  </view>
+  <view class="line"></view>
+  <view class="infoline">
+    <text class="infoname">开源信息</text>
+    <text class="infovalue" bindtap="bindGithubTap">github.com/rarnu/yugioh-card</text>
+  </view>
+  <view class="line"></view>
+</view>
