@@ -9,7 +9,7 @@
 
 .textitem {
   height: 32rpx;
-  font-size: 28rpx;
+  font-size: 0.8em;
   margin-top: 8rpx;
   display: block;
   overflow: hidden;
@@ -25,7 +25,7 @@
 
 .vimg {
   position: absolute;
-  right: 0;
+  right: 8rpx;
   height: 154rpx;
   width: 105rpx;
   margin-top: 8rpx;
