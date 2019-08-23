@@ -10,7 +10,7 @@
             <text class="item-txt">卡片类型: {{$item.type_st}}</text>
           </div>
           <div class='item-img'>
-            <image src="{{$item.img_url}}"></image>
+            <image src="{{$item.img_url}}" data-img="{{$item.hash_id}}" onerror="bindImageError"></image>
           </div>
         
       </list-item>
@@ -87,6 +87,16 @@ export default {
       uri: '/CardDetail',
       params: { cardhash: hash }
     })
+  },
+  bindImageError(e) {
+    var hash = e.target.dataset.img
+    for (var i = 0; i < this.listData.length; i++) {
+      if (this.listData[i].hash_id === hash) {
+        this.listData[i].img_url = '../Common/img0.png'
+        break
+      }
+      
+    }
   }
 }
 </script>

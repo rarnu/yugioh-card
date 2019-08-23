@@ -42,6 +42,7 @@
     <div>
       <input type="button" value='Limit' onclick='routeLimit'/>
       <input type="button" value='Pack' onclick='routePack'/>
+      <input type="button" value='Deck' onclick='routeDeck'/>
       <input type="button" value='About' onclick='routeAbout'/>
     </div>
     </block>
@@ -108,6 +109,10 @@ export default {
   },
   routeAbout() {
     router.push({uri: '/About'})
+  },
+  routeDeck() {
+    console.log('goto deck')
+    router.push({uri: '/Deck'})
   },
   onMenuPress() {
     this.$app.$def.showMenu()

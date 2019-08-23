@@ -1,0 +1,82 @@
+<template>
+    <div class="main-page">
+      <block for="{{listData}}">
+        <text class="deckname">{{$item.name}}</text>
+        <div class="deck">
+          <text class="deckpart">{{buildCardData($item.monster)}}</text>
+          <text class="deckpart">{{buildCardData($item.magictrap)}}</text>
+          <text class="deckpart">{{buildCardData($item.extra)}}</text>
+        </div>
+        <image class="img" src="https://ygo-sem.cn/{{$item.image}}"></image>
+        <div class="line"> </div>
+      </block>
+    </div>
+</template>
+
+<script>
+import router from '@system.router'
+const fetch = require('@system.fetch')
+
+export default {
+  public: {
+    code: '',
+    listData: []
+    // name, monster, magictrap, extra, imagge
+  },
+  buildCardData(list) {
+    var str = ''
+    list.forEach(item => {
+      str += `${item.count} ${item.name}\n`
+    })
+    str = str.trim()
+    return str
+  },
+  getDeckData() {
+    let that = this
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/deck?code=${that.code}`,
+      responseType: 'json',
+      success: function (response) {
+        that.listData = response.data 
+      }
+    })
+  },
+  onInit() {
+    this.getDeckData()
+  },
+}
+</script>
+
+<style>
+.main-page {
+  padding: 8px 8px 8px 8px;
+  flex-direction: column;
+  align-items: center;
+}
+.deckname {
+  width: 100%;
+  height: 60px;
+  font-size: 30px;
+}
+.deck {
+  width: 100%;
+  flex-direction: row;
+}
+.deckpart {
+  width: 33.33%;
+  text-align: left;
+  align-self: flex-start;
+  font-size: 20px;
+}
+.img {
+  width: 100%;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #d3d3d3;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+</style>

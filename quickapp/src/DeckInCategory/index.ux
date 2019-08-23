@@ -1,0 +1,54 @@
+<template>
+  <div class="main-page">
+    <list columns="3">
+      <list-item type="listItem" class="list-item" for="{{listData}}">
+        <text class="txt-item" onclick="bindDeckClick($item.code)">{{$item.name}}</text>
+      </list-item>
+    </list>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+const fetch = require('@system.fetch')
+
+export default {
+  public: {
+    guid: '',
+    listData: [],   
+  },
+  getDeckListData() {
+    let that = this
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/deckincategory?hash=${that.guid}`,
+      responseType: 'json',
+      success: function (response) {
+        that.listData = response.data
+      }
+    })
+  },
+  onInit () {
+    this.getDeckListData()
+  },
+  bindDeckClick(code) {
+    router.push({
+      uri: '/DeckDetail',
+      params: { code: code }
+    })
+  }
+}
+</script>
+
+<style>
+.main-page {
+  padding: 8px 8px 8px 8px;
+  flex-direction: column;
+  align-items: center;
+}
+.list-item {
+    height: 60px;
+}
+.txt-item {
+    font-size: 28px;
+}
+</style>

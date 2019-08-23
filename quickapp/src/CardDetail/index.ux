@@ -31,7 +31,7 @@
     <div class="div-line"><div class="div-name"><text class="txt-effect">效果:</text></div><div class="txt-effect-detail"><text>{{replaceEffect(carddata.effect)}}</text></div></div>
     <div class="div-hr"></div>
     <div class="div-img">
-    <image class="img-class" src="http://ocg.resource.m2v.cn/{{getCardImage()}}.jpg"></image>
+    <image class="img-class" src="http://ocg.resource.m2v.cn/{{getCardImage()}}.jpg" onerror="bindImageError"></image>
     </div>
     <div class="div-hr"></div>
     <div><text>{{cardadjust}}</text></div>
@@ -62,7 +62,6 @@ export default {
         if (json['result'] === 0) {
           that.carddata = json['data']
         }
-        // console.log(that.carddata)
         that.cardadjust = sarr[1]
         that.cardwiki = sarr[2]
       }
@@ -107,6 +106,9 @@ export default {
       uri: '/CardWiki',
       params: { cardhash: this.cardhash, wikidata: this.cardwiki }
     })
+  },
+  bindImageError(e) {
+    this.carddata.imageid = '0'
   }
 }
 </script>

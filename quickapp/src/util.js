@@ -7,7 +7,7 @@ function showMenu () {
   const router = require('@system.router')
 
   prompt.showContextMenu({
-    itemList: ['禁限卡表', '卡包列表', '添加到桌面快捷方式', '关于', '取消'],
+    itemList: ['禁限卡表', '卡包列表', '卡组列表', '添加到桌面快捷方式', '关于', '取消'],
     success: function (ret) {
       switch (ret.index) {
       case 0:
@@ -20,15 +20,20 @@ function showMenu () {
           uri: '/Pack'
         })
         break
-      case 2:        
+      case 2:
+        router.push({
+          uri: '/Deck'
+        })
+        break
+      case 3:        
         createShortcut()
         break
-      case 3:
+      case 4:
         router.push({
           uri: '/About'
         })
         break
-      case 4:
+      case 5:
         break
       default:
         prompt.showToast({

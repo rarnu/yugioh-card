@@ -432,8 +432,6 @@ export default {
       }
     }
 
-    console.log(key)
-
     router.push ({
       uri: '/CardList',
       params: { keyword: key }

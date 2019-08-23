@@ -1,0 +1,114 @@
+<template>
+  <div class="main-page">
+    <list columns="3">
+      <list-item type="listItem" class="list-item" for="{{listData}}">
+        <block if="{{ isCategory($item.type) }}">
+          <text class="txt-item" onclick="bindCategoryClick($item.guid)">{{$item.name}}</text>
+        </block>
+        <block elif="{{ isTheme($item.type) }}">
+          <text class="txt-item" onclick="bindThemeClick($item.code)">{{$item.name}}</text>
+        </block>
+        <block else>
+          <div class="line"><div class="innerline"></div></div>
+        </block>
+      </list-item>
+    </list>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+const fetch = require('@system.fetch')
+
+export default {
+  public: {
+    listData: [], 
+  },
+  getDeckListData() {
+    let that = this
+    fetch.fetch({
+      url: `${that.$app.$data.baseurl}/deckcategory`,
+      responseType: 'json',
+      success: function (response) {
+        var tmpCat = response.data
+        fetch.fetch({
+          url: `${that.$app.$data.baseurl}/decktheme`,
+          responseType: 'json',
+          success: function(response2) {
+            var tmpTheme = response2.data
+            that.mergeList(tmpCat, tmpTheme)
+          }
+        })
+      }
+    })
+  },
+  mergeList(cat, theme) {
+    this.listData = []
+    cat.forEach(item => {
+      this.listData.push({type: 0, guid: item.guid, name: item.name})  
+    })
+    var m = 3 - (this.listData.length % 3)
+    for (var i = 0; i < m; i++) {
+      this.listData.push({type: 0, guid: '', name: ''})
+    }
+    for (i = 0; i < 3; i++) {
+      this.listData.push({type: 2})
+    }
+    theme.forEach(item => {
+      this.listData.push({type: 1, code: item.code, name: item.name})
+    })
+    console.log(this.listData)
+  },
+  onInit () {
+    this.getDeckListData()
+  },
+  isCategory(t) {
+    return t === 0
+  },
+  isTheme(t) {
+    return t === 1
+  },
+  isLine(t) {
+    return t === 2
+  },
+  bindCategoryClick(guid) {
+    router.push({
+      uri: '/DeckInCategory',
+      params: { guid: guid }
+    })
+  },
+  bindThemeClick(code) {
+    router.push({
+      uri: '/DeckDetail',
+      params: { code: code }
+    })
+  }
+
+}
+</script>
+
+<style>
+.main-page {
+  padding: 8px 8px 8px 8px;
+  flex-direction: column;
+  align-items: center;
+}
+.line {
+    width: 100%;
+    height: 60px;
+    
+}
+.innerline {
+  width: 100%;
+  height: 1px;
+  margin-top: 30px;
+  background-color: #d3d3d3;
+}
+.list-item {
+    height: 60px;
+}
+.txt-item {
+    font-size: 28px;
+}
+
+</style>

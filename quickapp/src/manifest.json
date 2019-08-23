@@ -27,8 +27,8 @@
   "config": {
     "logLevel": "debug",
     "data": {
-      "baseurl": "http://122.112.175.64",
-      "debug": false
+      "baseurl": "https://helaoshi.libaoheng.com",
+      "debug": true
     }
   },
   "router": {
@@ -60,12 +60,21 @@
       },
       "About": {
         "component": "index"
+      },
+      "Deck": {
+        "component": "index"
+      },
+      "DeckInCategory": {
+        "component": "index"
+      },
+      "DeckDetail": {
+        "component": "index"
       }
     },
     "widgets": {
       "Card": {
         "name": "Card",
-        "description": "快应用卡片展示",
+        "description": "游戏王卡片查询器",
         "component": "index",
         "path": "/Card",
         "targetManufactorys": [
@@ -115,6 +124,18 @@
       },
       "About": {
         "titleBarText": "About",
+        "menu": false
+      },
+      "Deck": {
+        "titleBarText": "Deck List",
+        "menu": false
+      },
+      "DeckInCategory": {
+        "titleBarText": "Deck in Category",
+        "menu": false
+      },
+      "DeckDetail": {
+        "titleBarText": "Deck Detail",
         "menu": false
       }
     }
