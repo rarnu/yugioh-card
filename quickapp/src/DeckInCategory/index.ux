@@ -21,9 +21,9 @@ export default {
     let that = this
     fetch.fetch({
       url: `${that.$app.$data.baseurl}/deckincategory?hash=${that.guid}`,
-      responseType: 'json',
+      responseType: 'text',
       success: function (response) {
-        that.listData = response.data
+        that.listData = JSON.parse(response.data)
       }
     })
   },

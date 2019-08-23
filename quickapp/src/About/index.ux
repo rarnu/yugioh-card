@@ -29,6 +29,7 @@
 </template>
 
 <script>
+const fetch = require('@system.fetch')
 const webview = require('@system.webview')
 const appInfo = require('@system.app').getInfo()
 
@@ -39,7 +40,7 @@ export default {
     desc: '游戏王卡片查询器，数据来源 ourocg.cn',
     serviceType: '游戏工具类',
     subjectInfo: 'github.com/rarnu/yugioh-card',
-    copyright: 'Copyright(R) rarnu 2019 ver 3'
+    copyright: 'Copyright(R) rarnu 2019'
   },
   onInit () {
     this.name = appInfo.name

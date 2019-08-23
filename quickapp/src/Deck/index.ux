@@ -28,14 +28,14 @@ export default {
     let that = this
     fetch.fetch({
       url: `${that.$app.$data.baseurl}/deckcategory`,
-      responseType: 'json',
+      responseType: 'text',
       success: function (response) {
-        var tmpCat = response.data
+        var tmpCat = JSON.parse(response.data)
         fetch.fetch({
           url: `${that.$app.$data.baseurl}/decktheme`,
-          responseType: 'json',
+          responseType: 'text',
           success: function(response2) {
-            var tmpTheme = response2.data
+            var tmpTheme = JSON.parse(response2.data)
             that.mergeList(tmpCat, tmpTheme)
           }
         })
@@ -57,7 +57,6 @@ export default {
     theme.forEach(item => {
       this.listData.push({type: 1, code: item.code, name: item.name})
     })
-    console.log(this.listData)
   },
   onInit () {
     this.getDeckListData()

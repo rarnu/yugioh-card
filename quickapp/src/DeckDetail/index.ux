@@ -7,21 +7,19 @@
           <text class="deckpart">{{buildCardData($item.magictrap)}}</text>
           <text class="deckpart">{{buildCardData($item.extra)}}</text>
         </div>
-        <image class="img" src="https://ygo-sem.cn/{{$item.image}}"></image>
+        <image class="img" src="https://ygo-sem.cn/{{encodeURI($item.image)}}" onerror="bindImageError" oncomplete="bindImageComplete"></image>
         <div class="line"> </div>
       </block>
     </div>
 </template>
 
 <script>
-import router from '@system.router'
 const fetch = require('@system.fetch')
 
 export default {
   public: {
     code: '',
     listData: []
-    // name, monster, magictrap, extra, imagge
   },
   buildCardData(list) {
     var str = ''
@@ -35,15 +33,23 @@ export default {
     let that = this
     fetch.fetch({
       url: `${that.$app.$data.baseurl}/deck?code=${that.code}`,
-      responseType: 'json',
+      responseType: 'text',
       success: function (response) {
-        that.listData = response.data 
+        that.listData = JSON.parse(response.data)
       }
     })
   },
   onInit() {
     this.getDeckData()
   },
+  bindImageError(e) {
+    console.log('error')
+    console.log(e)
+  },
+  bindImageComplete(e) {
+    console.log('complete')
+    console.log(e)
+  }
 }
 </script>
 
