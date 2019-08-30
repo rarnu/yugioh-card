@@ -3,39 +3,38 @@ package com.rarnu.ygo.server.deck
 import com.rarnu.common.forEach
 import org.json.JSONArray
 
-fun String.parseTheme(): String {
+fun String.parseTheme() = try {
     var ret = "["
-    try {
-        val jarr = JSONArray(this)
-        jarr.forEach { _, obj ->
-            val data = obj.getJSONObject("data")
-            ret += "{\"guid\":\"${data.getString("guid")}\",\"code\":\"${data.getString("shortTitleEn")}\",\"name\":\"${data.getString("titleCn")}\"},"
-        }
-    } catch (e: Throwable) {
-
+    val jarr = JSONArray(this)
+    jarr.forEach { _, obj ->
+        val data = obj.getJSONObject("data")
+        ret += "{\"guid\":\"${data.getString("guid")}\",\"code\":\"${data.getString("shortTitleEn")}\",\"name\":\"${data.getString(
+            "titleCn"
+        )}\"},"
     }
     ret = ret.trimEnd(',')
     ret += "]"
-    return ret
+    ret
+} catch (e: Throwable) {
+    "[]"
 }
 
-fun String.parseCategory(): String {
-    var ret = "["
-    try {
-        val jarr = JSONArray(this)
-        jarr.forEach { _, obj ->
-            val data = obj.getJSONObject("data")
-            ret += "{\"guid\":\"${data.getString("guid")}\",\"name\":\"${data.getString("titleCn")}\"},"
-        }
-    } catch (e: Throwable) {
 
+fun String.parseCategory() = try {
+    var ret = "["
+    val jarr = JSONArray(this)
+    jarr.forEach { _, obj ->
+        val data = obj.getJSONObject("data")
+        ret += "{\"guid\":\"${data.getString("guid")}\",\"name\":\"${data.getString("titleCn")}\"},"
     }
     ret = ret.trimEnd(',')
     ret += "]"
-    return ret
+    ret
+} catch (e: Throwable) {
+    "[]"
 }
 
-fun String.parseInCategory(): String {
+fun String.parseInCategory() = try {
     var ret = "["
     var tmp = substring(indexOf("<div id='bookTemplate'"))
     tmp = tmp.substring(0, tmp.indexOf("</td>"))
@@ -52,16 +51,15 @@ fun String.parseInCategory(): String {
     }
     ret = ret.trimEnd(',')
     ret += "]"
-    return ret
+    ret
+} catch (th: Throwable) {
+    "[]"
 }
 
-fun String.parseDeck(): String {
+fun String.parseDeck() = try {
     var ret = "["
     val galleryTag = "id=\"gallery\">"
-    val scriptTag = "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>"
     var tmp = substring(indexOf(galleryTag) + galleryTag.length)
-    tmp = tmp.substring(0, tmp.indexOf(scriptTag))
-
     val h3Tag = "<h3>"
     val tdTag = "<td valign=\"top\""
     val imgTag = "data-original=\""
@@ -81,13 +79,17 @@ fun String.parseDeck(): String {
     }
     ret = ret.trimEnd(',')
     ret += "]"
-    return ret
+    ret
+} catch (th: Throwable) {
+    "[]"
 }
+
 
 private fun extractCards(str: String): String {
     var ret = "["
     val tmp = str.substring(str.indexOf(">") + 1)
-    val tarr = tmp.split("<br/>").filter { it.contains("rel='popoverx'") || (!it.contains("<span ") && !it.contains("</span>")) }
+    val tarr = tmp.split("<br/>")
+        .filter { it.contains("rel='popoverx'") || (!it.contains("<span ") && !it.contains("</span>")) }
     tarr.forEach {
         val s = it.trim()
         if (s != "") {

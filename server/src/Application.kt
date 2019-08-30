@@ -5,6 +5,8 @@ import com.rarnu.ygo.server.database.*
 import com.rarnu.ygo.server.request.loadNetworkCommand
 import io.ktor.application.Application
 import io.ktor.application.call
+import io.ktor.application.install
+import io.ktor.features.HttpsRedirect
 import io.ktor.http.content.default
 import io.ktor.http.content.defaultResource
 import io.ktor.http.content.resources
@@ -19,12 +21,11 @@ fun main(args: Array<String>): Unit = io.ktor.server.tomcat.EngineMain.main(args
 @Suppress("unused")
 fun Application.module() {
 
-
-
     installPlugin<ServerSession>(
         useCompress = true,
         sessionIdentifier = "ServerSession",
-        headers = mapOf("X-Engine" to "Ktor")) { }
+        headers = mapOf("X-Engine" to "Ktor"),
+        redirectHttps = true) { }
     loadNetworkCommand()
     // load cache
     cardTable.loadCache()
@@ -44,6 +45,7 @@ fun Application.module() {
         static { defaultResource("index.html", "web") }
         cardRouting()
         deckRouting()
+        jumpRouting()
     }
 
 }

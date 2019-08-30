@@ -27,30 +27,41 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
     lintOptions {
-        disable 'InvalidPackage'
+        abortOnError false
+
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.rarnu.yugioh.card.yugiohcard"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        signConfig {
+            storeFile file ('roottools2.keystore')
+            storePassword '123456'
+            keyAlias 'roottools2'
+            keyPassword '123456'
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.signConfig
+        }
+        debug {
+            signingConfig signingConfigs.signConfig
         }
     }
 }

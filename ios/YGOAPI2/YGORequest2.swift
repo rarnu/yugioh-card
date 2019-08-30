@@ -8,7 +8,7 @@
 
 import UIKit
 
-public let BASE_URL = "http://122.112.175.64"
+public let BASE_URL = "https://rarnu.xyz"
 public let RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
 public class YGORequest2: NSObject {

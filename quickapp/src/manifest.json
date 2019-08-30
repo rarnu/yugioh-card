@@ -30,8 +30,8 @@
   "config": {
     "logLevel": "debug",
     "data": {
-      "baseurl": "https://helaoshi.libaoheng.com",
-      "debug": true
+      "baseurl": "https://rarnu.xyz",
+      "debug": false
     }
   },
   "router": {

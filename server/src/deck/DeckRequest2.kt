@@ -20,9 +20,11 @@ object DeckRequest2 {
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
             val theme = dGetRequest(app, "$BASE_URL/server.ashx?action=get_convention_books2").parseTheme()
-            cacheDeckTheme.timeinfo = current
-            cacheDeckTheme.text = theme
-            app.deckTheme.save(current, theme)
+            if (theme != "[]") {
+                cacheDeckTheme.timeinfo = current
+                cacheDeckTheme.text = theme
+                app.deckTheme.save(current, theme)
+            }
             callback(theme)
         } else {
             callback(txt)
@@ -35,9 +37,11 @@ object DeckRequest2 {
         val current = System.currentTimeMillis()
         if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
             val category = dGetRequest(app, "$BASE_URL/server.ashx?action=convention_tree").parseCategory()
-            cacheDeckCategory.timeinfo = current
-            cacheDeckCategory.text = category
-            app.deckCategory.save(current, category)
+            if (category != "[]") {
+                cacheDeckCategory.timeinfo = current
+                cacheDeckCategory.text = category
+                app.deckCategory.save(current, category)
+            }
             callback(category)
         } else {
             callback(txt)
@@ -49,8 +53,10 @@ object DeckRequest2 {
         val current = System.currentTimeMillis()
         if (decks == null || differentDaysByMillisecond(current, decks.timeinfo) > 30) {
             val incat = dPostRequest(app, "$BASE_URL/convention_content3.aspx?f=f", mapOf("id" to hash, "langue" to "chs")).parseInCategory()
-            cacheDeckInCategory[hash] = DeckInCategory2(current, incat)
-            app.deckInCategory.save(hash, current, incat)
+            if (incat != "[]") {
+                cacheDeckInCategory[hash] = DeckInCategory2(current, incat)
+                app.deckInCategory.save(hash, current, incat)
+            }
             callback(incat)
         } else {
             callback(decks.text)
@@ -62,8 +68,10 @@ object DeckRequest2 {
         val current = System.currentTimeMillis()
         if (deck == null || differentDaysByMillisecond(current, deck.timeinfo) > 30) {
             val d = dGetRequest(app, BASE_DECK_URL.format(code)).parseDeck()
-            cacheDeck[code] = Deck2(current, d)
-            app.deckTable.save(code, current, d)
+            if (d != "[]") {
+                cacheDeck[code] = Deck2(current, d)
+                app.deckTable.save(code, current, d)
+            }
             callback(d)
         } else {
             callback(deck.text)

@@ -8,7 +8,7 @@ App({
 
   },
   globalData: {
-    baseUrl: 'https://helaoshi.libaoheng.com',
+    baseUrl: 'https://rarnu.xyz',
     debug: true
   }
 })

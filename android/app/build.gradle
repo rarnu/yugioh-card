@@ -11,6 +11,24 @@ android {
         abortOnError false
     }
 
+    signingConfigs {
+        signConfig {
+            storeFile file ('roottools2.keystore')
+            storePassword '123456'
+            keyAlias 'roottools2'
+            keyPassword '123456'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.signConfig
+        }
+        debug {
+            signingConfig signingConfigs.signConfig
+        }
+    }
+
 }
 
 dependencies {
