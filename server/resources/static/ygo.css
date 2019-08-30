@@ -26,6 +26,10 @@ body {
     height: 32px;
 }
 
+#title #client {
+    color: white;
+}
+
 #searchbar {
     padding-top: 16px;
     margin: auto;

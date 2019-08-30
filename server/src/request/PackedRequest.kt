@@ -4,12 +4,15 @@ import com.rarnu.common.runCommand
 import com.rarnu.ktor.config
 import com.rarnu.ygo.server.database.reqlog
 import io.ktor.application.Application
+import java.io.File
 
 private var monoCmd = ""
 private var wrapperCmd = ""
 private var curlCmd = ""
+var imgPath = ""
 
-fun Application.loadNetworkCommand() {
+fun Application.initNetworkOpt() {
+    imgPath = File(System.getProperty("user.dir"), "images").apply { if (!exists()) mkdirs() }.absolutePath
     monoCmd = config("ktor.network.mono")
     wrapperCmd = config("ktor.network.wrapper")
     curlCmd = config("ktor.network.curl")
@@ -56,6 +59,20 @@ fun dPostRequest(app: Application, u: String, params: Map<String, String>? = nul
     result { _, error ->
         if (error != "") {
             app.reqlog.log("cmd.d.post: $u", 1, 0, error)
+        }
+    }
+}.output
+
+fun doDownloadImage(app: Application, u: String, local: String) = runCommand {
+    println("D.Request.DOWNLOAD => $u")
+    commands.add(monoCmd)
+    commands.add(wrapperCmd)
+    commands.add("DOWNLOAD")
+    commands.add(u)
+    commands.add(local)
+    result { _, error ->
+        if (error != "") {
+            app.reqlog.log("cmd.d.download: $u", 1, 0, error)
         }
     }
 }.output

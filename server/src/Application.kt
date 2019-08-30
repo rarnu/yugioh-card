@@ -2,18 +2,12 @@ package com.rarnu.ygo.server
 
 import com.rarnu.ktor.installPlugin
 import com.rarnu.ygo.server.database.*
-import com.rarnu.ygo.server.request.loadNetworkCommand
+import com.rarnu.ygo.server.request.imgPath
+import com.rarnu.ygo.server.request.initNetworkOpt
 import io.ktor.application.Application
-import io.ktor.application.call
-import io.ktor.application.install
-import io.ktor.features.HttpsRedirect
-import io.ktor.http.content.default
 import io.ktor.http.content.defaultResource
 import io.ktor.http.content.resources
 import io.ktor.http.content.static
-import io.ktor.response.respondText
-import io.ktor.routing.get
-import io.ktor.routing.route
 import io.ktor.routing.routing
 
 fun main(args: Array<String>): Unit = io.ktor.server.tomcat.EngineMain.main(args)
@@ -26,13 +20,12 @@ fun Application.module() {
         sessionIdentifier = "ServerSession",
         headers = mapOf("X-Engine" to "Ktor"),
         redirectHttps = true) { }
-    loadNetworkCommand()
+    initNetworkOpt()
     // load cache
     cardTable.loadCache()
     limitTable.loadCache()
     packTable.loadCache()
     packDetailTable.loadCache()
-
     deckTheme.loadCache()
     deckCategory.loadCache()
     deckInCategory.loadCache()

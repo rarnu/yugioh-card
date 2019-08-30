@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Net;
+using System.Net.Mime;
 using System.Text;
 
 namespace wrapper {
@@ -10,7 +12,6 @@ namespace wrapper {
         private static string userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36";
 
         private static string getRequest(string url) {
-            ServicePointManager.DefaultConnectionLimit = 100;
             var request = (HttpWebRequest)WebRequest.Create(url);
             if (url.StartsWith("https://")) ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) => true;
             request.ContentType = "text/plain; charset=utf-8";
@@ -24,7 +25,6 @@ namespace wrapper {
         }
 
         private static string postRequest(string url, string parameters) {
-            ServicePointManager.DefaultConnectionLimit = 100;
             var request = (HttpWebRequest)WebRequest.Create(url);
             if (url.StartsWith("https://")) ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) => true;
             request.ContentType = "application/x-www-form-urlencoded";
@@ -40,12 +40,24 @@ namespace wrapper {
             return responseStream == null ? "" : new StreamReader(responseStream).ReadToEnd();
         }
 
+        private static string downloadFile(string url, string localPath) {
+            try {
+                var client = new WebClient();
+                client.DownloadFile(url, localPath);
+                return localPath;
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                return "";
+            }
+        }
+
         static void Main(string[] args) {
             if (args.Length < 2) {
                 return;                
             }
             var m = args[0];
             var u = args[1];
+            ServicePointManager.DefaultConnectionLimit = 100;
             switch (m) {
                 case "GET":
                     Console.WriteLine(getRequest(u));
@@ -54,6 +66,13 @@ namespace wrapper {
                     var p = "";
                     try { p = args[2]; } catch (Exception e) { }
                     Console.WriteLine(postRequest(u, p));
+                    break;
+                case "DOWNLOAD":
+                    var path = "";
+                    try { path = args[2]; } catch (Exception e) { }
+                    Console.WriteLine(downloadFile(u, path));
+                    break;
+                default:
                     break;
             }
         }

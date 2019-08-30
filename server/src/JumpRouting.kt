@@ -4,7 +4,9 @@ import io.ktor.application.call
 import io.ktor.response.respondRedirect
 import io.ktor.routing.Routing
 import io.ktor.routing.get
+import io.ktor.util.pipeline.ContextDsl
 
+@ContextDsl
 fun Routing.jumpRouting() {
     get("/nexus") {
         //  jump to my nexus
