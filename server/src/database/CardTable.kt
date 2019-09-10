@@ -18,6 +18,7 @@ class CardTable(private val app: Application) {
             cacheMap[it.string("hash")] = CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"), it.long("timeinfo"))
         }
         rs.close()
+        stmt.close()
     }
 
     fun save(h: String, t: Long, d: String, a: String, w: String) {
@@ -31,7 +32,10 @@ class CardTable(private val app: Application) {
             stmt.executeUpdate()
         } catch (e: Throwable) {
 
+        } finally {
+            stmt.close()
         }
+
     }
 
     fun update(h: String, t: Long, d: String, a: String, w: String) {
@@ -42,6 +46,7 @@ class CardTable(private val app: Application) {
         stmt.setLong(4, t)
         stmt.setString(5, h)
         stmt.executeUpdate()
+        stmt.close()
     }
 }
 
@@ -54,6 +59,7 @@ class CardLimit(private val app: Application) {
             cacheLimit.text = it.string("info")
         }
         rs.close()
+        stmt.close()
     }
 
     fun save(t: Long, i: String) {
@@ -65,7 +71,9 @@ class CardLimit(private val app: Application) {
             stmtIns.setLong(1, t)
             stmtIns.setString(2, i)
             stmtIns.executeUpdate()
+            stmtIns.close()
         }
+        stmt.close()
     }
 }
 
@@ -78,6 +86,7 @@ class CardPack(private val app: Application) {
             cachePack.text = it.string("info")
         }
         rs.close()
+        stmt.close()
     }
 
     fun save(t: Long, i: String) {
@@ -89,7 +98,9 @@ class CardPack(private val app: Application) {
             stmtIns.setLong(1, t)
             stmtIns.setString(2, i)
             stmtIns.executeUpdate()
+            stmtIns.close()
         }
+        stmt.close()
     }
 }
 
@@ -101,6 +112,7 @@ class CardPackDetail(private val app: Application) {
             cachePackDetail[it.string("url")] = CardDetail2(it.long("timeinfo"), it.string("info"))
         }
         rs.close()
+        stmt.close()
     }
 
     fun save(u: String, t: Long, i: String) {
@@ -114,9 +126,10 @@ class CardPackDetail(private val app: Application) {
             stmtIns.setString(2, i)
             stmtIns.setLong(3, t)
             stmtIns.executeUpdate()
+            stmtIns.close()
         }
+        stmt.close()
     }
-
 }
 
 

@@ -17,6 +17,7 @@ class DeckTheme(private val app: Application) {
             cacheDeckTheme.text = it.string("info")
         }
         rs.close()
+        stmt.close()
     }
 
     fun save(t: Long, i: String) {
@@ -28,7 +29,9 @@ class DeckTheme(private val app: Application) {
             stmtIns.setLong(1, t)
             stmtIns.setString(2, i)
             stmtIns.executeUpdate()
+            stmtIns.close()
         }
+        stmt.close()
     }
 }
 
@@ -41,6 +44,7 @@ class DeckCategory(private val app: Application) {
             cacheDeckCategory.text = it.string("info")
         }
         rs.close()
+        stmt.close()
     }
 
     fun save(t: Long, i: String) {
@@ -52,7 +56,9 @@ class DeckCategory(private val app: Application) {
             stmtIns.setLong(1, t)
             stmtIns.setString(2, i)
             stmtIns.executeUpdate()
+            stmtIns.close()
         }
+        stmt.close()
     }
 }
 
@@ -64,6 +70,7 @@ class DeckInCategory(private val app: Application) {
             cacheDeckInCategory[it.string("hash")] = DeckInCategory2(it.long("timeinfo"), it.string("info"))
         }
         rs.close()
+        stmt.close()
     }
 
     fun save(h: String, t: Long, i: String) {
@@ -77,7 +84,9 @@ class DeckInCategory(private val app: Application) {
             stmtIns.setLong(2, t)
             stmtIns.setString(3, i)
             stmtIns.executeUpdate()
+            stmtIns.close()
         }
+        stmt.close()
     }
 
 }

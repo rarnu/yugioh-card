@@ -64,3 +64,15 @@ create table Log(
     waste bigint default 0,
     reason text
 ) character set utf8mb4;
+
+-- account system
+
+create table Users (
+    id bigint primary key auto_increment,
+    account varchar(128) not null,
+    password varchar(128) not null, -- encrypted
+    nickname varchar (64) not null,
+    headimg varchar (128) default 'default.png',
+    email varchar(256) default ''    -- only for find back password
+) character set utf8mb4;
+

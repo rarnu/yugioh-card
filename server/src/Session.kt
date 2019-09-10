@@ -5,7 +5,7 @@ import io.ktor.application.ApplicationCall
 import io.ktor.util.pipeline.PipelineContext
 import java.util.*
 
-data class ServerSession(val uuid: String)
+data class ServerSession(val uuid: String, var userId: Long = 0L)
 
 inline val PipelineContext<*, ApplicationCall>.localSession: ServerSession
     get() = session {

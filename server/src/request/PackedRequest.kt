@@ -22,6 +22,7 @@ fun Application.initNetworkOpt() {
 }
 
 fun differentDaysByMillisecond(date1: Long, date2: Long) = (date2 - date1) / (1000 * 3600 * 24)
+fun differentMinutesByMillisecond(date1: Long, date2: Long) = (date2 - date1) / (1000 * 60 * 10)
 
 fun oGetRequest(app: Application, u: String) = runCommand {
     println("O.Request.GET => $u")

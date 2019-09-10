@@ -34,6 +34,7 @@ class LogTable(private val app: Application) {
         }
         html += "</table>"
         rs.close()
+        stmt.close()
         return html
     }
 
@@ -52,6 +53,8 @@ class ReqLog(private val app: Application) {
             stmt.executeUpdate()
         } catch (th: Throwable) {
 
+        } finally {
+            stmt.close()
         }
     }
 }

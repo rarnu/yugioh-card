@@ -41,6 +41,8 @@ dependencies {
     compile "mysql:mysql-connector-java:8.0.15"
     compile "com.rarnu:ktor-jvm:0.4.0"
     compile "io.ktor:ktor-network-tls:$ktor_version"
+    compile "org.apache.commons:commons-email:1.5"
+
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
 }
 
@@ -63,13 +65,3 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         jvmTarget = "1.8"
     }
 }
-
-/*
-task generateJks(type: JavaExec, dependsOn: 'classes') {
-    classpath = sourceSets.main.runtimeClasspath
-    main = 'com.rarnu.ygo.server.CertificateGenerator'
-}
-
-getTasksByName("run", false).first().dependsOn('generateJks')
-
- */

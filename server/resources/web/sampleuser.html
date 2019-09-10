@@ -1,0 +1,169 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/ygo.css">
+    <script src="../static/js/jquery-2.0.0.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/js.cookie.min.js"></script>
+    <script src="../static/js/md5.js"></script>
+    <script src="../static/ygo.js"></script>
+
+    <script type="text/javascript">
+        function register() {
+            let acc = $("#edtRegAcc")[0].value;
+            let pwd = md5($("#edtRegPwd")[0].value);
+            let nick = $("#edtRegNick")[0].value;
+            let email = $("#edtRegEmail")[0].value;
+            $.ajax({
+                url: '/register',
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    account: acc,
+                    password: pwd,
+                    nickname: nick,
+                    email: email
+                },
+                success: function (resp) {
+                    console.log(resp);
+                }
+            });
+
+        }
+
+        function login() {
+            let acc = $("#edtLoginAcc")[0].value;
+            let pwd = md5($("#edtLoginPwd")[0].value);
+            $.ajax({
+                url: '/login',
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    account: acc,
+                    password: pwd
+                },
+                success: function (resp) {
+                    console.log(resp);
+                }
+            });
+
+        }
+
+        function getdata() {
+            $.ajax({
+                url: '/getuser',
+                dataType: 'json',
+                type: 'GET',
+                success: function (resp) {
+                    console.log(resp);
+                    if (resp.id === 0) {
+                        $("#spInfoAcc")[0].innerHTML = "";
+                        $("#spInfoNick")[0].innerHTML = "";
+                        $("#spInfoEmail")[0].innerHTML = "";
+                    } else {
+                        $("#spInfoAcc")[0].innerHTML = resp.account;
+                        $("#spInfoNick")[0].innerHTML = resp.nickname;
+                        $("#spInfoEmail")[0].innerHTML = resp.email;
+                    }
+                }
+            });
+        }
+
+        function logout() {
+            $.ajax({
+                url: '/logout',
+                type: 'GET',
+                dataType: 'json',
+                success: function (resp) {
+                    console.log(resp);
+                    getdata();
+                }
+            });
+        }
+
+        function sendcode() {
+            let acc = $("#edtValidateAcc")[0].value;
+            $.ajax({
+                url: '/sendvalidatecode',
+                dataType: 'json',
+                type: 'GET',
+                data: {
+                    account: acc
+                },
+                success: function(resp) {
+                    console.log(resp);
+                }
+            });
+        }
+
+        function validatecode() {
+            let acc = $("#edtValidateAcc")[0].value;
+            let code = $("#edtValidateCode")[0].value;
+            $.ajax({
+                url: '/checkvalidatecode',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    account: acc,
+                    code: code
+                },
+                success: function (resp) {
+                    console.log(resp);
+                }
+
+            });
+        }
+
+    </script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div style="display: flex; width: 100%; height: 100%;">
+    <div style="width: 25%; border-right: 1px solid lightgray; padding: 16px;">
+        <div><span style="width: 100%;"><b>Register</b></span></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Account</div><div style="width: 70%;"><input type="text" id="edtRegAcc" name="edtRegAcc"></div></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Password</div><div style="width: 70%;"><input type="text" id="edtRegPwd" name="edtRegPwd"></div></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Nickname</div><div style="width: 70%;"><input type="text" id="edtRegNick" name="edtRegNick"></div></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Email</div><div style="width: 70%;"><input type="text" id="edtRegEmail" name="edtRegEmail"></div></div>
+        <div style="margin-top: 8px;"><button onclick="register();">Register</button></div>
+    </div>
+
+    <div style="width: 25%; border-right: 1px solid lightgray; padding: 16px;">
+        <div><span style="width: 100%;"><b>Login</b></span></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Account</div><div style="width: 70%;"><input type="text" id="edtLoginAcc" name="edtLoginAcc" ></div></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Password</div><div style="width: 70%;"><input type="text" id="edtLoginPwd" name="edtLoginPwd"></div></div>
+        <div style="margin-top: 8px;"><button onclick="login();">Login</button></div>
+    </div>
+
+    <div style="width: 25%; border-right: 1px solid lightgray; padding: 16px;">
+        <div><span style="width: 100%;"><b>Account</b></span></div>
+        <div style="margin-top: 8px;"><button onclick="getdata();">Get Data</button></div>
+        <div style="margin-top: 8px;"><button onclick="logout();">Logout</button></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;"></div><div style="width: 70%;"><span id="spInfoAcc" name="spInfoAcc"></span></div></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;"></div><div style="width: 70%;"><span id="spInfoNick" name="spInfoNick"></span></div></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;"></div><div style="width: 70%;"><span id="spInfoEmail" name="spInfoEmail"></span></div></div>
+    </div>
+
+    <div style="width: 25%; border-right: 1px solid lightgray; padding: 16px;">
+        <div><span style="width: 100%;"><b>Validate Code</b></span></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Account</div><div style="width: 70%;"><input type="text" id="edtValidateAcc" name="edtValidateAcc"></div></div>
+        <div style="margin-top: 8px;"><button onclick="sendcode();">Send Code</button></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Code</div><div style="width: 70%;"><input type="text" id="edtValidateCode" name="edtValidateCode"></div></div>
+        <div style="margin-top: 8px;"><button onclick="validatecode();">Validate</button></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

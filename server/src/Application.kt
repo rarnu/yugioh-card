@@ -9,9 +9,11 @@ import io.ktor.http.content.defaultResource
 import io.ktor.http.content.resources
 import io.ktor.http.content.static
 import io.ktor.routing.routing
+import io.ktor.util.KtorExperimentalAPI
 
 fun main(args: Array<String>): Unit = io.ktor.server.tomcat.EngineMain.main(args)
 
+@KtorExperimentalAPI
 @Suppress("unused")
 fun Application.module() {
 
@@ -19,9 +21,10 @@ fun Application.module() {
         useCompress = true,
         sessionIdentifier = "ServerSession",
         headers = mapOf("X-Engine" to "Ktor"),
-        redirectHttps = true) { }
+        redirectHttps = false) { }
     initNetworkOpt()
     // load cache
+    accountTable.loadCache()
     cardTable.loadCache()
     limitTable.loadCache()
     packTable.loadCache()
@@ -38,7 +41,9 @@ fun Application.module() {
         static { defaultResource("index.html", "web") }
         cardRouting()
         deckRouting()
+        accountRouting()
         jumpRouting()
+
     }
 
 }
