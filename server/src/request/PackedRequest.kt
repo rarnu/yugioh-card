@@ -10,9 +10,11 @@ private var monoCmd = ""
 private var wrapperCmd = ""
 private var curlCmd = ""
 var imgPath = ""
+var headPath = ""
 
 fun Application.initNetworkOpt() {
     imgPath = File(System.getProperty("user.dir"), "images").apply { if (!exists()) mkdirs() }.absolutePath
+    headPath = File(System.getProperty("user.dir"), "heads").apply { if (!exists()) mkdirs() }.absolutePath
     monoCmd = config("ktor.network.mono")
     wrapperCmd = config("ktor.network.wrapper")
     curlCmd = config("ktor.network.curl")

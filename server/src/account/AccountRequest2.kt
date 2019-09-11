@@ -2,8 +2,10 @@
 
 package com.rarnu.ygo.server.account
 
+import com.rarnu.ktor.config
 import com.rarnu.ygo.server.database.accountTable
 import com.rarnu.ygo.server.request.differentMinutesByMillisecond
+import com.sun.org.apache.xpath.internal.operations.Bool
 import io.ktor.application.Application
 import io.ktor.http.decodeURLPart
 import io.ktor.util.KtorExperimentalAPI
@@ -53,24 +55,21 @@ object AccountRequest2 {
         }
     }
 
-
-
     @KtorExperimentalAPI
-    fun sendValidateCode(account: String): Boolean {
+    fun sendValidateCode(app: Application, account: String): Boolean {
         var email = cacheAccount.values.firstOrNull { it.account == account }?.email ?: ""
         if (email == "") return false
         email = email.decodeURLPart()
         val code = Random.nextInt(100000, 999999).toString()
         cacheValidateCode[account] = ValidateCode2(code, System.currentTimeMillis())
-        val myEmail = "123909566@qq.com"
-        val myPass = "cmktaicmrfrrbibd"
+        val myEmail = app.config("ktor.mail.email")
         return try {
             SimpleEmail().apply {
-                hostName = "smtp.qq.com"
-                sslSmtpPort = "465"
+                hostName = app.config("ktor.mail.host")
+                sslSmtpPort = app.config("ktor.mail.port")
                 isSSLOnConnect = true
-                setAuthentication(myEmail, myPass)
-                setFrom(myEmail, "rarnu.xyz")
+                setAuthentication(myEmail, app.config("ktor.mail.password"))
+                setFrom(myEmail, app.config("ktor.mail.hostname"))
                 addTo(email)
                 setCharset("UTF-8")
                 subject = "Reset Your Password"
@@ -88,10 +87,53 @@ object AccountRequest2 {
         val v = cacheValidateCode[account]
         var ret = false
         if (v != null) {
-            if (v.code == code && differentMinutesByMillisecond(System.currentTimeMillis(), v.time) < 15) {
+            if (v.code == code && differentMinutesByMillisecond(System.currentTimeMillis(), v.time) < 10) {
                 ret = true
             }
             cacheValidateCode.remove(account)
+        }
+        return ret
+    }
+
+    fun updateUser(app: Application, userId: Long, nickname: String, email: String): Boolean {
+        val u = cacheAccount[userId]
+        var ret = false
+        if (u != null) {
+            u.nickname = nickname
+            u.email = email
+            ret = app.accountTable.update(u.account, u.password, u.nickname, u.email)
+        }
+        return ret
+    }
+
+    fun updateHead(app: Application, userId: Long, head: String): Boolean {
+        val u = cacheAccount[userId]
+        var ret = false
+        if (u != null) {
+            u.headimg = head
+            ret = app.accountTable.headimage(u.account, u.headimg)
+        }
+        return ret
+    }
+
+    fun changePassword(app: Application, userId: Long, oldPwd: String, newPwd: String): Boolean {
+        val u = cacheAccount[userId]
+        var ret = false
+        if (u != null) {
+            if (u.password == oldPwd) {
+                u.password = newPwd
+                ret = app.accountTable.update(u.account, u.password, u.nickname, u.email)
+            }
+        }
+        return ret
+    }
+
+    fun resetPassword(app: Application, account: String, newPwd: String): Boolean {
+        val u = cacheAccount.values.firstOrNull { it.account == account }
+        var ret = false
+        if (u != null) {
+            u.password = newPwd
+            ret = app.accountTable.update(u.account, u.password, u.nickname, u.email)
         }
         return ret
     }

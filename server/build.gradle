@@ -43,7 +43,6 @@ dependencies {
     compile "io.ktor:ktor-network-tls:$ktor_version"
     compile "org.apache.commons:commons-email:1.5"
 
-    testCompile "io.ktor:ktor-server-tests:$ktor_version"
 }
 
 distTar {
