@@ -3,12 +3,10 @@
 package com.rarnu.ygo.server.account
 
 import com.rarnu.ktor.config
+import com.rarnu.ktor.decodeURLPart
 import com.rarnu.ygo.server.database.accountTable
 import com.rarnu.ygo.server.request.differentMinutesByMillisecond
-import com.sun.org.apache.xpath.internal.operations.Bool
 import io.ktor.application.Application
-import io.ktor.http.decodeURLPart
-import io.ktor.util.KtorExperimentalAPI
 import org.apache.commons.mail.SimpleEmail
 import java.lang.Exception
 import java.util.*
@@ -23,18 +21,17 @@ object AccountRequest2 {
             if (u == null) {
                 callback("{\"id\":0}")
             } else {
-                callback("{\"id\":${u.id},\"account\":\"${u.account}\",\"nickname\":\"${u.nickname}\",\"headimg\":\"${u.headimg}\",\"email\":\"${u.email}\"}")
+                callback("{\"id\":${u.id},\"account\":\"${u.account}\",\"nickname\":\"${u.nickname}\",\"headimg\":\"${u.headimg}\",\"email\":\"${u.email.decodeURLPart()}\"}")
             }
         }
     }
-
 
     suspend fun userLogin(app: Application, account: String, password: String, callback: suspend (Long, String) -> Unit) {
         val u = cacheAccount.values.firstOrNull { it.account == account && it.password == password }
         if (u == null) {
             callback(0L, "{\"id\":0}")
         } else {
-            callback(u.id, "{\"id\":${u.id},\"account\":\"${u.account}\",\"nickname\":\"${u.nickname}\",\"headimg\":\"${u.headimg}\",\"email\":\"${u.email}\"}")
+            callback(u.id, "{\"id\":${u.id},\"account\":\"${u.account}\",\"nickname\":\"${u.nickname}\",\"headimg\":\"${u.headimg}\",\"email\":\"${u.email.decodeURLPart()}\"}")
         }
     }
 
@@ -48,14 +45,13 @@ object AccountRequest2 {
             } else {
                 val usr = AccountCache2(rid, account, password, nickname, "default.png", email)
                 cacheAccount[rid] = usr
-                callback(usr.id, "{\"id\":${usr.id},\"account\":\"${usr.account}\",\"nickname\":\"${usr.nickname}\",\"headimg\":\"${usr.headimg}\",\"email\":\"${usr.email}\"}")
+                callback(usr.id, "{\"id\":${usr.id},\"account\":\"${usr.account}\",\"nickname\":\"${usr.nickname}\",\"headimg\":\"${usr.headimg}\",\"email\":\"${usr.email.decodeURLPart()}\"}")
             }
         } else {
             callback(0L, "{\"id\":0}")
         }
     }
 
-    @KtorExperimentalAPI
     fun sendValidateCode(app: Application, account: String): Boolean {
         var email = cacheAccount.values.firstOrNull { it.account == account }?.email ?: ""
         if (email == "") return false

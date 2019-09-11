@@ -14,11 +14,9 @@ import io.ktor.response.respondText
 import io.ktor.routing.Routing
 import io.ktor.routing.get
 import io.ktor.routing.post
-import io.ktor.util.KtorExperimentalAPI
 import io.ktor.util.pipeline.ContextDsl
 import java.io.File
 
-@KtorExperimentalAPI
 @ContextDsl
 fun Routing.accountRouting() {
 

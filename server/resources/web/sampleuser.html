@@ -67,6 +67,7 @@
                         $("#spInfoNick")[0].innerHTML = resp.nickname;
                         $("#spInfoEmail")[0].innerHTML = resp.email;
                     }
+                    $('#imgHead').attr('src','/gethead?id=' + Math.random());
                 }
             });
         }
@@ -98,22 +99,42 @@
             });
         }
 
-        function validatecode() {
+        function resetpassword() {
             let acc = $("#edtValidateAcc")[0].value;
             let code = $("#edtValidateCode")[0].value;
+            let pwd = md5($("#edtValidatePwd")[0].value);
             $.ajax({
-                url: '/checkvalidatecode',
+                url: '/resetpassword',
                 type: 'POST',
                 dataType: 'json',
                 data: {
                     account: acc,
-                    code: code
+                    code: code,
+                    newpwd: pwd
                 },
                 success: function (resp) {
                     console.log(resp);
                 }
-
             });
+        }
+
+        function uploadhead() {
+            let img = $("#edtUploadHead")[0].files[0];
+            if (img) {
+                let fd = new FormData();
+                fd.append('file', img);
+                $.ajax({
+                    url: '/uploadhead',
+                    type: 'POST',
+                    dataType: "json",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+                        console.log(resp);
+                    }
+                });
+            }
         }
 
     </script>
@@ -145,19 +166,27 @@
 
     <div style="width: 25%; border-right: 1px solid lightgray; padding: 16px;">
         <div><span style="width: 100%;"><b>Account</b></span></div>
+
+        <div style="margin-top: 8px;"><input type="file" id="edtUploadHead" name="edtUploadHead"></div>
+        <div style="margin-top: 8px;"><button onclick="uploadhead();">Upload Head</button></div>
+
         <div style="margin-top: 8px;"><button onclick="getdata();">Get Data</button></div>
         <div style="margin-top: 8px;"><button onclick="logout();">Logout</button></div>
         <div style="margin-top: 8px;"><div style="float: left; width: 30%;"></div><div style="width: 70%;"><span id="spInfoAcc" name="spInfoAcc"></span></div></div>
         <div style="margin-top: 8px;"><div style="float: left; width: 30%;"></div><div style="width: 70%;"><span id="spInfoNick" name="spInfoNick"></span></div></div>
         <div style="margin-top: 8px;"><div style="float: left; width: 30%;"></div><div style="width: 70%;"><span id="spInfoEmail" name="spInfoEmail"></span></div></div>
+        <div style="margin-top: 8px;"><img id="imgHead" name="imgHead"></div>
+
+
     </div>
 
     <div style="width: 25%; border-right: 1px solid lightgray; padding: 16px;">
-        <div><span style="width: 100%;"><b>Validate Code</b></span></div>
+        <div><span style="width: 100%;"><b>Reset Password</b></span></div>
         <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Account</div><div style="width: 70%;"><input type="text" id="edtValidateAcc" name="edtValidateAcc"></div></div>
         <div style="margin-top: 8px;"><button onclick="sendcode();">Send Code</button></div>
         <div style="margin-top: 8px;"><div style="float: left; width: 30%;">Code</div><div style="width: 70%;"><input type="text" id="edtValidateCode" name="edtValidateCode"></div></div>
-        <div style="margin-top: 8px;"><button onclick="validatecode();">Validate</button></div>
+        <div style="margin-top: 8px;"><div style="float: left; width: 30%;">New Password</div><div style="width: 70%;"><input type="text" id="edtValidatePwd" name="edtValidatePwd"></div></div>
+        <div style="margin-top: 8px;"><button onclick="resetpassword();">Reset Password</button></div>
     </div>
 </div>
 
