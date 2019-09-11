@@ -8,7 +8,6 @@ import com.rarnu.ygo.server.database.accountTable
 import com.rarnu.ygo.server.request.differentMinutesByMillisecond
 import io.ktor.application.Application
 import org.apache.commons.mail.SimpleEmail
-import java.lang.Exception
 import java.util.*
 import kotlin.random.Random
 
@@ -52,14 +51,17 @@ object AccountRequest2 {
         }
     }
 
-    fun sendValidateCode(app: Application, account: String): Boolean {
+    suspend fun sendValidateCode(app: Application, account: String, callback: suspend (String) -> Unit) {
         var email = cacheAccount.values.firstOrNull { it.account == account }?.email ?: ""
-        if (email == "") return false
+        if (email == "") {
+            callback("{\"result\":1}")
+            return
+        }
         email = email.decodeURLPart()
         val code = Random.nextInt(100000, 999999).toString()
         cacheValidateCode[account] = ValidateCode2(code, System.currentTimeMillis())
         val myEmail = app.config("ktor.mail.email")
-        return try {
+        try {
             SimpleEmail().apply {
                 hostName = app.config("ktor.mail.host")
                 sslSmtpPort = app.config("ktor.mail.port")
@@ -72,14 +74,14 @@ object AccountRequest2 {
                 setMsg("Your Validate Code: $code")
                 sentDate = Date()
             }.send()
-            true
+            callback("{\"result\":0}")
         } catch (e: Exception) {
             println("error => $e")
-            false
+            callback("{\"result\":1}")
         }
     }
 
-    fun checkValidateCode(account: String, code: String): Boolean {
+    private fun checkValidateCode(account: String, code: String): Boolean {
         val v = cacheValidateCode[account]
         var ret = false
         if (v != null) {
@@ -91,7 +93,7 @@ object AccountRequest2 {
         return ret
     }
 
-    fun updateUser(app: Application, userId: Long, nickname: String, email: String): Boolean {
+    suspend fun updateUser(app: Application, userId: Long, nickname: String, email: String, callback: suspend (String) -> Unit) {
         val u = cacheAccount[userId]
         var ret = false
         if (u != null) {
@@ -99,20 +101,20 @@ object AccountRequest2 {
             u.email = email
             ret = app.accountTable.update(u.account, u.password, u.nickname, u.email)
         }
-        return ret
+        callback("{\"result\":${if (ret) 0 else 1}}")
     }
 
-    fun updateHead(app: Application, userId: Long, head: String): Boolean {
+    suspend fun updateHead(app: Application, userId: Long, head: String, callback: suspend (String) -> Unit) {
         val u = cacheAccount[userId]
         var ret = false
         if (u != null) {
             u.headimg = head
             ret = app.accountTable.headimage(u.account, u.headimg)
         }
-        return ret
+        callback("{\"result\":${if (ret) 0 else 1}}")
     }
 
-    fun changePassword(app: Application, userId: Long, oldPwd: String, newPwd: String): Boolean {
+    suspend fun changePassword(app: Application, userId: Long, oldPwd: String, newPwd: String, callback: suspend (String) -> Unit) {
         val u = cacheAccount[userId]
         var ret = false
         if (u != null) {
@@ -121,16 +123,18 @@ object AccountRequest2 {
                 ret = app.accountTable.update(u.account, u.password, u.nickname, u.email)
             }
         }
-        return ret
+        callback("{\"result\":${if (ret) 0 else 1}}")
     }
 
-    fun resetPassword(app: Application, account: String, newPwd: String): Boolean {
-        val u = cacheAccount.values.firstOrNull { it.account == account }
+    suspend fun resetPassword(app: Application, account: String, code: String, newPwd: String, callback: suspend (String) -> Unit) {
         var ret = false
-        if (u != null) {
-            u.password = newPwd
-            ret = app.accountTable.update(u.account, u.password, u.nickname, u.email)
+        if (checkValidateCode(account, code)) {
+            val u = cacheAccount.values.firstOrNull { it.account == account }
+            if (u != null) {
+                u.password = newPwd
+                ret = app.accountTable.update(u.account, u.password, u.nickname, u.email)
+            }
         }
-        return ret
+        callback("{\"result\":${if (ret) 0 else 1}}")
     }
 }

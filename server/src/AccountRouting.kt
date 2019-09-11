@@ -51,16 +51,18 @@ fun Routing.accountRouting() {
         val p = call.requestParameters()
         val nickname = p["nickname"] ?: ""
         val email = p["email"] ?: ""
-        val ret = AccountRequest2.updateUser(application, localSession.userId, nickname, email)
-        call.respondText { "{\"result\":${if (ret) 0 else 1}}" }
+        AccountRequest2.updateUser(application, localSession.userId, nickname, email) {
+            call.respondText { it }
+        }
     }
 
     post("/changepassword") {
         val p = call.requestParameters()
         val oldpwd = p["oldpwd"] ?: ""
         val newpwd = p["newpwd"] ?: ""
-        val ret = AccountRequest2.changePassword(application, localSession.userId, oldpwd, newpwd)
-        call.respondText { "{\"result\":${if (ret) 0 else 1}}" }
+        AccountRequest2.changePassword(application, localSession.userId, oldpwd, newpwd) {
+            call.respondText { it }
+        }
     }
 
     /**
@@ -71,12 +73,9 @@ fun Routing.accountRouting() {
         val account = p["account"] ?: ""
         val code = p["code"] ?: ""
         val newpwd = p["newpwd"] ?: ""
-        var ret = false
-        val validate = AccountRequest2.checkValidateCode(account, code)
-        if (validate) {
-            ret = AccountRequest2.resetPassword(application, account, newpwd)
+        AccountRequest2.resetPassword(application, account, code, newpwd) {
+            call.respondText { it }
         }
-        call.respondText { "{\"result\":${if (ret) 0 else 1}}" }
     }
 
     /**
@@ -85,23 +84,21 @@ fun Routing.accountRouting() {
     get("/sendvalidatecode") {
         val p = call.requestParameters()
         val account = p["account"] ?: ""
-        val ret = AccountRequest2.sendValidateCode(application, account)
-        call.respondText { "{\"result\":${if (ret) 0 else 1}}" }
+        AccountRequest2.sendValidateCode(application, account) {
+            call.respondText { it }
+        }
+
     }
 
     post("/uploadhead") {
-        val p = call.receiveMultipart()
-        var ret = false
-        val saved = p.save("file", File(headPath, localSession.userId.toString()))
-        if (saved) {
-            ret = AccountRequest2.updateHead(application, localSession.userId, localSession.userId.toString())
+        call.receiveMultipart().save("file", File(headPath, localSession.userId.toString()))
+        AccountRequest2.updateHead(application, localSession.userId, localSession.userId.toString()) {
+            call.respondText { it }
         }
-        call.respondText { "{\"result\":${if (ret) 0 else 1}}" }
     }
 
     get("/gethead") {
         val localFile = File(headPath, localSession.userId.toString())
-        println("localfile => $localFile")
         if (localFile.exists()) {
             call.respondFile(localFile)
         } else {
