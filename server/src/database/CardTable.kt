@@ -11,136 +11,118 @@ import com.rarnu.ygo.server.card.*
 import io.ktor.application.Application
 
 class CardTable(private val app: Application) {
-    fun loadCache() {
-        app.conn.prepareStatement("select hash, timeinfo, data, adjust, wiki from Card").apply {
-            executeQuery().apply {
-                forEach {
+    fun loadCache() =
+        app.conn.prepareStatement("select hash, timeinfo, data, adjust, wiki from Card").use { s ->
+            s.executeQuery().use { r ->
+                r.forEach {
                     cacheMap[it.string("hash")] =
                         CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"), it.long("timeinfo"))
                 }
-                close()
             }
-            close()
         }
-    }
 
-    fun save(h: String, t: Long, d: String, a: String, w: String) {
-        app.conn.prepareStatement("insert into Card(hash, timeinfo, data, adjust, wiki) values (?, ?, ?, ?, ?)").apply {
-            setString(1, h)
-            setLong(2, t)
-            setString(3, d)
-            setString(4, a)
-            setString(5, w)
-            executeUpdate()
-            close()
-        }
-    }
 
-    fun update(h: String, t: Long, d: String, a: String, w: String) {
-        app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ?, timeinfo = ? where hash = ?").apply {
-            setString(1, d)
-            setString(2, a)
-            setString(3, w)
-            setLong(4, t)
-            setString(5, h)
-            executeUpdate()
-            close()
-        }
-    }
+    fun save(h: String, t: Long, d: String, a: String, w: String) =
+        app.conn.prepareStatement("insert into Card(hash, timeinfo, data, adjust, wiki) values (?, ?, ?, ?, ?)")
+            .use { s ->
+                s.setString(1, h)
+                s.setLong(2, t)
+                s.setString(3, d)
+                s.setString(4, a)
+                s.setString(5, w)
+                s.executeUpdate()
+            }
+
+
+    fun update(h: String, t: Long, d: String, a: String, w: String) =
+        app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ?, timeinfo = ? where hash = ?")
+            .use { s ->
+                s.setString(1, d)
+                s.setString(2, a)
+                s.setString(3, w)
+                s.setLong(4, t)
+                s.setString(5, h)
+                s.executeUpdate()
+            }
+
 }
 
 class CardLimit(private val app: Application) {
-    fun loadCache() {
-        app.conn.prepareStatement("select timeinfo, info from CardLimit").apply {
-            executeQuery().apply {
-                firstRecord {
+    fun loadCache() =
+        app.conn.prepareStatement("select timeinfo, info from CardLimit").use { s ->
+            s.executeQuery().use { r ->
+                r.firstRecord {
                     cacheLimit.timeinfo = it.long("timeinfo")
                     cacheLimit.text = it.string("info")
                 }
-                close()
             }
-            close()
         }
-    }
 
-    fun save(t: Long, i: String) {
-        app.conn.prepareStatement("update CardLimit set timeinfo = ?, info = ?").apply {
-            setLong(1, t)
-            setString(2, i)
-            if (executeUpdate() != 1) {
-                app.conn.prepareStatement("insert into CardLimit(timeinfo, info) values(?, ?)").apply {
-                    setLong(1, t)
-                    setString(2, i)
-                    executeUpdate()
-                    close()
+    fun save(t: Long, i: String) =
+        app.conn.prepareStatement("update CardLimit set timeinfo = ?, info = ?").use { s ->
+            s.setLong(1, t)
+            s.setString(2, i)
+            if (s.executeUpdate() != 1) {
+                app.conn.prepareStatement("insert into CardLimit(timeinfo, info) values(?, ?)").use { s2 ->
+                    s2.setLong(1, t)
+                    s2.setString(2, i)
+                    s2.executeUpdate()
                 }
             }
-            close()
         }
-    }
 }
 
 class CardPack(private val app: Application) {
-    fun loadCache() {
-        app.conn.prepareStatement("select timeinfo, info from CardPack").apply {
-            executeQuery().apply {
-                firstRecord {
+    fun loadCache() =
+        app.conn.prepareStatement("select timeinfo, info from CardPack").use { s ->
+            s.executeQuery().use { r ->
+                r.firstRecord {
                     cachePack.timeinfo = it.long("timeinfo")
                     cachePack.text = it.string("info")
                 }
-                close()
             }
-            close()
         }
-    }
 
-    fun save(t: Long, i: String) {
-        app.conn.prepareStatement("update CardPack set timeinfo = ?, info = ?").apply {
-            setLong(1, t)
-            setString(2, i)
-            if (executeUpdate() != 1) {
-                app.conn.prepareStatement("insert into CardPack(timeinfo, info) values(?, ?)").apply {
-                    setLong(1, t)
-                    setString(2, i)
-                    executeUpdate()
-                    close()
+    fun save(t: Long, i: String) =
+        app.conn.prepareStatement("update CardPack set timeinfo = ?, info = ?").use { s ->
+            s.setLong(1, t)
+            s.setString(2, i)
+            if (s.executeUpdate() != 1) {
+                app.conn.prepareStatement("insert into CardPack(timeinfo, info) values(?, ?)").use { s2 ->
+                    s2.setLong(1, t)
+                    s2.setString(2, i)
+                    s2.executeUpdate()
                 }
             }
-            close()
         }
-    }
+
 }
 
 class CardPackDetail(private val app: Application) {
-    fun loadCache() {
-        app.conn.prepareStatement("select url, info, timeinfo from CardPackDetail").apply {
-            executeQuery().apply {
-                forEach {
+    fun loadCache() =
+        app.conn.prepareStatement("select url, info, timeinfo from CardPackDetail").use { s ->
+            s.executeQuery().use { r ->
+                r.forEach {
                     cachePackDetail[it.string("url")] = CardDetail2(it.long("timeinfo"), it.string("info"))
                 }
-                close()
             }
-            close()
         }
-    }
 
-    fun save(u: String, t: Long, i: String) {
-        app.conn.prepareStatement("update CardPackDetail set info = ?, timeinfo = ? where url = ?").apply {
-            setString(1, i)
-            setLong(2, t)
-            setString(3, u)
-            if (executeUpdate() != 1) {
-                app.conn.prepareStatement("insert into CardPackDetail(url, info, timeinfo) values(?, ?, ?)").apply {
-                    setString(1, u)
-                    setString(2, i)
-                    setLong(3, t)
-                    executeUpdate()
-                    close()
+    fun save(u: String, t: Long, i: String) =
+        app.conn.prepareStatement("update CardPackDetail set info = ?, timeinfo = ? where url = ?").use { s ->
+            s.setString(1, i)
+            s.setLong(2, t)
+            s.setString(3, u)
+            if (s.executeUpdate() != 1) {
+                app.conn.prepareStatement("insert into CardPackDetail(url, info, timeinfo) values(?, ?, ?)").use { s2 ->
+                    s2.setString(1, u)
+                    s2.setString(2, i)
+                    s2.setLong(3, t)
+                    s2.executeUpdate()
                 }
             }
-            close()
         }
-    }
+
 }
 
 val Application.cardTable: CardTable get() = CardTable(this)

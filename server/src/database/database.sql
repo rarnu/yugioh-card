@@ -66,7 +66,6 @@ create table Log(
 ) character set utf8mb4;
 
 -- account system
-
 create table Users (
     id bigint primary key auto_increment,
     account varchar(128) not null,
@@ -74,5 +73,16 @@ create table Users (
     nickname varchar (64) not null,
     headimg varchar (128) default 'default.png',
     email varchar(256) default ''    -- only for find back password
+) character set utf8mb4;
+
+-- collect
+create table Collect (
+    id bigint primary key auto_increment,
+    userid bigint not null,
+    type int not null,          -- collect type: 0:card, 1:deck
+    collectname varchar (128) not null,
+    cardhash varchar(16) default '',
+    deckdata LONGTEXT default '',
+    timeinfo bigint,
 ) character set utf8mb4;
 
