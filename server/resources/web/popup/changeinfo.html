@@ -1,0 +1,163 @@
+<script type="text/javascript">
+    function getOldData() {
+        $.ajax({
+            url: '/getuser',
+            dataType: 'json',
+            type: 'GET',
+            success: function (resp) {
+                $("#edtChangeNick")[0].value = resp.nickname;
+                $("#edtChangeEmail")[0].value = resp.email;
+                $("#imgChangeHead").attr('src','/gethead?id=' + Math.random());
+            }
+        });
+    }
+    function uploadHeadImage() {
+        let img = $("#fileHead")[0].files[0];
+        if (img) {
+            let fd = new FormData();
+            fd.append('file', img);
+            $.ajax({
+                url: '/uploadhead',
+                type: 'POST',
+                dataType: "json",
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (resp) {
+                    if (resp.result === 0) {
+                        $("#imgChangeHead").attr('src','/gethead?id=' + Math.random());
+                        getUserData();
+                        toast("上传头像成功.", 1);
+                    } else {
+                        toast("上传头像失败.", 0);
+                    }
+                }
+            });
+        }
+    }
+    function selectHeadImage() {
+        $("#fileHead")[0].click();
+    }
+
+    function saveuserinfo() {
+        let nick = $("#edtChangeNick")[0].value;
+        let email = $("#edtChangeEmail")[0].value;
+        if (nick === "" || email === "") {
+            toast("昵称和邮箱均不能为空.", 0);
+            return;
+        }
+        $.ajax({
+            url: '/updateuser',
+            dataType: 'json',
+            type: 'POST',
+            data: {
+                nickname: nick,
+                email: email
+            },
+            success: function (resp) {
+                if (resp.result === 0) {
+                    getOldData();
+                    getUserData();
+                    toast("修改信息成功.", 1);
+                } else {
+                    toast("修改信息失败.", 0);
+                }
+            }
+
+        });
+    }
+
+    function changepassword() {
+        let oldpwd = $("#edtChangeOldPwd")[0].value;
+        let newpwd = $("#edtChangeNewPwd")[0].value;
+        let repeatpwd = $("#edtChangeRepeatPwd")[0].value;
+        if (oldpwd === "" || newpwd === "" || repeatpwd === "") {
+            toast("原始密码和新密码均不能为空.", 0);
+            return;
+        }
+        if (newpwd !== repeatpwd) {
+            toast("两次输入的密码不一致.", 0);
+            return;
+        }
+        $.ajax({
+            url: '/changepassword',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                oldpwd: md5(oldpwd),
+                newpwd: md5(newpwd)
+            },
+            success: function (resp) {
+                if (resp.result === 0) {
+                    $("#edtChangeOldPwd")[0].value = "";
+                    $("#edtChangeNewPwd")[0].value = "";
+                    $("#edtChangeRepeatPwd")[0].value = "";
+                    toast("修改密码成功.", 1);
+                } else {
+                    toast("修改密码失败.", 0);
+                }
+            }
+
+        });
+    }
+</script>
+
+<div id="changeinfodialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">修改用户信息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="adv">
+                    <div class="accountrow">
+                        <div class="name">昵称</div>
+                        <div><input type="text" id="edtChangeNick" name="edtChangeNick" class="value" placeholder="输入新的昵称"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">邮箱</div>
+                        <div><input type="text" id="edtChangeEmail" name="edtChangeEmail" class="value" placeholder="输入新的邮箱"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">&nbsp;</div>
+                        <div><button class="btnuseroper" onclick="saveuserinfo();">保存</button></div>
+                    </div>
+                    <div class="line-full"></div>
+                    <div class="accountrow">
+                        <div class="name">头像</div>
+                        <div style="align-items: start">
+                            <img id="imgChangeHead" name="imgChangeHead" class="userhead" src="../static/image/logo.png">
+                            <button class="btnupload" onclick="selectHeadImage();">上传</button>
+                            <input type="file" id="fileHead" name="fileHead" onchange="uploadHeadImage();"
+                                   class="filehead"/>
+                        </div>
+                    </div>
+                    <div class="line-full"></div>
+                    <div class="accountrow">
+                        <div class="name">原密码</div>
+                        <div><input type="password" id="edtChangeOldPwd" name="edtChangeOldPwd" class="value" placeholder="不需要修改密码时此处留空"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">新密码</div>
+                        <div><input type="password" id="edtChangeNewPwd" name="edtChangeNewPwd" class="value" placeholder="输入新密码"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">重复新密码</div>
+                        <div><input type="password" id="edtChangeRepeatPwd" name="edtChangeRepeatPwd" class="value" placeholder="再次输入新密码"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">&nbsp;</div>
+                        <div><button class="btnuseroper" onclick="changepassword();">修改密码</button></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

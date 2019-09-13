@@ -99,11 +99,7 @@ fun Routing.accountRouting() {
 
     get("/gethead") {
         val localFile = File(headPath, localSession.userId.toString())
-        if (localFile.exists()) {
-            call.respondFile(localFile)
-        } else {
-            call.respondBytes { call.resolveFileBytes("static/image/logo.png")!! }
-        }
+        call.respondBytes { if (localFile.exists()) localFile.readBytes() else call.resolveFileBytes("static/image/logo.png")!! }
     }
 
     get("/getuser") {

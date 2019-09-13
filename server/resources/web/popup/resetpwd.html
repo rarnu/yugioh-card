@@ -1,0 +1,101 @@
+<script type="text/javascript">
+    function resetcodepassword() {
+        let acc = $("#edtResetAccount")[0].value;
+        let code = $("#edtResetValidateCode")[0].value;
+        let pwd = $("#edtResetPassword")[0].value;
+        let repeat = $("#edtResetRepeatPassword")[0].value;
+        if (acc === "" || code === "" || pwd === "" || repeat === "") {
+            toast("所有的项都是必填的", 0);
+            return;
+        }
+        if (pwd !== repeat) {
+            toast("两次输入的密码不一致.", 0);
+            return;
+        }
+        $.ajax({
+            url: '/resetpassword',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                account: acc,
+                code: code,
+                newpwd: md5(pwd)
+            },
+            success: function (resp) {
+                if (resp.result === 0) {
+                    $("#resetdialog").modal("hide");
+                    $("#logindialog").modal("toggle");
+                    toast("重置密码成功.", 1);
+
+                } else {
+                    toast("重置密码失败.", 0);
+                }
+            }
+        });
+    }
+
+    function sendvalidatecode() {
+        let acc = $("#edtResetAccount")[0].value;
+        if (acc === "") {
+            toast("帐号不能为空.", 0);
+            return;
+        }
+        $("#btnSendValidateCode")[0].disabled = true;
+        $.ajax({
+            url: '/sendvalidatecode',
+            dataType: 'json',
+            type: 'GET',
+            data: {
+                account: acc
+            },
+            success: function(resp) {
+                if (resp.result === 0) {
+                    toast("已发送验证码，请查收邮件.", 1);
+                } else {
+                    toast("发送给证码失败", 0);
+                }
+                $("#btnSendValidateCode")[0].disabled = false;
+            }
+        });
+    }
+</script>
+
+<div id="resetdialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">重置密码</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="adv">
+                    <div class="accountrow">
+                        <div class="name">帐号</div>
+                        <div><input type="text" id="edtResetAccount" name="edtResetAccount" class="value" placeholder="输入帐号"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">&nbsp;</div>
+                        <div><button id="btnSendValidateCode" name="btnSendValidateCode" class="btnlimit" onclick="sendvalidatecode();">向该帐号绑定的邮箱发送验证码</button></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">验证码</div>
+                        <div><input type="text" id="edtResetValidateCode" name="edtResetValidateCode" class="value" placeholder="输入邮箱收到的验证码"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">新密码</div>
+                        <div><input type="password" id="edtResetPassword" name="edtResetPassword" class="value" placeholder="输入新密码"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">重复新密码</div>
+                        <div><input type="password" id="edtResetRepeatPassword" name="edtResetRepeatPassword" class="value" placeholder="再次输入新密码"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="resetcodepassword();">重置</button>
+            </div>
+        </div>
+    </div>
+</div>

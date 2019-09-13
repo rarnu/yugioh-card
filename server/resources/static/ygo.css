@@ -59,12 +59,49 @@ body {
     margin-right: 16px;
 }
 
+.btnuseroper {
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1em;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-right: 16px;
+    min-width: 100px;
+}
+
+.btnuserbottom {
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1em;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-right: 16px;
+    min-width: 200px;
+}
+
 .line {
     padding-top: 32px;
     margin: auto;
     width: 40%;
     min-width: 150px;
     height: 1px;
+    border-bottom: 1px solid lightgray;
+}
+
+.line-full {
+    padding-top: 32px;
+    width: 100%;
+    min-width: 150px;
+    height: 1px;
+    margin-bottom: 32px;
     border-bottom: 1px solid lightgray;
 }
 
@@ -526,4 +563,77 @@ body {
 
 .decklist .decktable table .tdimg {
     text-align: center;
+}
+
+.accountrow {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.accountrow .name {
+    float: left;
+    width: 20%;
+    margin-left: 10%;
+}
+
+.accountrow .value {
+    width: 60%;
+    height: 30px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid lightgray;
+    outline: none;
+}
+
+.accountrow .resetpwd {
+    width: 100%;
+    text-align: right;
+    padding-right: 10%;
+    color: blue;
+    cursor: context-menu;
+}
+
+#userinfo {
+    width: 80%;
+    margin-left: 10%;
+    border: none;
+}
+
+.useremail {
+    color: lightgray;
+}
+
+.userhead {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+}
+
+.btnupload {
+    width: 64px;
+    height: 64px;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1em;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    margin-left: 16px;
+    border-radius: 10px;
+}
+
+.filehead {
+    filter:alpha(opacity = 0);
+    opacity:0;
+    width: 0;
+    height: 0;
+}
+
+#collected {
+    width: 80%;
+    margin-left: 10%;
+    border: none;
 }

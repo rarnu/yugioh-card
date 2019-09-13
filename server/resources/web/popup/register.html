@@ -1,0 +1,76 @@
+<script type="text/javascript">
+    function register() {
+        let acc = $("#edtRegAccount")[0].value;
+        let pwd = md5($("#edtRegPassword")[0].value);
+        let repeat = md5($("#edtRegRepeatPassword")[0].value);
+        let nick = $("#edtRegNickname")[0].value;
+        let email = $("#edtRegEmail")[0].value;
+        if (acc === "" || pwd === "" || repeat === "" || nick === "" || email === "") {
+            toast("所有的项都是必填的.", 0);
+            return;
+        }
+        if (pwd !== repeat) {
+            toast("两次输入的密码不一致.", 0);
+            return;
+        }
+        $.ajax({
+            url: '/register',
+            dataType: 'json',
+            type: 'POST',
+            data: {
+                account: acc,
+                password: md5(pwd),
+                nickname: nick,
+                email: email
+            },
+            success: function (resp) {
+                if (resp.id !== 0) {
+                    getUserData();
+                    $("#registerdialog").modal("hide");
+                } else {
+                    toast("注册失败.", 0);
+                }
+            }
+        });
+    }
+</script>
+
+<div id="registerdialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">注册</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="adv">
+                    <div class="accountrow">
+                        <div class="name">帐号</div>
+                        <div><input type="text" id="edtRegAccount" name="edtRegAccount" class="value" placeholder="输入帐号"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">密码</div>
+                        <div><input type="password" id="edtRegPassword" name="edtRegPassword" class="value" placeholder="输入密码"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">重复密码</div>
+                        <div><input type="password" id="edtRegRepeatPassword" name="edtRegRepeatPassword" class="value" placeholder="再次输入密码"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">昵称</div>
+                        <div><input type="text" id="edtRegNickname" name="edtRegNickname" class="value" placeholder="输入昵称"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">邮箱</div>
+                        <div><input type="text" id="edtRegEmail" name="edtRegEmail" class="value" placeholder="仅用于寻回密码"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="register();">注册</button>
+            </div>
+        </div>
+    </div>
+</div>

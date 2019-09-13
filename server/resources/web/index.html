@@ -2,16 +2,24 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/toastr.min.css">
     <link rel="stylesheet" href="../static/ygo.css">
+
     <script src="../static/js/jquery-2.0.0.min.js"></script>
     <script src="../static/js/popper.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
     <script src="../static/js/js.cookie.min.js"></script>
+    <script src="../static/js/toastr.min.js"></script>
+
     <script src="../static/ygo.js"></script>
 
     <script type="text/javascript">
         function search() {
             let key = $('#etKeyword')[0].value;
+            if (key === "") {
+                toast("关键字不能为空.", 0);
+                return;
+            }
             Cookies.set('keyword', key);
             location.href = '/cardlist.html';
         }
@@ -95,7 +103,7 @@
     <a href="limit.html"><span class="btnlimit">禁限卡表</span></a>
     <a href="pack.html"><span class="btnlimit">卡包列表</span></a>
     <a href="deck.html"><span class="btnlimit">卡组查询</span></a>
-    <a href="mycard.html"><span class="btnlimit">我的卡片</span></a>
+    <a href="user.html"><span class="btnlimit">我的卡片</span></a>
 </div>
 
 <div class="line"></div>
@@ -113,7 +121,6 @@
 
 <script type="text/javascript">
     $("#advsearch").load("popup/advance.html");
-
     $('#etKeyword').bind('keypress', function (event) {
         if (event.keyCode === 13) {
             search();

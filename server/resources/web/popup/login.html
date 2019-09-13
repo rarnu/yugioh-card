@@ -1,0 +1,62 @@
+<script type="text/javascript">
+     function login() {
+         let acc = $("#edtLoginAccount")[0].value;
+         let pwd = $("#edtLoginPassword")[0].value;
+         if (acc === "" || pwd === "") {
+             toast("帐号和密码均不能为空.", 0);
+             return;
+         }
+         $.ajax({
+             url: '/login',
+             dataType: 'json',
+             type: 'POST',
+             data: {
+                 account: acc,
+                 password: md5(pwd)
+             },
+             success: function (resp) {
+                 if (resp.id !== 0) {
+                     getUserData();
+                     $("#logindialog").modal("hide");
+                 } else {
+                    toast("登录失败.", 0);
+                 }
+             }
+         });
+     }
+     function resetpwdDialog() {
+         $("#logindialog").modal("hide");
+         $("#resetdialog").modal("toggle");
+     }
+</script>
+
+<div id="logindialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">登录</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="adv">
+                    <div class="accountrow">
+                        <div class="name">帐号</div>
+                        <div><input type="text" id="edtLoginAccount" name="edtLoginAccount" class="value" placeholder="输入帐号"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="name">密码</div>
+                        <div><input type="password" id="edtLoginPassword" name="edtLoginPassword" class="value" placeholder="输入密码"></div>
+                    </div>
+                    <div class="accountrow">
+                        <div class="resetpwd" onclick="resetpwdDialog();">忘记密码？点这里重置</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="login();">登录</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -33,3 +33,15 @@ function queryParam(name) {
     return null;
 }
 
+function toast(msg, type) {
+    toastr.options.closeDuration = 300;
+    toastr.options.timeOut = 2000;
+    toastr.options.extendedTimeOut = 60;
+    toastr.options.positionClass = "toast-bottom-center";
+    if (type === 0) {
+        toastr.error(msg);
+    } else {
+        toastr.success(msg);
+    }
+
+}
