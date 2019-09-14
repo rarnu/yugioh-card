@@ -18,7 +18,7 @@ fun Application.module() {
         useCompress = true,
         sessionIdentifier = "ServerSession",
         headers = mapOf("X-Engine" to "Ktor"),
-        redirectHttps = false) { }
+        redirectHttps = true) { }
     initNetworkOpt()
     // load cache
     accountTable.loadCache()
@@ -39,8 +39,8 @@ fun Application.module() {
         cardRouting()
         deckRouting()
         accountRouting()
+        collectRouting()
         jumpRouting()
-
     }
 
 }

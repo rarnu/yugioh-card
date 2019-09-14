@@ -17,6 +17,7 @@
             $("#logindialog").modal('toggle');
         }
         function registerDialog() {
+
             $("#registerdialog").modal('toggle');
         }
         function getUserData() {
@@ -48,9 +49,90 @@
                 }
             });
         }
+
         function changeuserinfoDialog() {
             getOldData();
             $("#changeinfodialog").modal('toggle');
+        }
+
+        function gotoCollect(type, hash, data, name) {
+            if (type === 0) {
+                gotoCard(hash);
+            } else if (type === 1) {
+                gotoDeck(data, name);
+            }
+        }
+
+        function gotoCard(hash) {
+            Cookies.set('hashid', hash);
+            location.href = '/carddetail.html';
+        }
+
+        function gotoDeck(data, name) {
+            Cookies.set("deckcode", data);
+            Cookies.set("deckname", name);
+            location.href = '/deckdetail.html';
+        }
+        
+        function recentClicked() {
+            Cookies.set('lastcat', "0");
+            $("#btnRecentCollection").attr('class', 'btnuseropersel');
+            $("#btnCollectedCard").attr('class', 'btnuseroper');
+            $("#btnCollectedDeck").attr('class', 'btnuseroper');
+            $.ajax({
+                url: '/recentcollect',
+                type: 'GET',
+                dataType: 'json',
+                success: function (resp) {
+                    let str = "";
+                    $.each(resp, function (idx, item) {
+                        str += `<tr class="collrow" onclick="gotoCollect(${item.type}, '${item.cardhash}', '${item.deckdata}', '${item.name}');"><td class="colltype">[${item.type === 0 ? "卡片" : "卡组"}]</td><td>${item.name}</td><td class="colldate">${item.time}</td></tr>`;
+                    });
+                    $("#colltable")[0].innerHTML = str;
+                }
+            });
+        }
+        
+        function cardClicked() {
+            Cookies.set('lastcat', "1");
+            $("#btnRecentCollection").attr('class', 'btnuseroper');
+            $("#btnCollectedCard").attr('class', 'btnuseropersel');
+            $("#btnCollectedDeck").attr('class', 'btnuseroper');
+            $.ajax({
+                url: '/cardcollect',
+                type: 'GET',
+                dataType: 'json',
+                success: function (resp) {
+                    let str = "";
+                    $.each(resp, function (idx, item) {
+                        str += `<tr class="collrow" onclick="gotoCard('${item.cardhash}');"><td class="colltype">[${item.type === 0 ? "卡片" : "卡组"}]</td><td>${item.name}</td><td class="colldate">${item.time}</td></tr>`;
+                    });
+                    $("#colltable")[0].innerHTML = str;
+                }
+            });
+        }
+        
+        function deckClicked() {
+            Cookies.set('lastcat', "2");
+            $("#btnRecentCollection").attr('class', 'btnuseroper');
+            $("#btnCollectedCard").attr('class', 'btnuseroper');
+            $("#btnCollectedDeck").attr('class', 'btnuseropersel');
+            $.ajax({
+                url: '/deckcollect',
+                type: 'GET',
+                dataType: 'json',
+                success: function (resp) {
+                    let str = "";
+                    $.each(resp, function (idx, item) {
+                        str += `<tr class="collrow" onclick="gotoDeck('${item.deckdata}', '${item.name}');"><td class="colltype">[${item.type === 0 ? "卡片" : "卡组"}]</td><td>${item.name}</td><td class="colldate">${item.time}</td></tr>`;
+                    });
+                    $("#colltable")[0].innerHTML = str;
+                }
+            });
+        }
+
+        function mydeckClicked() {
+            toast("即将上线，请耐心等待哦~~", 0);
         }
 
     </script>
@@ -63,7 +145,7 @@
 </div>
 
 <div id="cardlist">
-    <div id="divLoginReg" name="divLoginReg">
+    <div id="divLoginReg" name="divLoginReg" style="display: none;">
         <p></p>
         <p>你还没有登录，登录后可以查看自己的信息与收藏卡片等。</p>
         <p></p>
@@ -72,7 +154,7 @@
             <button class="btnlimit" onclick="registerDialog();">新用户 注册</button>
         </div>
     </div>
-    <div id="divUserInfo">
+    <div id="divUserInfo" style="display: none;">
         <p></p>
         <table id="userinfo">
             <tr>
@@ -86,30 +168,17 @@
         <div class="line-full"></div>
 
         <div >
-            <!-- TODO: mycard ? -->
-            <button class="btnuseroper" onclick="">收藏的卡片</button>
-            <button class="btnuseroper" onclick="">收藏的卡组</button>
-            <button class="btnuseroper" onclick="">卡组构建</button>
+            <button id="btnRecentCollection" name="btnRecentCollection" class="btnuseropersel" onclick="recentClicked();">最近的收藏</button>
+            <button id="btnCollectedCard" name="btnCollectedCard" class="btnuseroper" onclick="cardClicked();">收藏的卡片</button>
+            <button id="btnCollectedDeck" name="btnCollectedDeck" class="btnuseroper" onclick="deckClicked();">收藏的卡组</button>
+            <button class="btnuseroper" onclick="mydeckClicked();">我的卡组</button>
         </div>
 
         <div class="line-full"></div>
         <p style="font-size: 1.2em;"><b>最近收藏</b></p>
 
         <div id="collected">
-        <!-- TODO: recent collected -->
-            <table style="border: none; width: 100%;">
-                <tr style="height: 40px; border-bottom: 1px solid lightgray;">
-                    <td style="width: 20%; height: 40px; vertical-align: center">[卡组]</td>
-                    <td>aaaa</td>
-                </tr>
-                <tr style="height: 40px; border-bottom: 1px solid lightgray;">
-                    <td style="width: 20%; height: 40px; vertical-align: center">[卡组]</td>
-                    <td style="height: 40px; vertical-align: center">aaaa</td>
-                </tr>
-                <tr style="height: 40px; border-bottom: 1px solid lightgray;">
-                    <td style="width: 20%; height: 40px; vertical-align: center">[卡组]</td>
-                    <td>aaaa</td>
-                </tr>
+            <table id="colltable">
 
             </table>
         </div>
@@ -136,6 +205,14 @@
     $("#resetpwd").load("popup/resetpwd.html");
     $("#changeinfo").load("popup/changeinfo.html");
     getUserData();
+    let last = Cookies.get('lastcat');
+    if (last === undefined || last === "0") {
+        recentClicked();
+    } else if (last === "1") {
+        cardClicked();
+    } else if (last === "2") {
+        deckClicked();
+    }
 </script>
 </body>
 </html>

@@ -26,6 +26,7 @@
             success: function (resp) {
                 if (resp.id !== 0) {
                     getUserData();
+                    recentClicked();
                     $("#registerdialog").modal("hide");
                 } else {
                     toast("注册失败.", 0);
@@ -74,3 +75,31 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#edtRegAccount').bind('keyup', function(event) {
+        if (event.keyCode === 13) {
+            $("#edtRegPassword").focus();
+        }
+    });
+    $('#edtRegPassword').bind('keyup', function(event) {
+        if (event.keyCode === 13) {
+            $("#edtRegRepeatPassword").focus();
+        }
+    });
+    $('#edtRegRepeatPassword').bind('keyup', function(event) {
+        if (event.keyCode === 13) {
+            $("#edtRegNickname").focus();
+        }
+    });
+    $('#edtRegNickname').bind('keyup', function(event) {
+        if (event.keyCode === 13) {
+            $("#edtRegEmail").focus();
+        }
+    });
+    $('#edtRegEmail').bind('keyup', function(event) {
+        if (event.keyCode === 13) {
+            register();
+        }
+    });
+</script>

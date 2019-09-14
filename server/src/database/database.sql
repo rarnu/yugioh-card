@@ -82,7 +82,7 @@ create table Collect (
     type int not null,          -- collect type: 0:card, 1:deck
     collectname varchar (128) not null,
     cardhash varchar(16) default '',
-    deckdata LONGTEXT default '',
-    timeinfo bigint,
+    deckdata LONGTEXT,
+    timeinfo bigint
 ) character set utf8mb4;
 

@@ -10,6 +10,11 @@
     <script src="../static/ygo.js"></script>
 
     <script type="text/javascript">
+
+        let cardhash = null;
+        let cardname = "";
+        let collected = false;
+
         function getCardDetail(hash) {
             $.ajax({
                 url: `/carddetail?hash=${hash}`,
@@ -22,6 +27,7 @@
 
                     if (json.result === 0) {
                         let data = json.data;
+                        cardname = data.name;
                         str += `<div class="detailrow"> <div class="name">中文名称:</div> <div class="value">${data.name}</div></div>`;
                         str += `<div class="detailrow"> <div class="name">日文名称:</div> <div class="value">${data.japname}</div></div>`;
                         str += `<div class="detailrow"> <div class="name">英文名称:</div> <div class="value">${data.enname}</div></div>`;
@@ -50,6 +56,7 @@
                         }
                         str += `<table class="effectrow"><tr><td class="effectname">效果:</td><td class="effectvalue">${data.effect}</td></tr></table>`;
                         imageid = data.imageid;
+                        isLogined();
                     }
                     $('#carddetail')[0].innerHTML = str;
                     $('#cardimage')[0].innerHTML = `<img id="cardpic" src="http://ocg.resource.m2v.cn/${imageid}.jpg" onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';">`;
@@ -72,14 +79,85 @@
             str = str.replace('9', '↗');
             return str;
         }
+
+        function isLogined() {
+            $.ajax({
+                url: '/getuser',
+                dataType: 'json',
+                type: 'GET',
+                success: function (resp) {
+                    if (resp.id !== 0) {
+                        $("#btnoper")[0].style.display = "inline";
+                        isCollected();
+                    }
+                }
+            });
+        }
+
+        function isCollected() {
+            $.ajax({
+                url: '/iscardcollect',
+                dataType: 'json',
+                type: 'GET',
+                data: {
+                    hash: cardhash
+                },
+                success: function (resp) {
+                    if (resp.result === 0) {
+                        collected = true;
+                        $("#btnoper")[0].innerHTML = "★";
+                    } else {
+                        $("#btnoper")[0].innerHTML = "☆";
+                    }
+                }
+            });
+        }
+
+        function toggleCollect() {
+            if (collected) {
+                // uncollect it
+                $.ajax({
+                    url: '/uncollectcard',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        hash: cardhash
+                    },
+                    success: function (resp) {
+                        if (resp.result === 0) {
+                            collected = false;
+                            $("#btnoper")[0].innerHTML = "☆";
+                        }
+                    }
+                });
+            } else {
+                // collect it
+                $.ajax({
+                    url: '/collectcard',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        hash: cardhash,
+                        name: cardname
+                    },
+                    success: function (resp) {
+                        if (resp.result === 0) {
+                            collected = true;
+                            $("#btnoper")[0].innerHTML = "★";
+                        }
+                    }
+                });
+            }
+
+        }
+
     </script>
 </head>
 <body>
 <div id="subtitle">
     <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
     <span id="title">卡片信息</span>
-    <span id="btnoper">☆</span>
-<!--    ★-->
+    <span id="btnoper" style="display: none;" onclick="toggleCollect();">☆</span>
 </div>
 
 <div id="carddetail"></div>
@@ -94,9 +172,9 @@
 <div id="cardwiki"></div>
 
 <script type="text/javascript">
-    let h = Cookies.get('hashid');
-    if (h !== null) {
-        getCardDetail(h);
+    cardhash = Cookies.get('hashid');
+    if (cardhash !== null) {
+        getCardDetail(cardhash);
     } else {
         location.href = '/index.html';
     }

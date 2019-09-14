@@ -73,6 +73,20 @@ body {
     min-width: 100px;
 }
 
+.btnuseropersel {
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1em;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: ghostwhite;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-right: 16px;
+    min-width: 100px;
+}
+
 .btnuserbottom {
     align-items: center;
     padding: 0.375rem 0.75rem;
@@ -650,3 +664,26 @@ body {
     margin-left: 10%;
     border: none;
 }
+
+#colltable {
+    border: none;
+    width: 100%;
+}
+
+#colltable .collrow {
+    height: 40px;
+    border-bottom: 1px solid lightgray;
+}
+
+#colltable .colltype {
+    width: 20%;
+    height: 40px;
+    vertical-align: center;
+}
+
+#colltable .colldate {
+    width: 20%;
+    font-size: 0.8em;
+    color: lightgray;
+}
+

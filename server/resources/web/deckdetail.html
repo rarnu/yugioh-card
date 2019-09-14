@@ -10,6 +10,11 @@
     <script src="../static/ygo.js"></script>
 
     <script type="text/javascript">
+
+        let deckurl = "";
+        let deckname = "";
+        let collected = false;
+
         function getDeckDetail(code) {
             $.ajax({
                 url: `/deck?code=${code}`,
@@ -36,9 +41,82 @@
                         str += "</td></tr></table></div><div class='blank'></div>";
                     });
                     $('#deckdetial')[0].innerHTML = str;
+                    isLogined();
                 }
             });
         }
+
+        function isLogined() {
+            $.ajax({
+                url: '/getuser',
+                dataType: 'json',
+                type: 'GET',
+                success: function (resp) {
+                    if (resp.id !== 0) {
+                        $("#btnoper")[0].style.display = "inline";
+                        isCollected();
+                    }
+                }
+            });
+        }
+
+        function isCollected() {
+            $.ajax({
+                url: '/isdeckcollect',
+                dataType: 'json',
+                type: 'GET',
+                data: {
+                    data: deckurl
+                },
+                success: function (resp) {
+                    if (resp.result === 0) {
+                        collected = true;
+                        $("#btnoper")[0].innerHTML = "★";
+                    } else {
+                        $("#btnoper")[0].innerHTML = "☆";
+                    }
+                }
+            });
+        }
+
+        function toggleCollect() {
+            if (collected) {
+                // uncollect it
+                $.ajax({
+                    url: '/uncollectdeck',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        data: deckurl
+                    },
+                    success: function (resp) {
+                        if (resp.result === 0) {
+                            collected = false;
+                            $("#btnoper")[0].innerHTML = "☆";
+                        }
+                    }
+                });
+            } else {
+                // collect it
+                $.ajax({
+                    url: '/collectdeck',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        data: deckurl,
+                        name: deckname
+                    },
+                    success: function (resp) {
+                        if (resp.result === 0) {
+                            collected = true;
+                            $("#btnoper")[0].innerHTML = "★";
+                        }
+                    }
+                });
+            }
+
+        }
+
     </script>
 </head>
 <body>
@@ -46,6 +124,7 @@
 <div id="subtitle">
     <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
     <span id="title"></span>
+    <span id="btnoper" style="display: none;" onclick="toggleCollect();">☆</span>
 </div>
 
 <div id="deckdetial" class="decklist">
@@ -53,10 +132,12 @@
 </div>
 
 <script type="text/javascript">
-    let code = Cookies.get("deckcode");
-    let name = Cookies.get("deckname");
-    $('#title')[0].innerHTML = name;
-    getDeckDetail(code);
+    deckurl = Cookies.get("deckcode");
+    deckname = Cookies.get("deckname");
+    console.log(deckurl);
+    console.log(deckname);
+    $('#title')[0].innerHTML = deckname;
+    getDeckDetail(deckurl);
 </script>
 </body>
 </html>

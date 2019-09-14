@@ -17,6 +17,7 @@
              success: function (resp) {
                  if (resp.id !== 0) {
                      getUserData();
+                     recentClicked();
                      $("#logindialog").modal("hide");
                  } else {
                     toast("登录失败.", 0);
@@ -60,3 +61,16 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#edtLoginAccount').bind('keyup', function(event) {
+        if (event.keyCode === 13) {
+            $("#edtLoginPassword").focus();
+        }
+    });
+    $('#edtLoginPassword').bind('keyup', function(event) {
+        if (event.keyCode === 13) {
+            login();
+        }
+    });
+</script>
