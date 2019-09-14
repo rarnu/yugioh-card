@@ -12,7 +12,7 @@ import io.ktor.application.Application
 
 class CollectTable(private val app: Application) {
 
-    fun save(userid: Long, type: Int, name: String, cardhash: String, deckdata: String) =
+    fun collect(userid: Long, type: Int, name: String, cardhash: String, deckdata: String) =
         app.conn.prepareStatement("insert into Collect(userid, type, collectname, cardhash, deckdata, timeinfo) values (?,?,?,?,?,?)").use { s ->
             s.setLong(1, userid)
             s.setInt(2, type)
@@ -21,6 +21,25 @@ class CollectTable(private val app: Application) {
             s.setString(5, deckdata)
             s.setLong(6, System.currentTimeMillis())
             s.executeUpdate() > 0
+        }
+
+    fun uncollect(userid: Long, type: Int, name: String) =
+        app.conn.prepareStatement("delete from Collect where userid = ? and type = ? and collectname = ?").use { s ->
+            s.setLong(1, userid)
+            s.setInt(2, type)
+            s.setString(3, name)
+            s.executeUpdate() > 0
+        }
+
+    fun getCollected(userid: Long, type: Int, name: String) =
+        app.conn.prepareStatement("select count(*) as 'count' from Collect where userid = ? and type = ? and collectname = ?").use { s ->
+            s.setLong(1, userid)
+            s.setInt(2, type)
+            s.setString(3, name)
+            s.executeQuery().use { r ->
+                r.first()
+                r.int("count") != 0
+            }
         }
 
     fun get(id: Long): Collect2? =
@@ -48,15 +67,17 @@ class CollectTable(private val app: Application) {
             s.setLong(1, userid)
             s.executeQuery().use { r ->
                 r.forEach {
-                    add(Collect2(
-                        it.long("id"),
-                        it.long("userid"),
-                        it.int("type"),
-                        it.string("collectname"),
-                        it.string("cardhash"),
-                        it.string("deckdata"),
-                        it.long("timeinfo")
-                    ))
+                    add(
+                        Collect2(
+                            it.long("id"),
+                            it.long("userid"),
+                            it.int("type"),
+                            it.string("collectname"),
+                            it.string("cardhash"),
+                            it.string("deckdata"),
+                            it.long("timeinfo")
+                        )
+                    )
                 }
             }
         }
@@ -68,15 +89,17 @@ class CollectTable(private val app: Application) {
             s.setInt(2, type)
             s.executeQuery().use { r ->
                 r.forEach {
-                    add(Collect2(
-                        it.long("id"),
-                        it.long("userid"),
-                        it.int("type"),
-                        it.string("collectname"),
-                        it.string("cardhash"),
-                        it.string("deckdata"),
-                        it.long("timeinfo")
-                    ))
+                    add(
+                        Collect2(
+                            it.long("id"),
+                            it.long("userid"),
+                            it.int("type"),
+                            it.string("collectname"),
+                            it.string("cardhash"),
+                            it.string("deckdata"),
+                            it.long("timeinfo")
+                        )
+                    )
                 }
             }
         }
