@@ -4,12 +4,11 @@ import com.rarnu.ktor.requestParameters
 import com.rarnu.ktor.resolveFileBytes
 import com.rarnu.ktor.save
 import com.rarnu.ygo.server.account.AccountRequest2
-import com.rarnu.ygo.server.request.headPath
+import com.rarnu.ygo.server.common.headPath
 import io.ktor.application.application
 import io.ktor.application.call
 import io.ktor.request.receiveMultipart
 import io.ktor.response.respondBytes
-import io.ktor.response.respondFile
 import io.ktor.response.respondText
 import io.ktor.routing.Routing
 import io.ktor.routing.get

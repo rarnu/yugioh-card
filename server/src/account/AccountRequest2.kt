@@ -4,8 +4,9 @@ package com.rarnu.ygo.server.account
 
 import com.rarnu.ktor.config
 import com.rarnu.ktor.decodeURLPart
+import com.rarnu.ygo.server.common.VALIDATE_CODE_EXPTIME
 import com.rarnu.ygo.server.database.accountTable
-import com.rarnu.ygo.server.request.differentMinutesByMillisecond
+import com.rarnu.ygo.server.common.differentMinutesByMillisecond
 import io.ktor.application.Application
 import org.apache.commons.mail.SimpleEmail
 import java.util.*
@@ -85,7 +86,7 @@ object AccountRequest2 {
         val v = cacheValidateCode[account]
         var ret = false
         if (v != null) {
-            if (v.code == code && differentMinutesByMillisecond(System.currentTimeMillis(), v.time) < 10) {
+            if (v.code == code && differentMinutesByMillisecond(System.currentTimeMillis(), v.time) < VALIDATE_CODE_EXPTIME) {
                 ret = true
             }
             cacheValidateCode.remove(account)

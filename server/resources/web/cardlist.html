@@ -14,6 +14,7 @@
         let curPage = 1;
         let totalPage = 0;
         function getCardList() {
+            Cookies.set('curpage', curPage);
             $.ajax({
                 url: `/search?key=${keyword}&page=${curPage}`,
                 dataType: 'json',
@@ -23,7 +24,7 @@
                     let str = '';
                     $.each(response.cards, function(idx, item) {
                         str += `<div class="searchitem" onclick="cardClicked('${item.hash_id}');">`;
-                        str += `<div class="texts">中文名称: ${item.name}<br>日文名称: ${item.name_ja}<br>英文名称: ${item.name_en}<br>卡片种类: ${item.type_st}</div>`;
+                        str += `<div class="texts">中文名称: ${item.name_nw}<br>日文名称: ${item.name_ja}<br>英文名称: ${item.name_en}<br>卡片种类: ${item.type_st}</div>`;
                         str += `<img class="image" src="${item.img_url}" onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';"/>`;
                         str += '</div>';
                     });
@@ -84,8 +85,11 @@
 
 <script type="text/javascript">
     keyword = Cookies.get('keyword');
-    if (keyword !== null) {
+    curPage = Cookies.get('curpage');
+    if (curPage === undefined) {
         curPage = 1;
+    }
+    if (keyword !== null) {
         totalPage = 0;
         getCardList();
     } else {

@@ -11,7 +11,8 @@ create table Card(
     timeinfo bigint,
     data LONGTEXT,
     adjust LONGTEXT,
-    wiki LONGTEXT
+    wiki LONGTEXT,
+    nwnamme varchar (255) not null
 ) character set utf8mb4;
 
 create table CardLimit(
@@ -31,7 +32,6 @@ create table CardPackDetail(
 ) character set utf8mb4;
 
 -- deck
-
 create table DeckTheme(
     timeinfo bigint,
     info LONGTEXT

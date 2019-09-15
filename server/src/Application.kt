@@ -2,7 +2,7 @@ package com.rarnu.ygo.server
 
 import com.rarnu.ktor.installPlugin
 import com.rarnu.ygo.server.database.*
-import com.rarnu.ygo.server.request.initNetworkOpt
+import com.rarnu.ygo.server.common.initNetworkOpt
 import io.ktor.application.Application
 import io.ktor.http.content.defaultResource
 import io.ktor.http.content.resources

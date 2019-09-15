@@ -21,6 +21,7 @@
                 return;
             }
             Cookies.set('keyword', key);
+            Cookies.set('curpage', 1);
             location.href = '/cardlist.html';
         }
         function advanced() {
@@ -64,6 +65,7 @@
 
         function hotwordClicked(w) {
             Cookies.set('keyword', w);
+            Cookies.set('curpage', 1);
             location.href = '/cardlist.html';
         }
 

@@ -2,6 +2,9 @@
 
 package com.rarnu.ygo.server.card
 
+// get NW name
+fun String.parseNWName() = parseTextVersion(this)
+
 // getStoredJson
 fun String.parse0() = getStoredJson(this)
 
@@ -148,7 +151,7 @@ private fun getArticle(ahtml: String): String {
             cpack = ""
         }
         tmp = tmp.substring(tmp.indexOf(H5) + H5.length).replace(HDIVLINE, ESPLIT).replace("<br>", "")
-        ceffect = tmp.substring(0, tmp.indexOf("</template>"/*HDIV*/)).trim().replace("\n", "").replace("\r", "")
+        ceffect = tmp.substring(0, tmp.indexOf("<span v-if=\"text_version == ''\"")).trim().replace("\n", "").replace("\r", "")
         ceffect = parseTextVersion(ceffect)
         tmp = tmp.substring(tmp.indexOf(H6) + H6.length)
         if (tmp.indexOf(HTABLE) != -1) {
@@ -161,13 +164,14 @@ private fun getArticle(ahtml: String): String {
 }
 
 private fun parseTextVersion(astr: String): String {
+    val TEMPTAG = "<template v-if=\"text_version == 'nw'\">"
+    val TEMPCLOSETAG = "</template>"
     var ret = astr
     if (ret.contains("<template")) {
-        ret = ret.substring(ret.indexOf("<template"))
-        ret = ret.replace("<template v-if=\"text_version == 'cn'\" >", "")
-        ret = ret.replace("<template v-if=\"text_version == 'cn'\">", "")
-        if (ret.contains("</template>")) {
-            ret = ret.substring(0, ret.indexOf("</template>"))
+        ret = ret.substring(ret.indexOf(TEMPTAG) + TEMPTAG.length).trim()
+
+        if (ret.contains(TEMPCLOSETAG)) {
+            ret = ret.substring(0, ret.indexOf(TEMPCLOSETAG)).trim()
         }
         ret = ret.replace("<div class='line'></div>", "- - - - - -")
         ret = ret.trim()

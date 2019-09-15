@@ -1,4 +1,4 @@
-package com.rarnu.ygo.server.request
+package com.rarnu.ygo.server.common
 
 import com.rarnu.common.runCommand
 import com.rarnu.ktor.config

@@ -12,37 +12,41 @@ import io.ktor.application.Application
 
 class CardTable(private val app: Application) {
     fun loadCache() =
-        app.conn.prepareStatement("select hash, timeinfo, data, adjust, wiki from Card").use { s ->
+        app.conn.prepareStatement("select * from Card").use { s ->
             s.executeQuery().use { r ->
                 r.forEach {
                     cacheMap[it.string("hash")] =
-                        CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"), it.long("timeinfo"))
+                        CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"), it.long("timeinfo"), it.string("nwnamme"))
                 }
             }
         }
 
 
-    fun save(h: String, t: Long, d: String, a: String, w: String) =
-        app.conn.prepareStatement("insert into Card(hash, timeinfo, data, adjust, wiki) values (?, ?, ?, ?, ?)")
-            .use { s ->
-                s.setString(1, h)
-                s.setLong(2, t)
-                s.setString(3, d)
-                s.setString(4, a)
-                s.setString(5, w)
-                s.executeUpdate()
-            }
+    fun save(h: String, t: Long, d: String, a: String, w: String, nwn: String) {
+        if (!update(h, t, d, a, w, nwn)) {
+            app.conn.prepareStatement("insert into Card(hash, timeinfo, data, adjust, wiki, nwnamme) values (?, ?, ?, ?, ?, ?)")
+                .use { s ->
+                    s.setString(1, h)
+                    s.setLong(2, t)
+                    s.setString(3, d)
+                    s.setString(4, a)
+                    s.setString(5, w)
+                    s.setString(6, nwn)
+                    s.executeUpdate()
+                }
+        }
+    }
 
-
-    fun update(h: String, t: Long, d: String, a: String, w: String) =
-        app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ?, timeinfo = ? where hash = ?")
+    fun update(h: String, t: Long, d: String, a: String, w: String, nwn: String) =
+        app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ?, timeinfo = ?, nwnamme = ? where hash = ?")
             .use { s ->
                 s.setString(1, d)
                 s.setString(2, a)
                 s.setString(3, w)
                 s.setLong(4, t)
-                s.setString(5, h)
-                s.executeUpdate()
+                s.setString(5, nwn)
+                s.setString(6, h)
+                s.executeUpdate() > 0
             }
 
 }

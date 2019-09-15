@@ -1,12 +1,13 @@
 package com.rarnu.ygo.server.deck
 
+import com.rarnu.ygo.server.common.REFRESH_DAYS
 import com.rarnu.ygo.server.database.deckCategory
 import com.rarnu.ygo.server.database.deckInCategory
 import com.rarnu.ygo.server.database.deckTable
 import com.rarnu.ygo.server.database.deckTheme
-import com.rarnu.ygo.server.request.dGetRequest
-import com.rarnu.ygo.server.request.dPostRequest
-import com.rarnu.ygo.server.request.differentDaysByMillisecond
+import com.rarnu.ygo.server.common.dGetRequest
+import com.rarnu.ygo.server.common.dPostRequest
+import com.rarnu.ygo.server.common.differentDaysByMillisecond
 import io.ktor.application.Application
 
 private const val BASE_URL = "https://www.ygo-sem.cn/convention"
@@ -18,7 +19,7 @@ object DeckRequest2 {
         val txt = cacheDeckTheme.text
         val time = cacheDeckTheme.timeinfo
         val current = System.currentTimeMillis()
-        if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
+        if (txt == "" || differentDaysByMillisecond(current, time) > REFRESH_DAYS) {
             val theme = dGetRequest(app, "$BASE_URL/server.ashx?action=get_convention_books2").parseTheme()
             if (theme != "[]") {
                 cacheDeckTheme.timeinfo = current
@@ -35,7 +36,7 @@ object DeckRequest2 {
         val txt = cacheDeckCategory.text
         val time = cacheDeckCategory.timeinfo
         val current = System.currentTimeMillis()
-        if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
+        if (txt == "" || differentDaysByMillisecond(current, time) > REFRESH_DAYS) {
             val category = dGetRequest(app, "$BASE_URL/server.ashx?action=convention_tree").parseCategory()
             if (category != "[]") {
                 cacheDeckCategory.timeinfo = current
@@ -51,7 +52,7 @@ object DeckRequest2 {
     suspend fun inCategory(app: Application, hash: String, callback: suspend (String) -> Unit) {
         val decks = cacheDeckInCategory[hash]
         val current = System.currentTimeMillis()
-        if (decks == null || differentDaysByMillisecond(current, decks.timeinfo) > 30) {
+        if (decks == null || differentDaysByMillisecond(current, decks.timeinfo) > REFRESH_DAYS) {
             val incat = dPostRequest(app, "$BASE_URL/convention_content3.aspx?f=f", mapOf("id" to hash, "langue" to "chs")).parseInCategory()
             if (incat != "[]") {
                 cacheDeckInCategory[hash] = DeckInCategory2(current, incat)
@@ -66,7 +67,7 @@ object DeckRequest2 {
     suspend fun deck(app: Application, code: String, callback: suspend (String) -> Unit) {
         val deck = cacheDeck[code]
         val current = System.currentTimeMillis()
-        if (deck == null || differentDaysByMillisecond(current, deck.timeinfo) > 30) {
+        if (deck == null || differentDaysByMillisecond(current, deck.timeinfo) > REFRESH_DAYS) {
             val d = dGetRequest(app, BASE_DECK_URL.format(code)).parseDeck()
             if (d != "[]") {
                 cacheDeck[code] = Deck2(current, d)

@@ -1,16 +1,16 @@
 package com.rarnu.ygo.server.card
 
+import com.rarnu.ygo.server.common.REFRESH_DAYS
 import com.rarnu.ygo.server.database.cardTable
 import com.rarnu.ygo.server.database.limitTable
 import com.rarnu.ygo.server.database.packDetailTable
 import com.rarnu.ygo.server.database.packTable
-import com.rarnu.ygo.server.request.differentDaysByMillisecond
-import com.rarnu.ygo.server.request.oGetRequest
+import com.rarnu.ygo.server.common.differentDaysByMillisecond
+import com.rarnu.ygo.server.common.oGetRequest
 import io.ktor.application.Application
 import kotlin.collections.set
 
 private const val BASE_URL = "https://www.ourocg.cn"
-// private const val RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 
 object Request2 {
     suspend fun search(app: Application, key: String, page: Int, callback: suspend (String) -> Unit) =
@@ -18,21 +18,22 @@ object Request2 {
 
     suspend fun cardDetailWiki(app: Application, hashid: String, callback: suspend (String, String, String) -> Unit) {
 
-        suspend fun innerRequest(hashid: String, callback: suspend (String, String, String) -> Unit) {
+        suspend fun innerRequest(hashid: String, callback: suspend (String, String, String, String) -> Unit) {
             val detail = oGetRequest(app, "$BASE_URL/card/$hashid")
             val wiki = oGetRequest(app, "$BASE_URL/card/$hashid/wiki")
             val d = detail.parse1()
             val a = detail.parse2()
             val w = wiki.parse3()
-            callback(d, a, w)
+            val nwn = detail.parseNWName()
+            callback(d, a, w, nwn)
         }
 
         val c = cacheMap[hashid]
         val curr = System.currentTimeMillis()
-        if (c == null || differentDaysByMillisecond(curr, c.timeinfo) > 30) {
-            innerRequest(hashid) { d, a, w ->
-                cacheMap[hashid] = CardCache2(d, a, w, curr)
-                app.cardTable.save(hashid, curr, d, a, w)
+        if (c == null || differentDaysByMillisecond(curr, c.timeinfo) > REFRESH_DAYS) {
+            innerRequest(hashid) { d, a, w, nwn ->
+                cacheMap[hashid] = CardCache2(d, a, w, curr, nwn)
+                app.cardTable.save(hashid, curr, d, a, w, nwn)
                 callback(d, a, w)
             }
         } else {
@@ -44,7 +45,7 @@ object Request2 {
         val txt = cacheLimit.text
         val time = cacheLimit.timeinfo
         val current = System.currentTimeMillis()
-        if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
+        if (txt == "" || differentDaysByMillisecond(current, time) > REFRESH_DAYS) {
             val limit = oGetRequest(app, "$BASE_URL/Limit-Latest").parse4()
             cacheLimit.timeinfo = current
             cacheLimit.text = limit
@@ -59,7 +60,7 @@ object Request2 {
         val txt = cachePack.text
         val time = cachePack.timeinfo
         val current = System.currentTimeMillis()
-        if (txt == "" || differentDaysByMillisecond(current, time) > 30) {
+        if (txt == "" || differentDaysByMillisecond(current, time) > REFRESH_DAYS) {
             val pack = oGetRequest(app, "$BASE_URL/package").parse5()
             cachePack.timeinfo = current
             cachePack.text = pack
@@ -73,7 +74,7 @@ object Request2 {
     suspend fun packdetail(app: Application, url: String, callback: suspend (String) -> Unit) {
         val detail = cachePackDetail[url]
         val current = System.currentTimeMillis()
-        if (detail == null || differentDaysByMillisecond(current, detail.timeinfo) > 30) {
+        if (detail == null || differentDaysByMillisecond(current, detail.timeinfo) > REFRESH_DAYS) {
             val txt = oGetRequest(app, "$BASE_URL$url").parse0()
             cachePackDetail[url] = CardDetail2(current, txt)
             app.packDetailTable.save(url, current, txt)

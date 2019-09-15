@@ -4,8 +4,8 @@ import com.rarnu.ktor.requestParameters
 import com.rarnu.ktor.resolveFile
 import com.rarnu.ktor.resolveFileSave
 import com.rarnu.ygo.server.deck.DeckRequest2
-import com.rarnu.ygo.server.request.doDownloadImage
-import com.rarnu.ygo.server.request.imgPath
+import com.rarnu.ygo.server.common.doDownloadImage
+import com.rarnu.ygo.server.common.imgPath
 import io.ktor.application.call
 import io.ktor.application.application
 import io.ktor.response.respond
