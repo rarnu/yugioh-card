@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="2427" y="938"/>
         </scene>
-        <!--YuGiOh-->
+        <!--YuGiOh Card-->
         <scene sceneID="MoN-RT-UOE">
             <objects>
                 <viewController id="x9G-W6-ygQ" customClass="MainController" customModule="YuGiOhCard" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,7 +139,7 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R8A-Xy-A2U"/>
                     </view>
-                    <navigationItem key="navigationItem" title="YuGiOh" id="mCp-EV-cju">
+                    <navigationItem key="navigationItem" title="YuGiOh Card" leftItemsSupplementBackButton="YES" id="mCp-EV-cju">
                         <rightBarButtonItems>
                             <barButtonItem title="卡组" id="DAu-cs-pqm">
                                 <connections>

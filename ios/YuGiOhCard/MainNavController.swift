@@ -25,5 +25,6 @@ class MainNavController: UINavigationController {
         bar.setBackgroundImage(UIImage.color(navColor), for: UIBarMetrics.default)
         bar.shadowImage = UIImage()
         super.viewWillAppear(animated)
+        
     }
 }
