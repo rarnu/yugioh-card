@@ -49,7 +49,7 @@ class CardDetailController: UIViewController {
         let lbl = UILabel()
         lbl.tg_width.equal(100%)
         lbl.tg_height.equal(.wrap)
-        lbl.font = UIFont.systemFont(ofSize: 15)
+        lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textColor = UIColor.white
         layMain.addSubview(lbl)
         return lbl
@@ -65,8 +65,10 @@ class CardDetailController: UIViewController {
         lbl.tg_height.equal(24)
         lbl.textColor = UIColor.white
         lbl.text = txt
+        lbl.font = UIFont.systemFont(ofSize: 14.0)
         laySub.addSubview(lbl)
         let lblValue = UILabel()
+        lblValue.font = UIFont.systemFont(ofSize: 14.0)
         if (h > 24) {
             lblValue.tg_width.equal(100%)
             lblValue.tg_height.equal(.wrap)
@@ -187,7 +189,7 @@ class CardDetailController: UIViewController {
                         }
                     }
                     
-                    let size = self.getTextSize(str: c.effect, width:Int(screenWidth() - 16 - 80 - 8), fontSize: 17)
+                    let size = self.getTextSize(str: c.effect, width:Int(screenWidth() - 16 - 80 - 8), fontSize: 14)
                     self.tvEffectValue = self.makeLabel("效果:", true, size.height)
                     self.tvEffectValue.text = c.effect
                     _ = self.makeLine()

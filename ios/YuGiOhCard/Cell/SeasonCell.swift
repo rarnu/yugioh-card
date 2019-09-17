@@ -14,7 +14,7 @@ class SeasonCell: AdapterCell<String> {
     var lblName: UILabel!
 
     override func layout() {
-        self.backgroundColor = UIColor.black
+        self.backgroundColor = darkColor
         lblName = UILabel() ~>> {
             $0.frame = CGRect(x: 8, y: 0, width: 80, height: 40)
             $0.font = UIFont.systemFont(ofSize: 12)

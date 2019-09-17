@@ -20,4 +20,10 @@ class MainNavController: UINavigationController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let bar = UINavigationBar.appearance() as UINavigationBar
+        bar.setBackgroundImage(UIImage.color(navColor), for: UIBarMetrics.default)
+        bar.shadowImage = UIImage()
+        super.viewWillAppear(animated)
+    }
 }

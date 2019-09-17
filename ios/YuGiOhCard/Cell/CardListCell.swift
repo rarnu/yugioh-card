@@ -19,30 +19,34 @@ class CardListCell: AdapterCell<CardInfo2> {
     var ivCardImg: UIImageView!
     
     override func layout() {
-        self.backgroundColor = UIColor.black
+        self.backgroundColor = darkColor
         self.tintColor = UIColor.white
         tvCardName = UILabel() ~>> {
             $0.frame = CGRect(x: 8, y: 0, width: screenWidth() - 86, height: 25)
             $0.textAlignment = NSTextAlignment.left
             $0.textColor = UIColor.white
+            $0.font = UIFont.systemFont(ofSize: 14.0)
             return $0
         }
         tvCardJapname = UILabel() ~>> {
             $0.frame = CGRect(x: 8, y: 25, width: screenWidth() - 86, height: 25)
             $0.textAlignment = NSTextAlignment.left
             $0.textColor = UIColor.white
+            $0.font = UIFont.systemFont(ofSize: 14.0)
             return $0
         }
         tvCardEnname = UILabel() ~>> {
             $0.frame = CGRect(x: 8, y: 50, width: screenWidth() - 86, height: 25)
             $0.textAlignment = NSTextAlignment.left
             $0.textColor = UIColor.white
+            $0.font = UIFont.systemFont(ofSize: 14.0)
             return $0
         }
         tvCardType = UILabel() ~>> {
             $0.frame = CGRect(x: 8, y: 75, width: screenWidth() - 86, height: 25)
             $0.textAlignment = NSTextAlignment.left
             $0.textColor = UIColor.white
+            $0.font = UIFont.systemFont(ofSize: 14.0)
             return $0
         }
         ivCardImg = UIImageView() ~>> {

@@ -4,7 +4,7 @@
       <list-item type="listItem" class="list-item" for="{{listData}}" onclick='showCardDetail($item.hash_id)'>
         
           <div class="item-dev">
-            <text class="item-txt">中文名称: {{$item.name}}</text>
+            <text class="item-txt">中文名称: {{$item.name_nw}}</text>
             <text class="item-txt">日文名称: {{parseName($item.name_ja)}}</text>
             <text class="item-txt">英文名称: {{parseName($item.name_en)}}</text>
             <text class="item-txt">卡片类型: {{$item.type_st}}</text>

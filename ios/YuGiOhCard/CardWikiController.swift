@@ -27,7 +27,7 @@ class CardWikiController: UIViewController {
         layMain.tg_height.equal(.wrap).min(sv.tg_height, increment: 0)
         sv.addSubview(layMain)
         let tvWiki = UITextView()
-        tvWiki.backgroundColor = UIColor.black
+        tvWiki.backgroundColor = darkColor
         
         tvWiki.isEditable = false
         tvWiki.tg_width.equal(100%)

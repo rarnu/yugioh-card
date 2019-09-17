@@ -70,7 +70,7 @@ class _CardListState extends State<CardListPage> {
                               expend(Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  expend(sized(Text('中文名称:  ' + entries[index]['name']), height:20)),
+                                  expend(sized(Text('中文名称:  ' + entries[index]['name_nw']), height:20)),
                                   expend(sized(Text('日文名称:  ' + parseName(entries[index]['name_ja'])), height: 20)),
                                   expend(sized(Text('英文名称:  ' + parseName(entries[index]['name_en'])), height: 20)),
                                   expend(sized(Text('卡片类型:  ' + entries[index]['type_st']), height: 20)),

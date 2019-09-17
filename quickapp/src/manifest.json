@@ -31,7 +31,7 @@
     "logLevel": "debug",
     "data": {
       "baseurl": "https://rarnu.xyz",
-      "debug": false
+      "debug": true
     }
   },
   "router": {

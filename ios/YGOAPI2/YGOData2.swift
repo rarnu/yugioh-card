@@ -352,7 +352,7 @@ public class YGOData2: NSObject {
                 let info = CardInfo2()
                 info.cardid = obj.int("id")
                 info.hashid = obj.string("hash_id")
-                info.name = replaceChars(obj.string("name"))
+                info.name = replaceChars(obj.string("name_nw"))
                 info.japname = replaceChars(obj.string("name_ja"))
                 info.enname = replaceChars(obj.string("name_en"))
                 info.cardtype = obj.string("type_st")

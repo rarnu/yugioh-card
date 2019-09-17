@@ -17,21 +17,24 @@ class LimitCell: AdapterCell<LimitInfo2> {
     var lblLimit: UILabel!
     
     override func layout() {
-        self.backgroundColor = UIColor.black
+        self.backgroundColor = darkColor
         lblType = UILabel() ~>> {
             $0.frame = CGRect(x: 8, y: 4, width: 22, height: 32)
             $0.textColor = UIColor.white
+            $0.font = UIFont.systemFont(ofSize: 14.0)
             return $0
         }
         lblName = UILabel() ~>> {
             $0.frame = CGRect(x: 38, y: 0, width: screenWidth() - 128, height: 40)
             $0.textColor = UIColor.white
+            $0.font = UIFont.systemFont(ofSize: 14.0)
             return $0
         }
         lblLimit = UILabel() ~>> {
             $0.frame = CGRect(x: screenWidth() - 80, y: 0, width: 72, height: 40)
             $0.textColor = UIColor.white
             $0.textAlignment = NSTextAlignment.right
+            $0.font = UIFont.systemFont(ofSize: 14.0)
             return $0
         }
         

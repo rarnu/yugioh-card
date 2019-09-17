@@ -67,7 +67,7 @@ class _PackDetailState extends State<PackDetailPage> {
                               expend(Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  expend(sized(Text('中文名称:  ' + detail[index]['name']), height:20)),
+                                  expend(sized(Text('中文名称:  ' + detail[index]['name_nw']), height:20)),
                                   expend(sized(Text('日文名称:  ' + parseName(detail[index]['name_ja'])), height: 20)),
                                   expend(sized(Text('英文名称:  ' + parseName(detail[index]['name_en'])), height: 20)),
                                   expend(sized(Text('卡片类型:  ' + detail[index]['type_st']), height: 20)),

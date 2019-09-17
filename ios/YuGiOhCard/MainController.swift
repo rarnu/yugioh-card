@@ -21,10 +21,10 @@ class MainController: UIViewController, UITextFieldDelegate {
     var layHotCard: TGLinearLayout!
     var layLastPack: TGLinearLayout!
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        super.viewWillAppear(animated)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        super.viewWillAppear(animated)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

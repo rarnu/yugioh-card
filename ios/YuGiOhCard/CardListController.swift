@@ -34,7 +34,7 @@ class CardListController: UIViewController, UITableViewDelegate, UITableViewData
         tvCard.register(CardListCell.classForCoder(), forCellReuseIdentifier: "Cell")
         tvCard.delegate = self
         tvCard.dataSource = self
-        tvCard.backgroundColor = UIColor.black
+        tvCard.backgroundColor = darkColor
         tvCard.separatorColor = UIColor.darkGray
         tvCard.separatorInset = UIEdgeInsets.zero
         self.view.addSubview(tvCard)

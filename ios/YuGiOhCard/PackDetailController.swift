@@ -21,7 +21,7 @@ class PackDetailController: UITableViewController {
         self.title = name
         self.tableView.register(CardListCell.classForCoder(), forCellReuseIdentifier: "Cell")
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-        self.tableView.backgroundColor = UIColor.black
+        self.tableView.backgroundColor = darkColor
         self.tableView.separatorColor = UIColor.darkGray
         self.tableView.separatorInset = UIEdgeInsets.zero
         

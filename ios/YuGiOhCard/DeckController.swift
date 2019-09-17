@@ -60,7 +60,7 @@ class DeckController: UIViewController {
         lblMonster.tg_width.equal(100%)
         lblMonster.tg_height.equal(.wrap)
         lblMonster.textColor = UIColor.white
-        lblMonster.backgroundColor = UIColor.black
+        lblMonster.backgroundColor = darkColor
         lblMonster.font = UIFont.systemFont(ofSize: 11)
         lblMonster.text = detail.monster.map { c in "\(c.count) \(c.name)" }.joinToString(sep: "\n")
         layMonster.addSubview(lblMonster)
@@ -69,7 +69,7 @@ class DeckController: UIViewController {
         lblMagicTrap.tg_width.equal(100%)
         lblMagicTrap.tg_height.equal(.wrap)
         lblMagicTrap.textColor = UIColor.white
-        lblMagicTrap.backgroundColor = UIColor.black
+        lblMagicTrap.backgroundColor = darkColor
         lblMagicTrap.font = UIFont.systemFont(ofSize: 11)
         lblMagicTrap.text = detail.magictrap.map { c in "\(c.count) \(c.name)" }.joinToString(sep: "\n")
         layMagicTrap.addSubview(lblMagicTrap)
@@ -78,7 +78,7 @@ class DeckController: UIViewController {
         lblExtra.tg_width.equal(100%)
         lblExtra.tg_height.equal(.wrap)
         lblExtra.textColor = UIColor.white
-        lblExtra.backgroundColor = UIColor.black
+        lblExtra.backgroundColor = darkColor
         lblExtra.font = UIFont.systemFont(ofSize: 11)
         lblExtra.text = detail.extra.map { c in "\(c.count) \(c.name)" }.joinToString(sep: "\n")
         layExtra.addSubview(lblExtra)

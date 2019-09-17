@@ -118,7 +118,7 @@ object YGOData {
                 result.data.add(CardInfo().apply {
                     cardid = obj.getInt("id")
                     hashid = obj.getString("hash_id")
-                    name = replaceChars(obj.getString("name"))
+                    name = replaceChars(obj.getString("name_nw"))
                     japname = replaceChars(obj.getString("name_ja"))
                     enname = replaceChars(obj.getString("name_en"))
                     cardtype = obj.getString("type_st")

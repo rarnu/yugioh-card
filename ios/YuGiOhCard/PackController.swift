@@ -29,7 +29,7 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
         lvSeason.tableFooterView = UIView(frame: CGRect.zero)
         lvSeason.delegate = self
         lvSeason.dataSource = self
-        lvSeason.backgroundColor = UIColor.black
+        lvSeason.backgroundColor = darkColor
         lvSeason.separatorColor = UIColor.darkGray
         lvSeason.separatorInset = UIEdgeInsets.zero
         self.view.addSubview(lvSeason)
@@ -43,7 +43,7 @@ class PackController: UIViewController, UITableViewDelegate, UITableViewDataSour
         lvPack.tableFooterView = UIView(frame: CGRect.zero)
         lvPack.delegate = self
         lvPack.dataSource = self
-        lvPack.backgroundColor = UIColor.black
+        lvPack.backgroundColor = darkColor
         lvPack.separatorColor = UIColor.darkGray
         lvPack.separatorInset = UIEdgeInsets.zero
         self.view.addSubview(lvPack)

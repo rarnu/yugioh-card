@@ -11,7 +11,7 @@
   <block class="list" wx:for="{{listData}}" wx:key="card">
     <view class="listitem" data-item="{{item}}" data-id="{{item.hash_id}}" bindtap="bindCardItemTap">
       <view class="vitem">
-        <text class="textitem">中文名称: {{item.name}}</text>
+        <text class="textitem">中文名称: {{item.name_nw}}</text>
         <text class="textitem">日文名称: {{item.name_ja}}</text>
         <text class="textitem">英文名称: {{item.name_en}}</text>
         <text class="textitem">卡片种类: {{item.type_st}}</text>
