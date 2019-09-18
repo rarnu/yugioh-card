@@ -5,7 +5,8 @@ data class CardCache2(
     var adjust: String,
     var wiki: String,
     var timeinfo: Long,
-    var nwname: String
+    var nwname: String,
+    var imgid: String
 )
 
 data class CardLimit2(

@@ -16,15 +16,15 @@ class CardTable(private val app: Application) {
             s.executeQuery().use { r ->
                 r.forEach {
                     cacheMap[it.string("hash")] =
-                        CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"), it.long("timeinfo"), it.string("nwname"))
+                        CardCache2(it.string("data"), it.string("adjust"), it.string("wiki"), it.long("timeinfo"), it.string("nwname"), it.string("imgid"))
                 }
             }
         }
 
 
-    fun save(h: String, t: Long, d: String, a: String, w: String, nwn: String) {
-        if (!update(h, t, d, a, w, nwn)) {
-            app.conn.prepareStatement("insert into Card(hash, timeinfo, data, adjust, wiki, nwname) values (?, ?, ?, ?, ?, ?)")
+    fun save(h: String, t: Long, d: String, a: String, w: String, nwn: String, imgid: String) {
+        if (!update(h, t, d, a, w, nwn, imgid)) {
+            app.conn.prepareStatement("insert into Card(hash, timeinfo, data, adjust, wiki, nwname, imgid) values (?, ?, ?, ?, ?, ?, ?)")
                 .use { s ->
                     s.setString(1, h)
                     s.setLong(2, t)
@@ -32,20 +32,22 @@ class CardTable(private val app: Application) {
                     s.setString(4, a)
                     s.setString(5, w)
                     s.setString(6, nwn)
+                    s.setString(7, imgid)
                     s.executeUpdate()
                 }
         }
     }
 
-    fun update(h: String, t: Long, d: String, a: String, w: String, nwn: String) =
-        app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ?, timeinfo = ?, nwname = ? where hash = ?")
+    fun update(h: String, t: Long, d: String, a: String, w: String, nwn: String, imgid: String) =
+        app.conn.prepareStatement("update Card set data = ?, adjust = ?, wiki = ?, timeinfo = ?, nwname = ?, imgid = ? where hash = ?")
             .use { s ->
                 s.setString(1, d)
                 s.setString(2, a)
                 s.setString(3, w)
                 s.setLong(4, t)
                 s.setString(5, nwn)
-                s.setString(6, h)
+                s.setString(6, imgid)
+                s.setString(7, h)
                 s.executeUpdate() > 0
             }
 

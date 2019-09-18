@@ -18,22 +18,26 @@ object Request2 {
 
     suspend fun cardDetailWiki(app: Application, hashid: String, callback: suspend (String, String, String) -> Unit) {
 
-        suspend fun innerRequest(hashid: String, callback: suspend (String, String, String, String) -> Unit) {
+        suspend fun innerRequest(hashid: String, callback: suspend (String, String, String, String, String) -> Unit) {
             val detail = oGetRequest(app, "$BASE_URL/card/$hashid")
             val wiki = oGetRequest(app, "$BASE_URL/card/$hashid/wiki")
-            val d = detail.parse1()
+            var nwname = ""
+            var imgid = ""
+            val d = detail.parse1 { p1, p2 ->
+                nwname = p1
+                imgid = p2
+            }
             val a = detail.parse2()
             val w = wiki.parse3()
-            val nwn = detail.parseNWName()
-            callback(d, a, w, nwn)
+            callback(d, a, w, nwname, imgid)
         }
 
         val c = cacheMap[hashid]
         val curr = System.currentTimeMillis()
         if (c == null || differentDaysByMillisecond(curr, c.timeinfo) > REFRESH_DAYS) {
-            innerRequest(hashid) { d, a, w, nwn ->
-                cacheMap[hashid] = CardCache2(d, a, w, curr, nwn)
-                app.cardTable.save(hashid, curr, d, a, w, nwn)
+            innerRequest(hashid) { d, a, w, nwn, imgid ->
+                cacheMap[hashid] = CardCache2(d, a, w, curr, nwn, imgid)
+                app.cardTable.save(hashid, curr, d, a, w, nwn, imgid)
                 callback(d, a, w)
             }
         } else {

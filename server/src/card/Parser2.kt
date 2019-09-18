@@ -2,14 +2,11 @@
 
 package com.rarnu.ygo.server.card
 
-// get NW name
-fun String.parseNWName() = parseTextVersion(this)
-
 // getStoredJson
 fun String.parse0() = getStoredJson(this)
 
 // getArticle
-fun String.parse1() = getArticle(this)
+fun String.parse1(callback:(nwname: String, imgid: String) -> Unit) = getArticle(this, callback)
 
 // getAdjust
 fun String.parse2() = getAdjust(this)
@@ -39,7 +36,7 @@ private fun getStoredJson(ahtml: String): String {
     return ret
 }
 
-private fun getArticle(ahtml: String): String {
+private fun getArticle(ahtml: String, callback:(nwname: String, imgid: String) -> Unit): String {
     val ARTICLE_BEGIN = "<article class=\"detail\">"
     val ARTICLE_END = "</article>"
     val HDIV = "</div>"
@@ -159,6 +156,7 @@ private fun getArticle(ahtml: String): String {
             cpacklist = getPackList(tmp)
         }
     }
+    callback(cname, cimgid)
     val ret = "{\"result\":0, \"data\":{\"name\":\"$cname\",\"japname\":\"$cjapname\",\"enname\":\"$cenname\",\"cardtype\":\"$ccardtype\",\"password\":\"$cpassword\",\"limit\":\"$climit\",\"belongs\":\"$cbelongs\",\"rare\":\"$crare\",\"pack\":\"$cpack\",\"effect\":\"$ceffect\",\"race\":\"$crace\",\"element\":\"$celement\",\"level\":\"$clevel\",\"atk\":\"$catk\",\"def\":\"$cdef\",\"link\":\"$clink\",\"linkarrow\":\"$clinkarrow\",\"imageid\":\"$cimgid\",\"packs\":[$cpacklist]}}"
     return ret
 }

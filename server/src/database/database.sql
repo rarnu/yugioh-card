@@ -12,7 +12,8 @@ create table Card(
     data LONGTEXT,
     adjust LONGTEXT,
     wiki LONGTEXT,
-    nwname varchar (255) not null
+    nwname varchar (255) not null,
+    imgid varchar (64) default ''
 ) character set utf8mb4;
 
 create table CardLimit(
