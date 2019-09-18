@@ -1,13 +1,21 @@
 package com.rarnu.ygo.server
 
 import com.rarnu.ktor.requestParameters
+import com.rarnu.ktor.save
 import com.rarnu.ygo.server.collect.CollectRequest2
+import com.rarnu.ygo.server.common.deckPath
+import com.rarnu.ygo.server.common.headPath
+import com.rarnu.ygo.server.deck.DeckUtil
 import io.ktor.application.application
 import io.ktor.application.call
+import io.ktor.request.receiveMultipart
 import io.ktor.response.respondText
 import io.ktor.routing.Routing
 import io.ktor.routing.get
+import io.ktor.routing.post
 import io.ktor.util.pipeline.ContextDsl
+import java.io.File
+import java.util.*
 
 @ContextDsl
 fun Routing.collectRouting() {
@@ -75,6 +83,41 @@ fun Routing.collectRouting() {
 
     get("/deckcollect") {
         CollectRequest2.getDeckCollect(application, localSession.userId) {
+            call.respondText { it }
+        }
+    }
+
+    get("/mydecklist") {
+        call.respondText {
+            "{\"result\":0, \"data\":[${File(deckPath, localSession.userId.toString()).apply { 
+                if (!exists()) mkdirs() 
+            }.listFiles()?.joinToString(",") { 
+                "{\"file\":\"${it.name}\",\"name\":\"${DeckUtil.getDeckName(it)}\"}" 
+            } ?: ""}]}"
+        }
+    }
+
+    post("/uploaddeck") {
+        var ret = false
+        val savefile = File(
+            File(deckPath, localSession.userId.toString()).apply { if (!exists()) mkdirs() },
+            UUID.randomUUID().toString()
+        )
+        val saved = call.receiveMultipart().save("file", savefile)
+        if (saved) {
+            if (!DeckUtil.isDeck(savefile)) {
+                savefile.delete()
+            } else {
+                ret = true
+            }
+        }
+        call.respondText { "{\"result\":${if (ret) 0 else 1}}" }
+    }
+
+    get("/mydeckdetail") {
+        val uuid = call.requestParameters()["uuid"] ?: ""
+        val loadfile = File(File(deckPath, localSession.userId.toString()).apply { if (!exists()) mkdirs() }, uuid)
+        DeckUtil.loadMyDeck(loadfile) {
             call.respondText { it }
         }
     }

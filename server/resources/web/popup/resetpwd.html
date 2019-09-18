@@ -41,6 +41,7 @@
             return;
         }
         $("#btnSendValidateCode")[0].disabled = true;
+        disableCountdown();
         $.ajax({
             url: '/sendvalidatecode',
             dataType: 'json',
@@ -54,9 +55,26 @@
                 } else {
                     toast("发送给证码失败", 0);
                 }
-                $("#btnSendValidateCode")[0].disabled = false;
             }
         });
+    }
+
+    let timerVal = 0;
+    let cd = null;
+
+    function displayCountdown() {
+        $("#btnSendValidateCode")[0].innerHTML = `向该帐号绑定的邮箱发送验证码(${timerVal})`;
+        timerVal--;
+        if (timerVal <= 0) {
+            clearInterval(cd);
+            $("#btnSendValidateCode")[0].innerHTML = "向该帐号绑定的邮箱发送验证码";
+            $("#btnSendValidateCode")[0].disabled = false;
+        }
+    }
+
+    function disableCountdown() {
+        timerVal = 10;
+        cd = setInterval("displayCountdown()", 1000);
     }
 </script>
 

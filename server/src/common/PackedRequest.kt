@@ -11,10 +11,12 @@ private var wrapperCmd = ""
 private var curlCmd = ""
 var imgPath = ""
 var headPath = ""
+var deckPath = ""
 
 fun Application.initNetworkOpt() {
     imgPath = File(System.getProperty("user.dir"), "images").apply { if (!exists()) mkdirs() }.absolutePath
     headPath = File(System.getProperty("user.dir"), "heads").apply { if (!exists()) mkdirs() }.absolutePath
+    deckPath = File(System.getProperty("user.dir"), "deck").apply { if (!exists()) mkdir() }.absolutePath
     monoCmd = config("ktor.network.mono")
     wrapperCmd = config("ktor.network.wrapper")
     curlCmd = config("ktor.network.curl")

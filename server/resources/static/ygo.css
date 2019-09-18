@@ -248,6 +248,50 @@ body {
     float: right;
 }
 
+
+.mydeckitem {
+    width: 100%;
+    height: 36px;
+}
+
+.mydeckitemcard {
+    width: 100%;
+    height: 28px;
+}
+
+.mydeckitemcard .text {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 12px;
+    float: left;
+}
+
+.mydeckitem .bigtext {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    margin-left: 4px;
+    float: left;
+}
+
+.mydeckitem .text {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 4px;
+    float: left;
+}
+
+.mydeckcontainer {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
+
 .limititem {
     width: 100%;
     height: 36px;
@@ -272,6 +316,8 @@ body {
     margin-left: 4px;
     float: left;
 }
+
+
 
 .limititem .limit-ban {
     display: block;
@@ -327,6 +373,10 @@ body {
 #carddetail .detailrow .value {
     float: left;
     height: 30px;
+    width: 65%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 
 #carddetail .effectrow {
