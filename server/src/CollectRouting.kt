@@ -121,4 +121,11 @@ fun Routing.collectRouting() {
             call.respondText { it }
         }
     }
+
+    get("/deletedeck") {
+        val uuid = call.requestParameters()["uuid"] ?: ""
+        val delfile = File(File(deckPath, localSession.userId.toString()).apply { if (!exists()) mkdirs() }, uuid)
+        val ret = delfile.delete()
+        call.respondText { "{\"result\":${if (ret) 0 else 1}}" }
+    }
 }

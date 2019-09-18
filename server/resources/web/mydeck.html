@@ -35,6 +35,10 @@
                             str += '</div>';
                         });
                     }
+                    if (str === '') {
+                        str = `<div class="limititem"><span class="text">还没有卡组，你可以立即上传一个卡组，卡组的格式可以参考下方的"卡组格式帮助".</span></div>`;
+                    }
+                    str += `<div class="mydeckhelp"><button class="btnlimit" onclick="showHelp();">卡组格式帮助</button></div>`;
                     $('#cardlist')[0].innerHTML = str;
                 }
             });
@@ -63,6 +67,10 @@
                 });
             }
         }
+
+        function showHelp() {
+            // TODO: show help
+        }
     </script>
 </head>
 <body>
@@ -70,9 +78,7 @@
 <div id="subtitle">
     <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
     <span id="title">我的卡组</span>
-
     <span id="btnoper" onclick="uploadDeck();">上传</span>
-
 </div>
 <div><input type="file" id="fileDeck" name="fileDeck" onchange="uploadDeckImage();" class="filehead"/></div>
 

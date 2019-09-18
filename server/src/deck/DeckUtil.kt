@@ -1,5 +1,6 @@
 package com.rarnu.ygo.server.deck
 
+import com.rarnu.ygo.server.card.cacheMap
 import java.io.File
 
 object DeckUtil {
@@ -8,6 +9,31 @@ object DeckUtil {
 
 
     suspend fun loadMyDeck(file: File, callback:suspend (String) -> Unit) {
+
+        fun itemToCardItem(str: String): String {
+            val tmp = str.trim().trim('[', ']')
+            val name: String
+            var hash = ""
+            var imgid = "0"
+            if (tmp.contains(">>")) {
+                val arr = tmp.split(">>")
+                name = arr[0]
+                hash = arr[1]
+            } else {
+                name = tmp
+            }
+            val m = cacheMap.filterValues { it.nwname == name }
+            if (m.isNotEmpty()) {
+                if (hash == "") {
+                    hash = m.keys.elementAt(0)
+                }
+                if (imgid == "0") {
+                    imgid = m.values.elementAt(0).imgid
+                }
+            }
+            return "{\"name\":\"$name\",\"hash\":\"$hash\",\"imgid\":\"$imgid\"}"
+        }
+
         val MAIN = "#MAIN"
         val EXTRA = "#EXTRA"
         val SIDE = "#SIDE"
@@ -26,14 +52,15 @@ object DeckUtil {
             }
             if (it.startsWith("[")) {
                 when(currentSection) {
-                    0 -> listMain.add(it.trim('[', ']'))
-                    1 -> listExtra.add(it.trim('[', ']'))
-                    2 -> listSide.add(it.trim('[', ']'))
+                    0 -> listMain.add(itemToCardItem(it))
+                    1 -> listExtra.add(itemToCardItem(it))
+                    2 -> listSide.add(itemToCardItem(it))
                 }
             }
         }
 
-        callback("{\"result\":0,\"name\":\"$name\",\"main\":[${listMain.joinToString(",") { "\"$it\"" }}],\"extra\":[${listExtra.joinToString(",") { "\"$it\"" }}],\"side\":[${listSide
-            .joinToString(",") { "\"$it\"" }}]}")
+        callback("{\"result\":0,\"name\":\"$name\",\"main\":[${listMain.joinToString(",")}],\"extra\":[${listExtra.joinToString(",")}],\"side\":[${listSide
+            .joinToString(",")}]}")
+
     }
 }

@@ -12,7 +12,35 @@
     <script src="../static/ygo.js"></script>
 
     <script type="text/javascript">
-        function getMyDeckDetail(uuid) {
+
+        let uuid = "";
+
+        function deleteDeck() {
+            $.ajax({
+                url: '/deletedeck',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    uuid: uuid
+                },
+                success: function (resp) {
+                    if (resp.result === 0) {
+                        // 已删除，返回上一级
+                        history.go(-1);
+                    } else {
+                        toast("删除卡组失败.", 0);
+                    }
+                }
+            });
+
+        }
+
+        function cardClicked(hash) {
+            Cookies.set('hashid', hash);
+            location.href = '/carddetail.html';
+        }
+
+        function getMyDeckDetail() {
             $.ajax({
                 url: '/mydeckdetail',
                 type: 'GET',
@@ -21,32 +49,54 @@
                     uuid: uuid
                 },
                 success: function (resp) {
-                    console.log(resp);
                     if (resp.result === 0) {
                         $("#spDeckName")[0].innerHTML = resp.name;
-                        let strMain = '';
-                        $.each(resp.main, function(idx, item) {
-                            strMain += `<div class="mydeckitemcard">`;
-                            strMain += `<span class="text">${item}</span>`;
-                            strMain += '</div>';
+                        let line = 1;
+                        let str = "";
+                        let count = 0;
+                        $.each(resp.main, function (idx, item) {
+                            str += `<img src="http://ocg.resource.m2v.cn/${item.imgid}.jpg" class="mydeckcard" onclick="cardClicked('${item.hash}');" alt="${item.name}" title="${item.name}" onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';">`;
+                            count++;
+                            if (count === 10) {
+                                str += "<br/>";
+                                line++;
+                                count = 0;
+                            }
                         });
-                        $("#divMainDeck")[0].innerHTML = strMain;
+                        $("#divMainDeck")[0].innerHTML = str;
+                        $("#divMainDeck")[0].style.height = `${86 * line}px`;
 
-                        let strExtra = '';
-                        $.each(resp.extra, function(idx, item) {
-                            strExtra += `<div class="mydeckitemcard">`;
-                            strExtra += `<span class="text">${item}</span>`;
-                            strExtra += '</div>';
+                        line = 1;
+                        str = "";
+                        count = 0;
+                        $.each(resp.extra, function (idx, item) {
+                            str += `<img src="http://ocg.resource.m2v.cn/${item.imgid}.jpg" class="mydeckcard" onclick="cardClicked('${item.hash}');" alt="${item.name}" title="${item.name}" onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';">`;
+                            count++;
+                            if (count === 10) {
+                                str += "<br/>";
+                                line++;
+                                count = 0;
+                            }
                         });
-                        $("#divExtraDeck")[0].innerHTML = strExtra;
+                        $("#divExtraDeck")[0].innerHTML = str;
+                        $("#divExtraDeck")[0].style.height = `${86 * line}px`;
 
-                        let strSide = '';
-                        $.each(resp.extra, function(idx, item) {
-                            strSide += `<div class="mydeckitemcard">`;
-                            strSide += `<span class="text">${item}</span>`;
-                            strSide += '</div>';
+
+                        line = 1;
+                        str = "";
+                        count = 0;
+
+                        $.each(resp.side, function (idx, item) {
+                            str += `<img src="http://ocg.resource.m2v.cn/${item.imgid}.jpg" class="mydeckcard" onclick="cardClicked('${item.hash}');" alt="${item.name}" title="${item.name}" onerror="javascript:this.src='http://ocg.resource.m2v.cn/0.jpg';">`;
+                            count++;
+                            if (count === 10) {
+                                str += "<br/>";
+                                line++;
+                                count = 0;
+                            }
                         });
-                        $("#divSideDeck")[0].innerHTML = strSide;
+                        $("#divSideDeck")[0].innerHTML = str;
+                        $("#divSideDeck")[0].style.height = `${86 * line}px`;
 
                     }
                 }
@@ -59,6 +109,7 @@
 <div id="subtitle">
     <a href="javascript:history.go(-1)" id="backlink">◄ Back</a>
     <span id="title">卡组详情</span>
+    <span id="btnoper" onclick="deleteDeck();">删除</span>
 </div>
 
 <div id="cardlist">
@@ -72,8 +123,8 @@
 </div>
 
 <script type="text/javascript">
-    let uuid = Cookies.get('mydeckuuid');
-    getMyDeckDetail(uuid);
+    uuid = Cookies.get('mydeckuuid');
+    getMyDeckDetail();
 </script>
 </body>
 </html>

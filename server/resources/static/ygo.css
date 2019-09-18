@@ -175,6 +175,18 @@ body {
     padding-top: 2px;
 }
 
+#subtitle #btnhelp {
+    float: right;
+    width: 40px;
+    height: 30px;
+    min-width: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    text-align: center;
+    padding-top: 2px;
+}
+
 #cardnavbar {
     width: 40%;
     min-width: 150px;
@@ -288,8 +300,24 @@ body {
 }
 
 .mydeckcontainer {
+    width: 590px;
+    margin-left: calc((100% - 590px) / 2);
+    margin-bottom: 24px;
+}
+
+.mydeckcard {
+    float: left;
+    width: 57px;
+    height: 84px;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+
+.mydeckhelp {
     width: 100%;
-    border-bottom: 1px solid lightgray;
+    float: left;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .limititem {
