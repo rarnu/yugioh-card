@@ -69,7 +69,7 @@
         }
 
         function showHelp() {
-            // TODO: show help
+            $("#deckhelpdialog").modal('toggle');
         }
     </script>
 </head>
@@ -86,7 +86,10 @@
 
 </div>
 
+<div id="deckhelp"></div>
+
 <script type="text/javascript">
+    $("#deckhelp").load("popup/deckhelp.html");
     getMyDeckList();
 </script>
 </body>

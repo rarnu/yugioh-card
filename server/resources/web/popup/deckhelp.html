@@ -1,0 +1,47 @@
+<div id="deckhelpdialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">卡组格式帮助</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: left">
+                    <p>本站点采用以下卡组格式:</p>
+                    <p>
+                        <code>
+                        #卡组名称<br/>
+                        #MAIN<br/>
+                        [卡片名称]<br/>
+                        #EXTRA<br/>
+                        [卡片名称]<br/>
+                        #SIDE<br/>
+                        [卡片名称]<br/>
+                        </code>
+                    </p>
+
+                    <p>
+                        <b>基本标签:</b><br/>
+                        * <code>#MAIN</code> 用于标识下方内容为主卡组<br/>
+                        * <code>#EXTRA</code> 用于标识下方内容为额外卡组<br/>
+                        * <code>#SIDE</code> 用于标识下方内容为副卡组<br/>
+                        * 卡片名称必须用方括号括起来，以便识别<br/>
+                    </p>
+
+                    <p>
+                        <b>高级用法:</b><br/>
+                        * 卡片名称后允许带有 Oucocg 站点的卡片 Hash ID，以便更好的进行卡片定位，如 <code>[青眼白龙&gt;&gt;JMs4P]</code><br/>
+                        * 卡片名称与 Hash ID 之间，必须用 <code>&gt;&gt;</code> 进行分隔
+                    </p>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
