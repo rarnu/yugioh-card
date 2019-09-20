@@ -69,4 +69,19 @@ fun Routing.cardRouting() {
             call.respondText { it }
         }
     }
+
+    get("/findbyimage") {
+        val imgid = call.requestParameters()["imgid"] ?: ""
+        if (imgid == "") {
+            call.respondText { "{\"result\":1}" }
+        } else {
+            Request2.cardHashByImgId(imgid) {
+                if (it == "") {
+                    call.respondText { "{\"result\":1}" }
+                } else {
+                    call.respondText { "{\"result\":0, \"hash\":\"$it\"}" }
+                }
+            }
+        }
+    }
 }

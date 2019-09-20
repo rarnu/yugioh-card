@@ -21,6 +21,7 @@ fun Application.module() {
         redirectHttps = true) { }
     initNetworkOpt()
     // load cache
+    cardImageTable.loadCache()
     accountTable.loadCache()
     cardTable.loadCache()
     limitTable.loadCache()
@@ -40,6 +41,7 @@ fun Application.module() {
         deckRouting()
         accountRouting()
         collectRouting()
+        imageRouting()
         jumpRouting()
     }
 

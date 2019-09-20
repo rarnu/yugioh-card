@@ -81,6 +81,60 @@
         function changeHotestClicked() {
             getHotest();
         }
+
+        function uploadImage() {
+            $("#filerec")[0].click();
+        }
+
+        function findCardByImgId(id) {
+            $.ajax({
+                url: '/findbyimage',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    imgid: id
+                },
+                success: function (resp) {
+                    if (resp.result === 0) {
+                        let hash = resp.hash;
+                        Cookies.set('hashid', hash);
+                        location.href = '/carddetail.html';
+                    }
+                }
+            });
+        }
+
+        function uploadRecImage() {
+            let img = $("#filerec")[0].files[0];
+            if (img) {
+                let fd = new FormData();
+                fd.append('file', img);
+                $.ajax({
+                    url: '/matchimage',
+                    type: 'POST',
+                    dataType: "json",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+                        $("#filerec")[0].value = '';
+                        if (resp.result === 0) {
+                            let imgids = resp.imgids;
+                            console.log(imgids);
+                            if (imgids.length === 1) {
+                                findCardByImgId(imgids[0]);
+                            } else {
+                                // TODO: 找到多张卡
+                                toast("找到多个", 1);
+                            }
+
+                        } else {
+                            toast("没有找到匹配的卡片.", 0);
+                        }
+                    }
+                });
+            }
+        }
     </script>
 </head>
 <body>
@@ -96,11 +150,15 @@
     <div class="input-group mb-3">
         <input id="etKeyword" type="text" class="form-control" placeholder="输入要搜索的关键字">
         <div class="input-group-append">
-            <span class="input-group-text" onclick='search()' >Go</span>
-            <span class="input-group-text" onclick="advanced()">Adv</span>
+            <span class="input-group-text" onclick='search();' >搜索</span>
+            <span class="input-group-text" onclick="advanced();">高级</span>
+            <span class="input-group-text" onclick="uploadImage();">识图</span>
         </div>
     </div>
 </div>
+
+<div><input type="file" id="filerec" name="filerec" onchange="uploadRecImage();" class="filehead"/></div>
+
 <div id="limitbar">
     <a href="limit.html"><span class="btnlimit">禁限卡表</span></a>
     <a href="pack.html"><span class="btnlimit">卡包列表</span></a>

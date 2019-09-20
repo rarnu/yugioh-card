@@ -87,3 +87,9 @@ create table Collect (
     timeinfo bigint
 ) character set utf8mb4;
 
+-- image hash
+create table ImageHash (
+    cardid int primary key,
+    hashcode varchar (128) not null
+) character set utf8mb4;
+

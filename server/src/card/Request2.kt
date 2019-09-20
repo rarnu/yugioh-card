@@ -16,6 +16,15 @@ object Request2 {
     suspend fun search(app: Application, key: String, page: Int, callback: suspend (String) -> Unit) =
         callback(oGetRequest(app, "$BASE_URL/search/$key/$page").parse0())
 
+    suspend fun cardHashByImgId(imgid: String, callback: suspend (String) -> Unit) {
+        val c = cacheMap.filterValues { it.imgid == imgid }
+        if (c.isNotEmpty()) {
+            callback(c.keys.elementAt(0))
+        } else {
+            callback("")
+        }
+    }
+
     suspend fun cardDetailWiki(app: Application, hashid: String, callback: suspend (String, String, String) -> Unit) {
 
         suspend fun innerRequest(hashid: String, callback: suspend (String, String, String, String, String) -> Unit) {

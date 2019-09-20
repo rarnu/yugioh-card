@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/js/jquery-2.0.0.min.js"></script>
+
+    <script type="text/javascript">
+        function domatch() {
+            let img = $("#file")[0].files[0];
+            if (img) {
+                let fd = new FormData();
+                fd.append('file', img);
+                $.ajax({
+                    url: '/matchimage',
+                    type: 'POST',
+                    dataType: "json",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+                        console.log(resp);
+                    }
+                });
+            }
+        }
+
+        function getimage() {
+            let imgid = $("#imgid")[0].value;
+            $.ajax({
+                url: '/findbyimage',
+                type: 'GET',
+                dataType: 'text',
+                data: {
+                    imgid: imgid
+                },
+                success: function (resp) {
+                    console.log("2333");
+                    let sarr = resp.split('\\\\\\\\');
+                    sarr.forEach(function (item) {
+                        console.log(item);
+                    });
+
+
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <input type="file" id="file" name="file">
+    <button onclick="domatch();">Match</button>
+
+    <input type="text" id="imgid" name="imgid">
+    <button onclick="getimage();">GetImage</button>
+</body>
+</html>
