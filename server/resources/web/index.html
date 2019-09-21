@@ -107,6 +107,11 @@
         function uploadRecImage() {
             let img = $("#filerec")[0].files[0];
             if (img) {
+                let ext = img.name.substring(img.name.length - 3).toLowerCase();
+                if (ext !== "jpg") {
+                    toast("只能上传 jpg 图片.", 0);
+                    return;
+                }
                 let fd = new FormData();
                 fd.append('file', img);
                 $.ajax({
