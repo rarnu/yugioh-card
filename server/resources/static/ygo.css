@@ -615,6 +615,12 @@ body {
     padding-left: 16px;
 }
 
+#hotabout {
+    width: 100%;
+    text-align: center;
+    margin-top: 32px;
+}
+
 .decklist {
     padding-top: 16px;
     margin: auto;
@@ -785,3 +791,25 @@ body {
     text-align: center;
 }
 
+
+#abouttable {
+    border: none;
+    width: 80%;
+    margin: auto;
+}
+
+#abouttable .row {
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#abouttable .col {
+    width: 100%;
+    text-align: center;
+}
+
+#aboutlogo {
+    width: 48px;
+    height: 48px;
+}

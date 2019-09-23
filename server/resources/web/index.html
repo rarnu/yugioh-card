@@ -159,6 +159,10 @@
                 });
             }
         }
+
+        function showAbout() {
+            $("#aboutdialog").modal('toggle');
+        }
     </script>
 </head>
 <body>
@@ -200,13 +204,20 @@
 <div class="hottitle">热门卡包</div>
 <div id="hotpacks"></div>
 <div class="line"></div>
+<div id="hotabout">
+    <a href="javascript:showAbout();"><span class="btnlimit">关于本网站</span></a>
+</div>
+<div style="padding-top: 32px;"></div>
 
 <div id="advsearch"></div>
 <div id="multicard"></div>
+<div id="about"></div>
 
 <script type="text/javascript">
     $("#advsearch").load("popup/advance.html");
     $("#multicard").load("popup/findmulticard.html");
+    $("#about").load("popup/about.html");
+
     $('#etKeyword').bind('keypress', function (event) {
         if (event.keyCode === 13) {
             search();
