@@ -23,7 +23,7 @@ fun Routing.accountRouting() {
         val p = call.requestParameters()
         val account = p["account"] ?: ""
         val password = p["password"] ?: ""
-        AccountRequest2.userLogin(application, account, password) { uid, content ->
+        AccountRequest2.userLogin(account, password) { uid, content ->
             localSession.userId = uid
             call.respondText { content }
         }
@@ -102,7 +102,7 @@ fun Routing.accountRouting() {
     }
 
     get("/getuser") {
-        AccountRequest2.getUserInfo(application, localSession.userId) {
+        AccountRequest2.getUserInfo(localSession.userId) {
             call.respondText { it }
         }
     }

@@ -83,6 +83,7 @@
         }
 
         function uploadImage() {
+            // $("#findmulticarddialog").modal('toggle');
             $("#filerec")[0].click();
         }
 
@@ -125,12 +126,28 @@
                         $("#filerec")[0].value = '';
                         if (resp.result === 0) {
                             let imgids = resp.imgids;
-                            console.log(imgids);
                             if (imgids.length === 1) {
                                 findCardByImgId(imgids[0]);
                             } else {
-                                // TODO: 找到多张卡
-                                toast("找到多个", 1);
+                                let fc = 0;
+                                let fstr = "<tr>";
+                                $.each(imgids, function (idx, item) {
+                                    fstr += `<td class="cell"><img src="http://ocg.resource.m2v.cn/${item}.jpg" class="cardimg" onclick="findCardByImgId('${item}');"></td>`;
+                                    fc++;
+                                    if (fc === 4) {
+                                        fc = 0;
+                                        fstr += "</tr><tr>";
+                                    }
+                                });
+                                // 不满5个图的情况，补满占位，否则界面显示不正常
+                                if (fc !== 0 && fc !== 4) {
+                                    for (let i = fc; i >= 0; i--) {
+                                        fstr += "<td class='cell'></td>";
+                                    }
+                                }
+                                fstr += "</tr>";
+                                $("#rectable")[0].innerHTML = fstr;
+                                $("#findmulticarddialog").modal('toggle');
                             }
 
                         } else {
@@ -183,9 +200,11 @@
 <div class="line"></div>
 
 <div id="advsearch"></div>
+<div id="multicard"></div>
 
 <script type="text/javascript">
     $("#advsearch").load("popup/advance.html");
+    $("#multicard").load("popup/findmulticard.html");
     $('#etKeyword').bind('keypress', function (event) {
         if (event.keyCode === 13) {
             search();

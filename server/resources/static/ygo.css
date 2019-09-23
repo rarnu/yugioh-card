@@ -765,3 +765,23 @@ body {
     color: lightgray;
 }
 
+#rectable {
+    border: none;
+    width: 408px;
+    margin: auto;
+}
+
+#rectable .cell {
+    width: 80px;
+}
+
+#rectable .cardimg {
+    width: 80px;
+    height: 115px;
+}
+
+.divrect {
+    width: 100%;
+    text-align: center;
+}
+

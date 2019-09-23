@@ -13,7 +13,7 @@ import java.util.*
 import kotlin.random.Random
 
 object AccountRequest2 {
-    suspend fun getUserInfo(app: Application, userId: Long, callback: suspend (String) -> Unit) {
+    suspend fun getUserInfo(userId: Long, callback: suspend (String) -> Unit) {
         if (userId == 0L) {
             callback("{\"id\":0}")
         } else {
@@ -26,7 +26,7 @@ object AccountRequest2 {
         }
     }
 
-    suspend fun userLogin(app: Application, account: String, password: String, callback: suspend (Long, String) -> Unit) {
+    suspend fun userLogin(account: String, password: String, callback: suspend (Long, String) -> Unit) {
         val u = cacheAccount.values.firstOrNull { it.account == account && it.password == password }
         if (u == null) {
             callback(0L, "{\"id\":0}")
