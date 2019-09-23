@@ -12,7 +12,6 @@ linksyms.fpc
 *.ctps
 *.ppu
 *.o
-CardImage/
 yugiohcard.exe
 yugiohcard.app/
 Pods/
