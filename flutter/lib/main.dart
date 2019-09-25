@@ -111,15 +111,16 @@ class _MainHomePageState extends State<MainHomePage> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.all(8),
-                    child: Text(
+                    child: sizedw(Text(
                       '找到多张卡片',
                       style: TextStyle(
+                        fontWeight: FontWeight.normal,
                         fontStyle: FontStyle.normal,
                         color: Colors.white, 
                         decoration: TextDecoration.none,
                         fontSize: 16,
                         ),
-                      ),
+                      )),
                   ),
                   Padding(
                     padding: EdgeInsets.all(8),
