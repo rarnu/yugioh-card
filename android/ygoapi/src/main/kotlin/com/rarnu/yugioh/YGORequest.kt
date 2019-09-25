@@ -1,7 +1,9 @@
 package com.rarnu.yugioh
 
 import android.util.Log
+import com.rarnu.common.HttpMethod
 import com.rarnu.common.http
+import java.io.File
 
 object YGORequest {
 
@@ -36,5 +38,16 @@ object YGORequest {
     fun deckInCategory(hash: String) = request("$BASE_URL/deckincategory?hash=$hash")
 
     fun deck(code: String) = request("$BASE_URL/deck?code=$code")
+
+    fun imageSearch(file: File) = try { http {
+        url = "$BASE_URL/matchimage"
+        method = HttpMethod.POST
+        fileParam["file"] = file.absolutePath
+    } } catch (th: Throwable) {
+        Log.e("YGO", "error => $th")
+        null
+    }
+
+    fun findCardByImageId(imgid: String) = request("$BASE_URL/findbyimage?imgid=$imgid")
 
 }

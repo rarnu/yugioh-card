@@ -442,4 +442,36 @@ public class YGOData2: NSObject {
             callback(result)
         }
     }
+    
+    public class func imageSearch(_ file: String, _ callback:@escaping ([String]) -> Void) {
+        YGORequest2.imageSearch(file) { data in
+            var result = [String]()
+            do {
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
+                if (json.int("result") == 0) {
+                    for obj in json["imgids"]!>^< {
+                        result.append(obj)
+                    }
+                }
+            } catch {
+                
+            }
+            callback(result)
+        }
+    }
+    
+    public class func findImageByImageId(_ imgid: String, _ callback: @escaping (String) -> Void) {
+        YGORequest2.findImageByImageId(imgid) { data in
+            var ret = ""
+            do {
+                let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
+                if (json.int("result") == 0) {
+                    ret = json.string("hash")
+                }
+            } catch {
+                
+            }
+            callback(ret)
+        }
+    }
 }

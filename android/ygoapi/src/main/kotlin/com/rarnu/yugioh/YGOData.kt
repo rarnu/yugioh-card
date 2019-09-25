@@ -4,6 +4,7 @@ import com.rarnu.common.forEach
 import com.rarnu.common.forEachString
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 
 class PackageInfo {
     var season = ""
@@ -362,4 +363,31 @@ object YGOData {
         return result
     }
 
+    fun imageSearch(file: File): List<String> {
+        val result = mutableListOf<String>()
+        try {
+            val data = YGORequest.imageSearch(file)
+            val json = JSONObject(data)
+            if (json.getInt("result") == 0) {
+                val jarr = json.getJSONArray("imgids")
+                jarr.forEachString { _, str -> result.add(str) }
+            } 
+        } catch(th: Throwable) {
+
+        }
+        return result
+    }
+
+    fun findCardByImageId(imgid: String): String? {
+        var ret: String? = null
+        try {
+            val data = YGORequest.findCardByImageId(imgid)
+            val json = JSONObject(data)
+            if (json.getInt("result") == 0) {
+                ret = json.getString("hash")
+            }
+        } catch (th: Throwable) {
+        }
+        return ret
+    }
 }

@@ -14,59 +14,76 @@ public let RES_URL = "http://ocg.resource.m2v.cn/%d.jpg"
 public class YGORequest2: NSObject {
     
     public class func search(_ key: String, _ page: Int, _ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/search?key=\(key)&page=\(page)", callback)
+        httpGet(BASE_URL + "/search?key=\(key)&page=\(page)") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func cardDetailWiki(_ hashid: String, _ callback:@escaping (String, String, String) -> Void) {
-        request(BASE_URL + "/carddetail?hash=\(hashid)") { str in
-            let sarr = str.split(by: "\\\\\\\\")
+        httpGet(BASE_URL + "/carddetail?hash=\(hashid)") { (_, result, _) in
+            let sarr = result.split(by: "\\\\\\\\")
             callback(sarr[0], sarr[1], sarr[2])
         }
      }
     
     public class func limit(_ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/limit", callback)
+        httpGet(BASE_URL + "/limit") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func packageList(_ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/packlist", callback)
+        httpGet(BASE_URL + "/packlist") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func packageDetail(_ url: String, _ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/packdetail?url=\(url)", callback)
+        httpGet(BASE_URL + "/packdetail?url=\(url)") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func hotest(_ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/hotest", callback)
+        httpGet(BASE_URL + "/hotest") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func deckTheme(_ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/decktheme", callback)
+        httpGet(BASE_URL + "/decktheme") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func deckCategory(_ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/deckcategory", callback)
+        httpGet(BASE_URL + "/deckcategory") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func deckInCategory(_ hash: String, _ callback: @escaping (String) -> Void) {
-        request(BASE_URL + "/deckincategory?hash=\(hash)", callback)
+        httpGet(BASE_URL + "/deckincategory?hash=\(hash)") { (_, result, _) in
+            callback(result)
+        }
     }
     
     public class func deck(_ code: String, _ callback:@escaping (String) -> Void) {
-        request(BASE_URL + "/deck?code=\(code)", callback)
+        httpGet(BASE_URL + "/deck?code=\(code)") { (_, result, _) in
+            callback(result)
+        }
     }
     
-    private class func request(_ url: String, _ callback:@escaping (String) -> Void) {
-        let url2 = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let req = URLRequest(url: URL(string: url2)!)
-        let task = URLSession.shared.dataTask(with: req) { data, resp, err in
-            var retstr = ""
-            if (err == nil && data != nil) {
-                retstr = String(data: data!, encoding: .utf8)!
-            }
-            callback(retstr)
+    public class func findImageByImageId(_ imgid: String, _ callback:@escaping (String) -> Void) {
+        httpGet(BASE_URL + "/findbyimage?imgid=\(imgid)") { (_, result, _) in
+            callback(result)
         }
-        task.resume()
+    }
+    
+    public class func imageSearch(_ file: String, _ callback:@escaping (String) -> Void) {
+        http(BASE_URL + "/matchimage", method: "POS", fileParam:["file":file]) { (_, result, _) in
+            callback(result)
+        }
     }
 }
 
@@ -108,5 +125,134 @@ extension String {
             }
         }
         return arr
+    }
+}
+
+
+func http(_ url: String, method: String = "GET", mimeType: String = "text/json", data: String = "", getParam: String? = nil, postParam: Dictionary<String, String>? = nil, fileParam: Dictionary<String, String>? = nil, _ callback:@escaping (_ code: Int, _ result: String, _ error: String) -> Void) {
+    var fullurl = url
+    if (getParam != nil && getParam != "") {
+        fullurl += "?\(getParam!)"
+    }
+    let req = HttpOperations.buildRequest(fullurl, method, mimeType, data, postParam, fileParam)
+    let session = URLSession.shared
+    let task = (fileParam == nil) ? (
+        session.dataTask(with: req) { (data, respond, error) in
+            let resp = respond as? HTTPURLResponse
+            let code = (resp != nil) ? resp!.statusCode : 0
+            let result = (data != nil) ? String(data: data!, encoding:.utf8)! : ""
+            let err = error != nil ? "\(error!)" : ""
+            callback(code, result, err)
+        }) : (
+        session.uploadTask(with: req, from: nil) { (data, respond, error) in
+            let resp = respond as? HTTPURLResponse
+            let code = (resp != nil) ? resp!.statusCode : 0
+            let result = (data != nil) ? String(data: data!, encoding:.utf8)! : ""
+            let err = error != nil ? "\(error!)" : ""
+            callback(code, result, err)
+        })
+    task.resume()
+}
+
+func httpGet(_ url: String, _ callback:@escaping (_ code: Int, _ result: String, _ error: String) -> Void) {
+    http(url, callback)
+}
+
+func httpPost(_ url: String, postParam: Dictionary<String, String>? = nil, _ callback:@escaping (_ code: Int, _ result: String, _ error: String) -> Void) {
+    http(url, postParam: postParam, callback)
+}
+
+func blockingHttp(_ url: String, method: String = "GET", mimeType: String = "text/json", data: String = "", getParam: String? = nil, postParam: Dictionary<String, String>? = nil, fileParam: Dictionary<String, String>? = nil, _ callback:((_ code: Int, _ result: String, _ error: String) -> Void)? = nil) -> String {
+    let semaphore = DispatchSemaphore.init(value: 0)
+    var code = 0
+    var result = ""
+    var err = ""
+    var fullurl = url
+    if (getParam != nil && getParam != "") {
+        fullurl += "?\(getParam!)"
+    }
+    let req = HttpOperations.buildRequest(fullurl, method, mimeType, data, postParam, fileParam)
+    let session = URLSession.shared
+    let task = (fileParam == nil) ? (
+        session.dataTask(with: req) { (data, respond, error) in
+            let resp = respond as? HTTPURLResponse
+            code = (resp != nil) ? resp!.statusCode : 0
+            result = (data != nil) ? String(data: data!, encoding:.utf8)! : ""
+            err = error != nil ? "\(error!)" : ""
+            semaphore.signal()
+    }) : (
+        session.uploadTask(with: req, from: nil) { (data, respond, error) in
+            let resp = respond as? HTTPURLResponse
+            code = (resp != nil) ? resp!.statusCode : 0
+            result = (data != nil) ? String(data: data!, encoding:.utf8)! : ""
+            err = error != nil ? "\(error!)" : ""
+            semaphore.signal()
+    })
+    task.resume()
+    _ = semaphore.wait(timeout: .distantFuture)
+    if (callback != nil) {
+        callback!(code, result, err)
+    }
+    return result
+}
+
+func blockingHttpGet(_ url: String, _ callback: ((_ code: Int, _ result: String, _ error: String) -> Void)? = nil) -> String {
+    return blockingHttp(url, callback)
+}
+
+func blockingHttpPost(_ url: String, postParam: Dictionary<String, String>? = nil, _ callback:((_ code: Int, _ result: String, _ error: String) -> Void)? = nil) -> String {
+    return blockingHttp(url, postParam: postParam, callback)
+}
+
+
+private class HttpOperations {
+    
+    static let BOUNDARY_STR = "--"
+    static let RANDOM_ID_STR = "_hjreq_"
+    
+    private class func topString(_ uploadId: String, _ uploadFile: String) -> String {
+        var str = "\(BOUNDARY_STR)\(RANDOM_ID_STR)\r\n"
+        str += "Content-Disposition: form-data; name=\"\(uploadId)\"; filename=\"\(uploadFile)\"\r\nContent-Type: application/octet-stream\r\n\r\n"
+        return str
+    }
+    
+    class func buildRequest(_ url: String, _ method: String, _ mimeType: String, _ data: String, _ param: Dictionary<String, String>?, _ files: Dictionary<String, String>?) -> URLRequest {
+        let u = URL(string: url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
+        var request = URLRequest.init(url: u!)
+        request.httpMethod = method
+        if (data != "") {
+            request.setValue(mimeType, forHTTPHeaderField: "Content-Type")
+            request.httpBody = data.data(using: .utf8)
+        } else {
+            if (files == nil && param != nil) {
+                var pstr = ""
+                for (k, v) in param! {
+                    pstr += "\(k)=\(v)&"
+                }
+                request.httpBody = pstr.data(using: .utf8)
+            } else if (files != nil) {
+                let data = NSMutableData()
+                if (param != nil) {
+                    for (k, v) in param! {
+                        data.append("\(BOUNDARY_STR)\(RANDOM_ID_STR)\r\n".data(using: .utf8)!)
+                        data.append("Content-Disposition:form-data; name=\"\(k)\"\r\n\r\n".data(using: .utf8)!)
+                        data.append("\(v)\r\n".data(using: .utf8)!)
+                    }
+                }
+                for (k, v) in files! {
+                    let topStr = topString(k, (v as NSString).lastPathComponent)
+                    data.append(topStr.data(using: .utf8)!)
+                    data.append(NSData(contentsOfFile: v)! as Data)
+                    data.append("\r\n".data(using: .utf8)!)
+                }
+                data.append("\(BOUNDARY_STR)\(RANDOM_ID_STR)\(BOUNDARY_STR)\r\n".data(using: .utf8)!)
+                request.httpBody = data as Data
+                let strLen = "\(data.length)"
+                request.setValue(strLen, forHTTPHeaderField: "Content-Length")
+                request.setValue("multipart/form-data; boundary=\(RANDOM_ID_STR)", forHTTPHeaderField: "Content-Type")
+            }
+        }
+
+        return request
     }
 }
