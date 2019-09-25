@@ -1,5 +1,7 @@
 PODS:
   - Flutter (1.0.0)
+  - image_picker (0.0.1):
+    - Flutter
   - ktflutter (0.0.1):
     - Flutter
   - url_launcher (0.0.1):
@@ -7,12 +9,15 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - ktflutter (from `.symlinks/plugins/ktflutter/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: ".symlinks/flutter/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
   ktflutter:
     :path: ".symlinks/plugins/ktflutter/ios"
   url_launcher:
@@ -20,6 +25,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  image_picker: 16e5fec1fbc87fd3b297c53e4048521eaf17cd06
   ktflutter: 71ece579145b941bde09b0d6979ff2869b9b0ded
   url_launcher: 0067ddb8f10d36786672aa0722a21717dba3a298
 

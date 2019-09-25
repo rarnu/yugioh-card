@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:ktflutter/http_extension.dart';
@@ -9,6 +10,8 @@ import 'package:yugiohcard/cardlist.dart';
 import 'package:yugiohcard/decklist.dart';
 import 'package:yugiohcard/packdetail.dart';
 import 'package:yugiohcard/searchadv.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart';
 import 'global.dart';
 import 'util/widgetutil.dart';
 
@@ -37,7 +40,7 @@ class _MainHomePageState extends State<MainHomePage> {
   List<dynamic> hotcards = [];
   List<dynamic> hotpacks = [];
 
-  getHotestData() async {
+  _getHotestData() async {
     try {
       var json = JsonCodec().decode((await httpGet('$BASEURL/hotest')).body);
       if (json['result'] == 0) {
@@ -52,8 +55,119 @@ class _MainHomePageState extends State<MainHomePage> {
     } catch (e) {}
   }
 
+  _findCardByImg(String imgid) async {
+    try {
+      var json = JsonCodec().decode((await httpGet('$BASEURL/findbyimage?imgid=$imgid')).body);
+      if (json['result'] == 0) {
+        Navigator.push(context, CardDetailRoute(json['hash']));
+      } else {
+        toast(context, '没有找到匹配的卡片.');
+      }
+    } catch(e) {
+      toast(context, '没有找到匹配的卡片.');
+    }
+  }
+
+  _getRecData(File img) async {
+    try {
+      var data = FormData.fromMap({ "file": MultipartFile.fromFileSync(img.path) });
+      var json = JsonCodec().decode((await Dio().post<String>('$BASEURL/matchimage', data: data)).data);
+      if (json['result'] == 1) {
+        toast(context, '没有找到匹配的卡片.');
+      } else {
+        var imgids = json['imgids'];
+        if (imgids.length > 1) {
+          // 多张图，选择后跳转
+          _showMultiCards(imgids);
+        } else {
+          // 一张图，直接跳转
+          _findCardByImg(imgids[0]);
+        }
+      }
+    } catch(e) {
+      toast(context, '上传图片失败.');
+    }
+  }
+
+  _showMultiCards(List<dynamic> imgids) {
+    var lines = 1;
+    if (imgids.length > 5) lines++;
+    showDialog(
+      context: context,
+      builder: (_) => Padding(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(0xFF, 0x30, 0x30, 0x30),  
+                borderRadius: BorderRadius.circular(5.0)
+              ),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      '找到多张卡片',
+                      style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        color: Colors.white, 
+                        decoration: TextDecoration.none,
+                        fontSize: 16,
+                        ),
+                      ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: sized(
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: imgids.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 0.75,
+                          crossAxisCount: 5,
+                          mainAxisSpacing: 8,
+                        ),
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              _findCardByImg(imgids[index]);
+                            },
+                            child: FadeInImage.assetNetwork(
+                                placeholder: 'assets/img0.png',
+                                image: 'http://ocg.resource.m2v.cn/${imgids[index]}.jpg'
+                              ), 
+                          );
+                        },
+                      ),
+                      width: 320,
+                      height: 90.0 * lines /* per line */
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8, bottom: 8),
+                    child: FlatButton(
+                        onPressed: () {
+                          // 关闭 Dialog
+                          Navigator.pop(_);
+                        },
+                        child: Text('关闭')),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),  
+    );
+  }
+
   _MainHomePageState() : super() {
-    getHotestData();
+    _getHotestData();
   }
 
   Widget build(BuildContext context) {
@@ -120,7 +234,39 @@ class _MainHomePageState extends State<MainHomePage> {
                             Navigator.push(context, SearchAdvRoute());
                           },
                         ),
-                        width: 60)
+                        width: 60),
+                    sized(
+                      FlatButton(
+                        child: Text('识图'),
+                        onPressed: () {
+                          showModalBottomSheet(context: context, builder: (BuildContext context) {
+                            return new Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                new ListTile(
+                                  leading: new Icon(Icons.photo_camera),
+                                  title: new Text("拍照"),
+                                  onTap: () async {
+                                    var img = await ImagePicker.pickImage(source: ImageSource.camera);
+                                    Navigator.pop(context);
+                                    _getRecData(img);
+                                  },
+                                ),
+                                new ListTile(
+                                  leading: new Icon(Icons.photo_library),
+                                  title: new Text("从相册选取"),
+                                  onTap: () async {
+                                    var img = await ImagePicker.pickImage(source: ImageSource.gallery);
+                                    Navigator.pop(context);
+                                    _getRecData(img);
+                                  },
+                                ),
+                              ],
+                            );
+                          });
+                        },
+                      ),
+                      width: 60),
                   ],
                 ),
                 height: 48),
@@ -164,7 +310,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     )),
                     GestureDetector(
                       onTap: () {
-                        getHotestData();
+                        _getHotestData();
                       },
                       child: Text('<换一批>'),
                     )

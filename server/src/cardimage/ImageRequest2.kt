@@ -10,6 +10,7 @@ import java.io.File
 import javax.imageio.ImageIO
 
 object ImageRequest2 {
+
     suspend fun matchImage(app: Application, file: File, callback: suspend (String) -> Unit) {
         val len = app.config("ktor.image.hashlength").toInt()
         val hasher = PerceptiveHash(len)

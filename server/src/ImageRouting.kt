@@ -22,6 +22,5 @@ fun Routing.imageRouting() {
         ImageRequest2.matchImage(application, f) {
             call.respondText { it }
         }
-
     }
 }

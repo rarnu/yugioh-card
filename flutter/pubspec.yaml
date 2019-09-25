@@ -13,6 +13,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_html: ^0.10.4
   url_launcher: ^3.0.3
+  image_picker: 0.6.1+4
+  dio: 3.0.1
 
 dev_dependencies:
   flutter_test:
