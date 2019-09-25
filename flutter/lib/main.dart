@@ -69,6 +69,7 @@ class _MainHomePageState extends State<MainHomePage> {
   }
 
   _getRecData(File img) async {
+    if (img == null) return;
     try {
       var data = FormData.fromMap({ "file": MultipartFile.fromFileSync(img.path) });
       var json = JsonCodec().decode((await Dio().post<String>('$BASEURL/matchimage', data: data)).data);
