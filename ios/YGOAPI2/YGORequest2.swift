@@ -81,7 +81,7 @@ public class YGORequest2: NSObject {
     }
     
     public class func imageSearch(_ file: String, _ callback:@escaping (String) -> Void) {
-        http(BASE_URL + "/matchimage", method: "POS", fileParam:["file":file]) { (_, result, _) in
+        http(BASE_URL + "/matchimage", method: "POST", fileParam:["file":file]) { (_, result, _) in
             callback(result)
         }
     }

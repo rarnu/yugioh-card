@@ -1,9 +1,12 @@
 package com.rarnu.yugioh.card
 
 import android.Manifest
+import android.actionsheet.demo.com.khoiron.actionsheetiosforandroid.ActionSheet
+import android.actionsheet.demo.com.khoiron.actionsheetiosforandroid.Interface.ActionSheetCallBack
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -19,9 +22,6 @@ import com.rarnu.yugioh.card.adapter.SimpleCardAdapter
 import com.rarnu.yugioh.card.adapter.SimplePackAdapter
 import com.rarnu.yugioh.card.adapter.SimpleSearchAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import java.security.KeyStore
-import javax.net.ssl.SSLContext
-import javax.net.ssl.TrustManagerFactory
 import kotlin.concurrent.thread
 
 class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickListener {
@@ -44,6 +44,7 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
         setContentView(R.layout.activity_main)
         btnSearch.setOnClickListener(this)
         btnAdvSearch.setOnClickListener(this)
+        btnImageSearch.setOnClickListener(this)
         if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         }
@@ -84,6 +85,23 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
                 startActivity(Intent(this, CardListActivity::class.java).apply { putExtra("key", key) })
             }
             R.id.btnAdvSearch -> startActivity(Intent(this, SearchActivity::class.java))
+            R.id.btnImageSearch -> {
+                ActionSheet(this, mutableListOf("拍照", "从相册选取"))
+                        .setTitle("选择卡图")
+                        .setCancelTitle("取消")
+                        .setColorTitleCancel(Color.RED)
+                        .setColorTitle(Color.LTGRAY)
+                        .setColorData(Color.DKGRAY)
+                        .setColorSelected(Color.DKGRAY)
+                        .create(object : ActionSheetCallBack {
+                            override fun data(data: String, position: Int) {
+                                when(position) {
+                                    0 -> takePhoto()
+                                    1 -> choosePhotoLibrary()
+                                }
+                            }
+                        })
+            }
             R.id.btnHelp -> startActivity(Intent(this, HelpActivity::class.java))
         }
     }
@@ -149,5 +167,13 @@ class MainActivity : Activity(), View.OnClickListener, AdapterView.OnItemClickLi
                 putExtra("name", listPack[position].name)
             })
         }
+    }
+
+    private fun takePhoto() {
+
+    }
+
+    private fun choosePhotoLibrary() {
+
     }
 }

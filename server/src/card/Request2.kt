@@ -16,12 +16,12 @@ object Request2 {
     suspend fun search(app: Application, key: String, page: Int, callback: suspend (String) -> Unit) =
         callback(oGetRequest(app, "$BASE_URL/search/$key/$page").parse0())
 
-    suspend fun cardHashByImgId(imgid: String, callback: suspend (String) -> Unit) {
+    suspend fun cardHashByImgId(imgid: String, callback: suspend (String, String) -> Unit) {
         val c = cacheMap.filterValues { it.imgid == imgid }
         if (c.isNotEmpty()) {
-            callback(c.keys.elementAt(0))
+            callback(c.keys.elementAt(0), c.values.elementAt(0).nwname)
         } else {
-            callback("")
+            callback("", "")
         }
     }
 

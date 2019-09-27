@@ -11,12 +11,13 @@ import commonios
 import TangramKit
 import YGOAPI2
 
-class MainController: UIViewController, UITextFieldDelegate {
+class MainController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ImagePopupDelegate {
 
     var layMain: TGLinearLayout!
     var edtSearch: UITextField!
     var btnSearch: UIButton!
     var btnAdvSearch: UIButton!
+    var btnImageSearch: UIButton!
     var laySearchKeyword: TGLinearLayout!
     var layHotCard: TGLinearLayout!
     var layLastPack: TGLinearLayout!
@@ -37,9 +38,9 @@ class MainController: UIViewController, UITextFieldDelegate {
         sv.addSubview(layMain)
         let v = UIView()
         v.tg_width.equal(100%)
-        v.tg_height.equal(45)
+        v.tg_height.equal(52)
         layMain.addSubview(v)
-        edtSearch = UITextField(frame: CGRect(x: 0, y: 0, width: screenWidth() - 140, height: 36))
+        edtSearch = UITextField(frame: CGRect(x: 0, y: 8, width: screenWidth() - 140, height: 36))
         edtSearch.textColor = UIColor.white
         edtSearch.borderStyle = UITextField.BorderStyle.none
         edtSearch.attributedPlaceholder = NSAttributedString(string: "输入要搜索的关键字", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
@@ -47,23 +48,32 @@ class MainController: UIViewController, UITextFieldDelegate {
         edtSearch.delegate = self
         v.addSubview(edtSearch)
         btnSearch = UIButton(type: UIButton.ButtonType.system)
-        btnSearch.frame = CGRect(x: screenWidth() - 128, y: 0, width: 40, height: 36)
+        btnSearch.frame = CGRect(x: screenWidth() - 158, y: 8, width: 50, height: 36)
         btnSearch.setTitle("搜索", for: UIControl.State.normal)
         v.addSubview(btnSearch)
+        
         btnAdvSearch = UIButton(type: UIButton.ButtonType.system)
-        btnAdvSearch.frame = CGRect(x: screenWidth() - 88, y: 0, width: 80, height: 36)
-        btnAdvSearch.setTitle("高级搜索", for: UIControl.State.normal)
+        btnAdvSearch.frame = CGRect(x: screenWidth() - 108, y: 8, width: 50, height: 36)
+        btnAdvSearch.setTitle("高级", for: UIControl.State.normal)
         v.addSubview(btnAdvSearch)
-        let line = UIView(frame: CGRect(x: 0, y: 36, width: screenWidth() - 16, height: 1))
+        
+        btnImageSearch = UIButton(type: UIButton.ButtonType.system)
+        btnImageSearch.frame = CGRect(x: screenWidth() - 58, y:8, width: 50, height: 36)
+        btnImageSearch.setTitle("识图", for: UIControl.State.normal)
+        v.addSubview(btnImageSearch)
+        
+        let line = UIView(frame: CGRect(x: 0, y: 44, width: screenWidth() - 16, height: 1))
         line.backgroundColor = UIColor.darkGray
         v.addSubview(line)
         let blank = UIView()
         blank.tg_width.equal(100%)
         blank.tg_height.equal(8)
         layMain.addSubview(blank)
+        
         // event
         btnSearch.addTarget(self, action: #selector(btnSearchClicked(sender:)), for: UIControl.Event.touchDown)
         btnAdvSearch.addTarget(self, action: #selector(btnAdvSearchClicked(sender:)), for: UIControl.Event.touchDown)
+        btnImageSearch.addTarget(self, action: #selector(btnImageSearchClicked(sender:)), for: UIControl.Event.touchDown)
         
         makeText("热门搜索")
         laySearchKeyword = makeLayout()
@@ -234,6 +244,80 @@ class MainController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(c, animated: true)
     }
     
+    
+    @objc func btnImageSearchClicked(sender: Any) {
+        
+        // TODO: image search
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        alert.addAction(UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel, handler: { _ in }))
+        alert.addAction(UIAlertAction(title: "拍照", style: UIAlertAction.Style.default, handler: { action in
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = UIImagePickerController.SourceType.camera
+            self.present(picker, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "从相册选取", style: UIAlertAction.Style.default, handler: { action in
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+            picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: picker.sourceType)!
+            picker.allowsEditing = false
+            self.present(picker, animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func findImageHash(_ imgid: String) {
+        YGOData2.findImageByImageId(imgid) { (hash, name) in
+            mainThread {
+                if (hash == "") {
+                    toast(msg: "没有匹配的卡片.")
+                } else {
+                    let c = self.vc(name: "detail") as! CardDetailController
+                    c.cardname = name
+                    c.hashid = hash
+                    self.navigationController?.pushViewController(c, animated: true)
+                }
+            }
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        let type = info[UIImagePickerController.InfoKey.mediaType] as! String
+        if (type == "public.image") {
+            toast(msg: "正在上传图片，请稍候...")
+            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+            let data = image.jpegData(compressionQuality: 1.0)
+            let path = "\(documentPath())/tmp.jpg"
+            FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
+            YGOData2.imageSearch(path) { imgids in
+                mainThread {
+                    if (imgids.count == 0) {
+                        toast(msg: "没有匹配的卡片.")
+                    } else if (imgids.count == 1) {
+                        self.findImageHash(imgids[0])
+                    } else {
+                        // 找到多张图
+                        let w = (screenWidth() * 0.8 - 32) / 5
+                        let h = 23 * w / 16
+                        let lines = imgids.count / 5 + (imgids.count % 5 != 0 ? 1 : 0)
+                        let vc = MultiCardController(width: screenWidth() * 0.8, height: CGFloat(lines) * h + 96, alpha: 0)
+                        vc.delegate = self
+                        self.present(vc, animated: false, completion: nil)
+                        vc.loadImages(imgids)
+                    }
+                }
+            }
+        } else {
+            toast(msg: "上传图片失败.")
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func btnLimitClicked(sender: Any) {
         let c = vc(name: "limit") as! LimitController
         navigationController?.pushViewController(c, animated: true)
@@ -282,5 +366,77 @@ class MainController: UIViewController, UITextFieldDelegate {
         let c = vc(name: "help") as! HelpController
         navigationController?.pushViewController(c, animated: true)
     }
+    
+    func onPopupImageClicked(imgid: String) {
+        findImageHash(imgid)
+    }
 }
 
+protocol ImagePopupDelegate {
+    func onPopupImageClicked(imgid: String)
+}
+
+class MultiCardController: PopupViewController {
+    
+    private var v: UIView!
+    var delegate: ImagePopupDelegate?
+    
+    func loadImages(_ imgids: [String]) {
+        // 左8右8，卡间距4，一行5张卡，总计32
+        let w = (v.frame.width - 32) / 5
+        let h = 23 * w / 16
+        var t: CGFloat = 48
+        var l: CGFloat = 8
+        var count = 0
+        
+        print("w = \(w), h = \(h), t = \(t), l = \(l)")
+        
+        for ii in imgids {
+            let iv = UIImageView(frame: CGRect(x: l, y: t, width: w, height: h))
+            iv.accessibilityValue = ii
+            iv.contentMode = UIView.ContentMode.scaleAspectFit
+            do {
+                iv.image = try UIImage(data: Data(contentsOf: URL(string: "http://ocg.resource.m2v.cn/\(ii).jpg")!))
+            } catch {
+                
+            }
+            iv.isUserInteractionEnabled = true
+            iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:))))
+            v.addSubview(iv)
+            count += 1
+            if (count == 5) {
+                l = 8
+                t += h + 4
+            } else {
+                l += w + 4
+            }
+        }
+    }
+    
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+        self.dismiss(animated: false, completion: nil)
+        delegate?.onPopupImageClicked(imgid:sender.view!.accessibilityValue!)
+    }
+
+    override func layout(base: UIView) {
+        self.v = base
+        print("Base.width => \(base.frame.width), Base.height => \(base.frame.height)")
+        base.backgroundColor = darkColor
+        
+        let tvTitle = UILabel(frame: CGRect(x: 8, y: 4, width: base.frame.width - 16, height: 40))
+        tvTitle.text = "找到多张卡片"
+        tvTitle.textColor = UIColor.white
+        base.addSubview(tvTitle)
+        
+        let btnClose = UIButton(type: UIButton.ButtonType.system)
+        btnClose.frame = CGRect(x: base.frame.width - 68, y: base.frame.height - 48, width: 60, height: 40)
+        btnClose.setTitle("Close", for: UIControl.State.normal)
+        btnClose.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        btnClose.addTarget(self, action: #selector(btnCloseClicked(_:)), for: UIControl.Event.touchDown)
+        base.addSubview(btnClose)
+    }
+    
+    @objc func btnCloseClicked(_ sender: UIButton) {
+        self.dismiss(animated: false, completion: nil)
+    }
+}

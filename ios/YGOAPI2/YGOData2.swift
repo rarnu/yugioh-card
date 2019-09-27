@@ -460,18 +460,20 @@ public class YGOData2: NSObject {
         }
     }
     
-    public class func findImageByImageId(_ imgid: String, _ callback: @escaping (String) -> Void) {
+    public class func findImageByImageId(_ imgid: String, _ callback: @escaping (String, String) -> Void) {
         YGORequest2.findImageByImageId(imgid) { data in
-            var ret = ""
+            var hash = ""
+            var name = ""
             do {
                 let json = try JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! Dictionary<String, Any>
                 if (json.int("result") == 0) {
-                    ret = json.string("hash")
+                    hash = json.string("hash")
+                    name = json.string("name")
                 }
             } catch {
                 
             }
-            callback(ret)
+            callback(hash, name)
         }
     }
 }

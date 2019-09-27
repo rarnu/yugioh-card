@@ -378,13 +378,14 @@ object YGOData {
         return result
     }
 
-    fun findCardByImageId(imgid: String): String? {
-        var ret: String? = null
+    fun findCardByImageId(imgid: String): List<String> {
+        val ret = mutableListOf<String>()
         try {
             val data = YGORequest.findCardByImageId(imgid)
             val json = JSONObject(data)
             if (json.getInt("result") == 0) {
-                ret = json.getString("hash")
+                ret.add(json.getString("hash"))
+                ret.add(json.getString("name"))
             }
         } catch (th: Throwable) {
         }

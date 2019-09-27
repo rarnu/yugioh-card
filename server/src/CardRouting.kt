@@ -75,11 +75,11 @@ fun Routing.cardRouting() {
         if (imgid == "") {
             call.respondText { "{\"result\":1}" }
         } else {
-            Request2.cardHashByImgId(imgid) {
-                if (it == "") {
+            Request2.cardHashByImgId(imgid) { hash, name ->
+                if (hash == "") {
                     call.respondText { "{\"result\":1}" }
                 } else {
-                    call.respondText { "{\"result\":0, \"hash\":\"$it\"}" }
+                    call.respondText { "{\"result\":0, \"hash\":\"$hash\", \"name\":\"$name\"}" }
                 }
             }
         }

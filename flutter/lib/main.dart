@@ -242,27 +242,34 @@ class _MainHomePageState extends State<MainHomePage> {
                         child: Text('识图'),
                         onPressed: () {
                           showModalBottomSheet(context: context, builder: (BuildContext context) {
-                            return new Column(
+                            return Column(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                new ListTile(
-                                  leading: new Icon(Icons.photo_camera),
-                                  title: new Text("拍照"),
+                                ListTile(
+                                  leading: Icon(Icons.photo_camera),
+                                  title: Text("拍照"),
                                   onTap: () async {
                                     var img = await ImagePicker.pickImage(source: ImageSource.camera);
                                     Navigator.pop(context);
                                     _getRecData(img);
                                   },
                                 ),
-                                new ListTile(
-                                  leading: new Icon(Icons.photo_library),
-                                  title: new Text("从相册选取"),
+                                ListTile(
+                                  leading: Icon(Icons.photo_library),
+                                  title: Text("从相册选取"),
                                   onTap: () async {
                                     var img = await ImagePicker.pickImage(source: ImageSource.gallery);
                                     Navigator.pop(context);
                                     _getRecData(img);
                                   },
                                 ),
+                                ListTile(
+                                  leading: Icon(Icons.close),
+                                  title: Text("取消"),
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                )
                               ],
                             );
                           });
