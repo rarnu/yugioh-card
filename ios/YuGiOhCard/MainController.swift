@@ -302,10 +302,12 @@ class MainController: UIViewController, UITextFieldDelegate, UIImagePickerContro
                         let w = (screenWidth() * 0.8 - 32) / 5
                         let h = 23 * w / 16
                         let lines = imgids.count / 5 + (imgids.count % 5 != 0 ? 1 : 0)
-                        let vc = MultiCardController(width: screenWidth() * 0.8, height: CGFloat(lines) * h + 96, alpha: 0)
+                        let sw = screenWidth() * 0.8
+                        let sh = CGFloat(lines) * h + 96
+                        let vc = MultiCardView(frame: CGRect(x: (screenWidth() - sw) / 2, y: (screenHeight() - sh) / 2, width: sw, height: sh))
                         vc.delegate = self
-                        self.present(vc, animated: false, completion: nil)
                         vc.loadImages(imgids)
+                        self.view.addSubview(vc)
                     }
                 }
             }
@@ -376,21 +378,17 @@ protocol ImagePopupDelegate {
     func onPopupImageClicked(imgid: String)
 }
 
-class MultiCardController: PopupViewController {
+class MultiCardView: UIView {
     
-    private var v: UIView!
     var delegate: ImagePopupDelegate?
     
     func loadImages(_ imgids: [String]) {
         // 左8右8，卡间距4，一行5张卡，总计32
-        let w = (v.frame.width - 32) / 5
+        let w = (self.frame.width - 32) / 5
         let h = 23 * w / 16
         var t: CGFloat = 48
         var l: CGFloat = 8
         var count = 0
-        
-        print("w = \(w), h = \(h), t = \(t), l = \(l)")
-        
         for ii in imgids {
             let iv = UIImageView(frame: CGRect(x: l, y: t, width: w, height: h))
             iv.accessibilityValue = ii
@@ -402,7 +400,7 @@ class MultiCardController: PopupViewController {
             }
             iv.isUserInteractionEnabled = true
             iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped(sender:))))
-            v.addSubview(iv)
+            self.addSubview(iv)
             count += 1
             if (count == 5) {
                 l = 8
@@ -414,13 +412,22 @@ class MultiCardController: PopupViewController {
     }
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
-        self.dismiss(animated: false, completion: nil)
         delegate?.onPopupImageClicked(imgid:sender.view!.accessibilityValue!)
     }
-
-    override func layout(base: UIView) {
-        self.v = base
-        print("Base.width => \(base.frame.width), Base.height => \(base.frame.height)")
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layout(base: self)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func layout(base: UIView) {
+        base.layer.borderWidth = 1.0
+        base.layer.borderColor = UIColor.lightGray.cgColor
+        base.layer.cornerRadius = 5.0
         base.backgroundColor = darkColor
         
         let tvTitle = UILabel(frame: CGRect(x: 8, y: 4, width: base.frame.width - 16, height: 40))
@@ -437,6 +444,6 @@ class MultiCardController: PopupViewController {
     }
     
     @objc func btnCloseClicked(_ sender: UIButton) {
-        self.dismiss(animated: false, completion: nil)
+        self.removeFromSuperview()
     }
 }

@@ -8,14 +8,14 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - ktflutter (from `.symlinks/plugins/ktflutter/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
   ktflutter:
