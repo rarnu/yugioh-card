@@ -13,6 +13,8 @@
     <string name="btn_help">关于</string>
 
     <string name="toast_empty_search_key">不能搜索空关键字</string>
+    <string name="toast_uploading">正在上传图片，请稍候…</string>
+    <string name="toast_no_matching_card">没有找到匹配的卡片</string>
 
     <string name="item_name" formatted="false">中文名称: %s</string>
     <string name="item_japname" formatted="false">日文名称: %s</string>

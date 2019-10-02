@@ -1,150 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:paddingTop="8dip" android:paddingLeft="8dip" android:paddingRight="8dip">
-            <EditText
-                    android:id="@+id/edtSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dip"
-                    android:hint="@string/hint_search"
-                    android:layout_toLeftOf="@+id/btnSearch"
-                    android:background="@null"/>
-            <Button
-                    android:id="@+id/btnSearch"
-                    android:layout_width="60dip" android:layout_height="40dip"
-                    android:text="@string/btn_search"
-                    android:layout_toLeftOf="@+id/btnAdvSearch"
-                    android:background="@null"
-                    android:textColor="@android:color/white"/>
-            <Button
-                    android:id="@+id/btnAdvSearch"
-                    android:layout_width="60dip" android:layout_height="40dip"
-                    android:text="@string/btn_adv_search"
-                    android:layout_toLeftOf="@+id/btnImageSearch"
-                    android:background="@null"
-                    android:textColor="@android:color/white"/>
-            <Button
-                    android:id="@+id/btnImageSearch"
-                    android:layout_width="60dip" android:layout_height="40dip"
-                    android:text="@string/btn_image_search"
-                    android:layout_alignParentRight="true"
-                    android:background="@null"
-                    android:textColor="@android:color/white"/>
-        </RelativeLayout>
-
-        <View android:layout_width="match_parent" android:layout_height="1px"
-              android:background="@android:color/darker_gray"
-              android:layout_marginLeft="8dip"
-              android:layout_marginRight="8dip"
-              android:layout_marginBottom="8dip"
-        />
+            android:layout_height="match_parent">
 
         <LinearLayout
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dip"
-                android:layout_marginLeft="8dip"
-                android:layout_marginRight="8dip">
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@string/tv_hot_search"/>
-            <GridView
-                    android:id="@+id/gvSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:numColumns="5"
-                    android:verticalSpacing="0px"
-                    android:horizontalSpacing="0px"
-                    android:scrollbars="none"/>
-        </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1px"
-              android:background="@android:color/darker_gray"
-              android:layout_marginLeft="8dip"
-              android:layout_marginRight="8dip"
-              android:layout_marginTop="8dip"
-              android:layout_marginBottom="8dip"
-        />
-        <LinearLayout
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dip"
-                android:layout_marginLeft="8dip"
-                android:layout_marginRight="8dip">
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-                <TextView
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:text="@string/tv_hot_card"
-                        android:layout_toLeftOf="@+id/tvChangeHotCard"
-                />
-                <TextView
-                        android:id="@+id/tvChangeHotCard"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="@string/tv_change_hot_card"
-                        android:clickable="true"
-                        android:layout_alignParentRight="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:paddingTop="8dip" android:paddingLeft="8dip" android:paddingRight="8dip">
+                <EditText
+                        android:id="@+id/edtSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dip"
+                        android:hint="@string/hint_search"
+                        android:layout_toLeftOf="@+id/btnSearch"
+                        android:background="@null"/>
+                <Button
+                        android:id="@+id/btnSearch"
+                        android:layout_width="60dip" android:layout_height="40dip"
+                        android:text="@string/btn_search"
+                        android:layout_toLeftOf="@+id/btnAdvSearch"
+                        android:background="@null"
+                        android:textColor="@android:color/white"/>
+                <Button
+                        android:id="@+id/btnAdvSearch"
+                        android:layout_width="60dip" android:layout_height="40dip"
+                        android:text="@string/btn_adv_search"
+                        android:layout_toLeftOf="@+id/btnImageSearch"
+                        android:background="@null"
+                        android:textColor="@android:color/white"/>
+                <Button
+                        android:id="@+id/btnImageSearch"
+                        android:layout_width="60dip" android:layout_height="40dip"
+                        android:text="@string/btn_image_search"
+                        android:layout_alignParentRight="true"
+                        android:background="@null"
+                        android:textColor="@android:color/white"/>
             </RelativeLayout>
 
-            <ListView
-                    android:id="@+id/lvHotCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:divider="@null"
-                    android:dividerHeight="0px">
+            <View android:layout_width="match_parent" android:layout_height="1px"
+                  android:background="@android:color/darker_gray"
+                  android:layout_marginLeft="8dip"
+                  android:layout_marginRight="8dip"
+                  android:layout_marginBottom="8dip"
+            />
 
-            </ListView>
-        </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1px"
-              android:background="@android:color/darker_gray"
-              android:layout_marginLeft="8dip"
-              android:layout_marginRight="8dip"
-              android:layout_marginTop="8dip"
-              android:layout_marginBottom="8dip"
-        />
-        <LinearLayout
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dip"
-                android:layout_marginLeft="8dip"
-                android:layout_marginRight="8dip">
-            <TextView
+            <LinearLayout
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@string/tv_hot_pack"/>
-            <ListView
-                    android:id="@+id/lvHotPack"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:divider="@null"
-                    android:dividerHeight="0px">
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip">
+                <TextView
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@string/tv_hot_search"/>
+                <GridView
+                        android:id="@+id/gvSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:numColumns="5"
+                        android:verticalSpacing="0px"
+                        android:horizontalSpacing="0px"
+                        android:scrollbars="none"/>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1px"
+                  android:background="@android:color/darker_gray"
+                  android:layout_marginLeft="8dip"
+                  android:layout_marginRight="8dip"
+                  android:layout_marginTop="8dip"
+                  android:layout_marginBottom="8dip"
+            />
+            <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="@string/tv_hot_card"
+                            android:layout_toLeftOf="@+id/tvChangeHotCard"
+                    />
+                    <TextView
+                            android:id="@+id/tvChangeHotCard"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/tv_change_hot_card"
+                            android:clickable="true"
+                            android:layout_alignParentRight="true"/>
+                </RelativeLayout>
 
-            </ListView>
+                <ListView
+                        android:id="@+id/lvHotCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:divider="@null"
+                        android:dividerHeight="0px">
+
+                </ListView>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1px"
+                  android:background="@android:color/darker_gray"
+                  android:layout_marginLeft="8dip"
+                  android:layout_marginRight="8dip"
+                  android:layout_marginTop="8dip"
+                  android:layout_marginBottom="8dip"
+            />
+            <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dip"
+                    android:layout_marginLeft="8dip"
+                    android:layout_marginRight="8dip">
+                <TextView
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@string/tv_hot_pack"/>
+                <ListView
+                        android:id="@+id/lvHotPack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:divider="@null"
+                        android:dividerHeight="0px">
+
+                </ListView>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1px"
+                  android:background="@android:color/darker_gray"
+                  android:layout_marginLeft="8dip"
+                  android:layout_marginRight="8dip"
+                  android:layout_marginTop="8dip"
+                  android:layout_marginBottom="8dip"
+            />
+            <TextView
+                    android:id="@+id/btnHelp"
+                    android:layout_width="match_parent" android:layout_height="32dip"
+                    android:text="@string/btn_help"
+                    android:gravity="center"
+                    android:clickable="true"/>
+            <View android:layout_width="match_parent" android:layout_height="8dip"/>
+
         </LinearLayout>
-        <View android:layout_width="match_parent" android:layout_height="1px"
-              android:background="@android:color/darker_gray"
-              android:layout_marginLeft="8dip"
-              android:layout_marginRight="8dip"
-              android:layout_marginTop="8dip"
-              android:layout_marginBottom="8dip"
-        />
-        <TextView
-                android:id="@+id/btnHelp"
-                android:layout_width="match_parent" android:layout_height="32dip"
-                android:text="@string/btn_help"
-                android:gravity="center"
-                android:clickable="true"/>
-        <View android:layout_width="match_parent" android:layout_height="8dip"/>
-
-    </LinearLayout>
 
 
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>
