@@ -4,6 +4,7 @@
     <input class="input" bindinput="bindKeywordInput" bindconfirm="bindSearchConfirm" confirm-type="search" placeholder="输入要搜索的关键字" />
     <button class="btnsearch" bindtap="btnSearchTap">搜索</button>
     <button class="btnsearch" bindtap="bindAdvTap">高级</button>
+    <button class="btnsearch" bindtap="bindImageTap">识图</button>
   </view>
   <view class="buttonbar">
     <button class="btnjump" bindtap="bindLimitTap">禁限卡表</button>
@@ -48,5 +49,22 @@
   <view class="line"></view>
 
   <text class="about" bindtap="bindAboutTap">关于</text>
+
+  <view class="popup-card" wx:if="{{showCardPopup}}">
+    <text class="popup-title">找到多张卡片</text>
+    <view class="popup-content" style="height: {{popupHeight}}rpx;">
+      <view class="gridview">
+        <view class="gridview-item" wx:for="{{imageids}}" wx:key="hotword">
+          <view class='imageitem' data-item="{{item}}" data-id="{{item}}" bindtap="popupCardTap">
+            <image class="popup-image" src="http://ocg.resource.m2v.cn/{{item}}.jpg"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="popup-btn">
+      <button class="popup-close" bindtap="popupClose">关闭</button>
+    </view>
+    
+  </view>
 
 </view>

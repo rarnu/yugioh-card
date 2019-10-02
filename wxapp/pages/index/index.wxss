@@ -1,7 +1,7 @@
 /**index.wxss**/
 .input {
     margin-right: 8rpx;
-    width: 510rpx;
+    width: 430rpx;
     height: 60rpx;
     border: solid 1px lightgray;
     border-radius: 40rpx;
@@ -107,4 +107,66 @@
   height: 60rpx;
   line-height: 60rpx;
   font-size: 0.8em;
+}
+
+.popup-card {
+    width: 580rpx;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    margin: -370rpx 85rpx;
+    background-color: #fff;
+    border-radius: 36rpx;
+    border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-title {
+  width: 100%;
+  text-align: left;
+  margin-top: 16rpx;
+  margin-left: 24rpx;
+}
+
+.popup-btn {
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+}
+
+.popup-close {
+  padding: 0;
+  width: 160rpx;
+  height: 80rpx;
+  border: 1rpx solid lightgray;
+  outline: none;
+  border-radius: 40rpx;
+  background-color: #fefefe;
+  color: #000000;
+  font-size: 30rpx;
+  float:right;
+  margin-right: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.popup-content {
+  width: 564rpx;
+  margin-left: 8rpx;
+  margin-right: 8rpx;
+  margin-top: 8rpx;
+  margin-bottom: 96rpx;
+}
+
+.popup-image {
+  width: 112rpx;
+  height: 161rpx;
+}
+
+.imageitem {
+  height: 163rpx;
+  line-height: 163rpx;
 }
