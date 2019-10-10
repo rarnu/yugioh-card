@@ -174,6 +174,7 @@ Page({
   bindMineTap: function(e) {
     if (app.globalData.loginState) {
       console.log('6666')
+      // TODO: my cards
     } else {
       wx.showToast({
         title: '请先进行登录.',

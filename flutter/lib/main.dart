@@ -1,3 +1,6 @@
+import 'package:flutter/foundation.dart'
+    show debugDefaultTargetPlatformOverride;
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -18,7 +21,10 @@ import 'util/widgetutil.dart';
 import 'limit.dart';
 import 'pack.dart';
 
-void main() => runApp(MainApp());
+void main() {
+  debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  runApp(MainApp());
+} 
 
 class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
