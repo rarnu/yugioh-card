@@ -29,12 +29,12 @@
 }
 
 .buttonbar {
-  width: 70%;
+  width: 90%;
   height: 80rpx;
   display: flex;
   justify-content: space-between;
   margin-top: 28rpx;
-  margin-left: 15%;
+  margin-left: 5%;
 }
 
 .btnjump {

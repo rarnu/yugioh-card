@@ -10,6 +10,7 @@
     <button class="btnjump" bindtap="bindLimitTap">禁限卡表</button>
     <button class="btnjump" bindtap="bindPackTap">卡包列表</button>
     <button class="btnjump" bindtap="bindDeckTap">卡组列表</button>
+    <button class="btnjump" bindtap="bindMineTap">我的收藏</button>
   </view>
   <view class="line"></view>
 

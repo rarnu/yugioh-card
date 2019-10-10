@@ -12,7 +12,7 @@ import io.ktor.application.Application
 
 class AccountTable(private val app: Application) {
     fun loadCache() =
-        app.conn.prepareStatement("select id, account, password, nickname, headimg, email from Users").use { s ->
+        app.conn.prepareStatement("select id, account, password, nickname, headimg, email, wxid from Users").use { s ->
             s.executeQuery().use { r ->
                 r.forEach {
                     cacheAccount[it.long("id")] = AccountCache2(
@@ -21,7 +21,8 @@ class AccountTable(private val app: Application) {
                         it.string("password"),
                         it.string("nickname"),
                         it.string("headimg"),
-                        it.string("email")
+                        it.string("email"),
+                        it.string("wxid")
                     )
                 }
             }
@@ -49,6 +50,24 @@ class AccountTable(private val app: Application) {
             ret
         }
 
+    fun saveWx(wxid: String) =
+        app.conn.prepareStatement("insert into Users(account, password, nickname, email, wxid) values (?, ?, '', '', ?)").use { s ->
+            s.setString(1, wxid)
+            s.setString(2, wxid)
+            s.setString(3, wxid)
+            var ret = 0L
+            if (s.executeUpdate() > 0) {
+               app.conn.prepareStatement("select id from Users where wxid = ?").use { s2 ->
+                   s2.setString(1, wxid)
+                   s2.executeQuery().use { r ->
+                       if (r.first()) {
+                           ret = r.long("id")
+                       }
+                   }
+               }
+            }
+            ret
+        }
 
     fun update(account: String, password: String, nickname: String, email: String) =
         app.conn.prepareStatement("update Users set password = ?, nickname = ?, email = ?  where account = ?").use { s ->
@@ -58,7 +77,6 @@ class AccountTable(private val app: Application) {
             s.setString(4, account)
             s.executeUpdate() > 0
         }
-
 
     fun headimage(account: String, headimg: String) =
         app.conn.prepareStatement("update Users set headimg = ? where account = ?").use { s ->

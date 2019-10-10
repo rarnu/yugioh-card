@@ -19,6 +19,18 @@ import java.io.File
 @ContextDsl
 fun Routing.accountRouting() {
 
+    get("/wxlogin") {
+        val code = call.requestParameters()["code"] ?: ""
+        if (code == "") {
+            call.respondText { "{\"result\":1}" }
+        } else {
+            AccountRequest2.wxlogin(application, code) { uid, content ->
+                localSession.userId = uid
+                call.respondText { content }
+            }
+        }
+    }
+
     post("/login") {
         val p = call.requestParameters()
         val account = p["account"] ?: ""

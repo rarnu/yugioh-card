@@ -6,7 +6,8 @@ data class AccountCache2(
     var password: String,
     var nickname: String,
     var headimg: String,
-    var email: String
+    var email: String,
+    var wxid: String
 )
 
 data class ValidateCode2(

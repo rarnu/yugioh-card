@@ -7,13 +7,15 @@ import com.rarnu.ktor.decodeURLPart
 import com.rarnu.ygo.server.common.VALIDATE_CODE_EXPTIME
 import com.rarnu.ygo.server.database.accountTable
 import com.rarnu.ygo.server.common.differentMinutesByMillisecond
+import com.rarnu.ygo.server.common.oGetRequest
 import io.ktor.application.Application
 import org.apache.commons.mail.SimpleEmail
+import org.json.JSONObject
 import java.util.*
 import kotlin.random.Random
 
 object AccountRequest2 {
-    suspend fun getUserInfo(userId: Long, callback: suspend (String) -> Unit) {
+    suspend fun getUserInfo(userId: Long, callback: suspend (String) -> Unit) =
         if (userId == 0L) {
             callback("{\"id\":0}")
         } else {
@@ -24,18 +26,27 @@ object AccountRequest2 {
                 callback("{\"id\":${u.id},\"account\":\"${u.account}\",\"nickname\":\"${u.nickname}\",\"headimg\":\"${u.headimg}\",\"email\":\"${u.email.decodeURLPart()}\"}")
             }
         }
-    }
 
     suspend fun userLogin(account: String, password: String, callback: suspend (Long, String) -> Unit) {
         val u = cacheAccount.values.firstOrNull { it.account == account && it.password == password }
         if (u == null) {
             callback(0L, "{\"id\":0}")
         } else {
-            callback(u.id, "{\"id\":${u.id},\"account\":\"${u.account}\",\"nickname\":\"${u.nickname}\",\"headimg\":\"${u.headimg}\",\"email\":\"${u.email.decodeURLPart()}\"}")
+            callback(
+                u.id,
+                "{\"id\":${u.id},\"account\":\"${u.account}\",\"nickname\":\"${u.nickname}\",\"headimg\":\"${u.headimg}\",\"email\":\"${u.email.decodeURLPart()}\"}"
+            )
         }
     }
 
-    suspend fun userRegister(app: Application, account: String, password: String, nickname: String, email: String, callback: suspend (Long, String) -> Unit) {
+    suspend fun userRegister(
+        app: Application,
+        account: String,
+        password: String,
+        nickname: String,
+        email: String,
+        callback: suspend (Long, String) -> Unit
+    ) {
         val u = cacheAccount.values.firstOrNull { it.account == account }
         if (u == null) {
             // register
@@ -43,9 +54,12 @@ object AccountRequest2 {
             if (rid == 0L) {
                 callback(0L, "{\"id\":0}")
             } else {
-                val usr = AccountCache2(rid, account, password, nickname, "default.png", email)
+                val usr = AccountCache2(rid, account, password, nickname, "default.png", email, "")
                 cacheAccount[rid] = usr
-                callback(usr.id, "{\"id\":${usr.id},\"account\":\"${usr.account}\",\"nickname\":\"${usr.nickname}\",\"headimg\":\"${usr.headimg}\",\"email\":\"${usr.email.decodeURLPart()}\"}")
+                callback(
+                    usr.id,
+                    "{\"id\":${usr.id},\"account\":\"${usr.account}\",\"nickname\":\"${usr.nickname}\",\"headimg\":\"${usr.headimg}\",\"email\":\"${usr.email.decodeURLPart()}\"}"
+                )
             }
         } else {
             callback(0L, "{\"id\":0}")
@@ -86,7 +100,11 @@ object AccountRequest2 {
         val v = cacheValidateCode[account]
         var ret = false
         if (v != null) {
-            if (v.code == code && differentMinutesByMillisecond(System.currentTimeMillis(), v.time) < VALIDATE_CODE_EXPTIME) {
+            if (v.code == code && differentMinutesByMillisecond(
+                    System.currentTimeMillis(),
+                    v.time
+                ) < VALIDATE_CODE_EXPTIME
+            ) {
                 ret = true
             }
             cacheValidateCode.remove(account)
@@ -94,7 +112,13 @@ object AccountRequest2 {
         return ret
     }
 
-    suspend fun updateUser(app: Application, userId: Long, nickname: String, email: String, callback: suspend (String) -> Unit) {
+    suspend fun updateUser(
+        app: Application,
+        userId: Long,
+        nickname: String,
+        email: String,
+        callback: suspend (String) -> Unit
+    ) {
         val u = cacheAccount[userId]
         var ret = false
         if (u != null) {
@@ -115,7 +139,13 @@ object AccountRequest2 {
         callback("{\"result\":${if (ret) 0 else 1}}")
     }
 
-    suspend fun changePassword(app: Application, userId: Long, oldPwd: String, newPwd: String, callback: suspend (String) -> Unit) {
+    suspend fun changePassword(
+        app: Application,
+        userId: Long,
+        oldPwd: String,
+        newPwd: String,
+        callback: suspend (String) -> Unit
+    ) {
         val u = cacheAccount[userId]
         var ret = false
         if (u != null) {
@@ -127,7 +157,13 @@ object AccountRequest2 {
         callback("{\"result\":${if (ret) 0 else 1}}")
     }
 
-    suspend fun resetPassword(app: Application, account: String, code: String, newPwd: String, callback: suspend (String) -> Unit) {
+    suspend fun resetPassword(
+        app: Application,
+        account: String,
+        code: String,
+        newPwd: String,
+        callback: suspend (String) -> Unit
+    ) {
         var ret = false
         if (checkValidateCode(account, code)) {
             val u = cacheAccount.values.firstOrNull { it.account == account }
@@ -137,5 +173,30 @@ object AccountRequest2 {
             }
         }
         callback("{\"result\":${if (ret) 0 else 1}}")
+    }
+
+    suspend fun wxlogin(app: Application, code: String, callback: suspend (Long, String) -> Unit) {
+        val url = "https://api.weixin.qq.com/sns/jscode2session?appid=${app.config("ktor.wxlogin.appid")}&secret=${app.config("ktor.wxlogin.secret")}&js_code=$code&grant_type=authorization_code"
+        val ret = oGetRequest(app, url)
+        println(ret)
+        val openid = JSONObject(ret).optString("openid", "")
+        if (openid == "") {
+            callback(0L, "{\"result\":1}")
+        } else {
+            val u = cacheAccount.values.firstOrNull { it.wxid == openid }
+            if (u == null) {
+                // 没有微信 id 对应的帐号，生成并绑定一个
+                val rid = app.accountTable.saveWx(openid)
+                if (rid == 0L) {
+                    callback(0L, "{\"result\":1}")
+                } else {
+                    val usr = AccountCache2(rid, openid, "", "", "default.png", "", openid)
+                    cacheAccount[rid] = usr
+                    callback(usr.id, "{\"result\":0}")
+                }
+            } else {
+                callback(u.id, "{\"result\":0}")
+            }
+        }
     }
 }

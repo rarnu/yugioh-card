@@ -73,7 +73,8 @@ create table Users (
     password varchar(128) not null, -- encrypted
     nickname varchar (64) not null,
     headimg varchar (128) default 'default.png',
-    email varchar(256) default ''    -- only for find back password
+    email varchar(256) default '',    -- only for find back password
+    wxid varchar (64) default ''
 ) character set utf8mb4;
 
 -- collect

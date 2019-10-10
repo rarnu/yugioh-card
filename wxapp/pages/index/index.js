@@ -84,7 +84,7 @@ Page({
           }
         } else {
           wx.showToast({
-            title: '上传图片失败.',
+            title: '没有找到匹配的卡片.',
             image: "../../images/error.png"
           })
         }
@@ -170,6 +170,15 @@ Page({
     wx.navigateTo({
       url: '../decklist/decklist',
     })
+  },
+  bindMineTap: function(e) {
+    if (app.globalData.loginState) {
+      console.log('6666')
+    } else {
+      wx.showToast({
+        title: '请先进行登录.',
+      })
+    }
   },
   bindHotwordTap: function(e) {
     var key = e.currentTarget.dataset.id
