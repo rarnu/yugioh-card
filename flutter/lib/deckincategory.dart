@@ -5,15 +5,13 @@ import 'deck.dart';
 import 'util/widgetutil.dart';
 import 'package:ktflutter/http_extension.dart';
 import 'global.dart';
-import 'util/cardutil.dart';
-import 'carddetail.dart';
 
 class DeckInCategoryRoute extends MaterialPageRoute {
   DeckInCategoryRoute(String hash) : super(builder: (context) => DeckInCategoryPage(hash));
 }
 
 class DeckInCategoryPage extends StatefulWidget {
-  String hash;
+  final String hash;
   DeckInCategoryPage(this.hash): super();
   _DeckInCategoryState createState() => _DeckInCategoryState(hash);
 }

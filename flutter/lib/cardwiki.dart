@@ -1,19 +1,14 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ktflutter/http_extension.dart';
-import 'package:yugiohcard/util/cardutil.dart';
-import 'package:yugiohcard/util/widgetutil.dart';
-import 'global.dart';
 
 class CardWikiRoute extends MaterialPageRoute {
   CardWikiRoute(String hash, String wiki) : super(builder: (context) => CardWikiPage(hash, wiki));
 }
 
 class CardWikiPage extends StatefulWidget {
-  String hash;
-  String wiki;
+  final String hash;
+  final String wiki;
   CardWikiPage(this.hash, this.wiki): super();
   _CardWikiState createState() => _CardWikiState(hash, wiki);
 }

@@ -13,7 +13,7 @@ class CardDetailRoute extends MaterialPageRoute {
 }
 
 class CardDetailPage extends StatefulWidget {
-  String hash;
+  final String hash;
   CardDetailPage(this.hash): super();
   _CardDetailState createState() => _CardDetailState(hash);
 }

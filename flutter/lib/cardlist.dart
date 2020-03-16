@@ -12,7 +12,7 @@ class CardListRoute extends MaterialPageRoute {
 }
 
 class CardListPage extends StatefulWidget {
-  String keyword;
+  final String keyword;
   CardListPage(this.keyword): super();
   _CardListState createState() => _CardListState(keyword);
 }

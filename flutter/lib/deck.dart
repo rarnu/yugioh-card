@@ -11,7 +11,7 @@ class DeckRoute extends MaterialPageRoute {
 }
 
 class DeckPage extends StatefulWidget {
-  String code;
+  final String code;
 
   DeckPage(this.code) : super();
 

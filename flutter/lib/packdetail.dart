@@ -12,7 +12,7 @@ class PackDetailRoute extends MaterialPageRoute {
 }
 
 class PackDetailPage extends StatefulWidget {
-  String url;
+  final String url;
   PackDetailPage(this.url): super();
   _PackDetailState createState() => _PackDetailState(url);
 }
